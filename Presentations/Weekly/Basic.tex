@@ -1,0 +1,558 @@
+\documentclass[serif, pdf]{beamer}
+
+\usetheme{Warsaw}
+
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{multimedia}
+%\usepackage{media9}
+%\usepackage{movie15}
+\usepackage{lmodern}
+\usepackage{scrextend}
+\usepackage{subcaption}
+\usepackage{makecell}				%To keep spacing of text in tables
+\setcellgapes{4pt}					%parameter for the spacing
+\usepackage{caption}
+\captionsetup[figure]{labelformat=empty}% redefines the caption setup of the figures environment in the beamer class.
+\setbeamerfont{caption}{size=\scriptsize}
+
+
+\usecolortheme{beaver}
+
+\title[SEMC]{}
+\date{August 2019}
+\author[Naud\e' Conradie]{Naud\e' Conrade\\{\small Co-author: Dr M Venter}}
+\institute[]{Department of Mechanical Engineering, Stellenbosch University}
+
+
+\definecolor{colour1}{RGB}{96, 34, 59}
+\definecolor{colour2}{RGB}{140, 151, 154}
+\setbeamercolor{structure}{fg=colour1,bg=colour2}
+\setbeamercolor{title}{fg=white,bg=colour2}
+\setbeamercolor{author in head/foot}{fg=colour1}
+
+\setbeamertemplate{itemize item}{\color{black}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{black}$-$}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\expandafter\def\expandafter\insertshorttitle\expandafter{%
+  \insertshorttitle\hfill%
+  \hspace{30mm}\insertframenumber\,/\,\inserttotalframenumber}
+
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+%----------------------Title page----------------------%
+
+\begin{frame}
+  \begin{center}
+    \vspace{0.1cm}
+    \includegraphics[scale=0.25]{USlogo.pdf}
+  \end{center}
+  \titlepage
+\end{frame}
+
+%--------------Introduction---------------%
+
+\changefontsizes{13pt}
+\begin{frame}
+\frametitle{Aim}
+\begin{itemize}
+\uncover<1->{\item Create numerical model to model stiffness and inflated shape of simple bag}
+\uncover<2->{\item Increase complexity of model}
+\uncover<3->{\item Use model for shape optimisation for inflatable wing}
+\end{itemize}
+\begin{figure}
+\uncover<3->{\includegraphics[height=1.7cm]{Trailing_Edge_1.jpg}}
+\end{figure}
+\end{frame}
+
+%--------------Inflatable Wings---------------%
+
+\changefontsizes{13pt}
+\begin{frame}
+\frametitle{Inflatable Wings - Planes}
+
+\begin{figure}
+\includegraphics[height=5cm]{Inflatoplane.jpg}
+\end{figure}
+\end{frame}
+
+%---------------Methodology------------------------------%
+
+\begin{frame}
+\frametitle{Methodology}
+\begin{itemize}
+\item<1-> Measure stiffness through 4 point bending tests
+\item<2-> Capture physical model geometry with 3D scanner
+\item<3-> Construct finite element models of single cavity bags
+\begin{itemize}
+\item<3-> LS-DYNA's explicit solver
+\end{itemize}
+\end{itemize}
+%\begin{figure}
+%\includegraphics[height=2cm]{4-Point_Bending_Test}<1->
+%\end{figure}
+\end{frame}
+
+%-------------Material-------------------------------%
+
+%\begin{frame}
+%\frametitle{Material-Polyethylene}
+%\begin{itemize}
+%\item<1-> Readily available
+%\item<2-> 85$\mu$ thickness
+%\item<3-> Uni-axial tensile testing
+%\end{itemize}
+%\begin{figure}
+%\includegraphics<4->[scale=0.4]{Tensile_Test_Data}
+%\end{figure}
+%\end{frame}
+
+%------------------Finite Element Model-----------%
+
+\begin{frame}
+\frametitle{FE Model - 4 Point Bending}
+\begin{minipage}{0.60\textwidth}
+\begin{itemize}
+\item<1-> Polyethylene - Linear elastic membrane
+\item<2-> Airbag model for inflation 
+\item<3-> Two boundary condition types used
+\item<4-> Dynamic relaxation
+\item<5-> Mass scaling
+\end{itemize}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+\begin{figure}
+\includegraphics[height=3.3cm]{Tensile_Testing.pdf}<1->
+\end{figure}
+\end{minipage}
+
+
+\end{frame}
+
+%------------------4 Point Bending Tests Physical------------%
+
+\begin{frame}
+\frametitle{4 Point Bending Tests}
+\begin{itemize}
+\item<1-> Measure force vs. displacement
+\item<2-> Diameter 50, 75 and 100~mm tubes
+\item<3-> 3 different pressures tested per tube
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.4]{4_Point.jpg}
+\end{figure}
+\end{frame}
+
+%------------------4 Point Bending Tests Simulation------------%
+
+\begin{frame}
+\frametitle{4 Point Bending Tests}
+%\begin{figure}
+%\includegraphics[scale=0.5]{50_All.png}
+%\caption{Force vs. displacement curve for all 3 pressures of 50~mm bag}
+%\end{figure}
+
+\begin{figure}[h!]
+\begin{subfigure}{.45\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{All_5_75.pdf}
+  \caption{\scriptsize{Bag size comparison at 5.75~kPa.}}
+  \label{fig:Point_Cloud_75_4-Point_yz}
+\end{subfigure}
+\begin{subfigure}{.46\textwidth}
+  \centering
+  \includegraphics[width=1\linewidth]{50_All.pdf}
+  \caption{\scriptsize{Pressure comparison for 50~mm bag.}}
+  \label{fig:Point_Cloud_75_4-Point_xz}
+\end{subfigure}%
+%\caption{Symmetry plane plots comparing the shape of the numerical and physical model of a 75~mm inflated bag under 4-point bending.}
+\label{fig:Point_Cloud_75_Load}
+\end{figure}
+\end{frame}
+
+
+
+%------------------4 Point Bending Tests Simulation cont... ------------%
+
+\begin{frame}
+\frametitle{4 Point Bending Tests}
+At displacement of 40~mm:
+\begin{itemize}
+\item<1-> At 5.75~kPa a 100$\%$ increase in bag size yields a 375$\%$ increase in stiffness
+\item<2-> For the 50~mm bag a 160$\%$ increase in pressure the stiffness increases by 46$\%$
+\item<3-> Increase on bag size has a larger influence on the stiffness than the pressure
+\end{itemize}
+\end{frame}
+
+%------------------4 Point Bending Tests Simulation cont... ------------%
+
+%\begin{frame}
+%\frametitle{4 Point Bending Tests - $\O$50 tube}
+%\begin{figure}
+%\includegraphics[scale=0.5]{50_9.png}
+%\caption{Force vs. displacement curve for tube at 9~kPa}
+%\end{figure}
+%\end{frame}
+
+%------------------4 Point Bending Tests Simulation cont... ------------%
+
+%\begin{frame}
+%\frametitle{4 Point Bending Tests - $\O$50 tube}
+%\begin{figure}
+%\includegraphics[scale=0.5]{50_15.png}
+%\caption{Force vs. displacement curve for tube at 15~kPa}
+%\end{figure}
+%\end{frame}
+
+%------------------4 Point Bending Tests Simulation cont... ------------%
+
+%\begin{frame}
+%\frametitle{4 Point Bending Tests - 50~mm Bag}
+%\begin{figure}[h!]
+%\begin{subfigure}{.5\textwidth}
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{50_5_75.pdf}
+%  \caption{\scriptsize{50~mm bag at 5.75~kPa.}}
+%  \label{fig:50_5_75_Numerical}
+%\end{subfigure}%
+%\begin{subfigure}{.5\textwidth}
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{50_9.pdf}
+%  \caption{\scriptsize{50~mm bag at 9~kPa.}}
+%  \label{fig:50_9_Numerical}
+%\end{subfigure}
+%\begin{subfigure}{\textwidth}
+%  \centering
+%  \includegraphics[width=.4\linewidth]{50_15.pdf}
+%  \caption{\scriptsize{50~mm bag at 15~kPa.}}
+%  \label{fig:50_15_Numerical}
+%\end{subfigure}
+%%\caption{The numerical force vs. displacement values for the 50~mm bags plotted with the data from the physical tests.}
+%\label{fig:50_Numerical}
+%\end{figure}
+%\end{frame}
+
+%------------------4 Point Bending Tests Simulation cont... ------------%
+
+\begin{frame}
+\frametitle{4 Point Bending Tests - 75~mm Bag}
+\begin{figure}[h!]
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{75_5_75.pdf}
+  \caption{\scriptsize{75~mm bag at 5.75~kPa.}}
+  \label{fig:50_5_75_Numerical}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.8\linewidth]{75_6_75.pdf}
+  \caption{\scriptsize{75~mm bag at 6.75~kPa.}}
+  \label{fig:50_9_Numerical}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{75_9.pdf}
+  \caption{\scriptsize{75~mm bag at 9~kPa.}}
+  \label{fig:50_15_Numerical}
+\end{subfigure}
+%\caption{The numerical force vs. displacement values for the 50~mm bags plotted with the data from the physical tests.}
+\label{fig:50_Numerical}
+\end{figure}
+\end{frame}
+
+%------------------4 Point Bending Tests Simulation cont... ------------%
+
+%\begin{frame}
+%\frametitle{4 Point Bending Tests - 100~mm Bag}
+%\begin{figure}[h!]
+%\begin{subfigure}{.5\textwidth}
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{100_4_75.pdf}
+%  \caption{\scriptsize{100~mm bag at 4.75~kPa.}}
+%  \label{fig:50_5_75_Numerical}
+%\end{subfigure}%
+%\begin{subfigure}{.5\textwidth}
+%  \centering
+%  \includegraphics[width=0.8\linewidth]{100_5_75.pdf}
+%  \caption{\scriptsize{100~mm bag at 5.75~kPa.}}
+%  \label{fig:50_9_Numerical}
+%\end{subfigure}
+%\begin{subfigure}{\textwidth}
+%  \centering
+%  \includegraphics[width=.4\linewidth]{100_6_75.pdf}
+%  \caption{\scriptsize{100~mm bag at 6.75~kPa.}}
+%  \label{fig:50_15_Numerical}
+%\end{subfigure}
+%%\caption{The numerical force vs. displacement values for the 50~mm bags plotted with the data from the physical tests.}
+%\label{fig:50_Numerical}
+%\end{figure}
+%\end{frame}
+
+%------------------4 Point Bending Tests Simulation cont... ------------%
+
+%\begin{frame}
+%\frametitle{4 Point Bending Tests Validation}
+%\begin{table}[h!]
+%\makegapedcells
+%\begin{center}
+%\caption{A statistical measure of the deviations in resulting force between the numerical and physical model for all 3 bags under a 4-point bending load.}
+%\label{tab:50_4-point_quant}
+%\centering
+% \begin{tabular}{l l c c c p{3cm}} 
+% \hline
+% Bag & Pressure & Max $\%$ error & Mean $\%$ error & $\sigma$ & Displacement at max $\%$ error \\
+% \hline \hline
+% 50~mm & 5.75~kPa & 11.76 & 6.54 & 5.08 & 30~mm\\ 
+% & 9~kPa & 7.88 & 4.59 & 3.00 & 30~mm\\
+% & 15~kPa & 18.52 & 10.87 & 7.32 & 10~mm\\
+% 75~mm & 5.75~kPa & 18.23 & 10.89 & 6.53 & 20~mm\\ 
+% & 6.75~kPa & 17.00 & 11.00 & 4.97 & 40~mm\\
+% & 9~kPa & 13.04 & 8.10 & 4.25 & 40~mm\\
+% 100~mm & 4.75~kPa & 51 & 21.18 & 21.21 & 5~mm\\ 
+% & 5.75~kPa & 57.14 & 22.04 & 22.90 & 5~mm\\
+% & 6.75~kPa & 47.43 & 20.35 & 18.89 & 5~mm\\
+% \hline
+%\end{tabular}
+%\end{center}
+%\end{table}
+%\end{frame}
+
+%-------------------------Shape Validation--------------------------------%
+
+\begin{frame}
+\frametitle{Shape Validation}
+\begin{itemize}
+\item<1-> Point clouds of bags both under load and no load compared
+\item<2-> Metamodel based optimisation used to minimize Hausdorff distance
+\item<3-> Rigid body transformations used to rotate physical model 
+\end{itemize}
+\uncover<2->{
+\begin{align*}
+\text{Minimise}  \, f(\textbf{x}) & \\
+\text{where} \, f(\textbf{x}) & = \text{Hausdorff Distance}  \\
+\text{and} \, \, \textbf{x} & = [T_x ,T_y ,T_z ,R_x ,R_y ,R_z] 
+\end{align*}}
+
+%  \begin{align}
+%     \tilde{A} &= {\Omega}^{2} \, A,
+%     &\tilde{B} &= {\Omega}^{- 2} \, B, \nonumber \\[12pt]
+%     \tilde{\Phi} &= {\Omega}^{w} \, \Phi,
+%     &\tilde{\Psi} &= {\Omega}^{w} \, \Psi,
+%   \end{align}
+
+\end{frame}
+
+%-------------------------Shape Validation cont...------------------------%
+\begin{frame}
+\frametitle{Hausdorff Distance}
+\begin{center}
+\includegraphics[scale=0.7]{Hausdorff}
+\end{center}
+\end{frame}
+
+%-------------------------Shape Validation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Validation - 75~mm Bag Under No Load}
+\begin{figure}[h!]
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.94\linewidth]{Tube_75_xz.pdf}
+  \label{fig:Point_Cloud_75_No-Load_xz}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.94\linewidth]{Tube_75_yz.pdf}
+  \label{fig:Point_Cloud_75_No-Load_yz}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+  \centering
+  \includegraphics[width=.47\linewidth]{Tube_75_xy.pdf}
+  \label{fig:Point_Cloud_75_No-Load_xy}
+\end{subfigure}
+%\caption{Symmetry plane plots comparing the shape of the numerical and physical model of a 75~mm inflated bag under no no load.}
+%\label{fig:Point_Cloud_75_No-Load}
+\end{figure}
+\end{frame}
+
+%-------------------------Shape Validation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Validation - 75~mm Bag Under Load}
+\begin{figure}[h!]
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.94\linewidth]{4-point_75_xz.pdf}
+  \label{fig:Point_Cloud_75_4-Point_xz}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.94\linewidth]{4-point_75_yz.pdf}
+%  \caption{\scriptsize{Plot of points on the $yz$ plane for the 75~mm bag.}}
+  \label{fig:Point_Cloud_75_4-Point_yz}
+\end{subfigure}
+%\caption{Symmetry plane plots comparing the shape of the numerical and physical model of a 75~mm inflated bag under 4-point bending.}
+%\label{fig:Point_Cloud_75_Load}
+\end{figure}
+\begin{itemize}
+\item Larger displacement from physical bag
+\item Best fit on $zy$ plane
+\end{itemize}
+\end{frame}
+
+
+
+%-------------------------Shape Optimisation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Optimisation}
+\begin{center}
+\begin{itemize}
+\item<1-> Parametrise movement in the $x$ and $z$ directions 
+\item<2-> Minimise RMSE between NACA 0030 aerofoil
+\end{itemize}
+\end{center}
+
+\begin{figure}
+\includegraphics[scale=0.4]{Initial_Opt_State}<1->
+\end{figure}
+\end{frame}
+
+%-------------------------Shape Optimisation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Optimisation}
+\begin{figure}[h!]
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \uncover<1->{\scalebox{-1}[1]{\includegraphics[height=2.2cm]{3_Bag_Wing}}}
+  \label{fig:50_5_75_Numerical}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \uncover<2->{\scalebox{-1}[1]{\includegraphics[height=2.2cm]{8_Bag_Wing}}}
+  \label{fig:50_9_Numerical}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+  \centering
+  \uncover<3->{\scalebox{-1}[1]{\includegraphics[height=2.2cm]{15_Bag_Wing}}}
+  \label{fig:50_15_Numerical}
+\end{subfigure}
+%\caption{The numerical force vs. displacement values for the 50~mm bags plotted with the data from the physical tests.}
+\label{fig:50_Numerical}
+\end{figure}
+\end{frame}
+
+%-------------------------Shape Optimisation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Optimisation - 3 Bag Aerofoil}
+\begin{figure}[h!]
+  \includegraphics[width=1\linewidth]{Aerofoil_3}
+\end{figure}
+\end{frame}
+
+%-------------------------Shape Optimisation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Optimisation - 8 Bag Aerofoil}
+\begin{figure}[h!]
+  \includegraphics[width=1\linewidth]{Aerofoil_8}
+\end{figure}
+\end{frame}
+
+%-------------------------Shape Optimisation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Optimisation - 15 Bag Aerofoil}
+\begin{figure}[h!]
+  \includegraphics[width=1\linewidth]{Aerofoil_15}
+\end{figure}
+\end{frame}
+
+%-------------------------Shape Optimisation cont...------------------------%
+
+\begin{frame}
+\frametitle{Shape Optimisation -  Bag Comparison}
+\begin{table}[H]
+\makegapedcells
+\begin{center}
+ \begin{tabular}{lccc} 
+ \hline
+  & 3 Bag & 8 Bag & 15 Bag \\
+ \hline \hline
+ RMSE & 0.02606 & 0.00844 & 0.00453\\ 
+ $R^2$ & 0.557 & 0.961 & 0.990 \\
+ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+%------------------------Physical Model--------------------------------%
+
+\begin{frame}
+\frametitle{Physical Model - 8 Bag Aerofoil}
+\begin{figure}[h!]
+  \scalebox{-1}[1]{\includegraphics[height=6.5cm]{Physical_8_Bag_Aerofoil}}
+\end{figure}
+\end{frame}
+
+%------------------------Physical Comparision--------------------------------%
+
+\begin{frame}
+\frametitle{Physical Comparison - 8 Bag Aerofoil}
+\begin{figure}[h!]
+  \includegraphics[width=0.9\linewidth]{Physical_Comparison_8.pdf}
+\end{figure}
+\begin{center}
+$R^2 = 0.941$
+\end{center}
+\end{frame}
+
+%------------------------Physical Comparision--------------------------------%
+
+\begin{frame}
+\frametitle{Concluding Remarks}
+\begin{itemize}
+\item Able to achieve high $R^2$ fit from between physical profile and target profile.
+\item More accurate material model could help achieve better fit. 
+\end{itemize}
+\end{frame}
+
+
+%------------------------Questions--------------------------------%
+
+\begin{frame}
+\begin{center}
+\huge Questions?
+\end{center}
+\end{frame}
+
+
+
+
+\end{document}
+
+%\begin{figure}
+%\includegraphics[width=0.25\textwidth]{Pictures/Plain_Weave.jpg}
+%\caption{Plain weave architecture}
+%\end{figure}
+
+
+
+%\begin{itemize}
+%\setlength\itemsep{1em}
+%\item<1->{Plain weave architecture.}
+%\item<2->{Orthogonal material directions.}
+%\item<3->{Behaves unlike conventional metallic materials.}
+%\item<4->{Coupled response due to crimp interchange.}
+%\end{itemize}
+
+
+%\begin{block}{\textcolor{black}{}}
+%XXX
+%\end{block}
