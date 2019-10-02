@@ -1,0 +1,72 @@
+11: {text: 'Explicit FEM
+
+    Many small timesteps
+
+    Better for non-linearity
+
+
+    Implicit FEM
+
+    Larger timesteps with multiple iterations at each timestep
+
+
+    Do proper literature early on'}
+20: {text: 'NX 12:
+
+    10x10 Model
+
+    Set as 2D solid
+
+
+    Non-linear solver:
+
+    Don''t use 106 or 129, rather use 601 or 701
+
+
+    601:
+
+    Static/implicit
+
+    No velocity or inertia
+
+    Generates a stiffness matrix and solves for it
+
+    If a solution is obtained, it is correct
+
+
+    701:
+
+    Explicit
+
+    Always obtains a solution, but may not always be correct
+
+
+    LSDyna:
+
+    Download help files
+
+    LS Pre/Post only for pre- and post-processing
+
+    Use LSDyna for analysis
+
+
+    Literature review:
+
+    e-mail Zack for references
+
+    1 day a week
+
+
+    SAIMechE Conference:
+
+    Abstract
+
+    Presentation
+
+
+    VPN:
+
+    Call IT
+
+
+    Ubuntu 18.04'}

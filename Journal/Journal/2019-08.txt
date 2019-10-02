@@ -1,0 +1,163 @@
+6: {text: 'Look through Izaak and David''s work (Recursion, L-systems, Material modelling)
+
+
+    Milestone 1
+
+    10x10 empty grid with pressure all around inner surface
+
+    Simple elements
+
+    Either EcoFlex or Smooth Sil 950
+
+    Print a physical model and compare its behaviour to modeled behaviour
+
+
+    Milestone 2
+
+    General case
+
+
+    Start journal to keep track of decisions and changes, such as mesh sizes and element
+    numbers'}
+13: {text: 'For hand-ins for feedback:
+
+
+    Don''t write like skripsie
+
+    Use recorder as well as taking notes during feedback sessions
+
+
+    Prof Venter:
+
+    As good as you can get it
+
+    Thorough and pedantic feedback
+
+    Don''t give rough work
+
+
+    Dr Venter:
+
+    Sees different things from Prof Venter
+
+    Doesn''t notice spelling errors'}
+15: {text: 'Presentation Tips
+
+
+    Use consistent formatting (Capital letters, bold, italics, underline, etc.)
+
+    Keep it simple; explain immportant terms to unfamiliar audience
+
+    Use nice pictures, crop out unnecessary parts
+
+    Use a nice template (not skripsie template)'}
+16: {text: 'Implement unit testing for functions
+
+    Basic set of known inputs and outputs used to check if function is behaving as
+    expected
+
+
+    Writing tips
+
+    Start writing in this year
+
+    Write as you go along
+
+    Submit chapter by chapter for feedback
+
+    Don''t be shy with images/graphs'}
+27: {text: 'Implementation of 10x10 empty square:
+
+    Use Mold-Star 15 material
+
+    Use symmetry constraints to bound the material
+
+    Download and install NX 12, Marc Mentat, and LSDynam
+
+    Model square on all those
+
+    Look at examples in the manuals and online
+
+    Use linear properties first for an isotropic model, then change the material model
+
+    Look at and understand time transience of the model
+
+
+    Set up a VPN to use the software away from the office
+
+
+    Work through PolyFEM by Jorgen Bergstrom
+
+
+    Presentation:
+
+    Present narrative of project as a whole
+
+    Generate locomotives
+
+    Using recursive smal elements with simple properties to obtain more complex behaviours
+    and emergent properties like David and Izaak
+
+    Build individual components
+
+    Use boundary energy minimization
+
+
+    ftp://saturn.meg.sun.ac.za
+
+    Username: postgrad
+
+    Password: postgrad456'}
+29: {text: 'Before starting to write, compile a Table of Contents
+
+    Work through Table of Contents with supervisor to determine proper layout
+
+
+    Bind at Post-Net
+
+
+    Use LS Pre/Post
+
+
+    10x10 NX12 Model
+
+    1D Model:
+
+    Standard setup
+
+    45 mm length lines (50+40/2)
+
+    5 elements per line
+
+    10N along curve inwards
+
+    PBeam bar (10mmx10mm)
+
+    Steel
+
+
+    2D Model
+
+    Standard setup
+
+    50 mm outer lines, 40 mm inner lines, 10 mm breadth
+
+    Extrusion 10 mm (-5 mm, 5 mm)
+
+    Midsection between planes to get 2D shell elements (outer and inner plane to get
+    shell pointing outward, to apply pressure)
+
+    10 mm elements resulting in 10 square elements
+
+    10 MPa per side
+
+    Steel
+
+
+    3D Model
+
+    Standard setup
+
+    50 mm outer lines, 40 mm inner lines, 10 mm breadth
+
+    10 mm elements, element type?'}
