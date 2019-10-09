@@ -1,5 +1,5 @@
-$# LS-DYNA Keyword file created by LS-PrePost(R) V4.6.4 - 20Mar2019
-$# Created on Sep-20-2019 (10:22:21)
+$# LS-DYNA Keyword file created by LS-PrePost(R) V4.6.7 - 09May2019
+$# Created on Oct-8-2019 (10:22:18)
 *KEYWORD  
 *CONTROL_TERMINATION
       10.0         0       0.0       0.01.000000E8         0
