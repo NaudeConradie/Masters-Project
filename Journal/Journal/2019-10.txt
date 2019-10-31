@@ -117,3 +117,12 @@
     - Parameterize it
 
     - Use either a LS PrePost Macro or Python'}
+10: {text: "Base element (LS Dyna)\n\n\n2D Solid\n- SECTION_SHELL\n - ELFORM 13\n
+    \ - Plane strain\n - ELFORM 15\n  - Volume weighted\n   - Look up in the keyword
+    file or theory manual\n  - Structural application\n - NIP 4\n- SECTION_ALE2D\n
+    - ELFORM 13\n  - Plane strain\n - ELFORM 14\n  - Axisymmetric\n  - Area weighted\n
+    - ALEFORM 6\n  - Single material\n - ALEFORM 11\n  - Multi-material\n\n\nMaterial\n-
+    Start with linear elastic material\n- Nonlinear material models\n - 077_H-HYPERELASTIC_RUBBER\n
+    - 077_O-OGDEN_RUBBER\n - 181_SIMPLIFIED_RUBBER\n\n\nBoundary conditions\n- Ultimately
+    elements will be tesselated; bound by surrounding elements\n- Use symmetry to
+    model a quarter while appropriate\n\n\nDimensions\n- About an inch\n"}
