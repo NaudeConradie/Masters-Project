@@ -1,13 +1,19 @@
-$# LS-DYNA Keyword file created by LS-PrePost(R) V4.6.4 - 20Mar2019
-$# Created on Nov-05-2019 (14:34:54)
-*KEYWORD  
-*PART
+$# LS-DYNA Keyword file created by LS-PrePost(R) V4.6.7 - 09May2019
+$# Created on Nov-7-2019 (15:40:06)
+*KEYWORD
+*TITLE
 $#                                                                         title
+LS-DYNA keyword deck by LS-PrePost
+*PART
                                                                                 
-$#     pid     secid       mid     eosid      hgid      grav    adpopt      tmid
          1         0         0         0         0         0         0         0
+*MAT_PIECEWISE_LINEAR_PLASTICITY_TITLE
+Mild Steel
+         17.83000E-6     207.0       0.3       0.2       2.01.00000E21       0.0
+       0.0       0.0         0         0       0.0
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
 *ELEMENT_SHELL
-$#   eid     pid      n1      n2      n3      n4      n5      n6      n7      n8
        1       1       1       3       4       2       0       0       0       0
        2       1       3       5       6       4       0       0       0       0
        3       1       5       7       8       6       0       0       0       0
@@ -20,7 +26,6 @@ $#   eid     pid      n1      n2      n3      n4      n5      n6      n7      n8
       10       1      19      21      22      20       0       0       0       0
       11       1      21      23      24      22       0       0       0       0
 *NODE
-$#   nid               x               y               z      tc      rc  
        1             0.0            10.0             0.0       0       0
        2             0.0            12.0             0.0       0       0
        3             2.0            10.0             0.0       0       0
