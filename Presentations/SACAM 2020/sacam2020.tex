@@ -1,0 +1,48 @@
+\documentclass[a4paper]{sacam2020}
+
+\usepackage{parskip}
+\usepackage{pslatex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\setlength{\parskip}{5pt}
+
+\title{Abstract Title}
+
+\author{Naude T. Conradie$^{*}$ and Martin P. Venter$^{\dag}$}
+
+\address{$^{*}$ Stellenbosch University\\
+Huis Russel Botman, Marais Road, Stellenbosch, 7600\\
+\email{19673418@sun.ac.za}
+\and
+$^{\dag}$ Stellenbosch University\\
+Faculty Of Engineering, Stellenbosch University, Private Bag X1, Matieland, 7602\\
+\email{mpventer@sun.ac.za}}
+
+%\keywords{Instructions, Minisymposium, Computational Mechanics, Fluid Dynamics}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\section*{ABSTRACT}
+
+Soft robots are difficult to design, and a large area of the design space remains unexplored. Using genetic algorithms is an effective method to explore the design space [1]⁠. However, the simulation and prediction of the behaviour of soft bodies is computationally expensive due to their physical properties. An efficient method of representing these bodies is desirable. This would allow for faster and more effective design processes to be widely implemented.
+
+Two-dimensional soft-bodied creatures are evolved virtually using sequential iterations of numerical optimization. Soft bodies consist of unit cells with defined behaviours and responses to an applied internal pressure. Complete soft bodies are defined using a generalized recursive encoding such as Lindenmayer systems (L-systems) [2] and/or Compositional Pattern-Producing Networks-NeuroEvolution of Augmenting Topologies (CPPN-NEAT) [3]. These bodies behave according to real-world physics and are modelled with representative models. Material models appropriate for non-linear hyper-elastic FEM will be used.
+
+Soft-bodied models capable of completing set tasks are obtained with greatly improved computing times regarding the evolution and modelling of the bodies. The methodology is easily replicable and adaptable. Some three-dimensional modelling is done as well and compared to the 2D results. Physical replicas of unit cells and some well-performing whole bodies are produced as a proof of concept.
+
+Generalized recursive encodings allow for much faster and more efficient evolution of soft-bodies, due to their inherently compactible nature, and may be used in the future to obtain soft robotic models for a wide range of applications.
+
+\begin{thebibliography}{99}
+\bibitem{Taylor} Taylor, R. L., Simo, J. C., Zienkiewicz, O. C., \& Chan, A. C. H. (1986). The patch test--a condition for assessing FEM convergence. \textit{International journal for numerical methods in engineering}, 22(1), 39-62.
+\bibitem{Thomas} Thomas, D. N. (Ed.). (2017). \textit{Sea ice}. John Wiley \& Sons.
+\end{thebibliography}
+
+\end{document}
+
+
