@@ -1,4 +1,4 @@
-      Date: 11/13/2019      Time: 13:20:54  
+      Date: 11/13/2019      Time: 17:37:58  
 
      ___________________________________________________
      |                                                 |
@@ -12,33 +12,31 @@
      |                                                 |
      |  LS-DYNA, A Program for Nonlinear Dynamic       |
      |  Analysis of Structures in Three Dimensions     |
-     |  Version : smp s R11.0.0   Date: 08/27/2018     |
-     |  Revision: 129956          Time: 13:04:10       |
+     |  Version : smp s R10.1.0   Date: 01/12/2018     |
+     |  Revision: 123264          Time: 16:34:46       |
      |                                                 |
      |  Features enabled in this version:              |
      |    Shared Memory Parallel                       |
-     |    FFTW (multi-dimensional FFTW Library)        |
      |    Interactive Graphics                         |
      |    ANSYS Database format                        |
-     |    ANSYS License (ANSYS150)                     |
+     |    ANSYS License (ANSYS160)                     |
      |    MADYMO indirect coupling (7.2 or higher)     |
-     |    BigID  option                                |
      |                                                 |
      |  Licensed to: Stellenbosch University - 1409    |
      |  Issued by  : LSTC_01142019                     |
      |                                                 |
-     |  Platform   : WINDOWS X64 (SSE2)                |
-     |  OS Level   : Windows 7/8/10 & Srv 2008/2012 R2 |
-     |  Compiler   : Intel Fortran 13.1 & MSVC++ 2010  |
-     |  Hostname   : DESKTOP-UFIB03G                   |
+     |  Platform   : Xeon64 System                     |
+     |  OS Level   : Linux 2.6.18 ulm                  |
+     |  Compiler   : Intel Fortran Compiler 16.0 SSE2  |
+     |  Hostname   : naude-HP-Pavilion-17-Notebook-PC  |
      |  Precision  : Single precision (I4R4)           |
-     |  SVN Version: 129958                            |
+     |  SVN Version: 123300                            |
      |                                                 |
      |  Unauthorized use infringes LSTC copyrights     |
      |_________________________________________________|
 
 
- Input file: C:\Users\NAUDEC~1\Desktop\REPOSI~1\MASTER~1\Models\LS-PRE~1\BALL_P~1.K          
+ Input file: /home/naude/Documents/Masters-Project/Models/LS-PrePost_Tutorials/ball_plate.k  
 
  The native file format       : 32-bit small endian
  Memory size from command line:    20000000
@@ -63,8 +61,14 @@
  * All rights reserved                                        *
  *                                                            *
  ********  notice  ********  notice  ********  notice  ********
+ 
+LSTC Environment Variables:
+ 
+LSTC_LICENSE=network
+LSTC_LICENSE_SERVER=license.sun.ac.za
+ 
 
- Beginning of keyword reader                                   11/13/19 13:20:54
+ Beginning of keyword reader                                   11/13/19 17:37:58
 
 
          **            ******  **********    *******                            
@@ -148,7 +152,6 @@ total # of *BOUNDARY_THERMAL_BULKNODE..............       0
 total # of *BOUNDARY_THERMAL_WELD..................       0
 total # of *BOUNDARY_USA...........................       0
 total # of *BOUNDARY_PZEPOT........................       0
-total # of *LOAD_PZECHARGE ........................       0
 total # of *COMPONENT_GEBOD........................       0
 total # of *COMPONENT_GEBOD_JOINT..................       0
 total # of *COMPONENT_HYBRIDIII....................       0
@@ -292,7 +295,6 @@ total # of *DATABASE_EXTENT_BINARY_COMP............       0
 total # of *DATABASE_EXTENT_D3PART.................       0
 total # of *DATABASE_EXTENT_INTFOR.................       0
 total # of *DATABASE_FREQUENCY_ASCII_option........       0
-total # of *DATABASE_FREQUENCY_BINARY_D3ACC........       0
 total # of *DATABASE_FREQUENCY_BINARY_D3ACS........       0
 total # of *DATABASE_FREQUENCY_BINARY_D3ATV........       0
 total # of *DATABASE_FREQUENCY_BINARY_D3FTG........       0
@@ -300,7 +302,6 @@ total # of *DATABASE_FREQUENCY_BINARY_D3PSD........       0
 total # of *DATABASE_FREQUENCY_BINARY_D3RMS........       0
 total # of *DATABASE_FREQUENCY_BINARY_D3SPCM.......       0
 total # of *DATABASE_FREQUENCY_BINARY_D3SSD........       0
-total # of *DATABASE_FREQUENCY_BINARY_D3ZCF........       0
 total # of *DATABASE_HISTORY_NODE_option...........       0
 total # of *DATABASE_HISTORY_SOLID_option..........       0
 total # of *DATABASE_HISTORY_BEAM_option...........       0
@@ -337,8 +338,6 @@ total # of *DEFINE_DE_BOND.........................       0
 total # of *DEFINE_DE_HBOND........................       0
 total # of *DEFINE_DE_BY_PART......................       0
 total # of *DEFINE_DE_MASSFLOW_PLANE...............       0
-total # of *DEFINE_DE_COHESIVE.....................       0
-total # of *DEFINE_FRACTURE........................       0
 total # of *DEFINE_FRICTION........................       0
 total # of *DEFINE_FUNCTION........................       0
 total # of *DEFINE_GROUND_MOTION...................       0
@@ -363,8 +362,6 @@ total # of *DEFINE_PG_CHAMBER......................       0
 total # of *DEFINE_PG_GAS_PROPERTIES...............       0
 total # of *DEFINE_PG_VENT.........................       0
 total # of *DEFINE_SHELL_ELEMENT_DEATH_THICK.......       0
-total # of *DEFINE_ELEMENT_EROSION_SHELL...........       0
-total # of *DEFINE_ELEMENT_EROSION_TSHELL..........       0
 total # of *DEFINE_SPH_TO_SPH_COUPLING.............       0
 total # of *DEFINE_SPH_DE_COUPLING.................       0
 total # of *DEFINE_SPOTWELD_RUPTURE_STRESS.........       0
@@ -431,19 +428,15 @@ total # of *INITIAL_MOMENTUM.......................       0
 total # of *INITIAL_PWP_DEPTH .....................       0
 total # of *INITIAL_STRAIN_SHELL...................       0
 total # of *INITIAL_STRAIN_SHELL_SET...............       0
-total # of *INITIAL_STRAIN_SHELL_NURBS_PATCH.......       0
 total # of *INITIAL_STRAIN_SOLID...................       0
-total # of *INITIAL_STRAIN_SOLID_NURBS_PATCH.......       0
 total # of *INITIAL_STRAIN_TSHELL..................       0
 total # of *INITIAL_STRESS_BEAM....................       0
 total # of *INITIAL_STRESS_DEPTH ..................       0
 total # of *INITIAL_STRESS_SECTION.................       0
 total # of *INITIAL_STRESS_SHELL...................       0
 total # of *INITIAL_STRESS_SHELL_SET...............       0
-total # of *INITIAL_STRESS_SHELL_NURBS_PATCH.......       0
 total # of *INITIAL_STRESS_SOLID...................       0
 total # of *INITIAL_STRESS_SOLID_SET...............       0
-total # of *INITIAL_STRESS_SOLID_NURBS_PATCH.......       0
 total # of *INITIAL_STRESS_SPH.....................       0
 total # of *INITIAL_STRESS_TSHELL..................       0
 total # of *INITIAL_TEMPERATURE_SET................       0
@@ -459,7 +452,6 @@ total # of *INITIAL_EOS_ALE........................       0
 total # of *INITIAL_VAPOR_PART.....................       0
 total # of *INITIAL_ALE_MAPPING....................       0
 total # of *INITIAL_LAG_MAPPING....................       0
-total # of *INITIAL_SOLID_VOLUME...................       0
 total # of *INTEGRATION_BEAM.......................       0
 total # of *INTEGRATION_SHELL......................       0
 total # of *INTERFACE_COMPONENT_option.............       0
@@ -587,7 +579,7 @@ total # of *RIGID_DEFORMABLE_D2R...................       0
 total # of *RIGID_DEFORMABLE_R2D...................       0
 total # of *STRESS_INITIALIZATION..................       0
 
- Memory required to process keyword     :      355834 
+ Memory required to process keyword     :      363008 
 
  LS-DYNA will perform a structural only analysis 
 
@@ -1132,10 +1124,7 @@ total # of *STRESS_INITIALIZATION..................       0
                    thickness stretch                     
           eq.  27: c0-triangular element with            
                    thickness stretch                     
-          eq.  29: cohesive element for shell            
-                   edge-to-edge connections              
-          eq. -29: cohesive element with midlayer        
-                   coordinate system for pure shear      
+          eq.  29: cohesive element                      
           eq.  31: 2-d 1-pt. eulerian n-s                
           eq.  32: 2-d 4-pt. eulerian n-s                
           eq.  33: 2-d cvfem eulerian n-s                
@@ -1143,11 +1132,8 @@ total # of *STRESS_INITIALIZATION..................       0
           eq.  42: meshfree shell global projection      
           eq.  43: meshfree plane strain                 
           eq.  44: meshfree axisymmetric solid           
-          eq.  46: cohesive element compatible with 2d   
-                   plane stress, plane strain, or        
-                   area-weighted axisymmetric elements   
-          eq.  47: cohesive element compatible with 2d   
-                   volume-weighted axisymmetric elements 
+          eq.  46: cohesive element                      
+          eq.  47: cohesive with shell offsets           
           eq.  98: interpolation shell element           
           eq.  99: elastic vibration element             
           eq. 201: isogeometric nurbs element            
@@ -1278,9 +1264,9 @@ total # of *STRESS_INITIALIZATION..................       0
           eq. 4:  4 point integration formula           
           eq. 5:  5 point integration formula           
 
-    integration rule for quadratic shells..........       3
-          eq. 2:  2x2 integration in plane              
-          eq. 3:  3x3 integration in plane              
+    integration rule for quadratic shells..........       2
+          eq. 2:  2 point integration in plane          
+          eq. 3:  3 point integration in plane          
 
     stress output for solid element spotwelds......       0
           eq. 1:  global (default)                      
@@ -1320,14 +1306,6 @@ total # of *STRESS_INITIALIZATION..................       0
     number of shell elements with initial stress ..       0
 
     number of shell elements with initial strain ..       0
-
-    number of iga-shell elms with initial stress ..       0
-
-    number of iga-shell elms with initial strain ..       0
-
-    number of iga-solid elms with initial stress ..       0
-
-    number of iga-solid elms with initial strain ..       0
 
     maximum number of tensor data .................       0
 
@@ -1812,99 +1790,61 @@ total # of *STRESS_INITIALIZATION..................       0
           eq.1:  nodal data is not echoed                
           eq.2:  element data is not echoed              
           eq.3:  node and element data is not echoed     
-
     debug information in messag file option........       0
           eq.0:  no                                      
           eq.1:  yes                                     
-
     update of beam reference nodes.................       0
           eq.0:  off                                     
           eq.1:  on-unique reference nodes required      
-
     averaged acceleration-print/time history files.       0
           eq.0:  no average (default)                   
           eq.1:  averaged between output intervals      
           eq.2:  user defined filtering                 
-
     output interval for interface file.............    0.1000E+00
-
     default print flag for the RBDOUT/MATSUM files        0
           eq.0: RBDOUT and MATSUM       
           eq.1: RBDOUT only             
           eq.2: MATSUM only             
           eq.3: no output               
-
     include eroded and lumped mass in MATSUM ......       0
           eq.0:  no                                     
           eq.1:  yes                                    
-
     include 10-node connectivities in D3PLOT ......       2
           eq.1:  yes                                     
           eq.2:  no                                      
-
     write spring forward database at termination...       0
           eq.0:  no                                      
           eq.1:  include all deformable nodes            
           eq.2:  include nodes of material subset        
-
     d3plot and d3thdt binary output format.........       0
           eq.0 default                                   
           eq.1 32ieee                                    
-
     flush output file interval.....................    5000
-
     output interval for d3part database............    0.0000E+00
-
     interval via load curve for part database......       0
-
     number of part blocks..........................       0
-
     Maximum number of messages.....................       0
-
     Print flag for digitized curve data............       0
-
     Print info. of 1d belt created for 2d belt.....       0
-
     ELOUT shell output coordinate system flag......       0
-
           eq.0 default                                  
           eq.1 local element coordinate system          
           eq.2 global coordinate sytstem                
     number of parts removed from d3plot ...........       0
-
     number of levels of timing at termination .....       2
-
     max frequency of element failure summaries.....       1
-
     solid element stress extrapolation.............       0
-
           eq.0 default: no extrapolation
           eq.1 extrapolate stress for linear materials only
           eq.2 extrapolate stress if plastic strain is zero
           eq.3 extrapolate stress  always
           eq.4 extrapolate all history variables
-
     phase change output control....................       0
           eq.0 default: no messag
-
           eq.1 write out element ID at time of phase change
     DEM density output control.....................       0
           eq.0 default: no messag
           eq.1 write out density data
-
-    quadratic solid element output.................       0
-          eq.0:  default to lower order output only      
-          eq.1:  write out connectivies for geometry     
-                 no extra integration data written       
-          eq.2:  write out connectivies for geometry +   
-                 extra integration points                
-    cubic solid element output.....................       0
-          eq.0:  default to lower order output only      
-          eq.1:  write out connectivies for geometry     
-                 no extra integration data written       
-          eq.2:  write out connectivies for geometry +   
-                 extra integration points                
-
 
 
     CONTROL CARD 19. Computation Options-Output Energy
@@ -2301,7 +2241,6 @@ total # of *STRESS_INITIALIZATION..................       0
                    to bulk coefficents recommended)
          eq.1: Solid elements type bulk viscosity
     Thickness option for contact...................       0
-    Total MLS stabilization flag...................       0
     SPH Pressure smoothing parameter...............    0.0000E+00
 
 
@@ -2500,13 +2439,12 @@ total # of *STRESS_INITIALIZATION..................       0
      eq.196 general spring discrete beam         
      eq.197 seismic isolator                     
      eq.198 jointed rock                         
-     eq.199 barlat yld2004                       
      eq.202 steel EC3                            
      eq.203 hysteretic reinforcement             
      eq.205 discrete beam surface contact        
      eq.206 Park Ang beam                        
      eq.208 bolt beam                            
-     eq.213 composite tab. plast. damage v1.3    
+     eq.213 awg composite damage                 
      eq.214 dry fabric                           
      eq.215 4A micromec                          
      eq.219 codam2                               
@@ -2529,7 +2467,6 @@ total # of *STRESS_INITIALIZATION..................       0
      eq.244 ultra high strength steel            
      eq.248 press hardening steel bmw model      
      eq.249 reinforced thermoplastic             
-     eq.250 aedm (working name)                  
      eq.251 tailored properties                  
      eq.252 toughened adhesive polymer           
      eq.255 piecewise linear plastic thermal     
@@ -2547,7 +2484,6 @@ total # of *STRESS_INITIALIZATION..................       0
      eq.273 CDPM concrete                        
      eq.274 paper                                
      eq.275 smooth viscoelastic viscoplastic     
-     eq.279 cohesive paper                       
  equation-of-state types              
      eq.1   linear polynomial         
      eq.2   jwl high explosive        
@@ -2606,11 +2542,10 @@ total # of *STRESS_INITIALIZATION..................       0
      quadratic bulk viscosity ......... = 1.50000E+00
      linear bulk viscosity ............ = 6.00000E-02
      element type ..................... =    2
-          eq.0: 4, 6, 8, 10-node solid element
+          eq.0: 4, 6, 8, 10-node solid element or SPH element
           eq.1: 2-node beam or truss or 2D shell element
           eq.2: 3, 4-node membrane/shell or 2D continuum element
           eq.3: 8-node thick shell element 
-          eq.4: SPH element 
      flag for bulk viscosity in shells. =    0
      flag for rbdout/matsum  output ... =    0
           eq.0: rbdout and matsum       
@@ -2705,21 +2640,15 @@ total # of *STRESS_INITIALIZATION..................       0
                   thickness stretch                
          eq.  27: c0-triangular element with       
                   thickness stretch                
-         eq.  29: cohesive element for shell       
-                  edge-to-edge connections         
+         eq.  29: cohesive element                 
          eq. -29: cohesive element with midlayer   
                   coordinate system for pure shear 
          eq.  41: meshfree shell local projection  
          eq.  42: meshfree shell global projection 
          eq.  43: meshfree plane strain            
          eq.  44: meshfree axisymmetric solid      
-         eq.  46: cohesive element compatible with 
-                  2D plane stress, plane strain, or
-                  area-weighted axisymmetric       
-                  elements                         
-         eq.  47: cohesive element compatible with 
-                  2d volume-weighted axisymmetric  
-                  elements                         
+         eq.  46: cohesive element                 
+         eq.  47: cohesive with shell offsets      
          eq.  52: 2d plane stress xfem             
          eq.  54: 4-node quadrilateral shell xfem  
          eq.  55: 8-node 2D plane strain fracture  
@@ -2765,11 +2694,10 @@ total # of *STRESS_INITIALIZATION..................       0
      quadratic bulk viscosity ......... = 1.50000E+00
      linear bulk viscosity ............ = 6.00000E-02
      element type ..................... =    0
-          eq.0: 4, 6, 8, 10-node solid element
+          eq.0: 4, 6, 8, 10-node solid element or SPH element
           eq.1: 2-node beam or truss or 2D shell element
           eq.2: 3, 4-node membrane/shell or 2D continuum element
           eq.3: 8-node thick shell element 
-          eq.4: SPH element 
      flag for bulk viscosity in shells. =    0
      flag for rbdout/matsum  output ... =    0
           eq.0: rbdout and matsum       
@@ -13930,6 +13858,10 @@ contact definition
 
             lt.0:|sd| load curve ID depth vs. time   
 
+       normal vector ID to contact surface .........        0
+
+       normal vector ID segment angle for inclusion.    0.00000E+00
+
        bucket sorting interval n ...................      100
             eq.n:bucket sorting interval            
             lt.0:|n| load curve ID freq. vs. time   
@@ -13941,10 +13873,6 @@ contact definition
        Contact segment search option................        0
             eq.0: search 2d (shell) elements first
             ne.0: search 3d (solid) elements first
-
-       Geometry used for 2d belt contact stiffness .        0
-            eq.0: use initial geometry 
-            eq.1: use reference geometry
 
        max penetration distance for old type 3, 5 & 10
        contacts or segment thickness multiplied by    
@@ -14057,8 +13985,8 @@ contact definition
  r i g i d   b o d y   c o n s t r a i n t s
 
  rigid body # 2
-     local coordinate system ID = 0
-     constraint (constrained=1) =     000000
+     translational constraint   =   0.00E+00
+     rotational    constraint   =   0.00E+00
 
 
  t i e d   n o d a l   p a i r s   f o r   l i n k i n g
@@ -14074,9 +14002,9 @@ contact definition
      z-coordinate of mass center = 0.51000000E+02
 
      inertia tensor of rigid body
-     row1=     0.3948E+04    -0.1519E-03     0.5722E-05
-     row2=    -0.1519E-03     0.3948E+04     0.1907E-05
-     row3=     0.5722E-05     0.1907E-05     0.3948E+04
+     row1=     0.3948E+04     0.8348E-04     0.0000E+00
+     row2=     0.8348E-04     0.3948E+04    -0.1907E-05
+     row3=     0.1907E-05    -0.1907E-05     0.3948E+04
 
      principal inertias 
      i11 =    0.3948E+04
@@ -14084,22 +14012,22 @@ contact definition
      i33 =    0.3948E+04
 
      principal directions
-     row1=     0.9615E+00    -0.2747E+00     0.7615E-02
-     row2=     0.2747E+00     0.9615E+00     0.3292E-02
-     row3=    -0.8226E-02    -0.1074E-02     0.1000E+01
+     row1=     0.9553E+00     0.2955E+00     0.3144E-02
+     row2=    -0.2955E+00     0.9553E+00    -0.6369E-02
+     row3=    -0.4886E-02     0.5155E-02     0.1000E+01
 
  ************************************************************
 
 
   m a s s   p r o p e r t i e s   o f   p a r t # 1
-     total mass of part          = 0.70470428E+00
-     x-coordinate of mass center = 0.15647498E-05
-     y-coordinate of mass center =-0.63435806E-07
+     total mass of part          = 0.70470679E+00
+     x-coordinate of mass center =-0.63435579E-06
+     y-coordinate of mass center =-0.52862983E-07
      z-coordinate of mass center = 0.00000000E+00
 
      inertia tensor of material
-     row1=     0.5327E+04    -0.6995E-13     0.0000E+00
-     row2=    -0.6995E-13     0.5327E+04     0.0000E+00
+     row1=     0.5327E+04     0.2363E-13     0.0000E+00
+     row2=     0.2363E-13     0.5327E+04     0.0000E+00
      row3=     0.0000E+00     0.0000E+00     0.1065E+05
 
      principal inertias 
@@ -14108,8 +14036,8 @@ contact definition
      i33 =    0.1065E+05
 
      principal directions
-     row1=     0.1000E+01    -0.2388E-10     0.0000E+00
-     row2=     0.2388E-10     0.1000E+01     0.0000E+00
+     row1=     0.1000E+01     0.8066E-11     0.0000E+00
+     row2=    -0.8066E-11     0.1000E+01     0.0000E+00
      row3=     0.0000E+00     0.0000E+00     0.1000E+01
 
  ************************************************************
@@ -14122,9 +14050,9 @@ contact definition
      z-coordinate of mass center = 0.43286030E+02
 
      inertia tensor of body
-     row1=     0.1083E+05    -0.1526E-03     0.5649E-05
-     row2=    -0.1526E-03     0.1083E+05     0.1367E-05
-     row3=     0.5649E-05     0.1367E-05     0.1460E+05
+     row1=     0.1083E+05     0.9155E-04     0.1834E-05
+     row2=     0.9155E-04     0.1083E+05    -0.2448E-05
+     row3=     0.1834E-05    -0.2448E-05     0.1460E+05
 
      principal inertias of body
      i11 =    0.1083E+05
@@ -14132,9 +14060,9 @@ contact definition
      i33 =    0.1460E+05
 
      principal directions
-     row1=     0.1000E+01    -0.2790E-02     0.1498E-08
-     row2=     0.2790E-02     0.1000E+01     0.3625E-09
-     row3=    -0.1499E-08    -0.3583E-09     0.1000E+01
+     row1=     0.1000E+01     0.1674E-02     0.4865E-09
+     row2=    -0.1674E-02     0.1000E+01    -0.6491E-09
+     row3=    -0.4876E-09     0.6483E-09     0.1000E+01
 
  ************************************************************
 
@@ -14173,9 +14101,9 @@ contact definition
 
  S t o r a g e   a l l o c a t i o n   
 
- Memory required to begin solution      :     356K
- Additional dynamically allocated memory:     633K
-                                   Total:     633K
+ Memory required to begin solution      :     364K
+ Additional dynamically allocated memory:     597K
+                                   Total:     597K
 
  100 smallest timesteps
  ------------------------------------------------
@@ -14280,10 +14208,10 @@ contact definition
  shell              3                   1  3.1308E-03
  shell              2                   1  3.1308E-03
  shell              1                   1  3.1308E-03
-       1 t 0.0000E+00 dt 3.13E-03 flush i/o buffers            11/13/19 13:20:54
-       1 t 0.0000E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:54
+       1 t 0.0000E+00 dt 3.13E-03 flush i/o buffers            11/13/19 17:38:00
+       1 t 0.0000E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
 
- dt of cycle     100 is controlled by shell            136 of part         1
+ dt of cycle     100 is controlled by shell            256 of part         1
 
  time...........................   3.09845E-01
  time step......................   3.12938E-03
@@ -14302,12 +14230,12 @@ contact definition
  global x velocity..............  -1.52291E-02
  global y velocity..............  -1.52297E-02
  global z velocity..............  -8.48772E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       123 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle     200 is controlled by shell            136 of part         1
+ dt of cycle     200 is controlled by shell            256 of part         1
 
  time...........................   6.22731E-01
  time step......................   3.12855E-03
@@ -14326,12 +14254,12 @@ contact definition
  global x velocity..............  -1.41421E-02
  global y velocity..............  -1.41511E-02
  global z velocity..............  -8.48532E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       124 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle     300 is controlled by shell            136 of part         1
+ dt of cycle     300 is controlled by shell            256 of part         1
 
  time...........................   9.35570E-01
  time step......................   3.12818E-03
@@ -14350,11 +14278,11 @@ contact definition
  global x velocity..............   2.91814E-03
  global y velocity..............   2.90885E-03
  global z velocity..............  -8.50643E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       126 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-     320 t 9.9812E-01 dt 3.13E-03 write d3plot file            11/13/19 13:20:55
+     320 t 9.9812E-01 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
 
  dt of cycle     400 is controlled by shell            256 of part         1
 
@@ -14364,7 +14292,7 @@ contact definition
  internal energy................   1.93998E+01
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......   5.65012E-02
+ sliding interface energy.......   5.65013E-02
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14375,12 +14303,12 @@ contact definition
  global x velocity..............   2.09076E-02
  global y velocity..............   2.08902E-02
  global z velocity..............  -8.47332E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       130 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle     500 is controlled by shell            136 of part         1
+ dt of cycle     500 is controlled by shell            256 of part         1
 
  time...........................   1.56154E+00
  time step......................   3.13048E-03
@@ -14388,7 +14316,7 @@ contact definition
  internal energy................   3.72752E+01
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......   6.96774E-02
+ sliding interface energy.......   6.96776E-02
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14399,7 +14327,7 @@ contact definition
  global x velocity..............   2.30242E-02
  global y velocity..............   2.30168E-02
  global z velocity..............  -7.92241E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       147 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
@@ -14412,7 +14340,7 @@ contact definition
  internal energy................   5.90652E+01
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......   7.22121E-02
+ sliding interface energy.......   7.22120E-02
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14420,16 +14348,16 @@ contact definition
  total energy...................   1.95574E+02
  total energy / initial energy..   9.89160E-01
  energy ratio w/o eroded energy.   9.89160E-01
- global x velocity..............   2.81381E-02
- global y velocity..............   2.81460E-02
+ global x velocity..............   2.81383E-02
+ global y velocity..............   2.81463E-02
  global z velocity..............  -7.09341E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       169 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-     640 t 1.9998E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:55
+     640 t 1.9998E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
 
- dt of cycle     700 is controlled by shell            136 of part         1
+ dt of cycle     700 is controlled by shell            256 of part         1
 
  time...........................   2.18761E+00
  time step......................   3.13031E-03
@@ -14445,10 +14373,10 @@ contact definition
  total energy...................   1.95175E+02
  total energy / initial energy..   9.87143E-01
  energy ratio w/o eroded energy.   9.87143E-01
- global x velocity..............   5.67494E-02
+ global x velocity..............   5.67495E-02
  global y velocity..............   5.67140E-02
  global z velocity..............  -6.38491E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       179 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
@@ -14469,10 +14397,10 @@ contact definition
  total energy...................   1.93904E+02
  total energy / initial energy..   9.80717E-01
  energy ratio w/o eroded energy.   9.80717E-01
- global x velocity..............   3.43447E-02
- global y velocity..............   3.42790E-02
+ global x velocity..............   3.43450E-02
+ global y velocity..............   3.42791E-02
  global z velocity..............  -5.75209E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       135 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
@@ -14481,7 +14409,7 @@ contact definition
 
  time...........................   2.81366E+00
  time step......................   3.13027E-03
- kinetic energy.................   6.01999E+01
+ kinetic energy.................   6.01998E+01
  internal energy................   1.35695E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
@@ -14493,16 +14421,16 @@ contact definition
  total energy...................   1.93771E+02
  total energy / initial energy..   9.80042E-01
  energy ratio w/o eroded energy.   9.80042E-01
- global x velocity..............  -3.87078E-02
- global y velocity..............  -3.87679E-02
+ global x velocity..............  -3.87076E-02
+ global y velocity..............  -3.87680E-02
  global z velocity..............  -4.93745E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       151 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-     959 t 2.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:55
+     959 t 2.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
 
- dt of cycle    1000 is controlled by shell            136 of part         1
+ dt of cycle    1000 is controlled by shell            256 of part         1
 
  time...........................   3.12668E+00
  time step......................   3.13004E-03
@@ -14521,12 +14449,12 @@ contact definition
  global x velocity..............  -1.07793E-01
  global y velocity..............  -1.07848E-01
  global z velocity..............  -3.78236E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       157 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    1100 is controlled by shell            136 of part         1
+ dt of cycle    1100 is controlled by shell            256 of part         1
 
  time...........................   3.43966E+00
  time step......................   3.12966E-03
@@ -14534,7 +14462,7 @@ contact definition
  internal energy................   1.79334E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -3.73309E+00
+ sliding interface energy.......  -3.73310E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14545,12 +14473,12 @@ contact definition
  global x velocity..............  -1.63181E-01
  global y velocity..............  -1.63341E-01
  global z velocity..............  -2.42454E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       131 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    1200 is controlled by shell            136 of part         1
+ dt of cycle    1200 is controlled by shell            256 of part         1
 
  time...........................   3.75263E+00
  time step......................   3.12975E-03
@@ -14558,7 +14486,7 @@ contact definition
  internal energy................   1.92918E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.04875E+00
+ sliding interface energy.......  -6.04874E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14569,13 +14497,13 @@ contact definition
  global x velocity..............  -1.20581E-01
  global y velocity..............  -1.20778E-01
  global z velocity..............  -1.29605E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       128 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-    1279 t 3.9999E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:55
+    1279 t 3.9999E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
 
- dt of cycle    1300 is controlled by shell            136 of part         1
+ dt of cycle    1300 is controlled by shell            256 of part         1
 
  time...........................   4.06560E+00
  time step......................   3.12967E-03
@@ -14591,15 +14519,15 @@ contact definition
  total energy...................   1.91959E+02
  total energy / initial energy..   9.70880E-01
  energy ratio w/o eroded energy.   9.70880E-01
- global x velocity..............  -5.36052E-02
- global y velocity..............  -5.37861E-02
+ global x velocity..............  -5.36044E-02
+ global y velocity..............  -5.37866E-02
  global z velocity..............  -2.48628E-01
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       141 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    1400 is controlled by shell            136 of part         1
+ dt of cycle    1400 is controlled by shell            256 of part         1
 
  time...........................   4.37857E+00
  time step......................   3.12976E-03
@@ -14607,7 +14535,7 @@ contact definition
  internal energy................   1.95245E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.08633E+00
+ sliding interface energy.......  -6.08632E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14615,15 +14543,15 @@ contact definition
  total energy...................   1.91893E+02
  total energy / initial energy..   9.70543E-01
  energy ratio w/o eroded energy.   9.70543E-01
- global x velocity..............   1.04602E-02
- global y velocity..............   1.02661E-02
+ global x velocity..............   1.04609E-02
+ global y velocity..............   1.02658E-02
  global z velocity..............   1.05499E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       139 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    1500 is controlled by shell            136 of part         1
+ dt of cycle    1500 is controlled by shell            256 of part         1
 
  time...........................   4.69155E+00
  time step......................   3.12982E-03
@@ -14639,14 +14567,14 @@ contact definition
  total energy...................   1.91853E+02
  total energy / initial energy..   9.70343E-01
  energy ratio w/o eroded energy.   9.70343E-01
- global x velocity..............   6.46721E-02
- global y velocity..............   6.44784E-02
+ global x velocity..............   6.46730E-02
+ global y velocity..............   6.44779E-02
  global z velocity..............   1.84752E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       124 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-    1598 t 4.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:55
+    1598 t 4.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
 
  dt of cycle    1600 is controlled by shell            256 of part         1
 
@@ -14656,7 +14584,7 @@ contact definition
  internal energy................   1.87109E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14664,15 +14592,15 @@ contact definition
  total energy...................   1.91846E+02
  total energy / initial energy..   9.70307E-01
  energy ratio w/o eroded energy.   9.70307E-01
- global x velocity..............   8.89788E-02
- global y velocity..............   8.88058E-02
+ global x velocity..............   8.89795E-02
+ global y velocity..............   8.88054E-02
  global z velocity..............   2.03709E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       125 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    1700 is controlled by shell            136 of part         1
+ dt of cycle    1700 is controlled by shell            256 of part         1
 
  time...........................   5.31753E+00
  time step......................   3.12996E-03
@@ -14680,7 +14608,7 @@ contact definition
  internal energy................   1.87202E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14688,15 +14616,15 @@ contact definition
  total energy...................   1.91793E+02
  total energy / initial energy..   9.70040E-01
  energy ratio w/o eroded energy.   9.70040E-01
- global x velocity..............   8.94451E-02
- global y velocity..............   8.93265E-02
+ global x velocity..............   8.94458E-02
+ global y velocity..............   8.93262E-02
  global z velocity..............   1.98145E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       121 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    1800 is controlled by shell            136 of part         1
+ dt of cycle    1800 is controlled by shell            256 of part         1
 
  time...........................   5.63052E+00
  time step......................   3.12983E-03
@@ -14704,23 +14632,23 @@ contact definition
  internal energy................   1.87326E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
  eroded hourglass energy........   0.00000E+00
- total energy...................   1.91742E+02
+ total energy...................   1.91743E+02
  total energy / initial energy..   9.69783E-01
  energy ratio w/o eroded energy.   9.69783E-01
- global x velocity..............   8.80742E-02
- global y velocity..............   8.79681E-02
+ global x velocity..............   8.80749E-02
+ global y velocity..............   8.79678E-02
  global z velocity..............   1.92851E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       122 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    1900 is controlled by shell            136 of part         1
+ dt of cycle    1900 is controlled by shell            256 of part         1
 
  time...........................   5.94351E+00
  time step......................   3.12997E-03
@@ -14728,24 +14656,24 @@ contact definition
  internal energy................   1.87168E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
  eroded hourglass energy........   0.00000E+00
  total energy...................   1.91700E+02
- total energy / initial energy..   9.69568E-01
- energy ratio w/o eroded energy.   9.69568E-01
- global x velocity..............   8.69893E-02
- global y velocity..............   8.68537E-02
+ total energy / initial energy..   9.69567E-01
+ energy ratio w/o eroded energy.   9.69567E-01
+ global x velocity..............   8.69902E-02
+ global y velocity..............   8.68533E-02
  global z velocity..............   1.84670E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       122 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-    1918 t 5.9998E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:55
+    1918 t 5.9998E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
 
- dt of cycle    2000 is controlled by shell            136 of part         1
+ dt of cycle    2000 is controlled by shell            256 of part         1
 
  time...........................   6.25650E+00
  time step......................   3.12987E-03
@@ -14753,23 +14681,23 @@ contact definition
  internal energy................   1.87135E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
  eroded hourglass energy........   0.00000E+00
  total energy...................   1.91665E+02
- total energy / initial energy..   9.69388E-01
- energy ratio w/o eroded energy.   9.69388E-01
- global x velocity..............   8.74883E-02
- global y velocity..............   8.73151E-02
+ total energy / initial energy..   9.69389E-01
+ energy ratio w/o eroded energy.   9.69389E-01
+ global x velocity..............   8.74892E-02
+ global y velocity..............   8.73146E-02
  global z velocity..............   1.88064E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       122 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    2100 is controlled by shell            136 of part         1
+ dt of cycle    2100 is controlled by shell            256 of part         1
 
  time...........................   6.56949E+00
  time step......................   3.12991E-03
@@ -14777,7 +14705,7 @@ contact definition
  internal energy................   1.87193E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14785,15 +14713,15 @@ contact definition
  total energy...................   1.91638E+02
  total energy / initial energy..   9.69253E-01
  energy ratio w/o eroded energy.   9.69253E-01
- global x velocity..............   8.83977E-02
- global y velocity..............   8.82190E-02
+ global x velocity..............   8.83985E-02
+ global y velocity..............   8.82185E-02
  global z velocity..............   1.96616E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       122 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    2200 is controlled by shell            136 of part         1
+ dt of cycle    2200 is controlled by shell            256 of part         1
 
  time...........................   6.88249E+00
  time step......................   3.12995E-03
@@ -14801,24 +14729,24 @@ contact definition
  internal energy................   1.87116E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
  eroded hourglass energy........   0.00000E+00
  total energy...................   1.91613E+02
- total energy / initial energy..   9.69126E-01
- energy ratio w/o eroded energy.   9.69126E-01
- global x velocity..............   8.87446E-02
- global y velocity..............   8.85884E-02
+ total energy / initial energy..   9.69125E-01
+ energy ratio w/o eroded energy.   9.69125E-01
+ global x velocity..............   8.87454E-02
+ global y velocity..............   8.85880E-02
  global z velocity..............   2.00363E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       121 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-    2237 t 6.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:55
+    2237 t 6.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:01
 
- dt of cycle    2300 is controlled by shell            136 of part         1
+ dt of cycle    2300 is controlled by shell            256 of part         1
 
  time...........................   7.19548E+00
  time step......................   3.12988E-03
@@ -14826,7 +14754,7 @@ contact definition
  internal energy................   1.87122E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14834,15 +14762,15 @@ contact definition
  total energy...................   1.91574E+02
  total energy / initial energy..   9.68930E-01
  energy ratio w/o eroded energy.   9.68930E-01
- global x velocity..............   8.92311E-02
- global y velocity..............   8.91053E-02
+ global x velocity..............   8.92318E-02
+ global y velocity..............   8.91050E-02
  global z velocity..............   1.97549E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       143 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    2400 is controlled by shell            136 of part         1
+ dt of cycle    2400 is controlled by shell            256 of part         1
 
  time...........................   7.50847E+00
  time step......................   3.12993E-03
@@ -14850,23 +14778,23 @@ contact definition
  internal energy................   1.87119E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
  eroded hourglass energy........   0.00000E+00
  total energy...................   1.91550E+02
- total energy / initial energy..   9.68810E-01
- energy ratio w/o eroded energy.   9.68810E-01
- global x velocity..............   8.82252E-02
- global y velocity..............   8.80996E-02
+ total energy / initial energy..   9.68809E-01
+ energy ratio w/o eroded energy.   9.68809E-01
+ global x velocity..............   8.82259E-02
+ global y velocity..............   8.80993E-02
  global z velocity..............   1.92587E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       121 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    2500 is controlled by shell            136 of part         1
+ dt of cycle    2500 is controlled by shell            256 of part         1
 
  time...........................   7.82146E+00
  time step......................   3.12997E-03
@@ -14874,7 +14802,7 @@ contact definition
  internal energy................   1.87043E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14882,16 +14810,16 @@ contact definition
  total energy...................   1.91525E+02
  total energy / initial energy..   9.68684E-01
  energy ratio w/o eroded energy.   9.68684E-01
- global x velocity..............   8.67580E-02
- global y velocity..............   8.66112E-02
+ global x velocity..............   8.67588E-02
+ global y velocity..............   8.66108E-02
  global z velocity..............   1.88205E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       122 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-    2557 t 7.9999E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:56
+    2557 t 7.9999E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:01
 
- dt of cycle    2600 is controlled by shell            136 of part         1
+ dt of cycle    2600 is controlled by shell            256 of part         1
 
  time...........................   8.13445E+00
  time step......................   3.12988E-03
@@ -14899,7 +14827,7 @@ contact definition
  internal energy................   1.87074E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14907,10 +14835,10 @@ contact definition
  total energy...................   1.91505E+02
  total energy / initial energy..   9.68581E-01
  energy ratio w/o eroded energy.   9.68581E-01
- global x velocity..............   8.76723E-02
- global y velocity..............   8.75076E-02
+ global x velocity..............   8.76732E-02
+ global y velocity..............   8.75071E-02
  global z velocity..............   1.88188E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       130 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
@@ -14923,7 +14851,7 @@ contact definition
  internal energy................   1.87114E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14931,10 +14859,10 @@ contact definition
  total energy...................   1.91492E+02
  total energy / initial energy..   9.68518E-01
  energy ratio w/o eroded energy.   9.68518E-01
- global x velocity..............   8.82245E-02
- global y velocity..............   8.80643E-02
+ global x velocity..............   8.82253E-02
+ global y velocity..............   8.80638E-02
  global z velocity..............   1.95383E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       123 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
@@ -14947,7 +14875,7 @@ contact definition
  internal energy................   1.87016E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -14955,14 +14883,14 @@ contact definition
  total energy...................   1.91482E+02
  total energy / initial energy..   9.68467E-01
  energy ratio w/o eroded energy.   9.68467E-01
- global x velocity..............   8.87909E-02
- global y velocity..............   8.86516E-02
+ global x velocity..............   8.87916E-02
+ global y velocity..............   8.86512E-02
  global z velocity..............   1.98517E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       128 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-    2876 t 8.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:56
+    2876 t 8.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:01
 
  dt of cycle    2900 is controlled by shell            256 of part         1
 
@@ -14972,23 +14900,23 @@ contact definition
  internal energy................   1.87029E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
  eroded hourglass energy........   0.00000E+00
  total energy...................   1.91465E+02
- total energy / initial energy..   9.68381E-01
- energy ratio w/o eroded energy.   9.68381E-01
- global x velocity..............   8.90793E-02
- global y velocity..............   8.89520E-02
+ total energy / initial energy..   9.68380E-01
+ energy ratio w/o eroded energy.   9.68380E-01
+ global x velocity..............   8.90800E-02
+ global y velocity..............   8.89517E-02
  global z velocity..............   1.97822E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       121 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
 
- dt of cycle    3000 is controlled by shell            136 of part         1
+ dt of cycle    3000 is controlled by shell            256 of part         1
 
  time...........................   9.38643E+00
  time step......................   3.12996E-03
@@ -14996,7 +14924,7 @@ contact definition
  internal energy................   1.87084E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -15004,10 +14932,10 @@ contact definition
  total energy...................   1.91453E+02
  total energy / initial energy..   9.68320E-01
  energy ratio w/o eroded energy.   9.68320E-01
- global x velocity..............   8.78188E-02
- global y velocity..............   8.76781E-02
+ global x velocity..............   8.78195E-02
+ global y velocity..............   8.76778E-02
  global z velocity..............   1.93568E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       121 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
@@ -15020,7 +14948,7 @@ contact definition
  internal energy................   1.87021E+02
  spring and damper energy.......   1.00000E-20
  system damping energy..........   0.00000E+00
- sliding interface energy.......  -6.13792E+00
+ sliding interface energy.......  -6.13791E+00
  external work..................   0.00000E+00
  eroded kinetic energy..........   0.00000E+00
  eroded internal energy.........   0.00000E+00
@@ -15028,66 +14956,68 @@ contact definition
  total energy...................   1.91443E+02
  total energy / initial energy..   9.68268E-01
  energy ratio w/o eroded energy.   9.68268E-01
- global x velocity..............   8.70609E-02
- global y velocity..............   8.68983E-02
+ global x velocity..............   8.70617E-02
+ global y velocity..............   8.68979E-02
  global z velocity..............   1.89932E+00
- cpu time per zone cycle............         0 nanoseconds
+ cpu time per zone cycle............       122 nanoseconds
  average cpu time per zone cycle....         0 nanoseconds
  average clock time per zone cycle..         0 nanoseconds
 
-    3196 t 9.9999E+00 dt 3.13E-03 write d3plot file            11/13/19 13:20:56
+    3196 t 9.9999E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:01
  
  *** termination time reached ***
-    3196 t 1.0003E+01 dt 3.13E-03 write d3dump01 file          11/13/19 13:20:56
-    3196 t 1.0003E+01 dt 3.13E-03 write d3plot file            11/13/19 13:20:56
+    3196 t 1.0003E+01 dt 3.13E-03 write d3dump01 file          11/13/19 17:38:01
+    3196 t 1.0003E+01 dt 3.13E-03 write d3plot file            11/13/19 17:38:01
 
- N o r m a l    t e r m i n a t i o n                          11/13/19 13:20:56
+ N o r m a l    t e r m i n a t i o n                          11/13/19 17:38:01
 
  S t o r a g e   a l l o c a t i o n   
 
- Memory required to complete solution   :     356K
- Additional dynamically allocated memory:     633K
-                                   Total:     633K
+ Memory required to complete solution   :     364K
+ Additional dynamically allocated memory:     597K
+                                   Total:     597K
 
  T i m i n g   i n f o r m a t i o n
                         CPU(seconds)   %CPU  Clock(seconds) %Clock
   ----------------------------------------------------------------
-  Keyword Processing ... 0.0000E+00    0.00     2.3800E-01    6.97
-    KW Reading ......... 0.0000E+00    0.00     5.0000E-02    1.46
-    KW Writing ......... 0.0000E+00    0.00     4.2000E-02    1.23
-  Initialization ....... 1.0000E+00   33.33     1.6070E+00   47.07
-    Init Proc Phase 1 .. 0.0000E+00    0.00     4.0600E-01   11.89
-    Init Proc Phase 2 .. 0.0000E+00    0.00     1.6000E-02    0.47
-  Init solver .......... 0.0000E+00    0.00     3.0000E-03    0.09
-  Element processing ... 1.0000E+00   33.33     5.5500E-01   16.26
-    Solids ............. 0.0000E+00    0.00     4.0000E-02    1.17
-    Shells ............. 1.0000E+00   33.33     4.8800E-01   14.29
-  Binary databases ..... 0.0000E+00    0.00     3.5000E-02    1.03
-  ASCII database ....... 0.0000E+00    0.00     7.0000E-03    0.21
-  Contact algorithm .... 0.0000E+00    0.00     2.5800E-01    7.56
-    Interf. ID         1 0.0000E+00    0.00     2.3900E-01    7.00
-  Rigid Bodies ......... 1.0000E+00   33.33     2.5100E-01    7.35
-  Time step size ....... 0.0000E+00    0.00     9.0000E-03    0.26
-  Group force file ..... 0.0000E+00    0.00     1.0000E-03    0.03
-  Others ............... 0.0000E+00    0.00     3.0000E-02    0.88
-  Misc. 1 .............. 0.0000E+00    0.00     2.0600E-01    6.03
-  Misc. 2 .............. 0.0000E+00    0.00     9.0000E-02    2.64
-  Misc. 3 .............. 0.0000E+00    0.00     9.0000E-02    2.64
-  Misc. 4 .............. 0.0000E+00    0.00     3.4000E-02    1.00
+  Keyword Processing ... 8.6971E-02    8.68     5.6532E-01   19.91
+    KW Reading ......... 2.3255E-02    2.32     1.1430E-01    4.03
+    KW Writing ......... 1.0518E-02    1.05     8.7013E-02    3.07
+  Initialization ....... 1.1160E-01   11.14     1.1062E+00   38.97
+    Init Proc Phase 1 .. 3.3340E-02    3.33     4.8577E-01   17.11
+    Init Proc Phase 2 .. 8.2469E-03    0.82     1.5145E-01    5.33
+  Init solver .......... 1.4988E-03    0.15     5.6649E-02    2.00
+  Element processing ... 3.1990E-01   31.94     4.1120E-01   14.48
+    Solids ............. 1.3198E-02    1.32     1.3612E-02    0.48
+    Shells ............. 2.9111E-01   29.07     3.8026E-01   13.39
+    ISO Shells ......... 2.5325E-03    0.25     2.5430E-03    0.09
+  Binary databases ..... 1.1972E-02    1.20     8.4986E-02    2.99
+  ASCII database ....... 7.7968E-03    0.78     7.9080E-03    0.28
+  Contact algorithm .... 1.0878E-01   10.86     1.4407E-01    5.07
+    Interf. ID         1 8.9524E-02    8.94     1.0396E-01    3.66
+  Rigid Bodies ......... 1.1125E-01   11.11     1.1168E-01    3.93
+  Time step size ....... 3.2869E-03    0.33     3.2970E-03    0.12
+  Rigid wall ........... 2.3869E-03    0.24     2.4260E-03    0.09
+  Group force file ..... 3.0051E-03    0.30     3.7770E-03    0.13
+  Others ............... 1.5178E-02    1.52     3.7441E-02    1.32
+  Misc. 1 .............. 1.1806E-01   11.79     1.8133E-01    6.39
+  Misc. 2 .............. 5.3630E-02    5.36     5.3978E-02    1.90
+  Misc. 3 .............. 1.5766E-02    1.57     3.8455E-02    1.35
+  Misc. 4 .............. 3.0401E-02    3.04     3.0138E-02    1.06
   ----------------------------------------------------------------
-  T o t a l s            3.0000E+00  100.00     3.4140E+00  100.00
+  T o t a l s            1.0015E+00  100.00     2.8389E+00  100.00
 
  Problem time       =    1.0003E+01
  Problem cycle      =      3196
- Total CPU time     =         3 seconds (   0 hours  0 minutes  3 seconds)
- CPU time per zone cycle  =        353.949 nanoseconds
- Clock time per zone cycle=        277.673 nanoseconds
+ Total CPU time     =         1 seconds (   0 hours  0 minutes  1 seconds)
+ CPU time per zone cycle  =        142.095 nanoseconds
+ Clock time per zone cycle=        206.588 nanoseconds
 
  Number of CPU's    1
- NLQ used/max     136/  136
- Start time   11/13/2019 13:20:54  
- End time     11/13/2019 13:20:56  
- Elapsed time       2 seconds for    3196 cycles using  1 SMP thread 
-             (      0 hour   0 minute   2 seconds)
+ NLQ used/max     384/  384
+ Start time   11/13/2019 17:37:58  
+ End time     11/13/2019 17:38:01  
+ Elapsed time       3 seconds for    3196 cycles using  1 SMP thread 
+             (      0 hour   0 minute   3 seconds)
 
- N o r m a l    t e r m i n a t i o n                          11/13/19 13:20:56
+ N o r m a l    t e r m i n a t i o n                          11/13/19 17:38:01

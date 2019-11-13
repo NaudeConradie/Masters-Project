@@ -1,3 +1,4 @@
+ License option : check network license only
       Date: 11/13/2019      Time: 17:37:58  
 
      ___________________________________________________
@@ -35,11 +36,40 @@
      |  Unauthorized use infringes LSTC copyrights     |
      |_________________________________________________|
 
+ > i=/home/naude/Documents/Masters-Project/Models/LS-PrePost_Tutorials/bal
+ >l_plate.k ncpu=1 memory=20m
+
+ Executing with LSTC network license
 
  Input file: /home/naude/Documents/Masters-Project/Models/LS-PrePost_Tutorials/ball_plate.k  
 
  The native file format       : 32-bit small endian
  Memory size from command line:    20000000
+
+ on UNIX computers note the following change:
+
+ ctrl-c interrupts ls-dyna and prompts for a sense  switch.
+ type the desired sense switch: sw1., sw2., etc. to continue
+ the execution.  ls-dyna will respond as explained in the users manual
+
+    type                      response
+   -----   ------------------------------------------------------------
+   quit    ls-dyna terminates.
+   stop    ls-dyna terminates.
+   sw1.    a restart file is written and ls-dyna terminates.
+   sw2.    ls-dyna responds with time and cycle numbers.    
+   sw3.    a restart file is written and ls-dyna continues calculations.
+   sw4.    a plot state is written and ls-dyna continues calculations.
+   sw5.    ls-dyna enters interactive graphics phase.
+   swa.    ls-dyna flushes all output i/o buffers.
+   lpri    toggle implicit lin. alg. solver output on/off.
+   nlpr    toggle implicit nonlinear solver output on/off.
+   iter    toggle implicit output to d3iter database on/off.
+   prof    output timing data to messag and continue.
+   conv    force implicit nonlinear convergence for current time step.
+   ttrm    terminate implicit time step, reduce time step, retry time step.
+   rtrm    terminate implicit at end of current time step.
+
 
  ********  notice  ********  notice  ********  notice  ********
  *                                                            *
@@ -61,91 +91,35 @@
  * All rights reserved                                        *
  *                                                            *
  ********  notice  ********  notice  ********  notice  ********
- 
-LSTC Environment Variables:
- 
-LSTC_LICENSE=network
-LSTC_LICENSE_SERVER=license.sun.ac.za
- 
 
  Beginning of keyword reader                                   11/13/19 17:37:58
- expanding   memory to    20000000 d         600 beginning of keyword reader
- contracting memory to       21002 d         600  
- expanding   memory to      101246 d       27060  
- expanding   memory to      131246 d       27060  
- expanding   memory to      194318 d       27060  
- expanding   memory to      214996 d       27060  
- expanding   memory to      238756 d       27060  
- expanding   memory to      260028 d       27060  
- expanding   memory to      281188 d       27060  
- expanding   memory to      303190 d       27060  
- expanding   memory to      330600 d       27060  
- expanding   memory to      363008 d       27060  
 
  Memory required to process keyword     :      363008 
- contracting memory to           1 d       27066 end of keyword reader
 
- LS-DYNA will perform a structural only analysis 
+ input of data is completed
 
-                                                                         
-                         ls-dyna smp.123264 s           date 01/12/2018
- expanding   memory to        2767 d         606 material, node and element data
- expanding   memory to        2846 d         608 mat add general damage 0
- expanding   memory to        2866 d         608 material added airbag porosity leakage 
- expanding   memory to        2872 d         608 material properties
- expanding   memory to       19511 d        5112 element data for composite material
- expanding   memory to       19717 d       95269 gradient of damage data
- expanding   memory to       27427 d      100901 user control for contact interfaces
- contracting memory to       27409 d      100901 thermal expansion 0
- expanding   memory to       29349 d      100901 temp index array for node sorting
- contracting memory to       27409 d      102845 for boundary cond. vectorization
- expanding   memory to       28921 d      106725 arbitrary element numbering input
- contracting memory to       27409 d      110013 thick shell int. pt. strain
- expanding   memory to       29094 d      110017 spc cards
- expanding   memory to       51832 d      112726 process element material data
- expanding   memory to       53833 d      112724 load curve data
- contracting memory to       51839 d      112724 user_define_loading_set
- expanding   memory to       52039 d      112724 regularize time history data
- expanding   memory to       52043 d      112724 *DEFINE_ELEMENT_DEATH
- contracting memory to       52043 d      112724 rigidwall definitions
- expanding   memory to       54008 d      114664 nodal constraint sets
- expanding   memory to       63099 d      114664 contact interfaces
- expanding   memory to       67979 d      114664 implicit contact 1
- expanding   memory to       80077 d      114664 implicit contact 2
- contracting memory to       68830 d      123878 contact segment data 1
- expanding   memory to       69569 d      123878 contact segment data 2
- expanding   memory to       87994 d      123878 contact segment data 3
- contracting memory to       76369 d      201583 contact definition
- expanding   memory to       84352 d      201583 rigid body
- expanding   memory to       85548 d      221419 contact friction
- expanding   memory to       90141 d      221419 joints
- contracting memory to       90141 d      228103 accelerometers
- expanding   memory to       90241 d      228103 rigid bodies for disp. termination
- contracting memory to       90241 d      233923 transformation to move nodes
- expanding   memory to       90243 d      235914 mat add cohesive 0
- contracting memory to       90243 d      235914 sensor_control for curve
- expanding   memory to       90245 d      235914 flexible body 2
- contracting memory to       90245 d      235914 implicit joints
- expanding   memory to       90246 d      235914 minimum contact gap for auto switching
-
-     slave surface of interface   = 1
-     type                         =        13
-     surface timestep             = 1.195E-03
-     controlling slave node ID    = 1029
-     part ID of slave node        = 2
-     current minimum time step    = 1.195E-03
+ initial kinetic energy = 0.19771730E+03
 
  The LS-DYNA time step size should not exceed     1.195E-03
  to avoid contact instabilities.  If the step size is
  bigger then scale the penalty of the offending surface.
 
- S t o r a g e   a l l o c a t i o n   
-
  Memory required to begin solution      :     364K
  Additional dynamically allocated memory:     234K
                                    Total:     597K
+
+ initialization completed
        1 t 0.0000E+00 dt 3.13E-03 flush i/o buffers            11/13/19 17:38:00
        1 t 0.0000E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
+ cpu time per zone cycle............       393 nanoseconds
+ average cpu time per zone cycle....      1183 nanoseconds
+ average clock time per zone cycle..     19190 nanoseconds
+
+ estimated total cpu time          =         6 sec (       0 hrs  0 mins)
+ estimated cpu time to complete    =         6 sec (       0 hrs  0 mins)
+ estimated total clock time        =       110 sec (       0 hrs  1 mins)
+ estimated clock time to complete  =       108 sec (       0 hrs  1 mins)
+ termination time                  = 1.000E+01
      320 t 9.9812E-01 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
      640 t 1.9998E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
      959 t 2.9983E+00 dt 3.13E-03 write d3plot file            11/13/19 17:38:00
@@ -162,8 +136,6 @@ LSTC_LICENSE_SERVER=license.sun.ac.za
     3196 t 1.0003E+01 dt 3.13E-03 write d3plot file            11/13/19 17:38:01
 
  N o r m a l    t e r m i n a t i o n                          11/13/19 17:38:01
-
- S t o r a g e   a l l o c a t i o n   
 
  Memory required to complete solution   :     364K
  Additional dynamically allocated memory:     234K
