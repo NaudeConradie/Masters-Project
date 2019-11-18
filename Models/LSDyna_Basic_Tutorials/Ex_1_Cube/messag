@@ -1,0 +1,198 @@
+      Date: 11/15/2019      Time: 09:54:24  
+
+     ___________________________________________________
+     |                                                 |
+     |  Livermore  Software  Technology  Corporation   |
+     |                                                 |
+     |  7374 Las Positas Road                          |
+     |  Livermore, CA 94551                            |
+     |  Tel: (925) 449-2500  Fax: (925) 449-2507       |
+     |  www.lstc.com                                   |
+     |_________________________________________________|
+     |                                                 |
+     |  LS-DYNA, A Program for Nonlinear Dynamic       |
+     |  Analysis of Structures in Three Dimensions     |
+     |  Version : smp s R10.1.0   Date: 01/12/2018     |
+     |  Revision: 123264          Time: 16:34:46       |
+     |                                                 |
+     |  Features enabled in this version:              |
+     |    Shared Memory Parallel                       |
+     |    Interactive Graphics                         |
+     |    ANSYS Database format                        |
+     |    ANSYS License (ANSYS160)                     |
+     |    MADYMO indirect coupling (7.2 or higher)     |
+     |                                                 |
+     |  Licensed to: Stellenbosch University - 1409    |
+     |  Issued by  : LSTC_01142019                     |
+     |                                                 |
+     |  Platform   : Xeon64 System                     |
+     |  OS Level   : Linux 2.6.18 ulm                  |
+     |  Compiler   : Intel Fortran Compiler 16.0 SSE2  |
+     |  Hostname   : naude-HP-Pavilion-17-Notebook-PC  |
+     |  Precision  : Single precision (I4R4)           |
+     |  SVN Version: 123300                            |
+     |                                                 |
+     |  Unauthorized use infringes LSTC copyrights     |
+     |_________________________________________________|
+
+
+ Input file: /home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_1_Cube/Cu
+
+ The native file format       : 32-bit small endian
+ Memory size from command line:    20000000
+
+ ********  notice  ********  notice  ********  notice  ********
+ *                                                            *
+ * This is the LS-DYNA Finite Element code.                   *
+ *                                                            *
+ * Neither LSTC nor the authors assume any responsibility for *
+ * the validity, accuracy, or applicability of any results    *
+ * obtained from this system. Users must verify their own     *
+ * results.                                                   *
+ *                                                            *
+ * LSTC endeavors to make the LS-DYNA code as complete,       *
+ * accurate and easy to use as possible.                      *
+ * Suggestions and comments are welcomed.  Please report any  *
+ * errors encountered in either the documentation or results  *
+ * immediately to LSTC through your site focus.               *
+ *                                                            *
+ * Copyright (C) 1990-2018                                    *
+ * by Livermore Software Technology Corp. (LSTC)              *
+ * All rights reserved                                        *
+ *                                                            *
+ ********  notice  ********  notice  ********  notice  ********
+ 
+LSTC Environment Variables:
+ 
+LSTC_LICENSE=network
+LSTC_LICENSE_SERVER=license.sun.ac.za
+ 
+
+ Beginning of keyword reader                                   11/15/19 09:54:24
+ expanding   memory to    20000000 d         600 beginning of keyword reader
+ contracting memory to       21002 d         600  
+ expanding   memory to       74174 d        9843  
+ expanding   memory to      104174 d        9843  
+ expanding   memory to      164174 d        9843  
+ expanding   memory to      184438 d        9843  
+ expanding   memory to      204946 d        9843  
+ expanding   memory to      226058 d        9843  
+ expanding   memory to      246490 d        9843  
+
+ Memory required to process keyword     :      246490 
+ contracting memory to           1 d        9843 end of keyword reader
+
+ LS-DYNA will perform a structural only analysis 
+
+                                                                         
+                         ls-dyna smp.123264 s           date 01/12/2018
+ expanding   memory to        2385 d         600 material, node and element data
+ expanding   memory to        2459 d         604 mat add general damage 0
+ expanding   memory to        2469 d         604 material added airbag porosity leakage 
+ expanding   memory to        2472 d         604 material properties
+ expanding   memory to        2564 d        1659 element data for composite material
+ expanding   memory to        2653 d        1689 gradient of damage data
+ expanding   memory to        2814 d        1691 user control for contact interfaces
+ contracting memory to        2795 d        1691 thermal expansion 0
+ expanding   memory to        2822 d        1691 temp index array for node sorting
+ contracting memory to        2795 d        1722 for boundary cond. vectorization
+ expanding   memory to        2803 d        1776 arbitrary element numbering input
+ contracting memory to        2795 d        1796 thick shell int. pt. strain
+ expanding   memory to        2995 d        1798 spc cards
+ expanding   memory to        3082 d        1826 process element material data
+ expanding   memory to        5088 d        1825 load curve data
+ contracting memory to        3513 d        1826 user_define_loading_set
+ expanding   memory to        3719 d        1826 regularize time history data
+ expanding   memory to        3723 d        1826 *DEFINE_ELEMENT_DEATH
+ contracting memory to        3723 d        1826 rigidwall definitions
+ expanding   memory to        3757 d        1826 nodal constraint sets
+ expanding   memory to        3955 d        1826 contact interfaces
+ expanding   memory to        5009 d        1826 implicit contact 1
+ contracting memory to        4955 d        1937 contact segment data 1
+ expanding   memory to        5100 d        1937 contact segment data 3
+ contracting memory to        3955 d       52912 contact definition
+ expanding   memory to        4177 d       52912 rigid body
+ expanding   memory to        4480 d       52924 contact friction
+ expanding   memory to        4495 d       52924 joints
+ contracting memory to        4495 d       53524 accelerometers
+ expanding   memory to        4595 d       53524 rigid bodies for disp. termination
+ contracting memory to        4595 d       53605 transformation to move nodes
+ expanding   memory to        4596 d       53683 mat add cohesive 0
+ expanding   memory to        4598 d       53683 sensor_control for curve
+ expanding   memory to        4599 d       53683 flexible body 2
+ contracting memory to        4599 d       53683 implicit joints
+
+ S t o r a g e   a l l o c a t i o n   
+
+ Memory required to begin solution      :     247K
+ Additional dynamically allocated memory:      54K
+                                   Total:     301K
+       1 t 0.0000E+00 dt 7.06E-05 flush i/o buffers            11/15/19 09:54:25
+       1 t 0.0000E+00 dt 7.06E-05 write d3plot file            11/15/19 09:54:25
+    1416 t 9.9932E-02 dt 7.06E-05 write d3plot file            11/15/19 09:54:25
+    2832 t 1.9993E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+    4248 t 2.9994E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+    5000 t 3.5304E-01 dt 7.06E-05 flush i/o buffers            11/15/19 09:54:26
+    5664 t 3.9994E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+    7080 t 4.9994E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+    8496 t 5.9994E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+    9912 t 6.9994E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+   10000 t 7.0615E-01 dt 7.06E-05 flush i/o buffers            11/15/19 09:54:26
+   11328 t 7.9994E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+   12744 t 8.9993E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+   14160 t 9.9993E-01 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+ 
+ *** termination time reached ***
+   14160 t 1.0000E+00 dt 7.06E-05 write d3dump01 file          11/15/19 09:54:26
+   14160 t 1.0000E+00 dt 7.06E-05 write d3plot file            11/15/19 09:54:26
+
+ N o r m a l    t e r m i n a t i o n                          11/15/19 09:54:26
+
+ S t o r a g e   a l l o c a t i o n   
+
+ Memory required to complete solution   :     247K
+ Additional dynamically allocated memory:      54K
+                                   Total:     301K
+
+ T i m i n g   i n f o r m a t i o n
+                        CPU(seconds)   %CPU  Clock(seconds) %Clock
+  ----------------------------------------------------------------
+  Keyword Processing ... 3.5162E-01   11.21     4.8933E-01   16.39
+    KW Reading ......... 1.1257E-01    3.59     1.0943E-01    3.67
+    KW Writing ......... 3.5321E-03    0.11     7.9747E-02    2.67
+  Initialization ....... 6.0964E-01   19.44     1.0278E+00   34.42
+    Init Proc Phase 1 .. 2.4761E-01    7.90     4.4369E-01   14.86
+    Init Proc Phase 2 .. 1.4363E-01    4.58     1.6877E-01    5.65
+  Init solver .......... 5.8696E-02    1.87     6.9555E-02    2.33
+  Element processing ... 7.5217E-01   23.99     2.8599E-01    9.58
+    Solids ............. 2.1069E-01    6.72     1.8995E-01    6.36
+    ISO Shells ......... 1.1897E-02    0.38     1.1986E-02    0.40
+  Binary databases ..... 3.9495E-02    1.26     3.4004E-02    1.14
+  ASCII database ....... 4.6105E-02    1.47     3.6304E-02    1.22
+  Contact algorithm .... 4.5396E-02    1.45     4.3468E-02    1.46
+  Rigid Bodies ......... 3.1634E-02    1.01     2.3421E-02    0.78
+  Time step size ....... 1.7803E-02    0.57     1.7289E-02    0.58
+  Rigid wall ........... 1.2033E-02    0.38     1.1466E-02    0.38
+  Group force file ..... 1.2138E-02    0.39     1.2258E-02    0.41
+  Others ............... 9.2565E-02    2.95     8.1473E-02    2.73
+  Misc. 1 .............. 7.3642E-01   23.49     5.3835E-01   18.03
+  Misc. 2 .............. 4.3451E-02    1.39     4.0644E-02    1.36
+  Misc. 3 .............. 2.1518E-01    6.86     2.0685E-01    6.93
+  Misc. 4 .............. 7.1056E-02    2.27     6.7429E-02    2.26
+  ----------------------------------------------------------------
+  T o t a l s            3.1354E+00  100.00     2.9856E+00  100.00
+
+ Problem time       =    1.0000E+00
+ Problem cycle      =     14160
+ Total CPU time     =         3 seconds (   0 hours  0 minutes  3 seconds)
+ CPU time per zone cycle  =      19192.574 nanoseconds
+ Clock time per zone cycle=      12963.480 nanoseconds
+
+ Number of CPU's    2
+ NLQ used/max     384/  384
+ Start time   11/15/2019 09:54:24  
+ End time     11/15/2019 09:54:26  
+ Elapsed time       2 seconds for   14160 cycles using  2 SMP threads
+             (      0 hour   0 minute   2 seconds)
+
+ N o r m a l    t e r m i n a t i o n                          11/15/19 09:54:26

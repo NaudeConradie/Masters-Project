@@ -1,0 +1,53 @@
+$# LS-PrePost command file created by LS-PrePost(R) V4.6.7 - 09May2019 -64bit-Linux
+$# Created on Nov-15-2019 (09:54:47)
+openc d3plot "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_1_Cube/d3plot"
+ac
+anim forward
+anim forward
+anim stop; state 3;
+state +1;
+state +1;
+state +1;
+state +1;
+dsf 5000 
+anim forward
+anim forward
+anim stop; state 11;
+state +1;
+anim forward
+anim forward
+state +1;
+anim cycle
+anim cycle
+anim stop; state 2;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+genselect target node
+genselect node add node 17/0 
+ntime 6 
+xyplot 1 xmin 0.947575 xmax 1.05826 ymin -0.05 ymax -0.03 xoffset 0 yoffset 0 xscale 1 yscale 1 
+xyplot 1 xmin 0.8 xmax 1.1 xoffset 0 yoffset 0 xscale 1 yscale 1 
+findhist Node 17
+findhist Node 17
+fringe 18
+pfringe
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;
+state +1;

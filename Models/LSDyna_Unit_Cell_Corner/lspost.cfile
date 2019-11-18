@@ -1,6 +1,494 @@
 $# LS-PrePost command file created by LS-PrePost(R) V4.6.7 - 09May2019 -64bit-Linux
-$# Created on Nov-13-2019 (16:28:07)
+$# Created on Nov-15-2019 (11:25:12)
 open keyword "/home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Unit_Cell_Corner.k"
 Message 1
 save keywordoutversion 9
 Message 0
+top
+KEYWORD INPUT 1
+*MAT_PIECEWISE_LINEAR_PLASTICITY_TITLE
+Steel
+$#     mid        ro         e        pr      sigy      etan      fail      tdel
+         17.85000E-9  210000.0       0.3     250.0    1000.01.00000E21       0.0
+$#       c         p      lcss      lcsr        vp  
+       0.0       0.0         0         0       0.0
+$#    eps1      eps2      eps3      eps4      eps5      eps6      eps7      eps8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+$#     es1       es2       es3       es4       es5       es6       es7       es8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+*END
+keyword updatekind
+MAT_PIECEWISE_LINEAR_PLASTICITY
+renumber clean
+renumber offset 0
+renumber setkind MAT 1
+renumber renumkind 288
+renumber setrange 1 1 1
+renumber renumkind 288
+renumber keyword 1
+KEYWORD INPUT 2
+*MAT_PIECEWISE_LINEAR_PLASTICITY_TITLE
+Steel
+$#     mid        ro         e        pr      sigy      etan      fail      tdel
+         27.85000E-9  210000.0       0.3     250.0    1000.01.00000E21       0.0
+$#       c         p      lcss      lcsr        vp  
+       0.0       0.0         0         0       0.0
+$#    eps1      eps2      eps3      eps4      eps5      eps6      eps7      eps8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+$#     es1       es2       es3       es4       es5       es6       es7       es8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+*END
+keyword updatekind
+MAT_PIECEWISE_LINEAR_PLASTICITY
+renumber clean
+renumber offset 0
+renumber setkind MAT 0
+renumber renumkind 288
+renumber setrange 2 2 1
+renumber renumkind 288
+renumber keyword 1
+KEYWORD INPUT 1
+*MAT_PIECEWISE_LINEAR_PLASTICITY_TITLE
+Steel
+$#     mid        ro         e        pr      sigy      etan      fail      tdel
+         17.85000E-9  210000.0       0.3     250.0    1000.01.00000E21       0.0
+$#       c         p      lcss      lcsr        vp  
+       0.0       0.0         0         0       0.0
+$#    eps1      eps2      eps3      eps4      eps5      eps6      eps7      eps8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+$#     es1       es2       es3       es4       es5       es6       es7       es8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+*END
+keyword updatekind
+MAT_PIECEWISE_LINEAR_PLASTICITY
+KEYWORD INPUT 1
+*SECTION_SHELL_TITLE
+Shell
+$#   secid    elform      shrf       nip     propt   qr/irid     icomp     setyp
+         1        13       1.0         2       1.0         0         0         1
+$#      t1        t2        t3        t4      nloc     marea      idof    edgset
+       1.0       1.0       1.0       1.0       0.0       0.0       0.0         0
+*END
+keyword updatekind
+SECTION_SHELL
+KEYWORD INPUT 1
+*PART
+$#                                                                         title
+Unit_Cell_Corner
+$#     pid     secid       mid     eosid      hgid      grav    adpopt      tmid
+         1         1         1         0         0         0         0         0
+*SECTION_SHELL_TITLE
+Shell
+$#   secid    elform      shrf       nip     propt   qr/irid     icomp     setyp
+         1        13       1.0         2       1.0         0         0         1
+$#      t1        t2        t3        t4      nloc     marea      idof    edgset
+       1.0       1.0       1.0       1.0       0.0       0.0       0.0         0
+*MAT_PIECEWISE_LINEAR_PLASTICITY_TITLE
+Steel
+$#     mid        ro         e        pr      sigy      etan      fail      tdel
+         17.85000E-9  210000.0       0.3     250.0    1000.01.00000E21       0.0
+$#       c         p      lcss      lcsr        vp  
+       0.0       0.0         0         0       0.0
+$#    eps1      eps2      eps3      eps4      eps5      eps6      eps7      eps8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+$#     es1       es2       es3       es4       es5       es6       es7       es8
+       0.0       0.0       0.0       0.0       0.0       0.0       0.0       0.0
+*END
+keyword updatekind
+PART_PART
+entlistset operationtype 5 2
+spcdata operationtype 2
+genselect target node
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.016917 0.841294 0.080827 0.645609
+spcdata createnodeset 1 1 NODESET(SPC) 1
+genselect clear
+spcdata create set 1 0 1 0 1 1 1 1
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.729323 0.120185 0.971804 0.058552
+spcdata createnodeset 2 1 NODESET(SPC) 2
+genselect clear
+spcdata create set 2 0 0 1 1 1 1 1
+genselect target node
+genselect clear
+genselect target segment
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect element add region in 0.030075 0.659476 0.789474 0.718028
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect element add region in 0.018797 0.713405 0.812030 0.087827
+genselect target shell
+genselect shell add shell 1/0 
+genselect unsel
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 1
+genselect target node
+genselect target node
+genselect clear
+loadpoint operationtype 2
+genselect target node
+genselect target node
+genselect clear
+genselect node add node 5/0 
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.041353 0.642527 0.424812 0.448382
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.033835 0.089368 0.789474 0.721109
+xyplot curve 0 115005 12293
+xyplot curve 0 115005 12293
+KEYWORD INPUT 1
+*DEFINE_CURVE_TITLE
+Pressure_Curve
+$#    lcid      sidr       sfa       sfo      offa      offo    dattyp     lcint
+         1         0       1.0       1.0       0.0       0.0         0         0
+$#                a1                  o1  
+                 0.0                 0.0
+                 1.0                 1.0
+                 2.0                 2.0
+                 3.0                 3.0
+                 4.0                 4.0
+                 5.0                 5.0
+                 5.1                 5.0
+*END
+keyword updatekind
+DEFINE_CURVE
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 1
+genselect target node
+genselect target node
+genselect clear
+loadpoint operationtype 2
+genselect target node
+genselect target node
+genselect clear
+genselect target segment
+genselect clear
+genselect element add shell 1/0 
+genselect unsel
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 1
+genselect target node
+genselect target node
+genselect clear
+loadpoint operationtype 2
+genselect target node
+genselect target node
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.016917 0.713405 0.823308 0.049307
+genselect unsel
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.016917 0.679507 0.795113 0.711864
+genselect node add shell 1/E0/0 
+genselect unsel
+genselect node add shell 1/E0/0 
+genselect node add shell 2/E0/0 
+genselect node add shell 3/E0/0 
+genselect node add shell 4/E0/0 
+genselect node add shell 5/E0/0 
+loadpoint create node 4 1 10 0 0 0 0
+loadpoint create node 2 1 10 0 0 0 0
+print png "/home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/image_000.png" nogamma enlisted "OGL1x1" 
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 1
+genselect target node
+genselect target node
+genselect clear
+loadpoint operationtype 2
+genselect target node
+genselect target node
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.317141 0.707242 0.609993 0.645609
+loadpoint create node 2 1 10 0 0 0 0
+loadpoint create node 2 1 10 0 0 0 0
+loadpoint create node 2 1 10 0 0 0 0
+loadpoint create node 2 1 10 0 0 0 0
+loadpoint create node 2 1 10 0 0 0 0
+loadpoint create node 2 1 10 0 0 0 0
+loadpoint create node 2 1 10 0 0 0 0
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 1
+genselect target node
+genselect target node
+genselect clear
+loadpoint operationtype 2
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 2
+genselect target node
+genselect target node
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.250000;
+loadpan 0.209371 0.665859;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.030075 0.718028 0.810150 0.665639
+loadpoint create set 2 1 10 0 0 0 0
+genselect target node
+genselect clear
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 2
+genselect target node
+genselect target node
+genselect clear
+loadpoint operationtype 2
+genselect target node
+genselect target node
+genselect clear
+KEYWORD INPUT 1
+*SET_NODE_LIST_TITLE
+NODESET(SPC) 1
+$#     sid       da1       da2       da3       da4    solver      
+         1       0.0       0.0       0.0       0.0MECH
+$#    nid1      nid2      nid3      nid4      nid5      nid6      nid7      nid8
+         1         2         3         4         5         6         0         0
+*END
+keyword updatekind
+SET_NODE_LIST
+KEYWORD INPUT 1
+*LOAD_NODE_SET
+$#    nsid       dof      lcid        sf       cid        m1        m2        m3
+         1         2         1      10.0         0         0         0         0
+*END
+keyword updatekind
+LOAD_NODE_SET
+KEYWORD INPUT 1
+*SET_NODE_LIST_TITLE
+NODESET(SPC) 1
+$#     sid       da1       da2       da3       da4    solver      
+         1       0.0       0.0       0.0       0.0MECH
+$#    nid1      nid2      nid3      nid4      nid5      nid6      nid7      nid8
+         1         2         3         4         5         6         0         0
+*END
+keyword updatekind
+SET_NODE_LIST
+Keyword Delete 343 1 2
+genselect target node
+genselect target node
+genselect clear
+loadpoint loadpointtype 2
+genselect target node
+genselect target node
+genselect clear
+loadpoint operationtype 2
+genselect target node
+genselect target node
+genselect clear
+setnode
+genselect target node
+genselect clear
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+setnode
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.953125;
+loadpan 1.823287 -0.643686;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.101504 0.770416 0.156015 0.650231
+setnode createset 1 1 0 0 0 0 
+genselect clear
+selectentity None
+setnode
+genselect target node
+genselect clear
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+setnode
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+setnode
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.953125;
+loadpan 1.823287 -0.643686;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.588346 0.311248 0.750000 0.274268
+setnode createset 2 1 0 0 0 0 
+genselect clear
+selectentity None
+setnode
+genselect target node
+genselect clear
+genselect clear
+genselect target node
+genselect clear
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.562500;
+loadpan 0.910513 0.971840;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.067669 0.648690 0.714286 0.622496
+setnode createset 3 1 0 0 0 0 
+genselect clear
+loadstate 1;
+loadquat 0.000000 0.000000 0.000000 1.000000;
+loadgrot 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 ;
+loadzoom 1.562500;
+loadpan 0.910513 0.971840;
+loadeyepos 0.000000 0.000000 0.000000;
+loadupvect 0.000000 1.000000 0.000000;
+genselect node add region in 0.644737 0.158706 0.703008 0.657935
+setnode createset 4 1 0 0 0 0 
+genselect clear
+displayentity Boundary Spc off all
+displayentity Boundary Spc on 1
+displayentity Boundary Spc off all
+displayentity Boundary Spc on 2
+displayentity Boundary Spc off all
+displayentity Boundary Spc on 1
+displayentity Boundary Spc off all
+displayentity Set Node off all
+displayentity Set Node on 1
+displayentity Set Node off all
+displayentity Set Node on 3
+displayentity Set Node off all
+displayentity Set Node on 2
+displayentity Set Node off all
+displayentity Set Node on 1
+displayentity Set Node off all
+displayentity Set Node off all
+displayentity Set Node on 2
+displayentity Set Node off all
+displayentity Load Node off all
+displayentity Load Node on 1
+displayentity Load Node off all
+displayentity Load Node off all
+displayentity Load Node on 1
+displayentity Load Node off all
+displayentity Load Node off all
+displayentity Load Node on 1
+displayentity Boundary Spc off all
+displayentity Boundary Spc on 1
+displayentity Boundary Spc off all
+displayentity Boundary Spc on 2
+displayentity Boundary Spc off all
+displayentity Boundary Spc off all
+displayentity Boundary Spc on 1
+displayentity Boundary Spc off all
+displayentity Boundary Spc on 1 2
+KEYWORD INPUT 1
+*LOAD_NODE_SET
+$#    nsid       dof      lcid        sf       cid        m1        m2        m3
+         3         2         1      10.0         0         0         0         0
+*END
+keyword updatekind
+LOAD_NODE_SET
+KEYWORD INPUT 2
+*LOAD_NODE_SET
+$#    nsid       dof      lcid        sf       cid        m1        m2        m3
+         4         1         1      10.0         0         0         0         0
+*END
+keyword updatekind
+LOAD_NODE_SET
+displayentity Load Node off all
+displayentity Load Node on 1
+displayentity Load Node off all
+displayentity Load Node on 1 2
+save keywordabsolute 0
+save keywordbylongfmt 0
+save outversion 7
+save keyword "/home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Unit_Cell_Corner.k"
+save keyword /home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Unit_Cell_Corner.k 
+save keyword /home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Unit_Cell_Corner.k 
+new
+save keyword /home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Unit_Cell_Corner.k 
