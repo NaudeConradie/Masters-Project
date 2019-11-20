@@ -1,9 +1,24 @@
 $# LS-DYNA Keyword file created by LS-PrePost(R) V4.6.7 - 09May2019
-$# Created on Nov-15-2019 (22:25:28)
+$# Created on Nov-18-2019 (09:39:12)
 *KEYWORD
 *TITLE
 $#                                                                         title
 LS-DYNA keyword deck by LS-PrePost
+*CONTROL_TERMINATION
+       5.0         0       0.0       0.01.000000E8         0
+*DATABASE_BNDOUT
+5.00000E-6         3         0         1
+*DATABASE_DEFGEO
+5.00000E-6         3         0         3
+*DATABASE_ELOUT
+5.00000E-6         3         0         1         0         0         0         0
+*DATABASE_GLSTAT
+5.00000E-6         3         0         1
+*DATABASE_MATSUM
+5.00000E-6         3         0         1
+*DATABASE_BINARY_D3PLOT
+5.00000E-4         0         0         0         0
+         0
 *BOUNDARY_SPC_SET
          1         0         1         0         1         1         1         1
 *SET_NODE_LIST
@@ -14,15 +29,18 @@ LS-DYNA keyword deck by LS-PrePost
 *SET_NODE_LIST
          2       0.0       0.0       0.0       0.0MECH
         23        24         0         0         0         0         0         0
-*LOAD_NODE_SET
-         3         2         1      10.0         0         0         0         0
-         4         1         1      10.0         0         0         0         0
+*LOAD_SEGMENT_ID
+         1Pressure_y
+         1      10.0       0.0         1        11         0         0         0
+*LOAD_SEGMENT_ID
+         0Pressure_x
+         1      10.0       0.0        11        23         0         0         0
 *PART
 Unit_Cell_Corner
          1         1         1         0         0         0         0         0
 *SECTION_SHELL_TITLE
 Shell
-         1        13       1.0         2       1.0         0         0         1
+         1        13       1.0         4       1.0         0         0         1
        1.0       1.0       1.0       1.0       0.0       0.0       0.0         0
 *MAT_PIECEWISE_LINEAR_PLASTICITY_TITLE
 Steel
@@ -40,12 +58,6 @@ Pressure_Curve
                  4.0                 4.0
                  5.0                 5.0
                  5.1                 5.0
-*SET_NODE_LIST
-         3       0.0       0.0       0.0       0.0MECH
-         1         3         5         7         9        11         0         0
-*SET_NODE_LIST
-         4       0.0       0.0       0.0       0.0MECH
-        11        14        17        19        21        23         0         0
 *ELEMENT_SHELL
        1       1       1       3       4       2       0       0       0       0
        2       1       3       5       6       4       0       0       0       0
