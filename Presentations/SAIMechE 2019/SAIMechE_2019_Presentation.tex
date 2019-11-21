@@ -195,11 +195,11 @@
         \centering
         \begin{subfigure}{.49\textwidth}
             \centering
-            \includegraphics[width=0.48\linewidth]{Unit_Cell_Corner_Cropped.png}<4->
+            \includegraphics[width=0.5\linewidth]{Unit_Cell_Corner_Cropped.png}<4->
         \end{subfigure}
         \begin{subfigure}{.49\textwidth}
             \centering
-            \includegraphics[width=0.48\linewidth]{Unit_Cell_Corner_Deformed.png}<4->
+            \includegraphics[width=0.6\linewidth]{Unit_Cell_Corner_Deformed.png}<4->
         \end{subfigure}
     \end{figure}
 \end{frame}
@@ -219,37 +219,67 @@
     \end{itemize}
     \begin{figure}
         \centering
-        \includegraphics[height = 1cm]{Unit_Cell_Deformation.jpg}<4->
+        \includegraphics[height = 1.5cm]{Unit_Cell_Deformation.jpg}<4->
     \end{figure}
+\end{frame}
+
+%   Basic Structure------------------------------------------%
+
+\begin{frame}
+    \frametitle{Basic Structure (cont.)}
     \begin{itemize}
-        \item<5-> Complete soft body
+        \item<1-> Complete soft body
         \changefontsizes{11pt}
         \begin{itemize}
-            \item<5-> Constructed from unit cells
-            \item<6-> Recursive grammatical encodings
+            \item<2-> Constructed from unit cells
+            \item<5-> Recursive grammatical encodings
         \end{itemize}
     \end{itemize}
+    \begin{figure}[ht!]
+        \captionsetup{skip=0.333\baselineskip}
+        \centering
+        \begin{subfigure}{.49\textwidth}
+            \centering
+            \includegraphics[width=0.6\linewidth]{Soft_Body_Undeformed.png}<3->
+        \end{subfigure}
+        \begin{subfigure}{.49\textwidth}
+            \centering
+            \includegraphics[width=1\linewidth]{Soft_Body_Deformed.png}<4->
+        \end{subfigure}
+    \end{figure}
 \end{frame}
 
 %   Recursive Encodings------------------------------------------%
 
 \begin{frame}
     \frametitle{Recursive Encodings}
-    \begin{itemize}
-        \item<1-> L-systems
-        \changefontsizes{11pt}
+    \begin{minipage}{0.7\textwidth}
         \begin{itemize}
-            \item<2-> Refer to unit cells
-            \item<3-> Construct soft body
-            \item<4-> Genotype
+            \item<1-> L-systems
+            \changefontsizes{11pt}
+            \begin{itemize}
+                \item<2-> Refer to unit cells
+                \item<3-> Construct soft body
+                \item<4-> Genotype
+            \end{itemize}
+            \item<5-> CPPN-NEAT
+            \changefontsizes{11pt}
+            \begin{itemize}
+                \item<6-> Refer to whole body
+                \item<7-> Phenotype
+            \end{itemize}
         \end{itemize}
-        \item<5-> CPPN-NEAT
-        \changefontsizes{11pt}
-        \begin{itemize}
-            \item<6-> Refer to whole body
-            \item<7-> Phenotype
-        \end{itemize}
-    \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[height = 3cm]{Genotype.png}<4->
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[height = 2cm]{Phenotype.png}<7->
+    \end{figure}
+    \end{minipage}
 \end{frame}
 
 %   Proof Of Concept------------------------------------------%
