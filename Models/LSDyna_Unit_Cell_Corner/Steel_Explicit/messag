@@ -1,0 +1,326 @@
+      Date: 11/21/2019      Time: 09:08:53  
+
+     ___________________________________________________
+     |                                                 |
+     |  Livermore  Software  Technology  Corporation   |
+     |                                                 |
+     |  7374 Las Positas Road                          |
+     |  Livermore, CA 94551                            |
+     |  Tel: (925) 449-2500  Fax: (925) 449-2507       |
+     |  www.lstc.com                                   |
+     |_________________________________________________|
+     |                                                 |
+     |  LS-DYNA, A Program for Nonlinear Dynamic       |
+     |  Analysis of Structures in Three Dimensions     |
+     |  Version : smp s R10.1.0   Date: 01/12/2018     |
+     |  Revision: 123264          Time: 16:34:46       |
+     |                                                 |
+     |  Features enabled in this version:              |
+     |    Shared Memory Parallel                       |
+     |    Interactive Graphics                         |
+     |    ANSYS Database format                        |
+     |    ANSYS License (ANSYS160)                     |
+     |    MADYMO indirect coupling (7.2 or higher)     |
+     |                                                 |
+     |  Licensed to: Stellenbosch University - 1409    |
+     |  Issued by  : LSTC_01142019                     |
+     |                                                 |
+     |  Platform   : Xeon64 System                     |
+     |  OS Level   : Linux 2.6.18 ulm                  |
+     |  Compiler   : Intel Fortran Compiler 16.0 SSE2  |
+     |  Hostname   : naude-HP-Pavilion-17-Notebook-PC  |
+     |  Precision  : Single precision (I4R4)           |
+     |  SVN Version: 123300                            |
+     |                                                 |
+     |  Unauthorized use infringes LSTC copyrights     |
+     |_________________________________________________|
+
+
+ Input file: /home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Unit_Cell_C
+
+ The native file format       : 32-bit small endian
+ Memory size from command line:    20000000
+
+ ********  notice  ********  notice  ********  notice  ********
+ *                                                            *
+ * This is the LS-DYNA Finite Element code.                   *
+ *                                                            *
+ * Neither LSTC nor the authors assume any responsibility for *
+ * the validity, accuracy, or applicability of any results    *
+ * obtained from this system. Users must verify their own     *
+ * results.                                                   *
+ *                                                            *
+ * LSTC endeavors to make the LS-DYNA code as complete,       *
+ * accurate and easy to use as possible.                      *
+ * Suggestions and comments are welcomed.  Please report any  *
+ * errors encountered in either the documentation or results  *
+ * immediately to LSTC through your site focus.               *
+ *                                                            *
+ * Copyright (C) 1990-2018                                    *
+ * by Livermore Software Technology Corp. (LSTC)              *
+ * All rights reserved                                        *
+ *                                                            *
+ ********  notice  ********  notice  ********  notice  ********
+ 
+LSTC Environment Variables:
+ 
+LSTC_LICENSE=network
+LSTC_LICENSE_SERVER=license.sun.ac.za
+ 
+
+ Beginning of keyword reader                                   11/21/19 09:08:53
+ expanding   memory to    20000000 d         600 beginning of keyword reader
+ contracting memory to       21002 d         600  
+ expanding   memory to       74030 d        9816  
+ expanding   memory to      104030 d        9816  
+ expanding   memory to      164162 d        9816  
+ expanding   memory to      184438 d        9816  
+ expanding   memory to      204970 d        9816  
+ expanding   memory to      226090 d        9816  
+ expanding   memory to      252562 d        9816  
+
+ Memory required to process keyword     :      252562 
+ contracting memory to           1 d        9816 end of keyword reader
+
+ LS-DYNA will perform a structural only analysis 
+
+ LS-DYNA keyword deck by LS-PrePost                                      
+                         ls-dyna smp.123264 s           date 01/12/2018
+ expanding   memory to        2385 d         600 material, node and element data
+ expanding   memory to        2459 d         604 mat add general damage 0
+ expanding   memory to        2469 d         604 material added airbag porosity leakage 
+ expanding   memory to        2472 d         604 material properties
+ expanding   memory to        2476 d        1722 element data for composite material
+ expanding   memory to        2526 d        2139 gradient of damage data
+ expanding   memory to        2575 d        2381 user control for contact interfaces
+ contracting memory to        2556 d        2381 thermal expansion 0
+ expanding   memory to        2580 d        2381 temp index array for node sorting
+ contracting memory to        2556 d        2409 for boundary cond. vectorization
+ expanding   memory to        2567 d        2457 arbitrary element numbering input
+ contracting memory to        2556 d        2472 thick shell int. pt. strain
+ expanding   memory to        2680 d        2474 spc cards
+ expanding   memory to        3263 d        2532 process element material data
+ expanding   memory to        5269 d        2531 load curve data
+ contracting memory to        3706 d        2532 user_define_loading_set
+ expanding   memory to        3920 d        2532 regularize time history data
+ expanding   memory to        3924 d        2532 *DEFINE_ELEMENT_DEATH
+ contracting memory to        3924 d        2532 rigidwall definitions
+ expanding   memory to        3966 d        2532 pressure b.c.1
+ expanding   memory to        4002 d        2532 pressure b.c. 2
+ expanding   memory to        4027 d        2532 nodal constraint sets
+ expanding   memory to        4177 d        2532 contact interfaces
+ expanding   memory to        5225 d        2532 implicit contact 1
+ contracting memory to        5177 d        2643 contact segment data 1
+ expanding   memory to        5297 d        2643 contact segment data 3
+ contracting memory to        4177 d       53589 contact definition
+ expanding   memory to        4387 d       53589 rigid body
+ expanding   memory to        4702 d       53601 contact friction
+ expanding   memory to        4717 d       53601 joints
+ contracting memory to        4717 d       54201 accelerometers
+ expanding   memory to        4817 d       54201 rigid bodies for disp. termination
+ contracting memory to        4817 d       54273 transformation to move nodes
+ expanding   memory to        4818 d       54348 mat add cohesive 0
+ expanding   memory to        4820 d       54348 sensor_control for curve
+ expanding   memory to        4821 d       54348 flexible body 2
+ contracting memory to        4821 d       54348 implicit joints
+
+ S t o r a g e   a l l o c a t i o n   
+
+ Memory required to begin solution      :     253K
+ Additional dynamically allocated memory:      55K
+                                   Total:     307K
+       1 t 0.0000E+00 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:53
+       1 t 0.0000E+00 dt 2.82E-07 write d3plot file            11/21/19 09:08:53
+    1771 t 4.9999E-04 dt 2.82E-07 write d3plot file            11/21/19 09:08:53
+    3541 t 9.9994E-04 dt 2.82E-07 write d3plot file            11/21/19 09:08:53
+    5000 t 1.4120E-03 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:54
+    5311 t 1.4998E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:54
+    7082 t 2.0000E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:54
+    8852 t 2.4998E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:54
+   10000 t 2.8239E-03 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:54
+   10623 t 2.9998E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:54
+   12394 t 3.4998E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:54
+   14165 t 3.9998E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:54
+   15000 t 4.2355E-03 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:55
+   15937 t 4.5000E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:55
+   17708 t 4.9998E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:55
+   19480 t 5.5000E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:55
+   20000 t 5.6467E-03 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:55
+   21251 t 5.9997E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:55
+   23023 t 6.4997E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:55
+   24796 t 7.0000E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:56
+   25000 t 7.0575E-03 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:56
+   26568 t 7.4999E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:56
+   28340 t 7.9998E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:56
+   30000 t 8.4680E-03 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:57
+   30113 t 8.4999E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:57
+   31886 t 9.0000E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:57
+   33658 t 9.4997E-03 dt 2.82E-07 write d3plot file            11/21/19 09:08:57
+   35000 t 9.8782E-03 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:57
+   35432 t 1.0000E-02 dt 2.82E-07 write d3plot file            11/21/19 09:08:57
+   37205 t 1.0500E-02 dt 2.82E-07 write d3plot file            11/21/19 09:08:57
+   38979 t 1.1000E-02 dt 2.82E-07 write d3plot file            11/21/19 09:08:57
+   40000 t 1.1288E-02 dt 2.82E-07 flush i/o buffers            11/21/19 09:08:58
+   40754 t 1.1500E-02 dt 2.82E-07 write d3plot file            11/21/19 09:08:58
+   42531 t 1.2000E-02 dt 2.81E-07 write d3plot file            11/21/19 09:08:58
+   44317 t 1.2500E-02 dt 2.79E-07 write d3plot file            11/21/19 09:08:58
+   45000 t 1.2690E-02 dt 2.78E-07 flush i/o buffers            11/21/19 09:08:58
+   46119 t 1.3000E-02 dt 2.76E-07 write d3plot file            11/21/19 09:08:58
+   47936 t 1.3500E-02 dt 2.74E-07 write d3plot file            11/21/19 09:08:58
+   49769 t 1.4000E-02 dt 2.72E-07 write d3plot file            11/21/19 09:08:58
+   50000 t 1.4063E-02 dt 2.72E-07 flush i/o buffers            11/21/19 09:08:59
+   51614 t 1.4500E-02 dt 2.70E-07 write d3plot file            11/21/19 09:08:59
+   53473 t 1.5000E-02 dt 2.68E-07 write d3plot file            11/21/19 09:08:59
+   55000 t 1.5408E-02 dt 2.67E-07 flush i/o buffers            11/21/19 09:08:59
+   55345 t 1.5500E-02 dt 2.66E-07 write d3plot file            11/21/19 09:08:59
+   57228 t 1.6000E-02 dt 2.65E-07 write d3plot file            11/21/19 09:08:59
+   59123 t 1.6500E-02 dt 2.63E-07 write d3plot file            11/21/19 09:08:59
+   60000 t 1.6730E-02 dt 2.62E-07 flush i/o buffers            11/21/19 09:09:00
+   61028 t 1.7000E-02 dt 2.62E-07 write d3plot file            11/21/19 09:09:00
+   62943 t 1.7500E-02 dt 2.60E-07 write d3plot file            11/21/19 09:09:00
+   64869 t 1.8000E-02 dt 2.59E-07 write d3plot file            11/21/19 09:09:00
+   65000 t 1.8034E-02 dt 2.59E-07 flush i/o buffers            11/21/19 09:09:00
+   66804 t 1.8500E-02 dt 2.58E-07 write d3plot file            11/21/19 09:09:00
+   68748 t 1.9000E-02 dt 2.57E-07 write d3plot file            11/21/19 09:09:00
+   70000 t 1.9321E-02 dt 2.56E-07 flush i/o buffers            11/21/19 09:09:01
+   70700 t 1.9500E-02 dt 2.56E-07 write d3plot file            11/21/19 09:09:01
+   72661 t 2.0000E-02 dt 2.55E-07 write d3plot file            11/21/19 09:09:01
+   74630 t 2.0500E-02 dt 2.53E-07 write d3plot file            11/21/19 09:09:01
+   75000 t 2.0594E-02 dt 2.53E-07 flush i/o buffers            11/21/19 09:09:01
+   76607 t 2.1000E-02 dt 2.52E-07 write d3plot file            11/21/19 09:09:01
+   78591 t 2.1500E-02 dt 2.52E-07 write d3plot file            11/21/19 09:09:01
+   80000 t 2.1854E-02 dt 2.51E-07 flush i/o buffers            11/21/19 09:09:02
+   80583 t 2.2000E-02 dt 2.51E-07 write d3plot file            11/21/19 09:09:02
+   82582 t 2.2500E-02 dt 2.50E-07 write d3plot file            11/21/19 09:09:02
+   84588 t 2.3000E-02 dt 2.49E-07 write d3plot file            11/21/19 09:09:02
+   85000 t 2.3102E-02 dt 2.49E-07 flush i/o buffers            11/21/19 09:09:02
+   86600 t 2.3500E-02 dt 2.48E-07 write d3plot file            11/21/19 09:09:02
+   88619 t 2.4000E-02 dt 2.47E-07 write d3plot file            11/21/19 09:09:02
+   90000 t 2.4341E-02 dt 2.47E-07 flush i/o buffers            11/21/19 09:09:03
+   90644 t 2.4500E-02 dt 2.46E-07 write d3plot file            11/21/19 09:09:03
+   92676 t 2.5000E-02 dt 2.46E-07 write d3plot file            11/21/19 09:09:03
+   94713 t 2.5500E-02 dt 2.45E-07 write d3plot file            11/21/19 09:09:03
+   95000 t 2.5570E-02 dt 2.45E-07 flush i/o buffers            11/21/19 09:09:03
+   96756 t 2.6000E-02 dt 2.44E-07 write d3plot file            11/21/19 09:09:03
+   98805 t 2.6500E-02 dt 2.44E-07 write d3plot file            11/21/19 09:09:03
+  100000 t 2.6791E-02 dt 2.43E-07 flush i/o buffers            11/21/19 09:09:04
+  100859 t 2.7000E-02 dt 2.43E-07 write d3plot file            11/21/19 09:09:04
+  102918 t 2.7500E-02 dt 2.42E-07 write d3plot file            11/21/19 09:09:04
+  104983 t 2.8000E-02 dt 2.42E-07 write d3plot file            11/21/19 09:09:04
+  105000 t 2.8004E-02 dt 2.42E-07 flush i/o buffers            11/21/19 09:09:04
+  107053 t 2.8500E-02 dt 2.41E-07 write d3plot file            11/21/19 09:09:04
+  109127 t 2.9000E-02 dt 2.41E-07 write d3plot file            11/21/19 09:09:04
+  110000 t 2.9210E-02 dt 2.40E-07 flush i/o buffers            11/21/19 09:09:05
+  111207 t 2.9500E-02 dt 2.40E-07 write d3plot file            11/21/19 09:09:05
+  113291 t 3.0000E-02 dt 2.40E-07 write d3plot file            11/21/19 09:09:05
+  115000 t 3.0409E-02 dt 2.39E-07 flush i/o buffers            11/21/19 09:09:05
+  115379 t 3.0500E-02 dt 2.39E-07 write d3plot file            11/21/19 09:09:05
+  117472 t 3.1000E-02 dt 2.39E-07 write d3plot file            11/21/19 09:09:05
+  119569 t 3.1500E-02 dt 2.38E-07 write d3plot file            11/21/19 09:09:05
+  120000 t 3.1602E-02 dt 2.38E-07 flush i/o buffers            11/21/19 09:09:06
+  121671 t 3.2000E-02 dt 2.38E-07 write d3plot file            11/21/19 09:09:06
+  123777 t 3.2500E-02 dt 2.37E-07 write d3plot file            11/21/19 09:09:06
+  125000 t 3.2790E-02 dt 2.37E-07 flush i/o buffers            11/21/19 09:09:06
+  125887 t 3.3000E-02 dt 2.37E-07 write d3plot file            11/21/19 09:09:06
+  128001 t 3.3500E-02 dt 2.36E-07 write d3plot file            11/21/19 09:09:06
+  130000 t 3.3972E-02 dt 2.36E-07 flush i/o buffers            11/21/19 09:09:07
+  130119 t 3.4000E-02 dt 2.36E-07 write d3plot file            11/21/19 09:09:07
+  132241 t 3.4500E-02 dt 2.35E-07 write d3plot file            11/21/19 09:09:07
+  134366 t 3.5000E-02 dt 2.35E-07 write d3plot file            11/21/19 09:09:07
+  135000 t 3.5149E-02 dt 2.35E-07 flush i/o buffers            11/21/19 09:09:07
+  136496 t 3.5500E-02 dt 2.35E-07 write d3plot file            11/21/19 09:09:07
+  138629 t 3.6000E-02 dt 2.34E-07 write d3plot file            11/21/19 09:09:07
+  140000 t 3.6321E-02 dt 2.34E-07 flush i/o buffers            11/21/19 09:09:08
+  140766 t 3.6500E-02 dt 2.34E-07 write d3plot file            11/21/19 09:09:08
+  142906 t 3.7000E-02 dt 2.33E-07 write d3plot file            11/21/19 09:09:08
+  145000 t 3.7488E-02 dt 2.33E-07 flush i/o buffers            11/21/19 09:09:08
+  145050 t 3.7500E-02 dt 2.33E-07 write d3plot file            11/21/19 09:09:08
+  147198 t 3.8000E-02 dt 2.33E-07 write d3plot file            11/21/19 09:09:08
+  149349 t 3.8500E-02 dt 2.32E-07 write d3plot file            11/21/19 09:09:08
+  150000 t 3.8651E-02 dt 2.32E-07 flush i/o buffers            11/21/19 09:09:09
+  151503 t 3.9000E-02 dt 2.32E-07 write d3plot file            11/21/19 09:09:09
+  153661 t 3.9500E-02 dt 2.32E-07 write d3plot file            11/21/19 09:09:09
+  155000 t 3.9810E-02 dt 2.31E-07 flush i/o buffers            11/21/19 09:09:09
+  155822 t 4.0000E-02 dt 2.31E-07 write d3plot file            11/21/19 09:09:09
+  157987 t 4.0500E-02 dt 2.31E-07 write d3plot file            11/21/19 09:09:09
+  160000 t 4.0964E-02 dt 2.30E-07 flush i/o buffers            11/21/19 09:09:10
+  160155 t 4.1000E-02 dt 2.30E-07 write d3plot file            11/21/19 09:09:10
+  162326 t 4.1500E-02 dt 2.30E-07 write d3plot file            11/21/19 09:09:10
+  164501 t 4.2000E-02 dt 2.30E-07 write d3plot file            11/21/19 09:09:10
+  165000 t 4.2115E-02 dt 2.30E-07 flush i/o buffers            11/21/19 09:09:10
+  166679 t 4.2500E-02 dt 2.29E-07 write d3plot file            11/21/19 09:09:10
+  168861 t 4.3000E-02 dt 2.29E-07 write d3plot file            11/21/19 09:09:10
+  170000 t 4.3261E-02 dt 2.29E-07 flush i/o buffers            11/21/19 09:09:11
+  171046 t 4.3500E-02 dt 2.29E-07 write d3plot file            11/21/19 09:09:11
+  173234 t 4.4000E-02 dt 2.28E-07 write d3plot file            11/21/19 09:09:11
+  175000 t 4.4403E-02 dt 2.28E-07 flush i/o buffers            11/21/19 09:09:11
+  175426 t 4.4500E-02 dt 2.28E-07 write d3plot file            11/21/19 09:09:11
+  177621 t 4.5000E-02 dt 2.28E-07 write d3plot file            11/21/19 09:09:11
+  179820 t 4.5500E-02 dt 2.27E-07 write d3plot file            11/21/19 09:09:11
+  180000 t 4.5541E-02 dt 2.27E-07 flush i/o buffers            11/21/19 09:09:11
+  182023 t 4.6000E-02 dt 2.27E-07 write d3plot file            11/21/19 09:09:12
+  184229 t 4.6500E-02 dt 2.26E-07 write d3plot file            11/21/19 09:09:12
+  185000 t 4.6674E-02 dt 2.26E-07 flush i/o buffers            11/21/19 09:09:12
+  186440 t 4.7000E-02 dt 2.26E-07 write d3plot file            11/21/19 09:09:12
+  188655 t 4.7500E-02 dt 2.25E-07 write d3plot file            11/21/19 09:09:12
+  190000 t 4.7803E-02 dt 2.25E-07 flush i/o buffers            11/21/19 09:09:12
+  190876 t 4.8000E-02 dt 2.25E-07 write d3plot file            11/21/19 09:09:12
+  193102 t 4.8500E-02 dt 2.24E-07 write d3plot file            11/21/19 09:09:13
+  195000 t 4.8925E-02 dt 2.24E-07 flush i/o buffers            11/21/19 09:09:13
+  195334 t 4.9000E-02 dt 2.24E-07 write d3plot file            11/21/19 09:09:13
+  197572 t 4.9500E-02 dt 2.23E-07 write d3plot file            11/21/19 09:09:13
+  199818 t 5.0000E-02 dt 2.22E-07 write d3plot file            11/21/19 09:09:13
+ 
+ *** termination time reached ***
+  199818 t 5.0000E-02 dt 2.22E-07 write d3dump01 file          11/21/19 09:09:13
+  199818 t 5.0000E-02 dt 2.22E-07 write d3plot file            11/21/19 09:09:13
+
+ N o r m a l    t e r m i n a t i o n                          11/21/19 09:09:13
+
+ S t o r a g e   a l l o c a t i o n   
+
+ Memory required to complete solution   :     253K
+ Additional dynamically allocated memory:      55K
+                                   Total:     307K
+
+ T i m i n g   i n f o r m a t i o n
+                        CPU(seconds)   %CPU  Clock(seconds) %Clock
+  ----------------------------------------------------------------
+  Keyword Processing ... 8.9058E-02    0.29     4.5058E-02    0.22
+    KW Reading ......... 2.2557E-03    0.01     2.2570E-03    0.01
+    KW Writing ......... 1.2265E-03    0.00     1.2270E-03    0.01
+  Initialization ....... 3.8541E-01    1.25     3.1918E-01    1.55
+    Init Proc Phase 1 .. 1.2449E-01    0.40     1.1881E-01    0.58
+    Init Proc Phase 2 .. 9.9138E-02    0.32     9.8608E-02    0.48
+  Element processing ... 7.9008E+00   25.67     3.0622E+00   14.88
+    Shells ............. 3.1339E+00   10.18     2.0729E+00   10.07
+    ISO Shells ......... 2.2808E-01    0.74     1.6750E-01    0.81
+  Binary databases ..... 3.9381E-01    1.28     2.1760E-01    1.06
+  ASCII database ....... 7.5148E-01    2.44     4.9718E-01    2.42
+  Contact algorithm .... 8.1054E-01    2.63     5.8369E-01    2.84
+  Rigid Bodies ......... 5.9468E-01    1.93     3.1881E-01    1.55
+  Time step size ....... 3.6151E-01    1.17     2.7452E-01    1.33
+  Rigid wall ........... 2.3439E-01    0.76     1.6046E-01    0.78
+  Group force file ..... 2.8559E-01    0.93     2.0930E-01    1.02
+  Others ............... 1.6569E+00    5.38     1.1715E+00    5.69
+  Misc. 1 .............. 1.2126E+01   39.40     1.1449E+01   55.65
+  Misc. 2 .............. 8.5246E-01    2.77     6.4485E-01    3.13
+  Misc. 3 .............. 2.8616E+00    9.30     5.8141E-01    2.83
+  Misc. 4 .............. 1.4699E+00    4.78     1.0395E+00    5.05
+  ----------------------------------------------------------------
+  T o t a l s            3.0775E+01  100.00     2.0575E+01  100.00
+
+ Problem time       =    5.0000E-02
+ Problem cycle      =    199818
+ Total CPU time     =        31 seconds (   0 hours  0 minutes 31 seconds)
+ CPU time per zone cycle  =      13785.429 nanoseconds
+ Clock time per zone cycle=       9194.870 nanoseconds
+
+ Number of CPU's    2
+ NLQ used/max     384/  384
+ Start time   11/21/2019 09:08:53  
+ End time     11/21/2019 09:09:13  
+ Elapsed time      20 seconds for  199818 cycles using  2 SMP threads
+             (      0 hour   0 minute  20 seconds)
+
+ N o r m a l    t e r m i n a t i o n                          11/21/19 09:09:13
