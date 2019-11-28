@@ -1,0 +1,41 @@
+\begin{thebibliography}{3}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\edef\AFRstr{\string afrikaans}
+\ifx\AFRstr\languagename
+   \input{usbib.afr}%
+ \else
+   \input{usbib.eng}%
+\fi
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{\citenamefont{Cundall} \protect\BIBand{}
+  \citenamefont{Strack}(1979)}]{Cundall-1979}
+\bibnamefont{Cundall}, \bibfnamefont{P.A.} \protect\BIBand{}
+  \bibnamefont{Strack}, \bibfnamefont{O.D.L.} (1979).
+\newblock A discrete numerical model for granular assemblies.
+\newblock \emph{G\'eotechnique}, \bblvol{}~29, \bblno{}~1, \bblpp{} 47--65.
+
+\bibitem[{\citenamefont{Luding}(1994)}]{Luding-1994}
+\bibnamefont{Luding}, \bibfnamefont{S.} (1994).
+\newblock \emph{Models and Simulations of Granular Materials}.
+\newblock PhD, Universität Freiburg.
+
+\bibitem[{\citenamefont{Luding}(2004)}]{Luding-2004}
+\bibnamefont{Luding}, \bibfnamefont{S.} (2004).
+\newblock Molecular dynamics simulations of granular materials.
+\newblock \capitalize\bblin{}: \bibnamefont{Hinrichsen}, \bibfnamefont{H.}
+  \protect\BIBand{} \bibnamefont{Wolf}, \bibfnamefont{D.} (\bbleds{}),
+  \emph{The Physics of Granular Media}, \bblpp{} 299--324. Wiley-VCH, Weinheim.
+
+\end{thebibliography}
