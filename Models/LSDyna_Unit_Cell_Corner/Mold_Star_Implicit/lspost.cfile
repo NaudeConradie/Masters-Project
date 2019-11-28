@@ -1,6 +1,10 @@
 $# LS-PrePost command file created by LS-PrePost(R) V4.6.7 - 09May2019 -64bit-Linux
-$# Created on Nov-21-2019 (09:31:37)
-openc d3plot "/home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Steel_Implicit/d3plot"
-ac
-anim forward
-anim stop; state 23;
+$# Created on Nov-28-2019 (09:11:02)
+open keyword "/home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Mold_Star_Implicit/Unit_Cell_Corner.k"
+Message 1
+save keywordoutversion 9
+Message 0
+ascii glstat open "/home/naude/Documents/Masters-Project/Models/LSDyna_Unit_Cell_Corner/Mold_Star_Implicit/glstat" 0
+ascii glstat plot 1 
+ascii glstat plot 2 
+ascii glstat plot 3 
