@@ -1,0 +1,92 @@
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname bibnamefont\endcsname\relax
+  \def\bibnamefont#1{#1}\fi
+\expandafter\ifx\csname bibfnamefont\endcsname\relax
+  \def\bibfnamefont#1{#1}\fi
+\expandafter\ifx\csname citenamefont\endcsname\relax
+  \def\citenamefont#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\providecommand{\selectlanguage}[1]{\relax}
+\edef\AFRstr{\string afrikaans}
+\ifx\AFRstr\languagename
+   \input{usbib.afr}%
+ \else
+   \input{usbib.eng}%
+\fi
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{\citenamefont{Boyraz} \emph{\bbletal{}}(2018)\citenamefont{Boyraz},
+  \citenamefont{Runge} \protect\BIBand{} \citenamefont{Raatz}}]{Boyraz2018}
+\bibnamefont{Boyraz}, \bibfnamefont{P.}, \bibnamefont{Runge}, \bibfnamefont{G.}
+  \protect\BIBand{} \bibnamefont{Raatz}, \bibfnamefont{A.} (2018).
+\newblock {An Overview of Novel Actuators for Soft Robotics}.
+\newblock \emph{Actuators}, \bblvol{}~7, \bblno{}~3, \bblp{}~48.
+\newblock ISSN 2076-0825.
+
+\bibitem[{\citenamefont{Do} \emph{\bbletal{}}(2018)\citenamefont{Do},
+  \citenamefont{Phan}, \citenamefont{Nguyen} \protect\BIBand{}
+  \citenamefont{Visell}}]{Do2018}
+\bibnamefont{Do}, \bibfnamefont{T.N.}, \bibnamefont{Phan}, \bibfnamefont{H.},
+  \bibnamefont{Nguyen}, \bibfnamefont{T.-Q.Q.} \protect\BIBand{}
+  \bibnamefont{Visell}, \bibfnamefont{Y.} (2018).
+\newblock {Miniature Soft Electromagnetic Actuators for Robotic Applications}.
+\newblock \emph{Advanced Functional Materials}, \bblvol{}~28, \bblno{}~18,
+  \bblp{} 1870116.
+\newblock ISSN 16163028.
+
+\bibitem[{\citenamefont{Mutlu} \emph{\bbletal{}}(2014)\citenamefont{Mutlu},
+  \citenamefont{Alici}, \citenamefont{Xiang} \protect\BIBand{}
+  \citenamefont{Li}}]{Mutlu2014}
+\bibnamefont{Mutlu}, \bibfnamefont{R.}, \bibnamefont{Alici}, \bibfnamefont{G.},
+  \bibnamefont{Xiang}, \bibfnamefont{X.} \protect\BIBand{} \bibnamefont{Li},
+  \bibfnamefont{W.} (2014).
+\newblock {Electro-mechanical modelling and identification of electroactive
+  polymer actuators as smart robotic manipulators}.
+\newblock \emph{Mechatronics}, \bblvol{}~24, \bblno{}~3, \bblpp{} 241--251.
+\newblock ISSN 09574158.
+
+\bibitem[{\citenamefont{Onal} \emph{\bbletal{}}(2017)\citenamefont{Onal},
+  \citenamefont{Chen}, \citenamefont{Whitesides} \protect\BIBand{}
+  \citenamefont{Rus}}]{Onal2017}
+\bibnamefont{Onal}, \bibfnamefont{C.D.}, \bibnamefont{Chen}, \bibfnamefont{X.},
+  \bibnamefont{Whitesides}, \bibfnamefont{G.M.} \protect\BIBand{}
+  \bibnamefont{Rus}, \bibfnamefont{D.} (2017).
+\newblock {Soft mobile robots with on-board chemical pressure generation}.
+\newblock \emph{Springer Tracts in Advanced Robotics}, \bblvol{} 100, \bblpp{}
+  525--540.
+\newblock ISSN 1610742X.
+
+\bibitem[{\citenamefont{Sekhar} \protect\BIBand{}
+  \citenamefont{Uwizeye}(2012)}]{Sekhar2012}
+\bibnamefont{Sekhar}, \bibfnamefont{P.} \protect\BIBand{}
+  \bibnamefont{Uwizeye}, \bibfnamefont{V.} (2012 jan).
+\newblock {Review of sensor and actuator mechanisms for bioMEMS}.
+\newblock \emph{MEMS for Biomedical Applications}, \bblpp{} 46--77.
+\newline\bblurlpre\url{https://www.sciencedirect.com/science/article/pii/B978085709129150002X}
+
+\bibitem[{\citenamefont{Villoslada}
+  \emph{\bbletal{}}(2015)\citenamefont{Villoslada}, \citenamefont{Flores},
+  \citenamefont{Copaci}, \citenamefont{Blanco} \protect\BIBand{}
+  \citenamefont{Moreno}}]{Villoslada2015}
+\bibnamefont{Villoslada}, \bibfnamefont{A.}, \bibnamefont{Flores},
+  \bibfnamefont{A.}, \bibnamefont{Copaci}, \bibfnamefont{D.},
+  \bibnamefont{Blanco}, \bibfnamefont{D.} \protect\BIBand{}
+  \bibnamefont{Moreno}, \bibfnamefont{L.} (2015).
+\newblock {High-displacement flexible Shape Memory Alloy actuator for soft
+  wearable robots}.
+\newblock \emph{Robotics and Autonomous Systems}, \bblvol{}~73, \bblno{}
+  October 2017, \bblpp{} 91--101.
+\newblock ISSN 09218890.
+
+\bibitem[{\citenamefont{Whitesides}(2018)}]{Whitesides2018}
+\bibnamefont{Whitesides}, \bibfnamefont{G.M.} (2018).
+\newblock {Soft Robotics}.
+\newblock \emph{Angewandte Chemie - International Edition}, \bblvol{}~57,
+  \bblno{}~16, \bblpp{} 4258--4273.
+\newblock ISSN 15213773.
+
+\end{thebibliography}
