@@ -19,7 +19,7 @@ Shape Memory Alloys (SMA) are metallic alloys capable of being formed into a spe
 
 \hl{insert illustrative figure}
 
-Shape Memory Polymers (SMP) are similar to SMAs, consisting of smart polymers with the same shape memory properties, instead of metallic alloys. The initial is shape is determined during the manufacturing process. The transformed shape is obtained by cooling the SMP and shaping it as desired. SMPs use electricity or light as a heat source for transformation \cite{Behl2207}. They have a high deformation capacity and shape recovery. They are lighter, cheaper and easier to produce than SMAs. They are limited in size due to their low recovery stresses {Rodriguez2016}.
+Shape Memory Polymers (SMP) are similar to SMAs, consisting of smart polymers with the same shape memory properties, instead of metallic alloys. The initial is shape is determined during the manufacturing process. The transformed shape is obtained by cooling the SMP and shaping it as desired. SMPs use electricity or light as a heat source for transformation \cite{Behl2207}. They have a high deformation capacity and shape recovery. They are lighter, cheaper and easier to produce than SMAs. They are limited in size due to their low recovery stresses {Rodriguez2016, Behl2007}.
 
 Dieelectric/Electrically-Actuated Polymers (DEAP) consist of layers of polymers interspersed with conductive material. When the conductive material receives an electrical input, a chemical reaction occurs that causes a change in volume across the layers. This causes the layers to bend in a predetermined direction. DEAPs are lightweight, silent and use little energy. They are biocompatible and functional in water. They are well-suited to mimicking real muscles. Their reactions under high voltages are not fully understood yet and accurately modelling them is highly complicated. \cite{Mutlu2014}
 
@@ -51,25 +51,59 @@ FEAs can be built to curl while contracting and straighten out while expanding, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolved Virtual Bodies}
 
+A genotype is a programmed representation of a potential individual or problem solution. A phenotype is a set of characteristics of an individual resulting from the composite of its genotypes. \cite{Sims1994a}
+
 \subsection{Generative Design}
+
+\hl{define generative design}
+
+A generative encoding is a type of encoding that specifies the construction of a phenotype. It may scale well because of its inherent self-similar and hierarchical structure. \cite{Hornby2001b}
+
+Data base amplification is the generation of seemingly complex objects from very concise descriptions \cite{Prusinkiewicz2004}.
 
 \subsubsection{Evolutionary Algorithms}
 
 \hl{discuss evolutionary algorithms}
 
+Evolutionary algorithms, also known as genetic algorithms, 
+
 Evolutionary algorithms require a measure of the population's performance. Within the context of evolving simulated physical bodies, a realistic physically simulated goal is usually set. Examples include traversing the greatest distance within a set amount of time, jumping or climbing over an obstacle, or drawing another object closer to it. Fitness measures may also be implemented as survival criteria in testing, such as energy requirements, size, and complexity of the respective bodies. \cite{Sims1994a, Sims1994}
+
+Evolutionary algorithms typically use direct encodings of solutions. They may struggle to successfully design highly complex systems using direct encodings. \cite{Hornby2001b}
 
 \subsubsection{Lindenmayer Systems (L-systems)}
 
 \hl{discuss L-systems}
 
+L-systems were originally conceived as a mathematical theory of plant development. They did not originally include enough detail to completely model higher-level plants. They focused on plant topology and not geometry. \cite{Prusinkiewicz2004}
+
+The main component of L-systems is rewriting. Rewriting is used to define complex objects by successively replacing parts (letters) of an initial, simple object (word) according to a set of rules (grammar). Grammars are applied in parallel and simultaneously replace all letters in a given word. \cite{Prusinkiewicz2004}
+
+Growth functions describe the number of letters in a word in terms of its derivation length. Growth functions of DOL-systems are independent of the order of the letters in a word and its derived words. \cite{Prusinkiewicz2004}
+
+There are many variations of L-systems. Deterministic and context-free L-systems (DOL-systems) use edge rewriting to replace polygon edges with figures and node rewriting to operate on polygon vertices. Stochastic L-systems implement randomization to obtain variation in productions. A context-sensitive L-system's productions' expression may depend on its predecessors' context.  \cite{Prusinkiewicz2004}
+
+Partial L-systems use the notation of non-deterministic context-free L-systems (OL-systems) to define the different possible structures of a given type that can develop. They capture the main traits that characterise a structural type and provide a formal basis for their classification. \cite{Prusinkiewicz2004}
+
+Original L-systems are discrete in time and space. Model states are known only at specific time intervals and only a finite number exist. Parametric L-systems allow for infinite model states due to the assignments of continuous attributes to model components. Parametric L-systems are not limited by all values being reduced to integer multiples of a unit segment. \cite{Prusinkiewicz2004}
+
+Map L-systems allow for the formation of cycles in a production. Maps are finite sets of regions. Regions are surrounded by boundaries consisting of finite, circular sequences of edges meeting at vertices. Each edge has one or two vertices associated with it (only one if the edge forms a loop). Edges cannot cross without forming a vertex. There are no vertices not associated with an edge. Every edge is part of the boundary of a region. The set of all edges is connected. \cite{Prusinkiewicz2004}
+
+Some simulations of the branching patterns often achieved by L-systems consider the interactions among the growing features, structures and environment. This makes models more realistic and introduces some complexity. \cite{Prusinkiewicz2004}
+
+\hl{L-system schemata are control mechanisms that resolve non-determinism. The topology of individual productions and temporal aspects of their development are described at this level. Complete L-systems add the geometric aspects.} \cite{Prusinkiewicz2004}
+
 \subsubsection{Compositional Pattern Producing Networks (CPPN)}
 
-\hl{discuss CPPNs)
+\hl{discuss CPPNs}
 
 \subsubsection{Emergent Properties}
 
-Emergent properties are sometimes encountered with generative design. Emergent properties may be complex behaviours that are challenging to understand initially, that arise from the combination of the simple elements and rules used to construct the generative design algorithms. For example, virtually evolved bodies may end up being complexly constructed in such a way that the methods of completing their objectives are not initially obvious \cite{Damper2000}. These emergent properties are desirable, as one advantage of generative design processes is that they may arrive at original and unique designs that may be extremely difficult for a human to arrive at \cite{Sims1994a}.
+Emergent properties occur when not all components of a given property satisfy that property. An emergent property is not satisfied by the constituent components of a system, but is satisfied by the overall system. If the required condition for a specific property to exist can be determined, it is possible to construct a system satisfying that property from components that do not satisfy that property. If the target property of a system and the property of a component is known, it can be determined if the other component can have a property that will result in the system satisfying the target property. If that property exists, it can be found. \cite{Zakinthinos1998}
+
+Reactive systems consist of interconnected sub-components that are a part of structural links defining communication methods. These systems may exhibit emergent properties that are unpredictable even when complete knowledge of the systems is accessible. This implies the systems are complex in such a manner that they cannot be simplified to rules based on inferences from their properties. Knowledge of the rules of interactions between the sub-components is also necessary. \cite{Auiguier2008}
+
+Emergent properties are sometimes encountered with generative design. Emergent properties may be complex behaviours that are difficult to predict \cite{Aiguier2008} and challenging to understand initially, that arise from the combination of the simple elements and rules used to construct the generative design algorithms. For example, virtually evolved bodies may end up being complexly constructed in such a way that the methods of completing their objectives are not initially obvious \cite{Damper2000}. These emergent properties are desirable, as one advantage of generative design processes is that they may arrive at original and unique designs that may be extremely difficult for a human to arrive at \cite{Sims1994a}.
 
 \subsection{Previous Attempts}
 
