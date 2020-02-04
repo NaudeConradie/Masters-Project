@@ -7,7 +7,7 @@
 
 The field of soft robotics is relatively new and developmental. Soft robots inherently differ from traditional robots. They are constructed from compliant and pliable materials. Soft robots generally have fixed joints and locomotive actuators between joints, as opposed to traditional robots which usually have locomotive actuated joints connected by rigid sections. \cite{Whitesides2018}
 
-Soft robots offer many advantages over traditional robots. They provide a safer working environment around humans and with fragile materials, as they are much lighter, more pliable and move slower and with less force than traditional robots. They require lower tolerances for manufacture due to their inherent less precise nature. The fact that they are very lightweight relative to traditional robots may also offer many advantages. \cite{Whitesides2018}
+Soft robots offer many advantages over traditional robots. They provide a safer working environment around humans and with fragile materials, as they are much lighter, more pliable and move slower and with less force than traditional robots. They require lower tolerances for manufacture due to their inherent less precise nature. They are much more lightweight compared to traditional robots. \cite{Whitesides2018}
 
 \subsection{Actuators}
 
@@ -25,17 +25,23 @@ Dieelectric/Electrically-Actuated Polymers (DEAP) consist of layers of polymers 
 
 Electro-Magnetic Actuators (EMA) make use of magnetic microparticles within a polymer matrix. The particles are manipulated to cause motion by an external magnetic field from an electromagnet. This allows for a wide range of motion by varying the orientation and magnitude of the electromagnetic field. EMAs are small, require low voltages and are efficient. They have quick response times and high dynamic ranges. They are still an emerging technology in the early stages of development. \cite{Do2018}
 
-Fluid Elastomeric Actuators (FEA) use soft polymeric structures with internal geometry designed for specific types of motion when driven by fluid pressure. Fluid pressure may be obtained from pressurized containers or chemical reactions. They are simple to design, manufacture and control, and are lightweight and usually inexpensive. They are scalable to different sizes and resistant to many types of damage. \cite{Shepherd2011,Onal2017}.
+Fluid Elastomeric Actuators (FEA) use soft polymeric structures with internal geometry designed for specific types of motion when driven by fluid pressure. Fluid pressure may be obtained from pressurized containers or chemical reactions. They are simple to design, manufacture and control, and are lightweight and usually inexpensive. They are scalable to different sizes and resistant to many types of damage. \cite{Shepherd2011,Onal2017}
 
 \subsubsection{Actuator Shapes}
 
-\hl{linear extension and resulting motion and application}
+\hl{discuss linear extension and resulting motion and application}
 
-\hl{torsional extension and resulting motion and application}
+\hl{discuss torsional extension and resulting motion and application}
 
-FEAs can be built to curl while contracting and straighten out while expanding, similar to natural muscles. This has a range of applications, especially when multiple of these FEAs are used in conjunction with one another. One application is as a gripper, where a number of these FEAs are arranged similarly to a hand or tentacles all curling inward. Grippers are well-suited to picking up and manipulating soft and/or irregularly shaped objects.
+Multiple types of soft robotic actuators implement linear extension. This allows for an increase in reach and activation of levers or switches. Torsional extension is a variant of linear extension. Torsionally extending actuators twist as they extend, resulting in an angular difference between the ends of the actuator. \cite{Whitesides2018}
 
 \hl{insert diagrams}
+
+FEAs can be built to curl while contracting and straighten out while expanding, similar to natural muscles. This has a range of applications, especially when multiple of these FEAs are used in conjunction with one another. One application is as a gripper, where a number of these FEAs are arranged similarly to a hand or tentacles all curling inward. Grippers are well-suited to picking up and manipulating soft and/or irregularly shaped objects. \cite{Whitesides2018}
+
+\hl{insert diagrams}
+
+\hl{discuss bimodal operation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Soft Robot Modeling}
@@ -51,21 +57,19 @@ FEAs can be built to curl while contracting and straighten out while expanding, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolved Virtual Bodies}
 
-A genotype is a programmed representation of a potential individual or problem solution. A phenotype is a set of characteristics of an individual resulting from the composite of its genotypes. \cite{Sims1994a}
+Optimization of discretely represented mathematical model problems, such as virtual bodies, is an active area of research.
 
 \subsection{Generative Design}
 
 \hl{define generative design}
 
-A generative encoding is a type of encoding that specifies the construction of a phenotype. It may scale well because of its inherent self-similar and hierarchical structure. \cite{Hornby2001b}
+A generative encoding is a type of encoding that specifies the construction of a phenotype. A genotype is a programmed representation of a potential individual or problem solution. A phenotype is a set of characteristics of an individual resulting from the composite of its genotypes \cite{Sims1994a}. It may scale well because of its inherent self-similar and hierarchical structure. \cite{Hornby2001b}
 
 Data base amplification is the generation of seemingly complex objects from very concise descriptions \cite{Prusinkiewicz2004}.
 
 \subsubsection{Evolutionary Algorithms}
 
-\hl{discuss evolutionary algorithms}
-
-Evolutionary algorithms, also known as genetic algorithms, 
+Evolutionary algorithms, also known as genetic algorithms, are a robust approach to solving optimization problems. They derive their name from their similarity to the evolution of biological organisms. They typically start with a randomly generated population of solutions to a given problem. Each individual solution's suitability is checked. The more suitable solutions are used to generate a new population, by "breeding" existing members of the population, and introducing some random variations. The new population is checked again, and this process is repeated for some number of generations \cite{Groenwold1999,Stander1999}. Evolutionary algorithms are versatile. They can be applied to the optimization of functions and the evolution of complex behaviours and bodily morphologies. They have been specifically applied to the evolution of robotic bodies for many years \cite{Sims1994a,Sims1994}.
 
 Evolutionary algorithms require a measure of the population's performance. Within the context of evolving simulated physical bodies, a realistic physically simulated goal is usually set. Examples include traversing the greatest distance within a set amount of time, jumping or climbing over an obstacle, or drawing another object closer to it. Fitness measures may also be implemented as survival criteria in testing, such as energy requirements, size, and complexity of the respective bodies. \cite{Sims1994a, Sims1994}
 
@@ -75,7 +79,7 @@ Evolutionary algorithms typically use direct encodings of solutions. They may st
 
 \hl{discuss L-systems}
 
-L-systems were originally conceived as a mathematical theory of plant development. They did not originally include enough detail to completely model higher-level plants. They focused on plant topology and not geometry. \cite{Prusinkiewicz2004}
+L-systems were originally conceived as a mathematical theory of plant development. They are used in theoretical biology to describe and simulate natural growth processes. They did not originally include enough detail to completely model higher-level plants. They focused on plant topology and not geometry. \cite{Kolodziej2002,Prusinkiewicz2004}
 
 The main component of L-systems is rewriting. Rewriting is used to define complex objects by successively replacing parts (letters) of an initial, simple object (word) according to a set of rules (grammar). Grammars are applied in parallel and simultaneously replace all letters in a given word. \cite{Prusinkiewicz2004}
 
@@ -105,7 +109,7 @@ Reactive systems consist of interconnected sub-components that are a part of str
 
 Emergent properties are sometimes encountered with generative design. Emergent properties may be complex behaviours that are difficult to predict \cite{Aiguier2008} and challenging to understand initially, that arise from the combination of the simple elements and rules used to construct the generative design algorithms. For example, virtually evolved bodies may end up being complexly constructed in such a way that the methods of completing their objectives are not initially obvious \cite{Damper2000}. These emergent properties are desirable, as one advantage of generative design processes is that they may arrive at original and unique designs that may be extremely difficult for a human to arrive at \cite{Sims1994a}.
 
-\subsection{Previous Attempts}
+\subsection{Previous Work}
 
 \hl{discuss previous attempts}
 
