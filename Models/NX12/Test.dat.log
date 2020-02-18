@@ -1,0 +1,68 @@
+ /---------------------------------------------------------------------\
+|                                                                       |
+|   Log  of Translation of Nastran *bdf File Into Mentat *mfd/mud File  |
+|                                                                       |
+ \---------------------------------------------------------------------/
+
+
+
+ /---------------------------------------------------------------------\
+|                            Parsing                                    |
+ \---------------------------------------------------------------------/
+
+
+
+ /---------------------------------------------------------------------\
+|                            Parsing Summary                            |
+ \---------------------------------------------------------------------/
+
+           Total Number of Lines in Input File:              78
+           Total Number of Unrecognized Cards in Input File: 0
+           Total Number of Unsupported  Cards in Input File: 0
+
+
+
+ /---------------------------------------------------------------------\
+|                       NASTRAN Model Summary                           |
+|          use grep -c CARD_NAME to check Parsing Summary               |
+ \---------------------------------------------------------------------/
+
+|-----------------------------------------------------------------------|
+|                LOAD CASE SECTION PARSED COUNTS SUMMARY                |
+|-----------------------------------------------------------------------|
+
+                                 BEGIN :                     1
+
+|-----------------------------------------------------------------------|
+|                BULK DATA SECTION PARSED COUNTS SUMMARY                |
+|-----------------------------------------------------------------------|
+
+                              CQUAD4   :                     9
+                              ENDDATA  :                     1
+                              GRID     :                    20
+                              PSHELL   :                     1
+
+
+ /---------------------------------------------------------------------\
+|                            Translation                                |
+ \---------------------------------------------------------------------/
+
+Warning: PSHELL Property - Only Thickness supported 
+Error: Assignment of Material For Element: 1 Not Performed 
+Error: Assignment of Material For Element: 2 Not Performed 
+Error: Assignment of Material For Element: 3 Not Performed 
+Error: Assignment of Material For Element: 4 Not Performed 
+Error: Assignment of Material For Element: 5 Not Performed 
+Error: Assignment of Material For Element: 6 Not Performed 
+Error: Assignment of Material For Element: 7 Not Performed 
+Error: Assignment of Material For Element: 8 Not Performed 
+Error: Assignment of Material For Element: 9 Not Performed
+
+
+
+ /---------------------------------------------------------------------\
+|                                                                       |
+| For requesting an enhancement or reporting a bug, please contact      |
+| MSC Software support: http://support.mscsoftware.com/servicerequest   |
+|                                                                       |
+ \---------------------------------------------------------------------/
