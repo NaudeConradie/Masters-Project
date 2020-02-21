@@ -22,7 +22,7 @@ Dieelectric/Electrically-Actuated Polymers (DEAP) consist of layers of polymers 
 
 Electro-Magnetic Actuators (EMA) make use of magnetic microparticles within a polymer matrix. The particles are manipulated to cause motion by an external magnetic field from an electromagnet. This allows for a wide range of motion by varying the orientation and magnitude of the electromagnetic field. EMAs are small, require low voltages and are efficient. They have quick response times and high dynamic ranges. They are still an emerging technology in the early stages of development. \cite{Do2018}
 
-Fluid Elastomeric Actuators (FEA) use soft polymeric structures with internal geometry designed for specific types of motion when driven by fluid pressure. Fluid pressure may be obtained from pressurized containers or chemical reactions. They are simple to design, manufacture and control, and are lightweight and usually inexpensive. They are scalable to different sizes and resistant to many types of damage. \cite{Shepherd2011a,Onal2017}
+Fluid Elastomeric Actuators (FEA) use soft polymeric structures with internal geometry designed for specific types of motion when driven by fluid pressure. Fluid pressure may be obtained from pressurized containers or chemical reactions. They are simple to design, manufacture and control, and are lightweight and usually inexpensive. They are scalable to different sizes and resistant to many types of damage. \cite{Shepherd2011,Onal2017}
 
 \subsubsection{Actuator Shapes}
 
@@ -30,7 +30,7 @@ Multiple types of soft robotic actuators implement linear extension. This allows
 
 FEAs can be built to curl while contracting and straighten out while expanding, similar to natural muscles. This has a range of applications, especially when multiple of these FEAs are used in conjunction with one another. One application is as a gripper, where a number of these FEAs are arranged similarly to a hand or tentacles all curling inward. Grippers are well-suited to picking up and manipulating soft and/or irregularly shaped objects. \cite{Whitesides2018}
 
-Non-trivial actuators are manufacturable. A bimodal FEA was developed by Ellis in 2020. The actuator has a crimped paper strip acting as a strain limiter embedded within a stiff layer of Ecoflex 0030. The stiff layer is alongside multiple Mold-Star 15 cells. When pressurised by a linearly increasing single pressure source, the actuator  first curls inwards, then back outwards while extending linearly. \cite{Ellis2020a}
+Non-trivial actuators are manufacturable. A bimodal FEA was developed by Ellis in 2020. The actuator has a crimped paper strip acting as a strain limiter embedded within a stiff layer of Ecoflex 0030. The stiff layer is alongside multiple Mold-Star 15 cells. When pressurised by a linearly increasing single pressure source, the actuator  first curls inwards, then back outwards while extending linearly. \cite{Ellis2020}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Soft Robot Modeling}
@@ -41,20 +41,19 @@ To prevent having to physically construct every design of a soft body, a computa
 
 The Finite Element Method (FEM) is an approach to numerically solving field problems. Field problems require the determination of one or more dependent variables' distribution in space. Field problems are mathematically described with differential equations or integral expressions. Finite elements can be expressed as small parts of a larger body. A field quantity within an element may only have a simple spatial variation, such as being described by polynomial terms no higher than the second order. FEM differs from calculus as calculus uses infinitesimal elements. FEM thus delivers approximate solutions. \cite{Cook2002}
 
-Voxels are three dimensional (3D) pixels. Voxels are usually cubical. Realistic physical properties may be applied to voxels in specific software packages, such as the free VoxCAD software. Bodies may be constructed and undergo deformation when constructed from voxels in these software packages. It is relatively simple to construct bodies from voxels. \cite{Cheney2013a,Cheney2015}
+Voxels are three dimensional (3D) pixels. Voxels are usually cubical. Realistic physical properties may be applied to voxels in specific software packages, such as the free VoxCAD software. Bodies may be constructed and undergo deformation when constructed from voxels in these software packages. It is relatively simple to construct bodies from voxels. \cite{Cheney2013,Cheney2015}
 
 The Gaussian Mixtures representation uses a density field analogy to a level-set method. The density field is initialised as having zero density. Points of density with Gaussian falloff are added within the field. The points may have positive or negative weights. Positive weights contribute to the density, while negative weights subtract from it. If a single point was used, a solid sphere would be the thresholded result. 
 
 \subsection{Modeling Software}
 
-\hl{discuss software options}
-
 Several commercial software packages capable of realistically modeling soft bodies are available.
 
-LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LST. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \cite{LS-Dyna}.
+LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LST. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \cite{LSDyna}.
 
-Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \cite{Siemens}.
+Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \cite{NX12}.
 
+MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modeling and analysis. It has an extensive set of options available for post-processing \cite{MSC}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Evolved Virtual Bodies}
@@ -79,7 +78,7 @@ Evolutionary algorithms typically use direct encodings of solutions. They may st
 
 \subsubsection{Lindenmayer Systems (L-systems)}
 
-\hl{discuss L-systems}
+\hl{define L-systems}
 
 L-systems were originally conceived as a mathematical theory of plant development. They are used in theoretical biology to describe and simulate natural growth processes. They did not originally include enough detail to completely model higher-level plants. They focused on plant topology and not geometry. \cite{Kolodziej2002,Prusinkiewicz2004}
 
@@ -113,12 +112,10 @@ Emergent properties are sometimes encountered with generative design. Emergent p
 
 \subsection{Previous Work}
 
-\hl{discuss previous attempts}
-
 In 1994, Karl Sims introduced the concept of evolving three dimensional virtual bodies with the aid of evolutionary algorithms. Four simulations with different fitness evaluation functions were run. The four functions were swimming as far as possible within a limited time period, moving across a flat surface as far as possible within a limited time period, jumping as high as possible from a stationary position, and following a light source. The bodies were simply modelled. Nodes describe the rigid parts of the body, the joints between parts and their parent parts, and the set of connections they have to other nodes. Rigid parts have specific dimension. Joints have different types and limits of motion. Node connections describe a part's relationship to its parent. The bodies are described as a set of nodes. These bodies are evolved in three dimensions according to their performance against one of the simulation fitness functions using evolutionary algorithms for a number of generations. The best-performing models were inspected at the end \cite{Sims1994a}. Further tests were done where two bodies were evolved in the same environment. The bodies had to compete with each other to keep a cube as close to themselves and as far away from the other body as possible. This study investigated the effect of competition between organisms on evolution and optimisation \cite{Sims1994b}.
 
 In 2012, Rieffel et al applied evolutionary algorithms to soft bodies. They used NVidia's PhysX engine to model soft tetrahedral meshes. The physics engine allows for the manipulation of a material's stiffness and damping coefficient. Three properties of the bodies were used to control the evolution. The properties were the body shape, body motion, and material properties. Three different simulations were run. For each one, one of the three properties were fixed, while the other two were allowed to evolve. The mesh resolution was also manipulated. Higher resolutions allowed for smoother surfaces at the cost of computing power. The final bodies are 3D printable, but lack a simple actuation mechanism. \cite{Rieffel2013}
 
 Also in 2012, Hiller and Lipson modelled soft amorphous bodies using the Gaussian mixtures representation. Gaussian points are listed in a 3D workspace. Densities and falloff ranges are associated with the points. This results in smooth, free-form shapes. Material properties are stored in the points and distributed accordingly between points. The Gaussian mixtures representation is a computationally efficient method of storing and representing complex smooth shapes. Shapes were evolved using evolutionary algorithms. The Gaussian points' coordinates, densities, falloff ranges and material indices were used as parameters of interest during evolution.\cite{Hiller2012}
 
-In 2013, Cheney et al used voxels to model soft bodies in VoxCAD. VoxCAD is free voxel-modelling software. Soft bodies were evolved using CPPN-NEAT. CPPN morphologies were found to appear natural and produce interesting and varying results. Three materials were used for the construction of the soft bodies. The three materials differed in hardness, being compliant, partially compliant and stiff. Compliant and partially compliant voxels acted as the actuators. Soft bodies were tasked either with traversing along a linear path or squeezing through a tight space. Simulations were run multiple times with different penalty functions. Penalty functions included costs for actuated voxels, voxel connections and the total number of voxels. It was found that with differing penalty functions, different bodies evolved and performed better. Final bodies are 3D printable. They are actuated by placing them within a pressure chamber where the pressure is sinusoidally varied. This limits their practical application. \cite{Cheney2013a,Cheney2015}
+In 2013, Cheney et al used voxels to model soft bodies in VoxCAD. VoxCAD is free voxel-modelling software. Soft bodies were evolved using CPPN-NEAT. CPPN morphologies were found to appear natural and produce interesting and varying results. Three materials were used for the construction of the soft bodies. The three materials differed in hardness, being compliant, partially compliant and stiff. Compliant and partially compliant voxels acted as the actuators. Soft bodies were tasked either with traversing along a linear path or squeezing through a tight space. Simulations were run multiple times with different penalty functions. Penalty functions included costs for actuated voxels, voxel connections and the total number of voxels. It was found that with differing penalty functions, different bodies evolved and performed better. Final bodies are 3D printable. They are actuated by placing them within a pressure chamber where the pressure is sinusoidally varied. This limits their practical application. \cite{Cheney2013,Cheney2015}
