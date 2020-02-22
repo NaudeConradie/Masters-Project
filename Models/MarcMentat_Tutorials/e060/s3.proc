@@ -1,0 +1,349 @@
+*full_reset *new_model yes
+*prog_analysis_class structural
+*prog_use_current_job on
+*set_default_length_unit inch
+*set_model_length_unit inch
+|
+*set_save_formatted off *save_as_model "elasto1f.mud" yes
+*set_model_length_unit inch
+*set_grid on
+@popup(coord_system_pm,0)
+*grid_u_min -1.0
+*grid_u_max 1
+*grid_v_min 0
+*grid_v_max 1
+@popdown(coord_system_pm,0)
+*fill_view
+@popup(meshgen_pm,0)
+*add_curves
+point(1.0,0.0,0.0)
+point(-1.0,0.0,0.0)
+point(-1.0,1.0,0.0)
+point(1.0,1.0,0.0)
+*set_curve_type arc_cpp
+*add_curves
+-1.0 0.5 0.0
+-1.0 0.0 0.0
+-1.0 1.0 0.0
+-1.0 0.5 0.0
+-1.0 0.1 0.0
+-1.0 0.9 0.0
+*set_surface_type ruled
+*add_surfaces
+4
+3
+@popdown(meshgen_pm,0)
+@popup(plot_popmenu,0)
+@popup(plot_surfaces_popmenu,0)
+*surfaces_solid
+*regenerate
+@popdown(plot_surfaces_popmenu,0)
+@popdown(plot_popmenu,0)
+@popup(convert_pm,0)
+*set_convert_uvdiv u 30
+*set_convert_uvdiv v 3
+*convert_surfaces
+all_existing
+@popdown(convert_pm,0)
+@popup(sweep_pm,0)
+*sweep_all
+@popdown(sweep_pm,0)
+@popup(check_elements_pm,0)
+*check_upside_down
+*flip_elements
+all_selected
+*check_upside_down
+@popdown(check_elements_pm,0)
+@popup(renumber_pm,0)
+*renumber_all
+@popdown(renumber_pm,0)
+@popup(plot_popmenu,0)
+*set_nodes off
+*set_surfaces off
+@popup(plot_elements_popmenu,0)
+*elements_solid
+@popdown(plot_elements_popmenu,0)
+*regenerate
+@popdown(plot_popmenu,0)
+*fill_view
+@popup(plot_popmenu,0)
+*set_nodes on
+*regenerate
+@popdown(plot_popmenu,0)
+@main(boundary_conditions)
+*new_apply *apply_type fixed_displacement
+@popup(apply_properties_pm,0)
+*apply_name fix_X
+*apply_dof x *apply_dof_value x
+*add_apply_nodes
+1 31 32 62 63 93 94 124
+#
+@popdown(apply_properties_pm,0)
+@popup(arrow_popmenu,0)
+*arrows_solid
+*regenerate
+@popdown(arrow_popmenu,0)
+*identify_applys *regen
+*identify_none *regen
+@popup(plot_popmenu,0)
+*set_nodes off
+*regenerate
+@popdown(plot_popmenu,0)
+@main(tables_etc)
+*new_md_table 1 1
+@popup(table_pm,0)
+*table_name tension
+*set_md_table_type 1
+@popup(table_type_pm,0)
+experimental_data
+@popdown(table_type_pm,0)
+*table_add
+0
+0
+0.9
+100
+1.6
+250
+1.9
+300
+2.2
+500
+2.4
+600
+2.6
+700
+2.9
+1000
+*table_fit
+@popdown(table_pm,0)
+@popup(table_plot_settings_pm,0)
+*table_filled
+@popdown(table_plot_settings_pm,0)
+@main(material_properties)
+*new_mater standard *mater_option general:state:solid *mater_option general:skip_structural:off
+@popup(mat_pm,0)
+*mater_option structural:type:ogden
+@popup(experimental_fitting_pm,0)
+*set_xcurve_method_time_indep least_squares_ds
+*xcv_table uniaxial
+@popup(test_select_table_popmenu,0)
+@popdown(test_select_table_popmenu,0)
+tension
+@popup(rubber_fitting_pm,0)
+*xcv_model ogden
+@set($xcv_elastomer_pm,OGDEN CONTROL PARAMETERS)
+@popup(xcv_elastomer_properties_pm,0)
+*xcv_mode uniaxial on
+*xcv_positive on
+*xcv_checks yes
+*xcv_compute
+*xcv_apply_curr
+@popdown(xcv_elastomer_properties_pm,0)
+*xcurve_fill
+@popdown(rubber_fitting_pm,0)
+@popdown(experimental_fitting_pm,0)
+*add_mater_elements
+all_existing
+@popdown(mat_pm,0)
+@main(contact)
+*new_cbody mesh *contact_option state:solid *contact_option skip_structural:off
+@popup(cbody_properties_pm,0)
+||||||  @popup(cbody_obsolete_properties_pm,0)
+||||||  *contact_value friction 0.2
+||||||  @popdown(cbody_obsolete_properties_pm,0)
+*add_contact_body_elements
+all_existing
+@popdown(cbody_properties_pm,0)
+@main(tables_etc)
+@popup(table_plot_settings_pm,0)
+*table_unfilled
+@popdown(table_plot_settings_pm,0)
+*new_md_table 1 1
+@popup(table_pm,0)
+*table_name position
+*set_md_table_type 1
+@popup(table_type_pm,0)
+@popdown(table_type_pm,0)
+time
+*table_add
+0
+0
+0.5
+1
+1
+0
+@popup(table_plot_settings_pm,0)
+*table_filled
+@popdown(table_plot_settings_pm,0)
+*table_fit
+@popdown(table_pm,0)
+@main(contact)
+*new_cbody geometry *contact_option geometry_nodes:off
+@popup(cbody_properties_pm,0)
+*contact_body_name top
+*contact_option control:position
+@popup(cbody_control_pm,0)
+*contact_value py -0.4
+*cbody_param_table py
+@popup(contact_select_table_popmenu,0)
+position
+@popdown(contact_select_table_popmenu,0)
+@popdown(cbody_control_pm,0)
+*contact_option rigid_desc:discrete
+@popup(cbody_obsolete_properties_pm,0)
+*contact_value friction 0.2
+@popdown(cbody_obsolete_properties_pm,0)
+*add_contact_body_curves
+ 2
+#
+@popdown(cbody_properties_pm,0)
+*new_cbody geometry *contact_option geometry_nodes:off
+@popup(cbody_properties_pm,0)
+*contact_body_name bottom
+*contact_option control:position
+@popup(cbody_control_pm,0)
+*contact_value py 0.4
+*cbody_param_table py
+@popup(contact_select_table_popmenu,0)
+@popdown(contact_select_table_popmenu,0)
+position
+@popdown(cbody_control_pm,0)
+|||||||||||||||      *contact_option rigid_desc:discrete
+|||||||||||||||      @popup(cbody_obsolete_properties_pm,0)
+|||||||||||||||      *contact_value friction 0.2
+|||||||||||||||      @popdown(cbody_obsolete_properties_pm,0)
+*add_contact_body_curves
+ 1
+#
+@popdown(cbody_properties_pm,0)
+*identify_contact *regen
+@main(geometry_mesh)
+*set_grid off
+@main(contact)
+*identify_none *regen
+*new_interact mesh:mesh *interact_option state_1:solid *interact_option state_2:solid
+@popup(interact_properties_pm,0)
+*interact_name selfcontact
+@popup(interact_friction_pm,0)
+*interact_param friction 0.2
+@popdown(interact_friction_pm,0)
+@popdown(interact_properties_pm,0)
+*new_interact mesh:geometry *interact_option state_1:solid
+@popup(interact_properties_pm,0)
+*interact_name inter_mesh_geom
+@popup(interact_friction_pm,0)
+*interact_param friction 0.2
+@popdown(interact_friction_pm,0)
+@popdown(interact_properties_pm,0)
+*new_contact_table
+@popup(ctable_props_pm,0)
+*ctable_entry cbody1 cbody1
+@popup(ctable_entry_pm,0)
+*contact_table_option cbody1 cbody1 contact:on
+@popup(ctable_entry_interact_pm,0)
+*prog_string ctable:old_interact selfcontact *ctable_entry_interact cbody1 cbody1
+@popdown(ctable_entry_interact_pm,0)
+@popdown(ctable_entry_pm,0)
+*ctable_entry cbody1 top
+@popup(ctable_entry_pm,0)
+*contact_table_option cbody1 top contact:on
+@popup(ctable_entry_interact_pm,0)
+*prog_string ctable:old_interact inter_mesh_geom *ctable_entry_interact cbody1 top
+@popdown(ctable_entry_interact_pm,0)
+@popdown(ctable_entry_pm,0)
+*ctable_entry cbody1 bottom
+@popup(ctable_entry_pm,0)
+*contact_table_option cbody1 bottom contact:on
+@popup(ctable_entry_interact_pm,0)
+*prog_string ctable:old_interact inter_mesh_geom *ctable_entry_interact cbody1 bottom
+@popdown(ctable_entry_interact_pm,0)
+@popdown(ctable_entry_pm,0)
+@popdown(ctable_props_pm,0)
+@main(loadcases)
+*new_loadcase *loadcase_type struc:static
+@popup(lcase_properties_pm,0)
+@popup(mech_solution_control,0)
+*loadcase_value maxrec 30
+*loadcase_option nonpos:on
+*loadcase_option initstress:deviatoric
+@popdown(mech_solution_control,0)
+@popup(lcase_conv_test_pm,0)
+*loadcase_option converge:displacements
+@popdown(lcase_conv_test_pm,0)
+*loadcase_value time 0.5
+*loadcase_value nsteps 50
+@popdown(lcase_properties_pm,0)
+*edit_loadcase lcase1 *copy_loadcase
+@main(jobs)
+*prog_use_current_job on *new_job structural
+@popup(job_properties_pm,0)
+*add_job_loadcases lcase1
+*add_job_loadcases lcase2
+@popup(job_contact_pm,0)
+*job_option friction_model:coul_stick_slip
+@popup(job_init_contact_popmenu,0)
+*job_contact_table
+@popup(job_ctable_pm,0)
+ctable1
+@popdown(job_ctable_pm,0)
+@popdown(job_init_contact_popmenu,0)
+@popup(job_advanced_contact_popmenu,0)
+*job_param disttolbias 0.5
+@popdown(job_advanced_contact_popmenu,0)
+@popdown(job_contact_pm,0)
+@popup(job_results_pm,0)
+*add_post_var ecauchy
+@popdown(job_results_pm,0)
+@popup(element_types_pm,0)
+@popup(etp_planar_solid_structural_pm,0)
+*element_type 80
+all_existing
+@popdown(etp_planar_solid_structural_pm,0)
+@popdown(element_types_pm,0)
+*job_option dimen:pstrain
+*check_job
+*update_job
+@popup(job_run_popmenu,0)
+*save_model
+|@|*save_as_model ug.e060.s3.01.mfd  yes 
+|@@@|*save_as_model ug.e060.s3.01.mfd  yes 
+|@|*write_marc  ug.e060.s3.01.dat  yes 
+|@|*quit yes 
+|@@@|*prog_string export_marc:input_file_base_name ug.e060.s3.01
+*submit_job 1 *monitor_job
+@popdown(job_run_popmenu,0)
+@popdown(job_properties_pm,0)
+@main(results) *post_open_default
+@popup(modelplot_pm,0)
+@popdown(modelplot_pm,0)
+@popup(post_history_plot_pm,0)
+*history_collect 0 999999999 1
+@popup(history_nodes_vars_pm,0)
+*prog_option history_plot:data_carrier_type_x:cbody
+*set_history_data_carrier_cbody_x
+top 
+*set_history_cbody_variable_x
+Pos Y
+*prog_option history_plot:data_carrier_type_y:cbody
+*set_history_data_carrier_cbody_y
+top
+*set_history_cbody_variable_y
+Force Y
+*history_add_curve
+*history_fit
+@popdown(history_nodes_vars_pm,0)
+@popup(history_nodes_vars_pm,0)
+*set_history_cbody_variable_y
+Force X
+*history_add_curve
+*history_fit
+@popdown(history_nodes_vars_pm,0)
+*set_history_increment_id 10
+|@@@|*image_save_current ug.e060.s3.fig1.png yes
+*history_clear
+@popup(history_nodes_vars_pm,0)
+*history_add_curve
+*history_fit
+@popdown(history_nodes_vars_pm,0)
+|@@@|*image_save_current ug.e060.s3.fig2.png yes
+@popdown(post_history_plot_pm,0)

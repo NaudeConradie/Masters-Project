@@ -1,0 +1,126 @@
+*full_reset *new_model yes
+*prog_analysis_class structural
+*prog_use_current_job on
+*set_default_length_unit inch
+*set_model_length_unit inch
+|
+*set_save_formatted off *save_as_model "rubber_c.mud" yes
+@main(tables_etc)
+*md_table_read_raw "uniaxial.data"
+*edit_table table1
+*edit_table table1
+@popup(table_pm,0)
+*table_name uniaxial
+*set_md_table_type 1
+@popup(table_type_pm,0)
+experimental_data
+@popdown(table_type_pm,0)
+*set_md_table_label_v 1 Uniaxial
+*set_md_table_label_f 1 Uniaxial
+*table_fit
+*get_table_plots
+@popup(xy_plot_screen_pm,0)
+*xy_plot_fit
+@popdown(xy_plot_screen_pm,0)
+@popdown(table_pm,0)
+*md_table_read_raw "biaxial.data"
+*edit_table table2
+*edit_table table2
+@popup(table_pm,0)
+*table_name biaxial
+*set_md_table_type 1
+@popup(table_type_pm,0)
+@popdown(table_type_pm,0)
+experimental_data
+*set_md_table_label_v 1 Biaxial
+*set_md_table_label_f 1 Biaxial
+*table_fit
+*get_table_plots
+@popup(xy_plot_screen_pm,0)
+*xy_plot_fit
+@popdown(xy_plot_screen_pm,0)
+@popdown(table_pm,0)
+*md_table_read_raw "planar_shear.data"
+*edit_table table3
+*edit_table table3
+@popup(table_pm,0)
+*table_name planar_shear
+*set_md_table_type 1
+@popup(table_type_pm,0)
+@popdown(table_type_pm,0)
+experimental_data
+*set_md_table_label_v 1 Planar Shear
+*set_md_table_label_f 1 Planar Shear
+*table_fit
+*get_table_plots
+@popup(xy_plot_screen_pm,0)
+*xy_plot_fit
+*set_xy_plot_xname
+Strain
+*set_xy_plot_yname
+Stress
+*set_xy_plot_curve_name
+1
+uniaxial
+2
+biaxial
+3
+planar shear
+*set_xy_plot_point_id 10
+*xy_plot_fit
+@popdown(xy_plot_screen_pm,0)
+@popdown(table_pm,0)
+|@@@|*image_save_current ug.e060.rubber_c.fig1.png yes
+@main(material_properties)
+@popup(experimental_fitting_pm,0)
+*set_xcurve_method_time_indep least_squares_ds
+*xcv_table uniaxial
+@popup(test_select_table_popmenu,0)
+uniaxial
+@popdown(test_select_table_popmenu,0)
+*xcv_table biaxial
+@popup(test_select_table_popmenu,0)
+biaxial
+@popdown(test_select_table_popmenu,0)
+*xcv_table planar_shear
+@popup(test_select_table_popmenu,0)
+planar_shear
+@popdown(test_select_table_popmenu,0)
+@popup(rubber_fitting_pm,0)
+*xcv_model mooney2
+@set($xcv_elastomer_pm,MOONEY(2) CONTROL PARAMETERS)
+@popup(xcv_elastomer_properties_pm,0)
+*xcv_mode uniaxial on
+*xcv_compute
+@popdown(xcv_elastomer_properties_pm,0)
+*xcurve_fill
+|@@@|*image_save_current ug.e060.rubber_c.fig2.png yes
+*xcv_model mooney2
+@popup(xcv_elastomer_properties_pm,0)
+*xcv_all_modes on
+*xcv_compute
+@popdown(xcv_elastomer_properties_pm,0)
+*xcurve_fill
+|@@@|*image_save_current ug.e060.rubber_c.fig3.png yes
+*xcv_model arruda_boyce
+@set($xcv_elastomer_pm,ARRUDA-BOYCE CONTROL PARAMETERS)
+@popup(xcv_elastomer_properties_pm,0)
+*xcv_mode uniaxial on
+*xcv_compute
+@popdown(xcv_elastomer_properties_pm,0)
+*xcurve_fill
+|@@@|*image_save_current ug.e060.rubber_c.fig4.png yes
+*xcv_model arruda_boyce
+@popup(xcv_elastomer_properties_pm,0)
+*xcv_all_modes on
+*xcv_compute
+@popdown(xcv_elastomer_properties_pm,0)
+*xcurve_fill
+|@@@|*image_save_current ug.e060.rubber_c.fig5.png yes
+@popdown(rubber_fitting_pm,0)
+@popdown(experimental_fitting_pm,0)
+|@|*save_as_model ug.e060.rubber_c.01.mfd  yes 
+|@@@|*save_as_model ug.e060.rubber_c.01.mfd  yes 
+|@|*write_marc  ug.e060.rubber_c.01.dat  yes 
+|@@@|*write_marc  ug.e060.rubber_c.01.dat  yes 
+|@|*quit yes 

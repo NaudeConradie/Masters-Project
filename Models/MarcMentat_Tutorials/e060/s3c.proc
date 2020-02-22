@@ -1,0 +1,150 @@
+*full_reset *new_model yes
+*prog_analysis_class structural
+*prog_use_current_job on
+*set_default_length_unit inch
+*set_model_length_unit inch
+|
+*open_model "elasto1.mud"
+*set_save_formatted off *save_as_model "elasto1c.mud" yes
+*set_model_length_unit inch
+*fill_view
+@popup(meshgen_pm,0)
+*set_element_class line2
+*add_elements
+ 31
+ 1
+@popdown(meshgen_pm,0)
+|@@@|*image_save_current ug.e060.s3c.fig1.png yes
+@main(toolbox)
+*new_cavity *cavity_option dimension:2d
+@popup(cavity_pm,0)
+@popup(selection_control_pm,0)
+*select_method_path
+*select_edges
+ 31
+ 16
+ 1
+#
+@popdown(selection_control_pm,0)
+*add_cavity_edges
+all_selected
+*cavity_param ref_pressure 1
+*cavity_param ref_temperature 1
+*cavity_param ref_density 1.8e-5
+@popdown(cavity_pm,0)
+@main(boundary_conditions)
+*new_apply *apply_type cavity_mass_load
+@popup(apply_properties_pm,0)
+*apply_name cavity_load
+*apply_dof m *apply_dof_value m
+*apply_option cavity_method:closed
+@popup(select_add_cavity_applys_pm,0)
+*add_apply_cavities cavity1 #
+@popdown(select_add_cavity_applys_pm,0)
+@popdown(apply_properties_pm,0)
+|@@@|*image_save_current ug.e060.s3c.fig2.png yes
+@main(geometry_mesh)
+@popup(check_elements_pm,0)
+*flip_elements
+91
+#
+@popdown(check_elements_pm,0)
+*edit_loadcase lcase1
+@main(loadcases)
+@popup(lcase_properties_pm,0)
+*edit_loadcase lcase1
+@popup(select_loads2_popmenu,0)
+*add_loadcase_loads cavity_load
+@popdown(select_loads2_popmenu,0)
+@popdown(lcase_properties_pm,0)
+*edit_loadcase lcase2
+@popup(lcase_properties_pm,0)
+*edit_loadcase lcase2
+@popup(select_loads2_popmenu,0)
+*add_loadcase_loads cavity_load
+@popdown(select_loads2_popmenu,0)
+@popdown(lcase_properties_pm,0)
+*edit_job job1
+@main(jobs)
+@popup(job_properties_pm,0)
+*edit_job job1
+@popup(init_loads_popmenu,0)
+*add_job_applys cavity_load
+@popdown(init_loads_popmenu,0)
+@popup(job_param_mech_popmenu,0)
+@popup(job_cavities_pm,0)
+*job_param ambient_pressure 1
+@popdown(job_cavities_pm,0)
+@popdown(job_param_mech_popmenu,0)
+@popup(element_types_pm,0)
+@set($threed_anl_dim,false) @set($axisym_anl_dim,false) @set($planar_anl_dim,true)
+@popup(etp_planar_misc_structural_pm,0)
+*element_type 171
+ 91
+#
+@popdown(etp_planar_misc_structural_pm,0)
+@popdown(element_types_pm,0)
+*check_job
+*update_job
+@popup(job_run_popmenu,0)
+*save_model
+|@|*save_as_model ug.e060.s3c.01.mfd  yes 
+|@@@|*save_as_model ug.e060.s3c.01.mfd  yes 
+|@|*write_marc  ug.e060.s3c.01.dat  yes 
+|@|*quit yes 
+|@@@|*prog_string export_marc:input_file_base_name ug.e060.s3c.01
+*submit_job 1 *monitor_job
+@popdown(job_run_popmenu,0)
+@popdown(job_properties_pm,0)
+@main(results) *post_open_default
+@popup(modelplot_pm,0)
+@popdown(modelplot_pm,0)
+@popup(post_history_plot_pm,0)
+*history_collect 0 999999999 1
+@popup(history_nodes_vars_pm,0)
+*prog_option history_plot:data_carrier_type_x:cbody
+*set_history_data_carrier_cbody_x
+top
+*set_history_cbody_variable_x
+Pos Y
+*prog_option history_plot:data_carrier_type_y:cbody
+*set_history_data_carrier_cbody_y
+top
+*set_history_cbody_variable_y
+Force Y
+*history_add_curve
+*history_fit
+*prog_option history_plot:data_carrier_type_x:global
+*set_history_global_variable_x
+Volume Cavity 1
+*prog_option history_plot:data_carrier_type_y:global
+*set_history_global_variable_y
+Pressure Cavity 1
+*history_add_curve
+*history_fit
+@popdown(history_nodes_vars_pm,0)
+*set_history_increment_id 10
+|@@@|*image_save_current ug.e060.s3c.fig3.png yes
+@popdown(post_history_plot_pm,0)
+*current_graphics_window model:1
+@popup(modelplot_pm,0)
+*set_deformed on
+*post_skip_to
+50
+*fill_view
+@popup(deformed_settings_pm,0)
+@popup(post_legend_pm,0)
+*draw_legend off
+@popdown(post_legend_pm,0)
+*edges_outline *find_solid_outline *regen
+@popdown(deformed_settings_pm,0)
+@popdown(modelplot_pm,0)
+@popup(plot_popmenu,0)
+*set_nodes off
+@popup(plot_elements_popmenu,0)
+*set_faces off
+*regenerate
+@popdown(plot_elements_popmenu,0)
+@popdown(plot_popmenu,0)
+|@@@|*image_save_current ug.e060.s3c.fig4.png yes
+|@@@|*doc_image_resize summary ug.e060.s3c.fig4.png
