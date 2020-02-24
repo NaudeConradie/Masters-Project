@@ -1,5 +1,3 @@
-from py_mentat import *
+import py_mentat
 
-from py_post import *
-
-
+import py_post
