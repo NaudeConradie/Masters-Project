@@ -1,0 +1,158 @@
+\documentclass[12pt,oneside,openany,a4paper,%..... Layout
+               %afrikaans, 
+               english,%.............. Global language selection
+               ]{memoir}
+
+ \usepackage[masters-t,%.......................... Master thesis
+             goldenblock,%........................ A5 type block (or a5block or wide)
+            ]{usthesis}%.......................... US thesis style with memoir
+
+%
+% PLEASE read the USthesis documentation for the class options
+% and how to set line and paragraph spacing
+%
+
+%==== Language setup ================================================
+ \usepackage[latin1]{inputenc}%................... Recognizes ê, ë, etc
+ \usepackage{babel}%.............................. Language setup
+
+%==== Math setup ====================================================
+ \usepackage{amsmath}%............................ Advanced math (before fonts)
+ %\usepackage{amssymb}%............................ AMS Symbol fonts
+
+%==== Font setup (default is Computer Modern) =======================
+ \usepackage[T1]{fontenc}%........................ Type 1 fonts
+ %\usepackage{fourier}
+ \usepackage{textcomp}%........................... Additional text character
+ \usepackage{bm}%................................. Bold math symbols (after fonts)
+ \usepackage{soul}
+
+%==== Ref's, Bib's and Nomencl ======================================
+ \usepackage{usnomencl}%.......................... List of symbols (in usthesis pack)
+ \usepackage{usbib}%.............................. Bibliography    (in usthesis pack)
+    \bibliographystyle{usmeg-n}
+    \renewcommand\bibfont{\small}
+
+    %% For usmeg-a, the bib is a list of references. If you
+    %% are using usmeg-n comment out the following lines
+    %\addto{\captionsafrikaans}{\renewcommand{\bibname}{Lys van Verwysings}}
+    %\addto{\captionsenglish}{\renewcommand{\bibname}{List of References}}
+
+%==== Graphics and Color ============================================
+\usepackage{graphicx}%........................... Graphicx loaded in usthesis
+\usepackage{color}%.............................. Color setup
+\usepackage{eso-pic}%............................ Shipout commands for watermark
+    \newcommand*{\WaterMark}[2][0.15\paperwidth]{%
+        \AddToShipoutPicture*{\AtTextCenter{%
+                \parbox[c]{0pt}{\makebox[0pt][c]{%
+                    \includegraphics[width=#1]{#2}}}}}}
+
+%==== Local Defs ====================================================
+\makeatletter
+
+%
+% Please insert user defined commands here
+
+\usepackage{hyperref}
+\graphicspath{figs/}
+
+% and NOT in the document itself!
+%
+
+\makeatother
+
+%==== TITLE PAGE ====================================================
+\title{\bfseries
+       \AorE{%-- Afrikaans ------------------------------------------
+             Die Virtuele Evolusie van 2D Sagte Robotte\\[1ex]
+             \normalfont\small\itshape
+             (``The Virtual Evolution of 2D Soft Robots'')
+            }{%-- English -------------------------------------------
+             The Virtual Evolution of 2D Soft Robots
+            }}
+
+\author{N. T.\ Conradie}{Naud\'e Thomas Conradie}
+
+\degree{\AorE{MIng (Meg)}{MEng (Mech)}}
+       {\AorE{Magister in Ingenieurswese (Megatroniese)}
+             {Master of Engineering (Mechatronic)}}
+
+\address{\AorE{%-- Afrikaans ----------------------------------------
+        Departement Meganiese en Megatroniese Ingenieurswese,\\
+        Universiteit van Stellenbosch,\\
+        Privaatsak X1, Matieland 7602, Suid Afrika.%
+             }{%-- English ------------------------------------------
+        Department of Mechanical and Mechatronic Engineering,\\
+        University of Stellenbosch,\\
+        Private Bag X1, Matieland 7602, South Africa.
+             }}
+
+\faculty{\AorE{Fakulteit Ingenieurswese}%
+              {Faculty of Engineering}}
+
+\supervisor{Dr.\ M. P.\ Venter}
+%\cosupervisor{Mnr.\ J.\ Smith}
+
+\setdate{2}{2020}
+
+%\SetSponsor{The financial assistance of the National Research Foundation (NRF)
+%    towards this research is hereby acknowledged. Opinions expressed and
+%    conclusions arrived at, are those of the author and are not necessarily to
+%    be attributed to the NRF.}
+
+
+%====================================================================
+%     MAIN DOCUMENT
+%====================================================================
+\maxsecnumdepth{subsubsection}
+\maxtocdepth{section}
+
+\begin{document}
+
+%==== Front matter ==================================================
+ \frontmatter
+% \WaterMark{UScrest-WM}
+ \TitlePage
+
+ \DeclarationDate{2020/02/27}
+ \DeclarationPage
+
+ \include{frontmatter/Chap-Front}
+
+ \tableofcontents
+ \clearpage
+
+ \setcounter{lofdepth}{2}
+ \listoffigures
+ \clearpage
+
+ \listoftables
+ \clearpage
+
+% \include{frontmatter/Nomencl}
+
+%==== Main document =================================================
+\mainmatter
+   \setsecnumdepth{subsubsection}
+%   \numberwithin{equation}{section}
+%   \numberwithin{figure}{chapter}
+%   \numberwithin{table}{chapter}
+
+\include{contents/Chap-1}
+\include{contents/Chap-2}
+%\include{contents/Chap-3}
+
+%==== Appendices ====================================================
+\appendix
+\appendixpage\relax
+
+\include{contents/App-1}
+%\include{contents/App-2}
+%\include{contents/App-3}
+
+%==== Bibliography acro's & Index ===================================
+\backmatter
+
+\bibliography{backmatter/USbib-sample}
+%\listoftodos
+\end{document}
