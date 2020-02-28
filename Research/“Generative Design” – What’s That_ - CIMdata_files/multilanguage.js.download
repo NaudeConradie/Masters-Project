@@ -1,5 +1,0 @@
-jQuery(function() {
-	jQuery("#languageselect select").change(function() { 
-		window.location = "/?language=" + jQuery(this).val();
-	});
-});
