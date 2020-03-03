@@ -54,13 +54,19 @@ def make_elements(n, m):
 
 def main():
 
-    n = 5
-    m = 5
+    n = py_get_int("x_size")
+    m = py_get_int("y_size")
 
-    xs = -1
-    ys = -1
+    xs = py_get_float("x_start")
+    ys = py_get_float("y_start")
 
     make_nodes(n, m, xs, ys)
     make_elements(n, m)
 
-    return
+    if __name__ == '__main__':
+
+        py_connect("", 40007)
+
+        main()
+
+        py_disconnect()
