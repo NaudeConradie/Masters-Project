@@ -52,6 +52,8 @@ def make_elements(n, m):
 
     return
 
+#   Main function
+
 def main():
 
     n = py_get_int("x_size")
@@ -62,6 +64,8 @@ def main():
 
     make_nodes(n, m, xs, ys)
     make_elements(n, m)
+
+#   Make a socket connection to Mentat if this is run in a separate process
 
     if __name__ == '__main__':
 
