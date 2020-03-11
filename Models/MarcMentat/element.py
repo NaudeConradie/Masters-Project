@@ -68,6 +68,18 @@ def create_elements(n, m):
 
     return
 
+#   Add sinusoidal wave to a table
+
+def add_sin(table_name):
+
+    py_send("*new_md_table 1 1")
+    py_send("*table_name %s" % table_name)
+    py_send("*set_md_table_step_v 1 100")
+    py_send("*set_md_table_min_f 1 -1")
+    py_send("*set_md_table_step_f 1 100")
+    py_send("*set_md_table_method_formula")
+    py_send("*md_table_formula sin(2*pi*v1)")
+
 #   Add fixed boundary conditions to the left and bottom sides of the element
 
 def add_bc_fixed(x_bc, y_bc, x_n, y_n):
@@ -75,6 +87,7 @@ def add_bc_fixed(x_bc, y_bc, x_n, y_n):
     n_n = py_get_int("nnodes()")
 
     py_send("*apply_type fixed_displacement")
+    py_send("*apply_name fix_dis")
     py_send("*apply_dof x")
     py_send("*apply_dof y")
     py_send("*apply_dof z")
@@ -107,18 +120,14 @@ def add_bc_fixed(x_bc, y_bc, x_n, y_n):
 
 # Add the load to the right and top sides of the element
 
-def add_load(e_l):
+def add_load(table_name):
 
     py_send("*new_apply")
     py_send("*apply_type edge_load")
-    py_send("*apply_value p -1000")
-
-    py_send("*add_apply_curves ")
-    for i in range(0, len(e_l)):
-
-        py_send("%d " % e_l[i])
-
-    py_send(" # ")
+    py_send("*apply_name sin_load")
+    py_send("*apply_dof p")
+    py_send("*apply_dof_table p %s" % table_name)
+    py_send("*add_apply_edges 21:2 22:2 23:2 24:2 25:2 5:1 10:1 15:1 20:1 25:1 #")
 
     return
 
@@ -126,10 +135,14 @@ def add_load(e_l):
 
 def add_mat():
 
+    py_send("*new_mater standard")
+    py_send("*mater_option general:state:solid")
+    py_send("*mater_option general:skip_structural:off")
+    py_send("*mater_name rubber")
     py_send("*mater_option structural:type:mooney")
     py_send("*mater_option structural:mooney_model:five_term")
-    py_send("*mater_param structural:mooneyc10 20.3")
-    py_send("*mater_param structural:mooneyc01 5.8")
+    py_send("*mater_param structural:mooney_c10 20.3")
+    py_send("*mater_param structural:mooney_c01 5.8")
     py_send("*add_mater_elements all_existing")
 
     return
@@ -160,6 +173,10 @@ def add_job():
 
 def main():
 
+#   *change_directory "C:\Users\19673418\Documents\Masters-Project\Models\MarcMentat"
+
+    table_name = "sin_input"
+
     x_n = 6
     y_n = 6
 
@@ -172,16 +189,21 @@ def main():
 
     add_bc_fixed(0, 0, x_n, y_n)
 
-    e_l = [3, 4]
-    add_load(e_l)
+    add_sin(table_name)
+
+    add_load(table_name)
 
     add_mat()
 
     add_geom_prop()
 
-    add_job()
+#   add_job()
 
-    py_send("save_as_model element_basic.mud yes")
+    py_send("*identify_applys")
+    py_send("*redraw")
+    py_send("*fill_view")
+
+#    py_send("save_as_model element_basic.mud yes")
 
     return
 

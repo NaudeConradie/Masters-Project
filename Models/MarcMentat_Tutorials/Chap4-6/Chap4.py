@@ -128,7 +128,7 @@ def add_bc(xs, ys, width, height):
     py_send("*new_apply")
     py_send("*apply_type edge_load")
     py_send("*apply_value = p 1000")
-    py_send("add_apply vurves 3 #")
+    py_send("add_apply curves 3 #")
 
     return
 
