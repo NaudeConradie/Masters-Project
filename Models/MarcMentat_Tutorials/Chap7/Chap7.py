@@ -58,7 +58,7 @@ def main():
     for i in range(1, m + 1):
 
         sn = py_get_string("mater_name_index(%d)" % i)
-        st =
+    
 
     sn = py_get_string("mater_name()")
     print("   current material: ", sn)
