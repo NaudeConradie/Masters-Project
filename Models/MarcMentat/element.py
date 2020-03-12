@@ -31,6 +31,16 @@ def tol_check(v1, v2, tol):
 
 ###################################################################
 
+#   Reformat the viewing window for visibility
+
+def re_win():
+
+    py_send("*identify_applys")
+    py_send("*redraw")
+    py_send("*fill_view")
+
+###################################################################
+
 #   Create a 2D node grid on the XY-plane
 
 #   x0:  The initial x-coordinate
@@ -94,6 +104,7 @@ def add_sin(table_name):
 
     py_send("*new_md_table 1 1")
     py_send("*table_name %s" % table_name)
+    py_send("*set_md_table_type 1 \"time\"")
     py_send("*set_md_table_step_v 1 100")
     py_send("*set_md_table_min_f 1 -1")
     py_send("*set_md_table_step_f 1 100")
@@ -161,6 +172,7 @@ def add_load(table_name):
     py_send("*apply_type edge_load")
     py_send("*apply_name sin_load")
     py_send("*apply_dof p")
+    py_send("*apply_dof_value p 20")
     py_send("*apply_dof_table p %s" % table_name)
     py_send("*add_apply_edges 21:2 22:2 23:2 24:2 25:2 5:1 10:1 15:1 20:1 25:1 #")
 
@@ -203,7 +215,7 @@ def add_lcase():
 
     py_send("*new_loadcase")
     py_send("*loadcase_type struc:static")
-    py_send("*loadcase_value nsteps 100")
+    py_send("*loadcase_value nsteps 20")
 
     return
 
@@ -211,14 +223,51 @@ def add_lcase():
 
 #   Add a job
 
-def add_job():
+def add_job(rem):
 
-    py_send("*loadcase_type static")
+    py_send("*prog_use_current_job on")
     py_send("*new_job structural")
-    py_send("*job_option dimen:pstrain")
-    py_send("*add_post_tensor stress")
+    py_send("*job_name job_%d" % rem)
+    py_send("*add_job_loadcases lcase1")
+    py_send("*job_option strain:large")
+    py_send("*job_option follow:on")
     py_send("*add_post_var von_mises")
-    py_send("*element_type 6 all_existing")
+    py_send("*add_post_var te_energy")
+
+    return
+
+###################################################################
+
+#   Run a job
+
+def run_job():
+
+    py_send("*update_job")
+    py_send("*submit_job 1") 
+    py_send("*monitor_job")
+
+    return
+
+###################################################################
+
+#   Open the results file and obtain data
+
+def result(rem):
+
+    py_send("*post_open_default")
+    py_send("*post_contour_bands")
+
+    py_send("*post_value Equivalent Von Mises Stress")
+    py_send("*animation_name element_%d_evms" % rem)
+    py_send("*gif_animation_make")
+
+    py_send("*post_value Total Strain Energy Density")
+    py_send("*animation_name element_%d_tsed" % rem)
+    py_send("*gif_animation_make")
+
+    py_send("*post_value Displacement")
+    py_send("*animation_name element_%d_disp" % rem)
+    py_send("*gif_animation_make")
 
     return
 
@@ -233,6 +282,17 @@ def rem_el(intern_el):
     py_send("*remove_elements %d #" % rem)
 
     return rem
+
+###################################################################
+
+#   Save the basic model
+
+def save_bas_model():
+
+    py_send("*set_save_formatted off")
+    py_send("*save_as_model element_basic.mud yes")
+
+    return
 
 ###################################################################
 
@@ -253,6 +313,8 @@ def main():
 
 #   *change_directory "C:\Users\19673418\Documents\Masters-Project\Models\MarcMentat"
 
+    py_send("*new_model yes")
+
     #   Initialisations
     table_name = "sin_input"
     x_n = 6
@@ -266,9 +328,9 @@ def main():
 
     create_elements(x_n, y_n)
 
-    add_bc_fixed(x0, y0, x_n, y_n)
-
     add_sin(table_name)
+
+    add_bc_fixed(x0, y0, x_n, y_n)
 
     add_load(table_name)
 
@@ -278,29 +340,37 @@ def main():
 
     add_lcase()
 
-    py_send("*set_save_formatted off")
-    py_send("*save_as_model element_basic.mud yes")
+    save_bas_model()
 
     #   Element removal
 
-    for i in range(1, len(intern_el) + 1):
+    # for i in range(1, len(intern_el) + 1):
 
-        py_send("*open_model element_basic.mud")
+    #     py_send("*open_model element_basic.mud")
         
-        rem = rem_el(intern_el)
+    #     rem = rem_el(intern_el)
 
-        save_rem_model(rem)
+    #     re_win()
 
-        intern_el.remove(rem)
+    #     save_rem_model(rem)
 
-#   add_job()
+    #     add_job(rem)
 
-    #   Reformat for visibility
-    py_send("*identify_applys")
-    py_send("*redraw")
-    py_send("*fill_view")
+    #     run_job()
 
-#   py_send("save_as_model element_basic.mud yes")
+    #     intern_el.remove(rem)
+
+    rem = rem_el(intern_el)
+
+    re_win()
+
+    save_rem_model(rem)
+
+    add_job(rem)
+
+    run_job()
+
+    result(rem)
 
     return
 
