@@ -10,7 +10,7 @@ import random
 ###################################################################
 
 #   Tolerance checking function
-#   Returns 1 if the values are within the specified tolerance
+#   Returns a 1 if the values are within the specified tolerance
 
 #   v1:  The first value to be compared
 #   v2:  The second value to be compared
@@ -109,6 +109,8 @@ def add_sin(table_name):
     py_send("*set_md_table_min_f 1 -1")
     py_send("*set_md_table_step_f 1 100")
     py_send("*set_md_table_method_formula")
+
+    #   The sinusoidal function is defined to go through one full wavelength within 1 second
     py_send("*md_table_formula sin(2*pi*v1)")
 
     return
@@ -171,9 +173,13 @@ def add_load(table_name):
     py_send("*new_apply")
     py_send("*apply_type edge_load")
     py_send("*apply_name sin_load")
+
+    #   Apply a pressure with an amplitude of 20 and the sinusoidal wave
     py_send("*apply_dof p")
     py_send("*apply_dof_value p 20")
     py_send("*apply_dof_table p %s" % table_name)
+
+    #   Hardcoded list of correct edges
     py_send("*add_apply_edges 21:2 22:2 23:2 24:2 25:2 5:1 10:1 15:1 20:1 25:1 #")
 
     return
@@ -191,7 +197,7 @@ def add_geom_prop():
 
 ###################################################################
 
-#   Add a Mooney-Rivlin material
+#   Add an example Mooney-Rivlin material
 
 def add_mat():
 
@@ -250,13 +256,14 @@ def run_job():
 
 ###################################################################
 
-#   Open the results file and obtain data
+#   Open the results file and create gifs of the selected results
 
-def result(rem):
+def res_gif(rem):
 
     py_send("*post_open_default")
-    py_send("*post_contour_bands")
 
+    py_send("*post_contour_bands")
+    
     py_send("*post_value Equivalent Von Mises Stress")
     py_send("*animation_name element_%d_evms" % rem)
     py_send("*gif_animation_make")
@@ -273,8 +280,25 @@ def result(rem):
 
 ###################################################################
 
-#   Remove a random element
+#   Obtain maximum values from results
 
+def res_max():
+
+    n_n = py_get_int("nnodes()")
+
+    label = []
+    label.append("Displacement x")
+    label.append("Displacement x")
+
+
+    return
+
+###################################################################
+
+#   Remove a random element
+#   Returns the element ID that was removed
+
+#   intern_el: The list of the internal elements in the grid
 def rem_el(intern_el):
 
     rem = random.choice(intern_el)
@@ -298,6 +322,7 @@ def save_bas_model():
 
 #   Save a model referenced by the removed element
 
+#   rem: The element ID of the removed element
 def save_rem_model(rem):
 
     py_send("*set_save_formatted off")
@@ -311,16 +336,21 @@ def save_rem_model(rem):
 
 def main():
 
-#   *change_directory "C:\Users\19673418\Documents\Masters-Project\Models\MarcMentat"
-
+    #   Clear the workspace
     py_send("*new_model yes")
 
     #   Initialisations
     table_name = "sin_input"
+
+    #   6 nodes for 5 elements
     x_n = 6
     y_n = 6
+
+    #   Start at the origin
     x0 = 0
     y0 = 0
+
+    #   Hardcoded list of internal elements
     intern_el = [7, 8, 9, 12, 13, 14, 17, 18, 19]
 
     #   Grid construction
@@ -370,7 +400,7 @@ def main():
 
     run_job()
 
-    result(rem)
+    res_gif(rem)
 
     return
 
