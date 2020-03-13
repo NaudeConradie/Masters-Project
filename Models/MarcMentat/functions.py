@@ -5,6 +5,7 @@
 from py_mentat import *
 from py_post import *
 
+import time
 import random
 
 ###################################################################
@@ -38,6 +39,7 @@ def re_win():
     py_send("*identify_applys")
     py_send("*redraw")
     py_send("*fill_view")
+    time.sleep(1)
 
 ###################################################################
 
@@ -267,16 +269,19 @@ def res_gif(rem):
     py_send("*post_value Equivalent Von Mises Stress")
     py_send("*animation_name element_%d_evms" % rem)
     py_send("*gif_animation_make")
+    time.sleep(5)
     py_send("*post_rewind")
 
     py_send("*post_value Total Strain Energy Density")
     py_send("*animation_name element_%d_tsed" % rem)
     py_send("*gif_animation_make")
+    time.sleep(5)
     py_send("*post_rewind")
 
     py_send("*post_value Displacement")
     py_send("*animation_name element_%d_disp" % rem)
     py_send("*gif_animation_make")
+    time.sleep(5)
     py_send("*post_rewind")
 
     return
@@ -285,45 +290,88 @@ def res_gif(rem):
 
 #   Obtain maximum values from results
 
-def res_max():
+def res_val():
 
     #   Initialisations
     max_label = []
-    max_scalars = []
-    max_nodes = []
+    max_label_cor = []
+    max_scalar = []
+    max_n = []
 
     min_label = []
-    min_scalars = []
-    min_nodes = []
+    min_label_cor = []
+    min_scalar = []
+    min_n = []
+
+    label = []
+    label.append("Displacement")
+    label.append("Equivalent Von Mises Stress")
+    label.append("Total Strain Energy Density")
 
     #   Obtain the total number of nodes
     n_n = py_get_int("nnodes()")
 
     #   Include the fields of interest
-    max_label.append("Max Disp x")
-    max_label.append("Max Disp y")
-    max_label.append("Max Disp Corner x")
-    max_label.append("Max Disp Corner y")
+    max_label.append("Max Disp")
     max_label.append("Max Stress")
-    max_label.append("Max Stress Corner")
     max_label.append("Max Strain")
-    max_label.append("Max Strain Corner")
     
-    min_label.append("Min Disp x")
-    min_label.append("Min Disp y")
-    min_label.append("Min Disp Corner x")
-    min_label.append("Min Disp Corner y")
+    max_label_cor.append("Max Disp Corner")
+    max_label_cor.append("Max Stress Corner")
+    max_label_cor.append("Max Strain Corner")
+    
+    min_label.append("Min Disp")
     min_label.append("Min Stress")
-    min_label.append("Min Stress Corner")
     min_label.append("Min Strain")
-    min_label.append("Min Strain Corner")
+    
+    min_label_cor.append("Min Disp Corner")
+    min_label_cor.append("Min Stress Corner")
+    min_label_cor.append("Min Strain Corner")
 
-    for i in range(0, len(max_label)):
+    for i in range(0, len(label)):
 
-        max_scalars.append(0.0)
-        max_nodes.append(0)
+        max_scalar.append(0.0)
+        max_n.append(0)
 
-        py_send("*post_value %s")
+        min_scalar.append(0.0)
+        min_n.append(0)
+
+        py_send("*post_value %s" % label[i])
+
+        for j in range(1, n_n):
+
+            n_id = py_get_int("node_id(%d)" % j)
+
+            flag = py_get_int("post_node_extra(%d)" % n_id)
+
+            if flag == 0:
+
+                f = py_get_float("scalar_1(%d)" % n_id)
+
+                if f > max_scalar[i]:
+
+                    max_scalar[i] = f
+                    max_n[i] = n_id
+
+                if f < min_scalar[i]:
+
+                    min_scalar[i] = f
+                    min_n[i] = n_id
+
+    #py_send("*draw_legend off")
+    py_send("*unpost_nodes all_existing")
+    py_send("*post_nodes")
+
+    print("Label    Node    Scalar")
+    print("-----------------------")
+
+    for i in range(0, len(label)):
+
+        print("%18s%10i%g" % (max_label[i], n_n.py_node_id[max_n[i]], max_scalar[i]))
+        py_send("max_n[i] ")
+
+    py_send("#")
+
 
     return
 
@@ -364,85 +412,3 @@ def save_rem_model(rem):
 
     return
 
-###################################################################
-
-#   Main function
-
-def main():
-
-    #   Clear the workspace
-    py_send("*new_model yes")
-
-    #   Initialisations
-    table_name = "sin_input"
-
-    #   6 nodes for 5 elements
-    x_n = 6
-    y_n = 6
-
-    #   Start at the origin
-    x0 = 0
-    y0 = 0
-
-    #   Hardcoded list of internal elements
-    intern_el = [7, 8, 9, 12, 13, 14, 17, 18, 19]
-
-    #   Grid construction
-    create_nodes(x0, y0, x_n, y_n)
-
-    create_elements(x_n, y_n)
-
-    add_sin(table_name)
-
-    add_bc_fixed(x0, y0, x_n, y_n)
-
-    add_load(table_name)
-
-    add_geom_prop()
-
-    add_mat()
-
-    add_lcase()
-
-    save_bas_model()
-
-    #   Element removal
-
-    # for i in range(1, len(intern_el) + 1):
-
-    #     py_send("*open_model element_basic.mud")
-        
-    #     rem = rem_el(intern_el)
-
-    #     re_win()
-
-    #     save_rem_model(rem)
-
-    #     add_job(rem)
-
-    #     run_job()
-
-    #     intern_el.remove(rem)
-
-    rem = rem_el(intern_el)
-
-    re_win()
-    re_win()
-
-    save_rem_model(rem)
-
-    add_job(rem)
-
-    run_job()
-
-    res_gif(rem)
-
-    return
-
-if __name__ == '__main__':
-
-    py_connect("", 40007)
-
-    main()
-
-    py_disconnect
