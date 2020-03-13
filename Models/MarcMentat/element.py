@@ -267,14 +267,17 @@ def res_gif(rem):
     py_send("*post_value Equivalent Von Mises Stress")
     py_send("*animation_name element_%d_evms" % rem)
     py_send("*gif_animation_make")
+    py_send("*post_rewind")
 
     py_send("*post_value Total Strain Energy Density")
     py_send("*animation_name element_%d_tsed" % rem)
     py_send("*gif_animation_make")
+    py_send("*post_rewind")
 
     py_send("*post_value Displacement")
     py_send("*animation_name element_%d_disp" % rem)
     py_send("*gif_animation_make")
+    py_send("*post_rewind")
 
     return
 
@@ -284,12 +287,43 @@ def res_gif(rem):
 
 def res_max():
 
+    #   Initialisations
+    max_label = []
+    max_scalars = []
+    max_nodes = []
+
+    min_label = []
+    min_scalars = []
+    min_nodes = []
+
+    #   Obtain the total number of nodes
     n_n = py_get_int("nnodes()")
 
-    label = []
-    label.append("Displacement x")
-    label.append("Displacement x")
+    #   Include the fields of interest
+    max_label.append("Max Disp x")
+    max_label.append("Max Disp y")
+    max_label.append("Max Disp Corner x")
+    max_label.append("Max Disp Corner y")
+    max_label.append("Max Stress")
+    max_label.append("Max Stress Corner")
+    max_label.append("Max Strain")
+    max_label.append("Max Strain Corner")
+    
+    min_label.append("Min Disp x")
+    min_label.append("Min Disp y")
+    min_label.append("Min Disp Corner x")
+    min_label.append("Min Disp Corner y")
+    min_label.append("Min Stress")
+    min_label.append("Min Stress Corner")
+    min_label.append("Min Strain")
+    min_label.append("Min Strain Corner")
 
+    for i in range(0, len(max_label)):
+
+        max_scalars.append(0.0)
+        max_nodes.append(0)
+
+        py_send("*post_value %s")
 
     return
 
@@ -392,6 +426,7 @@ def main():
 
     rem = rem_el(intern_el)
 
+    re_win()
     re_win()
 
     save_rem_model(rem)
