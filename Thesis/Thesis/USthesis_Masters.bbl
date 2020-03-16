@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{33}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -19,19 +19,24 @@
 \newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
 \providecommand{\eprint}[2][]{\url{#2}}
 
+\bibitem[{Mol()}]{MoldStar}
+{Mold Star 15, 16 and 30}.
+\newline\bblurlpre\url{http://www.smooth-on.com/tb/files/MOLD{\_}STAR{\_}15{\_}16{\_}30{\_}TB.pdf}
+
+\bibitem[{\citenamefont{Shea} \emph{\bbletal{}}(2005)\citenamefont{Shea},
+  \citenamefont{Aish} \protect\BIBand{} \citenamefont{Gourtovaia}}]{Shea2005}
+\bibnamefont{Shea}, \bibfnamefont{K.}, \bibnamefont{Aish}, \bibfnamefont{R.}
+  \protect\BIBand{} \bibnamefont{Gourtovaia}, \bibfnamefont{M.}: {Towards
+  integrated performance-driven generative design tools}.
+\newblock \emph{Automation in Construction}, \bblvol{}~14, \bblno{} 2 SPEC.
+  ISS., \bblpp{} 253--264, 2005.
+\newblock ISSN 09265805.
+
 \bibitem[{\citenamefont{Whitesides}(2018)}]{Whitesides2018}
 \bibnamefont{Whitesides}, \bibfnamefont{G.M.}: {Soft Robotics}.
 \newblock \emph{Angewandte Chemie - International Edition}, \bblvol{}~57,
   \bblno{}~16, \bblpp{} 4258--4273, 2018.
 \newblock ISSN 15213773.
-
-\bibitem[{\citenamefont{Sekhar} \protect\BIBand{}
-  \citenamefont{Uwizeye}(2012)}]{Sekhar2012}
-\bibnamefont{Sekhar}, \bibfnamefont{P.} \protect\BIBand{}
-  \bibnamefont{Uwizeye}, \bibfnamefont{V.}: {Review of sensor and actuator
-  mechanisms for bioMEMS}.
-\newblock \emph{MEMS for Biomedical Applications}, \bblpp{} 46--77, jan 2012.
-\newline\bblurlpre\url{https://www.sciencedirect.com/science/article/pii/B978085709129150002X}
 
 \bibitem[{\citenamefont{Boyraz} \emph{\bbletal{}}(2018)\citenamefont{Boyraz},
   \citenamefont{Runge} \protect\BIBand{} \citenamefont{Raatz}}]{Boyraz2018}
@@ -40,6 +45,24 @@
   Novel Actuators for Soft Robotics}.
 \newblock \emph{Actuators}, \bblvol{}~7, \bblno{}~3, \bblp{}~48, 2018.
 \newblock ISSN 2076-0825.
+
+\bibitem[{\citenamefont{Ellis}(2020)}]{Ellis2020}
+\bibnamefont{Ellis}, \bibfnamefont{D.R.}: \emph{{Generative Design Procedure
+  for Embedding Complex Behaviour in Pneumatic Soft Robots}}.
+\newblock \bblphdthesis{}, Stellenbosch University, 2020.
+
+\bibitem[{\citenamefont{Brose}(1993)}]{Brose1993}
+\bibnamefont{Brose}, \bibfnamefont{P.}: \emph{{Compositional Model-Based
+  Design: A Generative Approach To The Conceptual Design Of Physical Systems}}.
+\newblock \bblphdthesis{}, University Of Southern California, 1993.
+
+\bibitem[{\citenamefont{Sekhar} \protect\BIBand{}
+  \citenamefont{Uwizeye}(2012)}]{Sekhar2012}
+\bibnamefont{Sekhar}, \bibfnamefont{P.} \protect\BIBand{}
+  \bibnamefont{Uwizeye}, \bibfnamefont{V.}: {Review of sensor and actuator
+  mechanisms for bioMEMS}.
+\newblock \emph{MEMS for Biomedical Applications}, \bblpp{} 46--77, jan 2012.
+\newline\bblurlpre\url{https://www.sciencedirect.com/science/article/pii/B978085709129150002X}
 
 \bibitem[{\citenamefont{Villoslada}
   \emph{\bbletal{}}(2015)\citenamefont{Villoslada}, \citenamefont{Flores},
@@ -128,11 +151,6 @@
   525--540, 2017.
 \newblock ISSN 1610742X.
 
-\bibitem[{\citenamefont{Ellis}(2020)}]{Ellis2020}
-\bibnamefont{Ellis}, \bibfnamefont{D.R.}: \emph{{Generative Design Procedure
-  for Embedding Complex Behaviour in Pneumatic Soft Robots}}.
-\newblock \bblphdthesis{}, Stellenbosch University, 2020.
-
 \bibitem[{\citenamefont{Cook} \emph{\bbletal{}}(2002)\citenamefont{Cook},
   \citenamefont{Malkus}, \citenamefont{Plesha} \protect\BIBand{}
   \citenamefont{Witt}}]{Cook2002}
@@ -171,11 +189,6 @@
 \bibitem[{MSC(2003)}]{MSC}
 {MSC.Marc Mentat Datasheet}.
 \newblock 2003.
-
-\bibitem[{\citenamefont{Brose}(1993)}]{Brose1993}
-\bibnamefont{Brose}, \bibfnamefont{P.}: \emph{{Compositional Model-Based
-  Design: A Generative Approach To The Conceptual Design Of Physical Systems}}.
-\newblock \bblphdthesis{}, University Of Southern California, 1993.
 
 \bibitem[{\citenamefont{Sims}(1994{\natexlab{\emph{a}}})}]{Sims1994a}
 \bibnamefont{Sims}, \bibfnamefont{K.}: {Evolving virtual creatures}.
@@ -269,5 +282,15 @@
 \newblock \emph{IEEE Transactions on Robotics}, \bblvol{}~28, \bblno{}~2,
   \bblpp{} 457--466, 2012.
 \newblock ISSN 15523098.
+
+\bibitem[{ISO(2017{\natexlab{\emph{a}}})}]{ISO37}
+{ISO 37 - Rubber, vulcanized or thermoplastic - Determination of tensile
+  stress-strain properties}.
+\newblock 2017{\natexlab{\emph{a}}}.
+
+\bibitem[{ISO(2017{\natexlab{\emph{b}}})}]{ISO7743}
+{ISO 7743 - Rubber, vulcanized or thermoplastic - Determination of compression
+  stress-strain properties}.
+\newblock 2017{\natexlab{\emph{b}}}.
 
 \end{thebibliography}
