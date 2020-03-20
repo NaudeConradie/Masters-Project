@@ -292,6 +292,8 @@ def res_gif(rem):
 
 def res_val():
 
+    py_send("*post_open_default")
+
     #   Initialisations
     max_label = []
     max_label_cor = []
@@ -310,6 +312,7 @@ def res_val():
 
     #   Obtain the total number of nodes
     n_n = py_get_int("nnodes()")
+    print("Number Of Nodes: %i" % n_n)
 
     #   Include the fields of interest
     max_label.append("Max Disp")
@@ -330,48 +333,78 @@ def res_val():
 
     for i in range(0, len(label)):
 
-        max_scalar.append(0.0)
+        max_scalar.append(0)
         max_n.append(0)
 
-        min_scalar.append(0.0)
+        min_scalar.append(0)
         min_n.append(0)
+
+        py_send("*post_rewind")
 
         py_send("*post_value %s" % label[i])
 
-        for j in range(1, n_n):
+        for h in range(0, 20):
 
-            n_id = py_get_int("node_id(%d)" % j)
+            n_max = py_get_float("scalar_max_node()")
+            s_max = py_get_float("scalar_1(%d)" % n_max)
 
-            flag = py_get_int("post_node_extra(%d)" % n_id)
+            n_min = py_get_float("scalar_min_node()")
+            s_min = py_get_float("scalar_1(%d)" % n_min)
 
-            if flag == 0:
+            print("%f %f %f %f" % (n_max, s_max, n_min, s_min))
 
-                f = py_get_float("scalar_1(%d)" % n_id)
+            if s_max > max_scalar[i]:
 
-                if f > max_scalar[i]:
+                max_scalar[i] = s_max
+                max_n[i] = n_max
 
-                    max_scalar[i] = f
-                    max_n[i] = n_id
+            if s_min < min_scalar[i]:
 
-                if f < min_scalar[i]:
+                min_scalar[i] = s_min
+                min_n[i] = n_min
 
-                    min_scalar[i] = f
-                    min_n[i] = n_id
 
-    py_send("*draw_legend off")
+
+            # for j in range(1, n_n):
+
+                # n_id = py_get_int("node_id(%d)" % j)
+                
+                # flag = py_get_int("post_node_extra(%d)" % n_id)
+
+                
+
+
+
+                # if flag == 0:
+
+                #     f = py_get_float("scalar_1(%d)" % n_id)
+                #     print("%i %i" % (n_id, f))
+
+                #     if f > max_scalar[i]:
+
+                #         max_scalar[i] = f
+                #         max_n[i] = n_id
+
+                #     if f < min_scalar[i]:
+
+                #         min_scalar[i] = f
+                #         min_n[i] = n_id
+
+            py_send("*post_next")
+
+    # py_send("*draw_legend off")
     py_send("*unpost_nodes all_existing")
     py_send("*post_nodes")
 
-    print("Label    Node    Scalar")
-    print("-----------------------")
+    print("Label     |Node|Scalar")
+    print("----------------------")
 
     for i in range(0, len(label)):
 
-        print("%18s%g" % (max_label[i], max_scalar[i]))
-        py_send("max_n[i] ")
+        print("%-10s|%4i|%6g" % (max_label[i], max_n[i], max_scalar[i]))
+        py_send("%i" % max_n[i])
 
     py_send("#")
-
 
     return
 
