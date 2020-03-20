@@ -1,0 +1,20 @@
+$# LS-PrePost command file created by LS-PrePost(R) V4.6.7 - 09May2019 -64bit-Linux
+$# Created on Nov-15-2019 (11:08:30)
+openc d3plot "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_2_Tensile_Test/d3plot"
+ac
+state +1;
+anim forward
+anim stop; state 14;
+ascii elout open "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_2_Tensile_Test/elout" 0
+ascii elout plot 9 Sh-314 Ip-1
+xyplot 1 savefile curve_file "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_2_Tensile_Test/Stress_imp" 1 all
+ascii elout open "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_2_Tensile_Test/elout" 0
+ascii elout plot 7 Sh-314 Ip-1
+ascii elout plot 9 Sh-314 Ip-1
+open xydata "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_2_Tensile_Test/Stress"
+xyplot 1 importselect 1
+ascii elout plot 7 Sh-314 Ip-1
+xyplot 1 savefile curve_file "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_2_Tensile_Test/Strain_imp" 1 all
+cross Stress_imp~1 Strain_imp~1 1000
+open xydata "/home/naude/Documents/Masters-Project/Models/LSDyna_Basic_Tutorials/Ex_2_Tensile_Test/Explicit_curve"
+xyplot 1 importselect 3
