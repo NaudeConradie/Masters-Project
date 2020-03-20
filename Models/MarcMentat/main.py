@@ -85,10 +85,10 @@ def main():
 
     return
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-#     py_connect("146.232.128.10", 40007)
+    py_connect("", 40007)
 
-#     main()
-
-#     py_disconnect
+    main()
+    
+    py_disconnect

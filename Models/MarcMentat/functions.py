@@ -358,7 +358,7 @@ def res_val():
                     min_scalar[i] = f
                     min_n[i] = n_id
 
-    #py_send("*draw_legend off")
+    py_send("*draw_legend off")
     py_send("*unpost_nodes all_existing")
     py_send("*post_nodes")
 
@@ -367,7 +367,7 @@ def res_val():
 
     for i in range(0, len(label)):
 
-        print("%18s%10i%g" % (max_label[i], n_n.py_node_id[max_n[i]], max_scalar[i]))
+        print("%18s%g" % (max_label[i], max_scalar[i]))
         py_send("max_n[i] ")
 
     py_send("#")
