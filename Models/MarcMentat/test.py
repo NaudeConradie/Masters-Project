@@ -13,8 +13,10 @@ from functions import *
 
 def main():
 
+    n_steps = 20
+
     #   !   CHANGE EVERY TIME MAIN IS RERUN   !   #
-    res_val(19)
+    res_val(19, n_steps)
 
     return
 

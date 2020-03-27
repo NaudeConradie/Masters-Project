@@ -30,6 +30,12 @@ def main():
     #   Hardcoded list of internal elements
     intern_el = [7, 8, 9, 12, 13, 14, 17, 18, 19]
 
+    #   Number of increments in the second
+    n_steps = 20
+
+    #   Magnitude of the sinusoidal pressure load
+    p_mag = 25
+
     #   Grid construction
     create_nodes(x0, y0, x_n, y_n)
 
@@ -39,13 +45,13 @@ def main():
 
     add_bc_fixed(x0, y0, x_n, y_n)
 
-    add_load(table_name)
+    add_load(table_name, p_mag)
 
     add_geom_prop()
 
-    add_mat()
+    add_mat_mr()
 
-    add_lcase()
+    add_lcase(n_steps)
 
     save_bas_model()
 
@@ -69,7 +75,7 @@ def main():
 
     rem = rem_el(intern_el)
 
-    # re_win()
+    view_bc()
 
     save_rem_model(rem)
 
@@ -81,9 +87,7 @@ def main():
 
     #res_gif(rem)
 
-    #time.sleep(10)
-
-    res_val(rem)
+    res_val(rem, n_steps)
 
     return
 
