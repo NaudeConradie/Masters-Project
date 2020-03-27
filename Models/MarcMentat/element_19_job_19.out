@@ -43,7 +43,7 @@
 
              integer*8 version: integers are 64-bits
 
-             date: Fri Mar 20 17:21:58 2020
+             date: Fri Mar 27 15:18:39 2020
 
 
              (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
@@ -189,9 +189,9 @@
 
              memory usage per element group
                 group   # elements     nelsto      MByte            words
-                  1           24         974           0             23376
+                  1           24        1118           0             26832
                 ----------------------------------------------------------
-                total         24                       0             23376
+                total         24                       0             26832
 
 
                               internal element variables
@@ -389,10 +389,10 @@
 
              Marc 2017 style post file (default)
 
-             post variable     1 is post code   17 =                                                 
-             post variable     2 is post code   48 =                                                 
+             post variable     1 is post code  301 =                                                 
+             post variable     7 is post code  411 at layer      1 =                                                 
              maximum record length on binary post file=             36
-             approximate no. of words per increment on file=            208
+             approximate no. of words per increment on file=           1168
 
 
              parameters                                                                                                                                                      
@@ -441,9 +441,9 @@
              end option                                                                                                                                                      
              ----------
 
-             wall time =          24.00
+             wall time =          25.00
 
-             wall time =          24.00
+             wall time =          25.00
 
 
              direct symmetric multi-frontal sparse solver is invoked for region   1
@@ -521,13 +521,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       26744         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       26568         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        20.0
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              134    35067376
+               total:                              134    35070656
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -537,7 +537,7 @@
              e n d   o f   i n c r e m e n t       0
 
              binary post data at increment       0.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          25.00
 
 
              $...................                                                                                                                                            
@@ -678,7 +678,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -693,7 +693,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -701,7 +701,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          25.00
 
 
              maximum residual force  at node        29 degree of freedom  1 is equal to    2.013E-01
@@ -743,13 +743,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -759,7 +759,7 @@
              e n d   o f   i n c r e m e n t       1
 
              binary post data at increment       1.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -784,7 +784,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -799,7 +799,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -807,7 +807,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          25.00
 
 
              maximum residual force  at node        29 degree of freedom  1 is equal to    1.388E-01
@@ -849,13 +849,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -865,7 +865,7 @@
              e n d   o f   i n c r e m e n t       2
 
              binary post data at increment       2.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -890,7 +890,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -905,7 +905,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          25.00
 
 
 
@@ -913,7 +913,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          25.00
 
 
              maximum residual force  at node        29 degree of freedom  1 is equal to    8.307E-02
@@ -955,13 +955,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -971,7 +971,7 @@
              e n d   o f   i n c r e m e n t       3
 
              binary post data at increment       3.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -996,7 +996,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1011,7 +1011,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1019,7 +1019,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  2 is equal to    3.279E-02
@@ -1061,13 +1061,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1077,7 +1077,7 @@
              e n d   o f   i n c r e m e n t       4
 
              binary post data at increment       4.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1102,7 +1102,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1117,7 +1117,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1125,7 +1125,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  2 is equal to    3.598E-03
@@ -1167,13 +1167,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1183,7 +1183,7 @@
              e n d   o f   i n c r e m e n t       5
 
              binary post data at increment       5.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1208,7 +1208,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1223,7 +1223,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1231,7 +1231,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  1 is equal to    4.384E-03
@@ -1273,13 +1273,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1289,7 +1289,7 @@
              e n d   o f   i n c r e m e n t       6
 
              binary post data at increment       6.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1314,7 +1314,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1329,7 +1329,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1337,7 +1337,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  1 is equal to    3.469E-02
@@ -1379,13 +1379,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1395,7 +1395,7 @@
              e n d   o f   i n c r e m e n t       7
 
              binary post data at increment       7.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1420,7 +1420,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1435,7 +1435,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1443,7 +1443,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  2 is equal to    8.465E-02
@@ -1485,13 +1485,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1501,7 +1501,7 @@
              e n d   o f   i n c r e m e n t       8
 
              binary post data at increment       8.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1526,7 +1526,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1541,7 +1541,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1549,7 +1549,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  1 is equal to    1.403E-01
@@ -1591,13 +1591,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1607,7 +1607,7 @@
              e n d   o f   i n c r e m e n t       9
 
              binary post data at increment       9.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1632,7 +1632,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1647,7 +1647,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1655,7 +1655,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  2 is equal to    1.852E-01
@@ -1684,7 +1684,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1699,7 +1699,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1707,7 +1707,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        28 degree of freedom  1 is equal to    1.881E-04
@@ -1736,7 +1736,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1751,7 +1751,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1759,7 +1759,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  2 is equal to    3.040E-10
@@ -1788,7 +1788,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1803,7 +1803,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1811,7 +1811,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        15 degree of freedom  2 is equal to    1.514E-14
@@ -1857,13 +1857,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1873,7 +1873,7 @@
              e n d   o f   i n c r e m e n t      10
 
              binary post data at increment      10.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1898,7 +1898,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1913,7 +1913,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -1921,7 +1921,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        29 degree of freedom  2 is equal to    1.927E-01
@@ -1963,13 +1963,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -1979,7 +1979,7 @@
              e n d   o f   i n c r e m e n t      11
 
              binary post data at increment      11.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2004,7 +2004,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2019,7 +2019,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2027,7 +2027,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        23 degree of freedom  2 is equal to    1.882E-01
@@ -2069,13 +2069,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2085,7 +2085,7 @@
              e n d   o f   i n c r e m e n t      12
 
              binary post data at increment      12.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2110,7 +2110,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2125,7 +2125,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2133,7 +2133,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        28 degree of freedom  1 is equal to    1.325E-01
@@ -2175,13 +2175,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2191,7 +2191,7 @@
              e n d   o f   i n c r e m e n t      13
 
              binary post data at increment      13.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2216,7 +2216,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2231,7 +2231,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2239,7 +2239,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        28 degree of freedom  1 is equal to    5.990E-02
@@ -2281,13 +2281,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2297,7 +2297,7 @@
              e n d   o f   i n c r e m e n t      14
 
              binary post data at increment      14.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2322,7 +2322,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2337,7 +2337,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2345,7 +2345,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        23 degree of freedom  2 is equal to    8.096E-03
@@ -2387,13 +2387,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2403,7 +2403,7 @@
              e n d   o f   i n c r e m e n t      15
 
              binary post data at increment      15.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2428,7 +2428,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2443,7 +2443,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2451,7 +2451,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        23 degree of freedom  2 is equal to    6.251E-03
@@ -2493,13 +2493,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2509,7 +2509,7 @@
              e n d   o f   i n c r e m e n t      16
 
              binary post data at increment      16.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2534,7 +2534,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2549,7 +2549,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2557,7 +2557,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        28 degree of freedom  1 is equal to    5.674E-02
@@ -2599,13 +2599,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2615,7 +2615,7 @@
              e n d   o f   i n c r e m e n t      17
 
              binary post data at increment      17.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2640,7 +2640,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2655,7 +2655,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2663,7 +2663,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        28 degree of freedom  1 is equal to    1.320E-01
@@ -2705,13 +2705,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2721,7 +2721,7 @@
              e n d   o f   i n c r e m e n t      18
 
              binary post data at increment      18.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2746,7 +2746,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2761,7 +2761,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2769,7 +2769,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        28 degree of freedom  1 is equal to    1.911E-01
@@ -2811,13 +2811,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -2827,7 +2827,7 @@
              e n d   o f   i n c r e m e n t      19
 
              binary post data at increment      19.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2852,7 +2852,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2867,7 +2867,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2875,7 +2875,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        23 degree of freedom  2 is equal to    2.069E-01
@@ -2904,7 +2904,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2919,7 +2919,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2927,7 +2927,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        28 degree of freedom  1 is equal to    2.467E-04
@@ -2956,7 +2956,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2971,7 +2971,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -2979,7 +2979,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        23 degree of freedom  2 is equal to    5.398E-10
@@ -3008,7 +3008,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -3023,7 +3023,7 @@
 
 
              start of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
 
@@ -3031,7 +3031,7 @@
 
 
              end of matrix solution
-             wall time =          24.00
+             wall time =          26.00
 
 
              maximum residual force  at node        17 degree of freedom  1 is equal to    1.272E-14
@@ -3077,13 +3077,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -3093,7 +3093,7 @@
              e n d   o f   i n c r e m e n t      20
 
              binary post data at increment      20.  subincrement    0.  on file 16
-             wall time =          24.00
+             wall time =          26.00
 
 
              $....end of loadcase lcase1                                                                                                                                     
@@ -3120,13 +3120,13 @@
                kinematic boundary conditions:        0        1412         0.0
                tables:                               0         958         0.0
                points, curves and surfaces:          0         144         0.0
-               mem_none:                             0       28160         0.1
-               element storage:                      0       24648         0.1
+               mem_none:                             0       27984         0.1
+               element storage:                      0       28104         0.1
                material properties:                  0        4598         0.0
                executable and common blocks:        27     7000000        18.9
                miscellaneous                         0         212         0.0
                ---------------------------------------------------------------
-               total:                              142    37129350
+               total:                              142    37132630
 
                general memory allocated:           107    28003864
                general memory used:                  0       11394
@@ -3136,15 +3136,15 @@
 
              timing information:                             wall time      cpu time
 
-               total time for input:                              0.05          0.06
-               total time for stiffness matrix assembly:          0.03          0.00
+               total time for input:                              0.08          0.05
+               total time for stiffness matrix assembly:          0.03          0.03
                total time for mass matrix assembly:               0.00          0.00
-               total time for stress recovery:                    0.02          0.02
-               total time for matrix solution:                    0.35          0.25
-               total time for output:                             0.16          0.12
-               total time for miscellaneous:                     23.86          0.66
+               total time for stress recovery:                    0.02          0.06
+               total time for matrix solution:                    0.25          0.23
+               total time for output:                             0.21          0.12
+               total time for miscellaneous:                     25.40          0.67
                ---------------------------------------------------------------------
-               total time:                                       24.47          1.11
+               total time:                                       25.99          1.17
 
 
              **************************************************************************

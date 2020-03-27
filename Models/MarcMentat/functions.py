@@ -5,8 +5,10 @@
 from py_mentat import *
 from py_post import *
 
+import csv
 import time
 import random
+import os.path
 
 ###################################################################
 
@@ -36,6 +38,7 @@ def tol_check(v1, v2, tol):
 
 def re_win():
 
+    time.sleep(1)
     py_send("*identify_applys")
     py_send("*redraw")
     py_send("*fill_view")
@@ -239,8 +242,8 @@ def add_job(rem):
     py_send("*add_job_loadcases lcase1")
     py_send("*job_option strain:large")
     py_send("*job_option follow:on")
-    py_send("*add_post_var von_mises")
-    py_send("*add_post_var te_energy")
+    py_send("*add_post_tensor stress_g")
+    py_send("*add_post_tensor strain")
 
     return
 
@@ -255,6 +258,31 @@ def run_job():
     py_send("*monitor_job")
 
     return
+
+###################################################################
+
+#   Check if the updated .t16 output file exists
+
+def check_t16(rem):
+
+    file_mud = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + str(rem) + '.mud'
+    file_t16 = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + str(rem) + '_job_' + str(rem) + '.t16'
+
+    t_mud = os.path.getmtime(file_mud)
+
+    while 1:
+
+        exist_t16 = os.path.exists(file_t16)
+
+        if exist_t16:
+
+            t_t16 = os.path.getmtime(file_t16)
+
+            if t_t16 > t_mud:
+
+                break
+        
+        time.sleep(5)
 
 ###################################################################
 
@@ -288,123 +316,115 @@ def res_gif(rem):
 
 ###################################################################
 
-#   Obtain maximum values from results
+#   Obtain maximum and minimum values from results
 
-def res_val():
+def res_val(rem):
 
-    py_send("*post_open_default")
+    py_send("@main(results) @popup(modelplot_pm) *post_open element_%i_job_%i.t16" % (rem, rem))
 
     #   Initialisations
     max_label = []
-    max_label_cor = []
-    max_scalar = []
+    max_tensor = []
     max_n = []
+    max_i =[]
 
     min_label = []
-    min_label_cor = []
-    min_scalar = []
+    min_tensor = []
     min_n = []
+    min_i =[]
 
     label = []
-    label.append("Displacement")
-    label.append("Equivalent Von Mises Stress")
-    label.append("Total Strain Energy Density")
+    label.append("Displacement X")
+    label.append("Displacement Y")
+    label.append("Normal Global Stress Layer 1")
+    label.append("Shear Global Stress Layer 1")
+    label.append("Normal Total Strain")
+    label.append("Shear Total Strain")
 
     #   Obtain the total number of nodes
     n_n = py_get_int("nnodes()")
     print("Number Of Nodes: %i" % n_n)
 
-    #   Include the fields of interest
-    max_label.append("Max Disp")
-    max_label.append("Max Stress")
-    max_label.append("Max Strain")
-    
-    max_label_cor.append("Max Disp Corner")
-    max_label_cor.append("Max Stress Corner")
-    max_label_cor.append("Max Strain Corner")
-    
-    min_label.append("Min Disp")
-    min_label.append("Min Stress")
-    min_label.append("Min Strain")
-    
-    min_label_cor.append("Min Disp Corner")
-    min_label_cor.append("Min Stress Corner")
-    min_label_cor.append("Min Strain Corner")
-
     for i in range(0, len(label)):
 
-        max_scalar.append(0)
+        max_tensor.append(0)
         max_n.append(0)
+        max_i.append(0)
 
-        min_scalar.append(0)
+        min_tensor.append(0)
         min_n.append(0)
+        min_i.append(0)
 
         py_send("*post_rewind")
 
         py_send("*post_value %s" % label[i])
 
-        for h in range(0, 20):
+        print("%s" % label[i])
+
+        print("-----------------------------")
+        print("Time|Node|Max   |Node|Min")
+        print("-----------------------------")
+
+        for j in range(0, 21):
 
             n_max = py_get_float("scalar_max_node()")
-            s_max = py_get_float("scalar_1(%d)" % n_max)
+            t_max = py_get_float("scalar_1(%d)" % n_max)
 
             n_min = py_get_float("scalar_min_node()")
-            s_min = py_get_float("scalar_1(%d)" % n_min)
+            t_min = py_get_float("scalar_1(%d)" % n_min)
 
-            print("%f %f %f %f" % (n_max, s_max, n_min, s_min))
+            print("%4i|%4i|%6.3f|%4i|%7.3f" % (j, n_max, t_max, n_min, t_min))
 
-            if s_max > max_scalar[i]:
+            if t_max > max_tensor[i]:
 
-                max_scalar[i] = s_max
+                max_tensor[i] = t_max
                 max_n[i] = n_max
+                max_i[i] = j
 
-            if s_min < min_scalar[i]:
+            if t_min < min_tensor[i]:
 
-                min_scalar[i] = s_min
+                min_tensor[i] = t_min
                 min_n[i] = n_min
-
-
-
-            # for j in range(1, n_n):
-
-                # n_id = py_get_int("node_id(%d)" % j)
-                
-                # flag = py_get_int("post_node_extra(%d)" % n_id)
-
-                
-
-
-
-                # if flag == 0:
-
-                #     f = py_get_float("scalar_1(%d)" % n_id)
-                #     print("%i %i" % (n_id, f))
-
-                #     if f > max_scalar[i]:
-
-                #         max_scalar[i] = f
-                #         max_n[i] = n_id
-
-                #     if f < min_scalar[i]:
-
-                #         min_scalar[i] = f
-                #         min_n[i] = n_id
+                min_i[i] = j
 
             py_send("*post_next")
 
-    # py_send("*draw_legend off")
+        print("-----------------------------")
+
+    py_send("*post_rewind")
+
+    # max_s_np = numpy.asarray(max_scalar)
+    # numpy.savetxt("max_s.csv", max_s_np, delimiter=",")
+
+    max_csv = "max_t_" + str(rem) + ".csv"
+
+    with open(max_csv, 'w', newline='') as myfile:
+        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+        wr.writerow(max_tensor)
+
+    min_csv = "min_t_" + str(rem) + ".csv"
+
+    with open(min_csv, 'w', newline='') as myfile:
+        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+        wr.writerow(min_tensor)
+
     py_send("*unpost_nodes all_existing")
     py_send("*post_nodes")
 
-    print("Label     |Node|Scalar")
-    print("----------------------")
+    print("Label                       |Time|Node|Max   |Time|Node|Min")
+    print("---------------------------------------------------------------")
 
     for i in range(0, len(label)):
 
-        print("%-10s|%4i|%6g" % (max_label[i], max_n[i], max_scalar[i]))
+        print("%-28s|%4i|%4i|%6.3g|%4i|%4i|%7.3g" % (label[i], max_i[i], max_n[i], max_tensor[i], min_i[i], min_n[i], min_tensor[i]))
         py_send("%i" % max_n[i])
+        py_send("%i" % min_n[i])
+
+    print("---------------------------------------------------------------")
 
     py_send("#")
+
+    py_send("*post_numerics")
 
     return
 
@@ -444,4 +464,3 @@ def save_rem_model(rem):
     py_send("*save_as_model element_%d.mud yes" % rem)
 
     return
-

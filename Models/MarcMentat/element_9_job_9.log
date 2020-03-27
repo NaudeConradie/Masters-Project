@@ -25,8 +25,8 @@ Default bin directory: C:\Users\Naude Conradie\AppData\Roaming\MSC.Software\Marc
 Material database    : C:\Users\Naude Conradie\AppData\Roaming\MSC.Software\Marc\2019.0.0\marc2019\AF_flowmat\  
   
  
-2020-03-20 
-05:22 PM
+2020-03-27 
+02:46 PM
  
  Marc element_9_job_9 begins execution
 
@@ -41,31 +41,83 @@ Material database    : C:\Users\Naude Conradie\AppData\Roaming\MSC.Software\Marc
 
 
 
-     Date: Fri Mar 20 17:22:53 2020
+     Date: Fri Mar 27 14:46:34 2020
 
                               Marc execution begins
- Date:          Fri Mar 20 17:23:06 2020
+ Date:          Fri Mar 27 14:46:34 2020
  MSC Id:        00090faa0001 (ethernet) (Intel)
  Hostname:      DESKTOP-UFIB03G (user Naude Conradie, display DESKTOP-UFIB03G)
  License files: 1700@license2.stb.sun.ac.za
- CEID:          56B8415D-4C3E8C3B
+ CEID:          0faa0001-G89A8857
  User:          Naude Conradie
  Display:       DESKTOP-UFIB03G
  LAPI Version:  LAPI 10.4.6 (FLEXlm 11.13.1.3)
-Acquired 20 licenses for Group MSCONE (Marc) from license server on host license2.stb.sun.ac.za
+Unable to get configuration information (1) -96
+License server machine is down or not responding.
+ See the system administrator about starting the license server system, or
+ make sure you're referring to the right host (see LM_LICENSE_FILE).
+Feature:       MARC
+Hostname:      146.232.128.185
+License path:  1700@license2.stb.sun.ac.za;
+FlexNet Licensing error:-96,491
+For further information, refer to the FlexNet Licensing documentation,
+available at "www.flexerasoftware.com".
+Unable to locate a license entry for Marc (4101)
+The license server may be unavailable.
+Verify that your license server is at FLEXlm version 11.13.1.3 or above
+
+Security check failed!
+Could not get a license.
+Contact MSC.Software Support.
+             ***error: invalid license.
 
 
-             general memory initially set to =        25 MByte
 
-             maximum available memory set to =      8126 MByte
+             timing information:                             wall time      cpu time
 
-             general memory increasing from      25 MByte to     106 MByte
+               total time for input:                              0.00          0.00
+               total time for stiffness matrix assembly:          0.00          0.00
+               total time for mass matrix assembly:               0.00          0.00
+               total time for stress recovery:                    0.00          0.00
+               total time for matrix solution:                    0.00          0.00
+               total time for output:                             0.00          0.00
+               total time for miscellaneous:                      1.02          0.31
+               ---------------------------------------------------------------------
+               total time:                                        1.02          0.31
 
-   MSC Customer Entitlement ID
-        56B8415D-4C3E8C3B
 
-             wall time =          24.00
+             **************************************************************************
 
-             error -- can not delete or open file:C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_9_job_9.t16                                                                                                                                                                
-             Make sure the file is not protected or used.
-             Marc Exit Number 4001
+
+             
+             The MSC password security has determined that
+             you are not allowed to run on this machine; possible reasons
+             are:
+             
+             1) the choice of machine or current OS level is not
+                compliant with the passwords;
+             2) the file "license.dat" in the MSC
+                license directory contains wrong information;
+             3) the license directory has wrong access permissions.
+             4) all available licenses are in use - contact your local
+                MSC Software office to purchase additional licenses.
+             5) you are licensed to run AFEA and the interlock
+                security has been violated because the input file was
+                not created on the same machine or has been editted.
+             6) you are licensed to run an educational version and
+                the maximum node limit has been exceeded.
+             
+
+
+
+
+             **************************************************************************
+
+
+
+
+
+                                        Marc 2019
+
+                                        Exit number   67
+

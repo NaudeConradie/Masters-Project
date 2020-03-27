@@ -6,8 +6,6 @@ from py_mentat import *
 from py_post import *
 
 from functions import *
-import time
-import random
 
 ###################################################################
 
@@ -71,7 +69,7 @@ def main():
 
     rem = rem_el(intern_el)
 
-    re_win()
+    # re_win()
 
     save_rem_model(rem)
 
@@ -79,9 +77,13 @@ def main():
 
     run_job()
 
+    check_t16(rem)
+
     #res_gif(rem)
 
-    res_val()
+    #time.sleep(10)
+
+    res_val(rem)
 
     return
 
