@@ -57,6 +57,8 @@ def main():
 
     #   Element removal
 
+    #   Commented section loops through all possible single element deletions
+
     # for i in range(1, len(intern_el) + 1):
 
     #     py_send("*open_model element_basic.mud")
@@ -75,6 +77,12 @@ def main():
 
     rem = rem_el(intern_el)
 
+    (e_id, e_n_id) = obtain_e_n_ids()
+
+    e_net = create_e_net(e_id, e_n_id)
+
+    rem_el_free(e_id, e_net)
+
     view_bc()
 
     save_rem_model(rem)
@@ -89,6 +97,8 @@ def main():
 
     res_val(rem, n_steps)
 
+    
+
     return
 
 if __name__ == '__main__':
@@ -98,4 +108,3 @@ if __name__ == '__main__':
     main()
     
     py_disconnect
-

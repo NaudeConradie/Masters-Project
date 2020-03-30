@@ -41,6 +41,8 @@ def view_bc():
     py_send("*identify_applys")
     py_send("*redraw")
 
+    return
+
 ###################################################################
 
 #   Create a 2D node grid on the XY-plane
@@ -313,6 +315,8 @@ def check_t16(rem):
         #   Check the status only every 5 seconds so that the CPU is not constantly occupied
         time.sleep(5)
 
+    return
+
 ###################################################################
 
 #   Open the results file and create gifs of the selected results
@@ -438,18 +442,43 @@ def res_val(rem, n_steps):
     # max_s_np = numpy.asarray(max_scalar)
     # numpy.savetxt("max_s.csv", max_s_np, delimiter=",")
 
-    #   Write the results to a .csv file
+    #   Write the results to csv files
+    #   Rewrite as a function
     max_csv = "max_t_" + str(rem) + ".csv"
 
     with open(max_csv, 'w', newline='') as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         wr.writerow(max_tensor)
 
+    max_n_csv = "max_n_" + str(rem) + ".csv"
+
+    with open(max_n_csv, 'w', newline='') as myfile:
+        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+        wr.writerow(max_n)
+
+    max_i_csv = "max_i_" + str(rem) + ".csv"
+
+    with open(max_i_csv, 'w', newline='') as myfile:
+        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+        wr.writerow(max_i)
+
     min_csv = "min_t_" + str(rem) + ".csv"
 
     with open(min_csv, 'w', newline='') as myfile:
         wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         wr.writerow(min_tensor)
+
+    min_n_csv = "min_n_" + str(rem) + ".csv"
+
+    with open(min_n_csv, 'w', newline='') as myfile:
+        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+        wr.writerow(min_n)
+
+    min_i_csv = "min_i_" + str(rem) + ".csv"
+
+    with open(min_i_csv, 'w', newline='') as myfile:
+        wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
+        wr.writerow(min_i)
 
     #   Remove all nodes from the post file analysis
     py_send("*unpost_nodes all_existing")
@@ -488,6 +517,118 @@ def rem_el(intern_el):
     py_send("*remove_elements %d #" % rem)
 
     return rem
+
+###################################################################
+
+#   Obtain all element IDs and their respective node IDs
+#   Returns the element IDs and their respective node IDs
+
+def obtain_e_n_ids():
+
+    #   Initialisations
+    e_id = []
+    e_n_id = []
+
+    #   Obtain the nummber of elements
+    e_n = py_get_int("nelements()")
+
+    #   Print the output
+    print("Element ID|Nodes")
+    print("---------------------------")
+
+    #   Loop through all elements
+    for i in range(1, e_n + 1):
+
+        #   Store the element ID
+        e_id.append(py_get_int("element_id(%i)" % i))
+
+        e_n_id.append([])
+
+        #   Loop through all nodes in an element
+        for j in range(1, 5):
+
+            #   Store the node IDs
+            e_n_id[i - 1].append(py_get_int("element_node_id(%i,%i)" % (e_id[i - 1], j)))
+
+        print("%-10i|%s" % (e_id[i - 1], e_n_id[i - 1]))
+
+    print("---------------------------")
+
+    return (e_id, e_n_id)
+
+###################################################################
+
+#   Create an element network
+#   Returns the element network
+
+#   e_id:   The element IDs
+#   e_n_id: The element node IDs
+def create_e_net(e_id, e_n_id):
+
+    #   Initialisations
+    e_net = []
+
+    #   Obtain the nummber of elements
+    e_n = py_get_int("nelements()")
+
+    #   Print the output    
+    print("Element ID|Networked Elements")
+    print("-----------------------------")
+
+    #   Loop through all elements
+    for i in range(0, e_n):
+
+        e_net.append([])
+
+        #   Loop through all previous elements
+        for j in range(0, len(e_net) - 1):
+
+            #   Check if the element is already in another element's network
+            if e_id[i] in e_net[j]:
+
+                #   Add that element to the new network
+                e_net[i].append(e_id[j])
+
+        #   Loop through all subsequent elements
+        for j in range(i + 1, e_n):
+
+            #   Obtain all shared nodes between selected elements
+            n_share = [k for k in e_n_id[i] if k in e_n_id[j]]
+
+            #   Check if the elements share 2 nodes
+            if len(n_share) == 2:
+
+                #   Add that element to the new network
+                e_net[i].append(e_id[j])
+
+        print("%-10i|%s" % (e_id[i], e_net[i]))
+
+    return e_net
+
+###################################################################
+
+#   Remove any free elements
+
+#   e_id:   The element IDs
+#   e_net:  The network of elements
+def rem_el_free(e_id, e_net):
+
+    #   Obtain the nummber of elements
+    e_n = py_get_int("nelements()")
+
+    #   Loop through all elements
+    for i in range(0, e_n):
+
+        #   Check if an element is connected to no other elements
+        if len(e_net[i]) < 1:
+
+            #   Remove the element
+            py_send("*remove_elements %d #" % e_id[i])
+
+            #   Print which element was removed
+            print("Removed element %i" % e_id[i])
+    
+    return
 
 ###################################################################
 
