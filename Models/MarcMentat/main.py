@@ -21,6 +21,8 @@ def main():
     #   Number of nodes per axis (one more than number of elements desired)
     x_n = 6
     y_n = 6
+    x_e = x_n - 1
+    y_e = y_n - 1
 
     #   Coordinates of initial position
     x0 = 0
@@ -40,7 +42,7 @@ def main():
     create_elements(x_n, y_n)
 
     #   A grid of ones is created reflecting the grid of elements created
-    grid = [[1]*(x_n - 1) for i in range(y_n - 1)]
+    grid = [[1]*(x_e) for i in range(y_e)]
 
     #   Find the internal elements
     e_internal = find_e_internal(x_n)
