@@ -84,11 +84,8 @@ coordinates
         34 3.000000000000000+0 5.000000000000000+0 0.000000000000000+0
         35 4.000000000000000+0 5.000000000000000+0 0.000000000000000+0
         36 5.000000000000000+0 5.000000000000000+0 0.000000000000000+0
-define              node                set                 fix_dis_nodes
+define              node                set                 fix_y_nodes
            1           2           3           4           5           6           7          13          19          25          31
-define              edgemt              set                 sin_load_edges
-               5:1              10:1              15:1              20:1              21:2              22:2              23:2              24:2   c
-              25:1              25:2
 mooney              structural
 
          1         0         0         0rubber
@@ -98,10 +95,6 @@ mooney              structural
 mat color
 
          1         1       230         0         0
-table               sin_input
-         1         1         0         0         3
-         1         0         2         0         0         2         0         0         2         0         0         2
-sin(2*pi*v1)
 geometry
          0         0         2
          1         2         1       230         0         0
@@ -110,24 +103,15 @@ geom1
 
 fixed disp
 
-         1         0         0         0         1         0fix_dis
+         1         0         0         0         1         0fix_y
  0.000000000000000+0 0.000000000000000+0
          0         0
          1         2
          2
-fix_dis_nodes
-dist loads
-
-         1         0         0         0         0         0sin_load
- 2.500000000000000+1
-         1
-         0         1
-        13
-sin_load_edges
+fix_y_nodes
 loadcase            job_9
-         2
-fix_dis
-sin_load
+         1
+fix_y
 no print
 post
          2        16        17         0         0        19        20         0         1         0         0         0         0         0         0         0
@@ -145,9 +129,8 @@ $...................
 $....start of loadcase lcase1
 title               lcase1
 loadcase            lcase1
-         2
-fix_dis
-sin_load
+         1
+fix_y
 control             structural
      99999        10         0         0         0         1         0         0         1         0         1         0         0         0         0
  1.000000000000000-1 0.000000000000000+0 0.000000000000000+0 0.000000000000000+0 0.000000000000000+0 0.000000000000000+0-1.000000000000000+0 0.000000000000000+0
