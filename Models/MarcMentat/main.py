@@ -42,17 +42,17 @@ def main():
     create_elements(x_n, y_n)
 
     #   A grid of ones is created reflecting the grid of elements created
-    grid = [[1]*(x_e) for i in range(y_e)]
+    grid = create_grid(x_e, y_e)
 
     #   Find the internal elements
-    e_internal = find_e_internal(x_n)
+    e_internal = find_e_internal(x_e)
 
     #   Add the loads, boundary conditions, geometric properties and material
     add_bc_fixed("x", "x", x0)
     add_bc_fixed("y", "y", y0)
     add_sin(table_name)
-    add_load("x", p_mag, table_name, x_n, y_n, "x", -1, x_n - 1)
-    add_load("y", p_mag, table_name, x_n, y_n, "y", -1, y_n - 1)
+    add_load("x", p_mag, table_name, x_e, y_e, "x", -1, x_e)
+    add_load("y", p_mag, table_name, x_e, y_e, "y", -1, y_e)
     add_geom_prop()
     add_mat_mr()
     add_lcase(n_steps)
@@ -73,9 +73,10 @@ def main():
 
     #   Random element removal
     rem = rem_el(e_internal)
+    grid = rem_el_grid(grid, x_e, rem)
 
     #   Create the network of the current elements
-    (e_id, e_n_id) = obtain_e_n_ids()
+    (e_id, e_n_id) = find_e_n_ids()
     e_net = create_e_net(e_id, e_n_id)
 
     #   Remove any free elements

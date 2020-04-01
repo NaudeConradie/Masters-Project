@@ -84,11 +84,14 @@ coordinates
         34 3.000000000000000+0 5.000000000000000+0 0.000000000000000+0
         35 4.000000000000000+0 5.000000000000000+0 0.000000000000000+0
         36 5.000000000000000+0 5.000000000000000+0 0.000000000000000+0
-define              node                set                 fix_dis_nodes
-           1           2           3           4           5           6           7          13          19          25          31
-define              edgemt              set                 sin_load_edges
-               5:1              10:1              15:1              20:1              21:2              22:2              23:2              24:2   c
-              25:1              25:2
+define              node                set                 fix_x_nodes
+           1           7          13          19          25          31
+define              node                set                 fix_y_nodes
+           1          to           6
+define              edgemt              set                 load_x_edges
+               5:1              10:1              15:1              20:1              25:1
+define              edgemt              set                 load_y_edges
+              21:2                to              25:2
 mooney              structural
 
          1         0         0         0rubber
@@ -110,24 +113,38 @@ geom1
 
 fixed disp
 
-         1         0         0         0         1         0fix_dis
+         1         0         0         0         1         0fix_x
  0.000000000000000+0 0.000000000000000+0
          0         0
          1         2
          2
-fix_dis_nodes
+fix_x_nodes
+         1         0         0         0         1         0fix_y
+ 0.000000000000000+0 0.000000000000000+0
+         0         0
+         1         2
+         2
+fix_y_nodes
 dist loads
 
-         1         0         0         0         0         0sin_load
+         1         0         0         0         0         0load_x
  2.500000000000000+1
          1
          0         1
         13
-sin_load_edges
+load_x_edges
+         1         0         0         0         0         0load_y
+ 2.500000000000000+1
+         1
+         0         1
+        13
+load_y_edges
 loadcase            job_14
-         2
-fix_dis
-sin_load
+         4
+fix_x
+fix_y
+load_x
+load_y
 no print
 post
          2        16        17         0         0        19        20         0         1         0         0         0         0         0         0         0
@@ -145,9 +162,11 @@ $...................
 $....start of loadcase lcase1
 title               lcase1
 loadcase            lcase1
-         2
-fix_dis
-sin_load
+         4
+fix_x
+fix_y
+load_x
+load_y
 control             structural
      99999        10         0         0         0         1         0         0         1         0         1         0         0         0         0
  1.000000000000000-1 0.000000000000000+0 0.000000000000000+0 0.000000000000000+0 0.000000000000000+0 0.000000000000000+0-1.000000000000000+0 0.000000000000000+0

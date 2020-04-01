@@ -54,19 +54,19 @@ def create_nodes(x0, y0, x_n, y_n):
 
 #   Create an element grid on the node grid
 
-#   x: The number of nodes in the x-direction
-#   y: The number of nodes in the y-direction
-def create_elements(x, y):
+#   x_n: The number of nodes in the x-direction
+#   y_n: The number of nodes in the y-direction
+def create_elements(x_n, y_n):
 
     #   Incremental element additions
-    for i in range(1, y):
+    for i in range(1, y_n):
 
-        n1 = (i - 1)*x + 1
+        n1 = (i - 1)*x_n + 1
         n2 = n1 + 1
-        n3 = n2 + x
-        n4 = n1 + x
+        n3 = n2 + x_n
+        n4 = n1 + x_n
 
-        for j in range(1, x):
+        for j in range(1, x_n):
 
             py_send("*add_elements %d %d %d %d" % (n1, n2, n3, n4))
 
@@ -128,17 +128,65 @@ def create_e_net(e_id, e_n_id):
 
 ################################################################################
 
+#   Create a grid of ones representative of the model
+#   Returns the representative grid
+
+#   x_e: The number of elements in the x-direction
+#   y_e: The number of elements in the y-direction
+def create_grid(x_e, y_e):
+
+    grid = [[1]*(x_e) for i in range(y_e)]
+
+    return grid
+
+################################################################################
+
+#   Find all element IDs and their respective node IDs
+#   Returns the element IDs and their respective node IDs
+
+def find_e_n_ids():
+
+    #   Initialisations
+    e_id = []
+    e_n_id = []
+
+    #   Obtain the nummber of elements
+    e_n = py_get_int("nelements()")
+
+    #   Print the output
+    print("Element ID|Nodes")
+    print("---------------------------")
+
+    #   Loop through all elements
+    for i in range(1, e_n + 1):
+
+        #   Store the element ID
+        e_id.append(py_get_int("element_id(%i)" % i))
+
+        e_n_id.append([])
+
+        #   Loop through all nodes in an element
+        for j in range(1, 5):
+
+            #   Store the node IDs
+            e_n_id[i - 1].append(py_get_int("element_node_id(%i,%i)" % (e_id[i - 1], j)))
+
+        print("%-10i|%s" % (e_id[i - 1], e_n_id[i - 1]))
+
+    print("---------------------------")
+
+    return (e_id, e_n_id)
+
+################################################################################
+
 #   Find all internal elements
 #   Returns a list of internal elements
 
-#   x_n: The number of nodes in the x-direction
-def find_e_internal(x_n):
+#   x_e: The number of elements in the x-direction
+def find_e_internal(x_e):
 
     #   Initialisations
     e_internal = []
-
-    #   Define the number of elements in the x-direction
-    x_e = x_n - 1
 
     #   Obtain the nummber of elements
     e_n = py_get_int("nelements()")
@@ -154,6 +202,10 @@ def find_e_internal(x_n):
 
     return e_internal
  
+################################################################################
+
+#   Find all clusters of elements using the representative grid. 
+
 ################################################################################
 
 #   Add a sinusoidal wave to a table
@@ -225,14 +277,14 @@ def add_bc_fixed(label, axis, coord):
 #   label:      The label of the load
 #   p:          The magnitude of the applied pressure
 #   tab_name:   The name of the table defining the load function
-#   x_n:        The number of nodes in the x-direction
-#   y_n:        The number of nodes in the y-direction
+#   x_e:        The number of elements in the x-direction
+#   y_e:        The number of elements in the y-direction
 #   axis:       The axis of the load
 #               "x" or "y"
 #   direc:      The direction of the load with respect to the axis
 #               1 for positive and -1 for negative
 #   coord:      The axis coordinate of the load
-def add_load(label, p, tab_name, x_n, y_n, axis, direc, coord):
+def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
 
     py_send("*new_apply")
     py_send("*apply_type edge_load")
@@ -242,10 +294,6 @@ def add_load(label, p, tab_name, x_n, y_n, axis, direc, coord):
     py_send("*apply_dof p")
     py_send("*apply_dof_value p %i" % p)
     py_send("*apply_dof_table p %s" % tab_name)
-
-    #   Define the number of elements in each direction
-    x_e = x_n - 1
-    y_e = y_n - 1
 
     #   Find the correct edges according to the specified axes and directions
     if (axis == "x") and (direc == -1):
@@ -261,18 +309,14 @@ def add_load(label, p, tab_name, x_n, y_n, axis, direc, coord):
         s = 4
         edges = [i + x_e*(coord - 1) for i in range(1, x_e + 1)]
         
+    #   Apply the load to the correct edges
     py_send("*add_apply_edges")
 
     if axis == "x":
-
         for i in range(0, y_e):
-
             py_send("%i:%i " % (edges[i], s))
-
-    if axis == "y":
-
+    elif axis == "y":
         for i in range(0, x_e):
-
             py_send("%i:%i " % (edges[i], s))
 
     py_send("#")
@@ -352,7 +396,7 @@ def add_job(rem):
 
     py_send("*prog_use_current_job on")
     py_send("*new_job structural")
-    py_send("*job_name job_%d" % rem)
+    py_send("*job_name job_%i" % rem)
     py_send("*add_job_loadcases lcase1")
     py_send("*job_option strain:large")
     py_send("*job_option follow:on")
@@ -561,41 +605,15 @@ def rem_el_free(e_id, e_net):
 
 ################################################################################
 
-#   Obtain all element IDs and their respective node IDs
-#   Returns the element IDs and their respective node IDs
+#   Remove an element from the representative grid
+#   Returns the grid with a zero in the place of the removed element
 
-def obtain_e_n_ids():
+#   grid:   Representative grid of ones
+def rem_el_grid(grid, x_e, rem):
 
-    #   Initialisations
-    e_id = []
-    e_n_id = []
+    grid[x_e - (rem - 1)//x_e - 1][rem%x_e - 1] = 0
 
-    #   Obtain the nummber of elements
-    e_n = py_get_int("nelements()")
-
-    #   Print the output
-    print("Element ID|Nodes")
-    print("---------------------------")
-
-    #   Loop through all elements
-    for i in range(1, e_n + 1):
-
-        #   Store the element ID
-        e_id.append(py_get_int("element_id(%i)" % i))
-
-        e_n_id.append([])
-
-        #   Loop through all nodes in an element
-        for j in range(1, 5):
-
-            #   Store the node IDs
-            e_n_id[i - 1].append(py_get_int("element_node_id(%i,%i)" % (e_id[i - 1], j)))
-
-        print("%-10i|%s" % (e_id[i - 1], e_n_id[i - 1]))
-
-    print("---------------------------")
-
-    return (e_id, e_n_id)
+    return grid
 
 ################################################################################
 
