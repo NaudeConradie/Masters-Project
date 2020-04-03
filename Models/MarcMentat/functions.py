@@ -10,6 +10,9 @@ import time
 import random
 import os.path
 
+from pylab import *
+from scipy.ndimage import measurements
+
 ################################################################################
 
 #   Display all boundary conditions
@@ -204,7 +207,15 @@ def find_e_internal(x_e):
  
 ################################################################################
 
-#   Find all clusters of elements using the representative grid. 
+#   Find all clusters of elements using the representative grid.
+
+def find_cluster(grid):
+
+    lw, num = measurements.label(grid)
+
+    print(lw, num)
+
+    return
 
 ################################################################################
 
