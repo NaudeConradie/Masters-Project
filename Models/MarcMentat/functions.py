@@ -10,6 +10,7 @@ import time
 import random
 import os.path
 
+from pathlib import Path
 from pylab import *
 from scipy.ndimage import measurements
 
@@ -186,13 +187,13 @@ def find_e_n_ids():
 #   Returns a list of internal elements
 
 #   x_e: The number of elements in the x-direction
-def find_e_internal(x_e):
+def find_e_internal(x_e, y_e):
 
     #   Initialisations
     e_internal = []
 
     #   Obtain the nummber of elements
-    e_n = py_get_int("nelements()")
+    e_n = x_e * y_e
 
     #   Loop through all elements
     for i in range(1, e_n + 1):
@@ -201,21 +202,25 @@ def find_e_internal(x_e):
         if (i > x_e) and (i <= e_n - x_e) and (i % x_e != 0) and (i % x_e != 1):
 
             #   Add element to the list of internal elements
-            e_internal.append(py_get_int("element_id(%i)" % i))
+            e_internal.append(i)
 
     return e_internal
  
 ################################################################################
 
-#   Find all clusters of elements using the representative grid.
+#   Find all clusters of elements using the representative grid
+#   Returns a grid with clusters incrementally labelled
 
+#   grid:   Representative grid of ones
 def find_cluster(grid):
 
-    lw, num = measurements.label(grid)
+    grid_label, cluster = measurements.label(grid)
 
-    print(lw, num)
+    if cluster > 1:
 
-    return
+        print("Warning: Found %i free clusters!" % cluster)
+
+    return grid_label
 
 ################################################################################
 
@@ -403,11 +408,11 @@ def add_lcase(n_steps):
 #   Add a job
 
 #   rem:    The element ID of the removed element
-def add_job(rem):
+def add_job():
 
     py_send("*prog_use_current_job on")
     py_send("*new_job structural")
-    py_send("*job_name job_%i" % rem)
+    py_send("*job_name job")
     py_send("*add_job_loadcases lcase1")
     py_send("*job_option strain:large")
     py_send("*job_option follow:on")
@@ -435,9 +440,11 @@ def run_job():
 #   rem:    The element ID of the removed element
 def check_t16(rem):
 
+    rem_l = '_'.join(map(str, rem))
+
     #   File paths to the respective model and output file
-    file_mud = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + str(rem) + '.mud'
-    file_t16 = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + str(rem) + '_job_' + str(rem) + '.t16'
+    file_mud = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '.mud'
+    file_t16 = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '_job.t16'
 
     #   Obtain the timestamp of the last time the model file was modified
     t_mud = os.path.getmtime(file_mud)
@@ -491,7 +498,8 @@ def res_val(rem, n_steps):
     label.append("Shear Total Strain")
 
     #   Open the results file
-    py_send("@main(results) @popup(modelplot_pm) *post_open element_%i_job_%i.t16" % (rem, rem))
+    rem_l = '_'.join(map(str, rem))
+    py_send("@main(results) @popup(modelplot_pm) *post_open element_%s_job.t16" % rem_l)
 
     #   Obtain the total number of nodes
     n_n = py_get_int("nnodes()")
@@ -527,10 +535,10 @@ def res_val(rem, n_steps):
             
             #   Obtain the current maximum and minimum values
             max_n_c = py_get_float("scalar_max_node()")
-            max_v_c = py_get_float("scalar_1(%d)" % max_n_c)
+            max_v_c = py_get_float("scalar_1(%i)" % max_n_c)
 
             min_n_c = py_get_float("scalar_min_node()")
-            min_v_c = py_get_float("scalar_1(%d)" % min_n_c)
+            min_v_c = py_get_float("scalar_1(%i)" % min_n_c)
 
             print("%4.2f|%4i|%6.3f|%4i|%7.3f" % (j/n_steps, max_n_c, max_v_c, min_n_c, min_v_c))
 
@@ -556,12 +564,12 @@ def res_val(rem, n_steps):
     py_send("*post_rewind")
 
     #   Write the results to csv files
-    save_csv("max", "v", rem, max_v)
-    save_csv("max", "n", rem, max_n)
-    save_csv("max", "t", rem, max_t)
-    save_csv("min", "v", rem, min_v)
-    save_csv("min", "n", rem, min_n)
-    save_csv("min", "t", rem, min_t)
+    save_csv("max", "v", rem_l, max_v)
+    save_csv("max", "n", rem_l, max_n)
+    save_csv("max", "t", rem_l, max_t)
+    save_csv("min", "v", rem_l, min_v)
+    save_csv("min", "n", rem_l, min_n)
+    save_csv("min", "t", rem_l, min_t)
 
     #   Print the minimum and maximum values while selecting the respective nodes
     print("Label                       |Time|Node|Max   |Time|Node|Min")
@@ -577,15 +585,29 @@ def res_val(rem, n_steps):
 
 ################################################################################
 
-#   Remove a random element
-#   Returns the element ID that was removed
+#   Remove a random number of elements
+#   Returns the element IDs that were removed
 
-#   intern_el: The list of the internal elements in the grid
+#   e_internal: The list of the internal elements in the grid
 def rem_el(e_internal):
 
-    rem = random.choice(e_internal)
+    # rem = []
 
-    py_send("*remove_elements %d #" % rem)
+    rem = [13, 17]
+
+    # rem_n = randint(1, len(e_internal))
+
+    # for i in range(0, rem_n):
+
+    for i in range(0, len(rem)):
+        
+        # rem.append(random.choice(e_internal))
+
+        py_send("*remove_elements %d #" % rem[i])
+
+        # e_internal.remove(rem[i])
+
+    rem.sort()
 
     return rem
 
@@ -620,11 +642,50 @@ def rem_el_free(e_id, e_net):
 #   Returns the grid with a zero in the place of the removed element
 
 #   grid:   Representative grid of ones
+#   x_e:    The number of elements in the x-direction
+#   rem:    The element IDs of the element to be removed
 def rem_el_grid(grid, x_e, rem):
 
-    grid[x_e - (rem - 1)//x_e - 1][rem%x_e - 1] = 0
+    for i in range(0, len(rem)):
+
+        grid[x_e - (rem[i] - 1)//x_e - 1][rem[i]%x_e - 1] = 0
 
     return grid
+
+################################################################################
+
+#   Remove free element clusters from the representative grid
+#   Returns the grid with zeros in place of the removed elements and a list of the removed elements
+
+#   grid:       Representative grid of ones
+#   grid_label: Representative grid with clusters incrementally labelled
+#   x_e:    The number of elements in the x-direction
+#   y_e:    The number of elements in the y-direction
+def rem_cl_grid(grid, grid_label, x_e, y_e):
+
+    #   Initialisations
+    rem_i = 1
+    rem = []
+
+    #   Loop through the elements in the x-direction
+    for i in range(0, x_e):
+
+        #   Loop through the elements in the y-direction
+        for j in range(0, y_e):
+
+            #   Check if the labelled grid has an element numbered greater than 1
+            if grid_label[x_e - i - 1][j] > 1:
+
+                #   Remove the element from the grid
+                grid = rem_el_grid(grid, x_e, rem_i)
+
+                #   Add the index of the element to the list of removed elements
+                rem.append(rem_i)
+
+            #   Increment the removed element counter
+            rem_i = rem_i + 1
+
+    return (grid, rem)
 
 ################################################################################
 
@@ -644,8 +705,9 @@ def save_bas_model():
 #   rem: The element ID of the removed element
 def save_rem_model(rem):
 
+    rem_l = '_'.join(map(str, rem))
     py_send("*set_save_formatted off")
-    py_send("*save_as_model element_%i.mud yes" % rem)
+    py_send("*save_as_model element_%s.mud yes" % rem_l)
 
     return
 
@@ -657,13 +719,17 @@ def save_rem_model(rem):
 #   t:      Type of value
 #   id:     ID of the results being written
 #   data:   Data to be written
-def save_csv(m, t, id, data):
+def save_csv(m, t, i, data):
 
-    file_name = m + "_" + t + "_" + str(id) + ".csv"
+    file_path = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Results'
 
-    with open(file_name, 'w', newline = '') as myfile:
+    Path(file_path).mkdir(parents = True, exist_ok = True)
 
-        wr = csv.writer(myfile, quoting = csv.QUOTE_ALL)
+    file_name = m + "_" + t + "_" + i + ".csv"
+
+    with open(file_path + "\\" + file_name, 'w') as f:
+
+        wr = csv.writer(f)
         wr.writerow(data)
 
     return

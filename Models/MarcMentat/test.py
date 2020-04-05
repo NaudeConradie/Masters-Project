@@ -19,8 +19,8 @@ def main():
     #   Text name of the table used for the applied load
     table_name = "sin_input"
     #   Number of nodes per axis (one more than number of elements desired)
-    x_n = 11
-    y_n = 11
+    x_n = 6
+    y_n = 6
     x_e = x_n - 1
     y_e = y_n - 1
     #   Coordinates of initial position
@@ -32,76 +32,18 @@ def main():
     p_mag = 25
 
     #   !   CHANGE EVERY TIME MAIN IS RERUN   !   #
-    
-    grid = create_grid(x_e, y_e)
+    rem = [13, 17]
 
-    rem = 82
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 83
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 84
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 85
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 86
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 87
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 88
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 89
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 72
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 74
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 77
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 79
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 62
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 64
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 67
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 68
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 69
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 52
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 53
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 54
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 57
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 59
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 42
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 43
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 45
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 46
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 47
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 48
-    grid = rem_el_grid(grid, x_e, rem)
-    rem = 49
-    grid = rem_el_grid(grid, x_e, rem)
-    
-    find_cluster(grid)
+    res_val(rem, n_steps)
 
     return
 
-if __name__ == '__main__':
+main()
 
-    py_connect("", 40007)
+# if __name__ == '__main__':
 
-    main()
+#     py_connect("", 40007)
+
+#     main()
     
-    py_disconnect
+#     py_disconnect

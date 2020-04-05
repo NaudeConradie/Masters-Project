@@ -43,7 +43,7 @@
 
              integer*8 version: integers are 64-bits
 
-             date: Fri Apr 03 10:25:35 2020
+             date: Sun Apr 05 11:12:54 2020
 
 
              (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
@@ -57,7 +57,7 @@
 
                              10        20        30        40        50        60        70        80        90       100       110       120       130       140       150       160
                      ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-                     title               job_19
+                     title               job
                      $....MARC input file produced by Marc Mentat 2019 (64bit)
                      $...................................
                      $....input file using extended precision
@@ -401,7 +401,7 @@
 
              load_y_edges
 
-             loadcase            job_19                                                                                                                                      
+             loadcase            job                                                                                                                                         
              ----------
 
 
@@ -480,9 +480,9 @@
              end option                                                                                                                                                      
              ----------
 
-             wall time =          16.00
+             wall time =          24.00
 
-             wall time =          16.00
+             wall time =          24.00
 
 
              direct symmetric multi-frontal sparse solver is invoked for region   1
@@ -576,7 +576,7 @@
              e n d   o f   i n c r e m e n t       0
 
              binary post data at increment       0.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
              $...................                                                                                                                                            
@@ -721,7 +721,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -729,27 +729,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            2418 (      0.02 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            2187 (      0.02 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3763 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4680 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            2197 (      0.02 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4030 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5118 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    4.8094E-04
+             singularity ratio    4.6242E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  1 is equal to    3.164E-01
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    7.954E+00
-             residual convergence ratio    3.977E-02
+             maximum residual force  at node        16 degree of freedom  2 is equal to    2.353E-01
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    8.397E+00
+             residual convergence ratio    2.802E-02
 
 
              total transient time = 5.00000E-02
@@ -761,12 +761,12 @@
    output for increment       1. "          lcase1"
 
 
-             total strain energy         is    3.77621E-01
+             total strain energy         is    2.68247E-01
                within which:
-               elastic strain energy     is    3.77621E-01
-             total ext-force work        is    4.03667E-01
+               elastic strain energy     is    2.68247E-01
+             total ext-force work        is    2.84199E-01
                within which:
-               work by appl. force/disp. is    4.03667E-01
+               work by appl. force/disp. is    2.84199E-01
                work by frictional forces is    0.00000E+00
 
 
@@ -802,7 +802,7 @@
              e n d   o f   i n c r e m e n t       1
 
              binary post data at increment       1.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -827,7 +827,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -835,27 +835,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    4.9895E-04
+             singularity ratio    4.6864E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  2 is equal to    2.083E-01
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    1.511E+01
-             residual convergence ratio    1.379E-02
+             maximum residual force  at node        21 degree of freedom  1 is equal to    1.554E-01
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    1.592E+01
+             residual convergence ratio    9.761E-03
 
 
              total transient time = 1.00000E-01
@@ -867,12 +867,12 @@
    output for increment       2. "          lcase1"
 
 
-             total strain energy         is    1.09209E+00
+             total strain energy         is    8.09351E-01
                within which:
-               elastic strain energy     is    1.09209E+00
-             total ext-force work        is    1.10507E+00
+               elastic strain energy     is    8.09351E-01
+             total ext-force work        is    8.18867E-01
                within which:
-               work by appl. force/disp. is    1.10507E+00
+               work by appl. force/disp. is    8.18867E-01
                work by frictional forces is    0.00000E+00
 
 
@@ -908,7 +908,7 @@
              e n d   o f   i n c r e m e n t       2
 
              binary post data at increment       2.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -933,7 +933,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -941,27 +941,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    5.1069E-04
+             singularity ratio    4.7215E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  2 is equal to    1.252E-01
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.079E+01
-             residual convergence ratio    6.022E-03
+             maximum residual force  at node        21 degree of freedom  1 is equal to    8.948E-02
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    2.187E+01
+             residual convergence ratio    4.091E-03
 
 
              total transient time = 1.50000E-01
@@ -973,12 +973,12 @@
    output for increment       3. "          lcase1"
 
 
-             total strain energy         is    1.82839E+00
+             total strain energy         is    1.38230E+00
                within which:
-               elastic strain energy     is    1.82839E+00
-             total ext-force work        is    1.83003E+00
+               elastic strain energy     is    1.38230E+00
+             total ext-force work        is    1.38449E+00
                within which:
-               work by appl. force/disp. is    1.83003E+00
+               work by appl. force/disp. is    1.38449E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -1014,7 +1014,7 @@
              e n d   o f   i n c r e m e n t       3
 
              binary post data at increment       3.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1039,7 +1039,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1047,27 +1047,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    5.1828E-04
+             singularity ratio    4.6001E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  2 is equal to    4.996E-02
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.443E+01
-             residual convergence ratio    2.045E-03
+             maximum residual force  at node        21 degree of freedom  1 is equal to    3.391E-02
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    2.569E+01
+             residual convergence ratio    1.320E-03
 
 
              total transient time = 2.00000E-01
@@ -1079,12 +1079,12 @@
    output for increment       4. "          lcase1"
 
 
-             total strain energy         is    2.34944E+00
+             total strain energy         is    1.79630E+00
                within which:
-               elastic strain energy     is    2.34944E+00
-             total ext-force work        is    2.34030E+00
+               elastic strain energy     is    1.79630E+00
+             total ext-force work        is    1.79089E+00
                within which:
-               work by appl. force/disp. is    2.34030E+00
+               work by appl. force/disp. is    1.79089E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -1120,7 +1120,7 @@
              e n d   o f   i n c r e m e n t       4
 
              binary post data at increment       4.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1145,7 +1145,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1153,27 +1153,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    5.2216E-04
+             singularity ratio    4.3246E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  1 is equal to    5.530E-03
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.567E+01
-             residual convergence ratio    2.154E-04
+             maximum residual force  at node        22 degree of freedom  2 is equal to    3.811E-03
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    2.701E+01
+             residual convergence ratio    1.411E-04
 
 
              total transient time = 2.50000E-01
@@ -1185,12 +1185,12 @@
    output for increment       5. "          lcase1"
 
 
-             total strain energy         is    2.52746E+00
+             total strain energy         is    1.94174E+00
                within which:
-               elastic strain energy     is    2.52746E+00
-             total ext-force work        is    2.51287E+00
+               elastic strain energy     is    1.94174E+00
+             total ext-force work        is    1.93200E+00
                within which:
-               work by appl. force/disp. is    2.51287E+00
+               work by appl. force/disp. is    1.93200E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -1226,7 +1226,7 @@
              e n d   o f   i n c r e m e n t       5
 
              binary post data at increment       5.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1251,7 +1251,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1259,27 +1259,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    5.2322E-04
+             singularity ratio    4.2193E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  1 is equal to    7.009E-03
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    2.439E+01
-             residual convergence ratio    2.873E-04
+             maximum residual force  at node        21 degree of freedom  1 is equal to    4.294E-03
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    2.570E+01
+             residual convergence ratio    1.671E-04
 
 
              total transient time = 3.00000E-01
@@ -1291,12 +1291,12 @@
    output for increment       6. "          lcase1"
 
 
-             total strain energy         is    2.32250E+00
+             total strain energy         is    1.78433E+00
                within which:
-               elastic strain energy     is    2.32250E+00
-             total ext-force work        is    2.30797E+00
+               elastic strain energy     is    1.78433E+00
+             total ext-force work        is    1.77464E+00
                within which:
-               work by appl. force/disp. is    2.30797E+00
+               work by appl. force/disp. is    1.77464E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -1332,7 +1332,7 @@
              e n d   o f   i n c r e m e n t       6
 
              binary post data at increment       6.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1357,7 +1357,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1365,27 +1365,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    5.2191E-04
+             singularity ratio    4.3238E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  1 is equal to    5.353E-02
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.073E+01
-             residual convergence ratio    2.583E-03
+             maximum residual force  at node        16 degree of freedom  2 is equal to    3.537E-02
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    2.190E+01
+             residual convergence ratio    1.615E-03
 
 
              total transient time = 3.50000E-01
@@ -1397,12 +1397,12 @@
    output for increment       7. "          lcase1"
 
 
-             total strain energy         is    1.78526E+00
+             total strain energy         is    1.36320E+00
                within which:
-               elastic strain energy     is    1.78526E+00
-             total ext-force work        is    1.77542E+00
+               elastic strain energy     is    1.36320E+00
+             total ext-force work        is    1.35715E+00
                within which:
-               work by appl. force/disp. is    1.77542E+00
+               work by appl. force/disp. is    1.35715E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -1438,7 +1438,7 @@
              e n d   o f   i n c r e m e n t       7
 
              binary post data at increment       7.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1463,7 +1463,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1471,27 +1471,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    5.1787E-04
+             singularity ratio    4.5988E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  2 is equal to    1.278E-01
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    1.505E+01
-             residual convergence ratio    8.489E-03
+             maximum residual force  at node        21 degree of freedom  1 is equal to    9.070E-02
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    1.595E+01
+             residual convergence ratio    5.687E-03
 
 
              total transient time = 4.00000E-01
@@ -1503,12 +1503,12 @@
    output for increment       8. "          lcase1"
 
 
-             total strain energy         is    1.05197E+00
+             total strain energy         is    7.91738E-01
                within which:
-               elastic strain energy     is    1.05197E+00
-             total ext-force work        is    1.04887E+00
+               elastic strain energy     is    7.91738E-01
+             total ext-force work        is    7.90355E-01
                within which:
-               work by appl. force/disp. is    1.04887E+00
+               work by appl. force/disp. is    7.90355E-01
                work by frictional forces is    0.00000E+00
 
 
@@ -1544,7 +1544,7 @@
              e n d   o f   i n c r e m e n t       8
 
              binary post data at increment       8.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1569,7 +1569,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1577,27 +1577,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    5.1021E-04
+             singularity ratio    4.7207E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
-             maximum residual force  at node        29 degree of freedom  2 is equal to    2.121E-01
-             maximum reaction force  at node         5 degree of freedom  2 is equal to    7.919E+00
-             residual convergence ratio    2.678E-02
+             maximum residual force  at node        16 degree of freedom  2 is equal to    1.573E-01
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    8.417E+00
+             residual convergence ratio    1.869E-02
 
 
              total transient time = 4.50000E-01
@@ -1609,12 +1609,12 @@
    output for increment       9. "          lcase1"
 
 
-             total strain energy         is    3.50283E-01
+             total strain energy         is    2.56672E-01
                within which:
-               elastic strain energy     is    3.50283E-01
-             total ext-force work        is    3.50285E-01
+               elastic strain energy     is    2.56672E-01
+             total ext-force work        is    2.57143E-01
                within which:
-               work by appl. force/disp. is    3.50285E-01
+               work by appl. force/disp. is    2.57143E-01
                work by frictional forces is    0.00000E+00
 
 
@@ -1650,7 +1650,7 @@
              e n d   o f   i n c r e m e n t       9
 
              binary post data at increment       9.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1675,7 +1675,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          24.00
 
 
 
@@ -1683,27 +1683,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          24.00
 
 
 
-             singularity ratio    4.9828E-04
+             singularity ratio    4.6852E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        29 degree of freedom  1 is equal to    2.842E-01
-             maximum reaction force  at node         7 degree of freedom  2 is equal to    8.092E-02
-             residual convergence ratio    3.512E+00
+             maximum residual force  at node        21 degree of freedom  1 is equal to    2.153E-01
+             maximum reaction force  at node         7 degree of freedom  2 is equal to    1.302E-01
+             residual convergence ratio    1.655E+00
 
              failure to converge to tolerance
 
@@ -1727,7 +1727,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -1735,27 +1735,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.8236E-04
+             singularity ratio    4.6293E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        23 degree of freedom  2 is equal to    4.391E-04
-             maximum reaction force  at node         2 degree of freedom  1 is equal to    6.740E-05
-             residual convergence ratio    6.515E+00
+             maximum residual force  at node        16 degree of freedom  2 is equal to    1.391E-04
+             maximum reaction force  at node         7 degree of freedom  1 is equal to    6.763E-05
+             residual convergence ratio    2.057E+00
 
              failure to converge to tolerance
 
@@ -1779,7 +1779,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -1787,27 +1787,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.8094E-04
+             singularity ratio    4.6242E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        29 degree of freedom  1 is equal to    1.658E-09
-             maximum reaction force  at node         7 degree of freedom  2 is equal to    1.489E-10
-             residual convergence ratio    1.114E+01
+             maximum residual force  at node        16 degree of freedom  2 is equal to    2.411E-10
+             maximum reaction force  at node         2 degree of freedom  1 is equal to    3.900E-11
+             residual convergence ratio    6.181E+00
 
              failure to converge to tolerance
 
@@ -1831,7 +1831,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -1839,31 +1839,31 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.8094E-04
+             singularity ratio    4.6242E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node         9 degree of freedom  2 is equal to    1.513E-14
-             maximum reaction force  at node         3 degree of freedom  1 is equal to    3.785E-14
-             residual convergence ratio    3.997E-01
+             maximum residual force  at node        27 degree of freedom  1 is equal to    1.118E-14
+             maximum reaction force  at node        13 degree of freedom  2 is equal to    6.221E-14
+             residual convergence ratio    1.798E-01
 
-             maximum displacement  change   at node        29 degree of freedom  2 is equal to    2.193E-11
-             maximum displacement increment at node        29 degree of freedom  1 is equal to    3.244E-02
-             displacement convergence ratio   6.758E-10
+             maximum displacement  change   at node        36 degree of freedom  2 is equal to    1.550E-12
+             maximum displacement increment at node        22 degree of freedom  1 is equal to    2.615E-02
+             displacement convergence ratio   5.928E-11
 
 
              total transient time = 5.00000E-01
@@ -1875,12 +1875,12 @@
    output for increment      10. "          lcase1"
 
 
-             total strain energy         is   -1.26565E-14
+             total strain energy         is   -2.01505E-14
                within which:
-               elastic strain energy     is   -1.26565E-14
-             total ext-force work        is   -1.85521E-02
+               elastic strain energy     is   -2.01505E-14
+             total ext-force work        is   -1.15873E-02
                within which:
-               work by appl. force/disp. is   -1.85521E-02
+               work by appl. force/disp. is   -1.15873E-02
                work by frictional forces is    0.00000E+00
 
 
@@ -1916,7 +1916,7 @@
              e n d   o f   i n c r e m e n t      10
 
              binary post data at increment      10.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -1941,35 +1941,35 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          25.00
 
 
 
 
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
-             solver workspace for phase2 (nodal ordering)  (64bit words) =            2060 (      0.02 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1946 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3826 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4756 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            2157 (      0.02 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1941 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4068 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5169 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.8094E-04
+             singularity ratio    4.6242E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        29 degree of freedom  2 is equal to    2.995E-01
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    7.961E+00
-             residual convergence ratio    3.762E-02
+             maximum residual force  at node        16 degree of freedom  2 is equal to    2.272E-01
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    8.435E+00
+             residual convergence ratio    2.693E-02
 
 
              total transient time = 5.50000E-01
@@ -1981,12 +1981,12 @@
    output for increment      11. "          lcase1"
 
 
-             total strain energy         is    3.75144E-01
+             total strain energy         is    2.66930E-01
                within which:
-               elastic strain energy     is    3.75144E-01
-             total ext-force work        is    3.31332E-01
+               elastic strain energy     is    2.66930E-01
+             total ext-force work        is    2.39724E-01
                within which:
-               work by appl. force/disp. is    3.31332E-01
+               work by appl. force/disp. is    2.39724E-01
                work by frictional forces is    0.00000E+00
 
 
@@ -2022,7 +2022,7 @@
              e n d   o f   i n c r e m e n t      11
 
              binary post data at increment      11.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2047,7 +2047,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2055,27 +2055,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.6356E-04
+             singularity ratio    4.5568E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        28 degree of freedom  1 is equal to    3.049E-01
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    1.516E+01
-             residual convergence ratio    2.011E-02
+             maximum residual force  at node        21 degree of freedom  1 is equal to    2.191E-01
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    1.612E+01
+             residual convergence ratio    1.360E-02
 
 
              total transient time = 6.00000E-01
@@ -2087,12 +2087,12 @@
    output for increment      12. "          lcase1"
 
 
-             total strain energy         is    1.70275E+00
+             total strain energy         is    1.16110E+00
                within which:
-               elastic strain energy     is    1.70275E+00
-             total ext-force work        is    1.63362E+00
+               elastic strain energy     is    1.16110E+00
+             total ext-force work        is    1.12133E+00
                within which:
-               work by appl. force/disp. is    1.63362E+00
+               work by appl. force/disp. is    1.12133E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -2128,7 +2128,7 @@
              e n d   o f   i n c r e m e n t      12
 
              binary post data at increment      12.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2153,7 +2153,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2161,27 +2161,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.4432E-04
+             singularity ratio    4.4791E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        23 degree of freedom  2 is equal to    2.195E-01
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.093E+01
-             residual convergence ratio    1.049E-02
+             maximum residual force  at node        16 degree of freedom  2 is equal to    1.527E-01
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    2.225E+01
+             residual convergence ratio    6.861E-03
 
 
              total transient time = 6.50000E-01
@@ -2193,12 +2193,12 @@
    output for increment      13. "          lcase1"
 
 
-             total strain energy         is    3.83750E+00
+             total strain energy         is    2.51191E+00
                within which:
-               elastic strain energy     is    3.83750E+00
-             total ext-force work        is    3.76619E+00
+               elastic strain energy     is    2.51191E+00
+             total ext-force work        is    2.47437E+00
                within which:
-               work by appl. force/disp. is    3.76619E+00
+               work by appl. force/disp. is    2.47437E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -2234,7 +2234,7 @@
              e n d   o f   i n c r e m e n t      13
 
              binary post data at increment      13.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2259,7 +2259,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2267,27 +2267,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.2700E-04
+             singularity ratio    4.4091E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        28 degree of freedom  1 is equal to    1.008E-01
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    2.469E+01
-             residual convergence ratio    4.081E-03
+             maximum residual force  at node        16 degree of freedom  2 is equal to    6.779E-02
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    2.621E+01
+             residual convergence ratio    2.587E-03
 
 
              total transient time = 7.00000E-01
@@ -2299,12 +2299,12 @@
    output for increment      14. "          lcase1"
 
 
-             total strain energy         is    5.99360E+00
+             total strain energy         is    3.78989E+00
                within which:
-               elastic strain energy     is    5.99360E+00
-             total ext-force work        is    5.95583E+00
+               elastic strain energy     is    3.78989E+00
+             total ext-force work        is    3.77171E+00
                within which:
-               work by appl. force/disp. is    5.95583E+00
+               work by appl. force/disp. is    3.77171E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -2340,7 +2340,7 @@
              e n d   o f   i n c r e m e n t      14
 
              binary post data at increment      14.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2365,7 +2365,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2373,27 +2373,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.1463E-04
+             singularity ratio    4.3606E-04
 
 
              end of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        23 degree of freedom  2 is equal to    1.404E-02
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.603E+01
-             residual convergence ratio    5.394E-04
+             maximum residual force  at node        16 degree of freedom  2 is equal to    8.742E-03
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    2.756E+01
+             residual convergence ratio    3.172E-04
 
 
              total transient time = 7.50000E-01
@@ -2405,12 +2405,12 @@
    output for increment      15. "          lcase1"
 
 
-             total strain energy         is    7.01729E+00
+             total strain energy         is    4.34169E+00
                within which:
-               elastic strain energy     is    7.01729E+00
-             total ext-force work        is    7.02270E+00
+               elastic strain energy     is    4.34169E+00
+             total ext-force work        is    4.34400E+00
                within which:
-               work by appl. force/disp. is    7.02270E+00
+               work by appl. force/disp. is    4.34400E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -2446,7 +2446,7 @@
              e n d   o f   i n c r e m e n t      15
 
              binary post data at increment      15.  subincrement    0.  on file 16
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2471,7 +2471,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          16.00
+             wall time =          25.00
 
 
 
@@ -2479,27 +2479,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          16.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.0976E-04
+             singularity ratio    4.3434E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        28 degree of freedom  1 is equal to    9.885E-03
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.480E+01
-             residual convergence ratio    3.986E-04
+             maximum residual force  at node        16 degree of freedom  2 is equal to    7.510E-03
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    2.617E+01
+             residual convergence ratio    2.870E-04
 
 
              total transient time = 8.00000E-01
@@ -2511,12 +2511,12 @@
    output for increment      16. "          lcase1"
 
 
-             total strain energy         is    6.23129E+00
+             total strain energy         is    3.84425E+00
                within which:
-               elastic strain energy     is    6.23129E+00
-             total ext-force work        is    6.24018E+00
+               elastic strain energy     is    3.84425E+00
+             total ext-force work        is    3.84718E+00
                within which:
-               work by appl. force/disp. is    6.24018E+00
+               work by appl. force/disp. is    3.84718E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -2552,7 +2552,7 @@
              e n d   o f   i n c r e m e n t      16
 
              binary post data at increment      16.  subincrement    0.  on file 16
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2577,7 +2577,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2585,27 +2585,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.1364E-04
+             singularity ratio    4.3607E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        23 degree of freedom  2 is equal to    9.372E-02
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    2.110E+01
-             residual convergence ratio    4.442E-03
+             maximum residual force  at node        21 degree of freedom  1 is equal to    6.513E-02
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    2.219E+01
+             residual convergence ratio    2.935E-03
 
 
              total transient time = 8.50000E-01
@@ -2617,12 +2617,12 @@
    output for increment      17. "          lcase1"
 
 
-             total strain energy         is    4.09470E+00
+             total strain energy         is    2.57503E+00
                within which:
-               elastic strain energy     is    4.09470E+00
-             total ext-force work        is    4.06753E+00
+               elastic strain energy     is    2.57503E+00
+             total ext-force work        is    2.56117E+00
                within which:
-               work by appl. force/disp. is    4.06753E+00
+               work by appl. force/disp. is    2.56117E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -2658,7 +2658,7 @@
              e n d   o f   i n c r e m e n t      17
 
              binary post data at increment      17.  subincrement    0.  on file 16
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2683,7 +2683,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2691,27 +2691,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.2565E-04
+             singularity ratio    4.4093E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        23 degree of freedom  2 is equal to    2.192E-01
-             maximum reaction force  at node        13 degree of freedom  1 is equal to    1.530E+01
-             residual convergence ratio    1.432E-02
+             maximum residual force  at node        21 degree of freedom  1 is equal to    1.510E-01
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    1.606E+01
+             residual convergence ratio    9.404E-03
 
 
              total transient time = 9.00000E-01
@@ -2723,12 +2723,12 @@
    output for increment      18. "          lcase1"
 
 
-             total strain energy         is    1.82612E+00
+             total strain energy         is    1.19448E+00
                within which:
-               elastic strain energy     is    1.82612E+00
-             total ext-force work        is    1.77479E+00
+               elastic strain energy     is    1.19448E+00
+             total ext-force work        is    1.16844E+00
                within which:
-               work by appl. force/disp. is    1.77479E+00
+               work by appl. force/disp. is    1.16844E+00
                work by frictional forces is    0.00000E+00
 
 
@@ -2764,7 +2764,7 @@
              e n d   o f   i n c r e m e n t      18
 
              binary post data at increment      18.  subincrement    0.  on file 16
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2789,7 +2789,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2797,27 +2797,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.4338E-04
+             singularity ratio    4.4795E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        28 degree of freedom  1 is equal to    3.120E-01
-             maximum reaction force  at node         3 degree of freedom  2 is equal to    8.029E+00
-             residual convergence ratio    3.886E-02
+             maximum residual force  at node        16 degree of freedom  2 is equal to    2.207E-01
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    8.401E+00
+             residual convergence ratio    2.627E-02
 
 
              total transient time = 9.50000E-01
@@ -2829,12 +2829,12 @@
    output for increment      19. "          lcase1"
 
 
-             total strain energy         is    3.90952E-01
+             total strain energy         is    2.70618E-01
                within which:
-               elastic strain energy     is    3.90952E-01
-             total ext-force work        is    3.48829E-01
+               elastic strain energy     is    2.70618E-01
+             total ext-force work        is    2.47845E-01
                within which:
-               work by appl. force/disp. is    3.48829E-01
+               work by appl. force/disp. is    2.47845E-01
                work by frictional forces is    0.00000E+00
 
 
@@ -2870,7 +2870,7 @@
              e n d   o f   i n c r e m e n t      19
 
              binary post data at increment      19.  subincrement    0.  on file 16
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2895,7 +2895,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2903,27 +2903,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.6342E-04
+             singularity ratio    4.5577E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        23 degree of freedom  2 is equal to    3.275E-01
-             maximum reaction force  at node         7 degree of freedom  2 is equal to    9.479E-02
-             residual convergence ratio    3.455E+00
+             maximum residual force  at node        21 degree of freedom  1 is equal to    2.434E-01
+             maximum reaction force  at node         7 degree of freedom  2 is equal to    1.483E-01
+             residual convergence ratio    1.642E+00
 
              failure to converge to tolerance
 
@@ -2947,7 +2947,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -2955,27 +2955,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.8262E-04
+             singularity ratio    4.6300E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        23 degree of freedom  2 is equal to    6.165E-04
-             maximum reaction force  at node         7 degree of freedom  2 is equal to    1.002E-04
-             residual convergence ratio    6.152E+00
+             maximum residual force  at node        16 degree of freedom  2 is equal to    1.707E-04
+             maximum reaction force  at node         7 degree of freedom  2 is equal to    8.464E-05
+             residual convergence ratio    2.017E+00
 
              failure to converge to tolerance
 
@@ -2999,7 +2999,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -3007,27 +3007,27 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.8094E-04
+             singularity ratio    4.6242E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        28 degree of freedom  1 is equal to    3.397E-09
-             maximum reaction force  at node         7 degree of freedom  2 is equal to    2.190E-10
-             residual convergence ratio    1.551E+01
+             maximum residual force  at node        16 degree of freedom  2 is equal to    3.973E-10
+             maximum reaction force  at node        25 degree of freedom  2 is equal to    6.763E-11
+             residual convergence ratio    5.874E+00
 
              failure to converge to tolerance
 
@@ -3051,7 +3051,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          17.00
+             wall time =          25.00
 
 
 
@@ -3059,31 +3059,31 @@
              solver workspace for phase1 (matrix input)    (64bit words) =             410 (      0.00 MByte)
              Metis nested dissection ordering used
              solver workspace for phase2 (nodal ordering)  (64bit words) =            1602 (      0.01 MByte)
-             solver workspace for phase3 (symbolic factor) (64bit words) =            1713 (      0.01 MByte)
-             solver workspace for phase4 (factorization)   (64bit words) =            3822 (      0.03 MByte) (MINIMUM)
-             solver workspace for phase4 (factorization)   (64bit words) =            4751 (      0.04 MByte) (MAXIMUM)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1721 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            4088 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            5190 (      0.04 MByte) (MAXIMUM)
              solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
 
 
              start of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
 
-             singularity ratio    4.8094E-04
+             singularity ratio    4.6242E-04
 
 
              end of matrix solution
-             wall time =          17.00
+             wall time =          25.00
 
 
-             maximum residual force  at node        29 degree of freedom  1 is equal to    1.009E-14
-             maximum reaction force  at node         2 degree of freedom  1 is equal to    8.467E-14
-             residual convergence ratio    1.192E-01
+             maximum residual force  at node         8 degree of freedom  1 is equal to    1.254E-14
+             maximum reaction force  at node         7 degree of freedom  2 is equal to    4.832E-14
+             residual convergence ratio    2.596E-01
 
-             maximum displacement  change   at node        36 degree of freedom  2 is equal to    4.315E-11
-             maximum displacement increment at node        29 degree of freedom  2 is equal to    3.438E-02
-             displacement convergence ratio   1.255E-09
+             maximum displacement  change   at node        36 degree of freedom  1 is equal to    2.504E-12
+             maximum displacement increment at node        22 degree of freedom  1 is equal to    2.748E-02
+             displacement convergence ratio   9.113E-11
 
 
              total transient time = 1.00000E+00
@@ -3095,12 +3095,12 @@
    output for increment      20. "          lcase1"
 
 
-             total strain energy         is   -4.22440E-14
+             total strain energy         is   -1.32117E-14
                within which:
-               elastic strain energy     is   -4.22440E-14
-             total ext-force work        is   -1.12074E-02
+               elastic strain energy     is   -1.32117E-14
+             total ext-force work        is   -5.34130E-03
                within which:
-               work by appl. force/disp. is   -1.12074E-02
+               work by appl. force/disp. is   -5.34130E-03
                work by frictional forces is    0.00000E+00
 
 
@@ -3136,7 +3136,7 @@
              e n d   o f   i n c r e m e n t      20
 
              binary post data at increment      20.  subincrement    0.  on file 16
-             wall time =          17.00
+             wall time =          25.00
 
 
              $....end of loadcase lcase1                                                                                                                                     
@@ -3179,15 +3179,15 @@
 
              timing information:                             wall time      cpu time
 
-               total time for input:                              0.34          0.05
-               total time for stiffness matrix assembly:          0.04          0.03
+               total time for input:                              0.05          0.05
+               total time for stiffness matrix assembly:          0.02          0.00
                total time for mass matrix assembly:               0.00          0.00
-               total time for stress recovery:                    0.03          0.03
-               total time for matrix solution:                    0.32          0.12
-               total time for output:                             0.17          0.19
-               total time for miscellaneous:                     16.23          0.55
+               total time for stress recovery:                    0.02          0.02
+               total time for matrix solution:                    0.24          0.17
+               total time for output:                             0.16          0.25
+               total time for miscellaneous:                     23.93          0.66
                ---------------------------------------------------------------------
-               total time:                                       17.12          0.97
+               total time:                                       24.43          1.14
 
 
              **************************************************************************

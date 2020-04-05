@@ -11,7 +11,7 @@ from functions import *
 
 #   Main function
 
-def main():
+def main(): 
 
     #   Initialisations
     
@@ -45,7 +45,7 @@ def main():
     grid = create_grid(x_e, y_e)
 
     #   Find the internal elements
-    e_internal = find_e_internal(x_e)
+    e_internal = find_e_internal(x_e, y_e)
 
     #   Add the loads, boundary conditions, geometric properties and material
     add_bc_fixed("x", "x", x0)
@@ -89,7 +89,7 @@ def main():
     save_rem_model(rem)
 
     #   Add and run the jobs
-    add_job(rem)
+    add_job()
     run_job()
 
     #   Inspect the results
