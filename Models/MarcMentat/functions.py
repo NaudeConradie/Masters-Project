@@ -638,7 +638,7 @@ def rem_el_free(e_id, e_net):
 
 ################################################################################
 
-#   Remove an element from the representative grid
+#   Removes elements from the representative grid
 #   Returns the grid with a zero in the place of the removed element
 
 #   grid:   Representative grid of ones
