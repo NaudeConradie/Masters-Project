@@ -32,7 +32,7 @@ def main():
     p_mag = 25
 
     #   !   CHANGE EVERY TIME MAIN IS RERUN   !   #
-    rem = [13, 17]
+    rem = [7, 8, 9, 12, 14, 17, 18, 19]
 
     res_val(rem, n_steps)
 

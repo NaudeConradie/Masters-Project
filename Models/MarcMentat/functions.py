@@ -52,6 +52,8 @@ def create_nodes(x0, y0, x_n, y_n):
 
         y = y + 1
 
+    print("%ix%i node grid created" % (x_n, y_n))
+
     return
 
 ################################################################################
@@ -79,6 +81,8 @@ def create_elements(x_n, y_n):
             n3 = n3 + 1
             n4 = n4 + 1
 
+    print("%ix%i element grid created" % (x_n - 1, y_n - 1))
+
     return
 
 ################################################################################
@@ -97,8 +101,8 @@ def create_e_net(e_id, e_n_id):
     e_n = py_get_int("nelements()")
 
     #   Print the output    
-    print("Element ID|Networked Elements")
-    print("-----------------------------")
+    # print("Element ID|Networked Elements")
+    # print("-----------------------------")
 
     #   Loop through all elements
     for i in range(0, e_n):
@@ -126,7 +130,9 @@ def create_e_net(e_id, e_n_id):
                 #   Add that element to the new network
                 e_net[i].append(e_id[j])
 
-        print("%-10i|%s" % (e_id[i], e_net[i]))
+        # print("%-10i|%s" % (e_id[i], e_net[i]))
+
+    print("Element network created")
 
     return e_net
 
@@ -140,6 +146,8 @@ def create_e_net(e_id, e_n_id):
 def create_grid(x_e, y_e):
 
     grid = [[1]*(x_e) for i in range(y_e)]
+
+    print("Representative grid created")
 
     return grid
 
@@ -158,8 +166,8 @@ def find_e_n_ids():
     e_n = py_get_int("nelements()")
 
     #   Print the output
-    print("Element ID|Nodes")
-    print("---------------------------")
+    # print("Element ID|Nodes")
+    # print("---------------------------")
 
     #   Loop through all elements
     for i in range(1, e_n + 1):
@@ -175,9 +183,11 @@ def find_e_n_ids():
             #   Store the node IDs
             e_n_id[i - 1].append(py_get_int("element_node_id(%i,%i)" % (e_id[i - 1], j)))
 
-        print("%-10i|%s" % (e_id[i - 1], e_n_id[i - 1]))
+    #     print("%-10i|%s" % (e_id[i - 1], e_n_id[i - 1]))
 
-    print("---------------------------")
+    # print("---------------------------")
+
+    print("Element node IDs found")
 
     return (e_id, e_n_id)
 
@@ -187,6 +197,7 @@ def find_e_n_ids():
 #   Returns a list of internal elements
 
 #   x_e: The number of elements in the x-direction
+#   y_e: The number of elements in the y-direction
 def find_e_internal(x_e, y_e):
 
     #   Initialisations
@@ -204,6 +215,8 @@ def find_e_internal(x_e, y_e):
             #   Add element to the list of internal elements
             e_internal.append(i)
 
+    print("%i internal elements found" % len(e_internal))
+
     return e_internal
  
 ################################################################################
@@ -216,9 +229,15 @@ def find_cluster(grid):
 
     grid_label, cluster = measurements.label(grid)
 
+    #   Print message according to how many free clusters are found
     if cluster > 1:
+        if cluster == 2:
+            print("Warning: %i free cluster found!" % (cluster - 1))
+        else:
+            print("Warning: %i free clusters found!" % (cluster - 1))
 
-        print("Warning: Found %i free clusters!" % cluster)
+    else:
+        print("No free clusters found")
 
     return grid_label
 
@@ -239,6 +258,8 @@ def add_sin(tab_name):
 
     #   The sinusoidal function is defined to go through one full wavelength within 1 second
     py_send("*md_table_formula sin(2*pi*v1)")
+
+    print("Table \"%s\" added" % tab_name)
 
     return
 
@@ -284,6 +305,8 @@ def add_bc_fixed(label, axis, coord):
 
     py_send("#")
 
+    print("Fixed boundary condition \"fix_%s\" added to the %s-axis at coordinate %i" % (label, axis, coord))
+
     return
 
 ################################################################################
@@ -306,7 +329,7 @@ def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
     py_send("*apply_type edge_load")
     py_send("*apply_name load_%s" % label)
 
-    #   Apply a pressure with an amplitude of 20 and the sinusoidal wave
+    #   Apply a pressure with the given magnitude and table
     py_send("*apply_dof p")
     py_send("*apply_dof_value p %i" % p)
     py_send("*apply_dof_table p %s" % tab_name)
@@ -337,6 +360,8 @@ def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
 
     py_send("#")
 
+    print("Load boundary condition \"load_%s\" of magnitude %i added to the %s-axis at coordinate %i in direction %i" % (label, p, axis, coord, direc))
+
     return
 
 ################################################################################
@@ -347,6 +372,8 @@ def add_geom_prop():
 
     py_send("*geometry_type mech_planar_pstrain")
     py_send("*add_geometry_elements all_existing")
+
+    print("Geometric properties added")
 
     return
 
@@ -365,6 +392,8 @@ def add_mat_mr():
     py_send("*mater_param structural:mooney_c10 20.3")
     py_send("*mater_param structural:mooney_c01 5.8")
     py_send("*add_mater_elements all_existing")
+
+    print("Mooney-Rivlin material model added")
 
     return
 
@@ -388,6 +417,8 @@ def add_mat_ogden():
     py_send("*mater_param structural:ogden_exp_3 4.88396")
     py_send("*add_mater_elements all_existing")
 
+    print("Ogden material model added")
+
     return
 
 ################################################################################
@@ -400,6 +431,8 @@ def add_lcase(n_steps):
     py_send("*new_loadcase")
     py_send("*loadcase_type struc:static")
     py_send("*loadcase_value nsteps %i" % n_steps)
+
+    print("Loadcase added")
 
     return
 
@@ -419,6 +452,8 @@ def add_job():
     py_send("*add_post_tensor stress_g")
     py_send("*add_post_tensor strain")
 
+    print("Job added")
+
     return
 
 ################################################################################
@@ -431,16 +466,16 @@ def run_job():
     py_send("*submit_job 1") 
     py_send("*monitor_job")
 
+    print("Job run")
+
     return
 
 ################################################################################
 
 #   Check if the updated .t16 output file exists
 
-#   rem:    The element ID of the removed element
-def check_t16(rem):
-
-    rem_l = '_'.join(map(str, rem))
+#   rem_l:  String containing all removed elements
+def check_t16(rem_l):
 
     #   File paths to the respective model and output file
     file_mud = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '.mud'
@@ -466,7 +501,10 @@ def check_t16(rem):
                 break
         
         #   Check the status only every 5 seconds so that the CPU is not constantly occupied
+        print("Waiting...")
         time.sleep(5)
+
+    print("Job completed")
 
     return
 
@@ -474,9 +512,13 @@ def check_t16(rem):
 
 #   Obtain maximum and minimum values from results
 
-#   rem:        The element ID of the removed element
+#   rem:        The element IDs of the removed elements
 #   n_steps:    The number of steps in the second of the loadcase
 def res_val(rem, n_steps):
+
+    #   Check if an updated results file exists
+    rem_l = '_'.join(map(str, rem))
+    check_t16(rem_l)
 
     #   Initialisations
 
@@ -498,14 +540,14 @@ def res_val(rem, n_steps):
     label.append("Shear Total Strain")
 
     #   Open the results file
-    rem_l = '_'.join(map(str, rem))
+    time.sleep(5)
     py_send("@main(results) @popup(modelplot_pm) *post_open element_%s_job.t16" % rem_l)
 
     #   Obtain the total number of nodes
     n_n = py_get_int("nnodes()")
 
-    print("Number Of Nodes: %i" % n_n)
-    print("-------------------")
+    # print("Number Of Nodes: %i" % n_n)
+    # print("-------------------")
 
     #   Loop through all given labels
     for i in range(0, len(label)):
@@ -525,10 +567,10 @@ def res_val(rem, n_steps):
         #   Set the post file to the current label
         py_send("*post_value %s" % label[i])
 
-        print("%s" % label[i])
-        print("-----------------------------")
-        print("Time|Node|Max   |Node|Min")
-        print("-----------------------------")
+        # print("%s" % label[i])
+        # print("-----------------------------")
+        # print("Time|Node|Max   |Node|Min")
+        # print("-----------------------------")
 
         #   Loop through all steps of the post file
         for j in range(0, n_steps + 1):
@@ -540,7 +582,7 @@ def res_val(rem, n_steps):
             min_n_c = py_get_float("scalar_min_node()")
             min_v_c = py_get_float("scalar_1(%i)" % min_n_c)
 
-            print("%4.2f|%4i|%6.3f|%4i|%7.3f" % (j/n_steps, max_n_c, max_v_c, min_n_c, min_v_c))
+            # print("%4.2f|%4i|%6.3f|%4i|%7.3f" % (j/n_steps, max_n_c, max_v_c, min_n_c, min_v_c))
 
             #   Check if the current value is the overall maximum and minimum value
             if max_v_c > max_v[i]:
@@ -558,7 +600,7 @@ def res_val(rem, n_steps):
             #   Increment the post file
             py_send("*post_next")
 
-        print("-----------------------------")
+        # print("-----------------------------")
 
     #   Rewind the post file
     py_send("*post_rewind")
@@ -571,7 +613,8 @@ def res_val(rem, n_steps):
     save_csv("min", "n", rem_l, min_n)
     save_csv("min", "t", rem_l, min_t)
 
-    #   Print the minimum and maximum values while selecting the respective nodes
+    #   Print the minimum and maximum values
+    print("---------------------------------------------------------------")
     print("Label                       |Time|Node|Max   |Time|Node|Min")
     print("---------------------------------------------------------------")
 
@@ -580,6 +623,8 @@ def res_val(rem, n_steps):
         print("%-28s|%4.2f|%4i|%6.3g|%4.2f|%4i|%7.3g" % (label[i], max_t[i], max_n[i], max_v[i], min_t[i], min_n[i], min_v[i]))
 
     print("---------------------------------------------------------------")
+
+    print("Results analysed")
 
     return
 
@@ -591,11 +636,11 @@ def res_val(rem, n_steps):
 #   e_internal: The list of the internal elements in the grid
 def rem_el(e_internal):
 
-    # rem = []
+    rem = []
 
-    rem = [13, 17]
+    rem = [7, 8, 9, 12, 14, 17, 18, 19]
 
-    # rem_n = randint(1, len(e_internal))
+    # rem_n = random.randint(1, len(e_internal))
 
     # for i in range(0, rem_n):
 
@@ -605,7 +650,9 @@ def rem_el(e_internal):
 
         py_send("*remove_elements %d #" % rem[i])
 
-        # e_internal.remove(rem[i])
+        e_internal.remove(rem[i])
+
+        print("Removed element %i" % rem[i])
 
     rem.sort()
 
@@ -615,25 +662,17 @@ def rem_el(e_internal):
 
 #   Remove any free elements
 
-#   e_id:   The element IDs
-#   e_net:  The network of elements
-def rem_el_free(e_id, e_net):
+#   rem:    The list of free elements to be removed
+def rem_el_free(rem):
 
-    #   Obtain the nummber of elements
-    e_n = py_get_int("nelements()")
+    #   Loop through all elements to be removed
+    for i in range(0, len(rem)):
 
-    #   Loop through all elements
-    for i in range(0, e_n):
+        #   Remove the element
+        py_send("*remove_elements %i #" % rem[i])
 
-        #   Check if an element is connected to no other elements
-        if len(e_net[i]) < 1:
+    print("Removed free clusters")
 
-            #   Remove the element
-            py_send("*remove_elements %d #" % e_id[i])
-
-            #   Print which element was removed
-            print("Removed element %i" % e_id[i])
-    
     return
 
 ################################################################################
@@ -643,12 +682,16 @@ def rem_el_free(e_id, e_net):
 
 #   grid:   Representative grid of ones
 #   x_e:    The number of elements in the x-direction
-#   rem:    The element IDs of the element to be removed
+#   rem:    The element IDs of the elements to be removed
 def rem_el_grid(grid, x_e, rem):
 
+    #   Loop through the number of elements to be removed
     for i in range(0, len(rem)):
 
+        #   Remove the element from the grid
         grid[x_e - (rem[i] - 1)//x_e - 1][rem[i]%x_e - 1] = 0
+        
+        print("Removed element %i from representative grid" % rem[i])
 
     return grid
 
@@ -661,7 +704,7 @@ def rem_el_grid(grid, x_e, rem):
 #   grid_label: Representative grid with clusters incrementally labelled
 #   x_e:    The number of elements in the x-direction
 #   y_e:    The number of elements in the y-direction
-def rem_cl_grid(grid, grid_label, x_e, y_e):
+def rem_el_free_grid(grid, grid_label, x_e, y_e):
 
     #   Initialisations
     rem_i = 1
@@ -677,7 +720,7 @@ def rem_cl_grid(grid, grid_label, x_e, y_e):
             if grid_label[x_e - i - 1][j] > 1:
 
                 #   Remove the element from the grid
-                grid = rem_el_grid(grid, x_e, rem_i)
+                grid[x_e - (rem_i - 1)//x_e - 1][rem_i%x_e - 1] = 0
 
                 #   Add the index of the element to the list of removed elements
                 rem.append(rem_i)
@@ -685,7 +728,26 @@ def rem_cl_grid(grid, grid_label, x_e, y_e):
             #   Increment the removed element counter
             rem_i = rem_i + 1
 
+    print("Removed free clusters from representative grid")
+
     return (grid, rem)
+
+################################################################################
+
+#   Append removed free elements to list of initially removed elements
+#   Returns the complete and sorted list of removed elements
+
+#   rem:        The element IDs of the original elements removed
+#   rem_free:   The element IDs of the free elements removed
+def append_rem(rem, rem_free):
+
+    #   Append the newly removed element IDs to the originally removed IDs
+    rem = rem + rem_free
+
+    #   Sort the list of removed element IDs
+    rem.sort()
+
+    return rem
 
 ################################################################################
 
@@ -695,6 +757,8 @@ def save_bas_model():
 
     py_send("*set_save_formatted off")
     py_send("*save_as_model element_basic.mud yes")
+
+    print("Basic model saved")
 
     return
 
@@ -708,6 +772,8 @@ def save_rem_model(rem):
     rem_l = '_'.join(map(str, rem))
     py_send("*set_save_formatted off")
     py_send("*save_as_model element_%s.mud yes" % rem_l)
+
+    print("Model %s saved" % rem_l)
 
     return
 
@@ -731,5 +797,7 @@ def save_csv(m, t, i, data):
 
         wr = csv.writer(f)
         wr.writerow(data)
+
+    print("%s saved" % file_name)
 
     return

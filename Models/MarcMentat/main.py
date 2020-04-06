@@ -76,11 +76,14 @@ def main():
     grid = rem_el_grid(grid, x_e, rem)
 
     #   Create the network of the current elements
-    (e_id, e_n_id) = find_e_n_ids()
-    e_net = create_e_net(e_id, e_n_id)
+    # (e_id, e_n_id) = find_e_n_ids()
+    # e_net = create_e_net(e_id, e_n_id)
 
     #   Remove any free elements
-    rem_el_free(e_id, e_net)
+    grid_label = find_cluster(grid)
+    (grid, rem_free) = rem_el_free_grid(grid, grid_label, x_e, y_e)
+    rem_el_free(rem_free)
+    rem = append_rem(rem, rem_free)
 
     #   Display the boundary conditions
     view_bc()
@@ -93,7 +96,6 @@ def main():
     run_job()
 
     #   Inspect the results
-    check_t16(rem)
     res_val(rem, n_steps)
 
     return
