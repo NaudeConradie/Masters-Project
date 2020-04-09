@@ -32,18 +32,16 @@ def main():
     p_mag = 25
 
     #   !   CHANGE EVERY TIME MAIN IS RERUN   !   #
-    rem = [7, 8, 9, 12, 14, 17, 18, 19]
+    rem = [7, 8, 9, 12, 13, 14, 17, 18, 19]
 
     res_val(rem, n_steps)
 
     return
 
-main()
+if __name__ == '__main__':
 
-# if __name__ == '__main__':
+    py_connect("", 40007)
 
-#     py_connect("", 40007)
-
-#     main()
+    main()
     
-#     py_disconnect
+    py_disconnect

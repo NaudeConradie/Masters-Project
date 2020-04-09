@@ -48,28 +48,18 @@ def main():
     e_internal = find_e_internal(x_e, y_e)
 
     #   Add the loads, boundary conditions, geometric properties and material
-    add_bc_fixed("x", "x", x0)
+    # add_bc_fixed("x", "x", x0)
     add_bc_fixed("y", "y", y0)
     add_sin(table_name)
-    add_load("x", p_mag, table_name, x_e, y_e, "x", -1, x_e)
-    add_load("y", p_mag, table_name, x_e, y_e, "y", -1, y_e)
+    add_bc_displacement("y", "y", 1, table_name, y_e)
+    # add_load("x", p_mag, table_name, x_e, y_e, "x", -1, x_e)
+    # add_load("y", p_mag, table_name, x_e, y_e, "y", -1, y_e)
     add_geom_prop()
     add_mat_mr()
     add_lcase(n_steps)
 
     #   Save the basic model
     save_bas_model()
-
-    #   Commented section loops through all possible single element deletions
-
-    # for i in range(1, len(e_internal) + 1):
-
-    #     py_send("*open_model element_basic.mud")
-    #     rem = rem_el(e_internal)
-    #     save_rem_model(rem)
-    #     add_job(rem)
-    #     run_job()
-    #     e_internal.remove(rem)
 
     #   Random element removal
     rem = rem_el(e_internal)
@@ -79,24 +69,40 @@ def main():
     # (e_id, e_n_id) = find_e_n_ids()
     # e_net = create_e_net(e_id, e_n_id)
 
-    #   Remove any free elements
-    grid_label = find_cluster(grid)
-    (grid, rem_free) = rem_el_free_grid(grid, grid_label, x_e, y_e)
-    rem_el_free(rem_free)
-    rem = append_rem(rem, rem_free)
+    #   Search for cluster
+    (found_free, grid_label) = find_cluster(grid)
+
+    #   Check if free clusters were found
+    if found_free:
+
+        #   Remove the free clusters
+        (grid, rem_free) = rem_el_free_grid(grid, grid_label, x_e, y_e)
+        rem_el_free(rem_free)
+
+        #   Update the list of removed elements
+        rem = append_rem(rem, rem_free)
+
+    #   Convert the list of removed elements to a string for file naming purposes
+    rem_l = list_to_str(rem)
 
     #   Display the boundary conditions
     view_bc()
 
-    #   Save the altered model
-    save_rem_model(rem)
-
-    #   Add and run the jobs
+    #   Add the job
     add_job()
+
+    #   Save the altered model
+    save_rem_model(rem_l)
+
+    #   Run the job 
     run_job()
 
-    #   Inspect the results
-    res_val(rem, n_steps)
+    #   Check the existence and validity of results
+    run_success = check_out(rem_l)
+    if run_success:
+
+        #   Inspect the results
+        res_val(rem_l, n_steps)
 
     return
 

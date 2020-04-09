@@ -9,10 +9,78 @@ import csv
 import time
 import random
 import os.path
+import re
 
 from pathlib import Path
 from pylab import *
 from scipy.ndimage import measurements
+
+################################################################################
+
+#   Wait for a specified time
+
+#   t:  The time in seconds to wait
+#   f:  The object being waited for
+def wait(t, f):
+
+    print("Waiting for %s..." % f)
+
+    time.sleep(t)
+
+    return
+
+################################################################################
+
+#   Wait until a specified file exists
+
+#   file_name:  The name of the file to be waited for
+#   label:      The label for the output message
+#   t:          The time in seconds to wait per loop
+def wait_file_exist(file_name, label, t):
+
+    #   Loop until the file exists
+    while 1:
+
+        #   Check if the file exists
+        exists = os.path.exists(file_name)
+
+        #   Break out of the loop if the file exists
+        if exists:
+            print("%s file exists" % label)
+            break
+
+        #   Wait and check again
+        else:
+            wait(t, "%s file to be created..." % label)
+
+    return
+
+################################################################################
+
+#   Wait until a specified file is updated
+
+#   file_name:  The name of the file to be waited for
+#   t0:         The time since which the file should have been updated
+#   label:      The label for the output message
+#   t:          The time in seconds to wait per loop
+def wait_file_update(file_name, t0, label, t):
+
+    #   Loop until the file has been updated
+    while 1:
+
+        #   See how recently the file has been updated
+        t_mod = os.path.getmtime(file_name)
+
+        #   Break out of the loop if the file has been updated since the given time
+        if t_mod > t0:
+            print("%s file updated" % label)
+            break
+
+        #   Wait and check again
+        else:
+            wait(t, "%s file to be updated..." % label)
+
+    return
 
 ################################################################################
 
@@ -203,7 +271,7 @@ def find_e_internal(x_e, y_e):
     #   Initialisations
     e_internal = []
 
-    #   Obtain the nummber of elements
+    #   Obtain the number of elements
     e_n = x_e * y_e
 
     #   Loop through all elements
@@ -229,17 +297,57 @@ def find_cluster(grid):
 
     grid_label, cluster = measurements.label(grid)
 
-    #   Print message according to how many free clusters are found
+    #   Check if more than one cluster is found
     if cluster > 1:
+
+        #   Set flag
+        found = True
+
         if cluster == 2:
             print("Warning: %i free cluster found!" % (cluster - 1))
         else:
             print("Warning: %i free clusters found!" % (cluster - 1))
 
     else:
+
+        #   Set flag
+        found = False
+
         print("No free clusters found")
 
-    return grid_label
+    return (found, grid_label)
+
+################################################################################
+
+#   Search a text file for the first occurrence of a given text string
+#   Returns if the text was found and the entire line it was found in
+
+#   file_name:  The name of the file to be searched through
+#   find_text:  The text to be searched for
+def search_text_file(file_name, find_text):
+
+    #   Initialisations
+    found_text = ""
+    found = False
+
+    #   Open the file to be read
+    with open(file_name, "rt") as f:
+
+        #   Loop through every line in the file until the text string
+        for line in f:
+
+            #   Check if the text is in the current line of the file
+            if find_text.search(line) != None:
+
+                #   Save the entire line of text containing the desired text
+                found_text = line.rstrip("\n")
+
+                #   Set the found flag to true
+                found = True
+
+                break
+
+    return (found, found_text)
 
 ################################################################################
 
@@ -311,7 +419,55 @@ def add_bc_fixed(label, axis, coord):
 
 ################################################################################
 
-# Add a load to the right and top sides of the element
+#   Add displacement boundary conditions along a specified axis
+
+#   label:      The label of the boundary condition
+#   axis:       The axis of the boundary condition
+#               "x" or "y"
+#   d:          The magnitude of the applied displacement
+#   tab_name:   The name of the table defining the displacement function
+#   coord:      The axis coordinate of the boundary condition
+def add_bc_displacement(label, axis, d, tab_name, coord):
+
+    #   Initialisation
+    n_l = []
+
+    #   Fetch the total number of nodes
+    n_n = py_get_int("nnodes()")
+
+    #   Apply the fixed boundary condition
+    py_send("*new_apply")
+    py_send("*apply_type fixed_displacement")
+    py_send("*apply_name displace_%s" % label)
+    py_send("*apply_dof %s" % axis)
+    py_send("*apply_dof_value %s %i" % (axis, d))
+    py_send("*apply_dof_table %s %s" % (axis, tab_name))
+
+    #   Incrementally select the correct nodes
+    for i in range(1, n_n + 1):
+
+        c = py_get_float("node_%s(%i)" % (axis, i))
+
+        if c == coord:
+
+            n_l.append(i)
+
+    #   Apply the boundary condition to the selected nodes
+    py_send("*add_apply_nodes ")
+
+    for i in range(0, len(n_l)):
+
+        py_send("%i " % n_l[i])
+
+    py_send("#")
+
+    print("Displacement boundary condition \"displace_%s\" of magnitude %i added to the %s-axis at coordinate %i" % (label, d, axis, coord))
+
+    return
+
+################################################################################
+
+#   Add a load along a specified axis in a specified direction
 
 #   label:      The label of the load
 #   p:          The magnitude of the applied pressure
@@ -472,41 +628,75 @@ def run_job():
 
 ################################################################################
 
-#   Check if the updated .t16 output file exists
+#   Check if the updated output files exist
+#   Returns a flag based on the successful output of the model
 
 #   rem_l:  String containing all removed elements
-def check_t16(rem_l):
+def check_out(rem_l):
+
+    #   Initialisations
+    success = False
+
+    #   Time to wait for files
+    t = 5
+
+    #   Text to look for when searching the log files
+    exit_n = re.compile("exit number", re.IGNORECASE)
 
     #   File paths to the respective model and output file
     file_mud = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '.mud'
+    file_log = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '_job.log'
     file_t16 = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '_job.t16'
 
     #   Obtain the timestamp of the last time the model file was modified
     t_mud = os.path.getmtime(file_mud)
 
-    #   Loop until the output file has been updated
+    #   Wait until the log file exists and has been updated
+    wait_file_exist(file_log, "log", t)
+    wait_file_update(file_log, t_mud, "log", t)
+
+    #   Loop until an exit number is detected
     while 1:
 
-        #   Check to see if the output file exists
-        exist_t16 = os.path.exists(file_t16)
+        #   Search the log file for an exit number
+        (found, found_exit_n) = search_text_file(file_log, exit_n)
 
-        if exist_t16:
+        #   Check if an exit number was found
+        if found:
 
-            #   Check to see if the output file has been modified after the model file
-            t_t16 = os.path.getmtime(file_t16)
+            #   Output the exit number
+            print("Exit number found")
+            print(found_exit_n)
 
-            if t_t16 > t_mud:
+            #   Exit the loop
+            break
 
-                #   Exit the loop
-                break
+        #   Wait and check again
+        else:
+            wait(t, "exit number to be found")
+
+    #   Check if the exit number indicates a successful run
+    if found_exit_n.find("3004") != -1:
+
+        #   Set the success flag
+        success = True
+
+        print("Model run successfully")
+
+    #   Output a warning
+    else:
+
+        print("Warning: Model run unsuccessfully!")
+        print("Check log file and exit number for details")
+
+    #   Check if the model was run successfully
+    if success:
+
+        #   Wait until the t16 file exists and has been updated
+        wait_file_exist(file_t16, "t16", t)
+        wait_file_update(file_t16, t_mud, "t16", t)
         
-        #   Check the status only every 5 seconds so that the CPU is not constantly occupied
-        print("Waiting...")
-        time.sleep(5)
-
-    print("Job completed")
-
-    return
+    return success
 
 ################################################################################
 
@@ -514,11 +704,7 @@ def check_t16(rem_l):
 
 #   rem:        The element IDs of the removed elements
 #   n_steps:    The number of steps in the second of the loadcase
-def res_val(rem, n_steps):
-
-    #   Check if an updated results file exists
-    rem_l = '_'.join(map(str, rem))
-    check_t16(rem_l)
+def res_val(rem_l, n_steps):
 
     #   Initialisations
 
@@ -540,14 +726,8 @@ def res_val(rem, n_steps):
     label.append("Shear Total Strain")
 
     #   Open the results file
-    time.sleep(5)
     py_send("@main(results) @popup(modelplot_pm) *post_open element_%s_job.t16" % rem_l)
-
-    #   Obtain the total number of nodes
-    n_n = py_get_int("nnodes()")
-
-    # print("Number Of Nodes: %i" % n_n)
-    # print("-------------------")
+    py_send("*post_numerics")
 
     #   Loop through all given labels
     for i in range(0, len(label)):
@@ -638,7 +818,7 @@ def rem_el(e_internal):
 
     rem = []
 
-    rem = [7, 8, 9, 12, 14, 17, 18, 19]
+    rem = [7, 12, 14, 18]
 
     # rem_n = random.randint(1, len(e_internal))
 
@@ -652,9 +832,9 @@ def rem_el(e_internal):
 
         e_internal.remove(rem[i])
 
-        print("Removed element %i" % rem[i])
-
     rem.sort()
+
+    print("Removed random internal elements")
 
     return rem
 
@@ -691,7 +871,7 @@ def rem_el_grid(grid, x_e, rem):
         #   Remove the element from the grid
         grid[x_e - (rem[i] - 1)//x_e - 1][rem[i]%x_e - 1] = 0
         
-        print("Removed element %i from representative grid" % rem[i])
+    print("Removed same random internal elements from representative grid")
 
     return grid
 
@@ -702,8 +882,8 @@ def rem_el_grid(grid, x_e, rem):
 
 #   grid:       Representative grid of ones
 #   grid_label: Representative grid with clusters incrementally labelled
-#   x_e:    The number of elements in the x-direction
-#   y_e:    The number of elements in the y-direction
+#   x_e:        The number of elements in the x-direction
+#   y_e:        The number of elements in the y-direction
 def rem_el_free_grid(grid, grid_label, x_e, y_e):
 
     #   Initialisations
@@ -751,6 +931,18 @@ def append_rem(rem, rem_free):
 
 ################################################################################
 
+#   Convert a list into a string connected by underscores
+#   Returns the string
+
+#   l:  The list to be converted
+def list_to_str(l):
+
+    s = '_'.join(map(str, l))
+
+    return s
+
+################################################################################
+
 #   Save the basic model
 
 def save_bas_model():
@@ -766,10 +958,9 @@ def save_bas_model():
 
 #   Save a model referenced by the removed element
 
-#   rem: The element ID of the removed element
-def save_rem_model(rem):
+#   rem: The element IDs of the removed elements
+def save_rem_model(rem_l):
 
-    rem_l = '_'.join(map(str, rem))
     py_send("*set_save_formatted off")
     py_send("*save_as_model element_%s.mud yes" % rem_l)
 
@@ -783,7 +974,7 @@ def save_rem_model(rem):
 
 #   m:      Minimum or maximum
 #   t:      Type of value
-#   id:     ID of the results being written
+#   i:      ID of the results being written
 #   data:   Data to be written
 def save_csv(m, t, i, data):
 
