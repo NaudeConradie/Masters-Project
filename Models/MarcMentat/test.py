@@ -28,8 +28,9 @@ def main():
     y0 = 0
     #   Number of increments per second to analyse
     n_steps = 20
-    #   Magnitude of the applied load
+    #   Magnitude of the applied load and/or displacement
     p_mag = 25
+    d_mag = 1
 
     #   !   CHANGE EVERY TIME MAIN IS RERUN   !   #
     rem = [7, 8, 9, 12, 13, 14, 17, 18, 19]

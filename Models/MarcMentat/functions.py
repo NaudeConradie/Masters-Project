@@ -7,9 +7,10 @@ from py_post import *
 
 import csv
 import time
-import random
 import os.path
 import re
+
+import numpy as np
 
 from pathlib import Path
 from pylab import *
@@ -84,12 +85,69 @@ def wait_file_update(file_name, t0, label, t):
 
 ################################################################################
 
+#   Check if a specified file exists
+#   Returns whether or not it exists
+
+#   file_name:  The name of the file to be waited for
+#   label:      The label for the output message
+def if_file_exist(file_name, label):
+
+    #   Check if the file exists
+    exists = os.path.exists(file_name)
+
+    #   Indicate if the file exists or not
+    if exists:
+        print("%s file exists" % label)
+    else:
+        print("%s file does not exist" % label)
+
+    return exists
+
+################################################################################
+
 #   Display all boundary conditions
 
 def view_bc():
 
     py_send("*identify_applys")
     py_send("*redraw")
+
+    return
+
+################################################################################
+
+#   Create a basic model from which elements may be removed
+
+#   x0:         The initial x-coordinate
+#   y0:         The initial y-coordinate
+#   x_n:        The number of nodes in the x-direction
+#   y_n:        The number of nodes in the y-direction
+#   x_e:        The number of elements in the x-direction
+#   y_e:        The number of elements in the y-direction
+#   tab_name:   The name of the table
+#   d:          The magnitude of the applied displacement
+#   n_steps:    The number of steps in the second of the loadcase
+#   n_e_l:      The number of elements as a string
+def create_base_model(x0, y0, x_n, y_n, x_e, y_e, tab_name, d, n_steps, n_e_l):
+
+    #   Clear the workspace
+    py_send("*new_model yes")
+
+    #   Grid construction
+    create_nodes(x0, y0, x_n, y_n)
+    create_elements(x_n, y_n)
+
+    #   Add the loads, boundary conditions, geometric properties and material
+    add_bc_fixed("y", "y", y0)
+    add_sin(tab_name)
+    add_bc_displacement("y", "y", d, tab_name, y_e)
+    add_geom_prop()
+    add_mat_mr()
+    add_contact_body()
+    add_lcase(n_steps)
+
+    #   Save the basic model
+    save_model(n_e_l)
 
     return
 
@@ -579,6 +637,21 @@ def add_mat_ogden():
 
 ################################################################################
 
+#   Add a contact body
+
+def add_contact_body():
+
+    py_send("*new_cbody mesh")
+    py_send("*contact_option state:solid")
+    py_send("*contact_option skip_structural:off")
+    py_send("*add_contact_body_elements all_existing")
+
+    print("Contact body added")
+    
+    return
+
+################################################################################
+
 #   Add a loadcase
 
 #   n_steps:    The number of steps in the second of the loadcase
@@ -618,11 +691,15 @@ def add_job():
 
 def run_job():
 
+    t0 = time.time()
+
     py_send("*update_job")
     py_send("*submit_job 1") 
     py_send("*monitor_job")
 
-    print("Job run")
+    t1 = time.time()
+
+    print("Job run in %fs" % (t1 - t0))
 
     return
 
@@ -635,10 +712,11 @@ def run_job():
 def check_out(rem_l):
 
     #   Initialisations
+    t0 = time.time()
     success = False
 
     #   Time to wait for files
-    t = 5
+    t = 1
 
     #   Text to look for when searching the log files
     exit_n = re.compile("exit number", re.IGNORECASE)
@@ -695,6 +773,10 @@ def check_out(rem_l):
         #   Wait until the t16 file exists and has been updated
         wait_file_exist(file_t16, "t16", t)
         wait_file_update(file_t16, t_mud, "t16", t)
+
+        t1 = time.time()
+
+        print("Results generated in approximately %fs" % (t1 - t0))
         
     return success
 
@@ -816,22 +898,25 @@ def res_val(rem_l, n_steps):
 #   e_internal: The list of the internal elements in the grid
 def rem_el(e_internal):
 
+    #   Initialisations
     rem = []
 
-    rem = [7, 12, 14, 18]
+    #   Generate a random number determining how many internal elements will be removed
+    rem_n = np.random.randint(low = 1, high = len(e_internal))
 
-    # rem_n = random.randint(1, len(e_internal))
-
-    # for i in range(0, rem_n):
-
-    for i in range(0, len(rem)):
+    #   Loop through the number of elements to be removed
+    for i in range(0, rem_n):
         
-        # rem.append(random.choice(e_internal))
+        #   Generate a random element ID from the list of internal elements
+        rem.append(np.random.choice(np.asarray(e_internal)))
 
+        #   Remove the element from the grid
         py_send("*remove_elements %d #" % rem[i])
 
+        #   Remove the element ID from the list of internal elements to prevent the same ID from being selected more than once
         e_internal.remove(rem[i])
 
+    #   Sort the list of removed element IDs
     rem.sort()
 
     print("Removed random internal elements")
@@ -931,40 +1016,27 @@ def append_rem(rem, rem_free):
 
 ################################################################################
 
-#   Convert a list into a string connected by underscores
+#   Convert a list into a string connected by a given symbol
 #   Returns the string
 
 #   l:  The list to be converted
-def list_to_str(l):
+#   c:  The symbol to be inserted between list items
+def list_to_str(l, c):
 
-    s = '_'.join(map(str, l))
+    s = c.join(map(str, l))
 
     return s
 
 ################################################################################
 
-#   Save the basic model
+#   Save a model
 
-def save_bas_model():
-
-    py_send("*set_save_formatted off")
-    py_send("*save_as_model element_basic.mud yes")
-
-    print("Basic model saved")
-
-    return
-
-################################################################################
-
-#   Save a model referenced by the removed element
-
-#   rem: The element IDs of the removed elements
-def save_rem_model(rem_l):
+def save_model(l):
 
     py_send("*set_save_formatted off")
-    py_send("*save_as_model element_%s.mud yes" % rem_l)
+    py_send("*save_as_model element_%s.mud yes" % l)
 
-    print("Model %s saved" % rem_l)
+    print("Model %s saved" % l)
 
     return
 
@@ -990,5 +1062,17 @@ def save_csv(m, t, i, data):
         wr.writerow(data)
 
     print("%s saved" % file_name)
+
+    return
+
+################################################################################
+
+#   Open a model
+
+def open_model(l):
+
+    py_send("*open_model \"element_%s.mud\"" % l)
+
+    print("Model %s opened" % l)
 
     return

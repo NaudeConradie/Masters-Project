@@ -19,10 +19,14 @@ def main():
     table_name = "sin_input"
 
     #   Number of nodes per axis (one more than number of elements desired)
-    x_n = 6
-    y_n = 6
+    x_n = 9
+    y_n = 9
+
+    #   Number of elements per axis
     x_e = x_n - 1
     y_e = y_n - 1
+    n_e = [x_e, y_e]
+    n_e_l = list_to_str(n_e, "x")
 
     #   Coordinates of initial position
     x0 = 0
@@ -31,15 +35,26 @@ def main():
     #   Number of increments per second to analyse
     n_steps = 20
 
-    #   Magnitude of the applied load
+    #   Magnitude of the applied load and/or displacement
     p_mag = 25
+    d_mag = 1
 
-    #   Clear the workspace
-    py_send("*new_model yes")
+    #   File name of the base element
+    file_base = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + n_e_l + '.mud'
 
-    #   Grid construction
-    create_nodes(x0, y0, x_n, y_n)
-    create_elements(x_n, y_n)
+    #   Flag to be set if the base model needs to be regenerated
+    regen_base = False
+
+    #   Check if the base file already exists
+    exists = if_file_exist(file_base, "Base")
+
+    #   Open the base file if it exists
+    if exists and not regen_base:
+        open_model(n_e_l)
+
+    #   Create the base file if it does not exist
+    else:
+        create_base_model(x0, y0, x_n, y_n, x_e, y_e, table_name, d_mag, n_steps, n_e_l)
 
     #   A grid of ones is created reflecting the grid of elements created
     grid = create_grid(x_e, y_e)
@@ -47,27 +62,9 @@ def main():
     #   Find the internal elements
     e_internal = find_e_internal(x_e, y_e)
 
-    #   Add the loads, boundary conditions, geometric properties and material
-    # add_bc_fixed("x", "x", x0)
-    add_bc_fixed("y", "y", y0)
-    add_sin(table_name)
-    add_bc_displacement("y", "y", 1, table_name, y_e)
-    # add_load("x", p_mag, table_name, x_e, y_e, "x", -1, x_e)
-    # add_load("y", p_mag, table_name, x_e, y_e, "y", -1, y_e)
-    add_geom_prop()
-    add_mat_mr()
-    add_lcase(n_steps)
-
-    #   Save the basic model
-    save_bas_model()
-
     #   Random element removal
     rem = rem_el(e_internal)
     grid = rem_el_grid(grid, x_e, rem)
-
-    #   Create the network of the current elements
-    # (e_id, e_n_id) = find_e_n_ids()
-    # e_net = create_e_net(e_id, e_n_id)
 
     #   Search for cluster
     (found_free, grid_label) = find_cluster(grid)
@@ -83,7 +80,7 @@ def main():
         rem = append_rem(rem, rem_free)
 
     #   Convert the list of removed elements to a string for file naming purposes
-    rem_l = list_to_str(rem)
+    rem_l = list_to_str(rem, "_")
 
     #   Display the boundary conditions
     view_bc()
@@ -92,7 +89,7 @@ def main():
     add_job()
 
     #   Save the altered model
-    save_rem_model(rem_l)
+    save_model(rem_l)
 
     #   Run the job 
     run_job()
