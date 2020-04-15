@@ -1,0 +1,156 @@
+##  Utility functions
+
+#   Imports
+
+import time
+import os.path
+import re
+
+################################################################################
+
+#   Wait for a specified time
+
+#   t:  The time in seconds to wait
+#   f:  The object being waited for
+def wait(t, f):
+
+    print("Waiting for %s..." % f)
+
+    time.sleep(t)
+
+    return
+
+################################################################################
+
+#   Wait until a specified file exists
+
+#   file_name:  The name of the file to be waited for
+#   label:      The label for the output message
+#   t:          The time in seconds to wait per loop
+def wait_file_exist(file_name, label, t):
+
+    #   Loop until the file exists
+    while 1:
+
+        #   Check if the file exists
+        exists = os.path.exists(file_name)
+
+        #   Break out of the loop if the file exists
+        if exists:
+            print("%s file exists" % label)
+            break
+
+        #   Wait and check again
+        else:
+            wait(t, "%s file to be created..." % label)
+
+    return
+
+################################################################################
+
+#   Wait until a specified file is updated
+
+#   file_name:  The name of the file to be waited for
+#   t0:         The time since which the file should have been updated
+#   label:      The label for the output message
+#   t:          The time in seconds to wait per loop
+def wait_file_update(file_name, t0, label, t):
+
+    #   Loop until the file has been updated
+    while 1:
+
+        #   See how recently the file has been updated
+        t_mod = os.path.getmtime(file_name)
+
+        #   Break out of the loop if the file has been updated since the given time
+        if t_mod > t0:
+            print("%s file updated" % label)
+            break
+
+        #   Wait and check again
+        else:
+            wait(t, "%s file to be updated..." % label)
+
+    return
+
+################################################################################
+
+#   Check if a specified file exists
+#   Returns whether or not it exists
+
+#   file_name:  The name of the file to be waited for
+#   label:      The label for the output message
+def if_file_exist(file_name, label):
+
+    #   Check if the file exists
+    exists = os.path.exists(file_name)
+
+    #   Indicate if the file exists or not
+    if exists:
+        print("%s file exists" % label)
+    else:
+        print("%s file does not exist" % label)
+
+    return exists
+
+################################################################################
+
+#   Search a text file for the first occurrence of a given text string
+#   Returns if the text was found and the entire line it was found in
+
+#   file_name:  The name of the file to be searched through
+#   find_text:  The text to be searched for
+def search_text_file(file_name, find_text):
+
+    #   Initialisations
+    found_text = ""
+    found = False
+
+    #   Open the file to be read
+    with open(file_name, "rt") as f:
+
+        #   Loop through every line in the file until the text string
+        for line in f:
+
+            #   Check if the text is in the current line of the file
+            if find_text.search(line) != None:
+
+                #   Save the entire line of text containing the desired text
+                found_text = line.rstrip("\n")
+
+                #   Set the found flag to true
+                found = True
+
+                break
+
+    return (found, found_text)
+
+################################################################################
+
+#   Add two lists and sort them
+#   Returns the added and sorted list
+
+#   l1: The first list to be added
+#   l2: The second list to be added
+def add_sort_list(l1, l2):
+
+    #   Add two lists
+    l = l1 + l2
+
+    #   Sort the added lists
+    l.sort()
+
+    return l
+
+################################################################################
+
+#   Convert a list into a string connected by a given symbol
+#   Returns the string
+
+#   l:  The list to be converted
+#   c:  The symbol to be inserted between list items
+def list_to_str(l, c):
+
+    s = c.join(map(str, l))
+
+    return s

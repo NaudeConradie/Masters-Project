@@ -2,16 +2,28 @@
 
 #   Imports
 
-from py_mentat import *
-from py_post import *
+import os.path
+import logging
+import logging.config
+import logging.handlers
 
-from functions import *
+# log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "log_configuration.config")
+
+# logging.config.fileConfig(fname = log_file_path, disable_existing_loggers = False)
+
+# logger = logging.getLogger(__name__)
+
+# logger.debug("This is a debug message")
+
+from model_functions import *
+from result_functions import *
+from rep_grid_functions import *
 
 ################################################################################
 
 #   Main function
 
-def main(): 
+def main():
 
     #   Initialisations
     
@@ -19,8 +31,8 @@ def main():
     table_name = "sin_input"
 
     #   Number of nodes per axis (one more than number of elements desired)
-    x_n = 9
-    y_n = 9
+    x_n = 6
+    y_n = 6
 
     #   Number of elements per axis
     x_e = x_n - 1
@@ -44,6 +56,8 @@ def main():
 
     #   Flag to be set if the base model needs to be regenerated
     regen_base = False
+
+    py_send("*change_directory Desktop\Repository\Masters-Project\Models\MarcMentat")
 
     #   Check if the base file already exists
     exists = if_file_exist(file_base, "Base")
@@ -77,7 +91,7 @@ def main():
         rem_el_free(rem_free)
 
         #   Update the list of removed elements
-        rem = append_rem(rem, rem_free)
+        rem = add_sort_list(rem, rem_free)
 
     #   Convert the list of removed elements to a string for file naming purposes
     rem_l = list_to_str(rem, "_")
