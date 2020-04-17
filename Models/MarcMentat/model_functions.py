@@ -431,6 +431,8 @@ def add_job():
     py_send("*job_option follow:on")
     py_send("*add_post_tensor stress_g")
     py_send("*add_post_tensor strain")
+    py_send("*add_post_var von_mises")
+    py_send("*add_post_var te_energy")
 
     return
 

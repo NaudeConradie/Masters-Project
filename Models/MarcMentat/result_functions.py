@@ -20,7 +20,7 @@ import os.path
 #   Returns a flag based on the successful output of the model
 
 #   rem_l:  String containing all removed elements
-def check_out(rem_l):
+def check_out(f_id):
 
     #   Initialisations
     t0 = time.time()
@@ -34,9 +34,9 @@ def check_out(rem_l):
     exit_number_str = re.compile("exit number", re.IGNORECASE)
 
     #   File paths to the respective model and output file
-    file_mud = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '.mud'
-    file_log = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.log'
-    file_t16 = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
+    file_mud = fp_m + r'\grid_' + f_id + r'\grid_' + f_id + '.mud'
+    file_log = fp_m + r'\grid_' + f_id + r'\grid_' + f_id + '_job.log'
+    file_t16 = fp_m + r'\grid_' + f_id + r'\grid_' + f_id + '_job.t16'
 
     #   Obtain the timestamp of the last time the model file was modified
     t_mud = os.path.getmtime(file_mud)
@@ -56,7 +56,7 @@ def check_out(rem_l):
 
             #   Output the exit number
             exit_number = find_int_in_str(found_exit_n)
-            en_log.info("Exit number %s found for model %s" % (exit_number, rem_l))
+            en_log.info("Exit number %s found for model %s" % (exit_number, f_id))
 
             #   Exit the loop
             break
@@ -94,7 +94,7 @@ def check_out(rem_l):
                 run_job()
 
                 #   Check if the updated output files exist
-                success = check_out(rem_l)
+                success = check_out(f_id)
 
             #   Check if the response was no
             elif dec == "n":
@@ -147,7 +147,7 @@ def check_out(rem_l):
 
 #   rem:        The element IDs of the removed elements
 #   n_steps:    The number of steps in the second of the loadcase
-def res_val(rem_l, n_steps):
+def res_val(f_id, n_steps):
 
     #   Initialisations
 
@@ -163,13 +163,13 @@ def res_val(rem_l, n_steps):
     label = []
     label.append("Displacement X")
     label.append("Displacement Y")
-    label.append("Normal Global Stress Layer 1")
-    label.append("Shear Global Stress Layer 1")
-    label.append("Normal Total Strain")
-    label.append("Shear Total Strain")
+    label.append("Reaction Force X")
+    label.append("Reaction Force Y")
+    label.append("Equivalent Von Mises Stress")
+    label.append("Total Strain Energy Density")
 
     #   Open the results file
-    fp_r = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
+    fp_r = fp_m + r'\grid_' + f_id + r'\grid_' + f_id + '_job.t16'
     py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_r)
     py_send("*post_numerics")
 
@@ -205,14 +205,14 @@ def res_val(rem_l, n_steps):
             if max_v_c > max_v[i]:
 
                 max_v[i] = max_v_c
-                max_n[i] = max_n_c
-                max_t[i] = j/n_steps
+                max_n[i] = int(max_n_c)
+                max_t[i] = j
 
             if min_v_c < min_v[i]:
 
                 min_v[i] = min_v_c
-                min_n[i] = min_n_c
-                min_t[i] = j/n_steps
+                min_n[i] = int(min_n_c)
+                min_t[i] = j
 
             #   Increment the post file
             py_send("*post_next")
@@ -220,13 +220,19 @@ def res_val(rem_l, n_steps):
     #   Rewind the post file
     py_send("*post_rewind")
 
+    max_save = []
+    max_save.append(max_t)
+    max_save.append(max_n)
+    max_save.append(max_v)
+
+    min_save = []
+    min_save.append(min_t)
+    min_save.append(min_n)
+    min_save.append(min_v)
+
     #   Write the results to csv files
-    save_csv("max", "v", rem_l, max_v)
-    save_csv("max", "n", rem_l, max_n)
-    save_csv("max", "t", rem_l, max_t)
-    save_csv("min", "v", rem_l, min_v)
-    save_csv("min", "n", rem_l, min_n)
-    save_csv("min", "t", rem_l, min_t)
+    save_csv("max", f_id, max_save)
+    save_csv("min", f_id, min_save)
 
     #   Print the minimum and maximum values
     print("---------------------------------------------------------------")
@@ -235,7 +241,7 @@ def res_val(rem_l, n_steps):
 
     for i in range(0, len(label)):
 
-        print("%-28s|%4.2f|%4i|%6.3g|%4.2f|%4i|%7.3g" % (label[i], max_t[i], max_n[i], max_v[i], min_t[i], min_n[i], min_v[i]))
+        print("%-28s|%4i|%4i|%6.3f|%4i|%4i|%7.3f" % (label[i], max_t[i], max_n[i], max_v[i], min_t[i], min_n[i], min_v[i]))
 
     print("---------------------------------------------------------------")
 
@@ -245,20 +251,48 @@ def res_val(rem_l, n_steps):
 
 ################################################################################
 
+#   Inspect the results
+
+# def res_ins():
+
+#     stress_max = []
+#     d = []
+#     f_x = []
+#     f_y = []
+
+#     for i in (0, len(grid_n)):
+
+#         stress_max.append(grid(i))
+
+#         d.append([])
+#         f_x.append([])
+#         f_y.append([])
+
+#         for j in (0, n_n):
+
+#             d(i).append(grid(i))
+#             f_x(i).append(grid(i))
+#             f_y(i).append(grid(i))
+
+
+
+#     return
+
+################################################################################
+
 #   Write the results to .csv files
 
 #   m:      Minimum or maximum
-#   t:      Type of value
 #   i:      ID of the results being written
 #   data:   Data to be written
-def save_csv(m, t, i, data):
+def save_csv(m, i, data):
 
-    file_name = m + "_" + t + "_" + i + ".csv"
+    file_name = m + "_" + i + ".csv"
 
     with open(fp_r + "\\" + file_name, 'w') as f:
 
         wr = csv.writer(f)
-        wr.writerow(data)
+        wr.writerows(data)
 
     print("%s saved" % file_name)
 

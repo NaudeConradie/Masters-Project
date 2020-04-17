@@ -133,12 +133,11 @@ def sel_random(l):
 #   Generate a random hash code from a given string
 #   Returns the hash code
 
+#   The string to be hashed
 def gen_hash(s):
 
     m = hashlib.md5()
-
     m.update(bytes(s, encoding = 'utf8'))
-
     hash_code = str(m.hexdigest())
 
     return hash_code
