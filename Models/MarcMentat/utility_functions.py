@@ -6,6 +6,8 @@ import time
 import os.path
 import re
 
+from pathlib import Path
+
 ################################################################################
 
 #   Wait for a specified time
@@ -33,11 +35,11 @@ def wait_file_exist(file_name, label, t):
     while 1:
 
         #   Check if the file exists
-        exists = os.path.exists(file_name)
+        exists = if_file_exist(file_name)
 
         #   Break out of the loop if the file exists
         if exists:
-            print("%s file exists" % label)
+
             break
 
         #   Wait and check again
@@ -64,7 +66,7 @@ def wait_file_update(file_name, t0, label, t):
 
         #   Break out of the loop if the file has been updated since the given time
         if t_mod > t0:
-            print("%s file updated" % label)
+
             break
 
         #   Wait and check again
@@ -78,20 +80,23 @@ def wait_file_update(file_name, t0, label, t):
 #   Check if a specified file exists
 #   Returns whether or not it exists
 
-#   file_name:  The name of the file to be waited for
-#   label:      The label for the output message
-def if_file_exist(file_name, label):
+#   file_name:  The name of the file to be checked
+def if_file_exist(file_name):
 
-    #   Check if the file exists
     exists = os.path.exists(file_name)
 
-    #   Indicate if the file exists or not
-    if exists:
-        print("%s file exists" % label)
-    else:
-        print("%s file does not exist" % label)
-
     return exists
+
+################################################################################
+
+#   Make a folder if it does not exist
+
+#   l:  The folder name and path as a string
+def make_folder(l):
+
+    Path(l).mkdir(parents=True, exist_ok=True)
+
+    return
 
 ################################################################################
 
@@ -154,3 +159,15 @@ def list_to_str(l, c):
     s = c.join(map(str, l))
 
     return s
+
+################################################################################
+
+#   Finds the first integer in a string
+#   Returns the integer
+
+#   s:  The string to be searched
+def find_int_in_str(s):
+
+    i = int(re.search(r'\d+', s).group())
+
+    return i

@@ -4,6 +4,8 @@
 
 from utility_functions import *
 from model_functions import run_job
+from file_paths import fp
+from log_settings import m_log, en_log
 
 from py_mentat import *
 from py_post import *
@@ -11,8 +13,6 @@ from py_post import *
 import csv
 import time
 import os.path
-
-from pathlib import Path
 
 ################################################################################
 
@@ -25,17 +25,18 @@ def check_out(rem_l):
     #   Initialisations
     t0 = time.time()
     success = False
+    decided = False
 
     #   Time to wait for files
     t = 1
 
     #   Text to look for when searching the log files
-    exit_n = re.compile("exit number", re.IGNORECASE)
+    exit_number_str = re.compile("exit number", re.IGNORECASE)
 
     #   File paths to the respective model and output file
-    file_mud = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '.mud'
-    file_log = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '_job.log'
-    file_t16 = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + rem_l + '_job.t16'
+    file_mud = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '.mud'
+    file_log = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.log'
+    file_t16 = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
 
     #   Obtain the timestamp of the last time the model file was modified
     t_mud = os.path.getmtime(file_mud)
@@ -48,14 +49,14 @@ def check_out(rem_l):
     while 1:
 
         #   Search the log file for an exit number
-        (found, found_exit_n) = search_text_file(file_log, exit_n)
+        (found, found_exit_n) = search_text_file(file_log, exit_number_str)
 
         #   Check if an exit number was found
         if found:
 
             #   Output the exit number
-            print("Exit number found")
-            print(found_exit_n)
+            exit_number = find_int_in_str(found_exit_n)
+            en_log.info("Exit number %s found for model %s" % (exit_number, rem_l))
 
             #   Exit the loop
             break
@@ -65,48 +66,58 @@ def check_out(rem_l):
             wait(t, "exit number to be found")
 
     #   Check if the exit number indicates a successful run
-    if found_exit_n.find("3004") != -1:
+    if exit_number == 3004:
 
         #   Set the success flag
         success = True
 
-        print("Model run successfully")
+        m_log.info("Model run successfully")
 
-    elif found_exit_n.find("67") != -1:
+    #   Check if the exit number indicates a loss of connection to the license server
+    elif exit_number == 67:
 
-        decided = False
+        m_log.error("License server connection timed out")
 
-        print("License server connection timed out.")
-
+        #   Loop until a valid decision is made
         while not decided:
 
+            #   Request a user response
             dec = input("Would you like to run again? (y/n) ")
 
+            #   Check if the response was yes
             if dec == "y":
 
+                #   Set flag that a decision was made
                 decided = True
 
+                #   Rerun the job
                 run_job()
 
+                #   Check if the updated output files exist
+                success = check_out(rem_l)
+
+            #   Check if the response was no
             elif dec == "n":
 
+                #   Set flag that a decision was made
                 decided = True
 
-                print("Results cannot be analysed")
+                m_log.warning("Results cannot be analysed")
 
+            #   Check if response was invalid
             else:
 
-                print("Warning: Invalid input received!")
+                m_log.error("Invalid input received")
                 print("Please either type a single \"y\" for yes or \"n\" for no")
 
     #   Output a warning
     else:
-        print("Warning: Model run unsuccessfully!")
-        print("Check log file and exit number for details")
-        print("Results cannot be analysed")
+        en_log.error("Model run unsuccessfully with exit number %i" % exit_number)
+        print("Check Mentat log file and exit number for details")
+        m_log.warning("Results cannot be analysed")
 
-    #   Check if the model was run successfully
-    if success:
+    #   Check if the model was run successfully without a loss of connection to the license server
+    if success and not decided:
 
         #   Wait until the t16 file exists and has been updated
         wait_file_exist(file_t16, "t16", t)
@@ -114,13 +125,19 @@ def check_out(rem_l):
 
         t1 = time.time()
 
-        print("Results generated in approximately %fs" % (t1 - t0))
+        m_log.info("Results generated in approximately %fs" % (t1 - t0))
     
+    #   Check if the model was run successfully with a loss of connection to the license server
+    elif success and decided:
+
+        m_log.info("Results generated after initial connection failure")
+
+    #   Output an error message
     else:
 
         t1 = time.time()
 
-        print("Results failed to generate after approximately %fs" % (t1 - t0))
+        m_log.warning("Results failed to generate after approximately %fs" % (t1 - t0))
         
     return success
 
@@ -152,7 +169,8 @@ def res_val(rem_l, n_steps):
     label.append("Shear Total Strain")
 
     #   Open the results file
-    py_send("@main(results) @popup(modelplot_pm) *post_open element_%s_job.t16" % rem_l)
+    fp_r = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_r)
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -173,11 +191,6 @@ def res_val(rem_l, n_steps):
         #   Set the post file to the current label
         py_send("*post_value %s" % label[i])
 
-        # print("%s" % label[i])
-        # print("-----------------------------")
-        # print("Time|Node|Max   |Node|Min")
-        # print("-----------------------------")
-
         #   Loop through all steps of the post file
         for j in range(0, n_steps + 1):
             
@@ -187,8 +200,6 @@ def res_val(rem_l, n_steps):
 
             min_n_c = py_get_float("scalar_min_node()")
             min_v_c = py_get_float("scalar_1(%i)" % min_n_c)
-
-            # print("%4.2f|%4i|%6.3f|%4i|%7.3f" % (j/n_steps, max_n_c, max_v_c, min_n_c, min_v_c))
 
             #   Check if the current value is the overall maximum and minimum value
             if max_v_c > max_v[i]:
@@ -205,8 +216,6 @@ def res_val(rem_l, n_steps):
 
             #   Increment the post file
             py_send("*post_next")
-
-        # print("-----------------------------")
 
     #   Rewind the post file
     py_send("*post_rewind")
@@ -230,7 +239,7 @@ def res_val(rem_l, n_steps):
 
     print("---------------------------------------------------------------")
 
-    print("Results analysed")
+    m_log.info("Results analysed and stored")
 
     return
 
@@ -244,7 +253,7 @@ def res_val(rem_l, n_steps):
 #   data:   Data to be written
 def save_csv(m, t, i, data):
 
-    file_path = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Results'
+    file_path = fp + r'\Results'
 
     Path(file_path).mkdir(parents = True, exist_ok = True)
 

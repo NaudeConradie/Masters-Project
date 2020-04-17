@@ -2,6 +2,8 @@
 
 #   Imports
 
+from log_settings import m_log
+
 from pylab import *
 from scipy.ndimage import measurements
 
@@ -15,8 +17,6 @@ from scipy.ndimage import measurements
 def create_grid(x_e, y_e):
 
     grid = [[1]*(x_e) for i in range(y_e)]
-
-    print("Representative grid created")
 
     return grid
  
@@ -37,16 +37,16 @@ def find_cluster(grid):
         found = True
 
         if cluster == 2:
-            print("Warning: %i free cluster found!" % (cluster - 1))
+            m_log.warning("%i free element cluster found!" % (cluster - 1))
         else:
-            print("Warning: %i free clusters found!" % (cluster - 1))
+            m_log.warning("%i free element clusters found!" % (cluster - 1))
 
     else:
 
         #   Set flag
         found = False
 
-        print("No free clusters found")
+        m_log.info("No free element clusters found")
 
     return (found, grid_label)
 
@@ -65,8 +65,6 @@ def rem_el_grid(grid, x_e, rem):
 
         #   Remove the element from the grid
         grid[x_e - (rem[i] - 1)//x_e - 1][rem[i]%x_e - 1] = 0
-        
-    print("Removed same random internal elements from representative grid")
 
     return grid
 
@@ -102,7 +100,5 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
 
             #   Increment the removed element counter
             rem_i = rem_i + 1
-
-    print("Removed free clusters from representative grid")
 
     return (grid, rem)

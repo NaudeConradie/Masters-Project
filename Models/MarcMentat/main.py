@@ -2,22 +2,11 @@
 
 #   Imports
 
-import os.path
-import logging
-import logging.config
-import logging.handlers
-
-# log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "log_configuration.config")
-
-# logging.config.fileConfig(fname = log_file_path, disable_existing_loggers = False)
-
-# logger = logging.getLogger(__name__)
-
-# logger.debug("This is a debug message")
-
 from model_functions import *
 from result_functions import *
 from rep_grid_functions import *
+from utility_functions import *
+from file_paths import fp
 
 ################################################################################
 
@@ -48,19 +37,19 @@ def main():
     n_steps = 20
 
     #   Magnitude of the applied load and/or displacement
-    p_mag = 25
+    #   p_mag = 25
     d_mag = 1
 
     #   File name of the base element
-    file_base = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\element_' + n_e_l + '.mud'
+    file_base = fp + r'\grid_' + n_e_l + r'\grid_' + n_e_l + '.mud'
 
     #   Flag to be set if the base model needs to be regenerated
     regen_base = False
 
-    py_send("*change_directory Desktop\Repository\Masters-Project\Models\MarcMentat")
+    py_send(r'*change_directory %s' % fp)
 
     #   Check if the base file already exists
-    exists = if_file_exist(file_base, "Base")
+    exists = if_file_exist(file_base)
 
     #   Open the base file if it exists
     if exists and not regen_base:
