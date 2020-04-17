@@ -4,7 +4,7 @@
 
 from utility_functions import *
 from model_functions import run_job
-from file_paths import fp
+from file_paths import *
 from log_settings import m_log, en_log
 
 from py_mentat import *
@@ -34,9 +34,9 @@ def check_out(rem_l):
     exit_number_str = re.compile("exit number", re.IGNORECASE)
 
     #   File paths to the respective model and output file
-    file_mud = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '.mud'
-    file_log = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.log'
-    file_t16 = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
+    file_mud = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '.mud'
+    file_log = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.log'
+    file_t16 = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
 
     #   Obtain the timestamp of the last time the model file was modified
     t_mud = os.path.getmtime(file_mud)
@@ -169,7 +169,7 @@ def res_val(rem_l, n_steps):
     label.append("Shear Total Strain")
 
     #   Open the results file
-    fp_r = fp + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
+    fp_r = fp_m + r'\grid_' + rem_l + r'\grid_' + rem_l + '_job.t16'
     py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_r)
     py_send("*post_numerics")
 
@@ -253,13 +253,9 @@ def res_val(rem_l, n_steps):
 #   data:   Data to be written
 def save_csv(m, t, i, data):
 
-    file_path = fp + r'\Results'
-
-    Path(file_path).mkdir(parents = True, exist_ok = True)
-
     file_name = m + "_" + t + "_" + i + ".csv"
 
-    with open(file_path + "\\" + file_name, 'w') as f:
+    with open(fp_r + "\\" + file_name, 'w') as f:
 
         wr = csv.writer(f)
         wr.writerow(data)

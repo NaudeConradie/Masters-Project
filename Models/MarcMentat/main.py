@@ -6,7 +6,7 @@ from model_functions import *
 from result_functions import *
 from rep_grid_functions import *
 from utility_functions import *
-from file_paths import fp
+from file_paths import *
 
 ################################################################################
 
@@ -41,19 +41,17 @@ def main():
     d_mag = 1
 
     #   File name of the base element
-    file_base = fp + r'\grid_' + n_e_l + r'\grid_' + n_e_l + '.mud'
+    file_base = fp_bm + r'\grid_' + n_e_l + r'\grid_' + n_e_l + '.mud'
 
     #   Flag to be set if the base model needs to be regenerated
     regen_base = False
-
-    py_send(r'*change_directory %s' % fp)
 
     #   Check if the base file already exists
     exists = if_file_exist(file_base)
 
     #   Open the base file if it exists
     if exists and not regen_base:
-        open_model(n_e_l)
+        open_model(n_e_l, "bm")
 
     #   Create the base file if it does not exist
     else:
@@ -66,7 +64,8 @@ def main():
     e_internal = find_e_internal(x_e, y_e)
 
     #   Random element removal
-    rem = rem_el(e_internal)
+    rem = sel_random(e_internal)
+    rem_el(rem)
     grid = rem_el_grid(grid, x_e, rem)
 
     #   Search for cluster
@@ -77,13 +76,14 @@ def main():
 
         #   Remove the free clusters
         (grid, rem_free) = rem_el_free_grid(grid, grid_label, x_e, y_e)
-        rem_el_free(rem_free)
+        rem_el(rem_free)
 
         #   Update the list of removed elements
         rem = add_sort_list(rem, rem_free)
 
     #   Convert the list of removed elements to a string for file naming purposes
     rem_l = list_to_str(rem, "_")
+    f_id = gen_hash(rem_l)
 
     #   Display the boundary conditions
     view_bc()
@@ -92,17 +92,17 @@ def main():
     add_job()
 
     #   Save the altered model
-    save_model(rem_l)
+    save_model(f_id, "m")
 
     #   Run the job 
     run_job()
 
     #   Check the existence and validity of results
-    run_success = check_out(rem_l)
+    run_success = check_out(f_id)
     if run_success:
 
         #   Inspect the results
-        res_val(rem_l, n_steps)
+        res_val(f_id, n_steps)
 
     return
 

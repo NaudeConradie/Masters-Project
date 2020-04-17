@@ -3,25 +3,29 @@
 #   Imports
 
 from utility_functions import *
-from file_paths import fp
+from file_paths import *
 from log_settings import m_log
 
 from py_mentat import *
 from py_post import *
 
 import time
-import numpy
 
 ################################################################################
 
 #   Open a model
 
 #   s:  Identification string
-def open_model(s):
+#   f:  Folder to be opened from
+def open_model(s, f):
 
-    fp_s = fp + r'\grid_' + s + r'\grid_' + s + '.mud'
+    if f == "bm":
+        fp_o = fp_bm + r'\grid_' + s + r'\grid_' + s + '.mud'
 
-    py_send(r'*open_model "%s"' % fp_s)
+    elif f == "m":
+        fp_o = fp_m + r'\grid_' + s + r'\grid_' + s + '.mud'
+
+    py_send(r'*open_model "%s"' % fp_o)
 
     m_log.info("Existing model \"grid_%s.mud\" opened" % s)
 
@@ -32,11 +36,16 @@ def open_model(s):
 #   Save a model
 
 #   s:  Identification string
-def save_model(s):
+#   f:  Folder to be saved in
+def save_model(s, f):
 
-    make_folder(fp + r'\grid_' + s)
+    if f == "bm":
+        make_folder(fp_bm + r'\grid_' + s)
+        fp_s = fp_bm + r'\grid_' + s + r'\grid_' + s + '.mud'
 
-    fp_s = fp + r'\grid_' + s + r'\grid_' + s + '.mud'
+    elif f == "m":
+        make_folder(fp_m + r'\grid_' + s)
+        fp_s = fp_m + r'\grid_' + s + r'\grid_' + s + '.mud'
 
     py_send("*set_save_formatted off")
     py_send(r'*save_as_model "%s" yes' % fp_s)
@@ -78,7 +87,7 @@ def create_base_model(x0, y0, x_n, y_n, x_e, y_e, tab_name, d, n_steps, n_e_l):
     add_lcase(n_steps)
 
     #   Save the basic model
-    save_model(n_e_l)
+    save_model(n_e_l, "bm")
 
     return
 
@@ -445,56 +454,20 @@ def run_job():
 
 ################################################################################
 
-#   Remove a random number of elements
-#   Returns the element IDs that were removed
+#   Remove a selection of elements
 
-#   e_internal: The list of the internal elements in the grid
-def rem_el(e_internal):
-
-    #   Initialisations
-    rem = []
-
-    #   Generate a random number determining how many internal elements will be removed
-    rem_n = numpy.random.randint(low = 1, high = len(e_internal))
+#   rem:    The list of selected elements to be removed
+def rem_el(rem):
 
     #   Loop through the number of elements to be removed
-    for i in range(0, rem_n):
-        
-        #   Generate a random element ID from the list of internal elements
-        rem.append(numpy.random.choice(numpy.asarray(e_internal)))
+    for i in range(0, len(rem)):
 
         #   Remove the element from the grid
         py_send("*remove_elements %d #" % rem[i])
 
-        #   Remove the element ID from the list of internal elements to prevent the same ID from being selected more than once
-        e_internal.remove(rem[i])
-
-    #   Sort the list of removed element IDs
-    rem.sort()
-
     rem_log = list_to_str(rem, ",")
 
-    m_log.info("Removed the following elements randomly from the grid:")
-    m_log.info(rem_log)
-
-    return rem
-
-################################################################################
-
-#   Remove any free elements
-
-#   rem:    The list of free elements to be removed
-def rem_el_free(rem):
-
-    #   Loop through all elements to be removed
-    for i in range(0, len(rem)):
-
-        #   Remove the element
-        py_send("*remove_elements %i #" % rem[i])
-
-    rem_log = list_to_str(rem, ",")
-
-    m_log.info("Removed the following free elements from the grid:")
+    m_log.info("Removed the following elements from the grid:")
     m_log.info(rem_log)
 
     return

@@ -3,8 +3,10 @@
 #   Imports
 
 import time
+import numpy
 import os.path
 import re
+import hashlib
 
 from pathlib import Path
 
@@ -97,6 +99,49 @@ def make_folder(l):
     Path(l).mkdir(parents=True, exist_ok=True)
 
     return
+
+################################################################################
+
+#   Randomly select a random amount of numbers from a given list of numbers
+#   Returns the numbers that were selected
+
+#   l:  The list of numbers
+def sel_random(l):
+
+    #   Initialisations
+    sel = []
+
+    #   Generate a random number determining how many numbers will be selected
+    sel_n = numpy.random.randint(low = 1, high = len(l))
+
+    #   Loop through the list of numbers to be selected
+    for i in range(0, sel_n):
+        
+        #   Select a random number from the list of numbers
+        sel.append(numpy.random.choice(numpy.asarray(l)))
+
+        #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
+        l.remove(sel[i])
+
+    #   Sort the list of selected numbers
+    sel.sort()
+
+    return sel
+
+################################################################################
+
+#   Generate a random hash code from a given string
+#   Returns the hash code
+
+def gen_hash(s):
+
+    m = hashlib.md5()
+
+    m.update(bytes(s, encoding = 'utf8'))
+
+    hash_code = str(m.hexdigest())
+
+    return hash_code
 
 ################################################################################
 
