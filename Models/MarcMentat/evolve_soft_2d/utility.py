@@ -1,6 +1,7 @@
 ##  Utility functions
 
 #   Imports
+from evolve_soft_2d.log import m_log
 
 import time
 import numpy
@@ -110,6 +111,7 @@ def sel_random(l):
 
     #   Initialisations
     sel = []
+    l_temp = l[:]
 
     #   Generate a random number determining how many numbers will be selected
     sel_n = numpy.random.randint(low = 1, high = len(l))
@@ -118,10 +120,10 @@ def sel_random(l):
     for i in range(0, sel_n):
         
         #   Select a random number from the list of numbers
-        sel.append(numpy.random.choice(numpy.asarray(l)))
+        sel.append(numpy.random.choice(numpy.asarray(l_temp)))
 
         #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
-        l.remove(sel[i])
+        l_temp.remove(sel[i])
 
     #   Sort the list of selected numbers
     sel.sort()

@@ -1,13 +1,11 @@
-##  Functions used with the results
+##  Functions used for obtaining and inspecting results
 
 #   Imports
-
 from evolve_soft_2d import model, utility
 from evolve_soft_2d.file_paths import fp_m, fp_r
-from evolve_soft_2d.log_settings import m_log, en_log
+from evolve_soft_2d.log import m_log, en_log
 
-from py_mentat import *
-from py_post import *
+from py_mentat import py_send, py_get_float
 
 import csv
 import time
@@ -19,9 +17,10 @@ import re
 #   Check if the updated output files exist
 #   Returns a flag based on the successful output of the model
 
-#   f_id:   Identification string
-#   e:      Identification string of grid size
-def check_out(f_id, e):
+#   id1:    The number of elements in the x-direction times the number of elements in the y-direction
+#   id2:    The model case identifier
+#   id3:    The model identifier
+def check_out(id1, id2, id3):
 
     #   Initialisations
     t0 = time.time()
@@ -34,10 +33,13 @@ def check_out(f_id, e):
     #   Text to look for when searching the log files
     exit_number_str = re.compile("exit number", re.IGNORECASE)
 
-    #   File paths to the respective model and output file
-    fp_mud = fp_m + r'\grid_' + e + r'\grid_' + f_id + r'\grid_' + f_id + '.mud'
-    fp_log = fp_m + r'\grid_' + e + r'\grid_' + f_id + r'\grid_' + f_id + '_job.log'
-    fp_t16 = fp_m + r'\grid_' + e + r'\grid_' + f_id + r'\grid_' + f_id + '_job.t16'
+    #   File paths to the respective model and output files
+    fp_id_t = r'\grid_' + id1 + '_' + id2
+    fp_id_m = r'\grid_' + id3
+    fp_id = fp_m + fp_id_t + fp_id_m + fp_id_m
+    fp_mud = fp_id + '.mud'
+    fp_log = fp_id + '_job.log'
+    fp_t16 = fp_id + '_job.t16'
 
     #   Obtain the timestamp of the last time the model file was modified
     t_mud = os.path.getmtime(fp_mud)
@@ -57,7 +59,7 @@ def check_out(f_id, e):
 
             #   Output the exit number
             exit_number = utility.find_int_in_str(found_exit_n)
-            en_log.info("Exit number %s found for model %s" % (exit_number, f_id))
+            en_log.info("Exit number %s found for model \"grid_%s.mud\"" % (exit_number, id3))
 
             #   Exit the loop
             break
@@ -95,7 +97,7 @@ def check_out(f_id, e):
                 model.run_job()
 
                 #   Check if the updated output files exist
-                success = check_out(f_id, e)
+                success = check_out(id1, id2, id3)
 
             #   Check if the response was no
             elif dec == "n":
@@ -114,8 +116,7 @@ def check_out(f_id, e):
     #   Output a warning
     else:
         en_log.error("Model run unsuccessfully with exit number %i" % exit_number)
-        print("Check Mentat log file and exit number for details")
-        m_log.warning("Results cannot be analysed")
+        m_log.warning("Results cannot be analysed. Check Mentat log file and exit number for details")
 
     #   Check if the model was run successfully without a loss of connection to the license server
     if success and not decided:
@@ -149,7 +150,7 @@ def check_out(f_id, e):
 #   f_id:       Identification string
 #   e:          Identification string of grid size
 #   n_steps:    The number of steps in the second of the loadcase
-def res_val(f_id, e, n_steps):
+def get_max_min(id1, id2, id3, n_steps):
 
     #   Initialisations
 
@@ -171,8 +172,11 @@ def res_val(f_id, e, n_steps):
     label.append("Total Strain Energy Density")
 
     #   Open the results file
-    fp_r = fp_m + r'\grid_' + e + r'\grid_' + f_id + r'\grid_' + f_id + '_job.t16'
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_r)
+    fp_id_t = r'\grid_' + id1 + '_' + id2
+    fp_id_m = r'\grid_' + id3
+    fp_id = fp_m + fp_id_t + fp_id_m + fp_id_m
+    fp_t16 = fp_id + '_job.t16'
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_t16)
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -203,7 +207,7 @@ def res_val(f_id, e, n_steps):
             min_n_c = py_get_float("scalar_min_node()")
             min_v_c = py_get_float("scalar_1(%i)" % min_n_c)
 
-            #   Check if the current value is the overall maximum and minimum value
+            #   Check if the current value is the overall maximum or minimum value
             if max_v_c > max_v[i]:
 
                 max_v[i] = max_v_c
@@ -233,52 +237,74 @@ def res_val(f_id, e, n_steps):
     min_save.append(min_v)
 
     #   Write the results to csv files
-    save_csv("max", f_id, max_save)
-    save_csv("min", f_id, min_save)
+    save_csv(id1, id2, id3, "max", id3, max_save)
+    save_csv(id1, id2, id3, "min", id3, min_save)
 
-    #   Print the minimum and maximum values
-    print("---------------------------------------------------------------")
-    print("Label                       |Time|Node|Max   |Time|Node|Min")
-    print("---------------------------------------------------------------")
-
-    for i in range(0, len(label)):
-
-        print("%-28s|%4i|%4i|%6.3f|%4i|%4i|%7.3f" % (label[i], max_t[i], max_n[i], max_v[i], min_t[i], min_n[i], min_v[i]))
-
-    print("---------------------------------------------------------------")
-
-    m_log.info("Results analysed and stored")
+    m_log.info("Maximum and minimum result values obtained and stored")
 
     return
 
 ################################################################################
 
-#   Inspect the results
+#   Obtain all values from results
 
-# def res_ins():
+#   f_id:       Identification string
+#   e:          Identification string of grid size
+#   n_n:        The number of nodes
+#   n_steps:    The number of steps in the second of the loadcase
+def get_all(id1, id2, id3, n_n, n_steps):
 
-#     stress_max = []
-#     d = []
-#     f_x = []
-#     f_y = []
+    #   The labels of the desired results
+    label = []
+    label.append("Displacement X")
+    label.append("Displacement Y")
+    label.append("Reaction Force X")
+    label.append("Reaction Force Y")
 
-#     for i in (0, len(grid_n)):
+    #   Open the results file
+    fp_id_t = r'\grid_' + id1 + '_' + id2
+    fp_id_m = r'\grid_' + id3
+    fp_id = fp_m + fp_id_t + fp_id_m + fp_id_m
+    fp_t16 = fp_id + '_job.t16'
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_t16)
+    py_send("*post_numerics")
 
-#         stress_max.append(grid(i))
+    #   Loop through all given labels
+    for i in range(0, len(label)):
 
-#         d.append([])
-#         f_x.append([])
-#         f_y.append([])
+        #   Initialise list for the current label
+        v = []
 
-#         for j in (0, n_n):
+        #   Rewind the post file to the initial step
+        py_send("*post_rewind")
 
-#             d(i).append(grid(i))
-#             f_x(i).append(grid(i))
-#             f_y(i).append(grid(i))
+        #   Set the post file to the current label
+        py_send("*post_value %s" % label[i])
 
+        #   Loop through all steps of the post file
+        for j in range(0, n_steps + 1):
 
+            #   Append an empty list to create a new index for every step
+            v.append([])
 
-#     return
+            #   Loop through all 
+            for k in range(1, n_n + 1):
+
+                #   Append the current node's value to the list at the current step
+                v[j].append(py_get_float("scalar_1(%i)" % k))
+
+            #   Increment the post file
+            py_send("*post_next")
+
+        #   Save the values to a .csv file
+        save_csv(id1, id2, id3, label[i], id3, v)
+
+    #   Rewind the post file
+    py_send("*post_rewind")
+
+    m_log.info("All result values obtained and stored")
+
+    return
 
 ################################################################################
 
@@ -287,15 +313,20 @@ def res_val(f_id, e, n_steps):
 #   m:      Minimum or maximum
 #   i:      ID of the results being written
 #   data:   Data to be written
-def save_csv(m, i, data):
+def save_csv(id1, id2, id3, m, i, data):
 
-    file_name = m + "_" + i + ".csv"
+    fp_id_t = r'\grid_' + id1 + '_' + id2
+    fp_id = fp_r + fp_id_t
 
-    with open(fp_r + "\\" + file_name, 'w') as f:
+    utility.make_folder(fp_id)
+    
+    fp_csv = m + "_" + i + ".csv"
+
+    with open(fp_id + "\\" + fp_csv, 'w') as f:
 
         wr = csv.writer(f)
         wr.writerows(data)
 
-    print("%s saved" % file_name)
+    print("%s saved" % fp_csv)
 
     return
