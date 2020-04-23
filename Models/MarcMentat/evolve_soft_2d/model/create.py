@@ -3,7 +3,7 @@
 #   Imports
 from evolve_soft_2d import result, utility
 from evolve_soft_2d.model import modify, rep_grid
-from evolve_soft_2d.file_paths import fp_t
+from evolve_soft_2d.file_paths import fp_t, create_fp_t_f, create_fp_m_f
 
 from py_mentat import py_send
 
@@ -28,13 +28,12 @@ def prep_template(x_n, y_n, case):
     n_e_l = utility.list_to_str([x_e, y_e], "x")
 
     #   Create the file path of the template
-    fp_id_t = r'\grid_' + n_e_l + '_' + case
-    fp_tm = fp_t + fp_id_t + fp_id_t + '.mud'
+    fp_t_f = create_fp_t_f(n_e_l, case)
 
     #   Check if the template exists
-    exists = utility.if_file_exist(fp_tm)
+    exists = utility.if_file_exist(fp_t_f)
 
-    return (n_n, x_e, y_e, n_e_l, exists)
+    return (n_n, x_e, y_e, n_e_l, fp_t_f, exists)
 
 ################################################################################
 
@@ -45,13 +44,13 @@ def prep_template(x_n, y_n, case):
 #   y0:         The initial y-coordinate
 #   x_n:        The number of nodes in the x-direction
 #   y_n:        The number of nodes in the y-direction
-#   x_e:        The number of elements in the x-direction
 #   y_e:        The number of elements in the y-direction
 #   tab_name:   The name of the table
 #   d:          The magnitude of the applied displacement
 #   n_steps:    The number of steps in the second of the loadcase
 #   n_e_l:      The number of elements as a string
-def create_template_0(x0, y0, x_n, y_n, x_e, y_e, tab_name, d, n_steps, n_e_l):
+#   fp_t_f:     The file path of the template model file
+def template_0(x0, y0, x_n, y_n, y_e, tab_name, d, n_steps, n_e_l, fp_t_f):
 
     #   Clear the workspace
     py_send("*new_model yes")
@@ -70,7 +69,7 @@ def create_template_0(x0, y0, x_n, y_n, x_e, y_e, tab_name, d, n_steps, n_e_l):
     modify.add_lcase(n_steps)
 
     #   Save the template
-    modify.save_model(n_e_l, "0", "", "t")
+    modify.save_model(fp_t_f, n_e_l + '_0')
 
     return
 
@@ -82,15 +81,16 @@ def create_template_0(x0, y0, x_n, y_n, x_e, y_e, tab_name, d, n_steps, n_e_l):
 #   x_e:        The number of elements in the x-direction
 #   y_e:        The number of elements in the y-direction
 #   e_internal: The list of internal elements
-#   n_e_l:      The number of elements as a string
-#   case:       The model case identifier
 #   n_steps:    The number of steps in the second of the loadcase
 #   grid:       The representative grid of ones
-#   r:          The number of models to generate
-def gen_models(n_n, x_e, y_e, e_internal, n_e_l, case, n_steps, grid, r):
+#   n_e_l:      The number of elements as a string
+#   case:       The model case identifier
+#   fp_t_f:     The file path of the template model file
+#   g:          The number of models to generate
+def gen_models(n_n, x_e, y_e, e_internal, n_steps, grid, n_e_l, case, fp_t_f, g):
 
     #   Loop through the desired number of models to be created
-    for _ in range(0, r):
+    for _ in range(0, g):
 
         #   Determine which random elements will be removed
         rem = utility.sel_random(e_internal)
@@ -112,26 +112,31 @@ def gen_models(n_n, x_e, y_e, e_internal, n_e_l, case, n_steps, grid, r):
 
         #   Convert the list of removed elements to a string for file naming purposes
         rem_l = utility.list_to_str(rem, "_")
-        f_id = utility.gen_hash(rem_l)
+        m_id = utility.gen_hash(rem_l)
+
+        #   Create the file path names of the model and relevant output files
+        fp_m_mud = create_fp_m_f(n_e_l, case, m_id, '.mud')
+        fp_m_log = create_fp_m_f(n_e_l, case, m_id, '_job.log')
+        fp_m_t16 = create_fp_m_f(n_e_l, case, m_id, '_job.t16')
 
         #   Add the job
         modify.add_job()
 
         #   Save the altered model
-        modify.save_model(n_e_l, case, f_id, "m")
+        modify.save_model(fp_m_mud, m_id)
 
         #   Run the job 
         modify.run_job()
 
-        #   Check the existence and validity of results
-        run_success = result.check_out(n_e_l, case, f_id)
+        #   Check the existence and validity of the results
+        run_success = result.check_out(fp_m_mud, fp_m_log, fp_m_t16, m_id)
         if run_success:
 
             #   Inspect the results
-            result.get_max_min(n_e_l, case, f_id, n_steps)
-            result.get_all(n_e_l, case, f_id, n_n, n_steps)
+            result.get_max_min(n_steps, n_e_l, case, m_id, fp_m_t16)
+            result.get_all(n_n, n_steps, n_e_l, case, m_id, fp_m_t16)
 
-        #   Reopen the base model
-        modify.open_model(n_e_l, case, "", "t")
+        #   Reopen the template
+        modify.open_model(fp_t_f, n_e_l + '_' + case)
     
     return

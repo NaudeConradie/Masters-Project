@@ -2,7 +2,7 @@
 
 #   Imports
 from evolve_soft_2d import model, utility
-from evolve_soft_2d.file_paths import fp_m, fp_r
+from evolve_soft_2d.file_paths import fp_m, fp_r, create_fp_r_f
 from evolve_soft_2d.log import m_log, en_log
 
 from py_mentat import py_send, py_get_float
@@ -17,10 +17,11 @@ import re
 #   Check if the updated output files exist
 #   Returns a flag based on the successful output of the model
 
-#   id1:    The number of elements in the x-direction times the number of elements in the y-direction
-#   id2:    The model case identifier
-#   id3:    The model identifier
-def check_out(id1, id2, id3):
+#   fp_m_mud:   The complete file path of the model file
+#   fp_m_log:   The complete file path of the log file
+#   fp_m_t16:   The complete file path of the t16 file
+#   m_id:       The ID of the model file
+def check_out(fp_m_mud, fp_m_log, fp_m_t16, m_id):
 
     #   Initialisations
     t0 = time.time()
@@ -33,33 +34,25 @@ def check_out(id1, id2, id3):
     #   Text to look for when searching the log files
     exit_number_str = re.compile("exit number", re.IGNORECASE)
 
-    #   File paths to the respective model and output files
-    fp_id_t = r'\grid_' + id1 + '_' + id2
-    fp_id_m = r'\grid_' + id3
-    fp_id = fp_m + fp_id_t + fp_id_m + fp_id_m
-    fp_mud = fp_id + '.mud'
-    fp_log = fp_id + '_job.log'
-    fp_t16 = fp_id + '_job.t16'
-
     #   Obtain the timestamp of the last time the model file was modified
-    t_mud = os.path.getmtime(fp_mud)
+    t_mud = os.path.getmtime(fp_m_mud)
 
     #   Wait until the log file exists and has been updated
-    utility.wait_file_exist(fp_log, "log", t)
-    utility.wait_file_update(fp_log, t_mud, "log", t)
+    utility.wait_file_exist(fp_m_log, "log", t)
+    utility.wait_file_update(fp_m_log, t_mud, "log", t)
 
     #   Loop until an exit number is detected
     while 1:
 
         #   Search the log file for an exit number
-        (found, found_exit_n) = utility.search_text_file(fp_log, exit_number_str)
+        (found, found_exit_n) = utility.search_text_file(fp_m_log, exit_number_str)
 
         #   Check if an exit number was found
         if found:
 
             #   Output the exit number
             exit_number = utility.find_int_in_str(found_exit_n)
-            en_log.info("Exit number %s found for model \"grid_%s.mud\"" % (exit_number, id3))
+            en_log.info("Exit number %s found for model \"grid_%s.mud\"" % (exit_number, m_id))
 
             #   Exit the loop
             break
@@ -78,7 +71,6 @@ def check_out(id1, id2, id3):
 
     #   Check if the exit number indicates a loss of connection to the license server
     elif exit_number == 67:
-
         m_log.error("License server connection timed out")
 
         #   Loop until a valid decision is made
@@ -97,7 +89,7 @@ def check_out(id1, id2, id3):
                 model.run_job()
 
                 #   Check if the updated output files exist
-                success = check_out(id1, id2, id3)
+                success = check_out(fp_m_mud, fp_m_log, fp_m_t16, m_id)
 
             #   Check if the response was no
             elif dec == "n":
@@ -122,11 +114,10 @@ def check_out(id1, id2, id3):
     if success and not decided:
 
         #   Wait until the t16 file exists and has been updated
-        utility.wait_file_exist(fp_t16, "t16", t)
-        utility.wait_file_update(fp_t16, t_mud, "t16", t)
+        utility.wait_file_exist(fp_m_t16, "t16", t)
+        utility.wait_file_update(fp_m_t16, t_mud, "t16", t)
 
         t1 = time.time()
-
         m_log.info("Results generated in approximately %fs" % (t1 - t0))
     
     #   Check if the model was run successfully with a loss of connection to the license server
@@ -138,7 +129,6 @@ def check_out(id1, id2, id3):
     else:
 
         t1 = time.time()
-
         m_log.warning("Results failed to generate after approximately %fs" % (t1 - t0))
         
     return success
@@ -147,10 +137,12 @@ def check_out(id1, id2, id3):
 
 #   Obtain maximum and minimum values from results
 
-#   f_id:       Identification string
-#   e:          Identification string of grid size
 #   n_steps:    The number of steps in the second of the loadcase
-def get_max_min(id1, id2, id3, n_steps):
+#   n_e_l:      The number of elements as a string
+#   case:       The model case identifier
+#   m_id:       The ID of the model file
+#   fp_m_t16:   The complete file path of the t16 file
+def get_max_min(n_steps, n_e_l, case, m_id, fp_m_t16):
 
     #   Initialisations
 
@@ -172,11 +164,7 @@ def get_max_min(id1, id2, id3, n_steps):
     label.append("Total Strain Energy Density")
 
     #   Open the results file
-    fp_id_t = r'\grid_' + id1 + '_' + id2
-    fp_id_m = r'\grid_' + id3
-    fp_id = fp_m + fp_id_t + fp_id_m + fp_id_m
-    fp_t16 = fp_id + '_job.t16'
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_t16)
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_m_t16)
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -237,8 +225,8 @@ def get_max_min(id1, id2, id3, n_steps):
     min_save.append(min_v)
 
     #   Write the results to csv files
-    save_csv(id1, id2, id3, "max", id3, max_save)
-    save_csv(id1, id2, id3, "min", id3, min_save)
+    save_csv(n_e_l, case, "max", m_id, max_save)
+    save_csv(n_e_l, case, "min", m_id, min_save)
 
     m_log.info("Maximum and minimum result values obtained and stored")
 
@@ -248,11 +236,13 @@ def get_max_min(id1, id2, id3, n_steps):
 
 #   Obtain all values from results
 
-#   f_id:       Identification string
-#   e:          Identification string of grid size
 #   n_n:        The number of nodes
 #   n_steps:    The number of steps in the second of the loadcase
-def get_all(id1, id2, id3, n_n, n_steps):
+#   n_e_l:      The number of elements as a string
+#   case:       The model case identifier
+#   m_id:       The ID of the model file
+#   fp_m_t16:   The complete file path of the t16 file
+def get_all(n_n, n_steps, n_e_l, case, m_id, fp_m_t16):
 
     #   The labels of the desired results
     label = []
@@ -262,11 +252,7 @@ def get_all(id1, id2, id3, n_n, n_steps):
     label.append("Reaction Force Y")
 
     #   Open the results file
-    fp_id_t = r'\grid_' + id1 + '_' + id2
-    fp_id_m = r'\grid_' + id3
-    fp_id = fp_m + fp_id_t + fp_id_m + fp_id_m
-    fp_t16 = fp_id + '_job.t16'
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_t16)
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_m_t16)
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -297,7 +283,7 @@ def get_all(id1, id2, id3, n_n, n_steps):
             py_send("*post_next")
 
         #   Save the values to a .csv file
-        save_csv(id1, id2, id3, label[i], id3, v)
+        save_csv(n_e_l, case, label[i], m_id, v)
 
     #   Rewind the post file
     py_send("*post_rewind")
@@ -310,23 +296,21 @@ def get_all(id1, id2, id3, n_n, n_steps):
 
 #   Write the results to .csv files
 
-#   m:      Minimum or maximum
-#   i:      ID of the results being written
-#   data:   Data to be written
-def save_csv(id1, id2, id3, m, i, data):
-
-    fp_id_t = r'\grid_' + id1 + '_' + id2
-    fp_id = fp_r + fp_id_t
-
-    utility.make_folder(fp_id)
+#   n_e_l:      The number of elements as a string
+#   case:       The model case identifier
+#   t:          The type of data to be stored
+#   m_id:       The ID of the model file
+#   fp_m_t16:   The complete file path of the t16 file
+def save_csv(n_e_l, case, t, m_id, data):
     
-    fp_csv = m + "_" + i + ".csv"
+    #   Create the file path of the results file
+    fp_r_csv = create_fp_r_f(n_e_l, case, t, m_id)
 
-    with open(fp_id + "\\" + fp_csv, 'w') as f:
-
+    #   Write the data to the results file
+    with open(fp_r_csv, 'w') as f:
         wr = csv.writer(f)
         wr.writerows(data)
 
-    print("%s saved" % fp_csv)
+    print("%s saved" % t + '_' + m_id + '.csv')
 
     return

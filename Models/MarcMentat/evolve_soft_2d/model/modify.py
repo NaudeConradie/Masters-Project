@@ -14,28 +14,14 @@ import time
 
 #   Open a model
 
-#   id1:    The number of elements in the x-direction times the number of elements in the y-direction
-#   id2:    The model case identifier
-#   id3:    The model identifier
-#   f:      The type of model to be opened
-def open_model(id1, id2, id3, f):
-
-    #   Create file path strings
-    fp_id_t = r'\grid_' + id1 + '_' + id2
-    fp_id_m = r'\grid_' + id3
-
-    #   Check if the model to be opened is a template
-    if f == "t":
-        fp_o = fp_t + fp_id_t + fp_id_t + '.mud'
-        m_log.info("Model \"grid_%s.mud\" saved" % (id1 + '_' + id2))
-
-    #   Check if the model to be opened is a model
-    elif f == "m":
-        fp_o = fp_m + fp_id_t + fp_id_m + fp_id_m + '.mud'
-        m_log.info("Model \"grid_%s.mud\" opened" % (id3))
+#   fp_id:  The complete file path of the path to be opened
+#   f_id:   The file ID to be logged
+def open_model(fp_id, f_id):
 
     #   Open the model
-    py_send(r'*open_model "%s"' % fp_o)
+    py_send(r'*open_model "%s"' % fp_id)
+
+    m_log.info("Model \"grid_%s.mud\" opened" % (f_id))
 
     return
 
@@ -43,31 +29,15 @@ def open_model(id1, id2, id3, f):
 
 #   Save a model
 
-#   id1:    The number of elements in the x-direction times the number of elements in the y-direction
-#   id2:    The model case identifier
-#   id3:    The model identifier
-#   f:      The folder to be saved in
-def save_model(id1, id2, id3, f):
-
-    #   Create file path strings
-    fp_id_t = r'\grid_' + id1 + '_' + id2
-    fp_id_m = r'\grid_' + id3
-
-    #   Check if the model to be saved is a template
-    if f == "t":
-        utility.make_folder(fp_t + fp_id_t)
-        fp_s = fp_t + fp_id_t + fp_id_t + '.mud'
-        m_log.info("Model \"grid_%s.mud\" saved" % (id1 + '_' + id2))
-
-    #   Check if the model to be saved is a model
-    elif f == "m":
-        utility.make_folder(fp_m + fp_id_t + fp_id_m)
-        fp_s = fp_m + fp_id_t + fp_id_m + fp_id_m + '.mud'
-        m_log.info("Model \"grid_%s.mud\" saved" % (id3))
+#   fp_id:  The complete file path of the path to be opened
+#   f_id:   The file ID to be logged
+def save_model(fp_id, f_id):
 
     #   Save the model
     py_send("*set_save_formatted off")
-    py_send(r'*save_as_model "%s" yes' % fp_s)
+    py_send(r'*save_as_model "%s" yes' % fp_id)
+
+    m_log.info("Model \"grid_%s.mud\" saved" % (f_id))
 
     return
 

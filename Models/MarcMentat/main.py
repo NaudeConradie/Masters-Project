@@ -30,18 +30,19 @@ def main():
     #   Flag to be set if the base model needs to be regenerated
     regen_base = False
 
+    #   Template case to be run
     case = "0"
 
     #   Prepare the model parameters
-    (n_n, x_e, y_e, n_e_l, exists) = create.prep_template(x_n, y_n, case)
+    (n_n, x_e, y_e, n_e_l, fp_t_f, exists) = create.prep_template(x_n, y_n, case)
 
     #   Open the base file if it exists
     if exists and not regen_base:
-        modify.open_model(n_e_l, case, "", "t")
+        modify.open_model(fp_t_f, n_e_l + '_' + case)
 
     #   Create the base file if it does not exist
-    else:
-        create.create_template_0(x0, y0, x_n, y_n, x_e, y_e, table_name, d_mag, n_steps, n_e_l)
+    elif case == "0":
+        create.template_0(x0, y0, x_n, y_n, y_e, table_name, d_mag, n_steps, n_e_l, fp_t_f)
 
     #   Create a representative grid of ones
     grid = rep_grid.create_grid(x_e, y_e)
@@ -50,7 +51,7 @@ def main():
     e_internal = inspect.find_e_internal(x_e, y_e)
 
     #   Generate a number of models and save their results
-    create.gen_models(n_n, x_e, y_e, e_internal, n_e_l, case, n_steps, grid, 5)
+    create.gen_models(n_n, x_e, y_e, e_internal, n_steps, grid, n_e_l, case, fp_t_f, 5)
 
     #   View the boundary conditions of the template
     inspect.view_bc()
