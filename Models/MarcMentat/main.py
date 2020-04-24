@@ -1,7 +1,6 @@
 ##  Main program
 
 #   Imports
-from evolve_soft_2d import result, utility
 from evolve_soft_2d.model import create, inspect, modify, rep_grid
 
 from py_mentat import py_connect, py_disconnect
@@ -34,7 +33,7 @@ def main():
     case = "0"
 
     #   Prepare the model parameters
-    (n_n, x_e, y_e, n_e_l, fp_t_f, exists) = create.prep_template(x_n, y_n, case)
+    (n_n, x_e, y_e, n_e_l, e_internal, n_external, fp_t_f, exists) = create.prep_template(x_n, y_n, case)
 
     #   Open the base file if it exists
     if exists and not regen_base:
@@ -47,11 +46,8 @@ def main():
     #   Create a representative grid of ones
     grid = rep_grid.create_grid(x_e, y_e)
 
-    #   Find all internal elements
-    e_internal = inspect.find_e_internal(x_e, y_e)
-
     #   Generate a number of models and save their results
-    create.gen_models(n_n, x_e, y_e, e_internal, n_steps, grid, n_e_l, case, fp_t_f, 5)
+    create.gen_models(n_n, x_e, y_e, e_internal, n_external, n_steps, grid, n_e_l, case, fp_t_f, 1)
 
     #   View the boundary conditions of the template
     inspect.view_bc()

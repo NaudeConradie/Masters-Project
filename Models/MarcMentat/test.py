@@ -1,8 +1,11 @@
 ##  Test program
 
 #   Imports
-from evolve_soft_2d.model import modify, create
-from evolve_soft_2d import file_paths
+from evolve_soft_2d.model import create, inspect
+from evolve_soft_2d.result import analyse
+from evolve_soft_2d import utility, file_paths
+
+import math
 
 def main():
     #   Initialisations
@@ -20,17 +23,19 @@ def main():
     #   p_mag = 25
     d_mag = 1
 
-    #   Flag to be set if the base model needs to be regenerated
-    regen_base = False
-
+    #   Template case to be run
     case = "0"
 
-    #   Prepare the model parameters
-    (n_n, x_e, y_e, n_e_l, fp_t_id, exists) = create.prep_template(x_n, y_n, case)
+    (n_n, x_e, y_e, n_e_l, e_internal, n_external, fp_t_f, exists) = create.prep_template(x_n, y_n, case)
 
-    print(fp_t_id)
+    m_id = "2a853a7cdfd80d15c74683cfa4136769"
 
-    #   Open the base file if it exists
-    if exists and not regen_base:
-        modify.open_model(fp_t_id, n_e_l + '_' + case)
+    n_e_l = utility.list_to_str([x_e, y_e], "x")
 
+    b_e = analyse.boundary_energy(n_e_l, case, m_id, n_external)
+
+    print(b_e)
+
+    return
+
+main()

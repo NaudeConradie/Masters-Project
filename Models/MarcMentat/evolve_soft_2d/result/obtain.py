@@ -135,14 +135,14 @@ def check_out(fp_m_mud, fp_m_log, fp_m_t16, m_id):
 
 ################################################################################
 
-#   Obtain maximum and minimum values from results
+#   Obtain the maximum and minimum values from the results
 
 #   n_steps:    The number of steps in the second of the loadcase
 #   n_e_l:      The number of elements as a string
 #   case:       The model case identifier
 #   m_id:       The ID of the model file
 #   fp_m_t16:   The complete file path of the t16 file
-def get_max_min(n_steps, n_e_l, case, m_id, fp_m_t16):
+def max_min(n_steps, n_e_l, case, m_id, fp_m_t16):
 
     #   Initialisations
 
@@ -234,7 +234,7 @@ def get_max_min(n_steps, n_e_l, case, m_id, fp_m_t16):
 
 ################################################################################
 
-#   Obtain all values from results
+#   Obtain values for all nodes from results
 
 #   n_n:        The number of nodes
 #   n_steps:    The number of steps in the second of the loadcase
@@ -242,14 +242,13 @@ def get_max_min(n_steps, n_e_l, case, m_id, fp_m_t16):
 #   case:       The model case identifier
 #   m_id:       The ID of the model file
 #   fp_m_t16:   The complete file path of the t16 file
-def get_all(n_n, n_steps, n_e_l, case, m_id, fp_m_t16):
+def all_n(n_n, n_steps, n_e_l, case, m_id, fp_m_t16):
 
     #   The labels of the desired results
     label = []
-    label.append("Displacement X")
-    label.append("Displacement Y")
-    label.append("Reaction Force X")
-    label.append("Reaction Force Y")
+    label.append("Equivalent Von Mises Stress")
+    label.append("Displacement")
+    label.append("Reaction Force")
 
     #   Open the results file
     py_send("@main(results) @popup(modelplot_pm) *post_open \"%s\"" % fp_m_t16)

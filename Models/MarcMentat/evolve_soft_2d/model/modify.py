@@ -1,9 +1,7 @@
 ##  Functions used with the Marc Mentat models
 
 #   Imports
-from evolve_soft_2d import result, utility
-from evolve_soft_2d.model import rep_grid
-from evolve_soft_2d.file_paths import fp_t, fp_m
+from evolve_soft_2d import utility
 from evolve_soft_2d.log import m_log
 
 from py_mentat import py_send, py_get_int, py_get_float

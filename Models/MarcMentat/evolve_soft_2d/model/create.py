@@ -1,8 +1,9 @@
 ##  Functions used with the Marc Mentat models
 
 #   Imports
-from evolve_soft_2d import result, utility
-from evolve_soft_2d.model import modify, rep_grid
+from evolve_soft_2d import utility
+from evolve_soft_2d.model import inspect, modify, rep_grid
+from evolve_soft_2d.result import obtain, analyse
 from evolve_soft_2d.file_paths import fp_t, create_fp_t_f, create_fp_m_f
 
 from py_mentat import py_send
@@ -27,13 +28,19 @@ def prep_template(x_n, y_n, case):
     #   Create a string with the number of elements in the x- and y-direction
     n_e_l = utility.list_to_str([x_e, y_e], "x")
 
+    #   Find all internal elements
+    e_internal = inspect.find_e_internal(x_e, y_e)
+
+    #   Find all external nodes
+    n_external = inspect.find_n_external(x_n, y_n, n_n)
+
     #   Create the file path of the template
     fp_t_f = create_fp_t_f(n_e_l, case)
 
     #   Check if the template exists
     exists = utility.if_file_exist(fp_t_f)
 
-    return (n_n, x_e, y_e, n_e_l, fp_t_f, exists)
+    return (n_n, x_e, y_e, n_e_l, e_internal, n_external, fp_t_f, exists)
 
 ################################################################################
 
@@ -81,13 +88,14 @@ def template_0(x0, y0, x_n, y_n, y_e, tab_name, d, n_steps, n_e_l, fp_t_f):
 #   x_e:        The number of elements in the x-direction
 #   y_e:        The number of elements in the y-direction
 #   e_internal: The list of internal elements
+#   n_external: The list of external nodes
 #   n_steps:    The number of steps in the second of the loadcase
 #   grid:       The representative grid of ones
 #   n_e_l:      The number of elements as a string
 #   case:       The model case identifier
 #   fp_t_f:     The file path of the template model file
 #   g:          The number of models to generate
-def gen_models(n_n, x_e, y_e, e_internal, n_steps, grid, n_e_l, case, fp_t_f, g):
+def gen_models(n_n, x_e, y_e, e_internal, n_external, n_steps, grid, n_e_l, case, fp_t_f, g):
 
     #   Loop through the desired number of models to be created
     for _ in range(0, g):
@@ -129,12 +137,13 @@ def gen_models(n_n, x_e, y_e, e_internal, n_steps, grid, n_e_l, case, fp_t_f, g)
         modify.run_job()
 
         #   Check the existence and validity of the results
-        run_success = result.check_out(fp_m_mud, fp_m_log, fp_m_t16, m_id)
+        run_success = obtain.check_out(fp_m_mud, fp_m_log, fp_m_t16, m_id)
         if run_success:
 
             #   Inspect the results
-            result.get_max_min(n_steps, n_e_l, case, m_id, fp_m_t16)
-            result.get_all(n_n, n_steps, n_e_l, case, m_id, fp_m_t16)
+            obtain.max_min(n_steps, n_e_l, case, m_id, fp_m_t16)
+            obtain.all_n(n_n, n_steps, n_e_l, case, m_id, fp_m_t16)
+            b_e = analyse.boundary_energy(n_e_l, case, m_id, n_external)
 
         #   Reopen the template
         modify.open_model(fp_t_f, n_e_l + '_' + case)
