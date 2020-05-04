@@ -29,7 +29,7 @@ def find_e_internal(x_e, y_e):
             #   Add element to the list of internal elements
             e_internal.append(i)
 
-    m_log.info("%i internal elements found" % len(e_internal))
+    m_log.info("{} internal elements found".format(len(e_internal)))
 
     return e_internal
 
@@ -40,10 +40,13 @@ def find_e_internal(x_e, y_e):
 
 #   x_n: The number of nodes in the x-direction
 #   y_n: The number of nodes in the y-direction
-def find_n_external(x_n, y_n, n_n):
+def find_n_external(x_n, y_n):
 
     #   Initialisations
     n_external = []
+
+    #   Obtain the number of nodes
+    n_n = x_n * y_n
 
     #   Loop through all nodes
     for i in range(1, n_n + 1):
@@ -54,7 +57,7 @@ def find_n_external(x_n, y_n, n_n):
             #   Add the node to the list of external nodes
             n_external.append(i)
 
-    m_log.info("%i external nodes found" % len(n_external))
+    m_log.info("{} external nodes found".format(len(n_external)))
 
     return n_external
 

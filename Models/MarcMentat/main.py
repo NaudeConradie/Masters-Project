@@ -1,7 +1,12 @@
 ##  Main program
 
 #   Imports
+import importlib
+
+from evolve_soft_2d import classes, file_paths, log, utility
+from evolve_soft_2d.classes import mat, template
 from evolve_soft_2d.model import create, inspect, modify, rep_grid
+from evolve_soft_2d.result import analyse, obtain
 
 from py_mentat import py_connect, py_disconnect
 
@@ -10,6 +15,17 @@ from py_mentat import py_connect, py_disconnect
 #   Main function
 
 def main():
+
+    #   Reload the modules
+    importlib.reload(classes)
+    importlib.reload(file_paths)
+    importlib.reload(utility)
+    importlib.reload(create)
+    importlib.reload(inspect)
+    importlib.reload(modify)
+    importlib.reload(rep_grid)
+    importlib.reload(analyse)
+    importlib.reload(obtain)
 
     #   Initialisations
     #   Text name of the table used for the applied load
@@ -25,36 +41,35 @@ def main():
     #   Magnitude of the applied load and/or displacement
     #   p_mag = 25
     d_mag = 1
+    #   Template case to be run
+    case = 0
+
+    #   Prepare the model parameters
+    temp = template(case, x0, y0, x_n, y_n, n_steps, table_name, d_mag)
 
     #   Flag to be set if the base model needs to be regenerated
     regen_base = False
 
-    #   Template case to be run
-    case = "0"
-
-    #   Prepare the model parameters
-    (n_n, x_e, y_e, n_e_l, e_internal, n_external, fp_t_f, exists) = create.prep_template(x_n, y_n, case)
+    #   Check if the template exists
+    exists = utility.if_file_exist(temp.fp_t_f)
 
     #   Open the base file if it exists
     if exists and not regen_base:
-        modify.open_model(fp_t_f, n_e_l + '_' + case)
+        modify.open_model(temp.fp_t_f, str(temp.case) + "_" + temp.n_e_l)
 
     #   Create the base file if it does not exist
-    elif case == "0":
-        create.template_0(x0, y0, x_n, y_n, y_e, table_name, d_mag, n_steps, n_e_l, fp_t_f)
-
-    #   Create a representative grid of ones
-    grid = rep_grid.create_grid(x_e, y_e)
+    elif temp.case == 0:
+        create.template_0(temp)
 
     #   Generate a number of models and save their results
-    create.gen_models(n_n, x_e, y_e, e_internal, n_external, n_steps, grid, n_e_l, case, fp_t_f, 1)
+    t = create.gen_models(temp, 3)
 
     #   View the boundary conditions of the template
     inspect.view_bc()
 
     return
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     py_connect("", 40007)
 

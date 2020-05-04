@@ -17,9 +17,9 @@ import time
 def open_model(fp_id, f_id):
 
     #   Open the model
-    py_send(r'*open_model "%s"' % fp_id)
+    py_send(r'*open_model "{}"'.format(fp_id))
 
-    m_log.info("Model \"grid_%s.mud\" opened" % (f_id))
+    m_log.info("Model \"grid_{}.mud\" opened".format(f_id))
 
     return
 
@@ -33,9 +33,9 @@ def save_model(fp_id, f_id):
 
     #   Save the model
     py_send("*set_save_formatted off")
-    py_send(r'*save_as_model "%s" yes' % fp_id)
+    py_send(r'*save_as_model "{}" yes'.format(fp_id))
 
-    m_log.info("Model \"grid_%s.mud\" saved" % (f_id))
+    m_log.info("Model \"grid_{}.mud\" saved".format(f_id))
 
     return
 
@@ -47,23 +47,23 @@ def save_model(fp_id, f_id):
 #   y0:  The initial y-coordinate
 #   x_n: The number of nodes in the x-direction
 #   y_n: The number of nodes in the y-direction
-def create_nodes(x0, y0, x_n, y_n):
+def create_nodes(template):
 
     #   Initialisations
-    y = y0
+    y = template.y0
     z = 0
 
     #   Loop through the nodes in the y-direction
-    for _ in range(0, y_n):
+    for _ in range(0, template.y_n):
 
         #   Initialise the x-coordinate
-        x = x0
+        x = template.x0
 
         #   Loop through the nodes in the x-direction
-        for _ in range(0, x_n):
+        for _ in range(0, template.x_n):
             
             #   Add the node
-            py_send("*add_nodes %f %f %f" % (x, y, z))
+            py_send("*add_nodes {} {} {}".format(x, y, z))
 
             #   Increment the x-coordinate
             x = x + 1
@@ -79,22 +79,22 @@ def create_nodes(x0, y0, x_n, y_n):
 
 #   x_n: The number of nodes in the x-direction
 #   y_n: The number of nodes in the y-direction
-def create_elements(x_n, y_n):
+def create_elements(template):
 
     #   Loop through the elements in the y-direction
-    for i in range(1, y_n):
+    for i in range(1, template.y_n):
 
         #   Initialise the nodal coordinates
-        n1 = (i - 1)*x_n + 1
+        n1 = (i - 1)*template.x_n + 1
         n2 = n1 + 1
-        n3 = n2 + x_n
-        n4 = n1 + x_n
+        n3 = n2 + template.x_n
+        n4 = n1 + template.x_n
 
         #   Loop through the elements in the x-direction
-        for _ in range(1, x_n):
+        for _ in range(1, template.x_n):
 
             #   Add the element
-            py_send("*add_elements %d %d %d %d" % (n1, n2, n3, n4))
+            py_send("*add_elements {} {} {} {}".format(n1, n2, n3, n4))
 
             #   Increment the nodal coordinates
             n1 = n1 + 1
@@ -102,80 +102,32 @@ def create_elements(x_n, y_n):
             n3 = n3 + 1
             n4 = n4 + 1
 
-    m_log.info("%ix%i element grid created" % (x_n - 1, y_n - 1))
+    m_log.info("{}x{} element grid created".format(template.x_n - 1, template.y_n - 1))
 
     return
 
 ################################################################################
 
-#   Add a sinusoidal wave to a table
+#   Add a ramp to a table
 
 #   tab_name:   The name of the table
-def add_sin(tab_name):
+def add_ramp(tab_name):
 
     py_send("*new_md_table 1 1")
-    py_send("*table_name %s" % tab_name)
+    py_send("*table_name {}".format(tab_name))
     py_send("*set_md_table_type 1 \"time\"")
     py_send("*set_md_table_step_v 1 100")
-    py_send("*set_md_table_min_f 1 -1")
     py_send("*set_md_table_step_f 1 100")
     py_send("*set_md_table_method_formula")
 
-    #   The sinusoidal function is defined to go through one full wavelength within 1 second
-    py_send("*md_table_formula sin(2*pi*v1)")
+    #   The ramp function is defined according to y=x
+    py_send("*md_table_formula v1")
 
     return
 
 ################################################################################
 
-#   Add completely fixed boundary conditions along a specified axis
-
-#   label:  The label of the boundary condition
-#   axis:   The axis of the boundary condition
-#           "x" or "y"
-#   coord:  The axis coordinate of the boundary condition
-def add_bc_fixed(label, axis, coord):
-
-    #   Initialisation
-    n_l = []
-
-    #   Fetch the total number of nodes
-    n_n = py_get_int("nnodes()")
-
-    #   Apply the fixed boundary condition
-    py_send("*new_apply")
-    py_send("*apply_type fixed_displacement")
-    py_send("*apply_name fix_%s" % label)
-    py_send("*apply_dof x")
-    py_send("*apply_dof y")
-    py_send("*apply_dof z")
-
-    #   Loop through the number of nodes
-    for i in range(1, n_n + 1):
-
-        #   Fetch the relevant coordinate of the current node
-        c = py_get_float("node_%s(%i)" % (axis, i))
-
-        #   Check if the selected coordinate matches the desired coordinate
-        if c == coord:
-
-            #   Add the node to the list
-            n_l.append(i)
-
-    #   Apply the boundary condition to the selected nodes
-    py_send("*add_apply_nodes ")
-
-    #   Loop through the selected nodes
-    for i in range(0, len(n_l)):
-        py_send("%i " % n_l[i])
-
-    py_send("#")
-
-    return
-
-################################################################################
-
-#   Add displacement boundary conditions along a specified axis
+#   Add fixed displacement boundary conditions along a specified axis
 
 #   label:      The label of the boundary condition
 #   axis:       The axis of the boundary condition
@@ -183,7 +135,7 @@ def add_bc_fixed(label, axis, coord):
 #   d:          The magnitude of the applied displacement
 #   tab_name:   The name of the table defining the displacement function
 #   coord:      The axis coordinate of the boundary condition
-def add_bc_displacement(label, axis, d, tab_name, coord):
+def add_bc_fd(label, axis, d, tab_name, coord):
 
     #   Initialisation
     n_l = []
@@ -194,16 +146,18 @@ def add_bc_displacement(label, axis, d, tab_name, coord):
     #   Apply the fixed boundary condition
     py_send("*new_apply")
     py_send("*apply_type fixed_displacement")
-    py_send("*apply_name displace_%s" % label)
-    py_send("*apply_dof %s" % axis)
-    py_send("*apply_dof_value %s %i" % (axis, d))
-    py_send("*apply_dof_table %s %s" % (axis, tab_name))
+    py_send("*apply_name bc_fd_{}".format(label))
+    py_send("*apply_dof {}".format(axis))
+    py_send("*apply_dof_value {} {}".format(axis, d))
+    
+    if tab_name != "":
+        py_send("*apply_dof_table {} {}".format(axis, tab_name))
 
     #   Loop through the number of nodes
     for i in range(1, n_n + 1):
 
         #   Fetch the relevant coordinate of the current node
-        c = py_get_float("node_%s(%i)" % (axis, i))
+        c = py_get_float("node_{}({})".format(axis, i))
 
         #   Check if the selected coordinate matches the desired coordinate
         if c == coord:
@@ -216,7 +170,7 @@ def add_bc_displacement(label, axis, d, tab_name, coord):
 
     #   Loop through the selected nodes
     for i in range(0, len(n_l)):
-        py_send("%i " % n_l[i])
+        py_send("{} ".format(n_l[i]))
 
     py_send("#")
 
@@ -240,12 +194,12 @@ def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
 
     py_send("*new_apply")
     py_send("*apply_type edge_load")
-    py_send("*apply_name load_%s" % label)
+    py_send("*apply_name load_{}".format(label))
 
     #   Apply a pressure with the given magnitude and table
     py_send("*apply_dof p")
-    py_send("*apply_dof_value p %i" % p)
-    py_send("*apply_dof_table p %s" % tab_name)
+    py_send("*apply_dof_value p {}".format(p))
+    py_send("*apply_dof_table p {}".format(tab_name))
 
     #   Find the correct edges according to the specified axes and directions
     if (axis == "x") and (direc == -1):
@@ -266,10 +220,10 @@ def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
 
     if axis == "x":
         for i in range(0, y_e):
-            py_send("%i:%i " % (edges[i], s))
+            py_send("{}:{} ".format(edges[i], s))
     elif axis == "y":
         for i in range(0, x_e):
-            py_send("%i:%i " % (edges[i], s))
+            py_send("{}:{} ".format(edges[i], s))
 
     py_send("#")
 
@@ -308,12 +262,13 @@ def add_mat_mr():
 
 #   Add a preliminary Ogden material model
 
-def add_mat_ogden():
+def add_mat_ogden(mat_name):
 
     py_send("*new_mater standard")
     py_send("*mater_option general:state:solid")
     py_send("*mater_option general:skip_structural:off")
-    py_send("*mater_name MoldStar15")
+    # py_send("*mater_name {}".format(mat.name))
+    py_send("*mater_name {}".format(mat_name))
     py_send("*mater_option structural:type:ogden")
     py_send("*mater_param structural:ogden_nterm 3")
     py_send("*mater_param structural:ogden_modulus_1 -6.50266e-06")
@@ -348,7 +303,7 @@ def add_lcase(n_steps):
 
     py_send("*new_loadcase")
     py_send("*loadcase_type struc:static")
-    py_send("*loadcase_value nsteps %i" % n_steps)
+    py_send("*loadcase_value nsteps {}".format(n_steps))
 
     return
 
@@ -385,7 +340,7 @@ def run_job():
 
     t1 = time.time()
 
-    m_log.info("Job run in %fs" % (t1 - t0))
+    m_log.info("Job run in {:.3f}s".format(t1 - t0))
 
     return
 
@@ -396,11 +351,15 @@ def run_job():
 #   rem:    The list of selected elements to be removed
 def rem_el(rem):
 
+    py_send("*remove_elements ")
+
     #   Loop through the number of elements to be removed
     for i in range(0, len(rem)):
 
         #   Remove the element from the grid
-        py_send("*remove_elements %d #" % rem[i])
+        py_send("{} ".format(rem[i]))
+
+    py_send("#")
 
     rem_log = utility.list_to_str(rem, ",")
     m_log.info("Removed the following elements from the grid:")

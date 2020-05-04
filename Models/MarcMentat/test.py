@@ -1,41 +1,41 @@
 ##  Test program
 
 #   Imports
-from evolve_soft_2d.model import create, inspect
-from evolve_soft_2d.result import analyse
-from evolve_soft_2d import utility, file_paths
+import importlib
 
-import math
+from evolve_soft_2d import classes, file_paths, log, utility
+from evolve_soft_2d.classes import mat, template
+from evolve_soft_2d.model import create, inspect, modify, rep_grid
+from evolve_soft_2d.result import analyse, obtain
+
+from py_mentat import py_connect, py_disconnect
 
 def main():
-    #   Initialisations
-    #   Text name of the table used for the applied load
-    table_name = "sin_input"
-    #   Number of nodes per axis (one more than number of elements desired)
-    x_n = 6
-    y_n = 6
-    #   Coordinates of initial position
-    x0 = 0
-    y0 = 0
-    #   Number of increments per second to analyse
-    n_steps = 4
-    #   Magnitude of the applied load and/or displacement
-    #   p_mag = 25
-    d_mag = 1
 
-    #   Template case to be run
-    case = "0"
+    #   Reload the modules
+    importlib.reload(classes)
+    importlib.reload(file_paths)
+    importlib.reload(utility)
+    importlib.reload(create)
+    importlib.reload(inspect)
+    importlib.reload(modify)
+    importlib.reload(rep_grid)
+    importlib.reload(analyse)
+    importlib.reload(obtain)
 
-    (n_n, x_e, y_e, n_e_l, e_internal, n_external, fp_t_f, exists) = create.prep_template(x_n, y_n, case)
+    x_e = 5
+    y_e = 5
 
-    m_id = "2a853a7cdfd80d15c74683cfa4136769"
+    grid = rep_grid.create_grid(x_e, y_e)
+    print(grid)
 
-    n_e_l = utility.list_to_str([x_e, y_e], "x")
+    rem = [7, 8, 13]
 
-    b_e = analyse.boundary_energy(n_e_l, case, m_id, n_external)
-
-    print(b_e)
+    grid_rem = rep_grid.rem_el_grid(grid, x_e, rem)
+    print(grid)
+    print(grid_rem)
 
     return
+
 
 main()

@@ -1,10 +1,11 @@
 ##  Functions used with the representative grids
 
 #   Imports
-
-from evolve_soft_2d.log import m_log
+import numpy
 
 from scipy.ndimage import measurements
+
+from evolve_soft_2d.log import m_log
 
 ################################################################################
 
@@ -36,9 +37,9 @@ def find_cluster(grid):
         found = True
 
         if cluster == 2:
-            m_log.warning("%i free element cluster found!" % (cluster - 1))
+            m_log.warning("{} free element cluster found!".format(cluster - 1))
         else:
-            m_log.warning("%i free element clusters found!" % (cluster - 1))
+            m_log.warning("{} free element clusters found!".format(cluster - 1))
 
     else:
 
@@ -59,13 +60,15 @@ def find_cluster(grid):
 #   rem:    The element IDs of the elements to be removed
 def rem_el_grid(grid, x_e, rem):
 
+    grid_temp = numpy.array(grid)
+
     #   Loop through the number of elements to be removed
     for i in range(0, len(rem)):
 
         #   Remove the element from the grid
-        grid[x_e - (rem[i] - 1)//x_e - 1][rem[i]%x_e - 1] = 0
+        grid_temp[x_e - (rem[i] - 1)//x_e - 1][rem[i]%x_e - 1] = 0
 
-    return grid
+    return grid_temp
 
 ################################################################################
 
@@ -82,6 +85,8 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
     rem_i = 1
     rem = []
 
+    grid_temp = numpy.array(grid)
+
     #   Loop through the elements in the x-direction
     for i in range(0, x_e):
 
@@ -92,7 +97,7 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
             if grid_label[x_e - i - 1][j] > 1:
 
                 #   Remove the element from the grid
-                grid[x_e - (rem_i - 1)//x_e - 1][rem_i%x_e - 1] = 0
+                grid_temp[x_e - (rem_i - 1)//x_e - 1][rem_i%x_e - 1] = 0
 
                 #   Add the index of the element to the list of removed elements
                 rem.append(rem_i)
@@ -100,4 +105,4 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
             #   Increment the removed element counter
             rem_i = rem_i + 1
 
-    return (grid, rem)
+    return (grid_temp, rem)

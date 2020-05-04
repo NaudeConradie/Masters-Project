@@ -1,10 +1,11 @@
 ##  Logging settings
 
 #   Imports
+from evolve_soft_2d.file_paths import fp
 
 import logging
 
-from evolve_soft_2d.file_paths import fp
+################################################################################
 
 #   File paths for logs
 m_log_path = fp + r'\models.log'

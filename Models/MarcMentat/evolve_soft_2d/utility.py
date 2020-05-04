@@ -1,13 +1,11 @@
 ##  Utility functions
 
 #   Imports
-from evolve_soft_2d.log import m_log
-
-import time
+import hashlib
 import numpy
 import os.path
 import re
-import hashlib
+import time
 
 from pathlib import Path
 
