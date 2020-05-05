@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>evolve_soft_2d.result.obtain API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>evolve_soft_2d.result.obtain</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">##  Functions used for obtaining and inspecting results
+
+#   Imports
+from evolve_soft_2d import model, utility
+from evolve_soft_2d.file_paths import fp_m, fp_r, create_fp_r_f
+from evolve_soft_2d.log import m_log, en_log
+
+from py_mentat import py_send, py_get_float
+
+import csv
+import time
+import os.path
+import re
+
+################################################################################
+
+#   Check if the updated output files exist
+#   Returns a flag based on the successful output of the model
+
+#   fp_m_mud:   The complete file path of the model file
+#   fp_m_log:   The complete file path of the log file
+#   fp_m_t16:   The complete file path of the t16 file
+#   m_id:       The ID of the model file
+def check_out(mod):
+
+    #   Initialisations
+    t0 = time.time()
+    success = False
+    decided = False
+
+    #   Time to wait for files
+    t = 1
+
+    #   Text to look for when searching the log files
+    exit_number_str = re.compile(&#34;exit number&#34;, re.IGNORECASE)
+
+    #   Obtain the timestamp of the last time the model file was modified
+    t_mud = os.path.getmtime(mod.fp_m_mud)
+
+    #   Wait until the log file exists and has been updated
+    utility.wait_file_exist(mod.fp_m_log, &#34;log&#34;, t)
+    utility.wait_file_update(mod.fp_m_log, t_mud, &#34;log&#34;, t)
+
+    #   Loop until an exit number is detected
+    while 1:
+
+        #   Search the log file for an exit number
+        (found, found_exit_n) = utility.search_text_file(mod.fp_m_log, exit_number_str)
+
+        #   Check if an exit number was found
+        if found:
+
+            #   Output the exit number
+            exit_number = utility.find_int_in_str(found_exit_n)
+            en_log.info(&#34;Exit number {} found for model \&#34;grid_{}.mud\&#34;&#34;.format(exit_number, mod.m_id))
+
+            #   Exit the loop
+            break
+
+        #   Wait and check again
+        else:
+            utility.wait(t, &#34;exit number to be found&#34;)
+
+    #   Check if the exit number indicates a successful run
+    if exit_number == 3004:
+
+        #   Set the success flag
+        success = True
+
+        m_log.info(&#34;Model run successfully&#34;)
+
+    #   Check if the exit number indicates a loss of connection to the license server
+    elif exit_number == 67:
+        m_log.error(&#34;License server connection timed out&#34;)
+
+        #   Loop until a valid decision is made
+        while not decided:
+
+            #   Request a user response
+            dec = input(&#34;Would you like to run again? (y/n) &#34;)
+
+            #   Check if the response was yes
+            if dec == &#34;y&#34;:
+
+                #   Set flag that a decision was made
+                decided = True
+
+                #   Rerun the job
+                model.run_job()
+
+                #   Check if the updated output files exist
+                success = check_out(mod)
+
+            #   Check if the response was no
+            elif dec == &#34;n&#34;:
+
+                #   Set flag that a decision was made
+                decided = True
+
+                m_log.warning(&#34;Results cannot be analysed&#34;)
+
+            #   Check if response was invalid
+            else:
+
+                m_log.error(&#34;Invalid input received&#34;)
+                print(&#34;Please either type a single \&#34;y\&#34; for yes or \&#34;n\&#34; for no&#34;)
+
+    #   Output a warning
+    else:
+        en_log.error(&#34;Model run unsuccessfully with exit number {}&#34;.format(exit_number))
+        m_log.warning(&#34;Results cannot be analysed. Check Mentat log file and exit number for details&#34;)
+
+    #   Check if the model was run successfully without a loss of connection to the license server
+    if success and not decided:
+
+        #   Wait until the t16 file exists and has been updated
+        utility.wait_file_exist(mod.fp_m_t16, &#34;t16&#34;, t)
+        utility.wait_file_update(mod.fp_m_t16, t_mud, &#34;t16&#34;, t)
+
+        t1 = time.time()
+        m_log.info(&#34;Results generated in approximately {:.3f}s&#34;.format(t1 - t0))
+    
+    #   Check if the model was run successfully with a loss of connection to the license server
+    elif success and decided:
+
+        m_log.info(&#34;Results generated after initial connection failure&#34;)
+
+    #   Output an error message
+    else:
+
+        t1 = time.time()
+        m_log.warning(&#34;Results failed to generate after approximately {:.3f}s&#34;.format(t1 - t0))
+        
+    return success
+
+################################################################################
+
+#   Obtain the maximum and minimum values from the results
+
+#   n_steps:    The number of steps in the second of the loadcase
+#   n_e_l:      The number of elements as a string
+#   case:       The model case identifier
+#   m_id:       The ID of the model file
+#   fp_m_t16:   The complete file path of the t16 file
+def max_min(mod):
+
+    #   Initialisations
+
+    #   Empty lists for the values and their respective nodes and timestamps
+    max_v = []
+    max_n = []
+    max_t = []
+    min_v = []
+    min_n = []
+    min_t = []
+
+    #   The labels of the desired results
+    label = []
+    label.append(&#34;Displacement X&#34;)
+    label.append(&#34;Displacement Y&#34;)
+    label.append(&#34;Reaction Force X&#34;)
+    label.append(&#34;Reaction Force Y&#34;)
+    label.append(&#34;Equivalent Von Mises Stress&#34;)
+    label.append(&#34;Total Strain Energy Density&#34;)
+
+    #   Open the results file
+    mod
+    py_send(&#34;@main(results) @popup(modelplot_pm) *post_open \&#34;{}\&#34;&#34;.format(mod.fp_m_t16))
+    py_send(&#34;*post_numerics&#34;)
+
+    #   Loop through all given labels
+    for i in range(0, len(label)):
+
+        #   Initialise lists for the current label
+        max_v.append(0)
+        max_n.append(0)
+        max_t.append(0)
+
+        min_v.append(0)
+        min_n.append(0)
+        min_t.append(0)
+
+        #   Rewind the post file to the initial step
+        py_send(&#34;*post_rewind&#34;)
+
+        #   Set the post file to the current label
+        py_send(&#34;*post_value {}&#34;.format(label[i]))
+
+        #   Loop through all steps of the post file
+        for j in range(0, mod.template.n_steps + 1):
+            
+            #   Obtain the current maximum and minimum values
+            max_n_c = py_get_float(&#34;scalar_max_node()&#34;)
+            max_v_c = py_get_float(&#34;scalar_1({})&#34;.format(max_n_c))
+
+            min_n_c = py_get_float(&#34;scalar_min_node()&#34;)
+            min_v_c = py_get_float(&#34;scalar_1({})&#34;.format(min_n_c))
+
+            #   Check if the current value is the overall maximum or minimum value
+            if max_v_c &gt; max_v[i]:
+
+                max_v[i] = max_v_c
+                max_n[i] = int(max_n_c)
+                max_t[i] = j
+
+            if min_v_c &lt; min_v[i]:
+
+                min_v[i] = min_v_c
+                min_n[i] = int(min_n_c)
+                min_t[i] = j
+
+            #   Increment the post file
+            py_send(&#34;*post_next&#34;)
+
+    #   Rewind the post file
+    py_send(&#34;*post_rewind&#34;)
+
+    max_save = []
+    max_save.append(max_t)
+    max_save.append(max_n)
+    max_save.append(max_v)
+
+    min_save = []
+    min_save.append(min_t)
+    min_save.append(min_n)
+    min_save.append(min_v)
+
+    #   Write the results to csv files
+    save_2d_list_to_csv(mod, &#34;max&#34;, max_save)
+    save_2d_list_to_csv(mod, &#34;min&#34;, min_save)
+
+    m_log.info(&#34;Maximum and minimum result values obtained and stored&#34;)
+
+    return
+
+################################################################################
+
+#   Obtain values for all nodes from results
+
+#   n_n:        The number of nodes
+#   n_steps:    The number of steps in the second of the loadcase
+#   n_e_l:      The number of elements as a string
+#   case:       The model case identifier
+#   m_id:       The ID of the model file
+#   fp_m_t16:   The complete file path of the t16 file
+def all_n(mod):
+
+    #   The labels of the desired results
+    label = []
+    label.append(&#34;Equivalent Von Mises Stress&#34;)
+    label.append(&#34;Displacement&#34;)
+    label.append(&#34;Reaction Force&#34;)
+
+    #   Open the results file
+    py_send(&#34;@main(results) @popup(modelplot_pm) *post_open \&#34;{}\&#34;&#34;.format(mod.fp_m_t16))
+    py_send(&#34;*post_numerics&#34;)
+
+    #   Loop through all given labels
+    for i in range(0, len(label)):
+
+        #   Initialise list for the current label
+        v = []
+
+        #   Rewind the post file to the initial step
+        py_send(&#34;*post_rewind&#34;)
+
+        #   Set the post file to the current label
+        py_send(&#34;*post_value {}&#34;.format(label[i]))
+
+        #   Loop through all steps of the post file
+        for j in range(0, mod.template.n_steps + 1):
+
+            #   Append an empty list to create a new index for every step
+            v.append([])
+
+            #   Loop through all 
+            for k in range(1, mod.template.n_n + 1):
+
+                #   Append the current node&#39;s value to the list at the current step
+                v[j].append(py_get_float(&#34;scalar_1({})&#34;.format(k)))
+
+            #   Increment the post file
+            py_send(&#34;*post_next&#34;)
+
+        #   Save the values to a .csv file
+        save_2d_list_to_csv(mod, label[i], v)
+
+    #   Rewind the post file
+    py_send(&#34;*post_rewind&#34;)
+
+    m_log.info(&#34;All result values obtained and stored&#34;)
+
+    return
+
+################################################################################
+
+#   Write the results to .csv files
+
+#   n_e_l:  The number of elements as a string
+#   case:   The model case identifier
+#   t:      The type of data to be stored
+#   m_id:   The ID of the model file
+#   data:   The results to be stored
+def save_2d_list_to_csv(mod, t, data):
+    
+    #   Create the file path of the results file
+    fp_r_csv = create_fp_r_f(mod.template.case, mod.template.n_e_l, t, mod.m_id)
+
+    #   Write the data to the results file
+    with open(fp_r_csv, &#39;w&#39;) as f:
+        wr = csv.writer(f)
+        wr.writerows(data)
+
+    print(&#34;{}_{}.csv saved&#34;.format(t, mod.m_id))
+
+    return</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="evolve_soft_2d.result.obtain.all_n"><code class="name flex">
+<span>def <span class="ident">all_n</span></span>(<span>mod)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def all_n(mod):
+
+    #   The labels of the desired results
+    label = []
+    label.append(&#34;Equivalent Von Mises Stress&#34;)
+    label.append(&#34;Displacement&#34;)
+    label.append(&#34;Reaction Force&#34;)
+
+    #   Open the results file
+    py_send(&#34;@main(results) @popup(modelplot_pm) *post_open \&#34;{}\&#34;&#34;.format(mod.fp_m_t16))
+    py_send(&#34;*post_numerics&#34;)
+
+    #   Loop through all given labels
+    for i in range(0, len(label)):
+
+        #   Initialise list for the current label
+        v = []
+
+        #   Rewind the post file to the initial step
+        py_send(&#34;*post_rewind&#34;)
+
+        #   Set the post file to the current label
+        py_send(&#34;*post_value {}&#34;.format(label[i]))
+
+        #   Loop through all steps of the post file
+        for j in range(0, mod.template.n_steps + 1):
+
+            #   Append an empty list to create a new index for every step
+            v.append([])
+
+            #   Loop through all 
+            for k in range(1, mod.template.n_n + 1):
+
+                #   Append the current node&#39;s value to the list at the current step
+                v[j].append(py_get_float(&#34;scalar_1({})&#34;.format(k)))
+
+            #   Increment the post file
+            py_send(&#34;*post_next&#34;)
+
+        #   Save the values to a .csv file
+        save_2d_list_to_csv(mod, label[i], v)
+
+    #   Rewind the post file
+    py_send(&#34;*post_rewind&#34;)
+
+    m_log.info(&#34;All result values obtained and stored&#34;)
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="evolve_soft_2d.result.obtain.check_out"><code class="name flex">
+<span>def <span class="ident">check_out</span></span>(<span>mod)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_out(mod):
+
+    #   Initialisations
+    t0 = time.time()
+    success = False
+    decided = False
+
+    #   Time to wait for files
+    t = 1
+
+    #   Text to look for when searching the log files
+    exit_number_str = re.compile(&#34;exit number&#34;, re.IGNORECASE)
+
+    #   Obtain the timestamp of the last time the model file was modified
+    t_mud = os.path.getmtime(mod.fp_m_mud)
+
+    #   Wait until the log file exists and has been updated
+    utility.wait_file_exist(mod.fp_m_log, &#34;log&#34;, t)
+    utility.wait_file_update(mod.fp_m_log, t_mud, &#34;log&#34;, t)
+
+    #   Loop until an exit number is detected
+    while 1:
+
+        #   Search the log file for an exit number
+        (found, found_exit_n) = utility.search_text_file(mod.fp_m_log, exit_number_str)
+
+        #   Check if an exit number was found
+        if found:
+
+            #   Output the exit number
+            exit_number = utility.find_int_in_str(found_exit_n)
+            en_log.info(&#34;Exit number {} found for model \&#34;grid_{}.mud\&#34;&#34;.format(exit_number, mod.m_id))
+
+            #   Exit the loop
+            break
+
+        #   Wait and check again
+        else:
+            utility.wait(t, &#34;exit number to be found&#34;)
+
+    #   Check if the exit number indicates a successful run
+    if exit_number == 3004:
+
+        #   Set the success flag
+        success = True
+
+        m_log.info(&#34;Model run successfully&#34;)
+
+    #   Check if the exit number indicates a loss of connection to the license server
+    elif exit_number == 67:
+        m_log.error(&#34;License server connection timed out&#34;)
+
+        #   Loop until a valid decision is made
+        while not decided:
+
+            #   Request a user response
+            dec = input(&#34;Would you like to run again? (y/n) &#34;)
+
+            #   Check if the response was yes
+            if dec == &#34;y&#34;:
+
+                #   Set flag that a decision was made
+                decided = True
+
+                #   Rerun the job
+                model.run_job()
+
+                #   Check if the updated output files exist
+                success = check_out(mod)
+
+            #   Check if the response was no
+            elif dec == &#34;n&#34;:
+
+                #   Set flag that a decision was made
+                decided = True
+
+                m_log.warning(&#34;Results cannot be analysed&#34;)
+
+            #   Check if response was invalid
+            else:
+
+                m_log.error(&#34;Invalid input received&#34;)
+                print(&#34;Please either type a single \&#34;y\&#34; for yes or \&#34;n\&#34; for no&#34;)
+
+    #   Output a warning
+    else:
+        en_log.error(&#34;Model run unsuccessfully with exit number {}&#34;.format(exit_number))
+        m_log.warning(&#34;Results cannot be analysed. Check Mentat log file and exit number for details&#34;)
+
+    #   Check if the model was run successfully without a loss of connection to the license server
+    if success and not decided:
+
+        #   Wait until the t16 file exists and has been updated
+        utility.wait_file_exist(mod.fp_m_t16, &#34;t16&#34;, t)
+        utility.wait_file_update(mod.fp_m_t16, t_mud, &#34;t16&#34;, t)
+
+        t1 = time.time()
+        m_log.info(&#34;Results generated in approximately {:.3f}s&#34;.format(t1 - t0))
+    
+    #   Check if the model was run successfully with a loss of connection to the license server
+    elif success and decided:
+
+        m_log.info(&#34;Results generated after initial connection failure&#34;)
+
+    #   Output an error message
+    else:
+
+        t1 = time.time()
+        m_log.warning(&#34;Results failed to generate after approximately {:.3f}s&#34;.format(t1 - t0))
+        
+    return success</code></pre>
+</details>
+</dd>
+<dt id="evolve_soft_2d.result.obtain.max_min"><code class="name flex">
+<span>def <span class="ident">max_min</span></span>(<span>mod)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def max_min(mod):
+
+    #   Initialisations
+
+    #   Empty lists for the values and their respective nodes and timestamps
+    max_v = []
+    max_n = []
+    max_t = []
+    min_v = []
+    min_n = []
+    min_t = []
+
+    #   The labels of the desired results
+    label = []
+    label.append(&#34;Displacement X&#34;)
+    label.append(&#34;Displacement Y&#34;)
+    label.append(&#34;Reaction Force X&#34;)
+    label.append(&#34;Reaction Force Y&#34;)
+    label.append(&#34;Equivalent Von Mises Stress&#34;)
+    label.append(&#34;Total Strain Energy Density&#34;)
+
+    #   Open the results file
+    mod
+    py_send(&#34;@main(results) @popup(modelplot_pm) *post_open \&#34;{}\&#34;&#34;.format(mod.fp_m_t16))
+    py_send(&#34;*post_numerics&#34;)
+
+    #   Loop through all given labels
+    for i in range(0, len(label)):
+
+        #   Initialise lists for the current label
+        max_v.append(0)
+        max_n.append(0)
+        max_t.append(0)
+
+        min_v.append(0)
+        min_n.append(0)
+        min_t.append(0)
+
+        #   Rewind the post file to the initial step
+        py_send(&#34;*post_rewind&#34;)
+
+        #   Set the post file to the current label
+        py_send(&#34;*post_value {}&#34;.format(label[i]))
+
+        #   Loop through all steps of the post file
+        for j in range(0, mod.template.n_steps + 1):
+            
+            #   Obtain the current maximum and minimum values
+            max_n_c = py_get_float(&#34;scalar_max_node()&#34;)
+            max_v_c = py_get_float(&#34;scalar_1({})&#34;.format(max_n_c))
+
+            min_n_c = py_get_float(&#34;scalar_min_node()&#34;)
+            min_v_c = py_get_float(&#34;scalar_1({})&#34;.format(min_n_c))
+
+            #   Check if the current value is the overall maximum or minimum value
+            if max_v_c &gt; max_v[i]:
+
+                max_v[i] = max_v_c
+                max_n[i] = int(max_n_c)
+                max_t[i] = j
+
+            if min_v_c &lt; min_v[i]:
+
+                min_v[i] = min_v_c
+                min_n[i] = int(min_n_c)
+                min_t[i] = j
+
+            #   Increment the post file
+            py_send(&#34;*post_next&#34;)
+
+    #   Rewind the post file
+    py_send(&#34;*post_rewind&#34;)
+
+    max_save = []
+    max_save.append(max_t)
+    max_save.append(max_n)
+    max_save.append(max_v)
+
+    min_save = []
+    min_save.append(min_t)
+    min_save.append(min_n)
+    min_save.append(min_v)
+
+    #   Write the results to csv files
+    save_2d_list_to_csv(mod, &#34;max&#34;, max_save)
+    save_2d_list_to_csv(mod, &#34;min&#34;, min_save)
+
+    m_log.info(&#34;Maximum and minimum result values obtained and stored&#34;)
+
+    return</code></pre>
+</details>
+</dd>
+<dt id="evolve_soft_2d.result.obtain.save_2d_list_to_csv"><code class="name flex">
+<span>def <span class="ident">save_2d_list_to_csv</span></span>(<span>mod, t, data)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_2d_list_to_csv(mod, t, data):
+    
+    #   Create the file path of the results file
+    fp_r_csv = create_fp_r_f(mod.template.case, mod.template.n_e_l, t, mod.m_id)
+
+    #   Write the data to the results file
+    with open(fp_r_csv, &#39;w&#39;) as f:
+        wr = csv.writer(f)
+        wr.writerows(data)
+
+    print(&#34;{}_{}.csv saved&#34;.format(t, mod.m_id))
+
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="evolve_soft_2d.result" href="index.html">evolve_soft_2d.result</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="evolve_soft_2d.result.obtain.all_n" href="#evolve_soft_2d.result.obtain.all_n">all_n</a></code></li>
+<li><code><a title="evolve_soft_2d.result.obtain.check_out" href="#evolve_soft_2d.result.obtain.check_out">check_out</a></code></li>
+<li><code><a title="evolve_soft_2d.result.obtain.max_min" href="#evolve_soft_2d.result.obtain.max_min">max_min</a></code></li>
+<li><code><a title="evolve_soft_2d.result.obtain.save_2d_list_to_csv" href="#evolve_soft_2d.result.obtain.save_2d_list_to_csv">save_2d_list_to_csv</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
