@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>evolve_soft_2d.model.rep_grid API documentation</title>
+<title>evolve_soft_2d.unit.rep_grid API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,7 +17,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>evolve_soft_2d.model.rep_grid</code></h1>
+<h1 class="title">Module <code>evolve_soft_2d.unit.rep_grid</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -35,7 +35,7 @@ from evolve_soft_2d.log import m_log
 
 ################################################################################
 
-#   Create a grid of ones representative of the model
+#   Create a grid of ones representative of the unit
 #   Returns the representative grid
 
 #   x_e: The number of elements in the x-direction
@@ -141,7 +141,7 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="evolve_soft_2d.model.rep_grid.create_grid"><code class="name flex">
+<dt id="evolve_soft_2d.unit.rep_grid.create_grid"><code class="name flex">
 <span>def <span class="ident">create_grid</span></span>(<span>x_e, y_e)</span>
 </code></dt>
 <dd>
@@ -157,7 +157,7 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
     return grid</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.rep_grid.find_cluster"><code class="name flex">
+<dt id="evolve_soft_2d.unit.rep_grid.find_cluster"><code class="name flex">
 <span>def <span class="ident">find_cluster</span></span>(<span>grid)</span>
 </code></dt>
 <dd>
@@ -191,7 +191,7 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
     return (found, grid_label)</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.rep_grid.rem_el_free_grid"><code class="name flex">
+<dt id="evolve_soft_2d.unit.rep_grid.rem_el_free_grid"><code class="name flex">
 <span>def <span class="ident">rem_el_free_grid</span></span>(<span>grid, grid_label, x_e, y_e)</span>
 </code></dt>
 <dd>
@@ -229,7 +229,7 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
     return (grid_temp, rem)</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.rep_grid.rem_el_grid"><code class="name flex">
+<dt id="evolve_soft_2d.unit.rep_grid.rem_el_grid"><code class="name flex">
 <span>def <span class="ident">rem_el_grid</span></span>(<span>grid, x_e, rem)</span>
 </code></dt>
 <dd>
@@ -264,15 +264,15 @@ def rem_el_free_grid(grid, grid_label, x_e, y_e):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="evolve_soft_2d.model" href="index.html">evolve_soft_2d.model</a></code></li>
+<li><code><a title="evolve_soft_2d.unit" href="index.html">evolve_soft_2d.unit</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="evolve_soft_2d.model.rep_grid.create_grid" href="#evolve_soft_2d.model.rep_grid.create_grid">create_grid</a></code></li>
-<li><code><a title="evolve_soft_2d.model.rep_grid.find_cluster" href="#evolve_soft_2d.model.rep_grid.find_cluster">find_cluster</a></code></li>
-<li><code><a title="evolve_soft_2d.model.rep_grid.rem_el_free_grid" href="#evolve_soft_2d.model.rep_grid.rem_el_free_grid">rem_el_free_grid</a></code></li>
-<li><code><a title="evolve_soft_2d.model.rep_grid.rem_el_grid" href="#evolve_soft_2d.model.rep_grid.rem_el_grid">rem_el_grid</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.rep_grid.create_grid" href="#evolve_soft_2d.unit.rep_grid.create_grid">create_grid</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.rep_grid.find_cluster" href="#evolve_soft_2d.unit.rep_grid.find_cluster">find_cluster</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.rep_grid.rem_el_free_grid" href="#evolve_soft_2d.unit.rep_grid.rem_el_free_grid">rem_el_free_grid</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.rep_grid.rem_el_grid" href="#evolve_soft_2d.unit.rep_grid.rem_el_grid">rem_el_grid</a></code></li>
 </ul>
 </li>
 </ul>

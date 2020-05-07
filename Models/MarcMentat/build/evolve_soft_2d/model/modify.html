@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>evolve_soft_2d.model.modify API documentation</title>
+<title>evolve_soft_2d.unit.modify API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,14 +17,14 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>evolve_soft_2d.model.modify</code></h1>
+<h1 class="title">Module <code>evolve_soft_2d.unit.modify</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">##  Functions used with the Marc Mentat models
+<pre><code class="python">##  Functions used with the Marc Mentat units
 
 #   Imports
 from evolve_soft_2d import utility
@@ -36,32 +36,32 @@ import time
 
 ################################################################################
 
-#   Open a model
+#   Open a unit
 
 #   fp_id:  The complete file path of the path to be opened
 #   f_id:   The file ID to be logged
-def open_model(fp_id, f_id):
+def open_unit(fp_id, f_id):
 
-    #   Open the model
-    py_send(r&#39;*open_model &#34;{}&#34;&#39;.format(fp_id))
+    #   Open the unit
+    py_send(r&#39;*open_unit &#34;{}&#34;&#39;.format(fp_id))
 
-    m_log.info(&#34;Model \&#34;grid_{}.mud\&#34; opened&#34;.format(f_id))
+    m_log.info(&#34;Unit \&#34;grid_{}.mud\&#34; opened&#34;.format(f_id))
 
     return
 
 ################################################################################
 
-#   Save a model
+#   Save a unit
 
 #   fp_id:  The complete file path of the path to be opened
 #   f_id:   The file ID to be logged
-def save_model(fp_id, f_id):
+def save_unit(fp_id, f_id):
 
-    #   Save the model
+    #   Save the unit
     py_send(&#34;*set_save_formatted off&#34;)
-    py_send(r&#39;*save_as_model &#34;{}&#34; yes&#39;.format(fp_id))
+    py_send(r&#39;*save_as_unit &#34;{}&#34; yes&#39;.format(fp_id))
 
-    m_log.info(&#34;Model \&#34;grid_{}.mud\&#34; saved&#34;.format(f_id))
+    m_log.info(&#34;Unit \&#34;grid_{}.mud\&#34; saved&#34;.format(f_id))
 
     return
 
@@ -136,11 +136,11 @@ def create_elements(template):
 
 #   Add a ramp to a table
 
-#   tab_name:   The name of the table
-def add_ramp(tab_name):
+#   tab_nam:   The name of the table
+def add_ramp(tab_nam):
 
     py_send(&#34;*new_md_table 1 1&#34;)
-    py_send(&#34;*table_name {}&#34;.format(tab_name))
+    py_send(&#34;*table_name {}&#34;.format(tab_nam))
     py_send(&#34;*set_md_table_type 1 \&#34;time\&#34;&#34;)
     py_send(&#34;*set_md_table_step_v 1 100&#34;)
     py_send(&#34;*set_md_table_step_f 1 100&#34;)
@@ -159,9 +159,9 @@ def add_ramp(tab_name):
 #   axis:       The axis of the boundary condition
 #               &#34;x&#34; or &#34;y&#34;
 #   d:          The magnitude of the applied displacement
-#   tab_name:   The name of the table defining the displacement function
+#   tab_nam:   The name of the table defining the displacement function
 #   coord:      The axis coordinate of the boundary condition
-def add_bc_fd(label, axis, d, tab_name, coord):
+def add_bc_fd(label, axis, d, tab_nam, coord):
 
     #   Initialisation
     n_l = []
@@ -176,8 +176,8 @@ def add_bc_fd(label, axis, d, tab_name, coord):
     py_send(&#34;*apply_dof {}&#34;.format(axis))
     py_send(&#34;*apply_dof_value {} {}&#34;.format(axis, d))
     
-    if tab_name != &#34;&#34;:
-        py_send(&#34;*apply_dof_table {} {}&#34;.format(axis, tab_name))
+    if tab_nam != &#34;&#34;:
+        py_send(&#34;*apply_dof_table {} {}&#34;.format(axis, tab_nam))
 
     #   Loop through the number of nodes
     for i in range(1, n_n + 1):
@@ -208,7 +208,7 @@ def add_bc_fd(label, axis, d, tab_name, coord):
 
 #   label:      The label of the load
 #   p:          The magnitude of the applied pressure
-#   tab_name:   The name of the table defining the load function
+#   tab_nam:   The name of the table defining the load function
 #   x_e:        The number of elements in the x-direction
 #   y_e:        The number of elements in the y-direction
 #   axis:       The axis of the load
@@ -216,7 +216,7 @@ def add_bc_fd(label, axis, d, tab_name, coord):
 #   direc:      The direction of the load with respect to the axis
 #               1 for positive and -1 for negative
 #   coord:      The axis coordinate of the load
-def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
+def add_load(label, p, tab_nam, x_e, y_e, axis, direc, coord):
 
     py_send(&#34;*new_apply&#34;)
     py_send(&#34;*apply_type edge_load&#34;)
@@ -225,7 +225,7 @@ def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
     #   Apply a pressure with the given magnitude and table
     py_send(&#34;*apply_dof p&#34;)
     py_send(&#34;*apply_dof_value p {}&#34;.format(p))
-    py_send(&#34;*apply_dof_table p {}&#34;.format(tab_name))
+    py_send(&#34;*apply_dof_table p {}&#34;.format(tab_nam))
 
     #   Find the correct edges according to the specified axes and directions
     if (axis == &#34;x&#34;) and (direc == -1):
@@ -268,7 +268,7 @@ def add_geom_prop():
 
 ################################################################################
 
-#   Add an example Mooney-Rivlin material model
+#   Add an example Mooney-Rivlin material unit
 
 def add_mat_mr():
 
@@ -277,7 +277,7 @@ def add_mat_mr():
     py_send(&#34;*mater_option general:skip_structural:off&#34;)
     py_send(&#34;*mater_name rubber&#34;)
     py_send(&#34;*mater_option structural:type:mooney&#34;)
-    py_send(&#34;*mater_option structural:mooney_model:five_term&#34;)
+    py_send(&#34;*mater_option structural:mooney_unit:five_term&#34;)
     py_send(&#34;*mater_param structural:mooney_c10 20.3&#34;)
     py_send(&#34;*mater_param structural:mooney_c01 5.8&#34;)
     py_send(&#34;*add_mater_elements all_existing&#34;)
@@ -286,7 +286,7 @@ def add_mat_mr():
 
 ################################################################################
 
-#   Add a preliminary Ogden material model
+#   Add a preliminary Ogden material unit
 
 def add_mat_ogden(mat_name):
 
@@ -401,8 +401,8 @@ def rem_el(rem):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="evolve_soft_2d.model.modify.add_bc_fd"><code class="name flex">
-<span>def <span class="ident">add_bc_fd</span></span>(<span>label, axis, d, tab_name, coord)</span>
+<dt id="evolve_soft_2d.unit.modify.add_bc_fd"><code class="name flex">
+<span>def <span class="ident">add_bc_fd</span></span>(<span>label, axis, d, tab_nam, coord)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -410,7 +410,7 @@ def rem_el(rem):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def add_bc_fd(label, axis, d, tab_name, coord):
+<pre><code class="python">def add_bc_fd(label, axis, d, tab_nam, coord):
 
     #   Initialisation
     n_l = []
@@ -425,8 +425,8 @@ def rem_el(rem):
     py_send(&#34;*apply_dof {}&#34;.format(axis))
     py_send(&#34;*apply_dof_value {} {}&#34;.format(axis, d))
     
-    if tab_name != &#34;&#34;:
-        py_send(&#34;*apply_dof_table {} {}&#34;.format(axis, tab_name))
+    if tab_nam != &#34;&#34;:
+        py_send(&#34;*apply_dof_table {} {}&#34;.format(axis, tab_nam))
 
     #   Loop through the number of nodes
     for i in range(1, n_n + 1):
@@ -452,7 +452,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_contact_body"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.add_contact_body"><code class="name flex">
 <span>def <span class="ident">add_contact_body</span></span>(<span>)</span>
 </code></dt>
 <dd>
@@ -471,7 +471,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_geom_prop"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.add_geom_prop"><code class="name flex">
 <span>def <span class="ident">add_geom_prop</span></span>(<span>)</span>
 </code></dt>
 <dd>
@@ -488,7 +488,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_job"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.add_job"><code class="name flex">
 <span>def <span class="ident">add_job</span></span>(<span>)</span>
 </code></dt>
 <dd>
@@ -513,7 +513,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_lcase"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.add_lcase"><code class="name flex">
 <span>def <span class="ident">add_lcase</span></span>(<span>n_steps)</span>
 </code></dt>
 <dd>
@@ -531,8 +531,8 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_load"><code class="name flex">
-<span>def <span class="ident">add_load</span></span>(<span>label, p, tab_name, x_e, y_e, axis, direc, coord)</span>
+<dt id="evolve_soft_2d.unit.modify.add_load"><code class="name flex">
+<span>def <span class="ident">add_load</span></span>(<span>label, p, tab_nam, x_e, y_e, axis, direc, coord)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -540,7 +540,7 @@ def rem_el(rem):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def add_load(label, p, tab_name, x_e, y_e, axis, direc, coord):
+<pre><code class="python">def add_load(label, p, tab_nam, x_e, y_e, axis, direc, coord):
 
     py_send(&#34;*new_apply&#34;)
     py_send(&#34;*apply_type edge_load&#34;)
@@ -549,7 +549,7 @@ def rem_el(rem):
     #   Apply a pressure with the given magnitude and table
     py_send(&#34;*apply_dof p&#34;)
     py_send(&#34;*apply_dof_value p {}&#34;.format(p))
-    py_send(&#34;*apply_dof_table p {}&#34;.format(tab_name))
+    py_send(&#34;*apply_dof_table p {}&#34;.format(tab_nam))
 
     #   Find the correct edges according to the specified axes and directions
     if (axis == &#34;x&#34;) and (direc == -1):
@@ -580,7 +580,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_mat_mr"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.add_mat_mr"><code class="name flex">
 <span>def <span class="ident">add_mat_mr</span></span>(<span>)</span>
 </code></dt>
 <dd>
@@ -596,7 +596,7 @@ def rem_el(rem):
     py_send(&#34;*mater_option general:skip_structural:off&#34;)
     py_send(&#34;*mater_name rubber&#34;)
     py_send(&#34;*mater_option structural:type:mooney&#34;)
-    py_send(&#34;*mater_option structural:mooney_model:five_term&#34;)
+    py_send(&#34;*mater_option structural:mooney_unit:five_term&#34;)
     py_send(&#34;*mater_param structural:mooney_c10 20.3&#34;)
     py_send(&#34;*mater_param structural:mooney_c01 5.8&#34;)
     py_send(&#34;*add_mater_elements all_existing&#34;)
@@ -604,7 +604,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_mat_ogden"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.add_mat_ogden"><code class="name flex">
 <span>def <span class="ident">add_mat_ogden</span></span>(<span>mat_name)</span>
 </code></dt>
 <dd>
@@ -633,8 +633,8 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.add_ramp"><code class="name flex">
-<span>def <span class="ident">add_ramp</span></span>(<span>tab_name)</span>
+<dt id="evolve_soft_2d.unit.modify.add_ramp"><code class="name flex">
+<span>def <span class="ident">add_ramp</span></span>(<span>tab_nam)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -642,10 +642,10 @@ def rem_el(rem):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def add_ramp(tab_name):
+<pre><code class="python">def add_ramp(tab_nam):
 
     py_send(&#34;*new_md_table 1 1&#34;)
-    py_send(&#34;*table_name {}&#34;.format(tab_name))
+    py_send(&#34;*table_name {}&#34;.format(tab_nam))
     py_send(&#34;*set_md_table_type 1 \&#34;time\&#34;&#34;)
     py_send(&#34;*set_md_table_step_v 1 100&#34;)
     py_send(&#34;*set_md_table_step_f 1 100&#34;)
@@ -657,7 +657,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.create_elements"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.create_elements"><code class="name flex">
 <span>def <span class="ident">create_elements</span></span>(<span>template)</span>
 </code></dt>
 <dd>
@@ -694,7 +694,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.create_nodes"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.create_nodes"><code class="name flex">
 <span>def <span class="ident">create_nodes</span></span>(<span>template)</span>
 </code></dt>
 <dd>
@@ -730,8 +730,8 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.open_model"><code class="name flex">
-<span>def <span class="ident">open_model</span></span>(<span>fp_id, f_id)</span>
+<dt id="evolve_soft_2d.unit.modify.open_unit"><code class="name flex">
+<span>def <span class="ident">open_unit</span></span>(<span>fp_id, f_id)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -739,17 +739,17 @@ def rem_el(rem):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def open_model(fp_id, f_id):
+<pre><code class="python">def open_unit(fp_id, f_id):
 
-    #   Open the model
-    py_send(r&#39;*open_model &#34;{}&#34;&#39;.format(fp_id))
+    #   Open the unit
+    py_send(r&#39;*open_unit &#34;{}&#34;&#39;.format(fp_id))
 
-    m_log.info(&#34;Model \&#34;grid_{}.mud\&#34; opened&#34;.format(f_id))
+    m_log.info(&#34;Unit \&#34;grid_{}.mud\&#34; opened&#34;.format(f_id))
 
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.rem_el"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.rem_el"><code class="name flex">
 <span>def <span class="ident">rem_el</span></span>(<span>rem)</span>
 </code></dt>
 <dd>
@@ -777,7 +777,7 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.run_job"><code class="name flex">
+<dt id="evolve_soft_2d.unit.modify.run_job"><code class="name flex">
 <span>def <span class="ident">run_job</span></span>(<span>)</span>
 </code></dt>
 <dd>
@@ -801,8 +801,8 @@ def rem_el(rem):
     return</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.modify.save_model"><code class="name flex">
-<span>def <span class="ident">save_model</span></span>(<span>fp_id, f_id)</span>
+<dt id="evolve_soft_2d.unit.modify.save_unit"><code class="name flex">
+<span>def <span class="ident">save_unit</span></span>(<span>fp_id, f_id)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -810,13 +810,13 @@ def rem_el(rem):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def save_model(fp_id, f_id):
+<pre><code class="python">def save_unit(fp_id, f_id):
 
-    #   Save the model
+    #   Save the unit
     py_send(&#34;*set_save_formatted off&#34;)
-    py_send(r&#39;*save_as_model &#34;{}&#34; yes&#39;.format(fp_id))
+    py_send(r&#39;*save_as_unit &#34;{}&#34; yes&#39;.format(fp_id))
 
-    m_log.info(&#34;Model \&#34;grid_{}.mud\&#34; saved&#34;.format(f_id))
+    m_log.info(&#34;Unit \&#34;grid_{}.mud\&#34; saved&#34;.format(f_id))
 
     return</code></pre>
 </details>
@@ -834,26 +834,26 @@ def rem_el(rem):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="evolve_soft_2d.model" href="index.html">evolve_soft_2d.model</a></code></li>
+<li><code><a title="evolve_soft_2d.unit" href="index.html">evolve_soft_2d.unit</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="two-column">
-<li><code><a title="evolve_soft_2d.model.modify.add_bc_fd" href="#evolve_soft_2d.model.modify.add_bc_fd">add_bc_fd</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_contact_body" href="#evolve_soft_2d.model.modify.add_contact_body">add_contact_body</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_geom_prop" href="#evolve_soft_2d.model.modify.add_geom_prop">add_geom_prop</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_job" href="#evolve_soft_2d.model.modify.add_job">add_job</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_lcase" href="#evolve_soft_2d.model.modify.add_lcase">add_lcase</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_load" href="#evolve_soft_2d.model.modify.add_load">add_load</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_mat_mr" href="#evolve_soft_2d.model.modify.add_mat_mr">add_mat_mr</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_mat_ogden" href="#evolve_soft_2d.model.modify.add_mat_ogden">add_mat_ogden</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.add_ramp" href="#evolve_soft_2d.model.modify.add_ramp">add_ramp</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.create_elements" href="#evolve_soft_2d.model.modify.create_elements">create_elements</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.create_nodes" href="#evolve_soft_2d.model.modify.create_nodes">create_nodes</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.open_model" href="#evolve_soft_2d.model.modify.open_model">open_model</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.rem_el" href="#evolve_soft_2d.model.modify.rem_el">rem_el</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.run_job" href="#evolve_soft_2d.model.modify.run_job">run_job</a></code></li>
-<li><code><a title="evolve_soft_2d.model.modify.save_model" href="#evolve_soft_2d.model.modify.save_model">save_model</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_bc_fd" href="#evolve_soft_2d.unit.modify.add_bc_fd">add_bc_fd</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_contact_body" href="#evolve_soft_2d.unit.modify.add_contact_body">add_contact_body</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_geom_prop" href="#evolve_soft_2d.unit.modify.add_geom_prop">add_geom_prop</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_job" href="#evolve_soft_2d.unit.modify.add_job">add_job</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_lcase" href="#evolve_soft_2d.unit.modify.add_lcase">add_lcase</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_load" href="#evolve_soft_2d.unit.modify.add_load">add_load</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_mat_mr" href="#evolve_soft_2d.unit.modify.add_mat_mr">add_mat_mr</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_mat_ogden" href="#evolve_soft_2d.unit.modify.add_mat_ogden">add_mat_ogden</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.add_ramp" href="#evolve_soft_2d.unit.modify.add_ramp">add_ramp</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.create_elements" href="#evolve_soft_2d.unit.modify.create_elements">create_elements</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.create_nodes" href="#evolve_soft_2d.unit.modify.create_nodes">create_nodes</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.open_unit" href="#evolve_soft_2d.unit.modify.open_unit">open_unit</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.rem_el" href="#evolve_soft_2d.unit.modify.rem_el">rem_el</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.run_job" href="#evolve_soft_2d.unit.modify.run_job">run_job</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.modify.save_unit" href="#evolve_soft_2d.unit.modify.save_unit">save_unit</a></code></li>
 </ul>
 </li>
 </ul>

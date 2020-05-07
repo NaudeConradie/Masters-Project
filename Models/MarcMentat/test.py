@@ -4,8 +4,8 @@
 import importlib
 
 from evolve_soft_2d import classes, file_paths, log, utility
-from evolve_soft_2d.classes import mat, template
-from evolve_soft_2d.model import create, inspect, modify, rep_grid
+from evolve_soft_2d.classes import template
+from evolve_soft_2d.unit import create, inspect, modify, rep_grid
 from evolve_soft_2d.result import analyse, obtain
 
 from py_mentat import py_connect, py_disconnect
@@ -31,7 +31,7 @@ def main():
 
     rem = [7, 8, 13]
 
-    grid_rem = rep_grid.rem_el_grid(grid, x_e, rem)
+    grid_rem = rep_grid.rem_el_grid(template, rem)
     print(grid)
     print(grid_rem)
 

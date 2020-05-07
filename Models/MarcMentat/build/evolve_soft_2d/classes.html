@@ -28,7 +28,7 @@
 
 #   Imports
 from evolve_soft_2d import utility
-from evolve_soft_2d.model import inspect, rep_grid
+from evolve_soft_2d.unit import inspect, rep_grid
 from evolve_soft_2d.file_paths import create_fp_t_f, create_fp_t_l, create_fp_m_f
 
 import time
@@ -46,7 +46,7 @@ class mat:
 
 class template:
 
-    def __init__(self, case, x0, y0, x_n, y_n, n_steps, tab_name, apply):
+    def __init__(self, case, x0, y0, x_n, y_n, n_steps, tab_nam, apply):
         self.case = case
         self.x0 = x0
         self.y0 = y0
@@ -61,7 +61,7 @@ class template:
         self.n_external = inspect.find_n_external(self.x_n, self.y_n)
         self.grid = rep_grid.create_grid(self.x_e, self.y_e)
         self.n_steps = n_steps
-        self.tab_name = tab_name
+        self.tab_nam = tab_nam
         self.apply = apply
         self.fp_t_f = create_fp_t_f(self.case, self.n_e_l)
         self.fp_t_l = create_fp_t_l(self.case, self.n_e_l)
@@ -77,7 +77,7 @@ class template:
 
 ################################################################################
 
-class model:
+class unit:
 
     def __init__(self, template, rem, grid, run_success = False):
         self.template = template
@@ -89,23 +89,23 @@ class model:
         self.fp_m_t16 = create_fp_m_f(self.template.case, self.template.n_e_l,self.m_id, &#34;_job.t16&#34;)
         self.fp_m_l = create_fp_m_f(self.template.case, self.template.n_e_l, self.m_id, &#34;.log&#34;)
         self.grid = grid[:]
-        self.grid_p = self.print_grid()
+        self.grid_l = self.format_grid()
         self.run_success = run_success
 
     def __repr__(self):
-        r_mod = &#34;Model:             {}\n&#34;.format(self.m_id)
+        r_mod = &#34;Unit:             {}\n&#34;.format(self.m_id)
         r_rem = &#34;Removed elements:  {}\n&#34;.format(self.rem)
-        r_gri = &#34;Representative grid:\n{}\n&#34;.format(self.grid_p)
+        r_gri = &#34;Representative grid:\n{}\n&#34;.format(self.grid_l)
         r_run = &#34;Run successful:    {}\n&#34;.format(self.run_success)
         r_tem = &#34;Template details:\n{}&#34;.format(self.template)
         return r_mod + r_rem + r_gri + r_run + r_tem
 
-    def print_grid(self):
-        self.grid_p = [[1]*(self.template.x_e) for i in range(self.template.y_e)]
+    def format_grid(self):
+        self.grid_l = [[1]*(self.template.x_e) for i in range(self.template.y_e)]
         for i in range(0, len(self.grid)):
-            self.grid_p[i] = &#34; &#34;.join(map(str, self.grid[i]))
-        self.grid_p = &#34;\n&#34;.join(map(str, self.grid_p))
-        return self.grid_p</code></pre>
+            self.grid_l[i] = &#34; &#34;.join(map(str, self.grid[i]))
+        self.grid_l = &#34;\n&#34;.join(map(str, self.grid_l))
+        return self.grid_l</code></pre>
 </details>
 </section>
 <section>
@@ -135,8 +135,8 @@ class model:
         self.e = e</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.classes.model"><code class="flex name class">
-<span>class <span class="ident">model</span></span>
+<dt id="evolve_soft_2d.classes.unit"><code class="flex name class">
+<span>class <span class="ident">unit</span></span>
 <span>(</span><span>template, rem, grid, run_success=False)</span>
 </code></dt>
 <dd>
@@ -145,7 +145,7 @@ class model:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class model:
+<pre><code class="python">class unit:
 
     def __init__(self, template, rem, grid, run_success = False):
         self.template = template
@@ -157,28 +157,28 @@ class model:
         self.fp_m_t16 = create_fp_m_f(self.template.case, self.template.n_e_l,self.m_id, &#34;_job.t16&#34;)
         self.fp_m_l = create_fp_m_f(self.template.case, self.template.n_e_l, self.m_id, &#34;.log&#34;)
         self.grid = grid[:]
-        self.grid_p = self.print_grid()
+        self.grid_l = self.format_grid()
         self.run_success = run_success
 
     def __repr__(self):
-        r_mod = &#34;Model:             {}\n&#34;.format(self.m_id)
+        r_mod = &#34;Unit:             {}\n&#34;.format(self.m_id)
         r_rem = &#34;Removed elements:  {}\n&#34;.format(self.rem)
-        r_gri = &#34;Representative grid:\n{}\n&#34;.format(self.grid_p)
+        r_gri = &#34;Representative grid:\n{}\n&#34;.format(self.grid_l)
         r_run = &#34;Run successful:    {}\n&#34;.format(self.run_success)
         r_tem = &#34;Template details:\n{}&#34;.format(self.template)
         return r_mod + r_rem + r_gri + r_run + r_tem
 
-    def print_grid(self):
-        self.grid_p = [[1]*(self.template.x_e) for i in range(self.template.y_e)]
+    def format_grid(self):
+        self.grid_l = [[1]*(self.template.x_e) for i in range(self.template.y_e)]
         for i in range(0, len(self.grid)):
-            self.grid_p[i] = &#34; &#34;.join(map(str, self.grid[i]))
-        self.grid_p = &#34;\n&#34;.join(map(str, self.grid_p))
-        return self.grid_p</code></pre>
+            self.grid_l[i] = &#34; &#34;.join(map(str, self.grid[i]))
+        self.grid_l = &#34;\n&#34;.join(map(str, self.grid_l))
+        return self.grid_l</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="evolve_soft_2d.classes.model.print_grid"><code class="name flex">
-<span>def <span class="ident">print_grid</span></span>(<span>self)</span>
+<dt id="evolve_soft_2d.classes.unit.format_grid"><code class="name flex">
+<span>def <span class="ident">format_grid</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -186,19 +186,19 @@ class model:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def print_grid(self):
-    self.grid_p = [[1]*(self.template.x_e) for i in range(self.template.y_e)]
+<pre><code class="python">def format_grid(self):
+    self.grid_l = [[1]*(self.template.x_e) for i in range(self.template.y_e)]
     for i in range(0, len(self.grid)):
-        self.grid_p[i] = &#34; &#34;.join(map(str, self.grid[i]))
-    self.grid_p = &#34;\n&#34;.join(map(str, self.grid_p))
-    return self.grid_p</code></pre>
+        self.grid_l[i] = &#34; &#34;.join(map(str, self.grid[i]))
+    self.grid_l = &#34;\n&#34;.join(map(str, self.grid_l))
+    return self.grid_l</code></pre>
 </details>
 </dd>
 </dl>
 </dd>
 <dt id="evolve_soft_2d.classes.template"><code class="flex name class">
 <span>class <span class="ident">template</span></span>
-<span>(</span><span>case, x0, y0, x_n, y_n, n_steps, tab_name, apply)</span>
+<span>(</span><span>case, x0, y0, x_n, y_n, n_steps, tab_nam, apply)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -208,7 +208,7 @@ class model:
 </summary>
 <pre><code class="python">class template:
 
-    def __init__(self, case, x0, y0, x_n, y_n, n_steps, tab_name, apply):
+    def __init__(self, case, x0, y0, x_n, y_n, n_steps, tab_nam, apply):
         self.case = case
         self.x0 = x0
         self.y0 = y0
@@ -223,7 +223,7 @@ class model:
         self.n_external = inspect.find_n_external(self.x_n, self.y_n)
         self.grid = rep_grid.create_grid(self.x_e, self.y_e)
         self.n_steps = n_steps
-        self.tab_name = tab_name
+        self.tab_nam = tab_nam
         self.apply = apply
         self.fp_t_f = create_fp_t_f(self.case, self.n_e_l)
         self.fp_t_l = create_fp_t_l(self.case, self.n_e_l)
@@ -253,9 +253,9 @@ class model:
 <h4><code><a title="evolve_soft_2d.classes.mat" href="#evolve_soft_2d.classes.mat">mat</a></code></h4>
 </li>
 <li>
-<h4><code><a title="evolve_soft_2d.classes.model" href="#evolve_soft_2d.classes.model">model</a></code></h4>
+<h4><code><a title="evolve_soft_2d.classes.unit" href="#evolve_soft_2d.classes.unit">unit</a></code></h4>
 <ul class="">
-<li><code><a title="evolve_soft_2d.classes.model.print_grid" href="#evolve_soft_2d.classes.model.print_grid">print_grid</a></code></li>
+<li><code><a title="evolve_soft_2d.classes.unit.format_grid" href="#evolve_soft_2d.classes.unit.format_grid">format_grid</a></code></li>
 </ul>
 </li>
 <li>

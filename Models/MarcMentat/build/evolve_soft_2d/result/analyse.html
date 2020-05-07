@@ -33,12 +33,12 @@ import numpy
 
 ################################################################################
 
-#   Calculate the boundary energy for a model
+#   Calculate the boundary energy for a unit
 #   Returns the boundary energy
 
 #   n_e_l:      The number of elements as a string
-#   case:       The model case identifier
-#   m_id:       The ID of the model file
+#   case:       The unit case identifier
+#   m_id:       The ID of the unit file
 #   n_external: The list of external nodes
 def boundary_energy(mod):
 
@@ -77,7 +77,7 @@ def boundary_energy(mod):
     #   Initialise the boundary energy array
     b_e = numpy.zeros(len(d_ex))
 
-    #   Loop through every step in the model
+    #   Loop through every step in the unit
     for i in range(0, len(d_ex)):
 
         #   Loop through every external node
@@ -96,9 +96,9 @@ def boundary_energy(mod):
 #   Write the results to .csv files
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 #   t:      The type of data to be stored
-#   m_id:   The ID of the model file
+#   m_id:   The ID of the unit file
 #   data:   The results to be stored
 def save_numpy_array_to_csv(mod, t, data):
 
@@ -166,7 +166,7 @@ def save_numpy_array_to_csv(mod, t, data):
     #   Initialise the boundary energy array
     b_e = numpy.zeros(len(d_ex))
 
-    #   Loop through every step in the model
+    #   Loop through every step in the unit
     for i in range(0, len(d_ex)):
 
         #   Loop through every external node

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.8.1" />
-<title>evolve_soft_2d.model.create API documentation</title>
+<title>evolve_soft_2d.unit.create API documentation</title>
 <meta name="description" content="" />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
@@ -17,21 +17,21 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>evolve_soft_2d.model.create</code></h1>
+<h1 class="title">Module <code>evolve_soft_2d.unit.create</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">##  Functions used with the Marc Mentat models
+<pre><code class="python">##  Functions used with the Marc Mentat units
 
 #   Imports
 import time
 
 from evolve_soft_2d import utility
-from evolve_soft_2d.classes import model
-from evolve_soft_2d.model import inspect, modify, rep_grid
+from evolve_soft_2d.classes import unit
+from evolve_soft_2d.unit import inspect, modify, rep_grid
 from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.file_paths import fp_t, create_fp_t_f, create_fp_m_f, create_fp_m_m
 
@@ -39,7 +39,7 @@ from py_mentat import py_send
 
 ################################################################################
 
-#   Generate multiple models
+#   Generate multiple units
 
 #   n_n:        The number of nodes
 #   x_e:        The number of elements in the x-direction
@@ -49,16 +49,16 @@ from py_mentat import py_send
 #   n_steps:    The number of steps in the second of the loadcase
 #   grid:       The representative grid of ones
 #   n_e_l:      The number of elements as a string
-#   case:       The model case identifier
-#   fp_t_f:     The file path of the template model file
-#   g:          The number of models to generate
-def gen_models(template, n):
+#   case:       The unit case identifier
+#   fp_t_f:     The file path of the template unit file
+#   g:          The number of units to generate
+def gen_units(template, n):
 
     t = time.strftime(&#34;_%Y-%m-%d--%H-%M-%S&#34;, time.gmtime())
 
     fp_m_m = create_fp_m_m(template.case, template.n_e_l, t)
 
-    #   Loop through the desired number of models to be created
+    #   Loop through the desired number of units to be created
     for _ in range(0, n):
 
         #   Determine which random elements will be removed
@@ -79,13 +79,13 @@ def gen_models(template, n):
             
         modify.rem_el(rem)
 
-        curr_mod = model(template, rem, grid_rem)
+        curr_mod = unit(template, rem, grid_rem)
 
         #   Add the job
         modify.add_job()
 
-        #   Save the altered model
-        modify.save_model(curr_mod.fp_m_mud, curr_mod.m_id)
+        #   Save the altered unit
+        modify.save_unit(curr_mod.fp_m_mud, curr_mod.m_id)
 
         #   Run the job 
         modify.run_job()
@@ -104,7 +104,7 @@ def gen_models(template, n):
         print(curr_mod.m_id, file = open(fp_m_m, &#34;a&#34;))
 
         #   Reopen the template
-        modify.open_model(template.fp_t_f, str(template.case) + &#34;_&#34; + template.n_e_l)
+        modify.open_unit(template.fp_t_f, str(template.case) + &#34;_&#34; + template.n_e_l)
     
     return t
 
@@ -118,31 +118,31 @@ def gen_models(template, n):
 #   x_n:        The number of nodes in the x-direction
 #   y_n:        The number of nodes in the y-direction
 #   y_e:        The number of elements in the y-direction
-#   tab_name:   The name of the table
+#   tab_nam:   The name of the table
 #   d:          The magnitude of the applied displacement
 #   n_steps:    The number of steps in the second of the loadcase
 #   n_e_l:      The number of elements as a string
-#   fp_t_f:     The file path of the template model file
+#   fp_t_f:     The file path of the template unit file
 def template_0(template):
 
     #   Clear the workspace
-    py_send(&#34;*new_model yes&#34;)
+    py_send(&#34;*new_unit yes&#34;)
 
     #   Grid construction
     modify.create_nodes(template)
     modify.create_elements(template)
 
     #   Add template properties
-    modify.add_ramp(template.tab_name)
+    modify.add_ramp(template.tab_nam)
     modify.add_bc_fd(&#34;y0&#34;, &#34;y&#34;, 0, &#34;&#34;, template.y0)
-    modify.add_bc_fd(&#34;y1&#34;, &#34;y&#34;, template.apply, template.tab_name, template.y_e)
+    modify.add_bc_fd(&#34;y1&#34;, &#34;y&#34;, template.apply, template.tab_nam, template.y_e)
     modify.add_geom_prop()
     modify.add_mat_ogden(&#34;MoldStar15&#34;)
     modify.add_contact_body()
     modify.add_lcase(template.n_steps)
 
     #   Save the template
-    modify.save_model(template.fp_t_f, template.n_e_l + &#34;_0&#34;)
+    modify.save_unit(template.fp_t_f, template.n_e_l + &#34;_0&#34;)
 
     print(template, file = open(template.fp_t_l, &#34;w&#34;))
 
@@ -158,8 +158,8 @@ def template_0(template):
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="evolve_soft_2d.model.create.gen_models"><code class="name flex">
-<span>def <span class="ident">gen_models</span></span>(<span>template, n)</span>
+<dt id="evolve_soft_2d.unit.create.gen_units"><code class="name flex">
+<span>def <span class="ident">gen_units</span></span>(<span>template, n)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -167,13 +167,13 @@ def template_0(template):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def gen_models(template, n):
+<pre><code class="python">def gen_units(template, n):
 
     t = time.strftime(&#34;_%Y-%m-%d--%H-%M-%S&#34;, time.gmtime())
 
     fp_m_m = create_fp_m_m(template.case, template.n_e_l, t)
 
-    #   Loop through the desired number of models to be created
+    #   Loop through the desired number of units to be created
     for _ in range(0, n):
 
         #   Determine which random elements will be removed
@@ -194,13 +194,13 @@ def template_0(template):
             
         modify.rem_el(rem)
 
-        curr_mod = model(template, rem, grid_rem)
+        curr_mod = unit(template, rem, grid_rem)
 
         #   Add the job
         modify.add_job()
 
-        #   Save the altered model
-        modify.save_model(curr_mod.fp_m_mud, curr_mod.m_id)
+        #   Save the altered unit
+        modify.save_unit(curr_mod.fp_m_mud, curr_mod.m_id)
 
         #   Run the job 
         modify.run_job()
@@ -219,12 +219,12 @@ def template_0(template):
         print(curr_mod.m_id, file = open(fp_m_m, &#34;a&#34;))
 
         #   Reopen the template
-        modify.open_model(template.fp_t_f, str(template.case) + &#34;_&#34; + template.n_e_l)
+        modify.open_unit(template.fp_t_f, str(template.case) + &#34;_&#34; + template.n_e_l)
     
     return t</code></pre>
 </details>
 </dd>
-<dt id="evolve_soft_2d.model.create.template_0"><code class="name flex">
+<dt id="evolve_soft_2d.unit.create.template_0"><code class="name flex">
 <span>def <span class="ident">template_0</span></span>(<span>template)</span>
 </code></dt>
 <dd>
@@ -236,23 +236,23 @@ def template_0(template):
 <pre><code class="python">def template_0(template):
 
     #   Clear the workspace
-    py_send(&#34;*new_model yes&#34;)
+    py_send(&#34;*new_unit yes&#34;)
 
     #   Grid construction
     modify.create_nodes(template)
     modify.create_elements(template)
 
     #   Add template properties
-    modify.add_ramp(template.tab_name)
+    modify.add_ramp(template.tab_nam)
     modify.add_bc_fd(&#34;y0&#34;, &#34;y&#34;, 0, &#34;&#34;, template.y0)
-    modify.add_bc_fd(&#34;y1&#34;, &#34;y&#34;, template.apply, template.tab_name, template.y_e)
+    modify.add_bc_fd(&#34;y1&#34;, &#34;y&#34;, template.apply, template.tab_nam, template.y_e)
     modify.add_geom_prop()
     modify.add_mat_ogden(&#34;MoldStar15&#34;)
     modify.add_contact_body()
     modify.add_lcase(template.n_steps)
 
     #   Save the template
-    modify.save_model(template.fp_t_f, template.n_e_l + &#34;_0&#34;)
+    modify.save_unit(template.fp_t_f, template.n_e_l + &#34;_0&#34;)
 
     print(template, file = open(template.fp_t_l, &#34;w&#34;))
 
@@ -272,13 +272,13 @@ def template_0(template):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="evolve_soft_2d.model" href="index.html">evolve_soft_2d.model</a></code></li>
+<li><code><a title="evolve_soft_2d.unit" href="index.html">evolve_soft_2d.unit</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="evolve_soft_2d.model.create.gen_models" href="#evolve_soft_2d.model.create.gen_models">gen_models</a></code></li>
-<li><code><a title="evolve_soft_2d.model.create.template_0" href="#evolve_soft_2d.model.create.template_0">template_0</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.create.gen_units" href="#evolve_soft_2d.unit.create.gen_units">gen_units</a></code></li>
+<li><code><a title="evolve_soft_2d.unit.create.template_0" href="#evolve_soft_2d.unit.create.template_0">template_0</a></code></li>
 </ul>
 </li>
 </ul>

@@ -4,8 +4,8 @@
 import importlib
 
 from evolve_soft_2d import classes, file_paths, log, utility
-from evolve_soft_2d.classes import mat, template
-from evolve_soft_2d.model import create, inspect, modify, rep_grid
+from evolve_soft_2d.classes import template, mold_star_15
+from evolve_soft_2d.unit import create, inspect, modify, rep_grid
 from evolve_soft_2d.result import analyse, obtain
 
 from py_mentat import py_connect, py_disconnect
@@ -44,10 +44,10 @@ def main():
     #   Template case to be run
     case = 0
 
-    #   Prepare the model parameters
-    temp = template(case, x0, y0, x_n, y_n, n_steps, table_name, d_mag)
+    #   Prepare the unit parameters
+    temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
 
-    #   Flag to be set if the base model needs to be regenerated
+    #   Flag to be set if the base unit needs to be regenerated
     regen_base = False
 
     #   Check if the template exists
@@ -55,14 +55,16 @@ def main():
 
     #   Open the base file if it exists
     if exists and not regen_base:
-        modify.open_model(temp.fp_t_f, str(temp.case) + "_" + temp.n_e_l)
+        modify.open_unit(temp.fp_t_f, str(temp.case) + "_" + temp.n_e_l)
 
     #   Create the base file if it does not exist
     elif temp.case == 0:
         create.template_0(temp)
 
-    #   Generate a number of models and save their results
-    t = create.gen_models(temp, 3)
+    #   Generate a number of units and save their results
+    fp_m_m = create.gen_units(temp, 2)
+
+    analyse.monte_carlo(fp_m_m, temp)
 
     #   View the boundary conditions of the template
     inspect.view_bc()

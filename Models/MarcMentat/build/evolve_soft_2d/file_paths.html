@@ -30,18 +30,18 @@
 from evolve_soft_2d import utility
 
 #   File paths
-fp = r&#39;C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat&#39;
-fp_m = fp + r&#39;\Models&#39;
+fp = r&#39;C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Units\MarcMentat&#39;
+fp_m = fp + r&#39;\Units&#39;
 fp_r = fp + r&#39;\Results&#39;
 fp_t = fp + r&#39;\Templates&#39;
 
 ################################################################################
 
-#   Create the file path of the model folder up to the template level
+#   Create the file path of the unit folder up to the template level
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 def create_fp_m_id(case, n_e_l):
 
     fp_m_id = r&#39;\grid_&#39; + str(case) + &#34;_&#34; + n_e_l
@@ -51,16 +51,16 @@ def create_fp_m_id(case, n_e_l):
 
 ################################################################################
 
-#   Create the file path of the model file or output file
+#   Create the file path of the unit file or output file
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
-#   m_id:   The model identifier
+#   case:   The unit case identifier
+#   m_id:   The unit identifier
 #   ext:    The extension of the file
 def create_fp_m_m(case, n_e_l, t):
 
-    #   Create the file path of the model and output file folder
+    #   Create the file path of the unit and output file folder
     fp_m_id = create_fp_m_id(case, n_e_l)
 
     fp_m_m = fp_m_id + t + &#34;.log&#34;
@@ -69,16 +69,16 @@ def create_fp_m_m(case, n_e_l, t):
 
 ################################################################################
 
-#   Create the file path of the model file or output file
+#   Create the file path of the unit file or output file
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
-#   m_id:   The model identifier
+#   case:   The unit case identifier
+#   m_id:   The unit identifier
 #   ext:    The extension of the file
 def create_fp_m_f(case, n_e_l, m_id, ext):
 
-    #   Create the file path of the model and output file folder
+    #   Create the file path of the unit and output file folder
     fp_m_id = create_fp_m_id(case, n_e_l)
     fp_m_f = r&#39;\grid_&#39; + m_id
 
@@ -95,7 +95,7 @@ def create_fp_m_f(case, n_e_l, m_id, ext):
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 def create_fp_r_id(case, n_e_l):
 
     fp_r_id = r&#39;\grid_&#39; + str(case) + &#34;_&#34; + n_e_l
@@ -112,9 +112,9 @@ def create_fp_r_id(case, n_e_l):
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 #   t:      The type of data to be stored
-#   m_id:   The model identifier
+#   m_id:   The unit identifier
 def create_fp_r_f(case, n_e_l, t, m_id):
 
     #   Create the file path of the results file folder
@@ -130,7 +130,7 @@ def create_fp_r_f(case, n_e_l, t, m_id):
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 def create_fp_t_id(case, n_e_l):
 
     fp_t_id = r&#39;\grid_&#39; + str(case) + &#34;_&#34; + n_e_l
@@ -146,7 +146,7 @@ def create_fp_t_id(case, n_e_l):
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 def create_fp_t_f(case, n_e_l):
 
     fp_t_id = create_fp_t_id(case, n_e_l)
@@ -160,7 +160,7 @@ def create_fp_t_f(case, n_e_l):
 #   Returns the file path
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 def create_fp_t_l(case, n_e_l):
 
     fp_t_id = create_fp_t_id(case, n_e_l)
@@ -187,7 +187,7 @@ def create_fp_t_l(case, n_e_l):
 </summary>
 <pre><code class="python">def create_fp_m_f(case, n_e_l, m_id, ext):
 
-    #   Create the file path of the model and output file folder
+    #   Create the file path of the unit and output file folder
     fp_m_id = create_fp_m_id(case, n_e_l)
     fp_m_f = r&#39;\grid_&#39; + m_id
 
@@ -227,7 +227,7 @@ def create_fp_t_l(case, n_e_l):
 </summary>
 <pre><code class="python">def create_fp_m_m(case, n_e_l, t):
 
-    #   Create the file path of the model and output file folder
+    #   Create the file path of the unit and output file folder
     fp_m_id = create_fp_m_id(case, n_e_l)
 
     fp_m_m = fp_m_id + t + &#34;.log&#34;

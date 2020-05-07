@@ -1,7 +1,7 @@
 ##  Functions used for obtaining and inspecting results
 
 #   Imports
-from evolve_soft_2d import model, utility
+from evolve_soft_2d import unit, utility
 from evolve_soft_2d.file_paths import fp_m, fp_r, create_fp_r_f
 from evolve_soft_2d.log import m_log, en_log
 
@@ -15,12 +15,12 @@ import re
 ################################################################################
 
 #   Check if the updated output files exist
-#   Returns a flag based on the successful output of the model
+#   Returns a flag based on the successful output of the unit
 
-#   fp_m_mud:   The complete file path of the model file
+#   fp_m_mud:   The complete file path of the unit file
 #   fp_m_log:   The complete file path of the log file
 #   fp_m_t16:   The complete file path of the t16 file
-#   m_id:       The ID of the model file
+#   m_id:       The ID of the unit file
 def check_out(mod):
 
     #   Initialisations
@@ -34,7 +34,7 @@ def check_out(mod):
     #   Text to look for when searching the log files
     exit_number_str = re.compile("exit number", re.IGNORECASE)
 
-    #   Obtain the timestamp of the last time the model file was modified
+    #   Obtain the timestamp of the last time the unit file was modified
     t_mud = os.path.getmtime(mod.fp_m_mud)
 
     #   Wait until the log file exists and has been updated
@@ -52,7 +52,7 @@ def check_out(mod):
 
             #   Output the exit number
             exit_number = utility.find_int_in_str(found_exit_n)
-            en_log.info("Exit number {} found for model \"grid_{}.mud\"".format(exit_number, mod.m_id))
+            en_log.info("Exit number {} found for unit \"grid_{}.mud\"".format(exit_number, mod.m_id))
 
             #   Exit the loop
             break
@@ -67,7 +67,7 @@ def check_out(mod):
         #   Set the success flag
         success = True
 
-        m_log.info("Model run successfully")
+        m_log.info("Unit run successfully")
 
     #   Check if the exit number indicates a loss of connection to the license server
     elif exit_number == 67:
@@ -86,7 +86,7 @@ def check_out(mod):
                 decided = True
 
                 #   Rerun the job
-                model.run_job()
+                unit.run_job()
 
                 #   Check if the updated output files exist
                 success = check_out(mod)
@@ -107,10 +107,10 @@ def check_out(mod):
 
     #   Output a warning
     else:
-        en_log.error("Model run unsuccessfully with exit number {}".format(exit_number))
+        en_log.error("Unit run unsuccessfully with exit number {}".format(exit_number))
         m_log.warning("Results cannot be analysed. Check Mentat log file and exit number for details")
 
-    #   Check if the model was run successfully without a loss of connection to the license server
+    #   Check if the unit was run successfully without a loss of connection to the license server
     if success and not decided:
 
         #   Wait until the t16 file exists and has been updated
@@ -120,7 +120,7 @@ def check_out(mod):
         t1 = time.time()
         m_log.info("Results generated in approximately {:.3f}s".format(t1 - t0))
     
-    #   Check if the model was run successfully with a loss of connection to the license server
+    #   Check if the unit was run successfully with a loss of connection to the license server
     elif success and decided:
 
         m_log.info("Results generated after initial connection failure")
@@ -139,8 +139,8 @@ def check_out(mod):
 
 #   n_steps:    The number of steps in the second of the loadcase
 #   n_e_l:      The number of elements as a string
-#   case:       The model case identifier
-#   m_id:       The ID of the model file
+#   case:       The unit case identifier
+#   m_id:       The ID of the unit file
 #   fp_m_t16:   The complete file path of the t16 file
 def max_min(mod):
 
@@ -165,7 +165,7 @@ def max_min(mod):
 
     #   Open the results file
     mod
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(mod.fp_m_t16))
+    py_send("@main(results) @popup(unitplot_pm) *post_open \"{}\"".format(mod.fp_m_t16))
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -240,8 +240,8 @@ def max_min(mod):
 #   n_n:        The number of nodes
 #   n_steps:    The number of steps in the second of the loadcase
 #   n_e_l:      The number of elements as a string
-#   case:       The model case identifier
-#   m_id:       The ID of the model file
+#   case:       The unit case identifier
+#   m_id:       The ID of the unit file
 #   fp_m_t16:   The complete file path of the t16 file
 def all_n(mod):
 
@@ -252,7 +252,7 @@ def all_n(mod):
     label.append("Reaction Force")
 
     #   Open the results file
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(mod.fp_m_t16))
+    py_send("@main(results) @popup(unitplot_pm) *post_open \"{}\"".format(mod.fp_m_t16))
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -297,14 +297,14 @@ def all_n(mod):
 #   Write the results to .csv files
 
 #   n_e_l:  The number of elements as a string
-#   case:   The model case identifier
+#   case:   The unit case identifier
 #   t:      The type of data to be stored
-#   m_id:   The ID of the model file
+#   m_id:   The ID of the unit file
 #   data:   The results to be stored
 def save_2d_list_to_csv(mod, t, data):
     
     #   Create the file path of the results file
-    fp_r_csv = create_fp_r_f(mod.template.case, mod.template.n_e_l, t, mod.m_id)
+    fp_r_csv = create_fp_r_f(mod, t)
 
     #   Write the data to the results file
     with open(fp_r_csv, 'w') as f:

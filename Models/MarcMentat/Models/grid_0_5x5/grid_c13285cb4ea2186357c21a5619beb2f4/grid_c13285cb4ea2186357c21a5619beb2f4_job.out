@@ -43,7 +43,7 @@
 
              integer*8 version: integers are 64-bits
 
-             date: Mon May 04 12:51:07 2020
+             date: Wed May 06 18:08:59 2020
 
 
              (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
@@ -483,7 +483,7 @@
              contacting segments                             1.20000E+02
              radiation reflection cut-off                    1.00000E-03
              angle for averaging adjacent beams (s2s)        1.60000E+02
-             stabilizer stiffness for model sections         0.00000E+00
+             stabilizer stiffness for unit sections         0.00000E+00
 
              maximum change in temperature per iteration     1.00000E+02
              maximum rbe3 conditioning number                0.10000E+07
@@ -561,7 +561,7 @@
 
 
              load increments for each degree of freedom
-             summed over the whole model
+             summed over the whole unit
 
              from distributed loads
              dist. loads on deformed configuration - totals below for dist. loads
@@ -712,7 +712,7 @@
              contacting segments                             1.20000E+02
              radiation reflection cut-off                    1.00000E-03
              angle for averaging adjacent beams (s2s)        1.60000E+02
-             stabilizer stiffness for model sections         0.00000E+00
+             stabilizer stiffness for unit sections         0.00000E+00
 
              maximum change in temperature per iteration     1.00000E+02
              maximum rbe3 conditioning number                0.10000E+07
@@ -771,7 +771,7 @@
 
 
              load increments for each degree of freedom
-             summed over the whole model
+             summed over the whole unit
 
              from distributed loads
              dist. loads on deformed configuration - totals below for dist. loads
@@ -904,7 +904,7 @@
 
 
              load increments for each degree of freedom
-             summed over the whole model
+             summed over the whole unit
 
              from distributed loads
              dist. loads on deformed configuration - totals below for dist. loads
@@ -1037,7 +1037,7 @@
 
 
              load increments for each degree of freedom
-             summed over the whole model
+             summed over the whole unit
 
              from distributed loads
              dist. loads on deformed configuration - totals below for dist. loads
@@ -1170,7 +1170,7 @@
 
 
              load increments for each degree of freedom
-             summed over the whole model
+             summed over the whole unit
 
              from distributed loads
              dist. loads on deformed configuration - totals below for dist. loads
@@ -1334,16 +1334,16 @@
 
              timing information:                             wall time      cpu time
 
-               total time for input:                              0.03          0.05
+               total time for input:                              0.09          0.03
                total time for stiffness matrix assembly:          0.01          0.02
                total time for mass matrix assembly:               0.00          0.00
-               total time for stress recovery:                    0.00          0.00
+               total time for stress recovery:                    0.00          0.02
                total time for matrix solution:                    0.05          0.05
                total time for contact:                            0.00          0.00
                total time for output:                             0.04          0.02
-               total time for miscellaneous:                     24.31          0.55
+               total time for miscellaneous:                     24.32          0.50
                ---------------------------------------------------------------------
-               total time:                                       24.44          0.67
+               total time:                                       24.51          0.62
 
 
              **************************************************************************

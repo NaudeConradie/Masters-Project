@@ -79,13 +79,13 @@ def wait_file_update(file_name, t0, label, t):
 ################################################################################
 
 #   Check if a specified file exists
-#   Returns whether or not it exists
 
 #   file_name:  The name of the file to be checked
 def if_file_exist(file_name):
 
     exists = os.path.exists(file_name)
 
+    #   Returns whether or not the file exists
     return exists
 
 ################################################################################
@@ -102,7 +102,6 @@ def make_folder(l):
 ################################################################################
 
 #   Randomly select a random amount of numbers from a given list of numbers
-#   Returns the numbers that were selected
 
 #   l:  The list of numbers
 def sel_random(l):
@@ -126,12 +125,12 @@ def sel_random(l):
     #   Sort the list of selected numbers
     sel.sort()
 
+    #   Returns the numbers that were selected
     return sel
 
 ################################################################################
 
 #   Generate a random hash code from a given string
-#   Returns the hash code
 
 #   The string to be hashed
 def gen_hash(s):
@@ -140,12 +139,12 @@ def gen_hash(s):
     m.update(bytes(s, encoding = 'utf8'))
     hash_code = str(m.hexdigest())
 
+    #   Returns the hash code
     return hash_code
 
 ################################################################################
 
 #   Search a text file for the first occurrence of a given text string
-#   Returns if the text was found and the entire line it was found in
 
 #   file_name:  The name of the file to be searched through
 #   find_text:  The text to be searched for
@@ -170,14 +169,15 @@ def search_text_file(file_name, find_text):
                 #   Set the found flag to true
                 found = True
 
+                #   Exit the loop
                 break
 
+    #   Returns if the text was found and the entire line it was found in
     return (found, found_text)
 
 ################################################################################
 
 #   Add two lists and sort them
-#   Returns the added and sorted list
 
 #   l1: The first list to be added
 #   l2: The second list to be added
@@ -189,12 +189,12 @@ def add_sort_list(l1, l2):
     #   Sort the added lists
     l.sort()
 
+    #   Returns the added and sorted list
     return l
 
 ################################################################################
 
 #   Convert a list into a string connected by a given symbol
-#   Returns the string
 
 #   l:  The list to be converted
 #   c:  The symbol to be inserted between list items
@@ -202,16 +202,17 @@ def list_to_str(l, c):
 
     s = c.join(map(str, l))
 
+    #   Returns the string
     return s
 
 ################################################################################
 
 #   Finds the first integer in a string
-#   Returns the integer
 
 #   s:  The string to be searched
 def find_int_in_str(s):
 
     i = int(re.search(r'\d+', s).group())
 
+    #   Returns the integer
     return i
