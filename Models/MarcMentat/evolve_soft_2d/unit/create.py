@@ -7,43 +7,73 @@ from evolve_soft_2d import utility
 from evolve_soft_2d.classes import unit_p
 from evolve_soft_2d.unit import inspect, modify, rep_grid
 from evolve_soft_2d.result import analyse, obtain
-from evolve_soft_2d.file_paths import fp_t, create_fp_t_f, create_fp_m_f, create_fp_m_m
+from evolve_soft_2d.file_paths import fp_t, create_fp_t_f, create_fp_u_f, create_fp_u_m
 
 from py_mentat import py_send
 
 ################################################################################
+        
+def gen_units(template, n) -> str:
+    """Generate multiple units
 
-#   Generate multiple units
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    n : int
+        The number of units to generate
 
-#   template:   The unit template parameters
-#   n:          The number of units to generate
-def gen_units(template, n):
+    Returns
+    -------
+    str
+        The file path of the log file of units created during the last simulation
+    """
+
+    #   Initialisations
+    all_u_id = []
 
     #   The time the unit generation starts as a string label
     t = time.strftime("_%Y-%m-%d--%H-%M-%S", time.gmtime())
 
-    #   Create the file path of the log file of units created during the last simulation
-    fp_m_m = create_fp_m_m(template, t)
+    #   Create the file path of the log file of units created during the simulation
+    fp_u_m = create_fp_u_m(template, t)
 
     #   Loop through the desired number of units to be created
     for _ in range(0, n):
 
-        #   Determine which random elements will be removed
-        rem = utility.sel_random(template.e_internal)
-        grid_rem = rep_grid.rem_el_grid(template, rem)
+        #   Initialisations
+        exists = True
 
-        #   Search for cluster
-        (found_free, grid_label) = rep_grid.find_cluster(grid_rem)
+        #   Loop until a new unit ID is generated
+        while exists:
 
-        #   Check if free clusters were found
-        if found_free:
+            #   Determine which random elements will be removed
+            rem = utility.sel_random(template.e_internal)
+            grid_rem = rep_grid.rem_el_grid(template, rem)
 
-            #   Remove the free clusters
-            (grid_rem, rem_free) = rep_grid.rem_el_free_grid(template, grid_label)
+            #   Search for clusters
+            (found_free, grid_label) = rep_grid.find_cluster(grid_rem)
 
-            #   Update the list of removed elements
-            rem = utility.add_sort_list(rem, rem_free)
-            
+            #   Check if free clusters were found
+            if found_free:
+
+                #   Remove the free clusters
+                (grid_rem, rem_free) = rep_grid.rem_el_free_grid(template, grid_label)
+
+                #   Update the list of removed elements
+                rem = utility.add_sort_list(rem, rem_free)
+
+            #   Save the list of elements to be removed from the unit as a string
+            rem_l = utility.list_to_str(rem, "_")
+
+            #   Generate the unique unit hash ID
+            u_id = utility.gen_hash(rem_l)
+
+            #   Check if the unit ID is not in the list of unit IDs generated already
+            if u_id not in all_u_id:
+
+                exists = False
+
         #   Remove the elements from the unit
         modify.rem_el(rem)
 
@@ -54,7 +84,7 @@ def gen_units(template, n):
         modify.add_job()
 
         #   Save the altered unit
-        modify.save_unit(curr_mod.fp_m_mud, curr_mod.m_id)
+        modify.save_model(curr_mod.fp_u_mud)
 
         #   Run the job 
         modify.run_job()
@@ -70,54 +100,130 @@ def gen_units(template, n):
             analyse.boundary_energy(curr_mod)
 
         #   Log the current unit parameters
-        print(curr_mod, file = open(curr_mod.fp_m_l, "w"))
+        print(curr_mod, file = open(curr_mod.fp_u_l, "w"))
 
         #   Log the current unit ID
-        print(curr_mod.m_id, file = open(fp_m_m, "a"))
+        print(curr_mod.u_id, file = open(fp_u_m, "a"))
+        all_u_id.append(curr_mod.u_id)
 
         #   Reopen the template
-        modify.open_unit(template.fp_t_f, str(template.case) + "_" + template.n_e_l)
+        modify.open_model(template.fp_t_f)
     
-    return fp_m_m
+    return fp_u_m
 
 ################################################################################
 
-#   Create a template from which elements may be removed
-#   Case:   0
+def template_0(template) -> None:
+    """Create a template from which elements may be removed
 
-#   x0:         The initial x-coordinate
-#   y0:         The initial y-coordinate
-#   x_n:        The number of nodes in the x-direction
-#   y_n:        The number of nodes in the y-direction
-#   y_e:        The number of elements in the y-direction
-#   tab_nam:   The name of the table
-#   d:          The magnitude of the applied displacement
-#   n_steps:    The number of steps in the second of the loadcase
-#   n_e_l:      The number of elements as a string
-#   fp_t_f:     The file path of the template unit file
-def template_0(template):
+    Case:   0
+    Testing template
+
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    """
 
     #   Clear the workspace
-    py_send("*new_unit yes")
+    py_send("*new_model yes")
 
     #   Grid construction
     modify.create_nodes(template)
     modify.create_elements(template)
 
     #   Add template properties
-    modify.add_ramp(template.tab_nam)
-    modify.add_bc_fd("y0", "y", 0, "", template.y0)
-    modify.add_bc_fd("y1", "y", template.apply, template.tab_nam, template.y_e)
+    modify.add_ramp(template)
+    modify.add_bc_fd_ee("y0", "",               "y", template.y0,  0)
+    modify.add_bc_fd_ee("y1", template.tab_nam, "y", template.y_e, template.apply)
     modify.add_geom_prop()
-    modify.add_mat_ogden("MoldStar15")
+    modify.add_mat_ogden(template.ogd_mat)
     modify.add_contact_body()
-    modify.add_lcase(template.n_steps)
+    modify.add_lcase(template)
 
     #   Save the template
-    modify.save_unit(template.fp_t_f, template.n_e_l + "_0")
+    modify.save_model(template.fp_t_f)
 
     print(template, file = open(template.fp_t_l, "w"))
 
     return
 
 ################################################################################
+
+def template_1(template) -> None:
+    """Create a template from which elements may be removed
+
+    Case:   1
+    Elongation in the y-direction while maintaining width in the x-direction
+
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    """
+
+    #   Clear the workspace
+    py_send("*new_model yes")
+
+    #   Grid construction
+    modify.create_nodes(template)
+    modify.create_elements(template)
+
+    #   Add template properties
+    modify.add_ramp(template)
+    modify.add_bc_fd_ee("y0", "",               "y", template.y0,  0)
+    modify.add_bc_fd_ee("y1", template.tab_nam, "y", template.y_e, template.apply)
+    modify.add_bc_fd_ee("x0", "",               "x", template.x0,  0)
+    modify.add_bc_fd_ee("x1", "",               "x", template.x_e, 0)
+    modify.add_geom_prop()
+    modify.add_mat_ogden(template.ogd_mat)
+    modify.add_contact_body()
+    modify.add_lcase(template)
+
+    #   Save the template
+    modify.save_model(template.fp_t_f)
+
+    print(template, file = open(template.fp_t_l, "w"))
+
+    return
+
+################################################################################
+
+def template_2(template) -> None:
+    """Create a template from which elements may be removed
+
+    Case:   2
+    Elongation of one side while maintaining width
+
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    """
+
+    #   Clear the workspace
+    py_send("*new_model yes")
+
+    #   Grid construction
+    modify.create_nodes(template)
+    modify.create_elements(template)
+
+    #   Add template properties
+    modify.add_ramp(template)
+    modify.add_bc_fd_ee("y0", "", "y", template.y0,  0)
+    modify.add_bc_fd_ee("y1", "", "y", template.y_e, 0)
+    modify.add_bc_fd_sn("x0", "", "x", 1,            0)
+    modify.add_bc_fd_sn("x1", "", "x", template.x_n, 0)
+    modify.add_bc_fd_sn("x2", template.tab_nam, "x", template.x_n*(template.y_n - 1) + 1, -template.apply)
+    modify.add_bc_fd_sn("x3", template.tab_nam, "x", template.x_n*template.y_n, template.apply)
+    modify.add_geom_prop()
+    modify.add_mat_ogden(template.ogd_mat)
+    modify.add_contact_body()
+    modify.add_lcase(template)
+
+    #   Save the template
+    modify.save_model(template.fp_t_f)
+
+    print(template, file = open(template.fp_t_l, "w"))
+
+    return

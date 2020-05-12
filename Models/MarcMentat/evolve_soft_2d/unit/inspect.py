@@ -1,18 +1,25 @@
 ##  Functions used with the Marc Mentat units
 
 #   Imports
-from evolve_soft_2d.log import m_log
-
 from py_mentat import py_send
 
 ################################################################################
 
-#   Find all internal elements
-#   Returns a list of internal elements
+def find_e_internal(x_e, y_e) -> list:
+    """Find all internal elements
 
-#   x_e: The number of elements in the x-direction
-#   y_e: The number of elements in the y-direction
-def find_e_internal(x_e, y_e):
+    Parameters
+    ----------
+    x_e : int
+        The number of elements in the x-direction
+    y_e : int
+        The number of elements in the y-direction
+
+    Returns
+    -------
+    list
+        The list of internal elements
+    """
 
     #   Initialisations
     e_internal = []
@@ -29,18 +36,25 @@ def find_e_internal(x_e, y_e):
             #   Add element to the list of internal elements
             e_internal.append(i)
 
-    m_log.info("{} internal elements found".format(len(e_internal)))
-
     return e_internal
 
 ################################################################################
 
-#   Find all external nodes
-#   Returns a list of external nodes
+def find_n_external(x_n, y_n) -> list:
+    """Find all external nodes
 
-#   x_n: The number of nodes in the x-direction
-#   y_n: The number of nodes in the y-direction
-def find_n_external(x_n, y_n):
+    Parameters
+    ----------
+    x_n : int
+        The number of nodes in the x-direction
+    y_n : int
+        The number of nodes in the y-direction
+
+    Returns
+    -------
+    list
+        The list of external nodes
+    """
 
     #   Initialisations
     n_external = []
@@ -57,15 +71,13 @@ def find_n_external(x_n, y_n):
             #   Add the node to the list of external nodes
             n_external.append(i)
 
-    m_log.info("{} external nodes found".format(len(n_external)))
-
     return n_external
 
 ################################################################################
 
-#   Display all boundary conditions
-
-def view_bc():
+def view_bc() -> None:
+    """Display all boundary conditions
+    """
 
     py_send("*identify_applys")
     py_send("*redraw")

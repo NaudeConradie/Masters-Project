@@ -9,24 +9,41 @@ from evolve_soft_2d.log import m_log
 
 ################################################################################
 
-#   Create a grid of ones representative of the unit
-#   Returns the representative grid
+def create_grid(x_e, y_e) -> list:
+    """Create a grid of ones representative of the unit
 
-#   x_e: The number of elements in the x-direction
-#   y_e: The number of elements in the y-direction
-def create_grid(x_e, y_e):
+    Parameters
+    ----------
+    x_e : int
+        The number of elements in the x-direction
+    y_e : int
+        The number of elements in the y-direction
 
+    Returns
+    -------
+    list
+        The representative grid
+    """
     grid = [[1]*(x_e) for i in range(y_e)]
 
     return grid
  
 ################################################################################
 
-#   Find all clusters of elements using the representative grid
-#   Returns a grid with clusters incrementally labelled
+def find_cluster(grid) -> (bool, list):
+    """Find all clusters of elements using the representative grid
 
-#   grid:   Representative grid of ones
-def find_cluster(grid):
+    Parameters
+    ----------
+    grid : list
+        The representative grid of ones
+
+    Returns
+    -------
+    (bool, list)
+        True if free clusters were found, false otherwise
+        The grid with clusters incrementally labelled
+    """
 
     grid_label, cluster = measurements.label(grid)
 
@@ -46,18 +63,27 @@ def find_cluster(grid):
         #   Set flag
         found = False
 
-        m_log.info("No free element clusters found")
-
     return (found, grid_label)
 
 ################################################################################
 
-#   Removes elements from the representative grid
+def rem_el_grid(template, rem) -> numpy.array:
+    """Removes elements from the representative grid
 
-#   template:   The unit template parameters
-#   rem:    The element IDs of the elements to be removed
-def rem_el_grid(template, rem):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    rem : list
+        The element IDs of the elements to be removed
 
+    Returns
+    -------
+    numpy.array
+        The grid with zeros in the places of the removed elements
+    """
+
+    #   Initialisations
     grid_rem = numpy.array(template.grid)
 
     #   Loop through the number of elements to be removed
@@ -66,25 +92,31 @@ def rem_el_grid(template, rem):
         #   Remove the element from the grid
         grid_rem[template.x_e - (rem[i] - 1)//template.x_e - 1][rem[i]%template.x_e - 1] = 0
 
-    #   Returns the grid with zeros in the places of the removed elements
     return grid_rem
 
 ################################################################################
 
-#   Remove free element clusters from the representative grid
-#   Returns the grid with zeros in place of the removed elements and a list of the removed elements
+def rem_el_free_grid(template, grid_label) -> (numpy.array, list):
+    """Remove free element clusters from the representative grid
 
-#   grid:       Representative grid of ones
-#   grid_label: Representative grid with clusters incrementally labelled
-#   x_e:        The number of elements in the x-direction
-#   y_e:        The number of elements in the y-direction
-def rem_el_free_grid(template, grid_label):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    grid_label : list
+        Representative grid with clusters incrementally labelled
 
+    Returns
+    -------
+    (numpy.array, list)
+        The grid with zeros in place of the removed elements
+        The list of removed elements
+    """
     #   Initialisations
     rem_i = 1
     rem = []
 
-    grid_temp = numpy.array(template.grid)
+    grid_rem = numpy.array(template.grid)
 
     #   Loop through the elements in the x-direction
     for i in range(0, template.x_e):
@@ -96,7 +128,7 @@ def rem_el_free_grid(template, grid_label):
             if grid_label[template.x_e - i - 1][j] > 1:
 
                 #   Remove the element from the grid
-                grid_temp[template.x_e - (rem_i - 1)//template.x_e - 1][rem_i%template.x_e - 1] = 0
+                grid_rem[template.x_e - (rem_i - 1)//template.x_e - 1][rem_i%template.x_e - 1] = 0
 
                 #   Add the index of the element to the list of removed elements
                 rem.append(rem_i)
@@ -104,4 +136,4 @@ def rem_el_free_grid(template, grid_label):
             #   Increment the removed element counter
             rem_i = rem_i + 1
 
-    return (grid_temp, rem)
+    return (grid_rem, rem)

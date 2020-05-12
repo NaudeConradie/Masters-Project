@@ -5,27 +5,40 @@ import time
 
 from evolve_soft_2d import utility
 from evolve_soft_2d.unit import inspect, rep_grid
-from evolve_soft_2d.file_paths import create_fp_m_f, create_fp_t_f, create_fp_t_l
+from evolve_soft_2d.file_paths import create_fp_u_f, create_fp_t_f, create_fp_t_l
 
 ################################################################################
 
-#   Ogden material unit
+#   Ogden material model
 
 class ogd_mat:
 
-    def __init__(self, name, mu, alpha):
+    def __init__(self, name, mu, alpha) -> None:
+        """Material parameters
 
-        #   The name of the material
+        Parameters
+        ----------
+        name : str
+            The name of the material
+        mu : list
+            The mu parameters
+        alpha : list
+            The exponent parameters
+        """
+
         self.name = name
-
-        #   The mu parameters
         self.mu = mu
-
-        #   The exponent parameters
         self.alpha = alpha
 
-    #   Formatted representation of the Ogden material class for the log
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """Format a representation of the material model
+
+        Returns
+        -------
+        str
+            Formatted representation of the Ogden material class for the log
+        """
+
         r_nam = "Name:  {}\n".format(self.name)
         r_mu =  "Mu:    {}\n".format(self.mu)
         r_alp = "Alpha: {}".format(self.alpha)
@@ -37,19 +50,52 @@ class ogd_mat:
 
 class template:
     
-    def __init__(self, case, x0, y0, x_n, y_n, ogd_mat, n_steps, tab_nam, apply):
+    def __init__(
+        self, 
+        case,
+        x0,
+        y0,
+        x_n,
+        y_n,
+        ogd_mat,
+        n_steps,
+        tab_nam,
+        apply,
+    ) -> None:
+        """Unit template parameters
 
-        #   The unit template case identifier
+        Parameters
+        ----------
+        case : int
+            The unit template case identifier
+        x0 : int
+            The initial x-coordinate
+        y0 : int
+            The initial y-coordinate
+        x_n : int
+            The number of nodes in the x-direction
+        y_n : int
+            The number of nodes in the y-direction
+        ogd_mat : class
+            The Ogden material model
+        n_steps : int
+            The number of steps in the second of the simulation
+        tab_nam : str
+            The name of the table containing the function of the load to be applied
+        apply : int
+            The conditions to be applied to the unit template
+        """
+
         self.case = case
-
-        #   The initial x-coordinate
         self.x0 = x0
-        #   The initial y-coordinate
         self.y0 = y0
-        #   The number of nodes in the x-direction
         self.x_n = x_n
-        #   The number of nodes in the y-direction
         self.y_n = y_n
+        self.ogd_mat = ogd_mat
+        self.n_steps = n_steps
+        self.tab_nam = tab_nam
+        self.apply = apply
+
         #   The total number of nodes
         self.n_n = self.x_n * self.y_n
         #   The number of elements in the x-direction
@@ -68,25 +114,19 @@ class template:
         #   The representative grid of ones
         self.grid = rep_grid.create_grid(self.x_e, self.y_e)
 
-        #   The Ogden material unit
-        self.ogd_mat = ogd_mat
-
-        #   The number of steps in the second of the simulation
-        self.n_steps = n_steps
-
-        #   The name of the table containing the function of the load to be applied
-        self.tab_nam = tab_nam
-
-        #   The conditions to be applied to the unit template
-        self.apply = apply
-
         #   The file path of the template file
         self.fp_t_f = create_fp_t_f(self)
         #   The file path of the template file log
         self.fp_t_l = create_fp_t_l(self)
 
-    #   Formatted representation of the template class for the log
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """Format a representation of the template
+
+        Returns
+        -------
+        str
+            Formatted representation of the template class for the log
+        """        
         r_cas = "Case: {}\nParameters:\n".format(self.case)
         r_ori = "Origin:            ({},{})\n".format(self.x0, self.y0)
         r_dim = "Dimensions:        {} elements\n".format(self.n_e_l)
@@ -102,48 +142,68 @@ class template:
 
 class unit_p:
 
-    def __init__(self, template, rem, grid, run_success = False):
+    def __init__(self, template, rem, grid, run_success = False) -> None:
+        """The unit parameters
 
-        #   The unit template parameters
+        Parameters
+        ----------
+        template : class
+            The unit template parameters
+        rem : list
+            The list of elements removed from the unit
+        grid : list
+            The representative grid with the elements removed
+        run_success : bool, optional
+            The success of the unit's run, by default False
+        """
+
         self.template = template
-
-        #   The list of elements removed from the unit
         self.rem = rem
-        #   The list of elements removed from the unit as a string unit
+        self.grid = grid
+        self.run_success = run_success
+
+        #   The list of elements removed from the unit as a string
         self.rem_l = utility.list_to_str(rem, "_")
 
         #   The unique unit hash ID
-        self.m_id = utility.gen_hash(self.rem_l)
+        self.u_id = utility.gen_hash(self.rem_l)
 
-        #   The representative grid with the elements removed
-        self.grid = grid
         #   The representative grid with the elements removed as a string label
         self.grid_l = self.format_grid()
 
-        #   The success of the unit's run
-        self.run_success = run_success
-
         #   The file path of the unit file
-        self.fp_m_mud = create_fp_m_f(self, ".mud")
+        self.fp_u_mud = create_fp_u_f(self, ".mud")
         #   The file path of the unit log file
-        self.fp_m_log = create_fp_m_f(self, "_job.log")
+        self.fp_u_log = create_fp_u_f(self, "_job.log")
         #   The file path of the unit t16 file
-        self.fp_m_t16 = create_fp_m_f(self, "_job.t16") 
+        self.fp_u_t16 = create_fp_u_f(self, "_job.t16") 
         #   The file path of the unit file log
-        self.fp_m_l = create_fp_m_f(self, ".log")
+        self.fp_u_l = create_fp_u_f(self, ".log")
         
-    #   Formatted representation of the unit class for the log
-    def __repr__(self):
-        r_mod = "Unit:             {}\n".format(self.m_id)
+    def __repr__(self) -> str:
+        """Format a representation of the unit
+
+        Returns
+        -------
+        str
+            Formatted representation of the unit class for the log
+        """        
+        r_mod = "Unit:             {}\n".format(self.u_id)
         r_rem = "Removed elements:  {}\n".format(self.rem)
         r_gri = "Representative grid:\n{}\n".format(self.grid_l)
         r_run = "Run successful:    {}\n".format(self.run_success)
         r_tem = "Template details:\n{}".format(self.template)
         return r_mod + r_rem + r_gri + r_run + r_tem
 
-    #   Function to format the representative grid for the log
-    def format_grid(self):
+    def format_grid(self) -> str:
+        """Function to format the representative grid for the log
 
+        Returns
+        -------
+        str
+            The representative grid of the unit as a string
+        """
+        
         self.grid_l = rep_grid.create_grid(self.template.x_e, self.template.y_e)
 
         for i in range(0, len(self.grid)):
@@ -155,7 +215,7 @@ class unit_p:
 
 ################################################################################
 
-#   Example material units
+#   Example material models
 
 mold_star_15 = ogd_mat("Mold Star 15", [-6.50266e-06, 0.216863, 0.00137158], [-21.322, 1.1797, 4.88396])
 

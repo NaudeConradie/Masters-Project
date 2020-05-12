@@ -10,44 +10,45 @@ import time
 
 ################################################################################
 
-#   Open a unit
+def open_model(fp_id) -> None:
+    """Open a model
 
-#   fp_id:  The complete file path of the path to be opened
-#   f_id:   The file ID to be logged
-def open_unit(fp_id, f_id):
+    Parameters
+    ----------
+    fp_id : str
+        The complete file path of the model to be opened
+    """
 
-    #   Open the unit
-    py_send(r'*open_unit "{}"'.format(fp_id))
-
-    m_log.info("Unit \"grid_{}.mud\" opened".format(f_id))
+    py_send(r'*open_model "{}"'.format(fp_id))
 
     return
 
 ################################################################################
 
-#   Save a unit
+def save_model(fp_id) -> None:
+    """Save a model
 
-#   fp_id:  The complete file path of the path to be opened
-#   f_id:   The file ID to be logged
-def save_unit(fp_id, f_id):
+    Parameters
+    ----------
+    fp_id : str
+        The complete file path of the model to be saved
+    """
 
-    #   Save the unit
     py_send("*set_save_formatted off")
-    py_send(r'*save_as_unit "{}" yes'.format(fp_id))
-
-    m_log.info("Unit \"grid_{}.mud\" saved".format(f_id))
+    py_send(r'*save_as_model "{}" yes'.format(fp_id))
 
     return
 
 ################################################################################
 
-#   Create a 2D node grid on the XY-plane
+def create_nodes(template) -> None:
+    """Create a 2D node grid on the xy-plane
 
-#   x0:  The initial x-coordinate
-#   y0:  The initial y-coordinate
-#   x_n: The number of nodes in the x-direction
-#   y_n: The number of nodes in the y-direction
-def create_nodes(template):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    """
 
     #   Initialisations
     y = template.y0
@@ -74,12 +75,15 @@ def create_nodes(template):
     return
 
 ################################################################################
+ 
+def create_elements(template) -> None:
+    """Create an element grid on the node grid
 
-#   Create an element grid on the node grid
-
-#   x_n: The number of nodes in the x-direction
-#   y_n: The number of nodes in the y-direction
-def create_elements(template):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    """
 
     #   Loop through the elements in the y-direction
     for i in range(1, template.y_n):
@@ -102,40 +106,50 @@ def create_elements(template):
             n3 = n3 + 1
             n4 = n4 + 1
 
-    m_log.info("{}x{} element grid created".format(template.x_n - 1, template.y_n - 1))
-
     return
 
 ################################################################################
+ 
+def add_ramp(template) -> None:
+    """Add a ramp to a table
 
-#   Add a ramp to a table
-
-#   tab_nam:   The name of the table
-def add_ramp(tab_nam):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    """
 
     py_send("*new_md_table 1 1")
-    py_send("*table_name {}".format(tab_nam))
+    py_send("*table_name \"{}\"".format(template.tab_nam))
     py_send("*set_md_table_type 1 \"time\"")
     py_send("*set_md_table_step_v 1 100")
     py_send("*set_md_table_step_f 1 100")
     py_send("*set_md_table_method_formula")
 
-    #   The ramp function is defined according to y=x
+    #   The ramp function is defined according to y = x
     py_send("*md_table_formula v1")
 
     return
 
 ################################################################################
+    
+def add_bc_fd_ee(label, tab_nam, a, e, d) -> None:
+    """Add fixed displacement boundary conditions along an entire edge
 
-#   Add fixed displacement boundary conditions along a specified axis
-
-#   label:      The label of the boundary condition
-#   axis:       The axis of the boundary condition
-#               "x" or "y"
-#   d:          The magnitude of the applied displacement
-#   tab_nam:   The name of the table defining the displacement function
-#   coord:      The axis coordinate of the boundary condition
-def add_bc_fd(label, axis, d, tab_nam, coord):
+    Parameters
+    ----------
+    label : str
+        The label of the boundary condition
+    tab_nam : str
+        The name of the table defining the displacement function if applicable
+    a : str
+        The axis of the boundary condition
+        "x" or "y"
+    e : int
+        The edge coordinate of the boundary condition
+    d : float
+        The magnitude of the applied displacement
+    """
 
     #   Initialisation
     n_l = []
@@ -147,20 +161,21 @@ def add_bc_fd(label, axis, d, tab_nam, coord):
     py_send("*new_apply")
     py_send("*apply_type fixed_displacement")
     py_send("*apply_name bc_fd_{}".format(label))
-    py_send("*apply_dof {}".format(axis))
-    py_send("*apply_dof_value {} {}".format(axis, d))
+    py_send("*apply_dof {}".format(a))
+    py_send("*apply_dof_value {} {}".format(a, d))
     
+    #   Apply the displacement function if applicable
     if tab_nam != "":
-        py_send("*apply_dof_table {} {}".format(axis, tab_nam))
+        py_send("*apply_dof_table {} {}".format(a, tab_nam))
 
     #   Loop through the number of nodes
     for i in range(1, n_n + 1):
 
         #   Fetch the relevant coordinate of the current node
-        c = py_get_float("node_{}({})".format(axis, i))
+        c_n = py_get_float("node_{}({})".format(a, i))
 
-        #   Check if the selected coordinate matches the desired coordinate
-        if c == coord:
+        #   Check if the selected coordinate matches the desired edge
+        if c_n == e:
 
             #   Add the node to the list
             n_l.append(i)
@@ -178,19 +193,66 @@ def add_bc_fd(label, axis, d, tab_nam, coord):
 
 ################################################################################
 
-#   Add a load along a specified axis in a specified direction
+def add_bc_fd_sn(label, tab_nam, a, n, d):
+    """Add fixed displacement boundary conditions on a single node
 
-#   label:      The label of the load
-#   p:          The magnitude of the applied pressure
-#   tab_nam:   The name of the table defining the load function
-#   x_e:        The number of elements in the x-direction
-#   y_e:        The number of elements in the y-direction
-#   axis:       The axis of the load
-#               "x" or "y"
-#   direc:      The direction of the load with respect to the axis
-#               1 for positive and -1 for negative
-#   coord:      The axis coordinate of the load
-def add_load(label, p, tab_nam, x_e, y_e, axis, direc, coord):
+    Parameters
+    ----------
+    label : str
+        The label of the boundary condition
+    tab_nam : str
+        The name of the table defining the displacement function if applicable
+    a : str
+        The axis of the boundary condition
+        "x" or "y"
+    e : int
+        The node number of the boundary condition
+    d : float
+        The magnitude of the applied displacement
+    """
+
+    #   Apply the fixed boundary condition
+    py_send("*new_apply")
+    py_send("*apply_type fixed_displacement")
+    py_send("*apply_name bc_fd_{}".format(label))
+    py_send("*apply_dof {}".format(a))
+    py_send("*apply_dof_value {} {}".format(a, d))
+    
+    #   Apply the displacement function if applicable
+    if tab_nam != "":
+        py_send("*apply_dof_table {} {}".format(a, tab_nam))
+
+    #   Apply the boundary condition to the selected nodes
+    py_send("*add_apply_nodes {} #".format(n))
+
+    return
+
+################################################################################
+  
+def add_load(label, p, tab_nam, x_e, y_e, axis, direc, coord) -> None:
+    """Add a load along a specified axis in a specified direction
+
+    Parameters
+    ----------
+    label : str
+        The label of the load
+    p : float
+        The magnitude of the applied pressure
+    tab_nam : str
+        The name of the table defining the load function
+    x_e : int
+        The number of elements in the x-direction
+    y_e : int
+        The number of elements in the y-direction
+    axis : str
+        The axis of the load
+        "x" or "y"
+    direc : int
+        The direction of the load with respect to the axis
+        1 for positive and -1 for negative
+    coord : int
+        The axis coordinate of the load
+    """
 
     py_send("*new_apply")
     py_send("*apply_type edge_load")
@@ -231,26 +293,29 @@ def add_load(label, p, tab_nam, x_e, y_e, axis, direc, coord):
 
 ################################################################################
 
-#   Add plane strain geometrical properties
-
-def add_geom_prop():
-
+def add_geom_prop() -> None:
+    """Add plane strain geometrical properties
+    """
     py_send("*geometry_type mech_planar_pstrain")
     py_send("*add_geometry_elements all_existing")
 
     return
 
 ################################################################################
+  
+def add_mat_ogden(ogd_mat) -> None:
+    """Add an Ogden material model
 
-#   Add a preliminary Ogden material unit
-
-#   ogd_mat:    The Ogden material unit
-def add_mat_ogden(ogd_mat):
+    Parameters
+    ----------
+    ogd_mat : class
+        The Ogden material model
+    """
 
     py_send("*new_mater standard")
     py_send("*mater_option general:state:solid")
     py_send("*mater_option general:skip_structural:off")
-    py_send("*mater_name {}".format(ogd_mat.name))
+    py_send("*mater_name \"{}\"".format(ogd_mat.name))
     py_send("*mater_option structural:type:ogden")
     py_send("*mater_param structural:ogden_nterm 3")
     py_send("*mater_param structural:ogden_modulus_1 {}".format(ogd_mat.mu[0]))
@@ -265,9 +330,9 @@ def add_mat_ogden(ogd_mat):
 
 ################################################################################
 
-#   Add a contact body
-
-def add_contact_body():
+def add_contact_body() -> None:
+    """Add a contact body
+    """
 
     py_send("*new_cbody mesh")
     py_send("*contact_option state:solid")
@@ -277,23 +342,27 @@ def add_contact_body():
     return
 
 ################################################################################
+ 
+def add_lcase(template) -> None:
+    """Add a loadcase
 
-#   Add a loadcase
-
-#   n_steps:    The number of steps in the second of the loadcase
-def add_lcase(n_steps):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    """
 
     py_send("*new_loadcase")
     py_send("*loadcase_type struc:static")
-    py_send("*loadcase_value nsteps {}".format(n_steps))
+    py_send("*loadcase_value nsteps {}".format(template.n_steps))
 
     return
 
 ################################################################################
 
-#   Add a job
-
-def add_job():
+def add_job() -> None:
+    """Add a job
+    """
 
     py_send("*prog_use_current_job on")
     py_send("*new_job structural")
@@ -310,9 +379,9 @@ def add_job():
 
 ################################################################################
 
-#   Run a job
-
-def run_job():
+def run_job() -> None:
+    """Run a job
+    """
 
     t0 = time.time()
 
@@ -328,10 +397,14 @@ def run_job():
 
 ################################################################################
 
-#   Remove a selection of elements
-
-#   rem:    The list of selected elements to be removed
 def rem_el(rem):
+    """Remove a selection of elements
+
+    Parameters
+    ----------
+    rem : list
+        The list of selected elements to be removed
+    """
 
     py_send("*remove_elements ")
 
@@ -342,9 +415,5 @@ def rem_el(rem):
         py_send("{} ".format(rem[i]))
 
     py_send("#")
-
-    rem_log = utility.list_to_str(rem, ",")
-    m_log.info("Removed the following elements from the grid:")
-    m_log.info(rem_log)
 
     return

@@ -6,63 +6,26 @@ from evolve_soft_2d import utility
 ################################################################################
 
 #   Fixed file paths
-fp = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Units\MarcMentat'
-fp_m = fp + r'\Units'
+fp = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat'
 fp_r = fp + r'\Results'
 fp_t = fp + r'\Templates'
+fp_u = fp + r'\Units'
 
 ################################################################################
 
-#   Create the file path of the unit folder up to the template level
+def create_fp_r_id(template) -> str:
+    """Create the file path of the results folder up to the template level
 
-#   template:   The unit template parameters
-def create_fp_m_id(template):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
 
-    fp_m_id = r'\grid_' + str(template.case) + "_" + template.n_e_l
-    fp_m_id = fp_m + fp_m_id
-
-    #   Returns the file path
-    return fp_m_id
-
-################################################################################
-
-#   Create the file path of the log file of units created during the last simulation
-
-#   template:   The unit template parameters
-#   t:          The time the unit generation starts as a string label
-def create_fp_m_m(template, t):
-
-    fp_m_id = create_fp_m_id(template)
-    fp_m_m = fp_m_id + t + ".log"
-
-    #   Returns the file path
-    return fp_m_m
-
-################################################################################
-
-#   Create the file path of unit files
-
-#   unit:  The unit parameters
-#   ext:    The extension of the file
-def create_fp_m_f(unit, ext):
-
-    fp_m_id = create_fp_m_id(unit.template)
-    fp_m_f = r'\grid_' + unit.m_id
-
-    #   Create the folder if it does not exist
-    utility.make_folder(fp_m_id + fp_m_f)
-
-    fp_m_f = fp_m_id + fp_m_f + fp_m_f + ext
-
-    #   Returns the file path
-    return fp_m_f
-
-################################################################################
-
-#   Create the file path of the results folder up to the template level
-
-#   template:   The unit template parameters
-def create_fp_r_id(template):
+    Returns
+    -------
+    str
+        The file path
+    """
 
     fp_r_id = r'\grid_' + str(template.case) + "_" + template.n_e_l
     fp_r_id = fp_r + fp_r_id
@@ -70,43 +33,71 @@ def create_fp_r_id(template):
     #   Create the folder if it does not exist
     utility.make_folder(fp_r_id)
 
-    #   Returns the file path
     return fp_r_id
 
 ################################################################################
 
-#   Create the file path of the results file
+def create_fp_r_f(unit, t) -> str:
+    """Create the file path of the results file
 
-#   unit:  The unit parameters
-#   t:      The type of data to be stored
-def create_fp_r_f(unit, t):
+    Parameters
+    ----------
+    unit : class
+        The unit parameters
+    t : str
+        The type of data to be stored
+
+    Returns
+    -------
+    str
+        The file path
+    """
 
     fp_r_id = create_fp_r_id(unit.template)
-    fp_r_f = fp_r_id + "\\" + t + "_" + unit.m_id + ".csv"
+    fp_r_f = fp_r_id + "\\" + t + "_" + unit.u_id + ".csv"
 
-    #   Returns the file path
     return fp_r_f
 
 ################################################################################
 
-#   Create the file path of the results file during analysis
+def create_fp_r_f_da(template, t, u_id) -> str:
+    """Create the file path of the results file during analysis
 
-#   unit:  The unit parameters
-#   t:      The type of data to be stored
-def create_fp_r_f_da(template, t, m_id):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    t : str
+        The type of data to be stored
+    u_id : str
+        The unit ID
+
+    Returns
+    -------
+    str
+        The file path
+    """
 
     fp_r_id = create_fp_r_id(template)
-    fp_r_f = fp_r_id + "\\" + t + "_" + m_id + ".csv"
+    fp_r_f = fp_r_id + "\\" + t + "_" + u_id + ".csv"
 
-    #   Returns the file path
     return fp_r_f
 
 ################################################################################
 
-#   Create the file path of the template folder up to the template level
+def create_fp_t_id(template) -> str:
+    """Create the file path of the template folder up to the template level
 
-#   template:   The unit template parameters
-def create_fp_t_id(template):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+
+    Returns
+    -------
+    str
+        The file path
+    """
 
     fp_t_id = r'\grid_' + str(template.case) + "_" + template.n_e_l
     fp_t_id = fp_t + fp_t_id
@@ -114,31 +105,118 @@ def create_fp_t_id(template):
     #   Create the folder if it does not exist
     utility.make_folder(fp_t_id)
 
-    #   Returns the file path
     return fp_t_id
 
 ################################################################################
 
-#   Create the file path of the template file
+def create_fp_t_f(template) -> str:
+    """Create the file path of the template file
 
-#   template:   The unit template parameters
-def create_fp_t_f(template):
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+
+    Returns
+    -------
+    str
+        The file path
+    """
 
     fp_t_id = create_fp_t_id(template)
     fp_t_f = fp_t_id + r'\grid_' + str(template.case) + "_" + template.n_e_l + ".mud"
 
-    #   Returns the file path
     return fp_t_f
 
 ################################################################################
+ 
+def create_fp_t_l(template) -> str:
+    """Create the file path of the template log
 
-#   Create the file path of the template log
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
 
-#   template:   The unit template parameters
-def create_fp_t_l(template):
+    Returns
+    -------
+    str
+        The file path
+    """
 
     fp_t_id = create_fp_t_id(template)
     fp_t_l = fp_t_id + r'\grid_' + str(template.case) + "_" + template.n_e_l + ".log"
 
-    #   Returns the file path
     return fp_t_l
+
+################################################################################
+ 
+def create_fp_u_id(template) -> str:
+    """Create the file path of the unit folder up to the template level
+
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+
+    Returns
+    -------
+    str
+        The file path
+    """
+
+    fp_u_id = r'\grid_' + str(template.case) + "_" + template.n_e_l
+    fp_u_id = fp_u + fp_u_id
+
+    return fp_u_id
+
+################################################################################
+         
+def create_fp_u_m(template, t) -> str:
+    """Create the file path of the log file of units created during the last simulation
+
+    Parameters
+    ----------
+    template : class
+        The unit template parameters
+    t : str
+        The time the unit generation starts
+
+    Returns
+    -------
+    str
+        The file path
+    """
+
+    fp_u_id = create_fp_u_id(template)
+    fp_u_m = fp_u_id + t + ".log"
+
+    return fp_u_m
+
+################################################################################
+
+def create_fp_u_f(unit, ext) -> str:
+    """Create the file path of unit files
+
+    Parameters
+    ----------
+    unit : class
+        The unit parameters
+    ext : str
+        The extension of the file
+
+    Returns
+    -------
+    str
+        The file path
+    """
+
+    fp_u_id = create_fp_u_id(unit.template)
+    fp_u_f = r'\grid_' + unit.u_id
+
+    #   Create the folder if it does not exist
+    utility.make_folder(fp_u_id + fp_u_f)
+
+    fp_u_f = fp_u_id + fp_u_f + fp_u_f + ext
+
+    return fp_u_f

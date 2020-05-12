@@ -2,7 +2,7 @@
 
 #   Imports
 from evolve_soft_2d import unit, utility
-from evolve_soft_2d.file_paths import fp_m, fp_r, create_fp_r_f
+from evolve_soft_2d.file_paths import fp_u, fp_r, create_fp_r_f
 from evolve_soft_2d.log import m_log, en_log
 
 from py_mentat import py_send, py_get_float
@@ -14,14 +14,19 @@ import re
 
 ################################################################################
 
-#   Check if the updated output files exist
-#   Returns a flag based on the successful output of the unit
+def check_out(unit) -> bool:
+    """Check if the updated output files exist
 
-#   fp_m_mud:   The complete file path of the unit file
-#   fp_m_log:   The complete file path of the log file
-#   fp_m_t16:   The complete file path of the t16 file
-#   m_id:       The ID of the unit file
-def check_out(mod):
+    Parameters
+    ----------
+    unit : class
+        The unit parameters
+
+    Returns
+    -------
+    bool
+        True if the updated output files exist, false if otherwise
+    """
 
     #   Initialisations
     t0 = time.time()
@@ -35,24 +40,24 @@ def check_out(mod):
     exit_number_str = re.compile("exit number", re.IGNORECASE)
 
     #   Obtain the timestamp of the last time the unit file was modified
-    t_mud = os.path.getmtime(mod.fp_m_mud)
+    t_mud = os.path.getmtime(unit.fp_u_mud)
 
     #   Wait until the log file exists and has been updated
-    utility.wait_file_exist(mod.fp_m_log, "log", t)
-    utility.wait_file_update(mod.fp_m_log, t_mud, "log", t)
+    utility.wait_file_exist(unit.fp_u_log, "log", t)
+    utility.wait_file_update(unit.fp_u_log, t_mud, "log", t)
 
     #   Loop until an exit number is detected
     while 1:
 
         #   Search the log file for an exit number
-        (found, found_exit_n) = utility.search_text_file(mod.fp_m_log, exit_number_str)
+        (found, found_exit_n) = utility.search_text_file(unit.fp_u_log, exit_number_str)
 
         #   Check if an exit number was found
         if found:
 
             #   Output the exit number
             exit_number = utility.find_int_in_str(found_exit_n)
-            en_log.info("Exit number {} found for unit \"grid_{}.mud\"".format(exit_number, mod.m_id))
+            en_log.info("Exit number {} found for unit \"grid_{}.mud\"".format(exit_number, unit.u_id))
 
             #   Exit the loop
             break
@@ -89,7 +94,7 @@ def check_out(mod):
                 unit.run_job()
 
                 #   Check if the updated output files exist
-                success = check_out(mod)
+                success = check_out(unit)
 
             #   Check if the response was no
             elif dec == "n":
@@ -114,8 +119,8 @@ def check_out(mod):
     if success and not decided:
 
         #   Wait until the t16 file exists and has been updated
-        utility.wait_file_exist(mod.fp_m_t16, "t16", t)
-        utility.wait_file_update(mod.fp_m_t16, t_mud, "t16", t)
+        utility.wait_file_exist(unit.fp_u_t16, "t16", t)
+        utility.wait_file_update(unit.fp_u_t16, t_mud, "t16", t)
 
         t1 = time.time()
         m_log.info("Results generated in approximately {:.3f}s".format(t1 - t0))
@@ -135,17 +140,16 @@ def check_out(mod):
 
 ################################################################################
 
-#   Obtain the maximum and minimum values from the results
+def max_min(unit) -> None:
+    """Obtain the maximum and minimum values from the results
 
-#   n_steps:    The number of steps in the second of the loadcase
-#   n_e_l:      The number of elements as a string
-#   case:       The unit case identifier
-#   m_id:       The ID of the unit file
-#   fp_m_t16:   The complete file path of the t16 file
-def max_min(mod):
+    Parameters
+    ----------
+    unit : class
+        The unit parameters
+    """
 
     #   Initialisations
-
     #   Empty lists for the values and their respective nodes and timestamps
     max_v = []
     max_n = []
@@ -164,8 +168,7 @@ def max_min(mod):
     label.append("Total Strain Energy Density")
 
     #   Open the results file
-    mod
-    py_send("@main(results) @popup(unitplot_pm) *post_open \"{}\"".format(mod.fp_m_t16))
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(unit.fp_u_t16))
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -187,7 +190,7 @@ def max_min(mod):
         py_send("*post_value {}".format(label[i]))
 
         #   Loop through all steps of the post file
-        for j in range(0, mod.template.n_steps + 1):
+        for j in range(0, unit.template.n_steps + 1):
             
             #   Obtain the current maximum and minimum values
             max_n_c = py_get_float("scalar_max_node()")
@@ -226,8 +229,8 @@ def max_min(mod):
     min_save.append(min_v)
 
     #   Write the results to csv files
-    save_2d_list_to_csv(mod, "max", max_save)
-    save_2d_list_to_csv(mod, "min", min_save)
+    save_2d_list_to_csv(unit, "max", max_save)
+    save_2d_list_to_csv(unit, "min", min_save)
 
     m_log.info("Maximum and minimum result values obtained and stored")
 
@@ -235,15 +238,14 @@ def max_min(mod):
 
 ################################################################################
 
-#   Obtain values for all nodes from results
+def all_n(unit) -> None:
+    """Obtain values for all nodes from results
 
-#   n_n:        The number of nodes
-#   n_steps:    The number of steps in the second of the loadcase
-#   n_e_l:      The number of elements as a string
-#   case:       The unit case identifier
-#   m_id:       The ID of the unit file
-#   fp_m_t16:   The complete file path of the t16 file
-def all_n(mod):
+    Parameters
+    ----------
+    unit : class
+        The unit parameters
+    """
 
     #   The labels of the desired results
     label = []
@@ -252,7 +254,7 @@ def all_n(mod):
     label.append("Reaction Force")
 
     #   Open the results file
-    py_send("@main(results) @popup(unitplot_pm) *post_open \"{}\"".format(mod.fp_m_t16))
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(unit.fp_u_t16))
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -268,13 +270,13 @@ def all_n(mod):
         py_send("*post_value {}".format(label[i]))
 
         #   Loop through all steps of the post file
-        for j in range(0, mod.template.n_steps + 1):
+        for j in range(0, unit.template.n_steps + 1):
 
             #   Append an empty list to create a new index for every step
             v.append([])
 
             #   Loop through all 
-            for k in range(1, mod.template.n_n + 1):
+            for k in range(1, unit.template.n_n + 1):
 
                 #   Append the current node's value to the list at the current step
                 v[j].append(py_get_float("scalar_1({})".format(k)))
@@ -283,7 +285,7 @@ def all_n(mod):
             py_send("*post_next")
 
         #   Save the values to a .csv file
-        save_2d_list_to_csv(mod, label[i], v)
+        save_2d_list_to_csv(unit, label[i], v)
 
     #   Rewind the post file
     py_send("*post_rewind")
@@ -294,23 +296,27 @@ def all_n(mod):
 
 ################################################################################
 
-#   Write the results to .csv files
+def save_2d_list_to_csv(unit, t, data) -> None:
+    """Write the results to .csv files
 
-#   n_e_l:  The number of elements as a string
-#   case:   The unit case identifier
-#   t:      The type of data to be stored
-#   m_id:   The ID of the unit file
-#   data:   The results to be stored
-def save_2d_list_to_csv(mod, t, data):
-    
+    Parameters
+    ----------
+    unit : class
+        The unit parameters
+    t : str
+        The type of data to be stored
+    data : list
+        The results to be stored
+    """
+
     #   Create the file path of the results file
-    fp_r_csv = create_fp_r_f(mod, t)
+    fp_r_csv = create_fp_r_f(unit, t)
 
     #   Write the data to the results file
     with open(fp_r_csv, 'w') as f:
         wr = csv.writer(f)
         wr.writerows(data)
 
-    print("{}_{}.csv saved".format(t, mod.m_id))
+    print("{}_{}.csv saved".format(t, unit.u_id))
 
     return

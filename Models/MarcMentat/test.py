@@ -23,17 +23,12 @@ def main():
     importlib.reload(analyse)
     importlib.reload(obtain)
 
-    x_e = 5
-    y_e = 5
+    l = ['4.138759275223428995e+04', '2.704693719776506769e+05', '2.322056518865353428e+04', '3.101738482855314032e+03', '5.231738590075147840e+03', '2.315872224098487095e+03', '3.293072541513819597e+05', '2.050347791724815124e+03', '2.206723698873520334e+03', '6.929513897731169891e+03', '1.624649734903174394e+05', '1.138009162894073233e+04', '', '1.228096906493830465e+04', '5.514394529612689439e+03']
 
-    grid = rep_grid.create_grid(x_e, y_e)
-    print(grid)
+    (l_o, l_f) = utility.list_to_float(l)
 
-    rem = [7, 8, 13]
-
-    grid_rem = rep_grid.rem_el_grid(template, rem)
-    print(grid)
-    print(grid_rem)
+    print(l_o)
+    print(l_f)
 
     return
 

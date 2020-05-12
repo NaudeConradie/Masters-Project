@@ -11,11 +11,16 @@ from pathlib import Path
 
 ################################################################################
 
-#   Wait for a specified time
+def wait(t, f) -> None:
+    """Wait for a specified time
 
-#   t:  The time in seconds to wait
-#   f:  The object being waited for
-def wait(t, f):
+    Parameters
+    ----------
+    t : float
+        The time in seconds to wait
+    f : str
+        The name of the object being waited for
+    """
 
     print("Waiting for %s..." % f)
 
@@ -24,14 +29,20 @@ def wait(t, f):
     return
 
 ################################################################################
+  
+def wait_file_exist(file_name, label, t) -> None:
+    """Wait until a specified file exists
 
-#   Wait until a specified file exists
-
-#   file_name:  The name of the file to be waited for
-#   label:      The label for the output message
-#   t:          The time in seconds to wait per loop
-def wait_file_exist(file_name, label, t):
-
+    Parameters
+    ----------
+    file_name : str
+        The name of the file to be waited for
+    label : str
+        The label for the output message
+    t : float
+        The time in seconds to wait per loop
+    """
+    
     #   Loop until the file exists
     while 1:
 
@@ -50,14 +61,21 @@ def wait_file_exist(file_name, label, t):
     return
 
 ################################################################################
+  
+def wait_file_update(file_name, t0, label, t) -> None:
+    """Wait until a specified file is updated
 
-#   Wait until a specified file is updated
-
-#   file_name:  The name of the file to be waited for
-#   t0:         The time since which the file should have been updated
-#   label:      The label for the output message
-#   t:          The time in seconds to wait per loop
-def wait_file_update(file_name, t0, label, t):
+    Parameters
+    ----------
+    file_name : str
+        The name of the file to be waited for
+    t0 : float
+        The time since which the file should have been updated
+    label : str
+        The label for the output message
+    t : float
+        The time in seconds to wait per loop
+    """
 
     #   Loop until the file has been updated
     while 1:
@@ -78,22 +96,34 @@ def wait_file_update(file_name, t0, label, t):
 
 ################################################################################
 
-#   Check if a specified file exists
+def if_file_exist(file_name) -> bool:
+    """Check if a specified file exists
 
-#   file_name:  The name of the file to be checked
-def if_file_exist(file_name):
+    Parameters
+    ----------
+    file_name : str
+        The name of the file to be checked
+
+    Returns
+    -------
+    bool
+        True if the file exists, False otherwise
+    """
 
     exists = os.path.exists(file_name)
 
-    #   Returns whether or not the file exists
     return exists
 
 ################################################################################
 
-#   Make a folder if it does not exist
+def make_folder(l) -> None:
+    """Make a folder if it does not exist
 
-#   l:  The folder name and path as a string
-def make_folder(l):
+    Parameters
+    ----------
+    l : str
+        The folder name and path
+    """
 
     Path(l).mkdir(parents=True, exist_ok=True)
 
@@ -101,10 +131,19 @@ def make_folder(l):
 
 ################################################################################
 
-#   Randomly select a random amount of numbers from a given list of numbers
+def sel_random(l) -> list:
+    """Randomly select a random amount of numbers from a given list of numbers
 
-#   l:  The list of numbers
-def sel_random(l):
+    Parameters
+    ----------
+    l : list
+        The given list of numbers
+
+    Returns
+    -------
+    list
+        The randomly selected numbers
+    """
 
     #   Initialisations
     sel = []
@@ -125,7 +164,6 @@ def sel_random(l):
     #   Sort the list of selected numbers
     sel.sort()
 
-    #   Returns the numbers that were selected
     return sel
 
 ################################################################################
@@ -133,23 +171,43 @@ def sel_random(l):
 #   Generate a random hash code from a given string
 
 #   The string to be hashed
-def gen_hash(s):
+def gen_hash(s) -> str:
+    """Generate a random hash code from a given string
 
+    Parameters
+    ----------
+    s : str
+        The string to be hashed
+
+    Returns
+    -------
+    str
+        The hash code
+    """
     m = hashlib.md5()
     m.update(bytes(s, encoding = 'utf8'))
     hash_code = str(m.hexdigest())
 
-    #   Returns the hash code
     return hash_code
 
 ################################################################################
 
-#   Search a text file for the first occurrence of a given text string
+def search_text_file(file_name, find_text) -> (bool, str):
+    """Search a text file for the first occurrence of a given text string
 
-#   file_name:  The name of the file to be searched through
-#   find_text:  The text to be searched for
-def search_text_file(file_name, find_text):
+    Parameters
+    ----------
+    file_name : str
+        The name of the file to be searched through
+    find_text : str
+        The text to be searched for
 
+    Returns
+    -------
+    (bool, str)
+        True if the text was found, false otherwise
+        The entire line containing the text
+    """
     #   Initialisations
     found_text = ""
     found = False
@@ -172,47 +230,105 @@ def search_text_file(file_name, find_text):
                 #   Exit the loop
                 break
 
-    #   Returns if the text was found and the entire line it was found in
     return (found, found_text)
 
 ################################################################################
 
-#   Add two lists and sort them
+def add_sort_list(l1, l2) -> list:
+    """Add two lists and sort them
 
-#   l1: The first list to be added
-#   l2: The second list to be added
-def add_sort_list(l1, l2):
+    Parameters
+    ----------
+    l1 : list
+        The first list to be added
+    l2 : list
+        The second list to be added
 
+    Returns
+    -------
+    list
+        The added and sorted list
+    """
     #   Add two lists
     l = l1 + l2
 
     #   Sort the added lists
     l.sort()
 
-    #   Returns the added and sorted list
     return l
 
 ################################################################################
 
-#   Convert a list into a string connected by a given symbol
+def list_to_float(l) -> (list, int):
+    """Extract a list of floats from a given list
 
-#   l:  The list to be converted
-#   c:  The symbol to be inserted between list items
-def list_to_str(l, c):
+    Parameters
+    ----------
+    l : list
+        The list to be extracted from
+
+    Returns
+    -------
+    (list, int)
+        The list of floats
+        The number of list of items that failed to convert to string
+    """
+
+    #   Initialisations
+    l_o = []
+    l_f = 0
+
+    #   Loop through the list
+    for i in range(0, len(l)):
+
+        #   Add the current list item as a float
+        try:
+            l_o.append(float(l[i]))
+
+        #   Increment the failure counter
+        except:
+            l_f += 1
+
+    return (l_o, l_f)
+
+################################################################################
+
+def list_to_str(l, c) -> str:
+    """Convert a list into a string connected by a given symbol
+
+    Parameters
+    ----------
+    l : list
+        The list to be converted
+    c : str
+        The symbol to be inserted between list items
+
+    Returns
+    -------
+    str
+        The output string
+    """
 
     s = c.join(map(str, l))
 
-    #   Returns the string
     return s
 
 ################################################################################
 
-#   Finds the first integer in a string
+def find_int_in_str(s) -> int:
+    """Finds the first integer in a string
 
-#   s:  The string to be searched
-def find_int_in_str(s):
+    Parameters
+    ----------
+    s : str
+        The string to be searched
 
+    Returns
+    -------
+    int
+        The integer found
+    """
+    
     i = int(re.search(r'\d+', s).group())
 
-    #   Returns the integer
     return i
