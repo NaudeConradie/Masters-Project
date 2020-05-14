@@ -5,7 +5,7 @@ import time
 
 from evolve_soft_2d import utility
 from evolve_soft_2d.unit import inspect, rep_grid
-from evolve_soft_2d.file_paths import create_fp_u_f, create_fp_t_f, create_fp_t_l
+from evolve_soft_2d.file_paths import create_fp_file
 
 ################################################################################
 
@@ -61,6 +61,8 @@ class template:
         n_steps,
         tab_nam,
         apply,
+        run_success = False,
+        c_e = 0,
     ) -> None:
         """Unit template parameters
 
@@ -84,6 +86,8 @@ class template:
             The name of the table containing the function of the load to be applied
         apply : int
             The conditions to be applied to the unit template
+        run_success : bool, optional
+            The success of the unit template's run, by default False
         """
 
         self.case = case
@@ -95,6 +99,8 @@ class template:
         self.n_steps = n_steps
         self.tab_nam = tab_nam
         self.apply = apply
+        self.run_success = run_success
+        self.c_e = c_e
 
         #   The total number of nodes
         self.n_n = self.x_n * self.y_n
@@ -115,9 +121,13 @@ class template:
         self.grid = rep_grid.create_grid(self.x_e, self.y_e)
 
         #   The file path of the template file
-        self.fp_t_f = create_fp_t_f(self)
+        self.fp_t_mud = create_fp_file(self, ".mud", "t")
         #   The file path of the template file log
-        self.fp_t_l = create_fp_t_l(self)
+        self.fp_t_log = create_fp_file(self, "_job.log", "t")
+        #   The file path of the unit t16 file
+        self.fp_t_t16 = create_fp_file(self, "_job.t16", "t") 
+        #   The file path of the template file log
+        self.fp_t_l = create_fp_file(self, ".log", "t")
 
     def __repr__(self) -> str:
         """Format a representation of the template
@@ -132,9 +142,11 @@ class template:
         r_dim = "Dimensions:        {} elements\n".format(self.n_e_l)
         r_int = "Internal elements: {}\n".format(self.e_internal)
         r_ste = "Analysis steps:    {}\n".format(self.n_steps)
+        r_run = "Run successful:    {}\n".format(self.run_success)
+        r_con = "Constraint energy: {}\n".format(self.c_e)
         r_ogd = "Ogden material parameters:\n{}\n".format(self.ogd_mat)
         r_tim = "Time created:      {}".format(time.ctime())
-        return r_cas + r_ori + r_dim + r_int + r_ste + r_ogd + r_tim
+        return r_cas + r_ori + r_dim + r_int + r_ste + r_run + r_con + r_ogd + r_tim
 
 ################################################################################
 
@@ -142,7 +154,14 @@ class template:
 
 class unit_p:
 
-    def __init__(self, template, rem, grid, run_success = False) -> None:
+    def __init__(
+        self,
+        template,
+        rem,
+        grid,
+        run_success = False,
+        c_e = 0,
+        ) -> None:
         """The unit parameters
 
         Parameters
@@ -161,6 +180,7 @@ class unit_p:
         self.rem = rem
         self.grid = grid
         self.run_success = run_success
+        self.c_e = c_e
 
         #   The list of elements removed from the unit as a string
         self.rem_l = utility.list_to_str(rem, "_")
@@ -172,13 +192,13 @@ class unit_p:
         self.grid_l = self.format_grid()
 
         #   The file path of the unit file
-        self.fp_u_mud = create_fp_u_f(self, ".mud")
+        self.fp_u_mud = create_fp_file(self.template, ".mud", "u", self)
         #   The file path of the unit log file
-        self.fp_u_log = create_fp_u_f(self, "_job.log")
+        self.fp_u_log = create_fp_file(self.template, "_job.log", "u", self)
         #   The file path of the unit t16 file
-        self.fp_u_t16 = create_fp_u_f(self, "_job.t16") 
+        self.fp_u_t16 = create_fp_file(self.template, "_job.t16", "u", self) 
         #   The file path of the unit file log
-        self.fp_u_l = create_fp_u_f(self, ".log")
+        self.fp_u_l = create_fp_file(self.template, ".log", "u", self)
         
     def __repr__(self) -> str:
         """Format a representation of the unit
@@ -188,12 +208,13 @@ class unit_p:
         str
             Formatted representation of the unit class for the log
         """        
-        r_mod = "Unit:             {}\n".format(self.u_id)
+        r_mod = "Unit:              {}\n".format(self.u_id)
         r_rem = "Removed elements:  {}\n".format(self.rem)
         r_gri = "Representative grid:\n{}\n".format(self.grid_l)
         r_run = "Run successful:    {}\n".format(self.run_success)
+        r_con = "Constraint energy: {}\n\n".format(self.c_e)
         r_tem = "Template details:\n{}".format(self.template)
-        return r_mod + r_rem + r_gri + r_run + r_tem
+        return r_mod + r_rem + r_gri + r_run + r_con + r_tem
 
     def format_grid(self) -> str:
         """Function to format the representative grid for the log

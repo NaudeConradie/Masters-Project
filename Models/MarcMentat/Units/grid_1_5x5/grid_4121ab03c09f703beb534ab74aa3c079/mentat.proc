@@ -1,0 +1,27 @@
+| Created by Marc Mentat 2019 (64bit)
+*prog_option compatibility:prog_version:ment2019
+*prog_analysis_class structural
+*prog_use_current_job on
+*set_default_length_unit millimeter
+*set_model_length_unit millimeter
+|
+*open_model "c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\units\grid_1_5x5\grid_4121ab03c09f703beb534ab74aa3c079\grid_4121ab03c09f703beb534ab74aa3c079.mud"
+*fill_view
+*edit_job job
+*edit_job job
+
+*remove_job_loadcases lcase1
+*add_job_loadcases lcase1
+@main(results) *post_open_default
+*edit_job job
+
+*update_job
+*submit_job 1 *monitor_job
+@popdown(job_properties_pm) @main(results) @popup(modelplot_pm) *post_open_default
+*post_next
+*post_next
+*post_next
+*post_next
+*py_file_run ..\..\..\main.py
+*py_file_run ..\..\..\main.py
+*py_file_run ..\..\..\main.py

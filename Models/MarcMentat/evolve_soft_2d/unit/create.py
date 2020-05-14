@@ -1,13 +1,14 @@
 ##  Functions used with the Marc Mentat units
 
 #   Imports
+import linecache
 import time
 
 from evolve_soft_2d import utility
 from evolve_soft_2d.classes import unit_p
 from evolve_soft_2d.unit import inspect, modify, rep_grid
 from evolve_soft_2d.result import analyse, obtain
-from evolve_soft_2d.file_paths import fp_t, create_fp_t_f, create_fp_u_f, create_fp_u_m
+from evolve_soft_2d.file_paths import fp_t, create_fp_file
 
 from py_mentat import py_send
 
@@ -36,7 +37,7 @@ def gen_units(template, n) -> str:
     t = time.strftime("_%Y-%m-%d--%H-%M-%S", time.gmtime())
 
     #   Create the file path of the log file of units created during the simulation
-    fp_u_m = create_fp_u_m(template, t)
+    fp_lu = create_fp_file(template, t, "l")
 
     #   Loop through the desired number of units to be created
     for _ in range(0, n):
@@ -80,9 +81,6 @@ def gen_units(template, n) -> str:
         #   Save the current unit parameters
         curr_mod = unit_p(template, rem, grid_rem)
 
-        #   Add the job
-        modify.add_job()
-
         #   Save the altered unit
         modify.save_model(curr_mod.fp_u_mud)
 
@@ -90,26 +88,31 @@ def gen_units(template, n) -> str:
         modify.run_job()
 
         #   Check the existence and validity of the results
-        run_success = obtain.check_out(curr_mod)
+        run_success = obtain.check_out(curr_mod.fp_u_mud, curr_mod.fp_u_log, curr_mod.fp_u_t16)
         curr_mod.run_success = run_success
         if run_success:
 
             #   Inspect the results
-            obtain.max_min(curr_mod)
-            obtain.all_n(curr_mod)
-            analyse.boundary_energy(curr_mod)
+            obtain.max_min(curr_mod.template, curr_mod.u_id, curr_mod.fp_u_t16)
+            obtain.all_n(curr_mod.template, curr_mod.u_id, curr_mod.fp_u_t16)
+            analyse.constraint_energy(curr_mod.template, curr_mod.u_id)
+
+        #
+        fp_r_f = create_fp_file(template, "Constraint Energy_" + curr_mod.u_id, "r")
+
+        curr_mod.c_e = float(linecache.getline(fp_r_f, curr_mod.template.n_steps + 1))
 
         #   Log the current unit parameters
         print(curr_mod, file = open(curr_mod.fp_u_l, "w"))
 
         #   Log the current unit ID
-        print(curr_mod.u_id, file = open(fp_u_m, "a"))
+        print(curr_mod.u_id, file = open(fp_lu, "a"))
         all_u_id.append(curr_mod.u_id)
 
         #   Reopen the template
-        modify.open_model(template.fp_t_f)
+        modify.open_model(template.fp_t_mud)
     
-    return fp_u_m
+    return fp_lu
 
 ################################################################################
 
@@ -142,7 +145,7 @@ def template_0(template) -> None:
     modify.add_lcase(template)
 
     #   Save the template
-    modify.save_model(template.fp_t_f)
+    modify.save_model(template.fp_t_mud)
 
     print(template, file = open(template.fp_t_l, "w"))
 
@@ -180,8 +183,26 @@ def template_1(template) -> None:
     modify.add_contact_body()
     modify.add_lcase(template)
 
+    #   Add the job
+    modify.add_job()
+    modify.save_model(template.fp_t_mud)
+    modify.run_job()
+
+    #   Check the existence and validity of the results
+    run_success = obtain.check_out(template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+    template.run_success = run_success
+    if run_success:
+
+        #   Inspect the results
+        obtain.all_n(template, str(template.case) + "_" + template.n_e_l, template.fp_t_t16)
+        analyse.constraint_energy(template, str(template.case) + "_" + template.n_e_l)
+
+    fp_r_f = create_fp_file(template, "Constraint Energy_" + str(template.case) + "_" + template.n_e_l, "r")
+
+    template.c_e = float(linecache.getline(fp_r_f, template.n_steps + 1))
+
     #   Save the template
-    modify.save_model(template.fp_t_f)
+    modify.save_model(template.fp_t_mud)
 
     print(template, file = open(template.fp_t_l, "w"))
 
@@ -222,7 +243,7 @@ def template_2(template) -> None:
     modify.add_lcase(template)
 
     #   Save the template
-    modify.save_model(template.fp_t_f)
+    modify.save_model(template.fp_t_mud)
 
     print(template, file = open(template.fp_t_l, "w"))
 

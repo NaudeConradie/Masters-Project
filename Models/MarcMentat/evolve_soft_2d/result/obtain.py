@@ -1,9 +1,10 @@
 ##  Functions used for obtaining and inspecting results
 
 #   Imports
-from evolve_soft_2d import unit, utility
-from evolve_soft_2d.file_paths import fp_u, fp_r, create_fp_r_f
+from evolve_soft_2d import utility
+from evolve_soft_2d.file_paths import fp_u, fp_r, create_fp_file
 from evolve_soft_2d.log import m_log, en_log
+from evolve_soft_2d.unit import modify
 
 from py_mentat import py_send, py_get_float
 
@@ -14,7 +15,7 @@ import re
 
 ################################################################################
 
-def check_out(unit) -> bool:
+def check_out(fp_mud, fp_log, fp_t16) -> bool:
     """Check if the updated output files exist
 
     Parameters
@@ -40,24 +41,23 @@ def check_out(unit) -> bool:
     exit_number_str = re.compile("exit number", re.IGNORECASE)
 
     #   Obtain the timestamp of the last time the unit file was modified
-    t_mud = os.path.getmtime(unit.fp_u_mud)
+    t_mud = os.path.getmtime(fp_mud)
 
     #   Wait until the log file exists and has been updated
-    utility.wait_file_exist(unit.fp_u_log, "log", t)
-    utility.wait_file_update(unit.fp_u_log, t_mud, "log", t)
+    utility.wait_file_exist(fp_log, "log", t)
+    utility.wait_file_update(fp_log, t_mud, "log", t)
 
     #   Loop until an exit number is detected
     while 1:
 
         #   Search the log file for an exit number
-        (found, found_exit_n) = utility.search_text_file(unit.fp_u_log, exit_number_str)
+        (found, found_exit_n) = utility.search_text_file(fp_log, exit_number_str)
 
         #   Check if an exit number was found
         if found:
 
             #   Output the exit number
             exit_number = utility.find_int_in_str(found_exit_n)
-            en_log.info("Exit number {} found for unit \"grid_{}.mud\"".format(exit_number, unit.u_id))
 
             #   Exit the loop
             break
@@ -91,10 +91,10 @@ def check_out(unit) -> bool:
                 decided = True
 
                 #   Rerun the job
-                unit.run_job()
+                modify.run_job()
 
                 #   Check if the updated output files exist
-                success = check_out(unit)
+                success = check_out(fp_mud, fp_log, fp_t16)
 
             #   Check if the response was no
             elif dec == "n":
@@ -119,8 +119,8 @@ def check_out(unit) -> bool:
     if success and not decided:
 
         #   Wait until the t16 file exists and has been updated
-        utility.wait_file_exist(unit.fp_u_t16, "t16", t)
-        utility.wait_file_update(unit.fp_u_t16, t_mud, "t16", t)
+        utility.wait_file_exist(fp_t16, "t16", t)
+        utility.wait_file_update(fp_t16, t_mud, "t16", t)
 
         t1 = time.time()
         m_log.info("Results generated in approximately {:.3f}s".format(t1 - t0))
@@ -140,7 +140,7 @@ def check_out(unit) -> bool:
 
 ################################################################################
 
-def max_min(unit) -> None:
+def max_min(template, l, fp_t16) -> None:
     """Obtain the maximum and minimum values from the results
 
     Parameters
@@ -168,7 +168,7 @@ def max_min(unit) -> None:
     label.append("Total Strain Energy Density")
 
     #   Open the results file
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(unit.fp_u_t16))
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(fp_t16))
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -190,7 +190,7 @@ def max_min(unit) -> None:
         py_send("*post_value {}".format(label[i]))
 
         #   Loop through all steps of the post file
-        for j in range(0, unit.template.n_steps + 1):
+        for j in range(0, template.n_steps + 1):
             
             #   Obtain the current maximum and minimum values
             max_n_c = py_get_float("scalar_max_node()")
@@ -229,16 +229,16 @@ def max_min(unit) -> None:
     min_save.append(min_v)
 
     #   Write the results to csv files
-    save_2d_list_to_csv(unit, "max", max_save)
-    save_2d_list_to_csv(unit, "min", min_save)
+    save_2d_list_to_csv(template, "max_" + l, max_save)
+    save_2d_list_to_csv(template, "min_" + l, min_save)
 
-    m_log.info("Maximum and minimum result values obtained and stored")
+    py_send("*post_close")
 
     return
 
 ################################################################################
 
-def all_n(unit) -> None:
+def all_n(template, l, fp_t16) -> None:
     """Obtain values for all nodes from results
 
     Parameters
@@ -254,7 +254,7 @@ def all_n(unit) -> None:
     label.append("Reaction Force")
 
     #   Open the results file
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(unit.fp_u_t16))
+    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(fp_t16))
     py_send("*post_numerics")
 
     #   Loop through all given labels
@@ -270,13 +270,13 @@ def all_n(unit) -> None:
         py_send("*post_value {}".format(label[i]))
 
         #   Loop through all steps of the post file
-        for j in range(0, unit.template.n_steps + 1):
+        for j in range(0, template.n_steps + 1):
 
             #   Append an empty list to create a new index for every step
             v.append([])
 
             #   Loop through all 
-            for k in range(1, unit.template.n_n + 1):
+            for k in range(1, template.n_n + 1):
 
                 #   Append the current node's value to the list at the current step
                 v[j].append(py_get_float("scalar_1({})".format(k)))
@@ -285,18 +285,18 @@ def all_n(unit) -> None:
             py_send("*post_next")
 
         #   Save the values to a .csv file
-        save_2d_list_to_csv(unit, label[i], v)
+        save_2d_list_to_csv(template, label[i] + "_" + l, v)
 
     #   Rewind the post file
     py_send("*post_rewind")
 
-    m_log.info("All result values obtained and stored")
+    py_send("*post_close")
 
     return
 
 ################################################################################
 
-def save_2d_list_to_csv(unit, t, data) -> None:
+def save_2d_list_to_csv(template, l, data) -> None:
     """Write the results to .csv files
 
     Parameters
@@ -310,13 +310,13 @@ def save_2d_list_to_csv(unit, t, data) -> None:
     """
 
     #   Create the file path of the results file
-    fp_r_csv = create_fp_r_f(unit, t)
+    fp_r_f = create_fp_file(template, l, "r")
 
     #   Write the data to the results file
-    with open(fp_r_csv, 'w') as f:
+    with open(fp_r_f, 'w') as f:
         wr = csv.writer(f)
         wr.writerows(data)
 
-    print("{}_{}.csv saved".format(t, unit.u_id))
+    print("{}.csv saved".format(l))
 
     return

@@ -42,7 +42,7 @@ def main():
     #   p_mag = 25
     d_mag = (y_n - 1)/2
     #   Template case to be run
-    case = 2
+    case = 1
 
     #   Prepare the unit parameters
     temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
@@ -51,11 +51,11 @@ def main():
     regen_base = True
 
     #   Check if the template exists
-    exists = utility.if_file_exist(temp.fp_t_f)
+    exists = utility.if_file_exist(temp.fp_t_mud)
 
     #   Open the base file if it exists
     if exists and not regen_base:
-        modify.open_model(temp.fp_t_f)
+        modify.open_model(temp.fp_t_mud)
 
     #   Create the base file if it does not exist
     elif temp.case == 0:
@@ -66,10 +66,10 @@ def main():
         create.template_2(temp)
 
     #   Generate a number of units and save their results
-    fp_u_m = create.gen_units(temp, 1)
+    fp_lu = create.gen_units(temp, 1)
 
     #   Analyse the results
-    analyse.monte_carlo(temp, fp_u_m)
+    analyse.monte_carlo(temp, fp_lu)
 
     #   View the boundary conditions of the template
     inspect.view_bc()
