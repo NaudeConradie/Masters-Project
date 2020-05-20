@@ -11,18 +11,26 @@ from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.file_paths import fp_t, create_fp_file
 
 from py_mentat import py_send
+from scipy.special import comb
 
 ################################################################################
         
-def gen_units(template, n) -> str:
+def gen_units(
+    template,
+    n: int,
+    f: int = 0,
+    r: list = [],
+    ) -> str:
     """Generate multiple units
 
     Parameters
     ----------
-    template : class
+    template 
         The unit template parameters
     n : int
         The number of units to generate
+    f : int, optional
+        The fixed amount of elements to remove, by default 0
 
     Returns
     -------
@@ -32,12 +40,37 @@ def gen_units(template, n) -> str:
 
     #   Initialisations
     all_u_id = []
+    max_n = 0
 
     #   The time the unit generation starts as a string label
     t = time.strftime("_%Y-%m-%d--%H-%M-%S", time.gmtime())
 
     #   Create the file path of the log file of units created during the simulation
     fp_lu = create_fp_file(template, t, "l")
+
+    if r != []:
+
+        r = prep_r(r, template.e_internal)
+
+        for i in range(0, len(r)):
+
+            max_n += comb(len(template.e_internal), r[i], exact = True)
+
+    elif f != 0:
+
+        f = prep_f(f, template.e_internal)
+
+        max_n = comb(len(template.e_internal), f, exact = True)
+
+    else:
+
+        for i in range(0, len(template.e_internal)):
+
+            max_n += comb(len(template.e_internal), i, exact = True)
+
+    if n > max_n:
+
+        n = max_n
 
     #   Loop through the desired number of units to be created
     for _ in range(0, n):
@@ -48,8 +81,14 @@ def gen_units(template, n) -> str:
         #   Loop until a new unit ID is generated
         while exists:
 
-            #   Determine which random elements will be removed
-            rem = utility.sel_random(template.e_internal)
+            if f == 0 and r == []:
+                #   Determine which random elements will be removed
+                rem = utility.sel_random(template.e_internal)
+            elif r != []:
+                rem = utility.sel_random_range(template.e_internal, r)
+            else:
+                rem = utility.sel_random_fixed(template.e_internal, f)
+
             grid_rem = rep_grid.rem_el_grid(template, rem)
 
             #   Search for clusters
@@ -93,14 +132,12 @@ def gen_units(template, n) -> str:
         if run_success:
 
             #   Inspect the results
-            obtain.max_min(curr_mod.template, curr_mod.u_id, curr_mod.fp_u_t16)
             obtain.all_n(curr_mod.template, curr_mod.u_id, curr_mod.fp_u_t16)
             analyse.constraint_energy(curr_mod.template, curr_mod.u_id)
+            analyse.internal_energy(curr_mod.template, curr_mod.u_id)
 
-        #
-        fp_r_f = create_fp_file(template, "Constraint Energy_" + curr_mod.u_id, "r")
-
-        curr_mod.c_e = float(linecache.getline(fp_r_f, curr_mod.template.n_steps + 1))
+        #   Obtain the constraint energy of the current model
+        curr_mod.c_e = obtain.read_c_e(template, curr_mod.u_id)
 
         #   Log the current unit parameters
         print(curr_mod, file = open(curr_mod.fp_u_l, "w"))
@@ -116,40 +153,46 @@ def gen_units(template, n) -> str:
 
 ################################################################################
 
-def template_0(template) -> None:
-    """Create a template from which elements may be removed
+def prep_f(f: int, l: list) -> int:
 
-    Case:   0
-    Testing template
+    f_temp = f
+
+    #   Check if the number of numbers to be removed is greater than the amount of numbers available
+    if f > len(l):
+
+        #   Set the number of numbers to be removed to one less than the number of numbers available
+        f_temp = len(l)
+    
+    #   Check if the number of numbers to be removed is less than or equal to 0
+    elif f <= 0:
+
+        #   Set the number of numbers to be removed to one
+        f_temp = 1
+
+    return f_temp
+
+################################################################################
+
+def prep_r(r: list, l: list) -> list:
+    """[summary]
 
     Parameters
     ----------
-    template : class
-        The unit template parameters
+    r : list
+        [description]
+
+    Returns
+    -------
+    list
+        [description]
     """
+    r_temp = r[:]
 
-    #   Clear the workspace
-    py_send("*new_model yes")
+    r_temp = [utility.replace(i, len(l)) for i in r_temp]
 
-    #   Grid construction
-    modify.create_nodes(template)
-    modify.create_elements(template)
-
-    #   Add template properties
-    modify.add_ramp(template)
-    modify.add_bc_fd_ee("y0", "",               "y", template.y0,  0)
-    modify.add_bc_fd_ee("y1", template.tab_nam, "y", template.y_e, template.apply)
-    modify.add_geom_prop()
-    modify.add_mat_ogden(template.ogd_mat)
-    modify.add_contact_body()
-    modify.add_lcase(template)
-
-    #   Save the template
-    modify.save_model(template.fp_t_mud)
-
-    print(template, file = open(template.fp_t_l, "w"))
-
-    return
+    r_temp = list(set(r_temp))
+    
+    return r_temp
 
 ################################################################################
 
@@ -161,7 +204,7 @@ def template_1(template) -> None:
 
     Parameters
     ----------
-    template : class
+    template 
         The unit template parameters
     """
 
@@ -188,18 +231,20 @@ def template_1(template) -> None:
     modify.save_model(template.fp_t_mud)
     modify.run_job()
 
+    l = str(template.case) + "_" + template.n_e_l
+
     #   Check the existence and validity of the results
     run_success = obtain.check_out(template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
     template.run_success = run_success
     if run_success:
 
         #   Inspect the results
-        obtain.all_n(template, str(template.case) + "_" + template.n_e_l, template.fp_t_t16)
-        analyse.constraint_energy(template, str(template.case) + "_" + template.n_e_l)
+        obtain.all_n(template, l, template.fp_t_t16)
+        analyse.constraint_energy(template, l)
+        analyse.internal_energy(template, l)
 
-    fp_r_f = create_fp_file(template, "Constraint Energy_" + str(template.case) + "_" + template.n_e_l, "r")
-
-    template.c_e = float(linecache.getline(fp_r_f, template.n_steps + 1))
+    #   Obtain the constraint energy of the current model
+    template.c_e = obtain.read_c_e(template, l)
 
     #   Save the template
     modify.save_model(template.fp_t_mud)
@@ -218,7 +263,7 @@ def template_2(template) -> None:
 
     Parameters
     ----------
-    template : class
+    template 
         The unit template parameters
     """
 
@@ -241,6 +286,25 @@ def template_2(template) -> None:
     modify.add_mat_ogden(template.ogd_mat)
     modify.add_contact_body()
     modify.add_lcase(template)
+
+     #   Add the job
+    modify.add_job()
+    modify.save_model(template.fp_t_mud)
+    modify.run_job()
+
+    l = str(template.case) + "_" + template.n_e_l
+
+    #   Check the existence and validity of the results
+    run_success = obtain.check_out(template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+    template.run_success = run_success
+    if run_success:
+
+        #   Inspect the results
+        obtain.all_n(template, l, template.fp_t_t16)
+        analyse.constraint_energy(template, l)
+
+    #   Obtain the constraint energy of the current model
+    template.c_e = obtain.read_c_e(template, l)
 
     #   Save the template
     modify.save_model(template.fp_t_mud)

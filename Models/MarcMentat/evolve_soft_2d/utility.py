@@ -11,7 +11,10 @@ from pathlib import Path
 
 ################################################################################
 
-def wait(t, f) -> None:
+def wait(
+    t: float,
+    f: str,
+    ) -> None:
     """Wait for a specified time
 
     Parameters
@@ -30,7 +33,11 @@ def wait(t, f) -> None:
 
 ################################################################################
   
-def wait_file_exist(file_name, label, t) -> None:
+def wait_file_exist(
+    file_name: str,
+    label: str,
+    t: float,
+    ) -> None:
     """Wait until a specified file exists
 
     Parameters
@@ -62,7 +69,12 @@ def wait_file_exist(file_name, label, t) -> None:
 
 ################################################################################
   
-def wait_file_update(file_name, t0, label, t) -> None:
+def wait_file_update(
+    file_name: str,
+    t0: float,
+    label: str,
+    t: float,
+    ) -> None:
     """Wait until a specified file is updated
 
     Parameters
@@ -96,7 +108,7 @@ def wait_file_update(file_name, t0, label, t) -> None:
 
 ################################################################################
 
-def if_file_exist(file_name) -> bool:
+def if_file_exist(file_name: str) -> bool:
     """Check if a specified file exists
 
     Parameters
@@ -116,7 +128,7 @@ def if_file_exist(file_name) -> bool:
 
 ################################################################################
 
-def make_folder(l) -> None:
+def make_folder(l: str) -> None:
     """Make a folder if it does not exist
 
     Parameters
@@ -131,8 +143,8 @@ def make_folder(l) -> None:
 
 ################################################################################
 
-def sel_random(l) -> list:
-    """Randomly select a random amount of numbers from a given list of numbers
+def sel_random(l: list) -> list:
+    """Randomly select a random number of numbers from a given list of numbers
 
     Parameters
     ----------
@@ -168,10 +180,117 @@ def sel_random(l) -> list:
 
 ################################################################################
 
+def sel_random_fixed(
+    l: list,
+    f: int,
+    ) -> list:
+    """Randomly select a fixed number of numbers from a given list of numbers
+
+    Parameters
+    ----------
+    l : list
+        The given list of numbers
+    f : int
+        The fixed number of numbers
+
+    Returns
+    -------
+    list
+        The randomly selected numbers
+    """    
+    
+    #   Initialisations
+    sel = []
+    l_temp = l[:]
+
+    #   Loop through the list of numbers to be selected
+    for i in range(0, f):
+        
+        #   Select a random number from the list of numbers
+        sel.append(numpy.random.choice(numpy.asarray(l_temp)))
+
+        #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
+        l_temp.remove(sel[i])
+
+    #   Sort the list of selected numbers
+    sel.sort()
+
+    return sel
+
+################################################################################
+
+def sel_random_range(
+    l: list,
+    r: list,
+    ) -> list:
+    """Randomly select a ranged amount of numbers from a given list of numbers
+
+    Parameters
+    ----------
+    l : list
+        The given list of numbers
+    r : list
+        The range of numbers to be selected
+
+    Returns
+    -------
+    list
+        The randomly selected numbers
+    """
+
+    #   Initialisations
+    sel = []
+    l_temp = l[:]
+
+    r_sel = numpy.random.choice(numpy.asarray(r))
+
+    #   Loop through the list of numbers to be selected
+    for i in range(0, r_sel):
+        
+        #   Select a random number from the list of numbers
+        sel.append(numpy.random.choice(numpy.asarray(l_temp)))
+
+        #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
+        l_temp.remove(sel[i])
+
+    #   Sort the list of selected numbers
+    sel.sort()
+
+    return sel
+
+################################################################################
+
+def replace(x: int, m: int) -> int:
+    """Replace list elements that are outside of an allowed range
+
+    Parameters
+    ----------
+    x : int
+        The list item to be inspected
+    m : int
+        The maximum allowed value
+
+    Returns
+    -------
+    int
+        The list item value
+    """    
+
+    if x > m:
+        return m
+
+    elif x <= 0:
+        return 1
+
+    else:
+        return x
+
+################################################################################
+
 #   Generate a random hash code from a given string
 
 #   The string to be hashed
-def gen_hash(s) -> str:
+def gen_hash(s: str) -> str:
     """Generate a random hash code from a given string
 
     Parameters
@@ -192,7 +311,10 @@ def gen_hash(s) -> str:
 
 ################################################################################
 
-def search_text_file(file_name, find_text) -> (bool, str):
+def search_text_file(
+    file_name: str,
+    find_text: str,
+    ) -> (bool, str):
     """Search a text file for the first occurrence of a given text string
 
     Parameters
@@ -234,7 +356,10 @@ def search_text_file(file_name, find_text) -> (bool, str):
 
 ################################################################################
 
-def add_sort_list(l1, l2) -> list:
+def add_sort_list(
+    l1: list,
+    l2: list,
+    ) -> list:
     """Add two lists and sort them
 
     Parameters
@@ -259,7 +384,7 @@ def add_sort_list(l1, l2) -> list:
 
 ################################################################################
 
-def list_to_float(l) -> (list, int):
+def list_to_float(l: list) -> [list, int]:
     """Extract a list of floats from a given list
 
     Parameters
@@ -269,7 +394,7 @@ def list_to_float(l) -> (list, int):
 
     Returns
     -------
-    (list, int)
+    [list, int]
         The list of floats
         The number of list of items that failed to convert to string
     """
@@ -293,7 +418,10 @@ def list_to_float(l) -> (list, int):
 
 ################################################################################
 
-def list_to_str(l, c) -> str:
+def list_to_str(
+    l: list,
+    c: str,
+    ) -> str:
     """Convert a list into a string connected by a given symbol
 
     Parameters
@@ -315,7 +443,7 @@ def list_to_str(l, c) -> str:
 
 ################################################################################
 
-def find_int_in_str(s) -> int:
+def find_int_in_str(s: str) -> int:
     """Finds the first integer in a string
 
     Parameters

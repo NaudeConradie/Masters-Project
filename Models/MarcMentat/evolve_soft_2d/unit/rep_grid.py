@@ -9,7 +9,10 @@ from evolve_soft_2d.log import m_log
 
 ################################################################################
 
-def create_grid(x_e, y_e) -> list:
+def create_grid(
+    x_e: int,
+    y_e: int,
+    ) -> list:
     """Create a grid of ones representative of the unit
 
     Parameters
@@ -30,7 +33,7 @@ def create_grid(x_e, y_e) -> list:
  
 ################################################################################
 
-def find_cluster(grid) -> (bool, list):
+def find_cluster(grid: list) -> [bool, list]:
     """Find all clusters of elements using the representative grid
 
     Parameters
@@ -40,7 +43,7 @@ def find_cluster(grid) -> (bool, list):
 
     Returns
     -------
-    (bool, list)
+    [bool, list]
         True if free clusters were found, false otherwise
         The grid with clusters incrementally labelled
     """
@@ -63,11 +66,14 @@ def find_cluster(grid) -> (bool, list):
         #   Set flag
         found = False
 
-    return (found, grid_label)
+    return found, grid_label
 
 ################################################################################
 
-def rem_el_grid(template, rem) -> numpy.array:
+def rem_el_grid(
+    template,
+    rem: list,
+    ) -> numpy.array:
     """Removes elements from the representative grid
 
     Parameters
@@ -96,7 +102,10 @@ def rem_el_grid(template, rem) -> numpy.array:
 
 ################################################################################
 
-def rem_el_free_grid(template, grid_label) -> (numpy.array, list):
+def rem_el_free_grid(
+    template,
+    grid_label: list,
+    ) -> [numpy.array, list]:
     """Remove free element clusters from the representative grid
 
     Parameters
@@ -108,7 +117,7 @@ def rem_el_free_grid(template, grid_label) -> (numpy.array, list):
 
     Returns
     -------
-    (numpy.array, list)
+    [numpy.array, list]
         The grid with zeros in place of the removed elements
         The list of removed elements
     """

@@ -48,7 +48,7 @@ def main():
     temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
 
     #   Flag to be set if the base unit needs to be regenerated
-    regen_base = True
+    regen_base = False
 
     #   Check if the template exists
     exists = utility.if_file_exist(temp.fp_t_mud)
@@ -58,15 +58,13 @@ def main():
         modify.open_model(temp.fp_t_mud)
 
     #   Create the base file if it does not exist
-    elif temp.case == 0:
-        create.template_0(temp)
     elif temp.case == 1:
         create.template_1(temp)
     elif temp.case == 2:
         create.template_2(temp)
 
     #   Generate a number of units and save their results
-    fp_lu = create.gen_units(temp, 1)
+    fp_lu = create.gen_units(temp, 5, f = 5)
 
     #   Analyse the results
     analyse.monte_carlo(temp, fp_lu)

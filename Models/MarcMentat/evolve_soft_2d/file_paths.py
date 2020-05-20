@@ -13,7 +13,10 @@ fp_u = fp + r'\Units'
 
 ################################################################################
 
-def create_fp_folder(template, p) -> str:
+def create_fp_folder(
+    template,
+    p: str,
+    ) -> str:
     """Create the file path of the results folder up to the template level
 
     Parameters
@@ -50,7 +53,12 @@ def create_fp_folder(template, p) -> str:
 
 ################################################################################
 
-def create_fp_file(template, l, p, unit = None) -> str:
+def create_fp_file(
+    template,
+    l: str,
+    p: str,
+    unit = None,
+    ) -> str:
     """Create the file path of the desired file
 
     Parameters

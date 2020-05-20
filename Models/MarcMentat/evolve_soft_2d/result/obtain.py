@@ -1,6 +1,13 @@
 ##  Functions used for obtaining and inspecting results
 
 #   Imports
+import csv
+import linecache
+import numpy
+import os.path
+import re
+import time
+
 from evolve_soft_2d import utility
 from evolve_soft_2d.file_paths import fp_u, fp_r, create_fp_file
 from evolve_soft_2d.log import m_log, en_log
@@ -8,20 +15,23 @@ from evolve_soft_2d.unit import modify
 
 from py_mentat import py_send, py_get_float
 
-import csv
-import time
-import os.path
-import re
-
 ################################################################################
 
-def check_out(fp_mud, fp_log, fp_t16) -> bool:
+def check_out(
+    fp_mud: str,
+    fp_log: str,
+    fp_t16: str,
+    ) -> bool:
     """Check if the updated output files exist
 
     Parameters
     ----------
-    unit : class
-        The unit parameters
+    fp_mud : str
+        The file path of the model file
+    fp_log : str
+        The file path of the model log file
+    fp_t16 : str
+        The file path of the model t16 file
 
     Returns
     -------
@@ -39,6 +49,7 @@ def check_out(fp_mud, fp_log, fp_t16) -> bool:
 
     #   Text to look for when searching the log files
     exit_number_str = re.compile("exit number", re.IGNORECASE)
+    access_viol_str = re.compile("access violation", re.IGNORECASE)
 
     #   Obtain the timestamp of the last time the unit file was modified
     t_mud = os.path.getmtime(fp_mud)
@@ -51,13 +62,22 @@ def check_out(fp_mud, fp_log, fp_t16) -> bool:
     while 1:
 
         #   Search the log file for an exit number
-        (found, found_exit_n) = utility.search_text_file(fp_log, exit_number_str)
+        found_e_n, e_n = utility.search_text_file(fp_log, exit_number_str)
+        found_a_v, _ = utility.search_text_file(fp_log, access_viol_str)
 
         #   Check if an exit number was found
-        if found:
+        if found_e_n:
 
             #   Output the exit number
-            exit_number = utility.find_int_in_str(found_exit_n)
+            exit_number = utility.find_int_in_str(e_n)
+
+            #   Exit the loop
+            break
+
+        elif found_a_v:
+
+            #   Set the exit number to the loss of connection to the license server exit number
+            exit_number = 67
 
             #   Exit the loop
             break
@@ -76,7 +96,7 @@ def check_out(fp_mud, fp_log, fp_t16) -> bool:
 
     #   Check if the exit number indicates a loss of connection to the license server
     elif exit_number == 67:
-        m_log.error("License server connection timed out")
+        m_log.error("License server connection timed out or failed")
 
         #   Loop until a valid decision is made
         while not decided:
@@ -106,13 +126,12 @@ def check_out(fp_mud, fp_log, fp_t16) -> bool:
 
             #   Check if response was invalid
             else:
-
                 m_log.error("Invalid input received")
                 print("Please either type a single \"y\" for yes or \"n\" for no")
 
     #   Output a warning
     else:
-        en_log.error("Unit run unsuccessfully with exit number {}".format(exit_number))
+        en_log.error("Model run unsuccessfully with exit number {}".format(exit_number))
         m_log.warning("Results cannot be analysed. Check Mentat log file and exit number for details")
 
     #   Check if the unit was run successfully without a loss of connection to the license server
@@ -140,13 +159,22 @@ def check_out(fp_mud, fp_log, fp_t16) -> bool:
 
 ################################################################################
 
-def max_min(template, l, fp_t16) -> None:
+def max_min(
+    template,
+    l: str,
+    fp_t16: str,
+    ) -> None:
     """Obtain the maximum and minimum values from the results
 
     Parameters
     ----------
-    unit : class
-        The unit parameters
+    template 
+        The unit template parameters
+    l : str
+        The label for the results file
+        Either a template or unit identifier
+    fp_t16 : str
+        The file path of the model t16 file
     """
 
     #   Initialisations
@@ -238,18 +266,27 @@ def max_min(template, l, fp_t16) -> None:
 
 ################################################################################
 
-def all_n(template, l, fp_t16) -> None:
+def all_n(
+    template,
+    l: str,
+    fp_t16: str,
+    ) -> None:
     """Obtain values for all nodes from results
 
     Parameters
     ----------
-    unit : class
-        The unit parameters
+    template 
+        The unit template parameters
+    l : str
+        The label for the results file
+        Either a template or unit identifier
+    fp_t16 : str
+        The file path of the model t16 file
     """
 
     #   The labels of the desired results
     label = []
-    label.append("Equivalent Von Mises Stress")
+    label.append("Total Strain Energy Density")
     label.append("Displacement")
     label.append("Reaction Force")
 
@@ -287,25 +324,59 @@ def all_n(template, l, fp_t16) -> None:
         #   Save the values to a .csv file
         save_2d_list_to_csv(template, label[i] + "_" + l, v)
 
-    #   Rewind the post file
+    #   Rewind and close the post file
     py_send("*post_rewind")
-
     py_send("*post_close")
 
     return
+################################################################################
+
+def read_c_e(
+    template,
+    l: str,
+    ) -> float:
+    """Read the constraint energy value for a model
+
+    Parameters
+    ----------
+    template 
+        The unit template parameters
+    l : str
+        The label for the results file
+        Either a template or unit identifier
+
+    Returns
+    -------
+    float
+        The constraint energy value
+    """
+
+    #   Create the file path of the results file
+    fp_r_f = create_fp_file(template, "Constraint Energy External_" + l, "r")
+
+    try:
+        c_e = float(linecache.getline(fp_r_f, template.n_steps + 1))
+    except:
+        c_e = None
+
+    return c_e
 
 ################################################################################
 
-def save_2d_list_to_csv(template, l, data) -> None:
+def save_2d_list_to_csv(
+    template,
+    l: str,
+    data: numpy.array,
+    ) -> None:
     """Write the results to .csv files
 
     Parameters
     ----------
-    unit : class
-        The unit parameters
-    t : str
-        The type of data to be stored
-    data : list
+    template 
+        The unit template parameters
+    l : str
+        The label of the data
+    data : numpy.array
         The results to be stored
     """
 

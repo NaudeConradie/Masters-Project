@@ -10,7 +10,7 @@ import time
 
 ################################################################################
 
-def open_model(fp_id) -> None:
+def open_model(fp_id: str) -> None:
     """Open a model
 
     Parameters
@@ -25,7 +25,7 @@ def open_model(fp_id) -> None:
 
 ################################################################################
 
-def save_model(fp_id) -> None:
+def save_model(fp_id: str) -> None:
     """Save a model
 
     Parameters
@@ -46,7 +46,7 @@ def create_nodes(template) -> None:
 
     Parameters
     ----------
-    template : class
+    template 
         The unit template parameters
     """
 
@@ -81,7 +81,7 @@ def create_elements(template) -> None:
 
     Parameters
     ----------
-    template : class
+    template 
         The unit template parameters
     """
 
@@ -115,7 +115,7 @@ def add_ramp(template) -> None:
 
     Parameters
     ----------
-    template : class
+    template 
         The unit template parameters
     """
 
@@ -133,7 +133,13 @@ def add_ramp(template) -> None:
 
 ################################################################################
     
-def add_bc_fd_ee(label, tab_nam, a, e, d) -> None:
+def add_bc_fd_ee(
+    label: str,
+    tab_nam: str,
+    a: str,
+    e: int,
+    d: float,
+    ) -> None:
     """Add fixed displacement boundary conditions along an entire edge
 
     Parameters
@@ -193,7 +199,13 @@ def add_bc_fd_ee(label, tab_nam, a, e, d) -> None:
 
 ################################################################################
 
-def add_bc_fd_sn(label, tab_nam, a, n, d):
+def add_bc_fd_sn(
+    label: str,
+    tab_nam: str,
+    a: str,
+    n: int,
+    d: float,
+    ) -> None:
     """Add fixed displacement boundary conditions on a single node
 
     Parameters
@@ -205,7 +217,7 @@ def add_bc_fd_sn(label, tab_nam, a, n, d):
     a : str
         The axis of the boundary condition
         "x" or "y"
-    e : int
+    n : int
         The node number of the boundary condition
     d : float
         The magnitude of the applied displacement
@@ -229,7 +241,16 @@ def add_bc_fd_sn(label, tab_nam, a, n, d):
 
 ################################################################################
   
-def add_load(label, p, tab_nam, x_e, y_e, axis, direc, coord) -> None:
+def add_load(
+    label: str,
+    p: float, 
+    tab_nam: str, 
+    x_e: int, 
+    y_e: int, 
+    axis: str, 
+    direc: int, 
+    coord: int,
+    ) -> None:
     """Add a load along a specified axis in a specified direction
 
     Parameters
@@ -308,7 +329,7 @@ def add_mat_ogden(ogd_mat) -> None:
 
     Parameters
     ----------
-    ogd_mat : class
+    ogd_mat : ogd_mat
         The Ogden material model
     """
 
@@ -348,7 +369,7 @@ def add_lcase(template) -> None:
 
     Parameters
     ----------
-    template : class
+    template 
         The unit template parameters
     """
 
@@ -397,7 +418,7 @@ def run_job() -> None:
 
 ################################################################################
 
-def rem_el(rem):
+def rem_el(rem: list) -> None:
     """Remove a selection of elements
 
     Parameters

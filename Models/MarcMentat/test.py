@@ -4,9 +4,9 @@
 import importlib
 
 from evolve_soft_2d import classes, file_paths, log, utility
-from evolve_soft_2d.classes import template
-from evolve_soft_2d.unit import create, inspect, modify, rep_grid
+from evolve_soft_2d.classes import template, mold_star_15
 from evolve_soft_2d.result import analyse, obtain
+from evolve_soft_2d.unit import create, inspect, modify, rep_grid
 
 from py_mentat import py_connect, py_disconnect
 
@@ -23,14 +23,29 @@ def main():
     importlib.reload(analyse)
     importlib.reload(obtain)
 
-    l = ['4.138759275223428995e+04', '2.704693719776506769e+05', '2.322056518865353428e+04', '3.101738482855314032e+03', '5.231738590075147840e+03', '2.315872224098487095e+03', '3.293072541513819597e+05', '2.050347791724815124e+03', '2.206723698873520334e+03', '6.929513897731169891e+03', '1.624649734903174394e+05', '1.138009162894073233e+04', '', '1.228096906493830465e+04', '5.514394529612689439e+03']
+    #   Initialisations
+    #   Text name of the table used for the applied load
+    table_name = "ramp_input"
+    #   Number of nodes per axis (one more than number of elements desired)
+    x_n = 6
+    y_n = 6
+    #   Coordinates of initial position
+    x0 = 0
+    y0 = 0
+    #   Number of increments per second to analyse
+    n_steps = 4
+    #   Magnitude of the applied load and/or displacement
+    #   p_mag = 25
+    d_mag = (y_n - 1)/2
+    #   Template case to be run
+    case = 1
 
-    (l_o, l_f) = utility.list_to_float(l)
+    temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
 
-    print(l_o)
-    print(l_f)
+    fp_lu = file_paths.create_fp_file(temp, "_2020-05-19--15-14-11", "l")
+
+    analyse.monte_carlo(temp, fp_lu)
 
     return
-
 
 main()

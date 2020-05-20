@@ -13,7 +13,12 @@ from evolve_soft_2d.file_paths import create_fp_file
 
 class ogd_mat:
 
-    def __init__(self, name, mu, alpha) -> None:
+    def __init__(
+        self,
+        name: str,
+        mu: list,
+        alpha: list,
+        ) -> None:
         """Material parameters
 
         Parameters
@@ -52,18 +57,18 @@ class template:
     
     def __init__(
         self, 
-        case,
-        x0,
-        y0,
-        x_n,
-        y_n,
-        ogd_mat,
-        n_steps,
-        tab_nam,
-        apply,
-        run_success = False,
-        c_e = 0,
-    ) -> None:
+        case: int,
+        x0: int,
+        y0: int,
+        x_n: int,
+        y_n: int,
+        ogd_mat: ogd_mat,
+        n_steps: int,
+        tab_nam: str,
+        apply: float,
+        run_success: bool = False,
+        c_e: float = 0,
+        ) -> None:
         """Unit template parameters
 
         Parameters
@@ -84,10 +89,12 @@ class template:
             The number of steps in the second of the simulation
         tab_nam : str
             The name of the table containing the function of the load to be applied
-        apply : int
+        apply : float
             The conditions to be applied to the unit template
         run_success : bool, optional
             The success of the unit template's run, by default False
+        c_e : float, optional
+            The constraint energy of the unit template, by default 0
         """
 
         self.case = case
@@ -157,10 +164,10 @@ class unit_p:
     def __init__(
         self,
         template,
-        rem,
-        grid,
-        run_success = False,
-        c_e = 0,
+        rem: list,
+        grid: list,
+        run_success: bool = False,
+        c_e: float = 0,
         ) -> None:
         """The unit parameters
 
@@ -174,6 +181,8 @@ class unit_p:
             The representative grid with the elements removed
         run_success : bool, optional
             The success of the unit's run, by default False
+        c_e : int, optional
+            The constraint energy of the unit, by default 0
         """
 
         self.template = template

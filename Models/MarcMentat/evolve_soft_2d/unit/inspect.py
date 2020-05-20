@@ -5,7 +5,10 @@ from py_mentat import py_send
 
 ################################################################################
 
-def find_e_internal(x_e, y_e) -> list:
+def find_e_internal(
+    x_e: int,
+    y_e: int,
+    ) -> list:
     """Find all internal elements
 
     Parameters
@@ -40,7 +43,10 @@ def find_e_internal(x_e, y_e) -> list:
 
 ################################################################################
 
-def find_n_external(x_n, y_n) -> list:
+def find_n_external(
+    x_n: int,
+    y_n:int,
+    ) -> list:
     """Find all external nodes
 
     Parameters
