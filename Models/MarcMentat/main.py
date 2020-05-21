@@ -64,7 +64,7 @@ def main():
         create.template_2(temp)
 
     #   Generate a number of units and save their results
-    fp_lu = create.gen_units(temp, 5, f = 5)
+    fp_lu = create.gen_units(temp, 100)
 
     #   Analyse the results
     analyse.monte_carlo(temp, fp_lu)

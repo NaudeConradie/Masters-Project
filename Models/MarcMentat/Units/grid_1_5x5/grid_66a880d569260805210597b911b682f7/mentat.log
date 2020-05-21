@@ -1,0 +1,5017 @@
+Marc Mentat (C)Copyright 1994-2019, MSC Software Corporation, all rights reserved
+Command > *open_model "c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\units\grid_1_5x5\grid_66a880d569260805210597b911b682f7\grid_66a880d569260805210597b911b682f7.mud"
+File has been written by Mentat 2019.
+Model file c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\units\grid_1_5x5\grid_66a880d569260805210597b911b682f7\grid_66a880d569260805210597b911b682f7.mud opened for reading.
+Model c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\units\grid_1_5x5\grid_66a880d569260805210597b911b682f7\grid_66a880d569260805210597b911b682f7 opened.
+Command > *fill_view
+Command > *edit_job job
+Enter edit job : *edit_job job
+Enter edit job : 
+Command > *update_job
+Command > *submit_job 1 *monitor_job
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_66a880d569260805210597b911b682f7_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+Command > @popdown(job_properties_pm) @main(results) @popup(modelplot_pm) *post_open_default
+Number of increments detected : 5
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *py_file_run ..\..\..\main.py
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+12 
+14 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cca32c3f6ae9fc72d5dfa54498f75445\grid_cca32c3f6ae9fc72d5dfa54498f75445.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cca32c3f6ae9fc72d5dfa54498f75445\grid_cca32c3f6ae9fc72d5dfa54498f75445.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_cca32c3f6ae9fc72d5dfa54498f75445_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cca32c3f6ae9fc72d5dfa54498f75445\grid_cca32c3f6ae9fc72d5dfa54498f75445_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+13 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7a5792881b466865b96cdebbe2fe881a\grid_7a5792881b466865b96cdebbe2fe881a.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7a5792881b466865b96cdebbe2fe881a\grid_7a5792881b466865b96cdebbe2fe881a.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_7a5792881b466865b96cdebbe2fe881a_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7a5792881b466865b96cdebbe2fe881a\grid_7a5792881b466865b96cdebbe2fe881a_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+12 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b478cbf6c5c31f08cf013333f6fda1d6\grid_b478cbf6c5c31f08cf013333f6fda1d6.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b478cbf6c5c31f08cf013333f6fda1d6\grid_b478cbf6c5c31f08cf013333f6fda1d6.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_b478cbf6c5c31f08cf013333f6fda1d6_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b478cbf6c5c31f08cf013333f6fda1d6\grid_b478cbf6c5c31f08cf013333f6fda1d6_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+14 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_66e9a2d5517ae7ea3281b9ef5639e760\grid_66e9a2d5517ae7ea3281b9ef5639e760.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_66e9a2d5517ae7ea3281b9ef5639e760\grid_66e9a2d5517ae7ea3281b9ef5639e760.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_66e9a2d5517ae7ea3281b9ef5639e760_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_66e9a2d5517ae7ea3281b9ef5639e760\grid_66e9a2d5517ae7ea3281b9ef5639e760_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_42ebac614a42bb787b44039aa9df357a\grid_42ebac614a42bb787b44039aa9df357a.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_42ebac614a42bb787b44039aa9df357a\grid_42ebac614a42bb787b44039aa9df357a.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_42ebac614a42bb787b44039aa9df357a_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_42ebac614a42bb787b44039aa9df357a\grid_42ebac614a42bb787b44039aa9df357a_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*identify_applys
+*redraw
+Command > *py_file_run ..\..\..\main.py
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+13 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bd14e87f8df306d83cd0b105c45f86b7\grid_bd14e87f8df306d83cd0b105c45f86b7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bd14e87f8df306d83cd0b105c45f86b7\grid_bd14e87f8df306d83cd0b105c45f86b7.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_bd14e87f8df306d83cd0b105c45f86b7_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bd14e87f8df306d83cd0b105c45f86b7\grid_bd14e87f8df306d83cd0b105c45f86b7_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d2926ca794096f6df15ea03b8b10c034\grid_d2926ca794096f6df15ea03b8b10c034.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d2926ca794096f6df15ea03b8b10c034\grid_d2926ca794096f6df15ea03b8b10c034.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_d2926ca794096f6df15ea03b8b10c034_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d2926ca794096f6df15ea03b8b10c034\grid_d2926ca794096f6df15ea03b8b10c034_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b558b6571cbd4b0de93e0e9650dab1ef\grid_b558b6571cbd4b0de93e0e9650dab1ef.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b558b6571cbd4b0de93e0e9650dab1ef\grid_b558b6571cbd4b0de93e0e9650dab1ef.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_b558b6571cbd4b0de93e0e9650dab1ef_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b558b6571cbd4b0de93e0e9650dab1ef\grid_b558b6571cbd4b0de93e0e9650dab1ef_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+12 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ec0187e75223b106888cba3e04f386c6\grid_ec0187e75223b106888cba3e04f386c6.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ec0187e75223b106888cba3e04f386c6\grid_ec0187e75223b106888cba3e04f386c6.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_ec0187e75223b106888cba3e04f386c6_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ec0187e75223b106888cba3e04f386c6\grid_ec0187e75223b106888cba3e04f386c6_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+12 
+13 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c35c704539bb75b821f43f22fc73d8c5\grid_c35c704539bb75b821f43f22fc73d8c5.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c35c704539bb75b821f43f22fc73d8c5\grid_c35c704539bb75b821f43f22fc73d8c5.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c35c704539bb75b821f43f22fc73d8c5_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c35c704539bb75b821f43f22fc73d8c5\grid_c35c704539bb75b821f43f22fc73d8c5_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+13 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e1eb5c5fcefbeae6dd16080dadec22f0\grid_e1eb5c5fcefbeae6dd16080dadec22f0.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e1eb5c5fcefbeae6dd16080dadec22f0\grid_e1eb5c5fcefbeae6dd16080dadec22f0.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_e1eb5c5fcefbeae6dd16080dadec22f0_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e1eb5c5fcefbeae6dd16080dadec22f0\grid_e1eb5c5fcefbeae6dd16080dadec22f0_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+13 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_510f17f873b7aebb3c313e7d9ad0a933\grid_510f17f873b7aebb3c313e7d9ad0a933.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_510f17f873b7aebb3c313e7d9ad0a933\grid_510f17f873b7aebb3c313e7d9ad0a933.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_510f17f873b7aebb3c313e7d9ad0a933_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_510f17f873b7aebb3c313e7d9ad0a933\grid_510f17f873b7aebb3c313e7d9ad0a933_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c9f0f895fb98ab9159f51fd0297e236d\grid_c9f0f895fb98ab9159f51fd0297e236d.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c9f0f895fb98ab9159f51fd0297e236d\grid_c9f0f895fb98ab9159f51fd0297e236d.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c9f0f895fb98ab9159f51fd0297e236d_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c9f0f895fb98ab9159f51fd0297e236d\grid_c9f0f895fb98ab9159f51fd0297e236d_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_585689e4355bf74e4d5f349cc701e497\grid_585689e4355bf74e4d5f349cc701e497.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_585689e4355bf74e4d5f349cc701e497\grid_585689e4355bf74e4d5f349cc701e497.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_585689e4355bf74e4d5f349cc701e497_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_585689e4355bf74e4d5f349cc701e497\grid_585689e4355bf74e4d5f349cc701e497_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+12 
+13 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_caf863a9c931d4c0f7f399b088ccda1f\grid_caf863a9c931d4c0f7f399b088ccda1f.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_caf863a9c931d4c0f7f399b088ccda1f\grid_caf863a9c931d4c0f7f399b088ccda1f.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_caf863a9c931d4c0f7f399b088ccda1f_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_caf863a9c931d4c0f7f399b088ccda1f\grid_caf863a9c931d4c0f7f399b088ccda1f_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+12 
+13 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3834c520817bfc455cebdd55ca0a3678\grid_3834c520817bfc455cebdd55ca0a3678.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3834c520817bfc455cebdd55ca0a3678\grid_3834c520817bfc455cebdd55ca0a3678.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_3834c520817bfc455cebdd55ca0a3678_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3834c520817bfc455cebdd55ca0a3678\grid_3834c520817bfc455cebdd55ca0a3678_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+12 
+13 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_a89de87b8725f108287a0965d0e69069\grid_a89de87b8725f108287a0965d0e69069.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_a89de87b8725f108287a0965d0e69069\grid_a89de87b8725f108287a0965d0e69069.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_a89de87b8725f108287a0965d0e69069_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_a89de87b8725f108287a0965d0e69069\grid_a89de87b8725f108287a0965d0e69069_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+13 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_01fa55cb25fa1c67eddc27cac2d921b0\grid_01fa55cb25fa1c67eddc27cac2d921b0.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_01fa55cb25fa1c67eddc27cac2d921b0\grid_01fa55cb25fa1c67eddc27cac2d921b0.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_01fa55cb25fa1c67eddc27cac2d921b0_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_01fa55cb25fa1c67eddc27cac2d921b0\grid_01fa55cb25fa1c67eddc27cac2d921b0_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+13 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_99ba205bd86535544ed81113be0b175c\grid_99ba205bd86535544ed81113be0b175c.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_99ba205bd86535544ed81113be0b175c\grid_99ba205bd86535544ed81113be0b175c.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_99ba205bd86535544ed81113be0b175c_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_99ba205bd86535544ed81113be0b175c\grid_99ba205bd86535544ed81113be0b175c_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+13 
+14 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_14f8aa52c67003ac56fe0b1f79562b03\grid_14f8aa52c67003ac56fe0b1f79562b03.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_14f8aa52c67003ac56fe0b1f79562b03\grid_14f8aa52c67003ac56fe0b1f79562b03.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_14f8aa52c67003ac56fe0b1f79562b03_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_14f8aa52c67003ac56fe0b1f79562b03\grid_14f8aa52c67003ac56fe0b1f79562b03_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+12 
+13 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7652c6c027da27e49fe26a8a7c9e66f8\grid_7652c6c027da27e49fe26a8a7c9e66f8.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7652c6c027da27e49fe26a8a7c9e66f8\grid_7652c6c027da27e49fe26a8a7c9e66f8.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_7652c6c027da27e49fe26a8a7c9e66f8_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7652c6c027da27e49fe26a8a7c9e66f8\grid_7652c6c027da27e49fe26a8a7c9e66f8_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+13 
+14 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_40465263f4fc7b71e243117bd09dde28\grid_40465263f4fc7b71e243117bd09dde28.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_40465263f4fc7b71e243117bd09dde28\grid_40465263f4fc7b71e243117bd09dde28.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_40465263f4fc7b71e243117bd09dde28_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_40465263f4fc7b71e243117bd09dde28\grid_40465263f4fc7b71e243117bd09dde28_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_70efdf2ec9b086079795c442636b55fb\grid_70efdf2ec9b086079795c442636b55fb.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_70efdf2ec9b086079795c442636b55fb\grid_70efdf2ec9b086079795c442636b55fb.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_70efdf2ec9b086079795c442636b55fb_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_70efdf2ec9b086079795c442636b55fb\grid_70efdf2ec9b086079795c442636b55fb_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+13 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cf816fba512fe3f85ca5785c03420bd2\grid_cf816fba512fe3f85ca5785c03420bd2.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cf816fba512fe3f85ca5785c03420bd2\grid_cf816fba512fe3f85ca5785c03420bd2.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_cf816fba512fe3f85ca5785c03420bd2_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cf816fba512fe3f85ca5785c03420bd2\grid_cf816fba512fe3f85ca5785c03420bd2_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1bfcb852d87701f8d5e62c33335000ab\grid_1bfcb852d87701f8d5e62c33335000ab.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1bfcb852d87701f8d5e62c33335000ab\grid_1bfcb852d87701f8d5e62c33335000ab.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1bfcb852d87701f8d5e62c33335000ab_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1bfcb852d87701f8d5e62c33335000ab\grid_1bfcb852d87701f8d5e62c33335000ab_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_45c48cce2e2d7fbdea1afc51c7c6ad26\grid_45c48cce2e2d7fbdea1afc51c7c6ad26.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_45c48cce2e2d7fbdea1afc51c7c6ad26\grid_45c48cce2e2d7fbdea1afc51c7c6ad26.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_45c48cce2e2d7fbdea1afc51c7c6ad26_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_45c48cce2e2d7fbdea1afc51c7c6ad26\grid_45c48cce2e2d7fbdea1afc51c7c6ad26_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2fbf21dc3f69772f647d137ccc443df4\grid_2fbf21dc3f69772f647d137ccc443df4.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2fbf21dc3f69772f647d137ccc443df4\grid_2fbf21dc3f69772f647d137ccc443df4.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_2fbf21dc3f69772f647d137ccc443df4_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2fbf21dc3f69772f647d137ccc443df4\grid_2fbf21dc3f69772f647d137ccc443df4_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+12 
+13 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9db0d31a0034dd4e51c6cf7305c683e7\grid_9db0d31a0034dd4e51c6cf7305c683e7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9db0d31a0034dd4e51c6cf7305c683e7\grid_9db0d31a0034dd4e51c6cf7305c683e7.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_9db0d31a0034dd4e51c6cf7305c683e7_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9db0d31a0034dd4e51c6cf7305c683e7\grid_9db0d31a0034dd4e51c6cf7305c683e7_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+13 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c51ce410c124a10e0db5e4b97fc2af39\grid_c51ce410c124a10e0db5e4b97fc2af39.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c51ce410c124a10e0db5e4b97fc2af39\grid_c51ce410c124a10e0db5e4b97fc2af39.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c51ce410c124a10e0db5e4b97fc2af39_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c51ce410c124a10e0db5e4b97fc2af39\grid_c51ce410c124a10e0db5e4b97fc2af39_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+13 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b631a27aa1260102aee024158b5a6b16\grid_b631a27aa1260102aee024158b5a6b16.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b631a27aa1260102aee024158b5a6b16\grid_b631a27aa1260102aee024158b5a6b16.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_b631a27aa1260102aee024158b5a6b16_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b631a27aa1260102aee024158b5a6b16\grid_b631a27aa1260102aee024158b5a6b16_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+14 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ba8972dc558a4b9c62a1f8b6e49629a7\grid_ba8972dc558a4b9c62a1f8b6e49629a7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ba8972dc558a4b9c62a1f8b6e49629a7\grid_ba8972dc558a4b9c62a1f8b6e49629a7.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_ba8972dc558a4b9c62a1f8b6e49629a7_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ba8972dc558a4b9c62a1f8b6e49629a7\grid_ba8972dc558a4b9c62a1f8b6e49629a7_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+13 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9cdc7ff30f937e298724802f8efe52aa\grid_9cdc7ff30f937e298724802f8efe52aa.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9cdc7ff30f937e298724802f8efe52aa\grid_9cdc7ff30f937e298724802f8efe52aa.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_9cdc7ff30f937e298724802f8efe52aa_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9cdc7ff30f937e298724802f8efe52aa\grid_9cdc7ff30f937e298724802f8efe52aa_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e95fdd7d7ed198ba76056d1b399fdeed\grid_e95fdd7d7ed198ba76056d1b399fdeed.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e95fdd7d7ed198ba76056d1b399fdeed\grid_e95fdd7d7ed198ba76056d1b399fdeed.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_e95fdd7d7ed198ba76056d1b399fdeed_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e95fdd7d7ed198ba76056d1b399fdeed\grid_e95fdd7d7ed198ba76056d1b399fdeed_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+13 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_f493fa953b773540e2cfdb9f41c0bab9\grid_f493fa953b773540e2cfdb9f41c0bab9.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_f493fa953b773540e2cfdb9f41c0bab9\grid_f493fa953b773540e2cfdb9f41c0bab9.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_f493fa953b773540e2cfdb9f41c0bab9_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_f493fa953b773540e2cfdb9f41c0bab9\grid_f493fa953b773540e2cfdb9f41c0bab9_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+13 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bca94ca63f7fa90119fe603857a9257a\grid_bca94ca63f7fa90119fe603857a9257a.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bca94ca63f7fa90119fe603857a9257a\grid_bca94ca63f7fa90119fe603857a9257a.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_bca94ca63f7fa90119fe603857a9257a_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bca94ca63f7fa90119fe603857a9257a\grid_bca94ca63f7fa90119fe603857a9257a_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c00548baf2036dbe9deaa9aca38be392\grid_c00548baf2036dbe9deaa9aca38be392.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c00548baf2036dbe9deaa9aca38be392\grid_c00548baf2036dbe9deaa9aca38be392.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c00548baf2036dbe9deaa9aca38be392_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c00548baf2036dbe9deaa9aca38be392\grid_c00548baf2036dbe9deaa9aca38be392_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+14 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_57a31fc3ade01049bf4572d1efabe9e1\grid_57a31fc3ade01049bf4572d1efabe9e1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_57a31fc3ade01049bf4572d1efabe9e1\grid_57a31fc3ade01049bf4572d1efabe9e1.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_57a31fc3ade01049bf4572d1efabe9e1_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_57a31fc3ade01049bf4572d1efabe9e1\grid_57a31fc3ade01049bf4572d1efabe9e1_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+12 
+13 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9dbf4bec9e9e98572ffdfbbbae1338f2\grid_9dbf4bec9e9e98572ffdfbbbae1338f2.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9dbf4bec9e9e98572ffdfbbbae1338f2\grid_9dbf4bec9e9e98572ffdfbbbae1338f2.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_9dbf4bec9e9e98572ffdfbbbae1338f2_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_9dbf4bec9e9e98572ffdfbbbae1338f2\grid_9dbf4bec9e9e98572ffdfbbbae1338f2_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+12 
+13 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_feec18098e36d35527eb340db3496082\grid_feec18098e36d35527eb340db3496082.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_feec18098e36d35527eb340db3496082\grid_feec18098e36d35527eb340db3496082.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_feec18098e36d35527eb340db3496082_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_feec18098e36d35527eb340db3496082\grid_feec18098e36d35527eb340db3496082_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+12 
+13 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_13416fefe75f1787f0bec8cdd089d006\grid_13416fefe75f1787f0bec8cdd089d006.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_13416fefe75f1787f0bec8cdd089d006\grid_13416fefe75f1787f0bec8cdd089d006.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_13416fefe75f1787f0bec8cdd089d006_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_13416fefe75f1787f0bec8cdd089d006\grid_13416fefe75f1787f0bec8cdd089d006_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d80e27ce030332cc47865c08e55f11a5\grid_d80e27ce030332cc47865c08e55f11a5.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d80e27ce030332cc47865c08e55f11a5\grid_d80e27ce030332cc47865c08e55f11a5.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_d80e27ce030332cc47865c08e55f11a5_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d80e27ce030332cc47865c08e55f11a5\grid_d80e27ce030332cc47865c08e55f11a5_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+12 
+13 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_469f7781c8a84b300139512e745f7630\grid_469f7781c8a84b300139512e745f7630.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_469f7781c8a84b300139512e745f7630\grid_469f7781c8a84b300139512e745f7630.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_469f7781c8a84b300139512e745f7630_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_469f7781c8a84b300139512e745f7630\grid_469f7781c8a84b300139512e745f7630_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+13 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6e32a6aee53f5c7cc862bac59a72c815\grid_6e32a6aee53f5c7cc862bac59a72c815.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6e32a6aee53f5c7cc862bac59a72c815\grid_6e32a6aee53f5c7cc862bac59a72c815.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6e32a6aee53f5c7cc862bac59a72c815_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6e32a6aee53f5c7cc862bac59a72c815\grid_6e32a6aee53f5c7cc862bac59a72c815_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+12 
+14 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c4e016f07719bd15d222ba465b447302\grid_c4e016f07719bd15d222ba465b447302.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c4e016f07719bd15d222ba465b447302\grid_c4e016f07719bd15d222ba465b447302.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c4e016f07719bd15d222ba465b447302_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c4e016f07719bd15d222ba465b447302\grid_c4e016f07719bd15d222ba465b447302_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+13 
+14 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e0aa451590958cf670ad7a7b5c2cd322\grid_e0aa451590958cf670ad7a7b5c2cd322.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e0aa451590958cf670ad7a7b5c2cd322\grid_e0aa451590958cf670ad7a7b5c2cd322.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_e0aa451590958cf670ad7a7b5c2cd322_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e0aa451590958cf670ad7a7b5c2cd322\grid_e0aa451590958cf670ad7a7b5c2cd322_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+12 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7f990f8c498c26a8fb99efd3cbbb558c\grid_7f990f8c498c26a8fb99efd3cbbb558c.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7f990f8c498c26a8fb99efd3cbbb558c\grid_7f990f8c498c26a8fb99efd3cbbb558c.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_7f990f8c498c26a8fb99efd3cbbb558c_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7f990f8c498c26a8fb99efd3cbbb558c\grid_7f990f8c498c26a8fb99efd3cbbb558c_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+13 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_52a285a8e8639eaed6c773268c0cf137\grid_52a285a8e8639eaed6c773268c0cf137.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_52a285a8e8639eaed6c773268c0cf137\grid_52a285a8e8639eaed6c773268c0cf137.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_52a285a8e8639eaed6c773268c0cf137_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_52a285a8e8639eaed6c773268c0cf137\grid_52a285a8e8639eaed6c773268c0cf137_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+12 
+13 
+14 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_19af68e34253ce1a11a0e3358de9dfc2\grid_19af68e34253ce1a11a0e3358de9dfc2.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_19af68e34253ce1a11a0e3358de9dfc2\grid_19af68e34253ce1a11a0e3358de9dfc2.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_19af68e34253ce1a11a0e3358de9dfc2_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_19af68e34253ce1a11a0e3358de9dfc2\grid_19af68e34253ce1a11a0e3358de9dfc2_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+12 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c20ad4d76fe97759aa27a0c99bff6710\grid_c20ad4d76fe97759aa27a0c99bff6710.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c20ad4d76fe97759aa27a0c99bff6710\grid_c20ad4d76fe97759aa27a0c99bff6710.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c20ad4d76fe97759aa27a0c99bff6710_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+14 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d74f47c0d492ded0e432954b1836a44f\grid_d74f47c0d492ded0e432954b1836a44f.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d74f47c0d492ded0e432954b1836a44f\grid_d74f47c0d492ded0e432954b1836a44f.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_d74f47c0d492ded0e432954b1836a44f_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_d74f47c0d492ded0e432954b1836a44f\grid_d74f47c0d492ded0e432954b1836a44f_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+13 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bfb63a83fd6a5bc091cdb269aa99e703\grid_bfb63a83fd6a5bc091cdb269aa99e703.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bfb63a83fd6a5bc091cdb269aa99e703\grid_bfb63a83fd6a5bc091cdb269aa99e703.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_bfb63a83fd6a5bc091cdb269aa99e703_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bfb63a83fd6a5bc091cdb269aa99e703\grid_bfb63a83fd6a5bc091cdb269aa99e703_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+12 
+13 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_85f225bf2684d3902704d7022a4cbce1\grid_85f225bf2684d3902704d7022a4cbce1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_85f225bf2684d3902704d7022a4cbce1\grid_85f225bf2684d3902704d7022a4cbce1.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_85f225bf2684d3902704d7022a4cbce1_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_85f225bf2684d3902704d7022a4cbce1\grid_85f225bf2684d3902704d7022a4cbce1_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1f0e3dad99908345f7439f8ffabdffc4\grid_1f0e3dad99908345f7439f8ffabdffc4.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1f0e3dad99908345f7439f8ffabdffc4\grid_1f0e3dad99908345f7439f8ffabdffc4.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1f0e3dad99908345f7439f8ffabdffc4_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1f0e3dad99908345f7439f8ffabdffc4\grid_1f0e3dad99908345f7439f8ffabdffc4_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+13 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4c70b978f15c08d2b37837c27c7b7c94\grid_4c70b978f15c08d2b37837c27c7b7c94.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4c70b978f15c08d2b37837c27c7b7c94\grid_4c70b978f15c08d2b37837c27c7b7c94.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_4c70b978f15c08d2b37837c27c7b7c94_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4c70b978f15c08d2b37837c27c7b7c94\grid_4c70b978f15c08d2b37837c27c7b7c94_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+12 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_77f7e1eaf988b3e4e02daa561c39f5d1\grid_77f7e1eaf988b3e4e02daa561c39f5d1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_77f7e1eaf988b3e4e02daa561c39f5d1\grid_77f7e1eaf988b3e4e02daa561c39f5d1.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_77f7e1eaf988b3e4e02daa561c39f5d1_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_77f7e1eaf988b3e4e02daa561c39f5d1\grid_77f7e1eaf988b3e4e02daa561c39f5d1_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+12 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_efb11e4218021913758b53a52abd157c\grid_efb11e4218021913758b53a52abd157c.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_efb11e4218021913758b53a52abd157c\grid_efb11e4218021913758b53a52abd157c.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_efb11e4218021913758b53a52abd157c_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_efb11e4218021913758b53a52abd157c\grid_efb11e4218021913758b53a52abd157c_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+13 
+14 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c3137eef035b97de8dc92d4d3c693bdb\grid_c3137eef035b97de8dc92d4d3c693bdb.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c3137eef035b97de8dc92d4d3c693bdb\grid_c3137eef035b97de8dc92d4d3c693bdb.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c3137eef035b97de8dc92d4d3c693bdb_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c3137eef035b97de8dc92d4d3c693bdb\grid_c3137eef035b97de8dc92d4d3c693bdb_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_0712db5b83eb2f28ae18a94d225e30ba\grid_0712db5b83eb2f28ae18a94d225e30ba.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_0712db5b83eb2f28ae18a94d225e30ba\grid_0712db5b83eb2f28ae18a94d225e30ba.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_0712db5b83eb2f28ae18a94d225e30ba_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_0712db5b83eb2f28ae18a94d225e30ba\grid_0712db5b83eb2f28ae18a94d225e30ba_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+12 
+13 
+14 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4a73f89d3416202104f5ec65083553a7\grid_4a73f89d3416202104f5ec65083553a7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4a73f89d3416202104f5ec65083553a7\grid_4a73f89d3416202104f5ec65083553a7.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_4a73f89d3416202104f5ec65083553a7_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4a73f89d3416202104f5ec65083553a7\grid_4a73f89d3416202104f5ec65083553a7_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+12 
+13 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_132869a5c3090649b11e2cc66d5b8646\grid_132869a5c3090649b11e2cc66d5b8646.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_132869a5c3090649b11e2cc66d5b8646\grid_132869a5c3090649b11e2cc66d5b8646.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_132869a5c3090649b11e2cc66d5b8646_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_132869a5c3090649b11e2cc66d5b8646\grid_132869a5c3090649b11e2cc66d5b8646_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+13 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_372a29befc1d0142850b923761a456b7\grid_372a29befc1d0142850b923761a456b7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_372a29befc1d0142850b923761a456b7\grid_372a29befc1d0142850b923761a456b7.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_372a29befc1d0142850b923761a456b7_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_372a29befc1d0142850b923761a456b7\grid_372a29befc1d0142850b923761a456b7_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_fc43b93e74604fb35d11b91b8e4935ba\grid_fc43b93e74604fb35d11b91b8e4935ba.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_fc43b93e74604fb35d11b91b8e4935ba\grid_fc43b93e74604fb35d11b91b8e4935ba.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_fc43b93e74604fb35d11b91b8e4935ba_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_fc43b93e74604fb35d11b91b8e4935ba\grid_fc43b93e74604fb35d11b91b8e4935ba_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+12 
+13 
+14 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5bcf28cf5457fb871ccda3d94c788f73\grid_5bcf28cf5457fb871ccda3d94c788f73.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5bcf28cf5457fb871ccda3d94c788f73\grid_5bcf28cf5457fb871ccda3d94c788f73.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5bcf28cf5457fb871ccda3d94c788f73_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5bcf28cf5457fb871ccda3d94c788f73\grid_5bcf28cf5457fb871ccda3d94c788f73_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+13 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_112ec2019a41e71ef78f2339a8484eae\grid_112ec2019a41e71ef78f2339a8484eae.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_112ec2019a41e71ef78f2339a8484eae\grid_112ec2019a41e71ef78f2339a8484eae.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_112ec2019a41e71ef78f2339a8484eae_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_112ec2019a41e71ef78f2339a8484eae\grid_112ec2019a41e71ef78f2339a8484eae_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+12 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_608cb2b584b18c20da2c9a03e52d3761\grid_608cb2b584b18c20da2c9a03e52d3761.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_608cb2b584b18c20da2c9a03e52d3761\grid_608cb2b584b18c20da2c9a03e52d3761.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_608cb2b584b18c20da2c9a03e52d3761_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_608cb2b584b18c20da2c9a03e52d3761\grid_608cb2b584b18c20da2c9a03e52d3761_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+13 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2c01937939f0a01af1290ce6b612be8c\grid_2c01937939f0a01af1290ce6b612be8c.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2c01937939f0a01af1290ce6b612be8c\grid_2c01937939f0a01af1290ce6b612be8c.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_2c01937939f0a01af1290ce6b612be8c_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2c01937939f0a01af1290ce6b612be8c\grid_2c01937939f0a01af1290ce6b612be8c_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+14 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3e62c1ffe818f3af334bead405df671e\grid_3e62c1ffe818f3af334bead405df671e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3e62c1ffe818f3af334bead405df671e\grid_3e62c1ffe818f3af334bead405df671e.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_3e62c1ffe818f3af334bead405df671e_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3e62c1ffe818f3af334bead405df671e\grid_3e62c1ffe818f3af334bead405df671e_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_86686ce7d159f14d78377f1f1ed65480\grid_86686ce7d159f14d78377f1f1ed65480.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_86686ce7d159f14d78377f1f1ed65480\grid_86686ce7d159f14d78377f1f1ed65480.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_86686ce7d159f14d78377f1f1ed65480_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_86686ce7d159f14d78377f1f1ed65480\grid_86686ce7d159f14d78377f1f1ed65480_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+13 
+14 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5afca0a211d43e912e33af9407dadf7e\grid_5afca0a211d43e912e33af9407dadf7e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5afca0a211d43e912e33af9407dadf7e\grid_5afca0a211d43e912e33af9407dadf7e.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5afca0a211d43e912e33af9407dadf7e_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5afca0a211d43e912e33af9407dadf7e\grid_5afca0a211d43e912e33af9407dadf7e_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1343a00bed8c0a4df89aab7282a46cb5\grid_1343a00bed8c0a4df89aab7282a46cb5.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1343a00bed8c0a4df89aab7282a46cb5\grid_1343a00bed8c0a4df89aab7282a46cb5.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1343a00bed8c0a4df89aab7282a46cb5_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1343a00bed8c0a4df89aab7282a46cb5\grid_1343a00bed8c0a4df89aab7282a46cb5_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+12 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5c4dfb0025e86547cc6c4021538a7bdc\grid_5c4dfb0025e86547cc6c4021538a7bdc.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5c4dfb0025e86547cc6c4021538a7bdc\grid_5c4dfb0025e86547cc6c4021538a7bdc.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5c4dfb0025e86547cc6c4021538a7bdc_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5c4dfb0025e86547cc6c4021538a7bdc\grid_5c4dfb0025e86547cc6c4021538a7bdc_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_8f01bb75c6b114a2c1422575e12b0193\grid_8f01bb75c6b114a2c1422575e12b0193.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_8f01bb75c6b114a2c1422575e12b0193\grid_8f01bb75c6b114a2c1422575e12b0193.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_8f01bb75c6b114a2c1422575e12b0193_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_8f01bb75c6b114a2c1422575e12b0193\grid_8f01bb75c6b114a2c1422575e12b0193_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+12 
+13 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_35fff3cde81614fa6d814cab4cdc4a8a\grid_35fff3cde81614fa6d814cab4cdc4a8a.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_35fff3cde81614fa6d814cab4cdc4a8a\grid_35fff3cde81614fa6d814cab4cdc4a8a.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_35fff3cde81614fa6d814cab4cdc4a8a_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_35fff3cde81614fa6d814cab4cdc4a8a\grid_35fff3cde81614fa6d814cab4cdc4a8a_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+14 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_66e9a2d5517ae7ea3281b9ef5639e760\grid_66e9a2d5517ae7ea3281b9ef5639e760.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_66e9a2d5517ae7ea3281b9ef5639e760\grid_66e9a2d5517ae7ea3281b9ef5639e760.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_66e9a2d5517ae7ea3281b9ef5639e760_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_66e9a2d5517ae7ea3281b9ef5639e760\grid_66e9a2d5517ae7ea3281b9ef5639e760_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+12 
+13 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4ed06710256509acdc09108b8960d598\grid_4ed06710256509acdc09108b8960d598.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4ed06710256509acdc09108b8960d598\grid_4ed06710256509acdc09108b8960d598.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_4ed06710256509acdc09108b8960d598_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4ed06710256509acdc09108b8960d598\grid_4ed06710256509acdc09108b8960d598_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_a18d78bd4b8b92b2db3f779136c8c22e\grid_a18d78bd4b8b92b2db3f779136c8c22e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_a18d78bd4b8b92b2db3f779136c8c22e\grid_a18d78bd4b8b92b2db3f779136c8c22e.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_a18d78bd4b8b92b2db3f779136c8c22e_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_a18d78bd4b8b92b2db3f779136c8c22e\grid_a18d78bd4b8b92b2db3f779136c8c22e_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+13 
+14 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_837418a43a83d96ea6d98177d5fb65bd\grid_837418a43a83d96ea6d98177d5fb65bd.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_837418a43a83d96ea6d98177d5fb65bd\grid_837418a43a83d96ea6d98177d5fb65bd.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_837418a43a83d96ea6d98177d5fb65bd_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_837418a43a83d96ea6d98177d5fb65bd\grid_837418a43a83d96ea6d98177d5fb65bd_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3474b06ad9adfb3d8387ce2f04e39767\grid_3474b06ad9adfb3d8387ce2f04e39767.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3474b06ad9adfb3d8387ce2f04e39767\grid_3474b06ad9adfb3d8387ce2f04e39767.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_3474b06ad9adfb3d8387ce2f04e39767_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3474b06ad9adfb3d8387ce2f04e39767\grid_3474b06ad9adfb3d8387ce2f04e39767_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+13 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_429c97f7b5abbf75f00bb6fe0c6b3740\grid_429c97f7b5abbf75f00bb6fe0c6b3740.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_429c97f7b5abbf75f00bb6fe0c6b3740\grid_429c97f7b5abbf75f00bb6fe0c6b3740.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_429c97f7b5abbf75f00bb6fe0c6b3740_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_429c97f7b5abbf75f00bb6fe0c6b3740\grid_429c97f7b5abbf75f00bb6fe0c6b3740_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+12 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ec18e4b5b552fe56d3b88fcc746ceea1\grid_ec18e4b5b552fe56d3b88fcc746ceea1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ec18e4b5b552fe56d3b88fcc746ceea1\grid_ec18e4b5b552fe56d3b88fcc746ceea1.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_ec18e4b5b552fe56d3b88fcc746ceea1_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_ec18e4b5b552fe56d3b88fcc746ceea1\grid_ec18e4b5b552fe56d3b88fcc746ceea1_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+13 
+14 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b8c490ec1bd8bb29f13cc975b44daaad\grid_b8c490ec1bd8bb29f13cc975b44daaad.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b8c490ec1bd8bb29f13cc975b44daaad\grid_b8c490ec1bd8bb29f13cc975b44daaad.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_b8c490ec1bd8bb29f13cc975b44daaad_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_b8c490ec1bd8bb29f13cc975b44daaad_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b8c490ec1bd8bb29f13cc975b44daaad\grid_b8c490ec1bd8bb29f13cc975b44daaad_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+13 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1f401ffa1b48b366d33c982f00c2b3a3\grid_1f401ffa1b48b366d33c982f00c2b3a3.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1f401ffa1b48b366d33c982f00c2b3a3\grid_1f401ffa1b48b366d33c982f00c2b3a3.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1f401ffa1b48b366d33c982f00c2b3a3_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_1f401ffa1b48b366d33c982f00c2b3a3\grid_1f401ffa1b48b366d33c982f00c2b3a3_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bd9302238eb73e81084b2259543eb178\grid_bd9302238eb73e81084b2259543eb178.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bd9302238eb73e81084b2259543eb178\grid_bd9302238eb73e81084b2259543eb178.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_bd9302238eb73e81084b2259543eb178_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bd9302238eb73e81084b2259543eb178\grid_bd9302238eb73e81084b2259543eb178_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+12 
+13 
+14 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c13285cb4ea2186357c21a5619beb2f4\grid_c13285cb4ea2186357c21a5619beb2f4.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c13285cb4ea2186357c21a5619beb2f4\grid_c13285cb4ea2186357c21a5619beb2f4.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c13285cb4ea2186357c21a5619beb2f4_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c13285cb4ea2186357c21a5619beb2f4\grid_c13285cb4ea2186357c21a5619beb2f4_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_344af7ba8af1fd165617da176c638f25\grid_344af7ba8af1fd165617da176c638f25.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_344af7ba8af1fd165617da176c638f25\grid_344af7ba8af1fd165617da176c638f25.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_344af7ba8af1fd165617da176c638f25_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_344af7ba8af1fd165617da176c638f25\grid_344af7ba8af1fd165617da176c638f25_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+13 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7238f216ddd14a41a901392666b7a05e\grid_7238f216ddd14a41a901392666b7a05e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7238f216ddd14a41a901392666b7a05e\grid_7238f216ddd14a41a901392666b7a05e.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_7238f216ddd14a41a901392666b7a05e_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_7238f216ddd14a41a901392666b7a05e\grid_7238f216ddd14a41a901392666b7a05e_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+12 
+17 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4dd38d90ebd43c336b7d57c3dc4d6f45\grid_4dd38d90ebd43c336b7d57c3dc4d6f45.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4dd38d90ebd43c336b7d57c3dc4d6f45\grid_4dd38d90ebd43c336b7d57c3dc4d6f45.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_4dd38d90ebd43c336b7d57c3dc4d6f45_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_4dd38d90ebd43c336b7d57c3dc4d6f45\grid_4dd38d90ebd43c336b7d57c3dc4d6f45_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+13 
+14 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cf3136e8e21f83cb2458024b59e9863e\grid_cf3136e8e21f83cb2458024b59e9863e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cf3136e8e21f83cb2458024b59e9863e\grid_cf3136e8e21f83cb2458024b59e9863e.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_cf3136e8e21f83cb2458024b59e9863e_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_cf3136e8e21f83cb2458024b59e9863e\grid_cf3136e8e21f83cb2458024b59e9863e_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+12 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_f718ce6281dfb29fd953bff4e420a1f9\grid_f718ce6281dfb29fd953bff4e420a1f9.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_f718ce6281dfb29fd953bff4e420a1f9\grid_f718ce6281dfb29fd953bff4e420a1f9.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_f718ce6281dfb29fd953bff4e420a1f9_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_f718ce6281dfb29fd953bff4e420a1f9\grid_f718ce6281dfb29fd953bff4e420a1f9_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+13 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6546e029270bb32fb54f4d202602dd99\grid_6546e029270bb32fb54f4d202602dd99.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6546e029270bb32fb54f4d202602dd99\grid_6546e029270bb32fb54f4d202602dd99.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6546e029270bb32fb54f4d202602dd99_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6546e029270bb32fb54f4d202602dd99\grid_6546e029270bb32fb54f4d202602dd99_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e105d1f07d37fd92fe80d0c0e72970f8\grid_e105d1f07d37fd92fe80d0c0e72970f8.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e105d1f07d37fd92fe80d0c0e72970f8\grid_e105d1f07d37fd92fe80d0c0e72970f8.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_e105d1f07d37fd92fe80d0c0e72970f8_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_e105d1f07d37fd92fe80d0c0e72970f8\grid_e105d1f07d37fd92fe80d0c0e72970f8_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_fe6f476074c6ce25a2bada1a4d2d650f\grid_fe6f476074c6ce25a2bada1a4d2d650f.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_fe6f476074c6ce25a2bada1a4d2d650f\grid_fe6f476074c6ce25a2bada1a4d2d650f.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_fe6f476074c6ce25a2bada1a4d2d650f_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_fe6f476074c6ce25a2bada1a4d2d650f\grid_fe6f476074c6ce25a2bada1a4d2d650f_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+12 
+13 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2cedfef9699ae76dbe1224c88cda078c\grid_2cedfef9699ae76dbe1224c88cda078c.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2cedfef9699ae76dbe1224c88cda078c\grid_2cedfef9699ae76dbe1224c88cda078c.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_2cedfef9699ae76dbe1224c88cda078c_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2cedfef9699ae76dbe1224c88cda078c\grid_2cedfef9699ae76dbe1224c88cda078c_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+12 
+13 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5e14cd1260304115cfd8c20df3a9286a\grid_5e14cd1260304115cfd8c20df3a9286a.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5e14cd1260304115cfd8c20df3a9286a\grid_5e14cd1260304115cfd8c20df3a9286a.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5e14cd1260304115cfd8c20df3a9286a_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_5e14cd1260304115cfd8c20df3a9286a\grid_5e14cd1260304115cfd8c20df3a9286a_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2ae929d9bb384f35d3aff9b2dffe717b\grid_2ae929d9bb384f35d3aff9b2dffe717b.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2ae929d9bb384f35d3aff9b2dffe717b\grid_2ae929d9bb384f35d3aff9b2dffe717b.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_2ae929d9bb384f35d3aff9b2dffe717b_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2ae929d9bb384f35d3aff9b2dffe717b\grid_2ae929d9bb384f35d3aff9b2dffe717b_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+13 
+14 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bb20ae8173cb00f1caa896146d8b707e\grid_bb20ae8173cb00f1caa896146d8b707e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bb20ae8173cb00f1caa896146d8b707e\grid_bb20ae8173cb00f1caa896146d8b707e.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_bb20ae8173cb00f1caa896146d8b707e_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_bb20ae8173cb00f1caa896146d8b707e\grid_bb20ae8173cb00f1caa896146d8b707e_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+9 
+12 
+13 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_08b6e12089d4112b1b9beeff6878f699\grid_08b6e12089d4112b1b9beeff6878f699.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_08b6e12089d4112b1b9beeff6878f699\grid_08b6e12089d4112b1b9beeff6878f699.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_08b6e12089d4112b1b9beeff6878f699_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_08b6e12089d4112b1b9beeff6878f699\grid_08b6e12089d4112b1b9beeff6878f699_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+9 
+13 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b705f56fe8b5dc6201cea2d4747cdbef\grid_b705f56fe8b5dc6201cea2d4747cdbef.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b705f56fe8b5dc6201cea2d4747cdbef\grid_b705f56fe8b5dc6201cea2d4747cdbef.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_b705f56fe8b5dc6201cea2d4747cdbef_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_b705f56fe8b5dc6201cea2d4747cdbef\grid_b705f56fe8b5dc6201cea2d4747cdbef_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+8 
+13 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3fac81abc6f00f02fc19883ec800cc68\grid_3fac81abc6f00f02fc19883ec800cc68.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3fac81abc6f00f02fc19883ec800cc68\grid_3fac81abc6f00f02fc19883ec800cc68.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_3fac81abc6f00f02fc19883ec800cc68_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_3fac81abc6f00f02fc19883ec800cc68\grid_3fac81abc6f00f02fc19883ec800cc68_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_756a48b305372af050ec729b6a6f9417\grid_756a48b305372af050ec729b6a6f9417.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_756a48b305372af050ec729b6a6f9417\grid_756a48b305372af050ec729b6a6f9417.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_756a48b305372af050ec729b6a6f9417_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_756a48b305372af050ec729b6a6f9417\grid_756a48b305372af050ec729b6a6f9417_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+7 
+13 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_60fe326f6e2b9902f941c669b8741c01\grid_60fe326f6e2b9902f941c669b8741c01.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_60fe326f6e2b9902f941c669b8741c01\grid_60fe326f6e2b9902f941c669b8741c01.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_60fe326f6e2b9902f941c669b8741c01_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_60fe326f6e2b9902f941c669b8741c01\grid_60fe326f6e2b9902f941c669b8741c01_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+12 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2a853a7cdfd80d15c74683cfa4136769\grid_2a853a7cdfd80d15c74683cfa4136769.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2a853a7cdfd80d15c74683cfa4136769\grid_2a853a7cdfd80d15c74683cfa4136769.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_2a853a7cdfd80d15c74683cfa4136769_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2a853a7cdfd80d15c74683cfa4136769\grid_2a853a7cdfd80d15c74683cfa4136769_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+8 
+9 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c2a58ae7b6423734062acb903e64973e\grid_c2a58ae7b6423734062acb903e64973e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c2a58ae7b6423734062acb903e64973e\grid_c2a58ae7b6423734062acb903e64973e.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_c2a58ae7b6423734062acb903e64973e_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_c2a58ae7b6423734062acb903e64973e\grid_c2a58ae7b6423734062acb903e64973e_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6f4922f45568161a8cdf4ad2299f6d23\grid_6f4922f45568161a8cdf4ad2299f6d23.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6f4922f45568161a8cdf4ad2299f6d23\grid_6f4922f45568161a8cdf4ad2299f6d23.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6f4922f45568161a8cdf4ad2299f6d23_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_6f4922f45568161a8cdf4ad2299f6d23\grid_6f4922f45568161a8cdf4ad2299f6d23_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*remove_elements 
+9 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_827a36a095b7654a6e76d67658b8a82f\grid_827a36a095b7654a6e76d67658b8a82f.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_827a36a095b7654a6e76d67658b8a82f\grid_827a36a095b7654a6e76d67658b8a82f.mud.
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_827a36a095b7654a6e76d67658b8a82f_job - - - - - n n - - 0 1 1 0 - -
+Job job submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_827a36a095b7654a6e76d67658b8a82f\grid_827a36a095b7654a6e76d67658b8a82f_job.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5\grid_1_5x5 opened.
+*identify_applys
+*redraw

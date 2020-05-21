@@ -8,6 +8,7 @@ import re
 import time
 
 from pathlib import Path
+from scipy.special import comb
 
 ################################################################################
 
@@ -143,13 +144,21 @@ def make_folder(l: str) -> None:
 
 ################################################################################
 
-def sel_random(l: list) -> list:
+def sel_random(
+    l: list,
+    f: int = 0,
+    r: list = [],
+    ) -> list:
     """Randomly select a random number of numbers from a given list of numbers
 
     Parameters
     ----------
     l : list
         The given list of numbers
+    f : int, optional
+        How many numbers to select, by default 0
+    r : list, optional
+        A range of numbers that may be selected, by default []
 
     Returns
     -------
@@ -161,129 +170,36 @@ def sel_random(l: list) -> list:
     sel = []
     l_temp = l[:]
 
-    #   Generate a random number determining how many numbers will be selected
-    sel_n = numpy.random.randint(low = 1, high = len(l))
+    #   Check if the range is not empty
+    if r != []:
 
-    #   Loop through the list of numbers to be selected
-    for i in range(0, sel_n):
-        
-        #   Select a random number from the list of numbers
-        sel.append(numpy.random.choice(numpy.asarray(l_temp)))
+        #   Determine how many numbers to select from the given range of numbers
+        n_sel = numpy.random.choice(numpy.asarray(r))
 
-        #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
-        l_temp.remove(sel[i])
+    #   Check if how many numbers to select is not zero
+    elif f != 0:
 
-    #   Sort the list of selected numbers
-    sel.sort()
-
-    return sel
-
-################################################################################
-
-def sel_random_fixed(
-    l: list,
-    f: int,
-    ) -> list:
-    """Randomly select a fixed number of numbers from a given list of numbers
-
-    Parameters
-    ----------
-    l : list
-        The given list of numbers
-    f : int
-        The fixed number of numbers
-
-    Returns
-    -------
-    list
-        The randomly selected numbers
-    """    
-    
-    #   Initialisations
-    sel = []
-    l_temp = l[:]
-
-    #   Loop through the list of numbers to be selected
-    for i in range(0, f):
-        
-        #   Select a random number from the list of numbers
-        sel.append(numpy.random.choice(numpy.asarray(l_temp)))
-
-        #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
-        l_temp.remove(sel[i])
-
-    #   Sort the list of selected numbers
-    sel.sort()
-
-    return sel
-
-################################################################################
-
-def sel_random_range(
-    l: list,
-    r: list,
-    ) -> list:
-    """Randomly select a ranged amount of numbers from a given list of numbers
-
-    Parameters
-    ----------
-    l : list
-        The given list of numbers
-    r : list
-        The range of numbers to be selected
-
-    Returns
-    -------
-    list
-        The randomly selected numbers
-    """
-
-    #   Initialisations
-    sel = []
-    l_temp = l[:]
-
-    r_sel = numpy.random.choice(numpy.asarray(r))
-
-    #   Loop through the list of numbers to be selected
-    for i in range(0, r_sel):
-        
-        #   Select a random number from the list of numbers
-        sel.append(numpy.random.choice(numpy.asarray(l_temp)))
-
-        #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
-        l_temp.remove(sel[i])
-
-    #   Sort the list of selected numbers
-    sel.sort()
-
-    return sel
-
-################################################################################
-
-def replace(x: int, m: int) -> int:
-    """Replace list elements that are outside of an allowed range
-
-    Parameters
-    ----------
-    x : int
-        The list item to be inspected
-    m : int
-        The maximum allowed value
-
-    Returns
-    -------
-    int
-        The list item value
-    """    
-
-    if x > m:
-        return m
-
-    elif x <= 0:
-        return 1
+        #   Determine how many numbers to select from the given number
+        n_sel = f
 
     else:
-        return x
+
+        #   Determine how many numbers to select from the given list
+        n_sel = numpy.random.randint(low = 1, high = len(l_temp))
+
+    #   Loop through the amount of numbers to be selected
+    for i in range(0, n_sel):
+        
+        #   Select a random number from the list of numbers
+        sel.append(numpy.random.choice(numpy.asarray(l_temp)))
+
+        #   Remove the selected number from the list of numbers to prevent the same number from being selected more than once
+        l_temp.remove(sel[i])
+
+    #   Sort the list of selected numbers
+    sel.sort()
+
+    return sel
 
 ################################################################################
 
@@ -384,6 +300,134 @@ def add_sort_list(
 
 ################################################################################
 
+def clean_list(
+    l: list,
+    ub: int,
+    lb: int = 0,
+    ) -> list:
+    """Clean a list according to a given upper and lower bound
+
+    Parameters
+    ----------
+    l : list
+        The list to be cleaned
+    ub : int
+        The inclusive upper bound
+    lb : int, optional
+        The exclusive lower bound, by default 0
+
+    Returns
+    -------
+    list
+        The cleaned list
+    """
+
+    #   Initialisations
+    l_temp = l[:]
+
+    #   Replace all out-of-bounds values with the boundary values
+    l_temp = [clean_int(i, ub, lb = lb) for i in l_temp]
+
+    #   Sort the list and remove duplicates
+    l_temp = list(set(l_temp))
+
+    return l_temp
+
+################################################################################
+
+def clean_int(
+    i: int,
+    ub: int,
+    lb: int = 0,
+    ) -> int:
+    """Clean an integer according to a given upper and lower bound
+
+    Parameters
+    ----------
+    i : int
+        The integer to be cleaned
+    ub : int
+        The inclusive upper bound
+    lb : int, optional
+        The exclusive lower bound, by default 0
+
+    Returns
+    -------
+    int
+        The cleaned integer
+    """    
+
+    #   Initialisations
+    i_temp = i
+
+    #   Check if the integer is above the upper bound
+    if i_temp > ub:
+
+        #   Set it to the upper bound
+        i_temp = ub
+
+    #   Check if the integer is below or equal to the lower bound
+    elif i_temp <= lb:
+
+        #   Set it to one above the lower bound
+        i_temp = lb + 1
+
+    return i_temp
+
+################################################################################
+
+def nCr(
+    n: int,
+    r: int = 0,
+    l: list = [],
+    ) -> int:
+    """Calculate the n Choose r value for a single, multiple or all r
+
+    Parameters
+    ----------
+    n : int
+        The number to choose from
+    r : int, optional
+        The numbers to choose, by default 0
+    l : list, optional
+        The list of numbers to choose, by default []
+
+    Returns
+    -------
+    int
+        The total possible choices
+    """
+
+    #   Initialisations
+    c = 0
+
+    #   Check if the list is not empty
+    if l != []:
+
+        #   Loop through the list
+        for i in range(0, len(l)):
+
+            #   Cumulatively calculate the n Choose r value for each list item
+            c += comb(n, l[i], exact = True)
+
+    #   Check if r is not zero
+    elif r != 0:
+
+        #   Calculate the n Choose r value
+        c = comb(n, r, exact = True)
+
+    else:
+
+        #   Loop through all possible r
+        for i in range(0, n):
+
+            #   Cumulatively calculate the n Choose r value
+            c += comb(n, i, exact = True)
+
+    return c
+
+################################################################################
+
 def list_to_float(l: list) -> [list, int]:
     """Extract a list of floats from a given list
 
@@ -414,7 +458,7 @@ def list_to_float(l: list) -> [list, int]:
         except:
             l_f += 1
 
-    return (l_o, l_f)
+    return l_o, l_f
 
 ################################################################################
 

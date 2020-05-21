@@ -9,7 +9,7 @@ import re
 import time
 
 from evolve_soft_2d import utility
-from evolve_soft_2d.file_paths import fp_u, fp_r, create_fp_file
+from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.log import m_log, en_log
 from evolve_soft_2d.unit import modify
 
@@ -96,6 +96,7 @@ def check_out(
 
     #   Check if the exit number indicates a loss of connection to the license server
     elif exit_number == 67:
+
         m_log.error("License server connection timed out or failed")
 
         #   Loop until a valid decision is made
@@ -159,114 +160,7 @@ def check_out(
 
 ################################################################################
 
-def max_min(
-    template,
-    l: str,
-    fp_t16: str,
-    ) -> None:
-    """Obtain the maximum and minimum values from the results
-
-    Parameters
-    ----------
-    template 
-        The unit template parameters
-    l : str
-        The label for the results file
-        Either a template or unit identifier
-    fp_t16 : str
-        The file path of the model t16 file
-    """
-
-    #   Initialisations
-    #   Empty lists for the values and their respective nodes and timestamps
-    max_v = []
-    max_n = []
-    max_t = []
-    min_v = []
-    min_n = []
-    min_t = []
-
-    #   The labels of the desired results
-    label = []
-    label.append("Displacement X")
-    label.append("Displacement Y")
-    label.append("Reaction Force X")
-    label.append("Reaction Force Y")
-    label.append("Equivalent Von Mises Stress")
-    label.append("Total Strain Energy Density")
-
-    #   Open the results file
-    py_send("@main(results) @popup(modelplot_pm) *post_open \"{}\"".format(fp_t16))
-    py_send("*post_numerics")
-
-    #   Loop through all given labels
-    for i in range(0, len(label)):
-
-        #   Initialise lists for the current label
-        max_v.append(0)
-        max_n.append(0)
-        max_t.append(0)
-
-        min_v.append(0)
-        min_n.append(0)
-        min_t.append(0)
-
-        #   Rewind the post file to the initial step
-        py_send("*post_rewind")
-
-        #   Set the post file to the current label
-        py_send("*post_value {}".format(label[i]))
-
-        #   Loop through all steps of the post file
-        for j in range(0, template.n_steps + 1):
-            
-            #   Obtain the current maximum and minimum values
-            max_n_c = py_get_float("scalar_max_node()")
-            max_v_c = py_get_float("scalar_1({})".format(max_n_c))
-
-            min_n_c = py_get_float("scalar_min_node()")
-            min_v_c = py_get_float("scalar_1({})".format(min_n_c))
-
-            #   Check if the current value is the overall maximum or minimum value
-            if max_v_c > max_v[i]:
-
-                max_v[i] = max_v_c
-                max_n[i] = int(max_n_c)
-                max_t[i] = j
-
-            if min_v_c < min_v[i]:
-
-                min_v[i] = min_v_c
-                min_n[i] = int(min_n_c)
-                min_t[i] = j
-
-            #   Increment the post file
-            py_send("*post_next")
-
-    #   Rewind the post file
-    py_send("*post_rewind")
-
-    max_save = []
-    max_save.append(max_t)
-    max_save.append(max_n)
-    max_save.append(max_v)
-
-    min_save = []
-    min_save.append(min_t)
-    min_save.append(min_n)
-    min_save.append(min_v)
-
-    #   Write the results to csv files
-    save_2d_list_to_csv(template, "max_" + l, max_save)
-    save_2d_list_to_csv(template, "min_" + l, min_save)
-
-    py_send("*post_close")
-
-    return
-
-################################################################################
-
-def all_n(
+def all_val(
     template,
     l: str,
     fp_t16: str,
@@ -331,11 +225,11 @@ def all_n(
     return
 ################################################################################
 
-def read_c_e(
+def read_val(
     template,
     l: str,
     ) -> float:
-    """Read the constraint energy value for a model
+    """Read a specific value from a results file
 
     Parameters
     ----------
@@ -348,18 +242,19 @@ def read_c_e(
     Returns
     -------
     float
-        The constraint energy value
+        The found value
     """
 
     #   Create the file path of the results file
-    fp_r_f = create_fp_file(template, "Constraint Energy External_" + l, "r")
+    fp_r_f = create_fp_file(template, l, "r")
 
+    #   Read the value as a float if possible
     try:
-        c_e = float(linecache.getline(fp_r_f, template.n_steps + 1))
+        val = float(linecache.getline(fp_r_f, template.n_steps + 1))
     except:
-        c_e = None
+        val = None
 
-    return c_e
+    return val
 
 ################################################################################
 

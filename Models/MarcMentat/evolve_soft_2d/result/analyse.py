@@ -152,7 +152,7 @@ def internal_energy(
     fp_r_f = create_fp_file(template, label + "_" + l, "r")
 
     #   Store the results from the results file in the strain energy variable
-    s = numpy.genfromtxt(fp_r_f, delimiter = ",")
+    s = numpy.genfromtxt(fp_r_f, delimiter = ",")*1000
 
     #   Initialise the interna; energy array
     i_e = numpy.zeros(len(s))

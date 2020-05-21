@@ -42,9 +42,11 @@ def main():
 
     temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
 
-    fp_lu = file_paths.create_fp_file(temp, "_2020-05-19--15-14-11", "l")
+    l = [-1, 0, 1, 2, 5, 8, 9, 10, 12, 3]
 
-    analyse.monte_carlo(temp, fp_lu)
+    l = utility.clean_list(l, len(temp.e_internal))
+
+    print(l)
 
     return
 

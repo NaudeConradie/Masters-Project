@@ -1,8 +1,8 @@
 ##  Functions used with the Marc Mentat units
 
 #   Imports
-from evolve_soft_2d import utility
 from evolve_soft_2d.log import m_log
+from evolve_soft_2d.result import analyse, obtain
 
 from py_mentat import py_send, py_get_int, py_get_float
 
@@ -415,6 +415,45 @@ def run_job() -> None:
     m_log.info("Job run in {:.3f}s".format(t1 - t0))
 
     return
+
+################################################################################
+
+def run_model(
+    template,
+    l: str,
+    ) -> bool:
+    """Run a model
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    l : str
+        The label of the model
+
+    Returns
+    -------
+    bool
+        True if the model run was successful, false otherwise
+    """
+
+    #   Run the job
+    run_job()
+
+    #   Determine the existence of the results
+    run_success = obtain.check_out(template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+
+    #   Check if the run was a success
+    if run_success:
+
+        #   Obtain the results
+        obtain.all_val(template, l, template.fp_t_t16)
+
+        #   Analyse the results
+        analyse.constraint_energy(template, l)
+        analyse.internal_energy(template, l)
+        
+    return run_success
 
 ################################################################################
 

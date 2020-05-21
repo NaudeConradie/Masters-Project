@@ -68,6 +68,7 @@ class template:
         apply: float,
         run_success: bool = False,
         c_e: float = 0,
+        i_e: float = 0,
         ) -> None:
         """Unit template parameters
 
@@ -95,6 +96,8 @@ class template:
             The success of the unit template's run, by default False
         c_e : float, optional
             The constraint energy of the unit template, by default 0
+        i_e : float, optional
+            The internal energy of the unit template, by default 0
         """
 
         self.case = case
@@ -108,6 +111,7 @@ class template:
         self.apply = apply
         self.run_success = run_success
         self.c_e = c_e
+        self.i_e = i_e
 
         #   The total number of nodes
         self.n_n = self.x_n * self.y_n
@@ -150,10 +154,11 @@ class template:
         r_int = "Internal elements: {}\n".format(self.e_internal)
         r_ste = "Analysis steps:    {}\n".format(self.n_steps)
         r_run = "Run successful:    {}\n".format(self.run_success)
-        r_con = "Constraint energy: {}\n".format(self.c_e)
+        r_c_e = "Constraint energy: {}\n".format(self.c_e)
+        r_i_e = "Internal energy:   {}\n".format(self.i_e)
         r_ogd = "Ogden material parameters:\n{}\n".format(self.ogd_mat)
         r_tim = "Time created:      {}".format(time.ctime())
-        return r_cas + r_ori + r_dim + r_int + r_ste + r_run + r_con + r_ogd + r_tim
+        return r_cas + r_ori + r_dim + r_int + r_ste + r_run + r_c_e + r_i_e + r_ogd + r_tim
 
 ################################################################################
 
@@ -168,6 +173,7 @@ class unit_p:
         grid: list,
         run_success: bool = False,
         c_e: float = 0,
+        i_e: float = 0,
         ) -> None:
         """The unit parameters
 
@@ -183,6 +189,8 @@ class unit_p:
             The success of the unit's run, by default False
         c_e : int, optional
             The constraint energy of the unit, by default 0
+        i_e : int, optional
+            The internal energy of the unit, by default 0
         """
 
         self.template = template
@@ -190,6 +198,7 @@ class unit_p:
         self.grid = grid
         self.run_success = run_success
         self.c_e = c_e
+        self.i_e = i_e
 
         #   The list of elements removed from the unit as a string
         self.rem_l = utility.list_to_str(rem, "_")
@@ -221,9 +230,10 @@ class unit_p:
         r_rem = "Removed elements:  {}\n".format(self.rem)
         r_gri = "Representative grid:\n{}\n".format(self.grid_l)
         r_run = "Run successful:    {}\n".format(self.run_success)
-        r_con = "Constraint energy: {}\n\n".format(self.c_e)
+        r_c_e = "Constraint energy: {}\n".format(self.c_e)
+        r_i_e = "Internal energy:   {}\n\n".format(self.i_e)
         r_tem = "Template details:\n{}".format(self.template)
-        return r_mod + r_rem + r_gri + r_run + r_con + r_tem
+        return r_mod + r_rem + r_gri + r_run + r_c_e + r_i_e + r_tem
 
     def format_grid(self) -> str:
         """Function to format the representative grid for the log

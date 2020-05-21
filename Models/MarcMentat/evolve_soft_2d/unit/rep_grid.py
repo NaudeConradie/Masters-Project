@@ -78,7 +78,7 @@ def rem_el_grid(
 
     Parameters
     ----------
-    template : class
+    template : template
         The unit template parameters
     rem : list
         The element IDs of the elements to be removed
@@ -110,7 +110,7 @@ def rem_el_free_grid(
 
     Parameters
     ----------
-    template : class
+    template : template
         The unit template parameters
     grid_label : list
         Representative grid with clusters incrementally labelled
@@ -145,4 +145,4 @@ def rem_el_free_grid(
             #   Increment the removed element counter
             rem_i = rem_i + 1
 
-    return (grid_rem, rem)
+    return grid_rem, rem
