@@ -43,7 +43,7 @@
 
              integer*8 version: integers are 64-bits
 
-             date: Wed May 20 20:08:39 2020
+             date: Thu May 21 17:21:19 2020
 
 
              (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
@@ -251,23 +251,23 @@
                     2         5         1
                    node      coordinates
 
-             define              node                set                 bc_fd_y0_nodes                                                                                      
+             define              node                set                 bc_fd_yy1_nodes                                                                                     
              ----------
 
              from node          1 to node          6 by          1
 
-             define              node                set                 bc_fd_y1_nodes                                                                                      
+             define              node                set                 bc_fd_yy2_nodes                                                                                     
              ----------
 
              from node         31 to node         36 by          1
 
-             define              node                set                 bc_fd_x0_nodes                                                                                      
+             define              node                set                 bc_fd_xx1_nodes                                                                                     
              ----------
 
              a list of nodes given below 
                      1         7        13        19        25        31
 
-             define              node                set                 bc_fd_x1_nodes                                                                                      
+             define              node                set                 bc_fd_xx2_nodes                                                                                     
              ----------
 
              a list of nodes given below 
@@ -343,7 +343,7 @@
 
              read data from unit    5
 
-             name of boundary condition bc_fd_y0
+             name of boundary condition bc_fd_yy1
 
              Displacements are applied incrementally relative to current position
 
@@ -351,9 +351,9 @@
 
              applied to node ids       
 
-             bc_fd_y0_nodes
+             bc_fd_yy1_nodes
 
-             name of boundary condition bc_fd_y1
+             name of boundary condition bc_fd_yy2
 
              Displacements are applied incrementally relative to current position
 
@@ -361,19 +361,9 @@
 
              applied to node ids       
 
-             bc_fd_y1_nodes
+             bc_fd_yy2_nodes
 
-             name of boundary condition bc_fd_x0
-
-             Displacements are applied incrementally relative to current position
-
-             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
-
-             applied to node ids       
-
-             bc_fd_x0_nodes
-
-             name of boundary condition bc_fd_x1
+             name of boundary condition bc_fd_xx1
 
              Displacements are applied incrementally relative to current position
 
@@ -381,19 +371,29 @@
 
              applied to node ids       
 
-             bc_fd_x1_nodes
+             bc_fd_xx1_nodes
+
+             name of boundary condition bc_fd_xx2
+
+             Displacements are applied incrementally relative to current position
+
+             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
+
+             applied to node ids       
+
+             bc_fd_xx2_nodes
 
              loadcase            job                                                                                                                                         
              ----------
 
 
-             activate boundary condition bc_fd_y0
+             activate boundary condition bc_fd_yy1
 
-             activate boundary condition bc_fd_y1
+             activate boundary condition bc_fd_yy2
 
-             activate boundary condition bc_fd_x0
+             activate boundary condition bc_fd_xx1
 
-             activate boundary condition bc_fd_x1
+             activate boundary condition bc_fd_xx2
 
              contact                      5         0                                                                                                                        
              ----------
@@ -528,9 +528,9 @@
              end option                                                                                                                                                      
              ----------
 
-             wall time =          34.00
+             wall time =          25.00
 
-             wall time =          34.00
+             wall time =          25.00
 
 
              direct symmetric multi-frontal sparse solver is invoked for region   1
@@ -656,7 +656,7 @@
              e n d   o f   i n c r e m e n t       0
 
              binary post data at increment       0.  subincrement    0.  on file 16
-             wall time =          35.00
+             wall time =          26.00
 
 
              $...................                                                                                                                                            
@@ -671,13 +671,13 @@
              ----------
 
 
-             activate boundary condition bc_fd_y0
+             activate boundary condition bc_fd_yy1
 
-             activate boundary condition bc_fd_y1
+             activate boundary condition bc_fd_yy2
 
-             activate boundary condition bc_fd_x0
+             activate boundary condition bc_fd_xx1
 
-             activate boundary condition bc_fd_x1
+             activate boundary condition bc_fd_xx2
 
              $....allowed contact remains unchanged                                                                                                                          
 
@@ -823,7 +823,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          35.00
+             wall time =          26.00
 
 
 
@@ -838,7 +838,7 @@
 
 
              start of matrix solution
-             wall time =          35.00
+             wall time =          26.00
 
 
 
@@ -846,7 +846,7 @@
 
 
              end of matrix solution
-             wall time =          36.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -878,7 +878,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          36.00
+             wall time =          26.00
 
 
 
@@ -893,7 +893,7 @@
 
 
              start of matrix solution
-             wall time =          36.00
+             wall time =          26.00
 
 
 
@@ -901,7 +901,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -986,7 +986,7 @@
              e n d   o f   i n c r e m e n t       1
 
              binary post data at increment       1.  subincrement    0.  on file 16
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1011,7 +1011,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1026,7 +1026,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1034,7 +1034,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1066,7 +1066,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1081,7 +1081,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1089,7 +1089,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1174,7 +1174,7 @@
              e n d   o f   i n c r e m e n t       2
 
              binary post data at increment       2.  subincrement    0.  on file 16
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1199,7 +1199,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1214,7 +1214,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1222,7 +1222,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1254,7 +1254,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1269,7 +1269,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1277,7 +1277,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1309,7 +1309,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1324,7 +1324,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1332,7 +1332,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1417,7 +1417,7 @@
              e n d   o f   i n c r e m e n t       3
 
              binary post data at increment       3.  subincrement    0.  on file 16
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1442,7 +1442,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1457,7 +1457,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1465,7 +1465,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1497,7 +1497,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1512,7 +1512,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1520,7 +1520,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1552,7 +1552,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1567,7 +1567,7 @@
 
 
              start of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
 
@@ -1575,7 +1575,7 @@
 
 
              end of matrix solution
-             wall time =          37.00
+             wall time =          26.00
 
 
      body        1: cbody1
@@ -1660,7 +1660,7 @@
              e n d   o f   i n c r e m e n t       4
 
              binary post data at increment       4.  subincrement    0.  on file 16
-             wall time =          37.00
+             wall time =          26.00
 
 
              $....end of loadcase lcase1                                                                                                                                     
@@ -1704,16 +1704,16 @@
 
              timing information:                             wall time      cpu time
 
-               total time for input:                              0.27          0.05
-               total time for stiffness matrix assembly:          0.35          0.00
+               total time for input:                              0.29          0.05
+               total time for stiffness matrix assembly:          0.02          0.02
                total time for mass matrix assembly:               0.00          0.00
-               total time for stress recovery:                    0.01          0.03
-               total time for matrix solution:                    1.48          0.08
+               total time for stress recovery:                    0.02          0.00
+               total time for matrix solution:                    0.26          0.11
                total time for contact:                            0.00          0.00
-               total time for output:                             0.63          0.05
-               total time for miscellaneous:                     34.17          0.59
+               total time for output:                             0.49          0.06
+               total time for miscellaneous:                     24.96          0.59
                ---------------------------------------------------------------------
-               total time:                                       36.92          0.80
+               total time:                                       26.04          0.83
 
 
              **************************************************************************

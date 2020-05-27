@@ -2,6 +2,8 @@
 
 #   Imports
 import importlib
+import re
+import numpy
 
 from evolve_soft_2d import classes, file_paths, log, utility
 from evolve_soft_2d.classes import template, mold_star_15
@@ -38,15 +40,28 @@ def main():
     #   p_mag = 25
     d_mag = (y_n - 1)/2
     #   Template case to be run
-    case = 1
+    case = 2
 
     temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
 
-    l = [-1, 0, 1, 2, 5, 8, 9, 10, 12, 3]
+    label = []
+    label.append("Displacement X")
+    label.append("Displacement Y")
+    label.append("Displacement")
+    label.append("Reaction Force X")
+    label.append("Reaction Force Y")
+    label.append("Reaction Force")
 
-    l = utility.clean_list(l, len(temp.e_internal))
+    v = numpy.zeros((len(label), temp.n_steps + 1, temp.n_n))
+    n_external_i = [i - 1 for i in temp.n_external]
 
-    print(l)
+    #   Store only the external node values
+    v_ex = v[:, :, n_external_i]
+
+    print(len(v_ex))
+    print(len(v_ex[1]))
+    print(len(v_ex[1, 1]))
+    
 
     return
 

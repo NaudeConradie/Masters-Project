@@ -3,7 +3,7 @@
 #   Imports
 import importlib
 
-from evolve_soft_2d import classes, file_paths, log, utility
+from evolve_soft_2d import classes, file_paths, log, plotting, utility
 from evolve_soft_2d.classes import template, mold_star_15
 from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.unit import create, inspect, modify, rep_grid
@@ -19,6 +19,7 @@ def main():
     #   Reload the modules
     importlib.reload(classes)
     importlib.reload(file_paths)
+    importlib.reload(plotting)
     importlib.reload(utility)
     importlib.reload(analyse)
     importlib.reload(obtain)
@@ -47,24 +48,14 @@ def main():
     #   Prepare the unit parameters
     temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
 
-    #   Flag to be set if the base unit needs to be regenerated
-    regen_base = False
-
-    #   Check if the template exists
-    exists = utility.if_file_exist(temp.fp_t_mud)
-
-    #   Open the base file if it exists
-    if exists and not regen_base:
-        modify.open_model(temp.fp_t_mud)
-
-    #   Create the base file if it does not exist
-    elif temp.case == 1:
+    #   Create the template
+    if temp.case == 1:
         create.template_1(temp)
     elif temp.case == 2:
         create.template_2(temp)
 
     #   Generate a number of units and save their results
-    fp_lu = create.gen_units(temp, 100)
+    fp_lu = create.gen_units(temp, 1)
 
     #   Analyse the results
     analyse.monte_carlo(temp, fp_lu)

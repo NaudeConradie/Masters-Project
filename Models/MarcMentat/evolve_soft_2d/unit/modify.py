@@ -137,8 +137,9 @@ def add_bc_fd_ee(
     label: str,
     tab_nam: str,
     a: str,
+    d: str,
     e: int,
-    d: float,
+    m: float,
     ) -> None:
     """Add fixed displacement boundary conditions along an entire edge
 
@@ -149,11 +150,14 @@ def add_bc_fd_ee(
     tab_nam : str
         The name of the table defining the displacement function if applicable
     a : str
-        The axis of the boundary condition
+        The axis of the applied boundary condition
+        "x" or "y"
+    d : str
+        The direction of the applied boundary condition
         "x" or "y"
     e : int
         The edge coordinate of the boundary condition
-    d : float
+    m : float
         The magnitude of the applied displacement
     """
 
@@ -168,7 +172,7 @@ def add_bc_fd_ee(
     py_send("*apply_type fixed_displacement")
     py_send("*apply_name bc_fd_{}".format(label))
     py_send("*apply_dof {}".format(a))
-    py_send("*apply_dof_value {} {}".format(a, d))
+    py_send("*apply_dof_value {} {}".format(a, m))
     
     #   Apply the displacement function if applicable
     if tab_nam != "":
@@ -178,7 +182,7 @@ def add_bc_fd_ee(
     for i in range(1, n_n + 1):
 
         #   Fetch the relevant coordinate of the current node
-        c_n = py_get_float("node_{}({})".format(a, i))
+        c_n = py_get_float("node_{}({})".format(d, i))
 
         #   Check if the selected coordinate matches the desired edge
         if c_n == e:
@@ -421,6 +425,9 @@ def run_job() -> None:
 def run_model(
     template,
     l: str,
+    fp_mud: str,
+    fp_log: str,
+    fp_t16: str,
     ) -> bool:
     """Run a model
 
@@ -430,6 +437,12 @@ def run_model(
         The unit template parameters
     l : str
         The label of the model
+    fp_mud : str
+        The file path of the model file
+    fp_log : str
+        The file path of the model log file
+    fp_t16 : str
+        The file path of the model t16 file
 
     Returns
     -------
@@ -441,13 +454,13 @@ def run_model(
     run_job()
 
     #   Determine the existence of the results
-    run_success = obtain.check_out(template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+    run_success = obtain.check_out(fp_mud, fp_log, fp_t16)
 
     #   Check if the run was a success
     if run_success:
 
         #   Obtain the results
-        obtain.all_val(template, l, template.fp_t_t16)
+        obtain.all_val(template, l, fp_t16)
 
         #   Analyse the results
         analyse.constraint_energy(template, l)

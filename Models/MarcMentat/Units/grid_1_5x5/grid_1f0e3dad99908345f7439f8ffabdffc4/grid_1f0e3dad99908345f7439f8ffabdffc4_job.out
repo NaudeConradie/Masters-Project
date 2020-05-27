@@ -43,7 +43,7 @@
 
              integer*8 version: integers are 64-bits
 
-             date: Wed May 20 17:49:34 2020
+             date: Fri May 22 10:06:28 2020
 
 
              (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
@@ -251,23 +251,23 @@
                     2         5         1
                    node      coordinates
 
-             define              node                set                 bc_fd_y0_nodes                                                                                      
+             define              node                set                 bc_fd_yy1_nodes                                                                                     
              ----------
 
              from node          1 to node          6 by          1
 
-             define              node                set                 bc_fd_y1_nodes                                                                                      
+             define              node                set                 bc_fd_yy2_nodes                                                                                     
              ----------
 
              from node         31 to node         36 by          1
 
-             define              node                set                 bc_fd_x0_nodes                                                                                      
+             define              node                set                 bc_fd_xx1_nodes                                                                                     
              ----------
 
              a list of nodes given below 
                      1         7        13        19        25        31
 
-             define              node                set                 bc_fd_x1_nodes                                                                                      
+             define              node                set                 bc_fd_xx2_nodes                                                                                     
              ----------
 
              a list of nodes given below 
@@ -343,7 +343,7 @@
 
              read data from unit    5
 
-             name of boundary condition bc_fd_y0
+             name of boundary condition bc_fd_yy1
 
              Displacements are applied incrementally relative to current position
 
@@ -351,9 +351,9 @@
 
              applied to node ids       
 
-             bc_fd_y0_nodes
+             bc_fd_yy1_nodes
 
-             name of boundary condition bc_fd_y1
+             name of boundary condition bc_fd_yy2
 
              Displacements are applied incrementally relative to current position
 
@@ -361,19 +361,9 @@
 
              applied to node ids       
 
-             bc_fd_y1_nodes
+             bc_fd_yy2_nodes
 
-             name of boundary condition bc_fd_x0
-
-             Displacements are applied incrementally relative to current position
-
-             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
-
-             applied to node ids       
-
-             bc_fd_x0_nodes
-
-             name of boundary condition bc_fd_x1
+             name of boundary condition bc_fd_xx1
 
              Displacements are applied incrementally relative to current position
 
@@ -381,19 +371,29 @@
 
              applied to node ids       
 
-             bc_fd_x1_nodes
+             bc_fd_xx1_nodes
+
+             name of boundary condition bc_fd_xx2
+
+             Displacements are applied incrementally relative to current position
+
+             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
+
+             applied to node ids       
+
+             bc_fd_xx2_nodes
 
              loadcase            job                                                                                                                                         
              ----------
 
 
-             activate boundary condition bc_fd_y0
+             activate boundary condition bc_fd_yy1
 
-             activate boundary condition bc_fd_y1
+             activate boundary condition bc_fd_yy2
 
-             activate boundary condition bc_fd_x0
+             activate boundary condition bc_fd_xx1
 
-             activate boundary condition bc_fd_x1
+             activate boundary condition bc_fd_xx2
 
              contact                      5         0                                                                                                                        
              ----------
@@ -671,13 +671,13 @@
              ----------
 
 
-             activate boundary condition bc_fd_y0
+             activate boundary condition bc_fd_yy1
 
-             activate boundary condition bc_fd_y1
+             activate boundary condition bc_fd_yy2
 
-             activate boundary condition bc_fd_x0
+             activate boundary condition bc_fd_xx1
 
-             activate boundary condition bc_fd_x1
+             activate boundary condition bc_fd_xx2
 
              $....allowed contact remains unchanged                                                                                                                          
 
@@ -2494,7 +2494,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2502,7 +2502,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -2534,7 +2534,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     8
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2549,7 +2549,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2557,7 +2557,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -2589,7 +2589,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     9
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2604,7 +2604,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2612,7 +2612,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -2644,7 +2644,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is    10
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2659,7 +2659,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2667,7 +2667,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -2722,7 +2722,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2737,7 +2737,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2745,7 +2745,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -2777,7 +2777,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2792,7 +2792,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2800,7 +2800,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
              *** error - element inside out at element        24 integration point     2
@@ -2857,7 +2857,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2872,7 +2872,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -2880,7 +2880,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -2967,7 +2967,7 @@
              increment       1   will be repeated
              remaining time increment:  4.6875000E-02
              current   time increment:  3.1250000E-02
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3006,7 +3006,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3021,7 +3021,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3029,7 +3029,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3061,7 +3061,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3076,7 +3076,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3084,7 +3084,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3171,7 +3171,7 @@
              increment       1   will be repeated
              remaining time increment:  1.5625000E-02
              current   time increment:  1.5625000E-02
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3210,7 +3210,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3225,7 +3225,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3233,7 +3233,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3265,7 +3265,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3280,7 +3280,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3288,7 +3288,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3373,7 +3373,7 @@
              e n d   o f   i n c r e m e n t       1
 
              binary post data at increment       1.  subincrement    0.  on file 16
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3398,7 +3398,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3413,7 +3413,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3421,7 +3421,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
              ddu multiplied by    2.49145E-01 due to large displacement value of    9.74307E+00 at node         7 dof    2
@@ -3564,7 +3564,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3579,7 +3579,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3587,7 +3587,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3619,7 +3619,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3634,7 +3634,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3642,7 +3642,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3674,7 +3674,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3689,7 +3689,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3697,7 +3697,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
              ddu multiplied by    3.51092E-01 due to large displacement value of    6.91395E+00 at node        19 dof    2
@@ -3771,7 +3771,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3786,7 +3786,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3794,7 +3794,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3826,7 +3826,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3841,7 +3841,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3849,7 +3849,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3881,7 +3881,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3896,7 +3896,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3904,7 +3904,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3936,7 +3936,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3951,7 +3951,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -3959,7 +3959,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -3991,7 +3991,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     4
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4006,7 +4006,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4014,7 +4014,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
              *** error - element inside out at element         1 integration point     4
@@ -4088,7 +4088,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4103,7 +4103,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4111,7 +4111,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4198,7 +4198,7 @@
              increment       2   will be repeated
              remaining time increment:  2.1875000E-01
              current   time increment:  6.2500000E-02
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4223,7 +4223,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4238,7 +4238,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4246,7 +4246,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4278,7 +4278,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4293,7 +4293,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4301,7 +4301,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4333,7 +4333,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4348,7 +4348,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4356,7 +4356,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4388,7 +4388,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4403,7 +4403,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4411,7 +4411,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4443,7 +4443,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     4
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4458,7 +4458,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4466,7 +4466,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4498,7 +4498,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     5
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4513,7 +4513,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4521,7 +4521,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4553,7 +4553,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     6
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4568,7 +4568,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4576,7 +4576,7 @@
 
 
              end of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -4608,7 +4608,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     7
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -4623,7 +4623,7 @@
 
 
              start of matrix solution
-             wall time =          26.00
+             wall time =          27.00
 
 
 
@@ -7084,7 +7084,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7092,7 +7092,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
              *** error - element inside out at element         1 integration point     4
@@ -7184,7 +7184,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7199,7 +7199,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7207,7 +7207,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
              *** error - element inside out at element         1 integration point     1
@@ -7252,7 +7252,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7267,7 +7267,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7275,7 +7275,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7307,7 +7307,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7322,7 +7322,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7330,7 +7330,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7362,7 +7362,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7377,7 +7377,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7385,7 +7385,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7417,7 +7417,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7432,7 +7432,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7440,7 +7440,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
              *** error - element inside out at element         8 integration point     1
@@ -7485,7 +7485,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7500,7 +7500,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7508,7 +7508,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7540,7 +7540,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7555,7 +7555,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7563,7 +7563,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7595,7 +7595,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7610,7 +7610,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7618,7 +7618,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
              ddu multiplied by    6.46533E-01 due to large displacement value of    4.16206E+00 at node        13 dof    2
@@ -7675,7 +7675,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7690,7 +7690,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7698,7 +7698,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7730,7 +7730,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7745,7 +7745,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7753,7 +7753,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7785,7 +7785,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7800,7 +7800,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7808,7 +7808,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7840,7 +7840,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     3
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7855,7 +7855,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7863,7 +7863,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7895,7 +7895,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     4
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7910,7 +7910,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7918,7 +7918,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -7950,7 +7950,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     5
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7965,7 +7965,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -7973,7 +7973,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8005,7 +8005,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     6
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8020,7 +8020,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8028,7 +8028,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8115,7 +8115,7 @@
              increment       3   will be repeated
              remaining time increment:  2.3437500E-01
              current   time increment:  2.2321429E-02
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8140,7 +8140,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8155,7 +8155,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8163,7 +8163,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8195,7 +8195,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8210,7 +8210,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8218,7 +8218,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8305,7 +8305,7 @@
              increment       3   will be repeated
              remaining time increment:  2.1205357E-01
              current   time increment:  4.4642857E-02
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8330,7 +8330,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8345,7 +8345,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8353,7 +8353,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8385,7 +8385,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8400,7 +8400,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8408,7 +8408,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8495,7 +8495,7 @@
              increment       3   will be repeated
              remaining time increment:  1.6741071E-01
              current   time increment:  8.9285714E-02
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8520,7 +8520,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8535,7 +8535,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8543,7 +8543,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8575,7 +8575,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8590,7 +8590,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8598,7 +8598,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8685,7 +8685,7 @@
              increment       3   will be repeated
              remaining time increment:  7.8125000E-02
              current   time increment:  7.8125000E-02
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8710,7 +8710,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8725,7 +8725,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8733,7 +8733,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8765,7 +8765,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8780,7 +8780,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8788,7 +8788,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8873,7 +8873,7 @@
              e n d   o f   i n c r e m e n t       3
 
              binary post data at increment       3.  subincrement    0.  on file 16
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8898,7 +8898,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8913,7 +8913,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8921,7 +8921,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -8953,7 +8953,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     1
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8968,7 +8968,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -8976,7 +8976,7 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
      body        1: cbody1
@@ -9008,7 +9008,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     2
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -9023,7 +9023,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          28.00
 
 
 
@@ -9600,16 +9600,16 @@
 
              timing information:                             wall time      cpu time
 
-               total time for input:                              0.05          0.03
-               total time for stiffness matrix assembly:          0.18          0.30
+               total time for input:                              0.04          0.03
+               total time for stiffness matrix assembly:          0.24          0.19
                total time for mass matrix assembly:               0.00          0.00
-               total time for stress recovery:                    0.17          0.19
-               total time for matrix solution:                    1.19          0.94
-               total time for contact:                            0.02          0.02
-               total time for output:                             0.09          0.11
-               total time for miscellaneous:                     26.00          0.69
+               total time for stress recovery:                    0.15          0.19
+               total time for matrix solution:                    1.18          1.00
+               total time for contact:                            0.01          0.03
+               total time for output:                             0.08          0.03
+               total time for miscellaneous:                     25.85          0.78
                ---------------------------------------------------------------------
-               total time:                                       27.70          2.27
+               total time:                                       27.56          2.25
 
 
              **************************************************************************

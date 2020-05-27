@@ -1,0 +1,3602 @@
+                            M               M
+                            W               W
+                          MMMMM           MMMMM
+                          WWWWW           WWWWW
+                        MMMMMMMMM       MMMMMMMMM
+                        WWWWWWWWW       WWWWWWWWW
+                      MMMMMMMMMMMMM   MMMMMMMMMMMMM
+                      WWWWWWWWWWWWW   WWWWWWWWWWWWW
+                    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+                    WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+                    MMMMMMMM MMMMMMMMMMMMMMM MMMMMMMM
+                    WWWWWWWW WWWWWWWWWWWWWWW WWWWWWWW
+                    MMMMMM     MMMMMMMMMMM     MMMMMM
+                    WWWWWW     WWWWWWWWWWW     WWWWWW
+                    MMMM         MMMMMMM         MMMM
+                    WWWW         WWWWWWW         WWWW
+                    MM             MMM             MM
+                    WW             WWW             WW
+                    M               M               M
+                    W               W               W
+                    MM             MMM             MM
+                    WW             WWW             WW
+                    MMMM         MMMMMMM         MMMM
+                    WWWW         WWWWWWW         WWWW
+                    MMMMMM     MMMMMMMMMMM     MMMMMM
+                    WWWWWW     WWWWWWWWWWW     WWWWWW
+                    MMMMMMMM MMMMMMMMMMMMMMM MMMMMMMM
+                    WWWWWWWW WWWWWWWWWWWWWWW WWWWWWWW
+                    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+                    WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+                      MMMMMMMMMMMMM   MMMMMMMMMMMMM
+                      WWWWWWWWWWWWW   WWWWWWWWWWWWW
+                        MMMMMMMMM       MMMMMMMMM
+                        WWWWWWWWW       WWWWWWWWW
+                          MMMMM           MMMMM
+                          WWWWW           WWWWW
+                            M               M
+                            W               W
+
+             version: Marc 2019, build 664220 (2019/07/01)
+
+             machine type: WINDOWS
+
+             integer*8 version: integers are 64-bits
+
+             date: Fri May 22 10:02:42 2020
+
+
+             (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
+
+                    Marc - W i n d o w s       
+
+                     i n p u t   d a t a
+
+
+                p a g e          1
+
+                             10        20        30        40        50        60        70        80        90       100       110       120       130       140       150       160
+                     ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+                     title               job
+                     $....MARC input file produced by Marc Mentat 2019 (64bit)
+                     $...................................
+                     $....input file using extended precision
+    card         5   extended
+                     $...................................
+                     sizing                                 0        22        36         0
+                     alloc                       25
+                     elements                    11
+    card        10   version                     14         2         0         0
+                     table                        0         0         2         1         1         0         0         1
+                     processor                    1         1         1         0
+                     ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+                             10        20        30        40        50        60        70        80        90       100       110       120       130       140       150       160
+                     ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+                     ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+1
+             general memory increasing from      25 MByte to     106 MByte
+
+
+             memory increased to        28003864 words during 
+             pre-reading of sets
+
+
+
+             allocated          2 words of memory due to tables
+
+
+   MSC Customer Entitlement ID
+        56B8415D-4C5A9F49
+
+
+
+                    *************************************************
+                    *************************************************
+
+                     program sizing and options requested as follows
+
+
+
+                     element type requested*************************        11
+                     number of elements in mesh*********************        22
+                     number of nodes in mesh************************        36
+                     large displacement analysis flagged************
+                     load correction flagged or set*****************
+                     values stored at all integration points********
+                     tape no.for input of coordinates + connectivity         5
+                     boundary conditions applied on current geometry
+                     no.of different materials    1 max.no of slopes         5
+                     number of points on shell section *************        11
+                     new style input format will be used************
+                     requested number of element threads************         1
+                     requested number of solver threads*************         1
+                     number of tables used *************************         1
+                     extended precision input is used ************** 
+                     Marc input version ****************************        14
+                     maximum number of boundary conditions *********         4
+                     suppress echo of list items *******************
+                     suppress echo of bc summary *******************
+                     suppress echo of nurbs data *******************
+                     additive formulation flagged for herrmann elements
+
+
+                     end of parameters and sizing
+                    *************************************************
+                    *************************************************
+
+
+
+
+
+                              key to stress, strain and displacement output
+
+
+
+                                        element type        11
+
+
+                              4-node isoparametric quadrilateral plane strain        
+
+                              stresses and strains in global directions               
+                                1=xx                                                  
+                                2=yy                                                  
+                                3=zz                                                  
+                                4=xy                                                  
+                                                                                      
+                              displacements in global directions                      
+                                1=u global x direction                                
+                                2=v global y direction                                
+
+             allocated       6132 words of memory due to nodal vectors
+
+
+             allocated         74 words of memory due to tables
+
+
+             allocated        882 words of memory due to tables
+
+
+             allocated       1940 words of memory due to boundary conditions
+
+
+             allocated         16 words of memory due to geometric points
+
+
+             allocated         46 words of memory due to geometric curves
+
+
+             allocated         26 words of memory due to geometric surfaces
+
+
+             allocated        144 words of memory due to shell, user or contact transformations
+
+
+
+             workspace needed for input and stiffness assembly:            8950
+
+
+             internal core allocation parameters
+             degrees of freedom per node (ndeg)  2
+             max. number of coordinates per node  2
+             max. nodes per element (nnodmx)  4
+             max. invariants per int. points (neqst)  1
+             max.stress components per int. point (nstrmx)   4
+             strains per integration point (ngens)  4
+
+
+             flag for element storage (ielsto)  0
+             element data in core
+
+             memory usage per element group
+                group   # elements     nelsto      MByte            words
+                  1           22        1150           0             25300
+                ----------------------------------------------------------
+                total         22                       0             25300
+
+
+                              internal element variables
+
+
+
+                              internal element number         1  library code type   11
+                              number of nodes=  4
+                              stresses stored per integration point =  4
+                              direct continuum components stored =  3
+                              shear continuum components stored =  1
+                              shell/beam flag = 0
+                              curvilinear  coord. flag = 0
+                              int.points for elem. stiffness  4
+                              number of local inertia directions  2
+                              int.point for print if all points not flagged  5
+                              int. points for dist. surface loads (pressure)  2
+                              library code type =    11
+                              large disp. row counts     4    4    0    7
+
+
+
+                              residual load correction is invoked
+
+
+
+             $...................                                                                                                                                            
+
+             solver                                                                                                                                                          
+             ----------
+
+
+             multifrontal direct sparse solver invoked
+
+             optimize                    11                                                                                                                                  
+             ----------
+
+
+
+             metis nested dissection algorithm
+
+             connectivity                                                                                                                                                    
+             ----------
+
+             geometry id =                   1
+             material id =                   1
+             contact body id =               1
+
+                meshr1,  iprnt
+                      5      1
+                elem no., type,        nodes
+
+             coordinates                                                                                                                                                     
+             ----------
+
+             ncrd1 ,meshr1,iprnt
+                    2         5         1
+                   node      coordinates
+
+             define              node                set                 bc_fd_yy1_nodes                                                                                     
+             ----------
+
+             from node          1 to node          6 by          1
+
+             define              node                set                 bc_fd_yy2_nodes                                                                                     
+             ----------
+
+             from node         31 to node         36 by          1
+
+             define              node                set                 bc_fd_xx1_nodes                                                                                     
+             ----------
+
+             a list of nodes given below 
+                     1         7        13        19        25        31
+
+             define              node                set                 bc_fd_xx2_nodes                                                                                     
+             ----------
+
+             a list of nodes given below 
+                     6        12        18        24        30        36
+
+             ogden               structural                                                                                                                                  
+             ----------
+
+             ogden material   material id =               1
+
+             material name is:       MoldStar15                                                                                                                                                      
+
+
+                 structural  property                         value       table id
+
+
+             bulk modulus                                0.00000E+00              0
+             mass density                                0.00000E+00              0
+             coefficient of thermal expansion            0.00000E+00              0
+             number of terms in series                             3
+              term      mu        alpha
+                 1 -6.5027E-06 -2.1322E+01
+                 2  2.1686E-01  1.1797E+00
+                 3  1.3716E-03  4.8840E+00
+
+
+
+             mat color                                                                                                                                                       
+             ----------
+
+
+             material id is:                  1
+                material type      =          1
+                material RGB color =        230         0         0
+
+             table               ramp_input                                                                                                                                  
+             ----------
+
+
+             table identifier                  1
+             table name is           ramp_input                      
+             unit number                       5
+             number of independent var.        1
+             an equation is used to describe function 
+             abscissa                  
+             time                       
+             equation : v1                                                                              
+                                                                                                         
+
+             geometry                                                                                                                                                        
+             ----------
+
+
+             geometry name is:       geom1
+
+
+             geometry id =                 1
+             geometry RGB color =        230         0         0
+
+             geometric parameter       value
+                       1             1.00000E+00
+                       2             0.00000E+00
+                       3             0.00000E+00
+                       4             0.00000E+00
+                       5             0.00000E+00
+                       6             0.00000E+00
+                       7             0.00000E+00
+                       8             0.00000E+00
+
+             fixed disp                                                                                                                                                      
+             ----------
+
+
+             read data from unit    5
+
+             name of boundary condition bc_fd_yy1
+
+             Displacements are applied incrementally relative to current position
+
+             Prescribed Displacement for dof  2 =      0.00000E+00  table id is        0
+
+             applied to node ids       
+
+             bc_fd_yy1_nodes
+
+             name of boundary condition bc_fd_yy2
+
+             Displacements are applied incrementally relative to current position
+
+             Prescribed Displacement for dof  2 =      2.50000E+00  table id is        1
+
+             applied to node ids       
+
+             bc_fd_yy2_nodes
+
+             name of boundary condition bc_fd_xx1
+
+             Displacements are applied incrementally relative to current position
+
+             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
+
+             applied to node ids       
+
+             bc_fd_xx1_nodes
+
+             name of boundary condition bc_fd_xx2
+
+             Displacements are applied incrementally relative to current position
+
+             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
+
+             applied to node ids       
+
+             bc_fd_xx2_nodes
+
+             loadcase            job                                                                                                                                         
+             ----------
+
+
+             activate boundary condition bc_fd_yy1
+
+             activate boundary condition bc_fd_yy2
+
+             activate boundary condition bc_fd_xx1
+
+             activate boundary condition bc_fd_xx2
+
+             contact                      5         0                                                                                                                        
+             ----------
+
+             finite sliding node-to-segment contact algorithm will be used
+
+             number of bodies                  =         1
+
+             Coulomb friction with piecewise linear regularization selected (type 6)
+
+             no increment splitting during analysis
+
+             separation based upon nodal forces:
+               separation threshold is treated as a force
+
+             suppress contact surface print out
+
+             relative displacement below which sticking is simulated
+             will be automatically determined
+
+             friction force tolerance          =  5.00000E-02
+             distance below which a node is     
+             considered touching a surface     =  default
+             separation threshold              =  default
+             contact bias factor               =  9.50000E-01
+
+
+
+             $....contact body 1: cbody1                                                                                                                                     
+
+             body number                       =    1
+             body name                         = cbody1
+             number of sets of data            =    0
+
+                       body positioning data          
+             1st coordinate of center of rotation       0.00000E+00
+             2nd coordinate of center of rotation       0.00000E+00
+             initial angle rotated around axis          0.00000E+00
+
+             1st component of directional cosine        0.00000E+00
+             2nd component of directional cosine        0.00000E+00
+             3rd component of directional cosine        1.00000E+00
+
+             1st component of approach velocity         0.00000E+00
+             2nd component of approach velocity         0.00000E+00
+             angular approach velocity                  0.00000E+00
+
+             1st component of velocity                  0.00000E+00     table id           0
+             2nd component of velocity                  0.00000E+00     table id           0
+             angular velocity                           0.00000E+00     table id           0
+
+             1st component of surface growth factor     0.00000E+00     table id           0
+             2nd component of surface growth factor     0.00000E+00     table id           0
+
+             friction coefficient                       0.00000E+00     table id           0
+
+
+             $....full default contact is allowed                                                                                                                            
+
+             contact table                                                                                                                                                   
+             ----------
+
+
+             contact table remains unchanged
+
+             no print                                                                                                                                                        
+             ----------
+
+
+             post                                                                                                                                                            
+             ----------
+
+             number of element variables on post file:    4
+
+             binary post file will be used
+
+             initial output frequency of post file:       1
+
+             Marc 2017 style post file (default)
+
+             post variable     1 is post code   17 =                                                 
+             post variable     2 is post code   48 =                                                 
+             post variable     3 is post code  301 =                                                 
+             post variable     9 is post code  411 at layer      1 =                                                 
+             maximum record length on binary post file=             36
+             approximate no. of words per increment on file=           1248
+
+
+             parameters                                                                                                                                                      
+             ----------
+
+
+             parameters set as follows 
+
+             predictor used for stress-strain calculation    1.00000E+00
+             penalty factor for boundary conditions          1.00000E+09
+             penalty for incompressibility - r-p flow        1.00000E+02
+             penalty for incompressibility - fluid flow      1.00000E+06
+             beta parameter for Newmark operator             2.50000E-01
+             gamma parameter for Newmark operator            5.00000E-01
+             gamma1 parameter for Single-Step-Houbolt        1.50000E+00
+             gamma parameter for Single-Step-Houbolt        -5.00000E-01
+             sharp angle for sticking/separating - 2D        8.62500E+00
+             sharp angle for sticking/separating - 3D        2.00000E+01
+             initial strain rate for r-p flow                1.00000E-04
+             lowest strain rate cut-off for r-p flow         1.00000E-06
+             fraction of dilatational stress neglected       1.00000E+00
+             factor for drilling d.o.f for shells            1.00000E-04
+             factor for displacement after rezoning          1.00000E+00
+
+             universal gas constant                          8.31400E+00
+             absolute temperature offset                     2.73150E+02
+             thermal properties evaluation weight            5.00000E-01
+             surface projection factor in ssh dynamics       0.00000E+00
+             Stefan Boltzmann constant                       5.67051E-08
+             Planck's second radiation constant              1.43877E-02
+             Speed of light in vacuum                        2.99790E+08
+             Permeability of vacuum                          1.25664E-06
+             Permittivity of vacuum                          8.85419E-12
+             maximum iterative displacement component        1.00000E+30
+             initial stiffness to simulate sticking          0.00000E+00
+             minimum angle between the normal vectors of 
+             contacting segments                             1.20000E+02
+             radiation reflection cut-off                    1.00000E-03
+             angle for averaging adjacent beams (s2s)        1.60000E+02
+             stabilizer stiffness for model sections         0.00000E+00
+
+             maximum change in temperature per iteration     1.00000E+02
+             maximum rbe3 conditioning number                0.10000E+07
+             gasket initial stress stiffness factor          4.00000E-01
+
+             end option                                                                                                                                                      
+             ----------
+
+             wall time =          23.00
+
+             wall time =          23.00
+
+
+             direct symmetric multi-frontal sparse solver is invoked for region   1
+
+
+             number of element groups used:         1
+
+                group     # elements     element type     material                             formulation
+
+                   1          22            11                1                                    UM
+ 
+               formulation:
+                     U:   updated Lagrange
+                     M:   multiplicative decomposition
+ 
+
+
+             maximum connectivity in stiffness matrix is          5 at node          8
+
+
+
+             maximum half-bandwidth is          8  between nodes          1  and          8
+
+             number of profile entries excluding fill-in is             140
+
+             * * * * * * * * * * *
+
+             default contact tolerance calculated by the program is           5.00000E-02
+
+             contact tolerance used (it is not specified in input)            5.00000E-02
+
+             the following contact tolerances are program suggested values if you want to specify the contact tolerance
+             on a body pair basis (use value for self or rigid contact or minimum value for deformable-deformable contact)
+
+              body_id suggested contact_tolerance     element_id  outside_nodes  outside_patches body_name
+                    1                 5.00000E-02         1 edge             30               32 cbody1
+
+             relative displacement below which sticking is simulated :  2.50000E-03
+
+      
+     ******************************
+     Values used during contact : contact tolerance                       
+          Default Value =   5.0000000E-02
+     ******************************
+      Body ID       1 Defor        
+     ------------------------------
+     1 Defor            default    
+     ******************************
+      
+
+             * * * * * * * * * * *
+
+
+
+             total workspace needed with in-core matrix storage =           11478
+               part of solver workspace is allocated separately
+
+             allocated        480 words of memory due to kinematic boundary conditions
+
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+
+             increment zero is a null step
+
+
+             total strain energy         is    0.00000E+00
+               within which:
+               elastic strain energy     is    0.00000E+00
+             total ext-force work        is    0.00000E+00
+               within which:
+               work by appl. force/disp. is    0.00000E+00
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        79.8
+               other:                                0        4030         0.0
+              allocated separately:
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       26768         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        20.0
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              134    35081550
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       0
+
+             binary post data at increment       0.  subincrement    0.  on file 16
+             wall time =          23.00
+
+
+             $...................                                                                                                                                            
+
+             $....start of loadcase lcase1                                                                                                                                   
+
+             title               lcase1                                                                                                                                      
+             ----------
+
+
+             loadcase            lcase1                                                                                                                                      
+             ----------
+
+
+             activate boundary condition bc_fd_yy1
+
+             activate boundary condition bc_fd_yy2
+
+             activate boundary condition bc_fd_xx1
+
+             activate boundary condition bc_fd_xx2
+
+             $....allowed contact remains unchanged                                                                                                                          
+
+             contact table                                                                                                                                                   
+             ----------
+
+
+             contact table remains unchanged
+
+             control             structural                                                                                                                                  
+             ----------
+
+
+             control information for region   1
+
+             maximum number of increments      99999
+             maximum number of recycles           10
+             minimum number of recycles            0
+
+             control of residual convergence:
+               relative tolerance:              1.00000E-01
+               cut-off value     :              0.00000E+00
+               absolute tolerance:              0.00000E+00
+               relative moment tolerance:       0.00000E+00
+               moment cut-off value     :       0.00000E+00
+               absolute moment tolerance:       0.00000E+00
+
+
+
+             full newton-raphson technique chosen
+
+             convergence testing is automatically switched between
+             residual and displacement testing if reactions or displacements 
+             become too small 
+
+             control messages will be written to log file
+
+             parameters                                                                                                                                                      
+             ----------
+
+
+             parameters set as follows 
+
+             predictor used for stress-strain calculation    1.00000E+00
+             penalty factor for boundary conditions          1.00000E+09
+             penalty for incompressibility - r-p flow        1.00000E+02
+             penalty for incompressibility - fluid flow      1.00000E+06
+             beta parameter for Newmark operator             2.50000E-01
+             gamma parameter for Newmark operator            5.00000E-01
+             gamma1 parameter for Single-Step-Houbolt        1.50000E+00
+             gamma parameter for Single-Step-Houbolt        -5.00000E-01
+             sharp angle for sticking/separating - 2D        8.62500E+00
+             sharp angle for sticking/separating - 3D        2.00000E+01
+             initial strain rate for r-p flow                1.00000E-04
+             lowest strain rate cut-off for r-p flow         1.00000E-06
+             fraction of dilatational stress neglected       1.00000E+00
+             factor for drilling d.o.f for shells            1.00000E-04
+             factor for displacement after rezoning          1.00000E+00
+
+             universal gas constant                          8.31400E+00
+             absolute temperature offset                     2.73150E+02
+             thermal properties evaluation weight            5.00000E-01
+             surface projection factor in ssh dynamics       0.00000E+00
+             Stefan Boltzmann constant                       5.67051E-08
+             Planck's second radiation constant              1.43877E-02
+             Speed of light in vacuum                        2.99790E+08
+             Permeability of vacuum                          1.25664E-06
+             Permittivity of vacuum                          8.85419E-12
+             maximum iterative displacement component        1.00000E+30
+             initial stiffness to simulate sticking          0.00000E+00
+             minimum angle between the normal vectors of 
+             contacting segments                             1.20000E+02
+             radiation reflection cut-off                    1.00000E-03
+             angle for averaging adjacent beams (s2s)        1.60000E+02
+             stabilizer stiffness for model sections         0.00000E+00
+
+             maximum change in temperature per iteration     1.00000E+02
+             maximum rbe3 conditioning number                0.10000E+07
+             gasket initial stress stiffness factor          4.00000E-01
+
+             auto load                                                                                                                                                       
+             ----------
+
+
+             iotnum,incasm
+                      4         0
+
+
+             maximum number of time step cutback           10
+             maximum number of forced remeshing             1
+             cutback step for next forced remeshing         0
+
+             time step                                                                                                                                                       
+             ----------
+
+             time increment =     2.50000E-01
+
+             continue                                                                                                                                                        
+             ----------
+
+
+
+             equal load incs specified for       4 increments
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       1
+
+
+          space needed for incremental backup:       33743
+
+
+
+             maximum connectivity in stiffness matrix is          5 at node          8
+
+
+
+             maximum half-bandwidth is          8  between nodes          1  and          8
+
+             number of profile entries excluding fill-in is             140
+
+
+
+             total workspace needed with in-core matrix storage =           11478
+               part of solver workspace is allocated separately
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            2358 (      0.02 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            2082 (      0.02 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3903 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4897 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    6.7823E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        23 degree of freedom  1 is equal to    1.490E+01
+             maximum reaction force  at node        30 degree of freedom  1 is equal to    3.744E+00
+             residual convergence ratio    3.981E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    4.5266E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        23 degree of freedom  1 is equal to    5.997E+00
+             maximum reaction force  at node        30 degree of freedom  1 is equal to    1.800E+00
+             residual convergence ratio    3.331E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     2
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    6.9865E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        23 degree of freedom  1 is equal to    2.345E+00
+             maximum reaction force  at node        24 degree of freedom  1 is equal to    6.829E-01
+             residual convergence ratio    3.434E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     3
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    1.4116E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        23 degree of freedom  1 is equal to    8.835E-01
+             maximum reaction force  at node        24 degree of freedom  1 is equal to    1.925E-01
+             residual convergence ratio    4.590E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     4
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    8.9667E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        23 degree of freedom  1 is equal to    3.221E-01
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    1.160E-01
+             residual convergence ratio    2.777E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     5
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    7.0326E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        20 degree of freedom  1 is equal to    1.038E-01
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    1.288E-01
+             residual convergence ratio    8.059E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     6
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    6.0283E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        20 degree of freedom  1 is equal to    3.845E-02
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    1.380E-01
+             residual convergence ratio    2.787E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     7
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    5.6062E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        20 degree of freedom  1 is equal to    7.113E-03
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    1.442E-01
+             residual convergence ratio    4.932E-02
+
+
+             total transient time = 2.50000E-01
+
+
+
+   WINDOWS version
+   Marc 2019
+   output for increment       1. "          lcase1"
+
+
+             total strain energy         is    2.46898E-01
+               within which:
+               elastic strain energy     is    2.46898E-01
+             total ext-force work        is    2.06519E-01
+               within which:
+               work by appl. force/disp. is    2.06519E-01
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+
+                    g l o b a l  c o n t a c t  b o d y  d a t a
+
+     body number        1 name: cbody1
+     1st coord. of center of rotation                  0.000E+00
+     2nd coord. of center of rotation                  0.000E+00
+     total angle rotated                               0.000E+00
+     1st component of velocity                         0.000E+00
+     2nd component of velocity                         0.000E+00
+     angular velocity                                  0.000E+00
+     1st component of total load                       0.000E+00
+     2nd component of total load                       0.000E+00
+     moment w.r.t. center of rotation                  0.000E+00
+     total strain energy                               0.247E+00
+     total kinetic energy                              0.000E+00
+     total damping energy                              0.000E+00
+
+
+
+                    c o n t a c t  b o d y  i n t e r a c t i o n  r e s u l t s
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       1
+
+             binary post data at increment       1.  subincrement    0.  on file 16
+             wall time =          23.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    5.2019E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    2.139E+02
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    8.161E+01
+             residual convergence ratio    2.621E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    2.1060E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    8.297E+01
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    3.174E+01
+             residual convergence ratio    2.614E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     2
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    9.7123E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node         5 degree of freedom  1 is equal to    3.786E+04
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    2.615E+04
+             residual convergence ratio    1.448E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     3
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    1.5259E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+             *** error - element inside out at element         1 integration point     1
+             element connectivity:
+         1         2         8         7
+             nodal coordinates:
+         1    2.4171160648E-14   -1.3834190003E-13
+         2    1.9290303889E+00    1.9322977899E-11
+         8    6.7984506446E-01    1.7442040125E+00
+         7   -4.6747681647E-14   -5.7742387337E-01
+
+             *** error - element inside out at element         5 integration point     2
+             element connectivity:
+         5         6        12        11
+             nodal coordinates:
+         5    3.0709696102E+00    1.9322978893E-11
+         6    5.0000000000E+00   -1.3834189996E-13
+        12    5.0000000000E+00   -5.7742387610E-01
+        11    4.3201549398E+00    1.7442040174E+00
+             total number of errors in stress recovery is          2
+
+
+             analysis ends because of          2  errors in stress recovery
+
+             exit  number 1009 at increment         2
+             trial number:    1
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     1
+
+             previous time increment  =    2.50000E-01
+             current  time increment  =    1.25000E-01
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    5.2019E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    6.195E-01
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    1.935E-01
+             residual convergence ratio    3.202E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    2.7585E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    1.963E-01
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    2.266E-01
+             residual convergence ratio    8.664E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     2
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    4.7348E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    2.511E-02
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    2.652E-01
+             residual convergence ratio    9.466E-02
+
+
+             total transient time = 3.75000E-01
+
+
+
+   WINDOWS version
+   Marc 2019
+   output for increment       2. "          lcase1"
+
+
+             total strain energy         is    5.18678E-01
+               within which:
+               elastic strain energy     is    5.18678E-01
+             total ext-force work        is    4.83737E-01
+               within which:
+               work by appl. force/disp. is    4.83737E-01
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+
+                    g l o b a l  c o n t a c t  b o d y  d a t a
+
+     body number        1 name: cbody1
+     1st coord. of center of rotation                  0.000E+00
+     2nd coord. of center of rotation                  0.000E+00
+     total angle rotated                               0.000E+00
+     1st component of velocity                         0.000E+00
+     2nd component of velocity                         0.000E+00
+     angular velocity                                  0.000E+00
+     1st component of total load                       0.000E+00
+     2nd component of total load                       0.000E+00
+     moment w.r.t. center of rotation                  0.000E+00
+     total strain energy                               0.519E+00
+     total kinetic energy                              0.000E+00
+     total damping energy                              0.000E+00
+
+
+
+                    c o n t a c t  b o d y  i n t e r a c t i o n  r e s u l t s
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       2
+
+             increment       2   will be repeated
+             remaining time increment:  1.2500000E-01
+             current   time increment:  1.2500000E-01
+             wall time =          23.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    2.6584E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    1.128E+00
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    4.399E-01
+             residual convergence ratio    2.564E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    1.5658E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        21 degree of freedom  1 is equal to    3.235E-01
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    5.324E-01
+             residual convergence ratio    6.077E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     2
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    1.0761E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        22 degree of freedom  1 is equal to    6.791E-02
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    6.190E-01
+             residual convergence ratio    1.097E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     3
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    3.2544E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        21 degree of freedom  1 is equal to    7.073E-03
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    6.357E-01
+             residual convergence ratio    1.113E-02
+
+
+             total transient time = 5.00000E-01
+
+
+
+   WINDOWS version
+   Marc 2019
+   output for increment       2. "          lcase1"
+
+
+             total strain energy         is    9.98470E-01
+               within which:
+               elastic strain energy     is    9.98470E-01
+             total ext-force work        is    1.02236E+00
+               within which:
+               work by appl. force/disp. is    1.02236E+00
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+
+                    g l o b a l  c o n t a c t  b o d y  d a t a
+
+     body number        1 name: cbody1
+     1st coord. of center of rotation                  0.000E+00
+     2nd coord. of center of rotation                  0.000E+00
+     total angle rotated                               0.000E+00
+     1st component of velocity                         0.000E+00
+     2nd component of velocity                         0.000E+00
+     angular velocity                                  0.000E+00
+     1st component of total load                       0.000E+00
+     2nd component of total load                       0.000E+00
+     moment w.r.t. center of rotation                  0.000E+00
+     total strain energy                               0.998E+00
+     total kinetic energy                              0.000E+00
+     total damping energy                              0.000E+00
+
+
+
+                    c o n t a c t  b o d y  i n t e r a c t i o n  r e s u l t s
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       2
+
+             binary post data at increment       2.  subincrement    0.  on file 16
+             wall time =          23.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       3
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    9.6715E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+             ddu multiplied by    2.88859E-01 due to large displacement value of    9.26984E+00 at node        25 dof    2
+
+
+             *** error - element inside out at element        16 integration point     1
+
+             *** error - element inside out at element        16 integration point     3
+             element connectivity:
+        19        20        26        25
+             nodal coordinates:
+        19   -3.2980993015E-13    3.1796579513E+00
+        20    1.2375528848E+00    4.2216846729E+00
+        26    1.4108026481E+00    6.0852916380E+00
+        25    5.1968313939E-13    2.3727075059E+00
+
+             *** error - element inside out at element        17 integration point     3
+
+             *** error - element inside out at element        17 integration point     4
+             element connectivity:
+        20        21        27        26
+             nodal coordinates:
+        20    1.2375528848E+00    4.2216846729E+00
+        21    2.1063386224E+00    3.2636014791E+00
+        27    9.9462646122E-01    5.9667560884E+00
+        26    1.4108026481E+00    6.0852916380E+00
+
+             *** error - element inside out at element        19 integration point     3
+
+             *** error - element inside out at element        19 integration point     4
+             element connectivity:
+        22        23        29        28
+             nodal coordinates:
+        22    2.8936613775E+00    3.2636014792E+00
+        23    3.7624471152E+00    4.2216846729E+00
+        29    3.5891973519E+00    6.0852916380E+00
+        28    4.0053735388E+00    5.9667560884E+00
+
+             *** error - element inside out at element        20 integration point     2
+
+             *** error - element inside out at element        20 integration point     4
+             element connectivity:
+        23        24        30        29
+             nodal coordinates:
+        23    3.7624471152E+00    4.2216846729E+00
+        24    5.0000000000E+00    3.1796579514E+00
+        30    5.0000000000E+00    2.3727075059E+00
+        29    3.5891973519E+00    6.0852916380E+00
+
+             *** error - element inside out at element        21 integration point     3
+             element connectivity:
+        25        26        32        31
+             nodal coordinates:
+        25    5.1968313939E-13    2.3727075059E+00
+        26    1.4108026481E+00    6.0852916380E+00
+        32   -1.4697842768E+00    6.4305368061E+00
+        31    4.7640879643E-13    6.4305368061E+00
+
+             *** error - element inside out at element        22 integration point     1
+             element connectivity:
+        26        27        33        32
+             nodal coordinates:
+        26    1.4108026481E+00    6.0852916380E+00
+        27    9.9462646122E-01    5.9667560884E+00
+        33    2.2872686023E+00    6.4305368061E+00
+        32   -1.4697842768E+00    6.4305368061E+00
+
+             *** error - element inside out at element        24 integration point     2
+             element connectivity:
+        28        29        35        34
+             nodal coordinates:
+        28    4.0053735388E+00    5.9667560884E+00
+        29    3.5891973519E+00    6.0852916380E+00
+        35    6.4697842768E+00    6.4305368061E+00
+        34    2.7127313977E+00    6.4305368061E+00
+
+             *** error - element inside out at element        25 integration point     4
+             element connectivity:
+        29        30        36        35
+             nodal coordinates:
+        29    3.5891973519E+00    6.0852916380E+00
+        30    5.0000000000E+00    2.3727075059E+00
+        36    5.0000000000E+00    6.4305368061E+00
+        35    6.4697842768E+00    6.4305368061E+00
+             total number of errors in stress recovery is         12
+
+
+             analysis ends because of         12  errors in stress recovery
+
+             exit  number 1009 at increment         3
+             trial number:    1
+             analysis is forced to restart at the end of increment         2
+
+             increment cut-back number     1
+
+             previous time increment  =    2.50000E-01
+             current  time increment  =    1.25000E-01
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    3.0876E-05
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        17 degree of freedom  1 is equal to    3.338E+00
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    1.192E+00
+             residual convergence ratio    2.800E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    4.2599E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        28 degree of freedom  1 is equal to    5.733E-01
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    2.002E+00
+             residual convergence ratio    2.864E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     2
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    3.1300E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        11 degree of freedom  2 is equal to    1.011E-01
+             maximum reaction force  at node        18 degree of freedom  1 is equal to    2.300E+00
+             residual convergence ratio    4.398E-02
+
+
+             total transient time = 6.25000E-01
+
+
+
+   WINDOWS version
+   Marc 2019
+   output for increment       3. "          lcase1"
+
+
+             total strain energy         is    2.39719E+00
+               within which:
+               elastic strain energy     is    2.39719E+00
+             total ext-force work        is    2.61218E+00
+               within which:
+               work by appl. force/disp. is    2.61218E+00
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+
+                    g l o b a l  c o n t a c t  b o d y  d a t a
+
+     body number        1 name: cbody1
+     1st coord. of center of rotation                  0.000E+00
+     2nd coord. of center of rotation                  0.000E+00
+     total angle rotated                               0.000E+00
+     1st component of velocity                         0.000E+00
+     2nd component of velocity                         0.000E+00
+     angular velocity                                  0.000E+00
+     1st component of total load                       0.000E+00
+     2nd component of total load                       0.000E+00
+     moment w.r.t. center of rotation                  0.000E+00
+     total strain energy                               0.240E+01
+     total kinetic energy                              0.000E+00
+     total damping energy                              0.000E+00
+
+
+
+                    c o n t a c t  b o d y  i n t e r a c t i o n  r e s u l t s
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       3
+
+             increment       3   will be repeated
+             remaining time increment:  1.2500000E-01
+             current   time increment:  1.2500000E-01
+             wall time =          23.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       3
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    1.5787E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    1.127E+01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    7.531E+00
+             residual convergence ratio    1.497E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    7.9360E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node         7 degree of freedom  2 is equal to    9.463E-01
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    9.614E+00
+             residual convergence ratio    9.844E-02
+
+
+             total transient time = 7.50000E-01
+
+
+
+   WINDOWS version
+   Marc 2019
+   output for increment       3. "          lcase1"
+
+
+             total strain energy         is    7.16388E+00
+               within which:
+               elastic strain energy     is    7.16388E+00
+             total ext-force work        is    7.91196E+00
+               within which:
+               work by appl. force/disp. is    7.91196E+00
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+
+                    g l o b a l  c o n t a c t  b o d y  d a t a
+
+     body number        1 name: cbody1
+     1st coord. of center of rotation                  0.000E+00
+     2nd coord. of center of rotation                  0.000E+00
+     total angle rotated                               0.000E+00
+     1st component of velocity                         0.000E+00
+     2nd component of velocity                         0.000E+00
+     angular velocity                                  0.000E+00
+     1st component of total load                       0.000E+00
+     2nd component of total load                       0.000E+00
+     moment w.r.t. center of rotation                  0.000E+00
+     total strain energy                               0.716E+01
+     total kinetic energy                              0.000E+00
+     total damping energy                              0.000E+00
+
+
+
+                    c o n t a c t  b o d y  i n t e r a c t i o n  r e s u l t s
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       3
+
+             binary post data at increment       3.  subincrement    0.  on file 16
+             wall time =          23.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       4
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    1.4486E-03
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        33 degree of freedom  1 is equal to    1.680E+04
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    3.083E+02
+             residual convergence ratio    5.451E+01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    4.5045E-04
+
+
+             end of matrix solution
+             wall time =          23.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        33 degree of freedom  1 is equal to    5.534E+03
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    1.302E+02
+             residual convergence ratio    4.251E+01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     2
+             wall time =          23.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          23.00
+
+
+
+             singularity ratio    1.8553E-03
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        33 degree of freedom  1 is equal to    2.075E+03
+             maximum reaction force  at node         4 degree of freedom  2 is equal to    2.398E+01
+             residual convergence ratio    8.652E+01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     3
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    3.2505E-03
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    1.565E+03
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    1.039E+03
+             residual convergence ratio    1.506E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     4
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    1.0023E-02
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    5.130E+02
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    3.383E+02
+             residual convergence ratio    1.517E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     5
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    1.9792E-03
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+             *** error - element inside out at element         6 integration point     4
+             element connectivity:
+         7         8        14        13
+             nodal coordinates:
+         7    5.0315891041E-13    3.4188871620E-01
+         8    9.0715196491E-01    1.1452137254E+00
+        14    2.1132926185E-02    1.4862064254E+00
+        13   -1.9733217983E-11    5.0836143943E+00
+
+             *** error - element inside out at element        10 integration point     3
+             element connectivity:
+        11        12        18        17
+             nodal coordinates:
+        11    4.0928505844E+00    1.1452084789E+00
+        12    5.0000000000E+00    3.4188174345E-01
+        18    5.0000000000E+00    5.0836341658E+00
+        17    4.9788694242E+00    1.4861949946E+00
+
+             *** error - element inside out at element        11 integration point     3
+             element connectivity:
+        13        14        20        19
+             nodal coordinates:
+        13   -1.9733217983E-11    5.0836143943E+00
+        14    2.1132926185E-02    1.4862064254E+00
+        20    1.2348660190E+00    5.7658034044E+00
+        19    3.7119114051E-11    3.9561159865E+00
+
+             *** error - element inside out at element        15 integration point     4
+             element connectivity:
+        17        18        24        23
+             nodal coordinates:
+        17    4.9788694242E+00    1.4861949946E+00
+        18    5.0000000000E+00    5.0836341658E+00
+        24    5.0000000000E+00    3.9561131179E+00
+        23    3.7651276137E+00    5.7658129097E+00
+
+             *** error - element inside out at element        16 integration point     1
+
+             *** error - element inside out at element        16 integration point     3
+             element connectivity:
+        19        20        26        25
+             nodal coordinates:
+        19    3.7119114051E-11    3.9561159865E+00
+        20    1.2348660190E+00    5.7658034044E+00
+        26    9.9653621304E-01    6.8202254505E+00
+        25    6.1442434409E-12    3.4295106061E+00
+
+             *** error - element inside out at element        20 integration point     2
+
+             *** error - element inside out at element        20 integration point     4
+             element connectivity:
+        23        24        30        29
+             nodal coordinates:
+        23    3.7651276137E+00    5.7658129097E+00
+        24    5.0000000000E+00    3.9561131179E+00
+        30    5.0000000000E+00    3.4294521899E+00
+        29    4.0034623200E+00    6.8202519225E+00
+             total number of errors in stress recovery is          8
+
+
+             analysis ends because of          8  errors in stress recovery
+
+             exit  number 1009 at increment         4
+             trial number:    1
+             analysis is forced to restart at the end of increment         3
+
+             increment cut-back number     1
+
+             previous time increment  =    2.50000E-01
+             current  time increment  =    1.25000E-01
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    2.8615E-03
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        17 degree of freedom  1 is equal to    2.335E+01
+             maximum reaction force  at node        34 degree of freedom  2 is equal to    1.418E+01
+             residual convergence ratio    1.646E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    8.8353E-03
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        17 degree of freedom  1 is equal to    2.677E+00
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    2.065E+01
+             residual convergence ratio    1.296E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     2
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    5.6179E-03
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        17 degree of freedom  1 is equal to    1.177E-01
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    2.253E+01
+             residual convergence ratio    5.227E-03
+
+
+             total transient time = 8.75000E-01
+
+
+
+   WINDOWS version
+   Marc 2019
+   output for increment       4. "          lcase1"
+
+
+             total strain energy         is    1.98540E+01
+               within which:
+               elastic strain energy     is    1.98540E+01
+             total ext-force work        is    2.09573E+01
+               within which:
+               work by appl. force/disp. is    2.09573E+01
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+
+                    g l o b a l  c o n t a c t  b o d y  d a t a
+
+     body number        1 name: cbody1
+     1st coord. of center of rotation                  0.000E+00
+     2nd coord. of center of rotation                  0.000E+00
+     total angle rotated                               0.000E+00
+     1st component of velocity                         0.000E+00
+     2nd component of velocity                         0.000E+00
+     angular velocity                                  0.000E+00
+     1st component of total load                       0.000E+00
+     2nd component of total load                       0.000E+00
+     moment w.r.t. center of rotation                  0.000E+00
+     total strain energy                               0.199E+02
+     total kinetic energy                              0.000E+00
+     total damping energy                              0.000E+00
+
+
+
+                    c o n t a c t  b o d y  i n t e r a c t i o n  r e s u l t s
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       4
+
+             increment       4   will be repeated
+             remaining time increment:  1.2500000E-01
+             current   time increment:  1.2500000E-01
+             wall time =          24.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       4
+
+             *** warning: contact constraints for node         34
+                          with respect to body        1 segment         14
+                          will not be applied due to an inconsistency with 
+                          the boundary conditions
+
+
+             *** warning: contact constraints for node         33
+                          with respect to body        1 segment         12
+                          will not be applied due to an inconsistency with 
+                          the boundary conditions
+
+                    ignore the rest of warnings.
+
+
+             maximum connectivity in stiffness matrix is          5 at node          8
+
+
+
+             maximum half-bandwidth is          8  between nodes          1  and          8
+
+             number of profile entries excluding fill-in is             140
+
+
+
+             total workspace needed with in-core matrix storage =           11478
+               part of solver workspace is allocated separately
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     0
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    3.9791E-03
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    1.435E+01
+             maximum reaction force  at node        18 degree of freedom  1 is equal to    3.625E+01
+             residual convergence ratio    3.958E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+
+
+
+
+
+             load increments for each degree of freedom
+             summed over the whole model
+
+             from distributed loads
+             dist. loads on deformed configuration - totals below for dist. loads
+             increments for point loads
+             0.000000E+00   0.000000E+00
+
+
+             point loads
+             0.000000E+00   0.000000E+00
+
+             start of assembly     cycle number is     1
+             wall time =          24.00
+
+
+
+
+             solver workspace for phase1 (matrix input)    (64bit words) =             402 (      0.00 MByte)
+             Metis nested dissection ordering used
+             solver workspace for phase2 (nodal ordering)  (64bit words) =            1594 (      0.01 MByte)
+             solver workspace for phase3 (symbolic factor) (64bit words) =            1673 (      0.01 MByte)
+             solver workspace for phase4 (factorization)   (64bit words) =            3950 (      0.03 MByte) (MINIMUM)
+             solver workspace for phase4 (factorization)   (64bit words) =            4953 (      0.04 MByte) (MAXIMUM)
+             solver workspace available and used           (64bit words) =         1000000 (      7.63 MByte)
+
+
+             start of matrix solution
+             wall time =          24.00
+
+
+
+             singularity ratio    1.6360E-02
+
+
+             end of matrix solution
+             wall time =          24.00
+
+
+     body        1: cbody1
+         number of nodes in contact     =             0
+
+             maximum residual force  at node        14 degree of freedom  1 is equal to    7.901E-01
+             maximum reaction force  at node        18 degree of freedom  1 is equal to    4.061E+01
+             residual convergence ratio    1.946E-02
+
+
+             total transient time = 1.00000E+00
+
+
+
+   WINDOWS version
+   Marc 2019
+   output for increment       4. "          lcase1"
+
+
+             total strain energy         is    4.47149E+01
+               within which:
+               elastic strain energy     is    4.47149E+01
+             total ext-force work        is    4.59929E+01
+               within which:
+               work by appl. force/disp. is    4.59929E+01
+               work by  contact forces   is    0.00000E+00
+               work by frictional forces is    0.00000E+00
+
+
+
+                    g l o b a l  c o n t a c t  b o d y  d a t a
+
+     body number        1 name: cbody1
+     1st coord. of center of rotation                  0.000E+00
+     2nd coord. of center of rotation                  0.000E+00
+     total angle rotated                               0.000E+00
+     1st component of velocity                         0.000E+00
+     2nd component of velocity                         0.000E+00
+     angular velocity                                  0.000E+00
+     1st component of total load                       0.000E+00
+     2nd component of total load                       0.000E+00
+     moment w.r.t. center of rotation                  0.000E+00
+     total strain energy                               0.447E+02
+     total kinetic energy                              0.000E+00
+     total damping energy                              0.000E+00
+
+
+
+                    c o n t a c t  b o d y  i n t e r a c t i o n  r e s u l t s
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+             e n d   o f   i n c r e m e n t       4
+
+             binary post data at increment       4.  subincrement    0.  on file 16
+             wall time =          24.00
+
+
+             $....end of loadcase lcase1                                                                                                                                     
+
+             $...................                                                                                                                                            
+
+
+                              *** end of input deck - job ends
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2528         0.0
+               overallocation initial allocation   107    27992390        75.4
+               other:                                0        4030         0.0
+              allocated separately:
+               incremental backup:                   0       67486         0.2
+               solver 8                              8     1999196         5.4
+               nodal vectors:                        0        6444         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        9130         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28188         0.1
+               element storage:                      0       26488         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37149652
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11474
+
+               peak memory usage:                  159    41557520
+
+
+             timing information:                             wall time      cpu time
+
+               total time for input:                              0.05          0.05
+               total time for stiffness matrix assembly:          0.04          0.03
+               total time for mass matrix assembly:               0.00          0.00
+               total time for stress recovery:                    0.03          0.03
+               total time for matrix solution:                    0.33          0.31
+               total time for contact:                            0.00          0.00
+               total time for output:                             0.05          0.03
+               total time for miscellaneous:                     23.62          0.61
+               ---------------------------------------------------------------------
+               total time:                                       24.12          1.06
+
+
+             **************************************************************************
+
+
+             
+             This is a successful completion to a Marc simulation,
+             indicating that no additional incremental data was
+             found and that the analysis is complete.
+             
+
+
+
+
+             **************************************************************************
+
+
+
+
+
+                                        Marc 2019
+
+                                        Exit number 3004
+

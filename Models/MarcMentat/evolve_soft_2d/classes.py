@@ -154,9 +154,9 @@ class template:
         r_int = "Internal elements: {}\n".format(self.e_internal)
         r_ste = "Analysis steps:    {}\n".format(self.n_steps)
         r_run = "Run successful:    {}\n".format(self.run_success)
-        r_c_e = "Constraint energy: {}\n".format(self.c_e)
-        r_i_e = "Internal energy:   {}\n".format(self.i_e)
-        r_ogd = "Ogden material parameters:\n{}\n".format(self.ogd_mat)
+        r_c_e = "Constraint energy: {} J\n".format(self.c_e)
+        r_i_e = "Internal energy:   {} J\n\n".format(self.i_e)
+        r_ogd = "Ogden material parameters:\n{}\n\n".format(self.ogd_mat)
         r_tim = "Time created:      {}".format(time.ctime())
         return r_cas + r_ori + r_dim + r_int + r_ste + r_run + r_c_e + r_i_e + r_ogd + r_tim
 
@@ -204,7 +204,7 @@ class unit_p:
         self.rem_l = utility.list_to_str(rem, "_")
 
         #   The unique unit hash ID
-        self.u_id = utility.gen_hash(self.rem_l)
+        self.u_id = str(len(self.rem)) + "_" + utility.gen_hash(self.rem_l)
 
         #   The representative grid with the elements removed as a string label
         self.grid_l = self.format_grid()
@@ -230,8 +230,8 @@ class unit_p:
         r_rem = "Removed elements:  {}\n".format(self.rem)
         r_gri = "Representative grid:\n{}\n".format(self.grid_l)
         r_run = "Run successful:    {}\n".format(self.run_success)
-        r_c_e = "Constraint energy: {}\n".format(self.c_e)
-        r_i_e = "Internal energy:   {}\n\n".format(self.i_e)
+        r_c_e = "Constraint energy: {} J\n".format(self.c_e)
+        r_i_e = "Internal energy:   {} J\n\n".format(self.i_e)
         r_tem = "Template details:\n{}".format(self.template)
         return r_mod + r_rem + r_gri + r_run + r_c_e + r_i_e + r_tem
 

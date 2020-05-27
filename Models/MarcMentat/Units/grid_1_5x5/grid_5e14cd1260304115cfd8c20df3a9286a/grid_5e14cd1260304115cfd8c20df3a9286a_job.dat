@@ -80,13 +80,13 @@ coordinates
         34 3.000000000000000+0 5.000000000000000+0 0.000000000000000+0
         35 4.000000000000000+0 5.000000000000000+0 0.000000000000000+0
         36 5.000000000000000+0 5.000000000000000+0 0.000000000000000+0
-define              node                set                 bc_fd_y0_nodes
+define              node                set                 bc_fd_yy1_nodes
            1          to           6
-define              node                set                 bc_fd_y1_nodes
+define              node                set                 bc_fd_yy2_nodes
           31          to          36
-define              node                set                 bc_fd_x0_nodes
+define              node                set                 bc_fd_xx1_nodes
            1           7          13          19          25          31
-define              node                set                 bc_fd_x1_nodes
+define              node                set                 bc_fd_xx2_nodes
            6          12          18          24          30          36
 ogden               structural
 
@@ -112,36 +112,36 @@ geom1
 
 fixed disp
 
-         1         0         0         0         1         0bc_fd_y0
+         1         0         0         0         1         0bc_fd_yy1
  0.000000000000000+0
          0
          2
          2
-bc_fd_y0_nodes
-         1         0         0         0         1         0bc_fd_y1
+bc_fd_yy1_nodes
+         1         0         0         0         1         0bc_fd_yy2
  2.500000000000000+0
          1
          2
          2
-bc_fd_y1_nodes
-         1         0         0         0         1         0bc_fd_x0
+bc_fd_yy2_nodes
+         1         0         0         0         1         0bc_fd_xx1
  0.000000000000000+0
          0
          1
          2
-bc_fd_x0_nodes
-         1         0         0         0         1         0bc_fd_x1
+bc_fd_xx1_nodes
+         1         0         0         0         1         0bc_fd_xx2
  0.000000000000000+0
          0
          1
          2
-bc_fd_x1_nodes
+bc_fd_xx2_nodes
 loadcase            job
          4
-bc_fd_y0
-bc_fd_y1
-bc_fd_x0
-bc_fd_x1
+bc_fd_yy1
+bc_fd_yy2
+bc_fd_xx1
+bc_fd_xx2
 contact                      5         0
          1         0        33         6         1      9999         3         0         0         0         0         0         0         0         0         0
          0         0         0         0         0         0         0         1         0         0         0
@@ -180,10 +180,10 @@ $....start of loadcase lcase1
 title               lcase1
 loadcase            lcase1
          4
-bc_fd_y0
-bc_fd_y1
-bc_fd_x0
-bc_fd_x1
+bc_fd_yy1
+bc_fd_yy2
+bc_fd_xx1
+bc_fd_xx2
 $....allowed contact remains unchanged
 contact table
          0         4

@@ -115,7 +115,7 @@ def gen_units(
         modify.save_model(curr_mod.fp_u_mud)
 
         #   Run the model
-        curr_mod.run_success = modify.run_model(curr_mod.template, curr_mod.u_id)
+        curr_mod.run_success = modify.run_model(curr_mod.template, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log, curr_mod.fp_u_t16)
 
         #   Check if the model run was successful
         if curr_mod.run_success:
@@ -142,11 +142,11 @@ def template_1(template) -> None:
     """Create a template from which elements may be removed
 
     Case:   1
-    Elongation in one direction while maintaining width in the other direction
+    Pure strain in the y-direction
 
     Parameters
     ----------
-    template 
+    template : template
         The unit template parameters
     """
 
@@ -162,10 +162,10 @@ def template_1(template) -> None:
 
     #   Add template properties
     modify.add_ramp(template)
-    modify.add_bc_fd_ee("y0", "",               "y", template.y0,  0)
-    modify.add_bc_fd_ee("y1", template.tab_nam, "y", template.y_e, template.apply)
-    modify.add_bc_fd_ee("x0", "",               "x", template.x0,  0)
-    modify.add_bc_fd_ee("x1", "",               "x", template.x_e, 0)
+    modify.add_bc_fd_ee("yy1", "",               "y", "y", template.y0,  0)
+    modify.add_bc_fd_ee("yy2", template.tab_nam, "y", "y", template.y_e, template.apply)
+    modify.add_bc_fd_ee("xx1", "",               "x", "x", template.x0,  0)
+    modify.add_bc_fd_ee("xx2", "",               "x", "x", template.x_e, 0)
     modify.add_geom_prop()
     modify.add_mat_ogden(template.ogd_mat)
     modify.add_contact_body()
@@ -174,6 +174,9 @@ def template_1(template) -> None:
     #   Add the job
     modify.add_job()
     modify.save_model(template.fp_t_mud)
+
+    #   Run the model
+    template.run_success = modify.run_model(template, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
 
     #   Check if the model run was successful
     if template.run_success:
@@ -196,13 +199,16 @@ def template_2(template) -> None:
     """Create a template from which elements may be removed
 
     Case:   2
-    Elongation of one side while maintaining width
+    Pure shear strain
 
     Parameters
     ----------
-    template 
+    template : template
         The unit template parameters
     """
+
+    #   Initialisations
+    l = str(template.case) + "_" + template.n_e_l
 
     #   Clear the workspace
     py_send("*new_model yes")
@@ -213,12 +219,10 @@ def template_2(template) -> None:
 
     #   Add template properties
     modify.add_ramp(template)
-    modify.add_bc_fd_ee("y0", "", "y", template.y0,  0)
-    modify.add_bc_fd_ee("y1", "", "y", template.y_e, 0)
-    modify.add_bc_fd_sn("x0", "", "x", 1,            0)
-    modify.add_bc_fd_sn("x1", "", "x", template.x_n, 0)
-    modify.add_bc_fd_sn("x2", template.tab_nam, "x", template.x_n*(template.y_n - 1) + 1, -template.apply)
-    modify.add_bc_fd_sn("x3", template.tab_nam, "x", template.x_n*template.y_n, template.apply)
+    modify.add_bc_fd_ee("xy1", "",               "x", "y", template.y0,  0)
+    modify.add_bc_fd_ee("xy2", template.tab_nam, "x", "y", template.y_e, template.apply)
+    modify.add_bc_fd_ee("yx1", "",               "y", "x", template.x0,  0)
+    modify.add_bc_fd_ee("yx2", "",               "y", "x", template.x_e, 0)
     modify.add_geom_prop()
     modify.add_mat_ogden(template.ogd_mat)
     modify.add_contact_body()
@@ -227,21 +231,16 @@ def template_2(template) -> None:
      #   Add the job
     modify.add_job()
     modify.save_model(template.fp_t_mud)
-    modify.run_job()
 
-    l = str(template.case) + "_" + template.n_e_l
+    #   Run the model
+    template.run_success = modify.run_model(template, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
 
-    #   Check the existence and validity of the results
-    run_success = obtain.check_out(template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
-    template.run_success = run_success
-    if run_success:
+    #   Check if the model run was successful
+    if template.run_success:
 
-        #   Inspect the results
-        obtain.all_val(template, l, template.fp_t_t16)
-        analyse.constraint_energy(template, l)
-
-    #   Obtain the constraint energy of the current model
-    template.c_e = obtain.read_val(template, l)
+        #   Obtain the constraint energy of the current model
+        template.c_e = obtain.read_val(template, "Constraint Energy_" + l)
+        template.i_e = obtain.read_val(template, "Internal Energy_" + l)
 
     #   Save the template
     modify.save_model(template.fp_t_mud)

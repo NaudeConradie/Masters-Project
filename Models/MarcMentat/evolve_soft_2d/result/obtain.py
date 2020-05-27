@@ -53,7 +53,7 @@ def check_out(
 
     #   Obtain the timestamp of the last time the unit file was modified
     t_mud = os.path.getmtime(fp_mud)
-
+    
     #   Wait until the log file exists and has been updated
     utility.wait_file_exist(fp_log, "log", t)
     utility.wait_file_update(fp_log, t_mud, "log", t)
@@ -180,7 +180,13 @@ def all_val(
 
     #   The labels of the desired results
     label = []
+    label.append("Displacement X")
+    label.append("Displacement Y")
+    label.append("Reaction Force X")
+    label.append("Reaction Force Y")
     label.append("Total Strain Energy Density")
+    label.append("Comp 11 of Total Strain")
+    label.append("Comp 22 of Total Strain")
     label.append("Displacement")
     label.append("Reaction Force")
 

@@ -43,7 +43,7 @@
 
              integer*8 version: integers are 64-bits
 
-             date: Wed May 20 17:16:18 2020
+             date: Mon May 25 10:36:38 2020
 
 
              (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
@@ -251,23 +251,23 @@
                     2         5         1
                    node      coordinates
 
-             define              node                set                 bc_fd_y0_nodes                                                                                      
+             define              node                set                 bc_fd_yy1_nodes                                                                                     
              ----------
 
              from node          1 to node          6 by          1
 
-             define              node                set                 bc_fd_y1_nodes                                                                                      
+             define              node                set                 bc_fd_yy2_nodes                                                                                     
              ----------
 
              from node         31 to node         36 by          1
 
-             define              node                set                 bc_fd_x0_nodes                                                                                      
+             define              node                set                 bc_fd_xx1_nodes                                                                                     
              ----------
 
              a list of nodes given below 
                      1         7        13        19        25        31
 
-             define              node                set                 bc_fd_x1_nodes                                                                                      
+             define              node                set                 bc_fd_xx2_nodes                                                                                     
              ----------
 
              a list of nodes given below 
@@ -343,7 +343,7 @@
 
              read data from unit    5
 
-             name of boundary condition bc_fd_y0
+             name of boundary condition bc_fd_yy1
 
              Displacements are applied incrementally relative to current position
 
@@ -351,9 +351,9 @@
 
              applied to node ids       
 
-             bc_fd_y0_nodes
+             bc_fd_yy1_nodes
 
-             name of boundary condition bc_fd_y1
+             name of boundary condition bc_fd_yy2
 
              Displacements are applied incrementally relative to current position
 
@@ -361,19 +361,9 @@
 
              applied to node ids       
 
-             bc_fd_y1_nodes
+             bc_fd_yy2_nodes
 
-             name of boundary condition bc_fd_x0
-
-             Displacements are applied incrementally relative to current position
-
-             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
-
-             applied to node ids       
-
-             bc_fd_x0_nodes
-
-             name of boundary condition bc_fd_x1
+             name of boundary condition bc_fd_xx1
 
              Displacements are applied incrementally relative to current position
 
@@ -381,19 +371,29 @@
 
              applied to node ids       
 
-             bc_fd_x1_nodes
+             bc_fd_xx1_nodes
+
+             name of boundary condition bc_fd_xx2
+
+             Displacements are applied incrementally relative to current position
+
+             Prescribed Displacement for dof  1 =      0.00000E+00  table id is        0
+
+             applied to node ids       
+
+             bc_fd_xx2_nodes
 
              loadcase            job                                                                                                                                         
              ----------
 
 
-             activate boundary condition bc_fd_y0
+             activate boundary condition bc_fd_yy1
 
-             activate boundary condition bc_fd_y1
+             activate boundary condition bc_fd_yy2
 
-             activate boundary condition bc_fd_x0
+             activate boundary condition bc_fd_xx1
 
-             activate boundary condition bc_fd_x1
+             activate boundary condition bc_fd_xx2
 
              contact                      5         0                                                                                                                        
              ----------
@@ -528,9 +528,9 @@
              end option                                                                                                                                                      
              ----------
 
-             wall time =          29.00
+             wall time =          27.00
 
-             wall time =          29.00
+             wall time =          27.00
 
 
              direct symmetric multi-frontal sparse solver is invoked for region   1
@@ -656,7 +656,7 @@
              e n d   o f   i n c r e m e n t       0
 
              binary post data at increment       0.  subincrement    0.  on file 16
-             wall time =          29.00
+             wall time =          27.00
 
 
              $...................                                                                                                                                            
@@ -671,13 +671,13 @@
              ----------
 
 
-             activate boundary condition bc_fd_y0
+             activate boundary condition bc_fd_yy1
 
-             activate boundary condition bc_fd_y1
+             activate boundary condition bc_fd_yy2
 
-             activate boundary condition bc_fd_x0
+             activate boundary condition bc_fd_xx1
 
-             activate boundary condition bc_fd_x1
+             activate boundary condition bc_fd_xx2
 
              $....allowed contact remains unchanged                                                                                                                          
 
@@ -823,7 +823,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -838,7 +838,7 @@
 
 
              start of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -846,7 +846,7 @@
 
 
              end of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -931,7 +931,7 @@
              e n d   o f   i n c r e m e n t       1
 
              binary post data at increment       1.  subincrement    0.  on file 16
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -956,7 +956,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -971,7 +971,7 @@
 
 
              start of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -979,7 +979,7 @@
 
 
              end of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -1064,7 +1064,7 @@
              e n d   o f   i n c r e m e n t       2
 
              binary post data at increment       2.  subincrement    0.  on file 16
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -1089,7 +1089,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -1104,7 +1104,7 @@
 
 
              start of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -1112,7 +1112,7 @@
 
 
              end of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -1197,7 +1197,7 @@
              e n d   o f   i n c r e m e n t       3
 
              binary post data at increment       3.  subincrement    0.  on file 16
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -1222,7 +1222,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -1237,7 +1237,7 @@
 
 
              start of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
 
@@ -1245,7 +1245,7 @@
 
 
              end of matrix solution
-             wall time =          29.00
+             wall time =          27.00
 
 
      body        1: cbody1
@@ -1330,7 +1330,7 @@
              e n d   o f   i n c r e m e n t       4
 
              binary post data at increment       4.  subincrement    0.  on file 16
-             wall time =          29.00
+             wall time =          27.00
 
 
              $....end of loadcase lcase1                                                                                                                                     
@@ -1374,16 +1374,16 @@
 
              timing information:                             wall time      cpu time
 
-               total time for input:                              0.22          0.03
+               total time for input:                              0.13          0.08
                total time for stiffness matrix assembly:          0.01          0.03
                total time for mass matrix assembly:               0.00          0.00
-               total time for stress recovery:                    0.02          0.00
-               total time for matrix solution:                    0.08          0.05
+               total time for stress recovery:                    0.03          0.02
+               total time for matrix solution:                    0.15          0.03
                total time for contact:                            0.00          0.00
-               total time for output:                             0.06          0.06
-               total time for miscellaneous:                     29.17          0.56
+               total time for output:                             0.18          0.05
+               total time for miscellaneous:                     27.15          0.69
                ---------------------------------------------------------------------
-               total time:                                       29.56          0.73
+               total time:                                       27.65          0.89
 
 
              **************************************************************************
