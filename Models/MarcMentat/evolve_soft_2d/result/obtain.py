@@ -2,13 +2,14 @@
 
 #   Imports
 import csv
+import itertools
 import linecache
 import numpy
 import os.path
 import re
 import time
 
-from evolve_soft_2d import utility
+from evolve_soft_2d import plotting, utility
 from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.log import m_log, en_log
 from evolve_soft_2d.unit import modify
@@ -21,6 +22,7 @@ def check_out(
     fp_mud: str,
     fp_log: str,
     fp_t16: str,
+    j_id: int
     ) -> bool:
     """Check if the updated output files exist
 
@@ -112,10 +114,10 @@ def check_out(
                 decided = True
 
                 #   Rerun the job
-                modify.run_job()
+                modify.run_job(j_id)
 
                 #   Check if the updated output files exist
-                success = check_out(fp_mud, fp_log, fp_t16)
+                success = check_out(fp_mud, fp_log, fp_t16, j_id)
 
             #   Check if the response was no
             elif dec == "n":
@@ -229,6 +231,70 @@ def all_val(
     py_send("*post_close")
 
     return
+
+################################################################################
+
+def internal_edges(
+    unit_p,
+    ) -> list:
+    """Find all internal edges
+
+    Parameters
+    ----------
+    unit_p : unit_p
+        The unit parameters class object
+
+    Returns
+    -------
+    list
+        The internal edges sorted in order of boundary conditions to be applied
+    """    
+
+    #   Initialisations
+    ip_yp = []
+    ip_yn = []
+    ip_xp = []
+    ip_xn = []
+
+    #   Format the grid for the search
+    grid_flat = list(reversed(unit_p.grid))
+    grid_flat = list(itertools.chain.from_iterable(grid_flat))
+
+    #   Format the element indices of the elements removed
+    rem_i = [i - 1 for i in unit_p.rem]
+
+    #   Loop through all removed elements
+    for i in rem_i:
+
+        #   Check if the element above has not been removed
+        if grid_flat[i + unit_p.template.x_e] == 1:
+
+            #   Add the element to the appropriate list
+            ip_yp.append(i + unit_p.template.x_e + 1)
+
+        #   Check if the element below has not been removed
+        if grid_flat[i - unit_p.template.x_e] == 1:
+
+            #   Add the element to the appropriate list
+            ip_yn.append(i - unit_p.template.x_e + 1)
+
+        #   Check if the element to the right has not been removed
+        if grid_flat[i + 1] == 1:
+
+            #   Add the element to the appropriate list
+            ip_xp.append(i + 1 + 1)
+
+        #   Check if the element to the left has not been removed
+        if grid_flat[i - 1] == 1:
+
+            #   Add the element to the appropriate list
+            ip_xn.append(i - 1 + 1)
+
+    #   Combine all lists in the appropriate order
+    ip_e = [ip_yp, ip_xn, ip_yn, ip_xp]
+
+    return ip_e
+
 ################################################################################
 
 def read_val(
@@ -261,6 +327,91 @@ def read_val(
         val = None
 
     return val
+
+################################################################################
+
+def read_all(
+    l: str,
+    n_e: list,
+    lu: list,
+    template,
+    ) -> list:
+    """Read all result values from a list of units and plot them
+
+    Parameters
+    ----------
+    l : str
+        The result label
+    n_e : list
+        The list of the number of elements removed from every element
+    lu : list
+        The list of units
+    template : template
+        The unit template parameters
+
+    Returns
+    -------
+    list
+        The list of values
+    """    
+
+    #   Initialisations
+    v = []
+
+    #   Loop through all units
+    for i in range(0, len(lu)):
+
+        #   Initialisations
+        v.append([])
+
+        #   Create the file path of the results file
+        fp_r_f = create_fp_file(template, l + "_" + lu[i], "r")
+
+        #   Store the results from the file
+        v[i] = linecache.getline(fp_r_f, template.n_steps + 1)
+
+    #   Clean the list
+    v = [i.rstrip() for i in v]
+
+    #   Cast the list items to floats and check for any failed results
+    (v, v_f) = utility.list_to_float(v)
+
+    #   Output a warning if any models failed to deliver results
+    if v_f != 0:
+        print("Warning: {} models failed to deliver results!".format(v_f))
+
+    v = list(map(abs, v))
+
+    #   Plot the results
+    plotting.histogram(v, l, "Frequency", "Energy (J)")
+    plotting.scatterplot(template, n_e, v, l, "Energy (J)", "Number Of Elements Removed")
+
+    return v
+
+################################################################################
+
+def read_lu(fp_lu: str) -> list:
+    """Read the list of units
+
+    Parameters
+    ----------
+    fp_lu : str
+        The file path of the log file of units created during the last simulation
+
+    Returns
+    -------
+    list
+        The list of units
+    """
+
+    #   Read the list from the file
+    with open(fp_lu) as f:
+        lu = f.readlines()
+
+    #   Clean the list
+    lu = [i.rstrip() for i in lu]
+
+    return lu
 
 ################################################################################
 

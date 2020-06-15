@@ -8,6 +8,7 @@ from py_mentat import py_send
 def find_e_internal(
     x_e: int,
     y_e: int,
+    b: int,
     ) -> list:
     """Find all internal elements
 
@@ -17,6 +18,8 @@ def find_e_internal(
         The number of elements in the x-direction
     y_e : int
         The number of elements in the y-direction
+    b : int
+        The boundary thickness
 
     Returns
     -------
@@ -30,14 +33,30 @@ def find_e_internal(
     #   Obtain the number of elements
     e_n = x_e * y_e
 
-    #   Loop through all elements
-    for i in range(1, e_n + 1):
+    #   Define a list of all elements
+    e = [*range(1, e_n + 1)]
 
-        #   Check if element is not on the boundary
-        if (i > x_e) and (i <= e_n - x_e) and (i % x_e != 0) and (i % x_e != 1):
+    #   Add the first and last rows of elements to the list of external elements
+    e_external = [*range(1, x_e*b + 1)]
+    e_external += [*range(e_n - x_e*b + 1, e_n + 1)]
 
-            #   Add element to the list of internal elements
-            e_internal.append(i)
+    #   Loop through the internal rows of the elements
+    for i in range(1, y_e - 2*b + 1):
+
+        #   Loop through the number of boundary elements
+        for j in range(1, b + 1):
+
+            #   Add the left column elements to the list of external elements
+            e_external.append((i + b - 1)*x_e + j)
+
+            #   Add the right column elements to the list of external elements
+            e_external.append((i + b)*x_e - j + 1)
+
+    #   Determine the list of internal elements
+    e_internal = list((set(e) | set(e_external)) - (set(e) & set(e_external)))
+
+    #   Sort the list of internal elements
+    e_internal.sort()
 
     return e_internal
 

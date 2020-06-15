@@ -5,8 +5,7 @@ import time
 
 from py_mentat import py_send
 
-from evolve_soft_2d import utility
-from evolve_soft_2d.classes import unit_p
+from evolve_soft_2d import classes, utility
 from evolve_soft_2d.unit import inspect, modify, rep_grid
 from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.file_paths import create_fp_file
@@ -58,6 +57,7 @@ def gen_units(
 
     #   Create the file path of the log file of units created during the simulation
     fp_lu = create_fp_file(template, t, "l")
+    fp_bu = create_fp_file(template, t + "_selected", "l")
 
     #   Determine the maximum number of unique combinations of internal elements removed
     max_n = utility.nCr(len(template.e_internal), r = f, l = r)
@@ -67,6 +67,8 @@ def gen_units(
 
         #   Set the number of units to be generated to the maximum number of unique combinations
         n = max_n
+
+    modify.open_model(template.fp_t_mud)
 
     #   Loop through the desired number of units to be created
     for _ in range(0, n):
@@ -109,13 +111,13 @@ def gen_units(
         modify.rem_el(rem)
 
         #   Save the current unit parameters
-        curr_mod = unit_p(template, rem, grid_rem)
+        curr_mod = classes.unit_p(template, rem, grid_rem)
 
         #   Save the altered unit
         modify.save_model(curr_mod.fp_u_mud)
 
         #   Run the model
-        curr_mod.run_success = modify.run_model(curr_mod.template, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log, curr_mod.fp_u_t16)
+        curr_mod.run_success = modify.run_model(curr_mod.template, 1, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[0], curr_mod.fp_u_t16[0])
 
         #   Check if the model run was successful
         if curr_mod.run_success:
@@ -126,6 +128,7 @@ def gen_units(
 
         #   Log the current unit parameters
         print(curr_mod, file = open(curr_mod.fp_u_l, "w"))
+        utility.save_v(curr_mod, curr_mod.u_id)
 
         #   Log the current unit ID
         print(curr_mod.u_id, file = open(fp_lu, "a"))
@@ -134,7 +137,7 @@ def gen_units(
         #   Reopen the template
         modify.open_model(template.fp_t_mud)
     
-    return fp_lu
+    return fp_lu, fp_bu
 
 ################################################################################
 
@@ -162,21 +165,21 @@ def template_1(template) -> None:
 
     #   Add template properties
     modify.add_ramp(template)
-    modify.add_bc_fd_ee("yy1", "",               "y", "y", template.y0,  0)
-    modify.add_bc_fd_ee("yy2", template.tab_nam, "y", "y", template.y_e, template.apply)
-    modify.add_bc_fd_ee("xx1", "",               "x", "x", template.x0,  0)
-    modify.add_bc_fd_ee("xx2", "",               "x", "x", template.x_e, 0)
+    modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
+    modify.add_bc_fd_edge("yy2", template.tab_nam, "y", "y", template.y_s, template.apply[0])
+    modify.add_bc_fd_edge("xx1", "",               "x", "x", template.x0,  0)
+    modify.add_bc_fd_edge("xx2", "",               "x", "x", template.x_s, 0)
     modify.add_geom_prop()
     modify.add_mat_ogden(template.ogd_mat)
     modify.add_contact_body()
-    modify.add_lcase(template)
+    modify.add_lcase(template, 1, ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2"])
 
     #   Add the job
-    modify.add_job()
+    modify.add_job(1)
     modify.save_model(template.fp_t_mud)
 
     #   Run the model
-    template.run_success = modify.run_model(template, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+    template.run_success = modify.run_model(template, 1, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
 
     #   Check if the model run was successful
     if template.run_success:
@@ -190,6 +193,32 @@ def template_1(template) -> None:
 
     #   Log the template parameters
     print(template, file = open(template.fp_t_l, "w"))
+    utility.save_v(template, l)
+
+    return
+
+################################################################################
+
+def template_1_test(fp_bu: str) -> None:
+
+    bu = obtain.read_lu(fp_bu)
+
+    for i in range(0, len(bu)):
+
+        curr_mod = utility.open_v(bu[i])
+
+        modify.open_model(curr_mod.fp_u_mud)
+
+        modify.add_bc_fd_node("x0", "", "x", 1, 0)
+        modify.add_bc_fd_node("y0", "", "y", 1, 0)
+
+        modify.add_bc_p_internal(curr_mod)
+
+        modify.add_lcase(curr_mod.template, 2, ["bc_fd_x0", "bc_fd_y0", "bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
+
+        modify.add_job(2)
+
+        curr_mod.run_success = modify.run_model(curr_mod.template, 2, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[1], curr_mod.fp_u_t16[1])
 
     return
 
@@ -219,21 +248,21 @@ def template_2(template) -> None:
 
     #   Add template properties
     modify.add_ramp(template)
-    modify.add_bc_fd_ee("xy1", "",               "x", "y", template.y0,  0)
-    modify.add_bc_fd_ee("xy2", template.tab_nam, "x", "y", template.y_e, template.apply)
-    modify.add_bc_fd_ee("yx1", "",               "y", "x", template.x0,  0)
-    modify.add_bc_fd_ee("yx2", "",               "y", "x", template.x_e, 0)
+    modify.add_bc_fd_edge("xy1", "",               "x", "y", template.y0,  0)
+    modify.add_bc_fd_edge("xy2", template.tab_nam, "x", "y", template.y_s, template.apply[0])
+    modify.add_bc_fd_edge("yx1", "",               "y", "x", template.x0,  0)
+    modify.add_bc_fd_edge("yx2", "",               "y", "x", template.x_s, 0)
     modify.add_geom_prop()
     modify.add_mat_ogden(template.ogd_mat)
     modify.add_contact_body()
-    modify.add_lcase(template)
+    modify.add_lcase(template, 1, ["bc_fd_xy1", "bc_fd_xy2", "bc_fd_yx1", "bc_fd_yx2"])
 
      #   Add the job
-    modify.add_job()
+    modify.add_job(1)
     modify.save_model(template.fp_t_mud)
 
     #   Run the model
-    template.run_success = modify.run_model(template, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+    template.run_success = modify.run_model(template, 1, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
 
     #   Check if the model run was successful
     if template.run_success:
@@ -246,5 +275,6 @@ def template_2(template) -> None:
     modify.save_model(template.fp_t_mud)
 
     print(template, file = open(template.fp_t_l, "w"))
+    utility.save_v(template, l)
 
     return

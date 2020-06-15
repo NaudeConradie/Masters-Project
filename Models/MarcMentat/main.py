@@ -4,7 +4,6 @@
 import importlib
 
 from evolve_soft_2d import classes, file_paths, log, plotting, utility
-from evolve_soft_2d.classes import template, mold_star_15
 from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.unit import create, inspect, modify, rep_grid
 
@@ -29,24 +28,29 @@ def main():
     importlib.reload(rep_grid)
 
     #   Initialisations
-    #   Text name of the table used for the applied load
-    table_name = "ramp_input"
-    #   Number of nodes per axis (one more than number of elements desired)
-    x_n = 6
-    y_n = 6
+    #   Template case to be run
+    case = 1
     #   Coordinates of initial position
     x0 = 0
     y0 = 0
+    #   Number of nodes per axis (one more than number of elements desired)
+    x_e = 5
+    y_e = 5
+
+    x_s = 20
+    y_s = 20
+
+    b = 1
     #   Number of increments per second to analyse
     n_steps = 4
+    #   Text name of the table used for the applied load
+    table_name = "ramp_input"
     #   Magnitude of the applied load and/or displacement
     #   p_mag = 25
-    d_mag = (y_n - 1)/2
-    #   Template case to be run
-    case = 1
+    app = [y_s/2, 0.01]
 
     #   Prepare the unit parameters
-    temp = template(case, x0, y0, x_n, y_n, mold_star_15, n_steps, table_name, d_mag)
+    temp = classes.template(case, x0, y0, x_e, y_e, x_s, y_s, b, classes.mold_star_15, n_steps, table_name, app)
 
     #   Create the template
     if temp.case == 1:
@@ -55,10 +59,13 @@ def main():
         create.template_2(temp)
 
     #   Generate a number of units and save their results
-    fp_lu = create.gen_units(temp, 1)
+    fp_lu, fp_bu = create.gen_units(temp, 100)
 
     #   Analyse the results
-    analyse.monte_carlo(temp, fp_lu)
+    analyse.sel_best_u(temp, fp_lu, fp_bu, 15)
+
+    if temp.case == 1:
+        create.template_1_test(fp_bu)
 
     #   View the boundary conditions of the template
     inspect.view_bc()

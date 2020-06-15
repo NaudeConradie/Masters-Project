@@ -61,6 +61,11 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{rotating}
+\usepackage{pdflscape}
 
 % and NOT in the document itself!
 %
@@ -74,7 +79,7 @@
              \normalfont\small\itshape
              (``The Virtual Evolution of 2D Soft Robots'')
             }{%-- English -------------------------------------------
-             Quarterly Report 1
+             Quarterly Report 2
             }}
 
 \author{N. T.\ Conradie}{Naud\'e Thomas Conradie}
@@ -120,7 +125,7 @@
 % \WaterMark{UScrest-WM}
  \TitlePage
 
- \DeclarationDate{2020/02/27}
+ \DeclarationDate{2020/05/29}
  \DeclarationPage
  \clearpage
 
@@ -152,10 +157,10 @@
 \include{contents/Chap-5}
 
 %==== Appendices ====================================================
-%\appendix
-%\appendixpage\relax
+\appendix
+\appendixpage
 
-%\include{contents/App-1}
+\include{contents/App-1}
 %\include{contents/App-2}
 %\include{contents/App-3}
 

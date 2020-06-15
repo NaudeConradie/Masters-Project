@@ -67,10 +67,10 @@ def create_nodes(template) -> None:
             py_send("*add_nodes {} {} {}".format(x, y, z))
 
             #   Increment the x-coordinate
-            x = x + 1
+            x = x + template.x_e_s
 
         #   Increment the y-coordinate
-        y = y + 1
+        y = y + template.y_e_s
 
     return
 
@@ -133,7 +133,7 @@ def add_ramp(template) -> None:
 
 ################################################################################
     
-def add_bc_fd_ee(
+def add_bc_fd_edge(
     label: str,
     tab_nam: str,
     a: str,
@@ -203,7 +203,7 @@ def add_bc_fd_ee(
 
 ################################################################################
 
-def add_bc_fd_sn(
+def add_bc_fd_node(
     label: str,
     tab_nam: str,
     a: str,
@@ -244,73 +244,79 @@ def add_bc_fd_sn(
     return
 
 ################################################################################
-  
-def add_load(
+
+def add_bc_p_internal(
+    unit_p,
+    ) -> None:
+    """Add pressure boundary conditions to all internal edges
+
+    Parameters
+    ----------
+    unit_p : unit_p
+        The unit parameters class object
+    """
+
+    #   Initialisations
+    label = []
+    label.append("yp")
+    label.append("xn")
+    label.append("yn")
+    label.append("xp")
+
+    #   Find all internal edges
+    ip_e = obtain.internal_edges(unit_p)
+
+    #   Loop through all primary directions
+    for i in range(0, 4):
+
+        #   Add the pressure boundary condition in the current direction
+        add_bc_p_edge(label[i], unit_p.template.apply[1], unit_p.template.tab_nam, i, ip_e[i])
+
+    return
+
+################################################################################
+
+def add_bc_p_edge(
     label: str,
     p: float, 
     tab_nam: str, 
-    x_e: int, 
-    y_e: int, 
-    axis: str, 
-    direc: int, 
-    coord: int,
+    d: int,
+    e: list,
     ) -> None:
-    """Add a load along a specified axis in a specified direction
+    """Add a pressure boundary condition to a list of elements in a given direction
 
     Parameters
     ----------
     label : str
-        The label of the load
+        The label of the boundary condition
     p : float
-        The magnitude of the applied pressure
+        The magnitude of the pressure
     tab_nam : str
-        The name of the table defining the load function
-    x_e : int
-        The number of elements in the x-direction
-    y_e : int
-        The number of elements in the y-direction
-    axis : str
-        The axis of the load
-        "x" or "y"
-    direc : int
-        The direction of the load with respect to the axis
-        1 for positive and -1 for negative
-    coord : int
-        The axis coordinate of the load
+        The name of the table defining the pressure function
+    d : int
+        The direction of the applied pressure
+        0, 1, 2 or 3
+    e : list
+        The list of elements
     """
 
     py_send("*new_apply")
     py_send("*apply_type edge_load")
-    py_send("*apply_name load_{}".format(label))
+    py_send("*apply_name bc_load_{}".format(label))
 
     #   Apply a pressure with the given magnitude and table
     py_send("*apply_dof p")
     py_send("*apply_dof_value p {}".format(p))
     py_send("*apply_dof_table p {}".format(tab_nam))
-
-    #   Find the correct edges according to the specified axes and directions
-    if (axis == "x") and (direc == -1):
-        s = 1
-        edges = [i*x_e - (x_e - coord) for i in range(1, y_e + 1)]
-    elif (axis == "x") and (direc == 1):
-        s = 3
-        edges = [i*x_e - (x_e - coord) for i in range(1, y_e + 1)]
-    elif (axis == "y") and (direc == -1):
-        s = 2
-        edges = [i + x_e*(coord - 1) for i in range(1, x_e + 1)]
-    elif (axis == "y") and (direc == 1):
-        s = 4
-        edges = [i + x_e*(coord - 1) for i in range(1, x_e + 1)]
         
     #   Apply the load to the correct edges
-    py_send("*add_apply_edges")
+    py_send("*add_apply_edges ")
 
-    if axis == "x":
-        for i in range(0, y_e):
-            py_send("{}:{} ".format(edges[i], s))
-    elif axis == "y":
-        for i in range(0, x_e):
-            py_send("{}:{} ".format(edges[i], s))
+    #   Loop through all elements
+    for i in e:
+
+        #   Add the appropriate edge
+        py_send("{}:{} ".format(i, d))
 
     py_send("#")
 
@@ -368,7 +374,7 @@ def add_contact_body() -> None:
 
 ################################################################################
  
-def add_lcase(template) -> None:
+def add_lcase(template, l_id: int, l_bc: list) -> None:
     """Add a loadcase
 
     Parameters
@@ -379,20 +385,27 @@ def add_lcase(template) -> None:
 
     py_send("*new_loadcase")
     py_send("*loadcase_type struc:static")
+    py_send("*loadcase_name lcase{}".format(l_id))
+    py_send("*clear_loadcase_loads")
+
+    for i in l_bc:
+
+        py_send("*add_loadcase_loads {}".format(i))
+
     py_send("*loadcase_value nsteps {}".format(template.n_steps))
 
     return
 
 ################################################################################
 
-def add_job() -> None:
+def add_job(j_id: int) -> None:
     """Add a job
     """
 
     py_send("*prog_use_current_job on")
     py_send("*new_job structural")
-    py_send("*job_name job")
-    py_send("*add_job_loadcases lcase1")
+    py_send("*job_name job_{}".format(j_id))
+    py_send("*add_job_loadcases lcase{}".format(j_id))
     py_send("*job_option strain:large")
     py_send("*job_option follow:on")
     py_send("*add_post_tensor stress_g")
@@ -404,12 +417,13 @@ def add_job() -> None:
 
 ################################################################################
 
-def run_job() -> None:
+def run_job(j_id: int) -> None:
     """Run a job
     """
 
     t0 = time.time()
 
+    py_send("*edit_job job_{}".format(j_id))
     py_send("*update_job")
     py_send("*submit_job 1") 
     py_send("*monitor_job")
@@ -424,6 +438,7 @@ def run_job() -> None:
 
 def run_model(
     template,
+    j_id: int,
     l: str,
     fp_mud: str,
     fp_log: str,
@@ -451,10 +466,10 @@ def run_model(
     """
 
     #   Run the job
-    run_job()
+    run_job(j_id)
 
     #   Determine the existence of the results
-    run_success = obtain.check_out(fp_mud, fp_log, fp_t16)
+    run_success = obtain.check_out(fp_mud, fp_log, fp_t16, j_id)
 
     #   Check if the run was a success
     if run_success:
@@ -488,5 +503,21 @@ def rem_el(rem: list) -> None:
         py_send("{} ".format(rem[i]))
 
     py_send("#")
+
+    return
+
+################################################################################
+
+def rem_bc(bc: str) -> None:
+    """Remove a selected boundary condition
+
+    Parameters
+    ----------
+    bc : str
+        The name of the boundary condition
+    """    
+
+    py_send("*edit_apply {}".format(bc))
+    py_send("*remove_current_apply")
 
     return

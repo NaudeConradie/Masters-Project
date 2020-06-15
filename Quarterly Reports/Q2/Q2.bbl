@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{36}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname bibnamefont\endcsname\relax
   \def\bibnamefont#1{#1}\fi
@@ -18,6 +18,25 @@
 \newcommand{\Capitalize}[1]{\uppercase{#1}}
 \newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
 \providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Mol()}]{MoldStar}
+{Mold Star 15, 16 and 30}.
+\newline\bblurlpre\url{http://www.smooth-on.com/tb/files/MOLD{\_}STAR{\_}15{\_}16{\_}30{\_}TB.pdf}
+
+\bibitem[{\citenamefont{Ellis}(2020)}]{Ellis2020}
+\bibnamefont{Ellis}, \bibfnamefont{D.R.}: \emph{{Generative Design Procedure
+  for Embedding Complex Behaviour in Pneumatic Soft Robots}}.
+\newblock \bblphdthesis{}, Stellenbosch University, 2020.
+
+\bibitem[{\citenamefont{Cook} \emph{\bbletal{}}(2002)\citenamefont{Cook},
+  \citenamefont{Malkus}, \citenamefont{Plesha} \protect\BIBand{}
+  \citenamefont{Witt}}]{Cook2002}
+\bibnamefont{Cook}, \bibfnamefont{R.D.}, \bibnamefont{Malkus},
+  \bibfnamefont{D.S.}, \bibnamefont{Plesha}, \bibfnamefont{M.E.}
+  \protect\BIBand{} \bibnamefont{Witt}, \bibfnamefont{R.J.}: \emph{{Concepts
+  and Applications of Finite Element Analysis}}.
+\newblock \bblfourtho{} \bbledn{}. Wiley, Madison, 2002.
+\newblock ISBN 978-0-471-35605-9.
 
 \bibitem[{\citenamefont{Shea} \emph{\bbletal{}}(2005)\citenamefont{Shea},
   \citenamefont{Aish} \protect\BIBand{} \citenamefont{Gourtovaia}}]{Shea2005}
@@ -41,11 +60,6 @@
   Novel Actuators for Soft Robotics}.
 \newblock \emph{Actuators}, \bblvol{}~7, \bblno{}~3, \bblp{}~48, 2018.
 \newblock ISSN 2076-0825.
-
-\bibitem[{\citenamefont{Ellis}(2020)}]{Ellis2020}
-\bibnamefont{Ellis}, \bibfnamefont{D.R.}: \emph{{Generative Design Procedure
-  for Embedding Complex Behaviour in Pneumatic Soft Robots}}.
-\newblock \bblphdthesis{}, Stellenbosch University, 2020.
 
 \bibitem[{\citenamefont{Brose}(1993)}]{Brose1993}
 \bibnamefont{Brose}, \bibfnamefont{P.}: \emph{{Compositional Model-Based
@@ -147,16 +161,6 @@
   525--540, 2017.
 \newblock ISSN 1610742X.
 
-\bibitem[{\citenamefont{Cook} \emph{\bbletal{}}(2002)\citenamefont{Cook},
-  \citenamefont{Malkus}, \citenamefont{Plesha} \protect\BIBand{}
-  \citenamefont{Witt}}]{Cook2002}
-\bibnamefont{Cook}, \bibfnamefont{R.D.}, \bibnamefont{Malkus},
-  \bibfnamefont{D.S.}, \bibnamefont{Plesha}, \bibfnamefont{M.E.}
-  \protect\BIBand{} \bibnamefont{Witt}, \bibfnamefont{R.J.}: \emph{{Concepts
-  and Applications of Finite Element Analysis}}.
-\newblock \bblfourtho{} \bbledn{}. Wiley, Madison, 2002.
-\newblock ISBN 978-0-471-35605-9.
-
 \bibitem[{\citenamefont{Cheney} \emph{\bbletal{}}(2013)\citenamefont{Cheney},
   \citenamefont{MacCurdy}, \citenamefont{Clune} \protect\BIBand{}
   \citenamefont{Lipson}}]{Cheney2013}
@@ -185,6 +189,12 @@
 \bibitem[{MSC(2003)}]{MSC}
 {MSC.Marc Mentat Datasheet}.
 \newblock 2003.
+
+\bibitem[{\citenamefont{Kim}(2015)}]{Kim2015}
+\bibnamefont{Kim}, \bibfnamefont{N.H.}: \emph{{Introduction to nonlinear finite
+  element analysis}}.
+\newblock 2015.
+\newblock ISBN 9781441917461.
 
 \bibitem[{\citenamefont{Sims}(1994{\natexlab{\emph{a}}})}]{Sims1994a}
 \bibnamefont{Sims}, \bibfnamefont{K.}: {Evolving virtual creatures}.
@@ -236,6 +246,12 @@
   Electrical Engineering}, \bblpp{} 409--414, 2002.
 \newline\bblurlpre\url{http://ieeexplore.ieee.org/document/1115312/}
 
+\bibitem[{\citenamefont{Metropolis} \protect\BIBand{}
+  \citenamefont{Ulam}(1949)}]{Metropolis1949}
+\bibnamefont{Metropolis}, \bibfnamefont{N.} \protect\BIBand{}
+  \bibnamefont{Ulam}, \bibfnamefont{S.}: {The Monte Carlo Method}.
+\newblock \bbltechrep{} 247, 1949.
+
 \bibitem[{\citenamefont{Zakinthinos} \protect\BIBand{}
   \citenamefont{Lee}(1998)}]{Zakinthinos1998}
 \bibnamefont{Zakinthinos}, \bibfnamefont{A.} \protect\BIBand{}
@@ -279,18 +295,20 @@
   \bblpp{} 457--466, 2012.
 \newblock ISSN 15523098.
 
-\bibitem[{Mol()}]{MoldStar}
-{Mold Star 15, 16 and 30}.
-\newline\bblurlpre\url{http://www.smooth-on.com/tb/files/MOLD{\_}STAR{\_}15{\_}16{\_}30{\_}TB.pdf}
-
 \bibitem[{ISO(2017{\natexlab{\emph{a}}})}]{ISO37}
-{ISO 37 - Rubber, vulcanized or thermoplastic - Determination of tensile
-  stress-strain properties}.
+{Rubber, vulcanized or thermoplastic - Determination of tensile stress-strain
+  properties}.
 \newblock 2017{\natexlab{\emph{a}}}.
 
 \bibitem[{ISO(2017{\natexlab{\emph{b}}})}]{ISO7743}
-{ISO 7743 - Rubber, vulcanized or thermoplastic - Determination of compression
+{Rubber, vulcanized or thermoplastic - Determination of compression
   stress-strain properties}.
 \newblock 2017{\natexlab{\emph{b}}}.
+
+\bibitem[{\citenamefont{Joubert}(2020)}]{Joubert2020}
+\bibnamefont{Joubert}, \bibfnamefont{I.J.}: \emph{{Generative design using
+  Lindenmayer-systems and numerical optimisation}}.
+\newblock \bblphdthesis{}, Stellenbosch University, 2020.
+\newblock \eprint{arXiv:1011.1669v3}.
 
 \end{thebibliography}

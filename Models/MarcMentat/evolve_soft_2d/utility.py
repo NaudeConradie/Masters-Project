@@ -4,6 +4,7 @@
 import hashlib
 import numpy
 import os.path
+import pickle
 import re
 import time
 
@@ -219,6 +220,7 @@ def gen_hash(s: str) -> str:
     str
         The hash code
     """
+
     m = hashlib.md5()
     m.update(bytes(s, encoding = 'utf8'))
     hash_code = str(m.hexdigest())
@@ -246,6 +248,7 @@ def search_text_file(
         True if the text was found, false otherwise
         The entire line containing the text
     """
+
     #   Initialisations
     found_text = ""
     found = False
@@ -290,6 +293,7 @@ def add_sort_list(
     list
         The added and sorted list
     """
+    
     #   Add two lists
     l = l1 + l2
 
@@ -456,7 +460,7 @@ def list_to_float(l: list) -> [list, int]:
 
         #   Increment the failure counter
         except:
-            l_o.append(0)
+            l_o.append(1e6)
             l_f += 1
 
     return l_o, l_f
@@ -505,3 +509,57 @@ def find_int_in_str(s: str) -> int:
     i = int(re.search(r'\d+', s).group())
 
     return i
+
+################################################################################
+
+def save_v(
+    v,
+    fp: str,
+    ) -> None:
+    """Save a variable as a file
+
+    Parameters
+    ----------
+    v : 
+        The variable to be saved
+    fp : str
+        The file path
+    """    
+
+    #   Open the file to be written to
+    f = open(fp, 'wb')
+
+    #   Save the variable
+    pickle.dump(v, f)
+
+    #   Close the file
+    f.close()
+
+    return
+
+################################################################################
+
+def open_v(fp: str):
+    """Open a variable saved to a file
+
+    Parameters
+    ----------
+    fp : str
+        The file path
+
+    Returns
+    -------
+    
+        The saved variable
+    """    
+
+    #   Open the file to be read from
+    f = open(fp, "rb")
+
+    #   Store the variable
+    v = pickle.load(f)
+
+    #   Close the file
+    f.close()
+
+    return v

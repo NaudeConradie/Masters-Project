@@ -60,12 +60,15 @@ class template:
         case: int,
         x0: int,
         y0: int,
-        x_n: int,
-        y_n: int,
+        x_e: int,
+        y_e: int,
+        x_s: float,
+        y_s: float,
+        b: int,
         ogd_mat: ogd_mat,
         n_steps: int,
         tab_nam: str,
-        apply: float,
+        apply: list,
         run_success: bool = False,
         c_e: float = 0,
         i_e: float = 0,
@@ -80,17 +83,23 @@ class template:
             The initial x-coordinate
         y0 : int
             The initial y-coordinate
-        x_n : int
-            The number of nodes in the x-direction
-        y_n : int
-            The number of nodes in the y-direction
+        x_e : int
+            The number of elements in the x-direction
+        y_e : int
+            The number of elements in the y-direction
+        x_s : float
+            The side length of the unit in the x-direction
+        y_s : float
+            The side length of the unit in the y-direction
+        b : int
+            The number of elements in the boundary of the unit
         ogd_mat : class
             The Ogden material model
         n_steps : int
             The number of steps in the second of the simulation
         tab_nam : str
             The name of the table containing the function of the load to be applied
-        apply : float
+        apply : list
             The conditions to be applied to the unit template
         run_success : bool, optional
             The success of the unit template's run, by default False
@@ -103,8 +112,11 @@ class template:
         self.case = case
         self.x0 = x0
         self.y0 = y0
-        self.x_n = x_n
-        self.y_n = y_n
+        self.x_e = x_e
+        self.y_e = y_e
+        self.x_s = x_s
+        self.y_s = y_s
+        self.b = b
         self.ogd_mat = ogd_mat
         self.n_steps = n_steps
         self.tab_nam = tab_nam
@@ -113,18 +125,22 @@ class template:
         self.c_e = c_e
         self.i_e = i_e
 
-        #   The total number of nodes
-        self.n_n = self.x_n * self.y_n
-        #   The number of elements in the x-direction
-        self.x_e = self.x_n - 1
-        #   The number of elements in the y-direction
-        self.y_e = self.y_n - 1
+        #   The number of nodes in the x-direction
+        self.x_n = self.x_e + 1
+        #   The number of nodes in the y-direction
+        self.y_n = self.y_e + 1
+        #   The side length of an element in the x-direction
+        self.x_e_s = self.x_s/self.x_e
+        #   The side length of an element in the y-direction
+        self.y_e_s = self.y_s/self.y_e
         #   The total number of elements
         self.n_e = self.x_e * self.y_e
         #   The total number of elements as a string label
         self.n_e_l = utility.list_to_str([self.x_e, self.y_e], "x")
+        #   The total number of nodes
+        self.n_n = self.x_n * self.y_n
         #   The list of internal elements
-        self.e_internal = inspect.find_e_internal(self.x_e, self.y_e)
+        self.e_internal = inspect.find_e_internal(self.x_e, self.y_e, self.b)
         #   The list of external nodes
         self.n_external = inspect.find_n_external(self.x_n, self.y_n)
 
@@ -134,9 +150,9 @@ class template:
         #   The file path of the template file
         self.fp_t_mud = create_fp_file(self, ".mud", "t")
         #   The file path of the template file log
-        self.fp_t_log = create_fp_file(self, "_job.log", "t")
+        self.fp_t_log = create_fp_file(self, "_job_1.log", "t")
         #   The file path of the unit t16 file
-        self.fp_t_t16 = create_fp_file(self, "_job.t16", "t") 
+        self.fp_t_t16 = create_fp_file(self, "_job_1.t16", "t")
         #   The file path of the template file log
         self.fp_t_l = create_fp_file(self, ".log", "t")
 
@@ -147,7 +163,8 @@ class template:
         -------
         str
             Formatted representation of the template class for the log
-        """        
+        """
+
         r_cas = "Case: {}\nParameters:\n".format(self.case)
         r_ori = "Origin:            ({},{})\n".format(self.x0, self.y0)
         r_dim = "Dimensions:        {} elements\n".format(self.n_e_l)
@@ -212,9 +229,9 @@ class unit_p:
         #   The file path of the unit file
         self.fp_u_mud = create_fp_file(self.template, ".mud", "u", self)
         #   The file path of the unit log file
-        self.fp_u_log = create_fp_file(self.template, "_job.log", "u", self)
+        self.fp_u_log = self.create_fp_list("log")
         #   The file path of the unit t16 file
-        self.fp_u_t16 = create_fp_file(self.template, "_job.t16", "u", self) 
+        self.fp_u_t16 = self.create_fp_list("t16")
         #   The file path of the unit file log
         self.fp_u_l = create_fp_file(self.template, ".log", "u", self)
         
@@ -252,6 +269,19 @@ class unit_p:
         self.grid_l = "\n".join(map(str, self.grid_l))
         
         return self.grid_l
+
+    def create_fp_list(
+        self,
+        ext: str,
+        ) -> list:
+
+        fp_list = []
+
+        for i in range(1, 4):
+
+            fp_list.append(create_fp_file(self.template, "_job_{}.{}".format(i, ext), "u", self))
+
+        return fp_list
 
 ################################################################################
 

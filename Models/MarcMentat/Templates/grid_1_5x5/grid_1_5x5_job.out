@@ -43,7 +43,7 @@
 
              integer*8 version: integers are 64-bits
 
-             date: Mon May 25 10:36:38 2020
+             date: Thu Jun 11 14:59:46 2020
 
 
              (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
@@ -86,7 +86,7 @@
 
 
    MSC Customer Entitlement ID
-        56B8415D-4C5A9F49
+        56B8415D-4C6B28C5
 
 
 
@@ -357,7 +357,7 @@
 
              Displacements are applied incrementally relative to current position
 
-             Prescribed Displacement for dof  2 =      2.50000E+00  table id is        1
+             Prescribed Displacement for dof  2 =      1.00000E+01  table id is        1
 
              applied to node ids       
 
@@ -528,9 +528,9 @@
              end option                                                                                                                                                      
              ----------
 
-             wall time =          27.00
+             wall time =          26.00
 
-             wall time =          27.00
+             wall time =          26.00
 
 
              direct symmetric multi-frontal sparse solver is invoked for region   1
@@ -558,22 +558,22 @@
 
              * * * * * * * * * * *
 
-             default contact tolerance calculated by the program is           5.00000E-02
+             default contact tolerance calculated by the program is           2.00000E-01
 
-             contact tolerance used (it is not specified in input)            5.00000E-02
+             contact tolerance used (it is not specified in input)            2.00000E-01
 
              the following contact tolerances are program suggested values if you want to specify the contact tolerance
              on a body pair basis (use value for self or rigid contact or minimum value for deformable-deformable contact)
 
               body_id suggested contact_tolerance     element_id  outside_nodes  outside_patches body_name
-                    1                 5.00000E-02         1 edge             20               20 cbody1
+                    1                 2.00000E-01         1 edge             20               20 cbody1
 
-             relative displacement below which sticking is simulated :  2.50000E-03
+             relative displacement below which sticking is simulated :  1.00000E-02
 
       
      ******************************
      Values used during contact : contact tolerance                       
-          Default Value =   5.0000000E-02
+          Default Value =   2.0000000E-01
      ******************************
       Body ID       1 Defor        
      ------------------------------
@@ -656,7 +656,7 @@
              e n d   o f   i n c r e m e n t       0
 
              binary post data at increment       0.  subincrement    0.  on file 16
-             wall time =          27.00
+             wall time =          26.00
 
 
              $...................                                                                                                                                            
@@ -823,7 +823,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -838,7 +838,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -846,14 +846,14 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
      body        1: cbody1
          number of nodes in contact     =             0
 
-             maximum residual force  at node        35 degree of freedom  1 is equal to    3.693E-09
-             maximum reaction force  at node         7 degree of freedom  1 is equal to    8.536E+01
+             maximum residual force  at node        35 degree of freedom  1 is equal to    1.477E-08
+             maximum reaction force  at node         7 degree of freedom  1 is equal to    3.414E+02
              residual convergence ratio    4.327E-11
 
 
@@ -866,12 +866,12 @@
    output for increment       1. "          lcase1"
 
 
-             total strain energy         is    1.28288E+02
+             total strain energy         is    2.05261E+03
                within which:
-               elastic strain energy     is    1.28288E+02
-             total ext-force work        is    1.18601E+02
+               elastic strain energy     is    2.05261E+03
+             total ext-force work        is    1.89761E+03
                within which:
-               work by appl. force/disp. is    1.18601E+02
+               work by appl. force/disp. is    1.89761E+03
                work by  contact forces   is    0.00000E+00
                work by frictional forces is    0.00000E+00
 
@@ -889,7 +889,7 @@
      1st component of total load                       0.000E+00
      2nd component of total load                       0.000E+00
      moment w.r.t. center of rotation                  0.000E+00
-     total strain energy                               0.128E+03
+     total strain energy                               0.205E+04
      total kinetic energy                              0.000E+00
      total damping energy                              0.000E+00
 
@@ -931,7 +931,7 @@
              e n d   o f   i n c r e m e n t       1
 
              binary post data at increment       1.  subincrement    0.  on file 16
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -956,7 +956,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -971,7 +971,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -979,14 +979,14 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
      body        1: cbody1
          number of nodes in contact     =             0
 
-             maximum residual force  at node        35 degree of freedom  1 is equal to    8.235E-09
-             maximum reaction force  at node        25 degree of freedom  1 is equal to    1.667E+02
+             maximum residual force  at node        35 degree of freedom  1 is equal to    3.294E-08
+             maximum reaction force  at node        25 degree of freedom  1 is equal to    6.668E+02
              residual convergence ratio    4.940E-11
 
 
@@ -999,12 +999,12 @@
    output for increment       2. "          lcase1"
 
 
-             total strain energy         is    4.56075E+02
+             total strain energy         is    7.29720E+03
                within which:
-               elastic strain energy     is    4.56075E+02
-             total ext-force work        is    4.45653E+02
+               elastic strain energy     is    7.29720E+03
+             total ext-force work        is    7.13046E+03
                within which:
-               work by appl. force/disp. is    4.45653E+02
+               work by appl. force/disp. is    7.13046E+03
                work by  contact forces   is    0.00000E+00
                work by frictional forces is    0.00000E+00
 
@@ -1022,7 +1022,7 @@
      1st component of total load                       0.000E+00
      2nd component of total load                       0.000E+00
      moment w.r.t. center of rotation                  0.000E+00
-     total strain energy                               0.456E+03
+     total strain energy                               0.730E+04
      total kinetic energy                              0.000E+00
      total damping energy                              0.000E+00
 
@@ -1064,7 +1064,7 @@
              e n d   o f   i n c r e m e n t       2
 
              binary post data at increment       2.  subincrement    0.  on file 16
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -1089,7 +1089,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -1104,7 +1104,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -1112,14 +1112,14 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
      body        1: cbody1
          number of nodes in contact     =             0
 
-             maximum residual force  at node        35 degree of freedom  1 is equal to    7.610E-09
-             maximum reaction force  at node        30 degree of freedom  1 is equal to    2.478E+02
+             maximum residual force  at node        35 degree of freedom  1 is equal to    3.044E-08
+             maximum reaction force  at node        30 degree of freedom  1 is equal to    9.911E+02
              residual convergence ratio    3.071E-11
 
 
@@ -1132,12 +1132,12 @@
    output for increment       3. "          lcase1"
 
 
-             total strain energy         is    9.45639E+02
+             total strain energy         is    1.51302E+04
                within which:
-               elastic strain energy     is    9.45639E+02
-             total ext-force work        is    9.35784E+02
+               elastic strain energy     is    1.51302E+04
+             total ext-force work        is    1.49725E+04
                within which:
-               work by appl. force/disp. is    9.35784E+02
+               work by appl. force/disp. is    1.49725E+04
                work by  contact forces   is    0.00000E+00
                work by frictional forces is    0.00000E+00
 
@@ -1155,7 +1155,7 @@
      1st component of total load                       0.000E+00
      2nd component of total load                       0.000E+00
      moment w.r.t. center of rotation                  0.000E+00
-     total strain energy                               0.946E+03
+     total strain energy                               0.151E+05
      total kinetic energy                              0.000E+00
      total damping energy                              0.000E+00
 
@@ -1197,7 +1197,7 @@
              e n d   o f   i n c r e m e n t       3
 
              binary post data at increment       3.  subincrement    0.  on file 16
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -1222,7 +1222,7 @@
              0.000000E+00   0.000000E+00
 
              start of assembly     cycle number is     0
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -1237,7 +1237,7 @@
 
 
              start of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
 
@@ -1245,14 +1245,14 @@
 
 
              end of matrix solution
-             wall time =          27.00
+             wall time =          26.00
 
 
      body        1: cbody1
          number of nodes in contact     =             0
 
-             maximum residual force  at node        32 degree of freedom  1 is equal to    3.652E-09
-             maximum reaction force  at node        30 degree of freedom  1 is equal to    3.285E+02
+             maximum residual force  at node        32 degree of freedom  1 is equal to    1.461E-08
+             maximum reaction force  at node        30 degree of freedom  1 is equal to    1.314E+03
              residual convergence ratio    1.112E-11
 
 
@@ -1265,12 +1265,12 @@
    output for increment       4. "          lcase1"
 
 
-             total strain energy         is    1.56838E+03
+             total strain energy         is    2.50940E+04
                within which:
-               elastic strain energy     is    1.56838E+03
-             total ext-force work        is    1.55977E+03
+               elastic strain energy     is    2.50940E+04
+             total ext-force work        is    2.49564E+04
                within which:
-               work by appl. force/disp. is    1.55977E+03
+               work by appl. force/disp. is    2.49564E+04
                work by  contact forces   is    0.00000E+00
                work by frictional forces is    0.00000E+00
 
@@ -1288,7 +1288,7 @@
      1st component of total load                       0.000E+00
      2nd component of total load                       0.000E+00
      moment w.r.t. center of rotation                  0.000E+00
-     total strain energy                               0.157E+04
+     total strain energy                               0.251E+05
      total kinetic energy                              0.000E+00
      total damping energy                              0.000E+00
 
@@ -1330,7 +1330,7 @@
              e n d   o f   i n c r e m e n t       4
 
              binary post data at increment       4.  subincrement    0.  on file 16
-             wall time =          27.00
+             wall time =          26.00
 
 
              $....end of loadcase lcase1                                                                                                                                     
@@ -1374,16 +1374,16 @@
 
              timing information:                             wall time      cpu time
 
-               total time for input:                              0.13          0.08
+               total time for input:                              0.04          0.05
                total time for stiffness matrix assembly:          0.01          0.03
                total time for mass matrix assembly:               0.00          0.00
-               total time for stress recovery:                    0.03          0.02
-               total time for matrix solution:                    0.15          0.03
-               total time for contact:                            0.00          0.00
-               total time for output:                             0.18          0.05
-               total time for miscellaneous:                     27.15          0.69
+               total time for stress recovery:                    0.01          0.00
+               total time for matrix solution:                    0.04          0.05
+               total time for contact:                            0.00          0.02
+               total time for output:                             0.04          0.02
+               total time for miscellaneous:                     26.43          0.47
                ---------------------------------------------------------------------
-               total time:                                       27.65          0.89
+               total time:                                       26.56          0.62
 
 
              **************************************************************************

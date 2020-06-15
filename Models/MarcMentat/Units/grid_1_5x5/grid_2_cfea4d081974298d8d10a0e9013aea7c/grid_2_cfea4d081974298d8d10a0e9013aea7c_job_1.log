@@ -1,0 +1,2193 @@
+ 
+Program name         : marc  
+Job ID               : C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2_cfea4d081974298d8d10a0e9013aea7c\grid_2_cfea4d081974298d8d10a0e9013aea7c_job_1   
+Version type         : i8  
+User subroutine name :   
+User objects/libs    :   
+Restart file job ID  :    
+Substructure file ID :    
+Post file job ID     :    
+Defaults file ID     :    
+View factor file ID  :    
+Save generated module: no 
+MPI library          : intelmpi 
+Contact decoupling   : 0 
+DDM processes        :  
+Element loop threads :  
+Solver processes     :  
+Solver threads       :  
+GPGPU option         :  
+Host file            :    
+Distributed i/o      :    
+Run directory        : C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2_cfea4d081974298d8d10a0e9013aea7c 
+Scratch directory    : C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5\grid_2_cfea4d081974298d8d10a0e9013aea7c 
+Default bin directory: C:\marc2019\bin\win64i8 
+Material database    : C:\marc2019\AF_flowmat\  
+  
+ 
+2020-06-14 
+01:52 PM
+ 
+ Marc grid_2_cfea4d081974298d8d10a0e9013aea7c_job_1 begins execution
+
+     (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
+
+
+ Requested number of element threads                     =    1
+ Requested number of solver threads                      =    1
+
+
+ VERSION: Marc 2019, build 664220 (2019/07/01)
+
+
+
+     Date: Sun Jun 14 13:52:32 2020
+
+                              Marc execution begins
+ Date:          Sun Jun 14 13:52:45 2020
+ MSC Id:        00090faa0001 (ethernet) (Intel)
+ Hostname:      DESKTOP-UFIB03G (user Naude Conradie, display DESKTOP-UFIB03G)
+ License files: 1700@license2.stb.sun.ac.za
+ CEID:          56B8415D-4C6B28C5
+ User:          Naude Conradie
+ Display:       DESKTOP-UFIB03G
+ LAPI Version:  LAPI 10.4.6 (FLEXlm 11.13.1.3)
+Acquired 20 licenses for Group MSCONE (Marc) from license server on host license2.stb.sun.ac.za
+
+
+             general memory initially set to =        25 MByte
+
+             maximum available memory set to =      8126 MByte
+
+             general memory increasing from      25 MByte to     106 MByte
+
+   MSC Customer Entitlement ID
+        56B8415D-4C6B28C5
+
+             wall time =          25.00
+
+             wall time =          25.00
+
+
+             total  memory =          134  MByte
+
+             e n d   o f   i n c r e m e n t       0
+             wall time =          25.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       1
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    8.6162E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        20 degree of freedom  1 is equal to    7.220E+04
+             maximum reaction force  at node        13 degree of freedom  1 is equal to    1.934E+04
+             residual convergence ratio    3.732E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    8.6422E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element         1 integration point     2
+
+             *** error - element inside out at element         1 integration point     4
+
+             *** error - element inside out at element        15 integration point     3
+
+             exit  number 1009 at increment         1
+             trial number:    1
+             analysis is forced to restart at the end of increment         0
+
+             increment cut-back number     1
+
+             previous time increment  =    2.50000E-01
+             current  time increment  =    1.25000E-01
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    8.6162E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    2.759E-01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    8.093E-01
+             residual convergence ratio    3.410E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    6.2788E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    2.648E-02
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    4.771E-01
+             residual convergence ratio    5.549E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       1
+             wall time =          25.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       1
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    7.7867E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    4.443E+00
+             maximum reaction force  at node        31 degree of freedom  1 is equal to    9.704E-01
+             residual convergence ratio    4.579E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    8.0336E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    1.700E+00
+             maximum reaction force  at node         5 degree of freedom  2 is equal to    6.579E-01
+             residual convergence ratio    2.584E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    7.9976E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    5.650E-01
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    7.300E-01
+             residual convergence ratio    7.740E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    5.5630E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    1.557E-01
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    7.578E-01
+             residual convergence ratio    2.055E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     4
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    7.3026E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    1.974E-02
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    7.817E-01
+             residual convergence ratio    2.525E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       1
+             wall time =          25.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    2.8200E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        20 degree of freedom  1 is equal to    3.252E+05
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.675E+05
+             residual convergence ratio    1.942E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    4.8257E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element         2 integration point     3
+
+             *** error - element inside out at element        10 integration point     1
+
+             exit  number 1009 at increment         2
+             trial number:    1
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     1
+
+             previous time increment  =    2.50000E-01
+             current  time increment  =    1.25000E-01
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    7.1522E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        15 degree of freedom  1 is equal to    1.953E+01
+             maximum reaction force  at node        18 degree of freedom  1 is equal to    1.219E+00
+             residual convergence ratio    1.602E+01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    4.5551E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        20 degree of freedom  1 is equal to    2.242E+01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.340E+01
+             residual convergence ratio    1.673E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    3.2048E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        20 degree of freedom  2 is equal to    1.627E+06
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    6.944E+05
+             residual convergence ratio    2.344E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    2.1807E-06
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element         3 integration point     3
+
+             *** error - element inside out at element         3 integration point     4
+
+             *** error - element inside out at element         8 integration point     2
+
+             *** error - element inside out at element        10 integration point     3
+
+             exit  number 1009 at increment         2
+             trial number:    2
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     2
+
+             previous time increment  =    1.25000E-01
+             current  time increment  =    6.25000E-02
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    7.1522E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    1.104E-01
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    9.567E-01
+             residual convergence ratio    1.154E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    4.7809E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    1.311E-01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.347E+00
+             residual convergence ratio    9.734E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          25.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    2.5507E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    1.644E+04
+             maximum reaction force  at node         4 degree of freedom  2 is equal to    1.671E+01
+             residual convergence ratio    9.835E+02
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    2.7200E-03
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node         2 degree of freedom  1 is equal to    5.501E+07
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.176E+07
+             residual convergence ratio    2.528E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    2.5616E-05
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element        18 integration point     3
+
+             exit  number 1009 at increment         2
+             trial number:    1
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     1
+
+             previous time increment  =    1.25000E-01
+             current  time increment  =    6.25000E-02
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.9796E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element        16 integration point     3
+
+             *** error - element inside out at element        16 integration point     4
+
+             *** error - element inside out at element        21 integration point     3
+
+             *** error - element inside out at element        22 integration point     3
+
+             *** error - element inside out at element        22 integration point     4
+
+             exit  number 1009 at increment         2
+             trial number:    2
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     2
+
+             previous time increment  =    6.25000E-02
+             current  time increment  =    3.12500E-02
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.9796E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element        16 integration point     3
+
+             *** error - element inside out at element        16 integration point     4
+
+             *** error - element inside out at element        22 integration point     3
+
+             *** error - element inside out at element        22 integration point     4
+
+             exit  number 1009 at increment         2
+             trial number:    3
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     3
+
+             previous time increment  =    3.12500E-02
+             current  time increment  =    1.56250E-02
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.9796E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element        16 integration point     4
+
+             *** error - element inside out at element        22 integration point     3
+
+             exit  number 1009 at increment         2
+             trial number:    4
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     4
+
+             previous time increment  =    1.56250E-02
+             current  time increment  =    7.81250E-03
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.9796E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        32 degree of freedom  1 is equal to    5.712E+14
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    6.270E+14
+             residual convergence ratio    9.109E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    4.8099E-28
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element        12 integration point     1
+
+             *** error - element inside out at element        18 integration point     2
+
+             *** error - element inside out at element        18 integration point     4
+
+             *** error - element inside out at element        19 integration point     1
+
+             *** error - element inside out at element        19 integration point     3
+
+             *** error - element inside out at element        23 integration point     3
+
+             *** error - element inside out at element        23 integration point     4
+
+             *** error - element inside out at element        25 integration point     1
+
+             *** error - element inside out at element        25 integration point     2
+
+             *** error - element inside out at element        25 integration point     3
+
+             exit  number 1009 at increment         2
+             trial number:    5
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     5
+
+             previous time increment  =    7.81250E-03
+             current  time increment  =    3.90625E-03
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.9796E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        32 degree of freedom  1 is equal to    4.724E+12
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    5.054E+12
+             residual convergence ratio    9.347E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    5.0367E-11
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        32 degree of freedom  1 is equal to    1.840E+12
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    1.968E+12
+             residual convergence ratio    9.347E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.1824E-10
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             *** error - element inside out at element         4 integration point     3
+
+             exit  number 1009 at increment         2
+             trial number:    6
+             analysis is forced to restart at the end of increment         1
+
+             increment cut-back number     6
+
+             previous time increment  =    3.90625E-03
+             current  time increment  =    1.95312E-03
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    2.8429E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    4.610E+00
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    2.113E+00
+             residual convergence ratio    2.182E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.1405E-03
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    1.703E+00
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    1.123E+00
+             residual convergence ratio    1.517E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    1.0627E-03
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    6.995E-01
+             maximum reaction force  at node        33 degree of freedom  2 is equal to    1.092E+00
+             residual convergence ratio    6.403E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    9.5577E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    3.183E-01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    1.159E+00
+             residual convergence ratio    2.747E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     4
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    9.1619E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        26 degree of freedom  1 is equal to    1.119E-01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.209E+00
+             residual convergence ratio    9.256E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          25.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    9.2040E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        28 degree of freedom  1 is equal to    2.738E-01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.130E+00
+             residual convergence ratio    2.423E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          25.00
+
+
+
+             start of matrix solution
+             wall time =          25.00
+
+
+
+             singularity ratio    9.3474E-04
+
+
+             end of matrix solution
+             wall time =          25.00
+
+
+             maximum residual force  at node        27 degree of freedom  2 is equal to    2.746E-02
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.308E+00
+             residual convergence ratio    2.099E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    9.1174E-04
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        15 degree of freedom  1 is equal to    1.168E-01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.487E+00
+             residual convergence ratio    7.853E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    8.5833E-04
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        15 degree of freedom  1 is equal to    3.776E-01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.905E+00
+             residual convergence ratio    1.982E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    9.7673E-04
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        27 degree of freedom  2 is equal to    2.627E-02
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    1.502E+00
+             residual convergence ratio    1.748E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    9.7661E-04
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        27 degree of freedom  2 is equal to    1.461E-01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.085E+00
+             residual convergence ratio    7.006E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    4.7798E-04
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    1.034E+02
+             maximum reaction force  at node         4 degree of freedom  2 is equal to    4.389E+00
+             residual convergence ratio    2.355E+01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    2.4473E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    4.534E+01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    2.222E+00
+             residual convergence ratio    2.040E+01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    2.2166E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    1.668E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    3.219E+00
+             residual convergence ratio    5.180E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.3931E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    6.454E+00
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    3.309E+00
+             residual convergence ratio    1.951E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     4
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.4179E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    1.936E+00
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    3.486E+00
+             residual convergence ratio    5.552E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     5
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.4198E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    6.781E-01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    3.545E+00
+             residual convergence ratio    1.913E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     6
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.4482E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        16 degree of freedom  1 is equal to    1.969E-01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    3.594E+00
+             residual convergence ratio    5.479E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       2
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.0380E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        20 degree of freedom  2 is equal to    3.944E+00
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    7.146E+00
+             residual convergence ratio    5.519E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    7.6806E-05
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        20 degree of freedom  2 is equal to    7.683E-01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    7.465E+00
+             residual convergence ratio    1.029E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    3.1943E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        11 degree of freedom  2 is equal to    1.081E+00
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    6.786E+00
+             residual convergence ratio    1.593E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    2.9581E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        11 degree of freedom  2 is equal to    2.252E-01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    6.868E+00
+             residual convergence ratio    3.279E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       2
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       3
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    8.3737E-04
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             *** error - element inside out at element         2 integration point     1
+
+             *** error - element inside out at element         2 integration point     2
+
+             *** error - element inside out at element         3 integration point     1
+
+             *** error - element inside out at element         3 integration point     2
+
+             *** error - element inside out at element         4 integration point     4
+
+             *** error - element inside out at element         5 integration point     2
+
+             *** error - element inside out at element         5 integration point     4
+
+             *** error - element inside out at element        15 integration point     1
+
+             *** error - element inside out at element        15 integration point     2
+
+             *** error - element inside out at element        25 integration point     4
+
+             exit  number 1009 at increment         3
+             trial number:    1
+             analysis is forced to restart at the end of increment         2
+
+             increment cut-back number     1
+
+             previous time increment  =    2.50000E-01
+             current  time increment  =    1.25000E-01
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.7380E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    1.564E+04
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    5.576E+03
+             residual convergence ratio    2.805E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    3.0793E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    6.002E+03
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    2.124E+03
+             residual convergence ratio    2.826E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    7.4765E-04
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    2.262E+03
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    8.211E+02
+             residual convergence ratio    2.755E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.6027E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    8.454E+02
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    3.410E+02
+             residual convergence ratio    2.479E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     4
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.2234E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    3.038E+02
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    9.778E+01
+             residual convergence ratio    3.106E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     5
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    2.3806E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    1.077E+02
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    3.011E+01
+             residual convergence ratio    3.579E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     6
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    3.2323E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    3.773E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.417E+01
+             residual convergence ratio    1.561E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     7
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    7.7117E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         3 degree of freedom  1 is equal to    1.325E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.567E+01
+             residual convergence ratio    5.162E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     8
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    5.4239E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         2 degree of freedom  1 is equal to    4.199E+00
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.627E+01
+             residual convergence ratio    1.599E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     9
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    5.6089E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         2 degree of freedom  1 is equal to    1.099E+00
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.649E+01
+             residual convergence ratio    4.148E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       3
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       3
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    5.7746E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        20 degree of freedom  2 is equal to    7.378E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    4.669E+01
+             residual convergence ratio    1.580E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    7.1264E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         4 degree of freedom  1 is equal to    1.743E+02
+             maximum reaction force  at node         3 degree of freedom  2 is equal to    8.977E+01
+             residual convergence ratio    1.942E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    5.7485E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         4 degree of freedom  1 is equal to    6.932E+01
+             maximum reaction force  at node        19 degree of freedom  1 is equal to    7.208E+01
+             residual convergence ratio    9.618E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    9.8540E-03
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         4 degree of freedom  1 is equal to    2.582E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    7.158E+01
+             residual convergence ratio    3.607E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     4
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.3277E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         4 degree of freedom  1 is equal to    1.220E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    7.200E+01
+             residual convergence ratio    1.694E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     5
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.4394E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node         4 degree of freedom  1 is equal to    3.083E+00
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    7.216E+01
+             residual convergence ratio    4.273E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       3
+             wall time =          26.00
+
+
+
+
+             s t a r t   o f   i n c r e m e n t       4
+
+             start of assembly     cycle number is     0
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.0890E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    1.531E+04
+             maximum reaction force  at node        36 degree of freedom  1 is equal to    1.634E+04
+             residual convergence ratio    9.372E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     1
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.5782E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    5.896E+03
+             maximum reaction force  at node        36 degree of freedom  1 is equal to    6.230E+03
+             residual convergence ratio    9.464E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     2
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.1297E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    2.195E+03
+             maximum reaction force  at node        36 degree of freedom  1 is equal to    2.273E+03
+             residual convergence ratio    9.660E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     3
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    1.8957E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    8.184E+02
+             maximum reaction force  at node        36 degree of freedom  1 is equal to    7.802E+02
+             residual convergence ratio    1.049E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     4
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    5.3676E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    3.063E+02
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.332E+02
+             residual convergence ratio    1.314E+00
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     5
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    4.7635E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    1.130E+02
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.305E+02
+             residual convergence ratio    4.904E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     6
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    4.4640E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    3.992E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.283E+02
+             residual convergence ratio    1.748E-01
+
+             failure to converge to tolerance
+
+             increment will be recycled
+
+             start of assembly     cycle number is     7
+             wall time =          26.00
+
+
+
+             start of matrix solution
+             wall time =          26.00
+
+
+
+             singularity ratio    4.3770E-02
+
+
+             end of matrix solution
+             wall time =          26.00
+
+
+             maximum residual force  at node        35 degree of freedom  1 is equal to    1.209E+01
+             maximum reaction force  at node        32 degree of freedom  2 is equal to    2.273E+02
+             residual convergence ratio    5.316E-02
+
+             total  memory =          142  MByte
+
+             e n d   o f   i n c r e m e n t       4
+             wall time =          26.00
+
+Returned 20 licenses for Group MSCONE (Marc)
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0        4916         0.0
+               solver: first part                    0        2560         0.0
+               overallocation initial allocation   107    27992356        75.3
+               other:                                0        4032         0.0
+              allocated separately:
+               incremental backup:                   0       67700         0.2
+               solver 8                              8     1999188         5.4
+               nodal vectors:                        0        6420         0.0
+               defined sets:                         0         378         0.0
+               contact:                              0        8454         0.0
+               transformations:                      0         144         0.0
+               kinematic boundary conditions:        0        2420         0.0
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             0       28196         0.1
+               element storage:                      0       27680         0.1
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.8
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              142    37150358
+
+               general memory allocated:           107    28003864
+               general memory used:                  0       11508
+
+               peak memory usage:                  159    41557520
+
+
+             timing information:                             wall time      cpu time
+
+               total time for input:                              0.05          0.05
+               total time for stiffness matrix assembly:          0.11          0.09
+               total time for mass matrix assembly:               0.00          0.00
+               total time for stress recovery:                    0.09          0.11
+               total time for matrix solution:                    0.68          0.59
+               total time for contact:                            0.01          0.00
+               total time for output:                             0.08          0.06
+               total time for miscellaneous:                     24.67          0.59
+               ---------------------------------------------------------------------
+               total time:                                       25.70          1.50
+
+
+             **************************************************************************
+
+
+             
+             This is a successful completion to a Marc simulation,
+             indicating that no additional incremental data was
+             found and that the analysis is complete.
+             
+
+
+
+
+             **************************************************************************
+
+
+
+
+
+                                        Marc 2019
+
+                                        Exit number 3004
+
