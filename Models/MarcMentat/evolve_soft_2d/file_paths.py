@@ -36,7 +36,7 @@ def create_fp_folder(
     """
 
     #   Generate the folder name according to the current case and template
-    fp_folder = r'\grid_' + str(template.case) + "_" + template.n_e_l
+    fp_folder = r'\grid_' + template.t_id
 
     #   Determine which folder path to generate the folder name along
     if p == "r":
@@ -84,13 +84,13 @@ def create_fp_file(
     
     #   Determine which folder path to generate the file name along
     if p == "l":
-        fp_file = fp_u + r'\grid_' + str(template.case) + "_" + template.n_e_l + l + ".log"
+        fp_file = fp_u + r'\grid_' + template.t_id + l + ".log"
     elif p == "r":
         fp_folder = create_fp_folder(template, "r")
         fp_file = fp_folder + "\\" + l + ".csv"
     elif p == "t":
         fp_folder = create_fp_folder(template, "t")
-        fp_file = fp_folder + r'\grid_' + str(template.case) + "_" + template.n_e_l + l
+        fp_file = fp_folder + r'\grid_' + template.t_id + l
     elif p == "u":
         fp_folder = create_fp_folder(template, "u")
         fp_file = fp_folder + r'\grid_' + unit.u_id

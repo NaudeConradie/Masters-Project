@@ -123,8 +123,8 @@ def gen_units(
         if curr_mod.run_success:
 
             #   Obtain the constraint and internal energies of the current model
-            curr_mod.c_e = obtain.read_val(template, "Constraint Energy_" + curr_mod.u_id)
-            curr_mod.i_e = obtain.read_val(template, "Internal Energy_" + curr_mod.u_id)
+            curr_mod.c_e = obtain.read_val(template, "Constraint Energy_" + curr_mod.u_id + "_1")
+            curr_mod.i_e = obtain.read_val(template, "Internal Energy_" + curr_mod.u_id + "_1")
 
         #   Log the current unit parameters
         print(curr_mod, file = open(curr_mod.fp_u_l, "w"))
@@ -153,9 +153,6 @@ def template_1(template) -> None:
         The unit template parameters
     """
 
-    #   Initialisations
-    l = str(template.case) + "_" + template.n_e_l
-
     #   Clear the workspace
     py_send("*new_model yes")
 
@@ -179,46 +176,73 @@ def template_1(template) -> None:
     modify.save_model(template.fp_t_mud)
 
     #   Run the model
-    template.run_success = modify.run_model(template, 1, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+    template.run_success = modify.run_model(template, 1, template.t_id, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
 
     #   Check if the model run was successful
     if template.run_success:
 
         #   Obtain the constraint energy of the current model
-        template.c_e = obtain.read_val(template, "Constraint Energy_" + l)
-        template.i_e = obtain.read_val(template, "Internal Energy_" + l)
+        template.c_e = obtain.read_val(template, "Constraint Energy_" + template.t_id + "_1")
+        template.i_e = obtain.read_val(template, "Internal Energy_" + template.t_id + "_1")
 
     #   Save the template
     modify.save_model(template.fp_t_mud)
 
     #   Log the template parameters
     print(template, file = open(template.fp_t_l, "w"))
-    utility.save_v(template, l)
+    utility.save_v(template, template.t_id)
 
     return
 
 ################################################################################
 
 def template_1_test(fp_bu: str) -> None:
+    """Test the best units for case 1
 
+    Parameters
+    ----------
+    fp_bu : str
+        The file path of the list of best units
+    """    
+
+    #   Store the list of best units
     bu = obtain.read_lu(fp_bu)
 
-    for i in range(0, len(bu)):
+    #   Loop through the list of best units
+    for i in bu:
 
-        curr_mod = utility.open_v(bu[i])
+        #   Open the current unit parameter class object
+        curr_mod = utility.open_v(i)
 
+        #   Open the current unit model
         modify.open_model(curr_mod.fp_u_mud)
 
-        modify.add_bc_fd_node("x0", "", "x", 1, 0)
-        modify.add_bc_fd_node("y0", "", "y", 1, 0)
-
+        #   Add the internal pressure boundary conditions
         modify.add_bc_p_internal(curr_mod)
 
-        modify.add_lcase(curr_mod.template, 2, ["bc_fd_x0", "bc_fd_y0", "bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
+        #   Add the loadcase for the internal pressure
+        modify.add_lcase(curr_mod.template, 2, ["bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
 
+        #   Add the job for the second loadcase
         modify.add_job(2)
 
+        #   Save the unit
+        modify.save_model(curr_mod.fp_u_mud)
+
+        #   Run the unit
         curr_mod.run_success = modify.run_model(curr_mod.template, 2, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[1], curr_mod.fp_u_t16[1])
+
+        #   Add the loadcase for all bouondary conditions
+        modify.add_lcase(curr_mod.template, 2, ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2", "bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
+
+        #   Add the job for the third loadcase
+        modify.add_job(3)
+
+        #   Save the unit
+        modify.save_model(curr_mod.fp_u_mud)
+
+        #   Run the unit
+        curr_mod.run_success = modify.run_model(curr_mod.template, 3, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[2], curr_mod.fp_u_t16[2])
 
     return
 
@@ -235,9 +259,6 @@ def template_2(template) -> None:
     template : template
         The unit template parameters
     """
-
-    #   Initialisations
-    l = str(template.case) + "_" + template.n_e_l
 
     #   Clear the workspace
     py_send("*new_model yes")
@@ -262,19 +283,87 @@ def template_2(template) -> None:
     modify.save_model(template.fp_t_mud)
 
     #   Run the model
-    template.run_success = modify.run_model(template, 1, l, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+    template.run_success = modify.run_model(template, 1, template.t_id, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
 
     #   Check if the model run was successful
     if template.run_success:
 
         #   Obtain the constraint energy of the current model
-        template.c_e = obtain.read_val(template, "Constraint Energy_" + l)
-        template.i_e = obtain.read_val(template, "Internal Energy_" + l)
+        template.c_e = obtain.read_val(template, "Constraint Energy_" + template.t_id + "_1")
+        template.i_e = obtain.read_val(template, "Internal Energy_" + template.t_id + "_1")
 
     #   Save the template
     modify.save_model(template.fp_t_mud)
 
     print(template, file = open(template.fp_t_l, "w"))
-    utility.save_v(template, l)
+    utility.save_v(template, template.t_id)
+
+    return
+
+################################################################################
+
+def neighbours(template) -> None:
+    """Create a template from which elements may be removed
+
+    Case:   1
+    Pure strain in the y-direction
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
+
+    modify.open_model(template.fp_t_mud)
+
+    x = [-template.x_s, template.x0, template.x_s]
+    y = [-template.y_s, template.y0, template.y_s]
+
+    x_mid = template.x0
+    y_mid = template.y0
+
+    n = 1
+
+    for i in y:
+
+        for j in x:
+
+            if i == y_mid and j == x_mid:
+
+                # n += 1
+
+                continue
+
+            template.x0 = j
+            template.y0 = i
+
+            n_init = n*template.n_n + 1
+
+            n += 1
+
+            #   Grid construction
+            modify.create_nodes(template)
+            modify.create_elements(template, n_init = n_init)
+
+    # #   Add the job
+    # modify.add_job(1)
+    # modify.save_model(template.fp_t_mud)
+
+    # #   Run the model
+    # template.run_success = modify.run_model(template, 1, template.t_id, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+
+    # #   Check if the model run was successful
+    # if template.run_success:
+
+    #     #   Obtain the constraint energy of the current model
+    #     template.c_e = obtain.read_val(template, "Constraint Energy_" + template.t_id + "_1")
+    #     template.i_e = obtain.read_val(template, "Internal Energy_" + template.t_id + "_1")
+
+    #   Save the template
+    modify.save_model(template.fp_t_mud)
+
+    # #   Log the template parameters
+    # print(template, file = open(template.fp_t_l, "w"))
+    # utility.save_v(template, template.t_id)
 
     return

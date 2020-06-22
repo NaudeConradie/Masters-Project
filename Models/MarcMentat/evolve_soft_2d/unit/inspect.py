@@ -1,6 +1,8 @@
 ##  Functions used with the Marc Mentat units
 
 #   Imports
+from evolve_soft_2d import utility
+
 from py_mentat import py_send
 
 ################################################################################
@@ -29,6 +31,12 @@ def find_e_internal(
 
     #   Initialisations
     e_internal = []
+
+    #   Determine the maximum boundary thickness
+    b_max = max_b(x_e, y_e)
+
+    #   Set the boundary thickness to within limits if it exceeds any
+    b = utility.clean_int(b, b_max)
 
     #   Obtain the number of elements
     e_n = x_e * y_e
@@ -97,6 +105,44 @@ def find_n_external(
             n_external.append(i)
 
     return n_external
+
+################################################################################
+
+def max_b(
+    x_e: int,
+    y_e: int,
+    ) -> int:
+    """Find the maximum boundary thickness
+
+    Parameters
+    ----------
+    x_e : int
+        The number of elements in the x-direction
+    y_e : int
+        The number of elements in the y-direction
+
+    Returns
+    -------
+    int
+        The maximum boundary thickness
+    """
+
+    #   Determine the shortest side of the unit
+    min_s = min(x_e, y_e)
+
+    #   Check if the shortest side has an odd number of elements
+    if min_s % 2 == 1:
+
+        #   Set the maximum boundary thickness
+        b_max = min_s/2 - 0.5
+
+    #   Check if the shortest side has an even number of elements
+    else:
+
+        #   Set the maximum boundary thickness
+        b_max = min_s/2 - 1
+
+    return b_max
 
 ################################################################################
 

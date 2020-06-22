@@ -409,10 +409,10 @@ def nCr(
     if l != []:
 
         #   Loop through the list
-        for i in range(0, len(l)):
+        for i in l:
 
             #   Cumulatively calculate the n Choose r value for each list item
-            c += comb(n, l[i], exact = True)
+            c += comb(n, i, exact = True)
 
     #   Check if r is not zero
     elif r != 0:
@@ -452,15 +452,15 @@ def list_to_float(l: list) -> [list, int]:
     l_f = 0
 
     #   Loop through the list
-    for i in range(0, len(l)):
+    for i in l:
 
         #   Add the current list item as a float
         try:
-            l_o.append(float(l[i]))
+            l_o.append(float(i))
 
         #   Increment the failure counter
         except:
-            l_o.append(1e6)
+            l_o.append(10)
             l_f += 1
 
     return l_o, l_f

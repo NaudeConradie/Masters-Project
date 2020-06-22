@@ -137,10 +137,14 @@ def rem_el_free_grid(
             if grid_label[template.x_e - i - 1][j] > 1:
 
                 #   Remove the element from the grid
-                grid_rem[template.x_e - (rem_i - 1)//template.x_e - 1][rem_i%template.x_e - 1] = 0
+                grid_rem[template.x_e - (rem_i - 1)//template.x_e - 1, rem_i%template.x_e - 1] = 0
 
                 #   Add the index of the element to the list of removed elements
                 rem.append(rem_i)
+
+            elif grid_label[template.x_e - i - 1][j] == 0:
+
+                grid_rem[template.x_e - (rem_i - 1)//template.x_e - 1, rem_i%template.x_e - 1] = 0
 
             #   Increment the removed element counter
             rem_i = rem_i + 1

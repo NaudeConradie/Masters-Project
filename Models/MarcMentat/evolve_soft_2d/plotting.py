@@ -14,7 +14,7 @@ def histogram(
     bins = "auto",
     color: str = "b",
     ) -> None:
-    """[summary]
+    """Plot a histogram
 
     Parameters
     ----------
@@ -63,28 +63,29 @@ def scatterplot(
     color: str = "b",
     marker: str = "o"
     ) -> None:
-    """[summary]
+    """Plot a scatter plot
 
     Parameters
     ----------
-    template : [type]
-        [description]
+    template : template
+        The unit template parameters
     x_data : list
-        [description]
+        The data to be plotted on the x-axis
     y_data : list
-        [description]
+        The data to be plotted on the y-axis
     t : str
-        [description]
+        The title of the graph
     y : str
-        [description]
+        The label of the y-axis
     x : str
-        [description]
+        The label of the x-axis
     color : str, optional
-        [description], by default "b"
+        The colour of the graph, by default "b"
     marker : str, optional
-        [description], by default "o"
+        The plot markers, by default "o"
     """
 
+    #   Determine the maximum x-axis value of the graph
     x_max = math.ceil(max(x_data))
 
     #   Open a figure

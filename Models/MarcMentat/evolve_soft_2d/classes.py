@@ -9,9 +9,10 @@ from evolve_soft_2d.file_paths import create_fp_file
 
 ################################################################################
 
-#   Ogden material model
-
 class ogd_mat:
+    """Ogden material model
+    """
+
 
     def __init__(
         self,
@@ -51,9 +52,9 @@ class ogd_mat:
 
 ################################################################################
 
-#   Unit template parameters
-
 class template:
+    """Unit template parameters
+    """    
     
     def __init__(
         self, 
@@ -135,14 +136,20 @@ class template:
         self.y_e_s = self.y_s/self.y_e
         #   The total number of elements
         self.n_e = self.x_e * self.y_e
-        #   The total number of elements as a string label
-        self.n_e_l = utility.list_to_str([self.x_e, self.y_e], "x")
         #   The total number of nodes
         self.n_n = self.x_n * self.y_n
         #   The list of internal elements
         self.e_internal = inspect.find_e_internal(self.x_e, self.y_e, self.b)
         #   The list of external nodes
         self.n_external = inspect.find_n_external(self.x_n, self.y_n)
+
+        #   The total number of elements as a string label
+        self.n_e_l = utility.list_to_str([self.x_e, self.y_e], "x")
+        #   The size of the grid as a string label
+        self.s_l = utility.list_to_str([self.x_s, self.y_s], "x")
+
+        #   The template ID
+        self.t_id = str(self.case) + "_" + self.n_e_l + "_" + self.s_l + "_" + str(self.b)
 
         #   The representative grid of ones
         self.grid = rep_grid.create_grid(self.x_e, self.y_e)
@@ -179,9 +186,9 @@ class template:
 
 ################################################################################
 
-#   Unit parameters
-
 class unit_p:
+    """Unit parameters
+    """    
 
     def __init__(
         self,
@@ -261,19 +268,31 @@ class unit_p:
             The representative grid of the unit as a string
         """
         
-        self.grid_l = rep_grid.create_grid(self.template.x_e, self.template.y_e)
+        grid_l = rep_grid.create_grid(self.template.x_e, self.template.y_e)
 
         for i in range(0, len(self.grid)):
-            self.grid_l[i] = " ".join(map(str, self.grid[i]))
+            grid_l[i] = " ".join(map(str, self.grid[i]))
         
-        self.grid_l = "\n".join(map(str, self.grid_l))
+        grid_l = "\n".join(map(str, grid_l))
         
-        return self.grid_l
+        return grid_l
 
     def create_fp_list(
         self,
         ext: str,
         ) -> list:
+        """Create a list of unit file paths
+
+        Parameters
+        ----------
+        ext : str
+            The extension to add to the file path
+
+        Returns
+        -------
+        list
+            The list of file paths
+        """        
 
         fp_list = []
 

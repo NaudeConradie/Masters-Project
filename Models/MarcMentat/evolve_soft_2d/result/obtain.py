@@ -34,6 +34,8 @@ def check_out(
         The file path of the model log file
     fp_t16 : str
         The file path of the model t16 file
+    j_id : int
+        The job ID
 
     Returns
     -------
@@ -365,7 +367,7 @@ def read_all(
         v.append([])
 
         #   Create the file path of the results file
-        fp_r_f = create_fp_file(template, l + "_" + lu[i], "r")
+        fp_r_f = create_fp_file(template, l + "_" + lu[i] + "_1", "r")
 
         #   Store the results from the file
         v[i] = linecache.getline(fp_r_f, template.n_steps + 1)
@@ -383,8 +385,8 @@ def read_all(
     v = list(map(abs, v))
 
     #   Plot the results
-    plotting.histogram(v, l, "Frequency", "Energy (J)")
-    plotting.scatterplot(template, n_e, v, l, "Energy (J)", "Number Of Elements Removed")
+    # plotting.histogram(v, l, "Frequency", "Energy (J)")
+    # plotting.scatterplot(template, n_e, v, l, "Energy (J)", "Number Of Elements Removed")
 
     return v
 

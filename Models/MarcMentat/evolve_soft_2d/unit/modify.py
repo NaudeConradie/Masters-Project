@@ -76,7 +76,7 @@ def create_nodes(template) -> None:
 
 ################################################################################
  
-def create_elements(template) -> None:
+def create_elements(template, n_init: int = 1) -> None:
     """Create an element grid on the node grid
 
     Parameters
@@ -89,7 +89,7 @@ def create_elements(template) -> None:
     for i in range(1, template.y_n):
 
         #   Initialise the nodal coordinates
-        n1 = (i - 1)*template.x_n + 1
+        n1 = (i - 1)*template.x_n + n_init
         n2 = n1 + 1
         n3 = n2 + template.x_n
         n4 = n1 + template.x_n
@@ -194,8 +194,8 @@ def add_bc_fd_edge(
     py_send("*add_apply_nodes ")
 
     #   Loop through the selected nodes
-    for i in range(0, len(n_l)):
-        py_send("{} ".format(n_l[i]))
+    for i in n_l:
+        py_send("{} ".format(i))
 
     py_send("#")
 
@@ -245,9 +245,7 @@ def add_bc_fd_node(
 
 ################################################################################
 
-def add_bc_p_internal(
-    unit_p,
-    ) -> None:
+def add_bc_p_internal(unit_p) -> None:
     """Add pressure boundary conditions to all internal edges
 
     Parameters
@@ -327,6 +325,7 @@ def add_bc_p_edge(
 def add_geom_prop() -> None:
     """Add plane strain geometrical properties
     """
+
     py_send("*geometry_type mech_planar_pstrain")
     py_send("*add_geometry_elements all_existing")
 
@@ -379,8 +378,12 @@ def add_lcase(template, l_id: int, l_bc: list) -> None:
 
     Parameters
     ----------
-    template 
+    template
         The unit template parameters
+    l_id : int
+        The loadcase ID
+    l_bc : list
+        The list of loadcase boundary conditions
     """
 
     py_send("*new_loadcase")
@@ -388,8 +391,10 @@ def add_lcase(template, l_id: int, l_bc: list) -> None:
     py_send("*loadcase_name lcase{}".format(l_id))
     py_send("*clear_loadcase_loads")
 
+    #   Loop through the list of boundary conditions
     for i in l_bc:
 
+        #   Add the boundary conditions
         py_send("*add_loadcase_loads {}".format(i))
 
     py_send("*loadcase_value nsteps {}".format(template.n_steps))
@@ -400,6 +405,11 @@ def add_lcase(template, l_id: int, l_bc: list) -> None:
 
 def add_job(j_id: int) -> None:
     """Add a job
+
+    Parameters
+    ----------
+    j_id : int
+        The job ID
     """
 
     py_send("*prog_use_current_job on")
@@ -419,6 +429,11 @@ def add_job(j_id: int) -> None:
 
 def run_job(j_id: int) -> None:
     """Run a job
+
+    Parameters
+    ----------
+    j_id : int
+        The job ID
     """
 
     t0 = time.time()
@@ -448,8 +463,10 @@ def run_model(
 
     Parameters
     ----------
-    template : template
+    template
         The unit template parameters
+    j_id : int
+        The job ID
     l : str
         The label of the model
     fp_mud : str
@@ -462,7 +479,7 @@ def run_model(
     Returns
     -------
     bool
-        True if the model run was successful, false otherwise
+        The success of the run
     """
 
     #   Run the job
@@ -475,11 +492,11 @@ def run_model(
     if run_success:
 
         #   Obtain the results
-        obtain.all_val(template, l, fp_t16)
+        obtain.all_val(template, l + "_" + str(j_id), fp_t16)
 
         #   Analyse the results
-        analyse.constraint_energy(template, l)
-        analyse.internal_energy(template, l)
+        analyse.constraint_energy(template, l + "_" + str(j_id))
+        analyse.internal_energy(template, l + "_" + str(j_id))
         
     return run_success
 
@@ -497,10 +514,10 @@ def rem_el(rem: list) -> None:
     py_send("*remove_elements ")
 
     #   Loop through the number of elements to be removed
-    for i in range(0, len(rem)):
+    for i in rem:
 
         #   Remove the element from the grid
-        py_send("{} ".format(rem[i]))
+        py_send("{} ".format(i))
 
     py_send("#")
 
