@@ -1,0 +1,6740 @@
+Marc Mentat (C)Copyright 1994-2019, MSC Software Corporation, all rights reserved
+Command > *open_model "c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+Command > *fill_view
+Command > *edit_job job_1
+Enter edit job : 
+Command > *update_job
+Command > *submit_job 1 *monitor_job
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Element type 11 has been set for 200 element(s).
+ERROR: Job job_1:
+Found 200 element(s) of type 11 without material properties!
+INFO: Found 1 error and 0 warnings.
+Job not submitted because of errors in model!.
+Command > *edit_geometry geom1
+Enter edit geometry : 
+Command > *py_file_run ..\..\main.py
+*new_model yes
+*add_nodes 0 0 0
+Node 1 added.
+*add_nodes 4.0 0 0
+Node 2 added.
+*add_nodes 8.0 0 0
+Node 3 added.
+*add_nodes 12.0 0 0
+Node 4 added.
+*add_nodes 16.0 0 0
+Node 5 added.
+*add_nodes 20.0 0 0
+Node 6 added.
+*add_nodes 0 4.0 0
+Node 7 added.
+*add_nodes 4.0 4.0 0
+Node 8 added.
+*add_nodes 8.0 4.0 0
+Node 9 added.
+*add_nodes 12.0 4.0 0
+Node 10 added.
+*add_nodes 16.0 4.0 0
+Node 11 added.
+*add_nodes 20.0 4.0 0
+Node 12 added.
+*add_nodes 0 8.0 0
+Node 13 added.
+*add_nodes 4.0 8.0 0
+Node 14 added.
+*add_nodes 8.0 8.0 0
+Node 15 added.
+*add_nodes 12.0 8.0 0
+Node 16 added.
+*add_nodes 16.0 8.0 0
+Node 17 added.
+*add_nodes 20.0 8.0 0
+Node 18 added.
+*add_nodes 0 12.0 0
+Node 19 added.
+*add_nodes 4.0 12.0 0
+Node 20 added.
+*add_nodes 8.0 12.0 0
+Node 21 added.
+*add_nodes 12.0 12.0 0
+Node 22 added.
+*add_nodes 16.0 12.0 0
+Node 23 added.
+*add_nodes 20.0 12.0 0
+Node 24 added.
+*add_nodes 0 16.0 0
+Node 25 added.
+*add_nodes 4.0 16.0 0
+Node 26 added.
+*add_nodes 8.0 16.0 0
+Node 27 added.
+*add_nodes 12.0 16.0 0
+Node 28 added.
+*add_nodes 16.0 16.0 0
+Node 29 added.
+*add_nodes 20.0 16.0 0
+Node 30 added.
+*add_nodes 0 20.0 0
+Node 31 added.
+*add_nodes 4.0 20.0 0
+Node 32 added.
+*add_nodes 8.0 20.0 0
+Node 33 added.
+*add_nodes 12.0 20.0 0
+Node 34 added.
+*add_nodes 16.0 20.0 0
+Node 35 added.
+*add_nodes 20.0 20.0 0
+Node 36 added.
+*add_elements 1 2 8 7
+Element 1 added.
+*add_elements 2 3 9 8
+Element 2 added.
+*add_elements 3 4 10 9
+Element 3 added.
+*add_elements 4 5 11 10
+Element 4 added.
+*add_elements 5 6 12 11
+Element 5 added.
+*add_elements 7 8 14 13
+Element 6 added.
+*add_elements 8 9 15 14
+Element 7 added.
+*add_elements 9 10 16 15
+Element 8 added.
+*add_elements 10 11 17 16
+Element 9 added.
+*add_elements 11 12 18 17
+Element 10 added.
+*add_elements 13 14 20 19
+Element 11 added.
+*add_elements 14 15 21 20
+Element 12 added.
+*add_elements 15 16 22 21
+Element 13 added.
+*add_elements 16 17 23 22
+Element 14 added.
+*add_elements 17 18 24 23
+Element 15 added.
+*add_elements 19 20 26 25
+Element 16 added.
+*add_elements 20 21 27 26
+Element 17 added.
+*add_elements 21 22 28 27
+Element 18 added.
+*add_elements 22 23 29 28
+Element 19 added.
+*add_elements 23 24 30 29
+Element 20 added.
+*add_elements 25 26 32 31
+Element 21 added.
+*add_elements 26 27 33 32
+Element 22 added.
+*add_elements 27 28 34 33
+Element 23 added.
+*add_elements 28 29 35 34
+Element 24 added.
+*add_elements 29 30 36 35
+Element 25 added.
+*new_md_table 1 1
+*table_name "ramp_input"
+*set_md_table_type 1 "time"
+*set_md_table_step_v 1 100
+*set_md_table_step_f 1 100
+*set_md_table_method_formula
+*md_table_formula v1
+Formula evaluation successful.
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_yy1
+*apply_dof y
+*apply_dof_value y 0
+*add_apply_nodes 
+1 
+2 
+3 
+4 
+5 
+6 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_yy2
+*apply_dof y
+*apply_dof_value y 10.0
+*apply_dof_table y ramp_input
+*add_apply_nodes 
+31 
+32 
+33 
+34 
+35 
+36 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_xx1
+*apply_dof x
+*apply_dof_value x 0
+*add_apply_nodes 
+1 
+7 
+13 
+19 
+25 
+31 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_xx2
+*apply_dof x
+*apply_dof_value x 0
+*add_apply_nodes 
+6 
+12 
+18 
+24 
+30 
+36 
+#
+*geometry_type mech_planar_pstrain
+*add_geometry_elements all_existing
+*new_mater standard
+*mater_option general:state:solid
+*mater_option general:skip_structural:off
+*mater_name "Mold Star 15"
+*mater_option structural:type:ogden
+*mater_param structural:ogden_nterm 3
+*mater_param structural:ogden_modulus_1 -6.50266e-06
+*mater_param structural:ogden_exp_1 -21.322
+*mater_param structural:ogden_modulus_2 0.216863
+*mater_param structural:ogden_exp_2 1.1797
+*mater_param structural:ogden_modulus_3 0.00137158
+*mater_param structural:ogden_exp_3 4.88396
+*add_mater_elements all_existing
+*new_cbody mesh
+*contact_option state:solid
+*contact_option skip_structural:off
+*add_contact_body_elements all_existing
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase1
+ERROR: Loadcase name lcase1 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_1
+*add_job_loadcases lcase1
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Element type 11 has been set for 25 element(s).
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1_5x5_20x20_1_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*add_nodes -20 -20 0
+Node 37 added.
+*add_nodes -16.0 -20 0
+Node 38 added.
+*add_nodes -12.0 -20 0
+Node 39 added.
+*add_nodes -8.0 -20 0
+Node 40 added.
+*add_nodes -4.0 -20 0
+Node 41 added.
+*add_nodes 0.0 -20 0
+Node 42 added.
+*add_nodes -20 -16.0 0
+Node 43 added.
+*add_nodes -16.0 -16.0 0
+Node 44 added.
+*add_nodes -12.0 -16.0 0
+Node 45 added.
+*add_nodes -8.0 -16.0 0
+Node 46 added.
+*add_nodes -4.0 -16.0 0
+Node 47 added.
+*add_nodes 0.0 -16.0 0
+Node 48 added.
+*add_nodes -20 -12.0 0
+Node 49 added.
+*add_nodes -16.0 -12.0 0
+Node 50 added.
+*add_nodes -12.0 -12.0 0
+Node 51 added.
+*add_nodes -8.0 -12.0 0
+Node 52 added.
+*add_nodes -4.0 -12.0 0
+Node 53 added.
+*add_nodes 0.0 -12.0 0
+Node 54 added.
+*add_nodes -20 -8.0 0
+Node 55 added.
+*add_nodes -16.0 -8.0 0
+Node 56 added.
+*add_nodes -12.0 -8.0 0
+Node 57 added.
+*add_nodes -8.0 -8.0 0
+Node 58 added.
+*add_nodes -4.0 -8.0 0
+Node 59 added.
+*add_nodes 0.0 -8.0 0
+Node 60 added.
+*add_nodes -20 -4.0 0
+Node 61 added.
+*add_nodes -16.0 -4.0 0
+Node 62 added.
+*add_nodes -12.0 -4.0 0
+Node 63 added.
+*add_nodes -8.0 -4.0 0
+Node 64 added.
+*add_nodes -4.0 -4.0 0
+Node 65 added.
+*add_nodes 0.0 -4.0 0
+Node 66 added.
+*add_nodes -20 0.0 0
+Node 67 added.
+*add_nodes -16.0 0.0 0
+Node 68 added.
+*add_nodes -12.0 0.0 0
+Node 69 added.
+*add_nodes -8.0 0.0 0
+Node 70 added.
+*add_nodes -4.0 0.0 0
+Node 71 added.
+*add_nodes 0.0 0.0 0
+Node 72 added.
+*add_elements 37 38 44 43
+Element 26 added.
+*add_elements 38 39 45 44
+Element 27 added.
+*add_elements 39 40 46 45
+Element 28 added.
+*add_elements 40 41 47 46
+Element 29 added.
+*add_elements 41 42 48 47
+Element 30 added.
+*add_elements 43 44 50 49
+Element 31 added.
+*add_elements 44 45 51 50
+Element 32 added.
+*add_elements 45 46 52 51
+Element 33 added.
+*add_elements 46 47 53 52
+Element 34 added.
+*add_elements 47 48 54 53
+Element 35 added.
+*add_elements 49 50 56 55
+Element 36 added.
+*add_elements 50 51 57 56
+Element 37 added.
+*add_elements 51 52 58 57
+Element 38 added.
+*add_elements 52 53 59 58
+Element 39 added.
+*add_elements 53 54 60 59
+Element 40 added.
+*add_elements 55 56 62 61
+Element 41 added.
+*add_elements 56 57 63 62
+Element 42 added.
+*add_elements 57 58 64 63
+Element 43 added.
+*add_elements 58 59 65 64
+Element 44 added.
+*add_elements 59 60 66 65
+Element 45 added.
+*add_elements 61 62 68 67
+Element 46 added.
+*add_elements 62 63 69 68
+Element 47 added.
+*add_elements 63 64 70 69
+Element 48 added.
+*add_elements 64 65 71 70
+Element 49 added.
+*add_elements 65 66 72 71
+Element 50 added.
+*add_nodes 0 -20 0
+Node 73 added.
+*add_nodes 4.0 -20 0
+Node 74 added.
+*add_nodes 8.0 -20 0
+Node 75 added.
+*add_nodes 12.0 -20 0
+Node 76 added.
+*add_nodes 16.0 -20 0
+Node 77 added.
+*add_nodes 20.0 -20 0
+Node 78 added.
+*add_nodes 0 -16.0 0
+Node 79 added.
+*add_nodes 4.0 -16.0 0
+Node 80 added.
+*add_nodes 8.0 -16.0 0
+Node 81 added.
+*add_nodes 12.0 -16.0 0
+Node 82 added.
+*add_nodes 16.0 -16.0 0
+Node 83 added.
+*add_nodes 20.0 -16.0 0
+Node 84 added.
+*add_nodes 0 -12.0 0
+Node 85 added.
+*add_nodes 4.0 -12.0 0
+Node 86 added.
+*add_nodes 8.0 -12.0 0
+Node 87 added.
+*add_nodes 12.0 -12.0 0
+Node 88 added.
+*add_nodes 16.0 -12.0 0
+Node 89 added.
+*add_nodes 20.0 -12.0 0
+Node 90 added.
+*add_nodes 0 -8.0 0
+Node 91 added.
+*add_nodes 4.0 -8.0 0
+Node 92 added.
+*add_nodes 8.0 -8.0 0
+Node 93 added.
+*add_nodes 12.0 -8.0 0
+Node 94 added.
+*add_nodes 16.0 -8.0 0
+Node 95 added.
+*add_nodes 20.0 -8.0 0
+Node 96 added.
+*add_nodes 0 -4.0 0
+Node 97 added.
+*add_nodes 4.0 -4.0 0
+Node 98 added.
+*add_nodes 8.0 -4.0 0
+Node 99 added.
+*add_nodes 12.0 -4.0 0
+Node 100 added.
+*add_nodes 16.0 -4.0 0
+Node 101 added.
+*add_nodes 20.0 -4.0 0
+Node 102 added.
+*add_nodes 0 0.0 0
+Node 103 added.
+*add_nodes 4.0 0.0 0
+Node 104 added.
+*add_nodes 8.0 0.0 0
+Node 105 added.
+*add_nodes 12.0 0.0 0
+Node 106 added.
+*add_nodes 16.0 0.0 0
+Node 107 added.
+*add_nodes 20.0 0.0 0
+Node 108 added.
+*add_elements 73 74 80 79
+Element 51 added.
+*add_elements 74 75 81 80
+Element 52 added.
+*add_elements 75 76 82 81
+Element 53 added.
+*add_elements 76 77 83 82
+Element 54 added.
+*add_elements 77 78 84 83
+Element 55 added.
+*add_elements 79 80 86 85
+Element 56 added.
+*add_elements 80 81 87 86
+Element 57 added.
+*add_elements 81 82 88 87
+Element 58 added.
+*add_elements 82 83 89 88
+Element 59 added.
+*add_elements 83 84 90 89
+Element 60 added.
+*add_elements 85 86 92 91
+Element 61 added.
+*add_elements 86 87 93 92
+Element 62 added.
+*add_elements 87 88 94 93
+Element 63 added.
+*add_elements 88 89 95 94
+Element 64 added.
+*add_elements 89 90 96 95
+Element 65 added.
+*add_elements 91 92 98 97
+Element 66 added.
+*add_elements 92 93 99 98
+Element 67 added.
+*add_elements 93 94 100 99
+Element 68 added.
+*add_elements 94 95 101 100
+Element 69 added.
+*add_elements 95 96 102 101
+Element 70 added.
+*add_elements 97 98 104 103
+Element 71 added.
+*add_elements 98 99 105 104
+Element 72 added.
+*add_elements 99 100 106 105
+Element 73 added.
+*add_elements 100 101 107 106
+Element 74 added.
+*add_elements 101 102 108 107
+Element 75 added.
+*add_nodes 20 -20 0
+Node 109 added.
+*add_nodes 24.0 -20 0
+Node 110 added.
+*add_nodes 28.0 -20 0
+Node 111 added.
+*add_nodes 32.0 -20 0
+Node 112 added.
+*add_nodes 36.0 -20 0
+Node 113 added.
+*add_nodes 40.0 -20 0
+Node 114 added.
+*add_nodes 20 -16.0 0
+Node 115 added.
+*add_nodes 24.0 -16.0 0
+Node 116 added.
+*add_nodes 28.0 -16.0 0
+Node 117 added.
+*add_nodes 32.0 -16.0 0
+Node 118 added.
+*add_nodes 36.0 -16.0 0
+Node 119 added.
+*add_nodes 40.0 -16.0 0
+Node 120 added.
+*add_nodes 20 -12.0 0
+Node 121 added.
+*add_nodes 24.0 -12.0 0
+Node 122 added.
+*add_nodes 28.0 -12.0 0
+Node 123 added.
+*add_nodes 32.0 -12.0 0
+Node 124 added.
+*add_nodes 36.0 -12.0 0
+Node 125 added.
+*add_nodes 40.0 -12.0 0
+Node 126 added.
+*add_nodes 20 -8.0 0
+Node 127 added.
+*add_nodes 24.0 -8.0 0
+Node 128 added.
+*add_nodes 28.0 -8.0 0
+Node 129 added.
+*add_nodes 32.0 -8.0 0
+Node 130 added.
+*add_nodes 36.0 -8.0 0
+Node 131 added.
+*add_nodes 40.0 -8.0 0
+Node 132 added.
+*add_nodes 20 -4.0 0
+Node 133 added.
+*add_nodes 24.0 -4.0 0
+Node 134 added.
+*add_nodes 28.0 -4.0 0
+Node 135 added.
+*add_nodes 32.0 -4.0 0
+Node 136 added.
+*add_nodes 36.0 -4.0 0
+Node 137 added.
+*add_nodes 40.0 -4.0 0
+Node 138 added.
+*add_nodes 20 0.0 0
+Node 139 added.
+*add_nodes 24.0 0.0 0
+Node 140 added.
+*add_nodes 28.0 0.0 0
+Node 141 added.
+*add_nodes 32.0 0.0 0
+Node 142 added.
+*add_nodes 36.0 0.0 0
+Node 143 added.
+*add_nodes 40.0 0.0 0
+Node 144 added.
+*add_elements 109 110 116 115
+Element 76 added.
+*add_elements 110 111 117 116
+Element 77 added.
+*add_elements 111 112 118 117
+Element 78 added.
+*add_elements 112 113 119 118
+Element 79 added.
+*add_elements 113 114 120 119
+Element 80 added.
+*add_elements 115 116 122 121
+Element 81 added.
+*add_elements 116 117 123 122
+Element 82 added.
+*add_elements 117 118 124 123
+Element 83 added.
+*add_elements 118 119 125 124
+Element 84 added.
+*add_elements 119 120 126 125
+Element 85 added.
+*add_elements 121 122 128 127
+Element 86 added.
+*add_elements 122 123 129 128
+Element 87 added.
+*add_elements 123 124 130 129
+Element 88 added.
+*add_elements 124 125 131 130
+Element 89 added.
+*add_elements 125 126 132 131
+Element 90 added.
+*add_elements 127 128 134 133
+Element 91 added.
+*add_elements 128 129 135 134
+Element 92 added.
+*add_elements 129 130 136 135
+Element 93 added.
+*add_elements 130 131 137 136
+Element 94 added.
+*add_elements 131 132 138 137
+Element 95 added.
+*add_elements 133 134 140 139
+Element 96 added.
+*add_elements 134 135 141 140
+Element 97 added.
+*add_elements 135 136 142 141
+Element 98 added.
+*add_elements 136 137 143 142
+Element 99 added.
+*add_elements 137 138 144 143
+Element 100 added.
+*add_nodes -20 0 0
+Node 145 added.
+*add_nodes -16.0 0 0
+Node 146 added.
+*add_nodes -12.0 0 0
+Node 147 added.
+*add_nodes -8.0 0 0
+Node 148 added.
+*add_nodes -4.0 0 0
+Node 149 added.
+*add_nodes 0.0 0 0
+Node 150 added.
+*add_nodes -20 4.0 0
+Node 151 added.
+*add_nodes -16.0 4.0 0
+Node 152 added.
+*add_nodes -12.0 4.0 0
+Node 153 added.
+*add_nodes -8.0 4.0 0
+Node 154 added.
+*add_nodes -4.0 4.0 0
+Node 155 added.
+*add_nodes 0.0 4.0 0
+Node 156 added.
+*add_nodes -20 8.0 0
+Node 157 added.
+*add_nodes -16.0 8.0 0
+Node 158 added.
+*add_nodes -12.0 8.0 0
+Node 159 added.
+*add_nodes -8.0 8.0 0
+Node 160 added.
+*add_nodes -4.0 8.0 0
+Node 161 added.
+*add_nodes 0.0 8.0 0
+Node 162 added.
+*add_nodes -20 12.0 0
+Node 163 added.
+*add_nodes -16.0 12.0 0
+Node 164 added.
+*add_nodes -12.0 12.0 0
+Node 165 added.
+*add_nodes -8.0 12.0 0
+Node 166 added.
+*add_nodes -4.0 12.0 0
+Node 167 added.
+*add_nodes 0.0 12.0 0
+Node 168 added.
+*add_nodes -20 16.0 0
+Node 169 added.
+*add_nodes -16.0 16.0 0
+Node 170 added.
+*add_nodes -12.0 16.0 0
+Node 171 added.
+*add_nodes -8.0 16.0 0
+Node 172 added.
+*add_nodes -4.0 16.0 0
+Node 173 added.
+*add_nodes 0.0 16.0 0
+Node 174 added.
+*add_nodes -20 20.0 0
+Node 175 added.
+*add_nodes -16.0 20.0 0
+Node 176 added.
+*add_nodes -12.0 20.0 0
+Node 177 added.
+*add_nodes -8.0 20.0 0
+Node 178 added.
+*add_nodes -4.0 20.0 0
+Node 179 added.
+*add_nodes 0.0 20.0 0
+Node 180 added.
+*add_elements 145 146 152 151
+Element 101 added.
+*add_elements 146 147 153 152
+Element 102 added.
+*add_elements 147 148 154 153
+Element 103 added.
+*add_elements 148 149 155 154
+Element 104 added.
+*add_elements 149 150 156 155
+Element 105 added.
+*add_elements 151 152 158 157
+Element 106 added.
+*add_elements 152 153 159 158
+Element 107 added.
+*add_elements 153 154 160 159
+Element 108 added.
+*add_elements 154 155 161 160
+Element 109 added.
+*add_elements 155 156 162 161
+Element 110 added.
+*add_elements 157 158 164 163
+Element 111 added.
+*add_elements 158 159 165 164
+Element 112 added.
+*add_elements 159 160 166 165
+Element 113 added.
+*add_elements 160 161 167 166
+Element 114 added.
+*add_elements 161 162 168 167
+Element 115 added.
+*add_elements 163 164 170 169
+Element 116 added.
+*add_elements 164 165 171 170
+Element 117 added.
+*add_elements 165 166 172 171
+Element 118 added.
+*add_elements 166 167 173 172
+Element 119 added.
+*add_elements 167 168 174 173
+Element 120 added.
+*add_elements 169 170 176 175
+Element 121 added.
+*add_elements 170 171 177 176
+Element 122 added.
+*add_elements 171 172 178 177
+Element 123 added.
+*add_elements 172 173 179 178
+Element 124 added.
+*add_elements 173 174 180 179
+Element 125 added.
+*add_nodes 20 0 0
+Node 181 added.
+*add_nodes 24.0 0 0
+Node 182 added.
+*add_nodes 28.0 0 0
+Node 183 added.
+*add_nodes 32.0 0 0
+Node 184 added.
+*add_nodes 36.0 0 0
+Node 185 added.
+*add_nodes 40.0 0 0
+Node 186 added.
+*add_nodes 20 4.0 0
+Node 187 added.
+*add_nodes 24.0 4.0 0
+Node 188 added.
+*add_nodes 28.0 4.0 0
+Node 189 added.
+*add_nodes 32.0 4.0 0
+Node 190 added.
+*add_nodes 36.0 4.0 0
+Node 191 added.
+*add_nodes 40.0 4.0 0
+Node 192 added.
+*add_nodes 20 8.0 0
+Node 193 added.
+*add_nodes 24.0 8.0 0
+Node 194 added.
+*add_nodes 28.0 8.0 0
+Node 195 added.
+*add_nodes 32.0 8.0 0
+Node 196 added.
+*add_nodes 36.0 8.0 0
+Node 197 added.
+*add_nodes 40.0 8.0 0
+Node 198 added.
+*add_nodes 20 12.0 0
+Node 199 added.
+*add_nodes 24.0 12.0 0
+Node 200 added.
+*add_nodes 28.0 12.0 0
+Node 201 added.
+*add_nodes 32.0 12.0 0
+Node 202 added.
+*add_nodes 36.0 12.0 0
+Node 203 added.
+*add_nodes 40.0 12.0 0
+Node 204 added.
+*add_nodes 20 16.0 0
+Node 205 added.
+*add_nodes 24.0 16.0 0
+Node 206 added.
+*add_nodes 28.0 16.0 0
+Node 207 added.
+*add_nodes 32.0 16.0 0
+Node 208 added.
+*add_nodes 36.0 16.0 0
+Node 209 added.
+*add_nodes 40.0 16.0 0
+Node 210 added.
+*add_nodes 20 20.0 0
+Node 211 added.
+*add_nodes 24.0 20.0 0
+Node 212 added.
+*add_nodes 28.0 20.0 0
+Node 213 added.
+*add_nodes 32.0 20.0 0
+Node 214 added.
+*add_nodes 36.0 20.0 0
+Node 215 added.
+*add_nodes 40.0 20.0 0
+Node 216 added.
+*add_elements 181 182 188 187
+Element 126 added.
+*add_elements 182 183 189 188
+Element 127 added.
+*add_elements 183 184 190 189
+Element 128 added.
+*add_elements 184 185 191 190
+Element 129 added.
+*add_elements 185 186 192 191
+Element 130 added.
+*add_elements 187 188 194 193
+Element 131 added.
+*add_elements 188 189 195 194
+Element 132 added.
+*add_elements 189 190 196 195
+Element 133 added.
+*add_elements 190 191 197 196
+Element 134 added.
+*add_elements 191 192 198 197
+Element 135 added.
+*add_elements 193 194 200 199
+Element 136 added.
+*add_elements 194 195 201 200
+Element 137 added.
+*add_elements 195 196 202 201
+Element 138 added.
+*add_elements 196 197 203 202
+Element 139 added.
+*add_elements 197 198 204 203
+Element 140 added.
+*add_elements 199 200 206 205
+Element 141 added.
+*add_elements 200 201 207 206
+Element 142 added.
+*add_elements 201 202 208 207
+Element 143 added.
+*add_elements 202 203 209 208
+Element 144 added.
+*add_elements 203 204 210 209
+Element 145 added.
+*add_elements 205 206 212 211
+Element 146 added.
+*add_elements 206 207 213 212
+Element 147 added.
+*add_elements 207 208 214 213
+Element 148 added.
+*add_elements 208 209 215 214
+Element 149 added.
+*add_elements 209 210 216 215
+Element 150 added.
+*add_nodes -20 20 0
+Node 217 added.
+*add_nodes -16.0 20 0
+Node 218 added.
+*add_nodes -12.0 20 0
+Node 219 added.
+*add_nodes -8.0 20 0
+Node 220 added.
+*add_nodes -4.0 20 0
+Node 221 added.
+*add_nodes 0.0 20 0
+Node 222 added.
+*add_nodes -20 24.0 0
+Node 223 added.
+*add_nodes -16.0 24.0 0
+Node 224 added.
+*add_nodes -12.0 24.0 0
+Node 225 added.
+*add_nodes -8.0 24.0 0
+Node 226 added.
+*add_nodes -4.0 24.0 0
+Node 227 added.
+*add_nodes 0.0 24.0 0
+Node 228 added.
+*add_nodes -20 28.0 0
+Node 229 added.
+*add_nodes -16.0 28.0 0
+Node 230 added.
+*add_nodes -12.0 28.0 0
+Node 231 added.
+*add_nodes -8.0 28.0 0
+Node 232 added.
+*add_nodes -4.0 28.0 0
+Node 233 added.
+*add_nodes 0.0 28.0 0
+Node 234 added.
+*add_nodes -20 32.0 0
+Node 235 added.
+*add_nodes -16.0 32.0 0
+Node 236 added.
+*add_nodes -12.0 32.0 0
+Node 237 added.
+*add_nodes -8.0 32.0 0
+Node 238 added.
+*add_nodes -4.0 32.0 0
+Node 239 added.
+*add_nodes 0.0 32.0 0
+Node 240 added.
+*add_nodes -20 36.0 0
+Node 241 added.
+*add_nodes -16.0 36.0 0
+Node 242 added.
+*add_nodes -12.0 36.0 0
+Node 243 added.
+*add_nodes -8.0 36.0 0
+Node 244 added.
+*add_nodes -4.0 36.0 0
+Node 245 added.
+*add_nodes 0.0 36.0 0
+Node 246 added.
+*add_nodes -20 40.0 0
+Node 247 added.
+*add_nodes -16.0 40.0 0
+Node 248 added.
+*add_nodes -12.0 40.0 0
+Node 249 added.
+*add_nodes -8.0 40.0 0
+Node 250 added.
+*add_nodes -4.0 40.0 0
+Node 251 added.
+*add_nodes 0.0 40.0 0
+Node 252 added.
+*add_elements 217 218 224 223
+Element 151 added.
+*add_elements 218 219 225 224
+Element 152 added.
+*add_elements 219 220 226 225
+Element 153 added.
+*add_elements 220 221 227 226
+Element 154 added.
+*add_elements 221 222 228 227
+Element 155 added.
+*add_elements 223 224 230 229
+Element 156 added.
+*add_elements 224 225 231 230
+Element 157 added.
+*add_elements 225 226 232 231
+Element 158 added.
+*add_elements 226 227 233 232
+Element 159 added.
+*add_elements 227 228 234 233
+Element 160 added.
+*add_elements 229 230 236 235
+Element 161 added.
+*add_elements 230 231 237 236
+Element 162 added.
+*add_elements 231 232 238 237
+Element 163 added.
+*add_elements 232 233 239 238
+Element 164 added.
+*add_elements 233 234 240 239
+Element 165 added.
+*add_elements 235 236 242 241
+Element 166 added.
+*add_elements 236 237 243 242
+Element 167 added.
+*add_elements 237 238 244 243
+Element 168 added.
+*add_elements 238 239 245 244
+Element 169 added.
+*add_elements 239 240 246 245
+Element 170 added.
+*add_elements 241 242 248 247
+Element 171 added.
+*add_elements 242 243 249 248
+Element 172 added.
+*add_elements 243 244 250 249
+Element 173 added.
+*add_elements 244 245 251 250
+Element 174 added.
+*add_elements 245 246 252 251
+Element 175 added.
+*add_nodes 0 20 0
+Node 253 added.
+*add_nodes 4.0 20 0
+Node 254 added.
+*add_nodes 8.0 20 0
+Node 255 added.
+*add_nodes 12.0 20 0
+Node 256 added.
+*add_nodes 16.0 20 0
+Node 257 added.
+*add_nodes 20.0 20 0
+Node 258 added.
+*add_nodes 0 24.0 0
+Node 259 added.
+*add_nodes 4.0 24.0 0
+Node 260 added.
+*add_nodes 8.0 24.0 0
+Node 261 added.
+*add_nodes 12.0 24.0 0
+Node 262 added.
+*add_nodes 16.0 24.0 0
+Node 263 added.
+*add_nodes 20.0 24.0 0
+Node 264 added.
+*add_nodes 0 28.0 0
+Node 265 added.
+*add_nodes 4.0 28.0 0
+Node 266 added.
+*add_nodes 8.0 28.0 0
+Node 267 added.
+*add_nodes 12.0 28.0 0
+Node 268 added.
+*add_nodes 16.0 28.0 0
+Node 269 added.
+*add_nodes 20.0 28.0 0
+Node 270 added.
+*add_nodes 0 32.0 0
+Node 271 added.
+*add_nodes 4.0 32.0 0
+Node 272 added.
+*add_nodes 8.0 32.0 0
+Node 273 added.
+*add_nodes 12.0 32.0 0
+Node 274 added.
+*add_nodes 16.0 32.0 0
+Node 275 added.
+*add_nodes 20.0 32.0 0
+Node 276 added.
+*add_nodes 0 36.0 0
+Node 277 added.
+*add_nodes 4.0 36.0 0
+Node 278 added.
+*add_nodes 8.0 36.0 0
+Node 279 added.
+*add_nodes 12.0 36.0 0
+Node 280 added.
+*add_nodes 16.0 36.0 0
+Node 281 added.
+*add_nodes 20.0 36.0 0
+Node 282 added.
+*add_nodes 0 40.0 0
+Node 283 added.
+*add_nodes 4.0 40.0 0
+Node 284 added.
+*add_nodes 8.0 40.0 0
+Node 285 added.
+*add_nodes 12.0 40.0 0
+Node 286 added.
+*add_nodes 16.0 40.0 0
+Node 287 added.
+*add_nodes 20.0 40.0 0
+Node 288 added.
+*add_elements 253 254 260 259
+Element 176 added.
+*add_elements 254 255 261 260
+Element 177 added.
+*add_elements 255 256 262 261
+Element 178 added.
+*add_elements 256 257 263 262
+Element 179 added.
+*add_elements 257 258 264 263
+Element 180 added.
+*add_elements 259 260 266 265
+Element 181 added.
+*add_elements 260 261 267 266
+Element 182 added.
+*add_elements 261 262 268 267
+Element 183 added.
+*add_elements 262 263 269 268
+Element 184 added.
+*add_elements 263 264 270 269
+Element 185 added.
+*add_elements 265 266 272 271
+Element 186 added.
+*add_elements 266 267 273 272
+Element 187 added.
+*add_elements 267 268 274 273
+Element 188 added.
+*add_elements 268 269 275 274
+Element 189 added.
+*add_elements 269 270 276 275
+Element 190 added.
+*add_elements 271 272 278 277
+Element 191 added.
+*add_elements 272 273 279 278
+Element 192 added.
+*add_elements 273 274 280 279
+Element 193 added.
+*add_elements 274 275 281 280
+Element 194 added.
+*add_elements 275 276 282 281
+Element 195 added.
+*add_elements 277 278 284 283
+Element 196 added.
+*add_elements 278 279 285 284
+Element 197 added.
+*add_elements 279 280 286 285
+Element 198 added.
+*add_elements 280 281 287 286
+Element 199 added.
+*add_elements 281 282 288 287
+Element 200 added.
+*add_nodes 20 20 0
+Node 289 added.
+*add_nodes 24.0 20 0
+Node 290 added.
+*add_nodes 28.0 20 0
+Node 291 added.
+*add_nodes 32.0 20 0
+Node 292 added.
+*add_nodes 36.0 20 0
+Node 293 added.
+*add_nodes 40.0 20 0
+Node 294 added.
+*add_nodes 20 24.0 0
+Node 295 added.
+*add_nodes 24.0 24.0 0
+Node 296 added.
+*add_nodes 28.0 24.0 0
+Node 297 added.
+*add_nodes 32.0 24.0 0
+Node 298 added.
+*add_nodes 36.0 24.0 0
+Node 299 added.
+*add_nodes 40.0 24.0 0
+Node 300 added.
+*add_nodes 20 28.0 0
+Node 301 added.
+*add_nodes 24.0 28.0 0
+Node 302 added.
+*add_nodes 28.0 28.0 0
+Node 303 added.
+*add_nodes 32.0 28.0 0
+Node 304 added.
+*add_nodes 36.0 28.0 0
+Node 305 added.
+*add_nodes 40.0 28.0 0
+Node 306 added.
+*add_nodes 20 32.0 0
+Node 307 added.
+*add_nodes 24.0 32.0 0
+Node 308 added.
+*add_nodes 28.0 32.0 0
+Node 309 added.
+*add_nodes 32.0 32.0 0
+Node 310 added.
+*add_nodes 36.0 32.0 0
+Node 311 added.
+*add_nodes 40.0 32.0 0
+Node 312 added.
+*add_nodes 20 36.0 0
+Node 313 added.
+*add_nodes 24.0 36.0 0
+Node 314 added.
+*add_nodes 28.0 36.0 0
+Node 315 added.
+*add_nodes 32.0 36.0 0
+Node 316 added.
+*add_nodes 36.0 36.0 0
+Node 317 added.
+*add_nodes 40.0 36.0 0
+Node 318 added.
+*add_nodes 20 40.0 0
+Node 319 added.
+*add_nodes 24.0 40.0 0
+Node 320 added.
+*add_nodes 28.0 40.0 0
+Node 321 added.
+*add_nodes 32.0 40.0 0
+Node 322 added.
+*add_nodes 36.0 40.0 0
+Node 323 added.
+*add_nodes 40.0 40.0 0
+Node 324 added.
+*add_elements 289 290 296 295
+Element 201 added.
+*add_elements 290 291 297 296
+Element 202 added.
+*add_elements 291 292 298 297
+Element 203 added.
+*add_elements 292 293 299 298
+Element 204 added.
+*add_elements 293 294 300 299
+Element 205 added.
+*add_elements 295 296 302 301
+Element 206 added.
+*add_elements 296 297 303 302
+Element 207 added.
+*add_elements 297 298 304 303
+Element 208 added.
+*add_elements 298 299 305 304
+Element 209 added.
+*add_elements 299 300 306 305
+Element 210 added.
+*add_elements 301 302 308 307
+Element 211 added.
+*add_elements 302 303 309 308
+Element 212 added.
+*add_elements 303 304 310 309
+Element 213 added.
+*add_elements 304 305 311 310
+Element 214 added.
+*add_elements 305 306 312 311
+Element 215 added.
+*add_elements 307 308 314 313
+Element 216 added.
+*add_elements 308 309 315 314
+Element 217 added.
+*add_elements 309 310 316 315
+Element 218 added.
+*add_elements 310 311 317 316
+Element 219 added.
+*add_elements 311 312 318 317
+Element 220 added.
+*add_elements 313 314 320 319
+Element 221 added.
+*add_elements 314 315 321 320
+Element 222 added.
+*add_elements 315 316 322 321
+Element 223 added.
+*add_elements 316 317 323 322
+Element 224 added.
+*add_elements 317 318 324 323
+Element 225 added.
+*geometry_type mech_planar_pstrain
+*add_geometry_elements all_existing
+*new_mater standard
+*mater_option general:state:solid
+*mater_option general:skip_structural:off
+*mater_name "Mold Star 15"
+*mater_option structural:type:ogden
+*mater_param structural:ogden_nterm 3
+*mater_param structural:ogden_modulus_1 -6.50266e-06
+*mater_param structural:ogden_exp_1 -21.322
+*mater_param structural:ogden_modulus_2 0.216863
+*mater_param structural:ogden_exp_2 1.1797
+*mater_param structural:ogden_modulus_3 0.00137158
+*mater_param structural:ogden_exp_3 4.88396
+*add_mater_elements all_existing
+*new_cbody mesh
+*contact_option state:solid
+*contact_option skip_structural:off
+*add_contact_body_elements all_existing
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Element type 11 has been set for 200 element(s).
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 1 warning.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1_5x5_20x20_1_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*identify_applys
+*redraw
+Command > *edit_contact_body cbody1
+Enter contact body to edit : 
+Command > *edit_contact_body cbody2
+Enter contact body to edit : 
+Command > @main(results) *post_open_default
+Number of increments detected : 5
+Command > *post_skip_to_last
+Command > *post_prev
+Command > *post_prev
+Command > *post_prev
+Command > *post_prev
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_close
+Command > *sweep_all
+Deleting 68 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+Command > *py_file_run ..\..\main.py
+*new_model yes
+*add_nodes 0 0 0
+Node 1 added.
+*add_nodes 4.0 0 0
+Node 2 added.
+*add_nodes 8.0 0 0
+Node 3 added.
+*add_nodes 12.0 0 0
+Node 4 added.
+*add_nodes 16.0 0 0
+Node 5 added.
+*add_nodes 20.0 0 0
+Node 6 added.
+*add_nodes 0 4.0 0
+Node 7 added.
+*add_nodes 4.0 4.0 0
+Node 8 added.
+*add_nodes 8.0 4.0 0
+Node 9 added.
+*add_nodes 12.0 4.0 0
+Node 10 added.
+*add_nodes 16.0 4.0 0
+Node 11 added.
+*add_nodes 20.0 4.0 0
+Node 12 added.
+*add_nodes 0 8.0 0
+Node 13 added.
+*add_nodes 4.0 8.0 0
+Node 14 added.
+*add_nodes 8.0 8.0 0
+Node 15 added.
+*add_nodes 12.0 8.0 0
+Node 16 added.
+*add_nodes 16.0 8.0 0
+Node 17 added.
+*add_nodes 20.0 8.0 0
+Node 18 added.
+*add_nodes 0 12.0 0
+Node 19 added.
+*add_nodes 4.0 12.0 0
+Node 20 added.
+*add_nodes 8.0 12.0 0
+Node 21 added.
+*add_nodes 12.0 12.0 0
+Node 22 added.
+*add_nodes 16.0 12.0 0
+Node 23 added.
+*add_nodes 20.0 12.0 0
+Node 24 added.
+*add_nodes 0 16.0 0
+Node 25 added.
+*add_nodes 4.0 16.0 0
+Node 26 added.
+*add_nodes 8.0 16.0 0
+Node 27 added.
+*add_nodes 12.0 16.0 0
+Node 28 added.
+*add_nodes 16.0 16.0 0
+Node 29 added.
+*add_nodes 20.0 16.0 0
+Node 30 added.
+*add_nodes 0 20.0 0
+Node 31 added.
+*add_nodes 4.0 20.0 0
+Node 32 added.
+*add_nodes 8.0 20.0 0
+Node 33 added.
+*add_nodes 12.0 20.0 0
+Node 34 added.
+*add_nodes 16.0 20.0 0
+Node 35 added.
+*add_nodes 20.0 20.0 0
+Node 36 added.
+*add_elements 1 2 8 7
+Element 1 added.
+*add_elements 2 3 9 8
+Element 2 added.
+*add_elements 3 4 10 9
+Element 3 added.
+*add_elements 4 5 11 10
+Element 4 added.
+*add_elements 5 6 12 11
+Element 5 added.
+*add_elements 7 8 14 13
+Element 6 added.
+*add_elements 8 9 15 14
+Element 7 added.
+*add_elements 9 10 16 15
+Element 8 added.
+*add_elements 10 11 17 16
+Element 9 added.
+*add_elements 11 12 18 17
+Element 10 added.
+*add_elements 13 14 20 19
+Element 11 added.
+*add_elements 14 15 21 20
+Element 12 added.
+*add_elements 15 16 22 21
+Element 13 added.
+*add_elements 16 17 23 22
+Element 14 added.
+*add_elements 17 18 24 23
+Element 15 added.
+*add_elements 19 20 26 25
+Element 16 added.
+*add_elements 20 21 27 26
+Element 17 added.
+*add_elements 21 22 28 27
+Element 18 added.
+*add_elements 22 23 29 28
+Element 19 added.
+*add_elements 23 24 30 29
+Element 20 added.
+*add_elements 25 26 32 31
+Element 21 added.
+*add_elements 26 27 33 32
+Element 22 added.
+*add_elements 27 28 34 33
+Element 23 added.
+*add_elements 28 29 35 34
+Element 24 added.
+*add_elements 29 30 36 35
+Element 25 added.
+*new_md_table 1 1
+*table_name "ramp_input"
+*set_md_table_type 1 "time"
+*set_md_table_step_v 1 100
+*set_md_table_step_f 1 100
+*set_md_table_method_formula
+*md_table_formula v1
+Formula evaluation successful.
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_yy1
+*apply_dof y
+*apply_dof_value y 0
+*add_apply_nodes 
+1 
+2 
+3 
+4 
+5 
+6 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_yy2
+*apply_dof y
+*apply_dof_value y 10.0
+*apply_dof_table y ramp_input
+*add_apply_nodes 
+31 
+32 
+33 
+34 
+35 
+36 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_xx1
+*apply_dof x
+*apply_dof_value x 0
+*add_apply_nodes 
+1 
+7 
+13 
+19 
+25 
+31 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_xx2
+*apply_dof x
+*apply_dof_value x 0
+*add_apply_nodes 
+6 
+12 
+18 
+24 
+30 
+36 
+#
+*geometry_type mech_planar_pstrain
+*add_geometry_elements all_existing
+*new_mater standard
+*mater_option general:state:solid
+*mater_option general:skip_structural:off
+*mater_name "Mold Star 15"
+*mater_option structural:type:ogden
+*mater_param structural:ogden_nterm 3
+*mater_param structural:ogden_modulus_1 -6.50266e-06
+*mater_param structural:ogden_exp_1 -21.322
+*mater_param structural:ogden_modulus_2 0.216863
+*mater_param structural:ogden_exp_2 1.1797
+*mater_param structural:ogden_modulus_3 0.00137158
+*mater_param structural:ogden_exp_3 4.88396
+*add_mater_elements all_existing
+*new_cbody mesh
+*contact_option state:solid
+*contact_option skip_structural:off
+*add_contact_body_elements all_existing
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase1
+ERROR: Loadcase name lcase1 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_1
+*add_job_loadcases lcase1
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Element type 11 has been set for 25 element(s).
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1_5x5_20x20_1_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*add_nodes -20 -20 0
+Node 37 added.
+*add_nodes -16.0 -20 0
+Node 38 added.
+*add_nodes -12.0 -20 0
+Node 39 added.
+*add_nodes -8.0 -20 0
+Node 40 added.
+*add_nodes -4.0 -20 0
+Node 41 added.
+*add_nodes 0.0 -20 0
+Node 42 added.
+*add_nodes -20 -16.0 0
+Node 43 added.
+*add_nodes -16.0 -16.0 0
+Node 44 added.
+*add_nodes -12.0 -16.0 0
+Node 45 added.
+*add_nodes -8.0 -16.0 0
+Node 46 added.
+*add_nodes -4.0 -16.0 0
+Node 47 added.
+*add_nodes 0.0 -16.0 0
+Node 48 added.
+*add_nodes -20 -12.0 0
+Node 49 added.
+*add_nodes -16.0 -12.0 0
+Node 50 added.
+*add_nodes -12.0 -12.0 0
+Node 51 added.
+*add_nodes -8.0 -12.0 0
+Node 52 added.
+*add_nodes -4.0 -12.0 0
+Node 53 added.
+*add_nodes 0.0 -12.0 0
+Node 54 added.
+*add_nodes -20 -8.0 0
+Node 55 added.
+*add_nodes -16.0 -8.0 0
+Node 56 added.
+*add_nodes -12.0 -8.0 0
+Node 57 added.
+*add_nodes -8.0 -8.0 0
+Node 58 added.
+*add_nodes -4.0 -8.0 0
+Node 59 added.
+*add_nodes 0.0 -8.0 0
+Node 60 added.
+*add_nodes -20 -4.0 0
+Node 61 added.
+*add_nodes -16.0 -4.0 0
+Node 62 added.
+*add_nodes -12.0 -4.0 0
+Node 63 added.
+*add_nodes -8.0 -4.0 0
+Node 64 added.
+*add_nodes -4.0 -4.0 0
+Node 65 added.
+*add_nodes 0.0 -4.0 0
+Node 66 added.
+*add_nodes -20 0.0 0
+Node 67 added.
+*add_nodes -16.0 0.0 0
+Node 68 added.
+*add_nodes -12.0 0.0 0
+Node 69 added.
+*add_nodes -8.0 0.0 0
+Node 70 added.
+*add_nodes -4.0 0.0 0
+Node 71 added.
+*add_nodes 0.0 0.0 0
+Node 72 added.
+*add_elements 37 38 44 43
+Element 26 added.
+*add_elements 38 39 45 44
+Element 27 added.
+*add_elements 39 40 46 45
+Element 28 added.
+*add_elements 40 41 47 46
+Element 29 added.
+*add_elements 41 42 48 47
+Element 30 added.
+*add_elements 43 44 50 49
+Element 31 added.
+*add_elements 44 45 51 50
+Element 32 added.
+*add_elements 45 46 52 51
+Element 33 added.
+*add_elements 46 47 53 52
+Element 34 added.
+*add_elements 47 48 54 53
+Element 35 added.
+*add_elements 49 50 56 55
+Element 36 added.
+*add_elements 50 51 57 56
+Element 37 added.
+*add_elements 51 52 58 57
+Element 38 added.
+*add_elements 52 53 59 58
+Element 39 added.
+*add_elements 53 54 60 59
+Element 40 added.
+*add_elements 55 56 62 61
+Element 41 added.
+*add_elements 56 57 63 62
+Element 42 added.
+*add_elements 57 58 64 63
+Element 43 added.
+*add_elements 58 59 65 64
+Element 44 added.
+*add_elements 59 60 66 65
+Element 45 added.
+*add_elements 61 62 68 67
+Element 46 added.
+*add_elements 62 63 69 68
+Element 47 added.
+*add_elements 63 64 70 69
+Element 48 added.
+*add_elements 64 65 71 70
+Element 49 added.
+*add_elements 65 66 72 71
+Element 50 added.
+*add_nodes 0 -20 0
+Node 73 added.
+*add_nodes 4.0 -20 0
+Node 74 added.
+*add_nodes 8.0 -20 0
+Node 75 added.
+*add_nodes 12.0 -20 0
+Node 76 added.
+*add_nodes 16.0 -20 0
+Node 77 added.
+*add_nodes 20.0 -20 0
+Node 78 added.
+*add_nodes 0 -16.0 0
+Node 79 added.
+*add_nodes 4.0 -16.0 0
+Node 80 added.
+*add_nodes 8.0 -16.0 0
+Node 81 added.
+*add_nodes 12.0 -16.0 0
+Node 82 added.
+*add_nodes 16.0 -16.0 0
+Node 83 added.
+*add_nodes 20.0 -16.0 0
+Node 84 added.
+*add_nodes 0 -12.0 0
+Node 85 added.
+*add_nodes 4.0 -12.0 0
+Node 86 added.
+*add_nodes 8.0 -12.0 0
+Node 87 added.
+*add_nodes 12.0 -12.0 0
+Node 88 added.
+*add_nodes 16.0 -12.0 0
+Node 89 added.
+*add_nodes 20.0 -12.0 0
+Node 90 added.
+*add_nodes 0 -8.0 0
+Node 91 added.
+*add_nodes 4.0 -8.0 0
+Node 92 added.
+*add_nodes 8.0 -8.0 0
+Node 93 added.
+*add_nodes 12.0 -8.0 0
+Node 94 added.
+*add_nodes 16.0 -8.0 0
+Node 95 added.
+*add_nodes 20.0 -8.0 0
+Node 96 added.
+*add_nodes 0 -4.0 0
+Node 97 added.
+*add_nodes 4.0 -4.0 0
+Node 98 added.
+*add_nodes 8.0 -4.0 0
+Node 99 added.
+*add_nodes 12.0 -4.0 0
+Node 100 added.
+*add_nodes 16.0 -4.0 0
+Node 101 added.
+*add_nodes 20.0 -4.0 0
+Node 102 added.
+*add_nodes 0 0.0 0
+Node 103 added.
+*add_nodes 4.0 0.0 0
+Node 104 added.
+*add_nodes 8.0 0.0 0
+Node 105 added.
+*add_nodes 12.0 0.0 0
+Node 106 added.
+*add_nodes 16.0 0.0 0
+Node 107 added.
+*add_nodes 20.0 0.0 0
+Node 108 added.
+*add_elements 73 74 80 79
+Element 51 added.
+*add_elements 74 75 81 80
+Element 52 added.
+*add_elements 75 76 82 81
+Element 53 added.
+*add_elements 76 77 83 82
+Element 54 added.
+*add_elements 77 78 84 83
+Element 55 added.
+*add_elements 79 80 86 85
+Element 56 added.
+*add_elements 80 81 87 86
+Element 57 added.
+*add_elements 81 82 88 87
+Element 58 added.
+*add_elements 82 83 89 88
+Element 59 added.
+*add_elements 83 84 90 89
+Element 60 added.
+*add_elements 85 86 92 91
+Element 61 added.
+*add_elements 86 87 93 92
+Element 62 added.
+*add_elements 87 88 94 93
+Element 63 added.
+*add_elements 88 89 95 94
+Element 64 added.
+*add_elements 89 90 96 95
+Element 65 added.
+*add_elements 91 92 98 97
+Element 66 added.
+*add_elements 92 93 99 98
+Element 67 added.
+*add_elements 93 94 100 99
+Element 68 added.
+*add_elements 94 95 101 100
+Element 69 added.
+*add_elements 95 96 102 101
+Element 70 added.
+*add_elements 97 98 104 103
+Element 71 added.
+*add_elements 98 99 105 104
+Element 72 added.
+*add_elements 99 100 106 105
+Element 73 added.
+*add_elements 100 101 107 106
+Element 74 added.
+*add_elements 101 102 108 107
+Element 75 added.
+*add_nodes 20 -20 0
+Node 109 added.
+*add_nodes 24.0 -20 0
+Node 110 added.
+*add_nodes 28.0 -20 0
+Node 111 added.
+*add_nodes 32.0 -20 0
+Node 112 added.
+*add_nodes 36.0 -20 0
+Node 113 added.
+*add_nodes 40.0 -20 0
+Node 114 added.
+*add_nodes 20 -16.0 0
+Node 115 added.
+*add_nodes 24.0 -16.0 0
+Node 116 added.
+*add_nodes 28.0 -16.0 0
+Node 117 added.
+*add_nodes 32.0 -16.0 0
+Node 118 added.
+*add_nodes 36.0 -16.0 0
+Node 119 added.
+*add_nodes 40.0 -16.0 0
+Node 120 added.
+*add_nodes 20 -12.0 0
+Node 121 added.
+*add_nodes 24.0 -12.0 0
+Node 122 added.
+*add_nodes 28.0 -12.0 0
+Node 123 added.
+*add_nodes 32.0 -12.0 0
+Node 124 added.
+*add_nodes 36.0 -12.0 0
+Node 125 added.
+*add_nodes 40.0 -12.0 0
+Node 126 added.
+*add_nodes 20 -8.0 0
+Node 127 added.
+*add_nodes 24.0 -8.0 0
+Node 128 added.
+*add_nodes 28.0 -8.0 0
+Node 129 added.
+*add_nodes 32.0 -8.0 0
+Node 130 added.
+*add_nodes 36.0 -8.0 0
+Node 131 added.
+*add_nodes 40.0 -8.0 0
+Node 132 added.
+*add_nodes 20 -4.0 0
+Node 133 added.
+*add_nodes 24.0 -4.0 0
+Node 134 added.
+*add_nodes 28.0 -4.0 0
+Node 135 added.
+*add_nodes 32.0 -4.0 0
+Node 136 added.
+*add_nodes 36.0 -4.0 0
+Node 137 added.
+*add_nodes 40.0 -4.0 0
+Node 138 added.
+*add_nodes 20 0.0 0
+Node 139 added.
+*add_nodes 24.0 0.0 0
+Node 140 added.
+*add_nodes 28.0 0.0 0
+Node 141 added.
+*add_nodes 32.0 0.0 0
+Node 142 added.
+*add_nodes 36.0 0.0 0
+Node 143 added.
+*add_nodes 40.0 0.0 0
+Node 144 added.
+*add_elements 109 110 116 115
+Element 76 added.
+*add_elements 110 111 117 116
+Element 77 added.
+*add_elements 111 112 118 117
+Element 78 added.
+*add_elements 112 113 119 118
+Element 79 added.
+*add_elements 113 114 120 119
+Element 80 added.
+*add_elements 115 116 122 121
+Element 81 added.
+*add_elements 116 117 123 122
+Element 82 added.
+*add_elements 117 118 124 123
+Element 83 added.
+*add_elements 118 119 125 124
+Element 84 added.
+*add_elements 119 120 126 125
+Element 85 added.
+*add_elements 121 122 128 127
+Element 86 added.
+*add_elements 122 123 129 128
+Element 87 added.
+*add_elements 123 124 130 129
+Element 88 added.
+*add_elements 124 125 131 130
+Element 89 added.
+*add_elements 125 126 132 131
+Element 90 added.
+*add_elements 127 128 134 133
+Element 91 added.
+*add_elements 128 129 135 134
+Element 92 added.
+*add_elements 129 130 136 135
+Element 93 added.
+*add_elements 130 131 137 136
+Element 94 added.
+*add_elements 131 132 138 137
+Element 95 added.
+*add_elements 133 134 140 139
+Element 96 added.
+*add_elements 134 135 141 140
+Element 97 added.
+*add_elements 135 136 142 141
+Element 98 added.
+*add_elements 136 137 143 142
+Element 99 added.
+*add_elements 137 138 144 143
+Element 100 added.
+*add_nodes -20 0 0
+Node 145 added.
+*add_nodes -16.0 0 0
+Node 146 added.
+*add_nodes -12.0 0 0
+Node 147 added.
+*add_nodes -8.0 0 0
+Node 148 added.
+*add_nodes -4.0 0 0
+Node 149 added.
+*add_nodes 0.0 0 0
+Node 150 added.
+*add_nodes -20 4.0 0
+Node 151 added.
+*add_nodes -16.0 4.0 0
+Node 152 added.
+*add_nodes -12.0 4.0 0
+Node 153 added.
+*add_nodes -8.0 4.0 0
+Node 154 added.
+*add_nodes -4.0 4.0 0
+Node 155 added.
+*add_nodes 0.0 4.0 0
+Node 156 added.
+*add_nodes -20 8.0 0
+Node 157 added.
+*add_nodes -16.0 8.0 0
+Node 158 added.
+*add_nodes -12.0 8.0 0
+Node 159 added.
+*add_nodes -8.0 8.0 0
+Node 160 added.
+*add_nodes -4.0 8.0 0
+Node 161 added.
+*add_nodes 0.0 8.0 0
+Node 162 added.
+*add_nodes -20 12.0 0
+Node 163 added.
+*add_nodes -16.0 12.0 0
+Node 164 added.
+*add_nodes -12.0 12.0 0
+Node 165 added.
+*add_nodes -8.0 12.0 0
+Node 166 added.
+*add_nodes -4.0 12.0 0
+Node 167 added.
+*add_nodes 0.0 12.0 0
+Node 168 added.
+*add_nodes -20 16.0 0
+Node 169 added.
+*add_nodes -16.0 16.0 0
+Node 170 added.
+*add_nodes -12.0 16.0 0
+Node 171 added.
+*add_nodes -8.0 16.0 0
+Node 172 added.
+*add_nodes -4.0 16.0 0
+Node 173 added.
+*add_nodes 0.0 16.0 0
+Node 174 added.
+*add_nodes -20 20.0 0
+Node 175 added.
+*add_nodes -16.0 20.0 0
+Node 176 added.
+*add_nodes -12.0 20.0 0
+Node 177 added.
+*add_nodes -8.0 20.0 0
+Node 178 added.
+*add_nodes -4.0 20.0 0
+Node 179 added.
+*add_nodes 0.0 20.0 0
+Node 180 added.
+*add_elements 145 146 152 151
+Element 101 added.
+*add_elements 146 147 153 152
+Element 102 added.
+*add_elements 147 148 154 153
+Element 103 added.
+*add_elements 148 149 155 154
+Element 104 added.
+*add_elements 149 150 156 155
+Element 105 added.
+*add_elements 151 152 158 157
+Element 106 added.
+*add_elements 152 153 159 158
+Element 107 added.
+*add_elements 153 154 160 159
+Element 108 added.
+*add_elements 154 155 161 160
+Element 109 added.
+*add_elements 155 156 162 161
+Element 110 added.
+*add_elements 157 158 164 163
+Element 111 added.
+*add_elements 158 159 165 164
+Element 112 added.
+*add_elements 159 160 166 165
+Element 113 added.
+*add_elements 160 161 167 166
+Element 114 added.
+*add_elements 161 162 168 167
+Element 115 added.
+*add_elements 163 164 170 169
+Element 116 added.
+*add_elements 164 165 171 170
+Element 117 added.
+*add_elements 165 166 172 171
+Element 118 added.
+*add_elements 166 167 173 172
+Element 119 added.
+*add_elements 167 168 174 173
+Element 120 added.
+*add_elements 169 170 176 175
+Element 121 added.
+*add_elements 170 171 177 176
+Element 122 added.
+*add_elements 171 172 178 177
+Element 123 added.
+*add_elements 172 173 179 178
+Element 124 added.
+*add_elements 173 174 180 179
+Element 125 added.
+*add_nodes 20 0 0
+Node 181 added.
+*add_nodes 24.0 0 0
+Node 182 added.
+*add_nodes 28.0 0 0
+Node 183 added.
+*add_nodes 32.0 0 0
+Node 184 added.
+*add_nodes 36.0 0 0
+Node 185 added.
+*add_nodes 40.0 0 0
+Node 186 added.
+*add_nodes 20 4.0 0
+Node 187 added.
+*add_nodes 24.0 4.0 0
+Node 188 added.
+*add_nodes 28.0 4.0 0
+Node 189 added.
+*add_nodes 32.0 4.0 0
+Node 190 added.
+*add_nodes 36.0 4.0 0
+Node 191 added.
+*add_nodes 40.0 4.0 0
+Node 192 added.
+*add_nodes 20 8.0 0
+Node 193 added.
+*add_nodes 24.0 8.0 0
+Node 194 added.
+*add_nodes 28.0 8.0 0
+Node 195 added.
+*add_nodes 32.0 8.0 0
+Node 196 added.
+*add_nodes 36.0 8.0 0
+Node 197 added.
+*add_nodes 40.0 8.0 0
+Node 198 added.
+*add_nodes 20 12.0 0
+Node 199 added.
+*add_nodes 24.0 12.0 0
+Node 200 added.
+*add_nodes 28.0 12.0 0
+Node 201 added.
+*add_nodes 32.0 12.0 0
+Node 202 added.
+*add_nodes 36.0 12.0 0
+Node 203 added.
+*add_nodes 40.0 12.0 0
+Node 204 added.
+*add_nodes 20 16.0 0
+Node 205 added.
+*add_nodes 24.0 16.0 0
+Node 206 added.
+*add_nodes 28.0 16.0 0
+Node 207 added.
+*add_nodes 32.0 16.0 0
+Node 208 added.
+*add_nodes 36.0 16.0 0
+Node 209 added.
+*add_nodes 40.0 16.0 0
+Node 210 added.
+*add_nodes 20 20.0 0
+Node 211 added.
+*add_nodes 24.0 20.0 0
+Node 212 added.
+*add_nodes 28.0 20.0 0
+Node 213 added.
+*add_nodes 32.0 20.0 0
+Node 214 added.
+*add_nodes 36.0 20.0 0
+Node 215 added.
+*add_nodes 40.0 20.0 0
+Node 216 added.
+*add_elements 181 182 188 187
+Element 126 added.
+*add_elements 182 183 189 188
+Element 127 added.
+*add_elements 183 184 190 189
+Element 128 added.
+*add_elements 184 185 191 190
+Element 129 added.
+*add_elements 185 186 192 191
+Element 130 added.
+*add_elements 187 188 194 193
+Element 131 added.
+*add_elements 188 189 195 194
+Element 132 added.
+*add_elements 189 190 196 195
+Element 133 added.
+*add_elements 190 191 197 196
+Element 134 added.
+*add_elements 191 192 198 197
+Element 135 added.
+*add_elements 193 194 200 199
+Element 136 added.
+*add_elements 194 195 201 200
+Element 137 added.
+*add_elements 195 196 202 201
+Element 138 added.
+*add_elements 196 197 203 202
+Element 139 added.
+*add_elements 197 198 204 203
+Element 140 added.
+*add_elements 199 200 206 205
+Element 141 added.
+*add_elements 200 201 207 206
+Element 142 added.
+*add_elements 201 202 208 207
+Element 143 added.
+*add_elements 202 203 209 208
+Element 144 added.
+*add_elements 203 204 210 209
+Element 145 added.
+*add_elements 205 206 212 211
+Element 146 added.
+*add_elements 206 207 213 212
+Element 147 added.
+*add_elements 207 208 214 213
+Element 148 added.
+*add_elements 208 209 215 214
+Element 149 added.
+*add_elements 209 210 216 215
+Element 150 added.
+*add_nodes -20 20 0
+Node 217 added.
+*add_nodes -16.0 20 0
+Node 218 added.
+*add_nodes -12.0 20 0
+Node 219 added.
+*add_nodes -8.0 20 0
+Node 220 added.
+*add_nodes -4.0 20 0
+Node 221 added.
+*add_nodes 0.0 20 0
+Node 222 added.
+*add_nodes -20 24.0 0
+Node 223 added.
+*add_nodes -16.0 24.0 0
+Node 224 added.
+*add_nodes -12.0 24.0 0
+Node 225 added.
+*add_nodes -8.0 24.0 0
+Node 226 added.
+*add_nodes -4.0 24.0 0
+Node 227 added.
+*add_nodes 0.0 24.0 0
+Node 228 added.
+*add_nodes -20 28.0 0
+Node 229 added.
+*add_nodes -16.0 28.0 0
+Node 230 added.
+*add_nodes -12.0 28.0 0
+Node 231 added.
+*add_nodes -8.0 28.0 0
+Node 232 added.
+*add_nodes -4.0 28.0 0
+Node 233 added.
+*add_nodes 0.0 28.0 0
+Node 234 added.
+*add_nodes -20 32.0 0
+Node 235 added.
+*add_nodes -16.0 32.0 0
+Node 236 added.
+*add_nodes -12.0 32.0 0
+Node 237 added.
+*add_nodes -8.0 32.0 0
+Node 238 added.
+*add_nodes -4.0 32.0 0
+Node 239 added.
+*add_nodes 0.0 32.0 0
+Node 240 added.
+*add_nodes -20 36.0 0
+Node 241 added.
+*add_nodes -16.0 36.0 0
+Node 242 added.
+*add_nodes -12.0 36.0 0
+Node 243 added.
+*add_nodes -8.0 36.0 0
+Node 244 added.
+*add_nodes -4.0 36.0 0
+Node 245 added.
+*add_nodes 0.0 36.0 0
+Node 246 added.
+*add_nodes -20 40.0 0
+Node 247 added.
+*add_nodes -16.0 40.0 0
+Node 248 added.
+*add_nodes -12.0 40.0 0
+Node 249 added.
+*add_nodes -8.0 40.0 0
+Node 250 added.
+*add_nodes -4.0 40.0 0
+Node 251 added.
+*add_nodes 0.0 40.0 0
+Node 252 added.
+*add_elements 217 218 224 223
+Element 151 added.
+*add_elements 218 219 225 224
+Element 152 added.
+*add_elements 219 220 226 225
+Element 153 added.
+*add_elements 220 221 227 226
+Element 154 added.
+*add_elements 221 222 228 227
+Element 155 added.
+*add_elements 223 224 230 229
+Element 156 added.
+*add_elements 224 225 231 230
+Element 157 added.
+*add_elements 225 226 232 231
+Element 158 added.
+*add_elements 226 227 233 232
+Element 159 added.
+*add_elements 227 228 234 233
+Element 160 added.
+*add_elements 229 230 236 235
+Element 161 added.
+*add_elements 230 231 237 236
+Element 162 added.
+*add_elements 231 232 238 237
+Element 163 added.
+*add_elements 232 233 239 238
+Element 164 added.
+*add_elements 233 234 240 239
+Element 165 added.
+*add_elements 235 236 242 241
+Element 166 added.
+*add_elements 236 237 243 242
+Element 167 added.
+*add_elements 237 238 244 243
+Element 168 added.
+*add_elements 238 239 245 244
+Element 169 added.
+*add_elements 239 240 246 245
+Element 170 added.
+*add_elements 241 242 248 247
+Element 171 added.
+*add_elements 242 243 249 248
+Element 172 added.
+*add_elements 243 244 250 249
+Element 173 added.
+*add_elements 244 245 251 250
+Element 174 added.
+*add_elements 245 246 252 251
+Element 175 added.
+*add_nodes 0 20 0
+Node 253 added.
+*add_nodes 4.0 20 0
+Node 254 added.
+*add_nodes 8.0 20 0
+Node 255 added.
+*add_nodes 12.0 20 0
+Node 256 added.
+*add_nodes 16.0 20 0
+Node 257 added.
+*add_nodes 20.0 20 0
+Node 258 added.
+*add_nodes 0 24.0 0
+Node 259 added.
+*add_nodes 4.0 24.0 0
+Node 260 added.
+*add_nodes 8.0 24.0 0
+Node 261 added.
+*add_nodes 12.0 24.0 0
+Node 262 added.
+*add_nodes 16.0 24.0 0
+Node 263 added.
+*add_nodes 20.0 24.0 0
+Node 264 added.
+*add_nodes 0 28.0 0
+Node 265 added.
+*add_nodes 4.0 28.0 0
+Node 266 added.
+*add_nodes 8.0 28.0 0
+Node 267 added.
+*add_nodes 12.0 28.0 0
+Node 268 added.
+*add_nodes 16.0 28.0 0
+Node 269 added.
+*add_nodes 20.0 28.0 0
+Node 270 added.
+*add_nodes 0 32.0 0
+Node 271 added.
+*add_nodes 4.0 32.0 0
+Node 272 added.
+*add_nodes 8.0 32.0 0
+Node 273 added.
+*add_nodes 12.0 32.0 0
+Node 274 added.
+*add_nodes 16.0 32.0 0
+Node 275 added.
+*add_nodes 20.0 32.0 0
+Node 276 added.
+*add_nodes 0 36.0 0
+Node 277 added.
+*add_nodes 4.0 36.0 0
+Node 278 added.
+*add_nodes 8.0 36.0 0
+Node 279 added.
+*add_nodes 12.0 36.0 0
+Node 280 added.
+*add_nodes 16.0 36.0 0
+Node 281 added.
+*add_nodes 20.0 36.0 0
+Node 282 added.
+*add_nodes 0 40.0 0
+Node 283 added.
+*add_nodes 4.0 40.0 0
+Node 284 added.
+*add_nodes 8.0 40.0 0
+Node 285 added.
+*add_nodes 12.0 40.0 0
+Node 286 added.
+*add_nodes 16.0 40.0 0
+Node 287 added.
+*add_nodes 20.0 40.0 0
+Node 288 added.
+*add_elements 253 254 260 259
+Element 176 added.
+*add_elements 254 255 261 260
+Element 177 added.
+*add_elements 255 256 262 261
+Element 178 added.
+*add_elements 256 257 263 262
+Element 179 added.
+*add_elements 257 258 264 263
+Element 180 added.
+*add_elements 259 260 266 265
+Element 181 added.
+*add_elements 260 261 267 266
+Element 182 added.
+*add_elements 261 262 268 267
+Element 183 added.
+*add_elements 262 263 269 268
+Element 184 added.
+*add_elements 263 264 270 269
+Element 185 added.
+*add_elements 265 266 272 271
+Element 186 added.
+*add_elements 266 267 273 272
+Element 187 added.
+*add_elements 267 268 274 273
+Element 188 added.
+*add_elements 268 269 275 274
+Element 189 added.
+*add_elements 269 270 276 275
+Element 190 added.
+*add_elements 271 272 278 277
+Element 191 added.
+*add_elements 272 273 279 278
+Element 192 added.
+*add_elements 273 274 280 279
+Element 193 added.
+*add_elements 274 275 281 280
+Element 194 added.
+*add_elements 275 276 282 281
+Element 195 added.
+*add_elements 277 278 284 283
+Element 196 added.
+*add_elements 278 279 285 284
+Element 197 added.
+*add_elements 279 280 286 285
+Element 198 added.
+*add_elements 280 281 287 286
+Element 199 added.
+*add_elements 281 282 288 287
+Element 200 added.
+*add_nodes 20 20 0
+Node 289 added.
+*add_nodes 24.0 20 0
+Node 290 added.
+*add_nodes 28.0 20 0
+Node 291 added.
+*add_nodes 32.0 20 0
+Node 292 added.
+*add_nodes 36.0 20 0
+Node 293 added.
+*add_nodes 40.0 20 0
+Node 294 added.
+*add_nodes 20 24.0 0
+Node 295 added.
+*add_nodes 24.0 24.0 0
+Node 296 added.
+*add_nodes 28.0 24.0 0
+Node 297 added.
+*add_nodes 32.0 24.0 0
+Node 298 added.
+*add_nodes 36.0 24.0 0
+Node 299 added.
+*add_nodes 40.0 24.0 0
+Node 300 added.
+*add_nodes 20 28.0 0
+Node 301 added.
+*add_nodes 24.0 28.0 0
+Node 302 added.
+*add_nodes 28.0 28.0 0
+Node 303 added.
+*add_nodes 32.0 28.0 0
+Node 304 added.
+*add_nodes 36.0 28.0 0
+Node 305 added.
+*add_nodes 40.0 28.0 0
+Node 306 added.
+*add_nodes 20 32.0 0
+Node 307 added.
+*add_nodes 24.0 32.0 0
+Node 308 added.
+*add_nodes 28.0 32.0 0
+Node 309 added.
+*add_nodes 32.0 32.0 0
+Node 310 added.
+*add_nodes 36.0 32.0 0
+Node 311 added.
+*add_nodes 40.0 32.0 0
+Node 312 added.
+*add_nodes 20 36.0 0
+Node 313 added.
+*add_nodes 24.0 36.0 0
+Node 314 added.
+*add_nodes 28.0 36.0 0
+Node 315 added.
+*add_nodes 32.0 36.0 0
+Node 316 added.
+*add_nodes 36.0 36.0 0
+Node 317 added.
+*add_nodes 40.0 36.0 0
+Node 318 added.
+*add_nodes 20 40.0 0
+Node 319 added.
+*add_nodes 24.0 40.0 0
+Node 320 added.
+*add_nodes 28.0 40.0 0
+Node 321 added.
+*add_nodes 32.0 40.0 0
+Node 322 added.
+*add_nodes 36.0 40.0 0
+Node 323 added.
+*add_nodes 40.0 40.0 0
+Node 324 added.
+*add_elements 289 290 296 295
+Element 201 added.
+*add_elements 290 291 297 296
+Element 202 added.
+*add_elements 291 292 298 297
+Element 203 added.
+*add_elements 292 293 299 298
+Element 204 added.
+*add_elements 293 294 300 299
+Element 205 added.
+*add_elements 295 296 302 301
+Element 206 added.
+*add_elements 296 297 303 302
+Element 207 added.
+*add_elements 297 298 304 303
+Element 208 added.
+*add_elements 298 299 305 304
+Element 209 added.
+*add_elements 299 300 306 305
+Element 210 added.
+*add_elements 301 302 308 307
+Element 211 added.
+*add_elements 302 303 309 308
+Element 212 added.
+*add_elements 303 304 310 309
+Element 213 added.
+*add_elements 304 305 311 310
+Element 214 added.
+*add_elements 305 306 312 311
+Element 215 added.
+*add_elements 307 308 314 313
+Element 216 added.
+*add_elements 308 309 315 314
+Element 217 added.
+*add_elements 309 310 316 315
+Element 218 added.
+*add_elements 310 311 317 316
+Element 219 added.
+*add_elements 311 312 318 317
+Element 220 added.
+*add_elements 313 314 320 319
+Element 221 added.
+*add_elements 314 315 321 320
+Element 222 added.
+*add_elements 315 316 322 321
+Element 223 added.
+*add_elements 316 317 323 322
+Element 224 added.
+*add_elements 317 318 324 323
+Element 225 added.
+*geometry_type mech_planar_pstrain
+*add_geometry_elements all_existing
+*new_mater standard
+*mater_option general:state:solid
+*mater_option general:skip_structural:off
+*mater_name "Mold Star 15"
+*mater_option structural:type:ogden
+*mater_param structural:ogden_nterm 3
+*mater_param structural:ogden_modulus_1 -6.50266e-06
+*mater_param structural:ogden_exp_1 -21.322
+*mater_param structural:ogden_modulus_2 0.216863
+*mater_param structural:ogden_exp_2 1.1797
+*mater_param structural:ogden_modulus_3 0.00137158
+*mater_param structural:ogden_exp_3 4.88396
+*add_mater_elements all_existing
+*new_cbody mesh
+*contact_option state:solid
+*contact_option skip_structural:off
+*add_contact_body_elements all_existing
+*sweep_all
+Deleting 68 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 0 duplicate elements!
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Element type 11 has been set for 200 element(s).
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 1 warning.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1_5x5_20x20_1_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*identify_applys
+*redraw
+Command > @main(results) *post_open_default
+Number of increments detected : 5
+Command > *post_skip_to_last
+Command > *fill_view
+Command > *post_prev
+Command > *post_prev
+Command > *post_prev
+Command > *post_prev
+Command > *post_prev
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_next
+Command > *post_prev
+Command > *py_file_run ..\..\main.py
+*new_model yes
+*add_nodes 0 0 0
+Node 1 added.
+*add_nodes 4.0 0 0
+Node 2 added.
+*add_nodes 8.0 0 0
+Node 3 added.
+*add_nodes 12.0 0 0
+Node 4 added.
+*add_nodes 16.0 0 0
+Node 5 added.
+*add_nodes 20.0 0 0
+Node 6 added.
+*add_nodes 0 4.0 0
+Node 7 added.
+*add_nodes 4.0 4.0 0
+Node 8 added.
+*add_nodes 8.0 4.0 0
+Node 9 added.
+*add_nodes 12.0 4.0 0
+Node 10 added.
+*add_nodes 16.0 4.0 0
+Node 11 added.
+*add_nodes 20.0 4.0 0
+Node 12 added.
+*add_nodes 0 8.0 0
+Node 13 added.
+*add_nodes 4.0 8.0 0
+Node 14 added.
+*add_nodes 8.0 8.0 0
+Node 15 added.
+*add_nodes 12.0 8.0 0
+Node 16 added.
+*add_nodes 16.0 8.0 0
+Node 17 added.
+*add_nodes 20.0 8.0 0
+Node 18 added.
+*add_nodes 0 12.0 0
+Node 19 added.
+*add_nodes 4.0 12.0 0
+Node 20 added.
+*add_nodes 8.0 12.0 0
+Node 21 added.
+*add_nodes 12.0 12.0 0
+Node 22 added.
+*add_nodes 16.0 12.0 0
+Node 23 added.
+*add_nodes 20.0 12.0 0
+Node 24 added.
+*add_nodes 0 16.0 0
+Node 25 added.
+*add_nodes 4.0 16.0 0
+Node 26 added.
+*add_nodes 8.0 16.0 0
+Node 27 added.
+*add_nodes 12.0 16.0 0
+Node 28 added.
+*add_nodes 16.0 16.0 0
+Node 29 added.
+*add_nodes 20.0 16.0 0
+Node 30 added.
+*add_nodes 0 20.0 0
+Node 31 added.
+*add_nodes 4.0 20.0 0
+Node 32 added.
+*add_nodes 8.0 20.0 0
+Node 33 added.
+*add_nodes 12.0 20.0 0
+Node 34 added.
+*add_nodes 16.0 20.0 0
+Node 35 added.
+*add_nodes 20.0 20.0 0
+Node 36 added.
+*add_elements 1 2 8 7
+Element 1 added.
+*add_elements 2 3 9 8
+Element 2 added.
+*add_elements 3 4 10 9
+Element 3 added.
+*add_elements 4 5 11 10
+Element 4 added.
+*add_elements 5 6 12 11
+Element 5 added.
+*add_elements 7 8 14 13
+Element 6 added.
+*add_elements 8 9 15 14
+Element 7 added.
+*add_elements 9 10 16 15
+Element 8 added.
+*add_elements 10 11 17 16
+Element 9 added.
+*add_elements 11 12 18 17
+Element 10 added.
+*add_elements 13 14 20 19
+Element 11 added.
+*add_elements 14 15 21 20
+Element 12 added.
+*add_elements 15 16 22 21
+Element 13 added.
+*add_elements 16 17 23 22
+Element 14 added.
+*add_elements 17 18 24 23
+Element 15 added.
+*add_elements 19 20 26 25
+Element 16 added.
+*add_elements 20 21 27 26
+Element 17 added.
+*add_elements 21 22 28 27
+Element 18 added.
+*add_elements 22 23 29 28
+Element 19 added.
+*add_elements 23 24 30 29
+Element 20 added.
+*add_elements 25 26 32 31
+Element 21 added.
+*add_elements 26 27 33 32
+Element 22 added.
+*add_elements 27 28 34 33
+Element 23 added.
+*add_elements 28 29 35 34
+Element 24 added.
+*add_elements 29 30 36 35
+Element 25 added.
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*add_nodes -20 -20 0
+Node 325 added.
+*add_nodes -16.0 -20 0
+Node 326 added.
+*add_nodes -12.0 -20 0
+Node 327 added.
+*add_nodes -8.0 -20 0
+Node 328 added.
+*add_nodes -4.0 -20 0
+Node 329 added.
+*add_nodes 0.0 -20 0
+Node 330 added.
+*add_nodes -20 -16.0 0
+Node 331 added.
+*add_nodes -16.0 -16.0 0
+Node 332 added.
+*add_nodes -12.0 -16.0 0
+Node 333 added.
+*add_nodes -8.0 -16.0 0
+Node 334 added.
+*add_nodes -4.0 -16.0 0
+Node 335 added.
+*add_nodes 0.0 -16.0 0
+Node 336 added.
+*add_nodes -20 -12.0 0
+Node 337 added.
+*add_nodes -16.0 -12.0 0
+Node 338 added.
+*add_nodes -12.0 -12.0 0
+Node 339 added.
+*add_nodes -8.0 -12.0 0
+Node 340 added.
+*add_nodes -4.0 -12.0 0
+Node 341 added.
+*add_nodes 0.0 -12.0 0
+Node 342 added.
+*add_nodes -20 -8.0 0
+Node 343 added.
+*add_nodes -16.0 -8.0 0
+Node 344 added.
+*add_nodes -12.0 -8.0 0
+Node 345 added.
+*add_nodes -8.0 -8.0 0
+Node 346 added.
+*add_nodes -4.0 -8.0 0
+Node 347 added.
+*add_nodes 0.0 -8.0 0
+Node 348 added.
+*add_nodes -20 -4.0 0
+Node 349 added.
+*add_nodes -16.0 -4.0 0
+Node 350 added.
+*add_nodes -12.0 -4.0 0
+Node 351 added.
+*add_nodes -8.0 -4.0 0
+Node 352 added.
+*add_nodes -4.0 -4.0 0
+Node 353 added.
+*add_nodes 0.0 -4.0 0
+Node 354 added.
+*add_nodes -20 0.0 0
+Node 355 added.
+*add_nodes -16.0 0.0 0
+Node 356 added.
+*add_nodes -12.0 0.0 0
+Node 357 added.
+*add_nodes -8.0 0.0 0
+Node 358 added.
+*add_nodes -4.0 0.0 0
+Node 359 added.
+*add_nodes 0.0 0.0 0
+Node 360 added.
+*add_elements 37 38 44 43
+Element 226 added.
+*add_elements 38 39 45 44
+Element 227 added.
+*add_elements 39 40 46 45
+Element 228 added.
+*add_elements 40 41 47 46
+Element 229 added.
+*add_elements 41 42 48 47
+Element 230 added.
+*add_elements 43 44 50 49
+Element 231 added.
+*add_elements 44 45 51 50
+Element 232 added.
+*add_elements 45 46 52 51
+Element 233 added.
+*add_elements 46 47 53 52
+Element 234 added.
+*add_elements 47 48 54 53
+Element 235 added.
+*add_elements 49 50 56 55
+Element 236 added.
+*add_elements 50 51 57 56
+Element 237 added.
+*add_elements 51 52 58 57
+Element 238 added.
+*add_elements 52 53 59 58
+Element 239 added.
+*add_elements 53 54 60 59
+Element 240 added.
+*add_elements 55 56 62 61
+Element 241 added.
+*add_elements 56 57 63 62
+Element 242 added.
+*add_elements 57 58 64 63
+Element 243 added.
+*add_elements 58 59 65 64
+Element 244 added.
+*add_elements 59 60 66 65
+Element 245 added.
+*add_elements 61 62 68 67
+Element 246 added.
+*add_elements 62 63 69 68
+Element 247 added.
+*add_elements 63 64 70 69
+Element 248 added.
+*add_elements 64 65 71 70
+Element 249 added.
+*add_elements 65 66 72 71
+ERROR: Couldn't find node 72!
+*add_nodes 0 -20 0
+Node 361 added.
+*add_nodes 4.0 -20 0
+Node 362 added.
+*add_nodes 8.0 -20 0
+Node 363 added.
+*add_nodes 12.0 -20 0
+Node 364 added.
+*add_nodes 16.0 -20 0
+Node 365 added.
+*add_nodes 20.0 -20 0
+Node 366 added.
+*add_nodes 0 -16.0 0
+Node 367 added.
+*add_nodes 4.0 -16.0 0
+Node 368 added.
+*add_nodes 8.0 -16.0 0
+Node 369 added.
+*add_nodes 12.0 -16.0 0
+Node 370 added.
+*add_nodes 16.0 -16.0 0
+Node 371 added.
+*add_nodes 20.0 -16.0 0
+Node 372 added.
+*add_nodes 0 -12.0 0
+Node 373 added.
+*add_nodes 4.0 -12.0 0
+Node 374 added.
+*add_nodes 8.0 -12.0 0
+Node 375 added.
+*add_nodes 12.0 -12.0 0
+Node 376 added.
+*add_nodes 16.0 -12.0 0
+Node 377 added.
+*add_nodes 20.0 -12.0 0
+Node 378 added.
+*add_nodes 0 -8.0 0
+Node 379 added.
+*add_nodes 4.0 -8.0 0
+Node 380 added.
+*add_nodes 8.0 -8.0 0
+Node 381 added.
+*add_nodes 12.0 -8.0 0
+Node 382 added.
+*add_nodes 16.0 -8.0 0
+Node 383 added.
+*add_nodes 20.0 -8.0 0
+Node 384 added.
+*add_nodes 0 -4.0 0
+Node 385 added.
+*add_nodes 4.0 -4.0 0
+Node 386 added.
+*add_nodes 8.0 -4.0 0
+Node 387 added.
+*add_nodes 12.0 -4.0 0
+Node 388 added.
+*add_nodes 16.0 -4.0 0
+Node 389 added.
+*add_nodes 20.0 -4.0 0
+Node 390 added.
+*add_nodes 0 0.0 0
+Node 391 added.
+*add_nodes 4.0 0.0 0
+Node 392 added.
+*add_nodes 8.0 0.0 0
+Node 393 added.
+*add_nodes 12.0 0.0 0
+Node 394 added.
+*add_nodes 16.0 0.0 0
+Node 395 added.
+*add_nodes 20.0 0.0 0
+Node 396 added.
+*add_elements 73 74 80 79
+ERROR: Couldn't find node 73!
+ERROR: Couldn't find node 79!
+*add_elements 74 75 81 80
+Element 250 added.
+*add_elements 75 76 82 81
+Element 251 added.
+*add_elements 76 77 83 82
+Element 252 added.
+*add_elements 77 78 84 83
+Element 253 added.
+*add_elements 79 80 86 85
+ERROR: Couldn't find node 79!
+ERROR: Couldn't find node 85!
+*add_elements 80 81 87 86
+Element 254 added.
+*add_elements 81 82 88 87
+Element 255 added.
+*add_elements 82 83 89 88
+Element 256 added.
+*add_elements 83 84 90 89
+Element 257 added.
+*add_elements 85 86 92 91
+ERROR: Couldn't find node 85!
+ERROR: Couldn't find node 91!
+*add_elements 86 87 93 92
+Element 258 added.
+*add_elements 87 88 94 93
+Element 259 added.
+*add_elements 88 89 95 94
+Element 260 added.
+*add_elements 89 90 96 95
+Element 261 added.
+*add_elements 91 92 98 97
+ERROR: Couldn't find node 91!
+ERROR: Couldn't find node 97!
+*add_elements 92 93 99 98
+Element 262 added.
+*add_elements 93 94 100 99
+Element 263 added.
+*add_elements 94 95 101 100
+Element 264 added.
+*add_elements 95 96 102 101
+Element 265 added.
+*add_elements 97 98 104 103
+ERROR: Couldn't find node 97!
+ERROR: Couldn't find node 104!
+ERROR: Couldn't find node 103!
+*add_elements 98 99 105 104
+ERROR: Couldn't find node 105!
+ERROR: Couldn't find node 104!
+*add_elements 99 100 106 105
+ERROR: Couldn't find node 106!
+ERROR: Couldn't find node 105!
+*add_elements 100 101 107 106
+ERROR: Couldn't find node 107!
+ERROR: Couldn't find node 106!
+*add_elements 101 102 108 107
+ERROR: Couldn't find node 108!
+ERROR: Couldn't find node 107!
+*add_nodes 20 -20 0
+Node 397 added.
+*add_nodes 24.0 -20 0
+Node 398 added.
+*add_nodes 28.0 -20 0
+Node 399 added.
+*add_nodes 32.0 -20 0
+Node 400 added.
+*add_nodes 36.0 -20 0
+Node 401 added.
+*add_nodes 40.0 -20 0
+Node 402 added.
+*add_nodes 20 -16.0 0
+Node 403 added.
+*add_nodes 24.0 -16.0 0
+Node 404 added.
+*add_nodes 28.0 -16.0 0
+Node 405 added.
+*add_nodes 32.0 -16.0 0
+Node 406 added.
+*add_nodes 36.0 -16.0 0
+Node 407 added.
+*add_nodes 40.0 -16.0 0
+Node 408 added.
+*add_nodes 20 -12.0 0
+Node 409 added.
+*add_nodes 24.0 -12.0 0
+Node 410 added.
+*add_nodes 28.0 -12.0 0
+Node 411 added.
+*add_nodes 32.0 -12.0 0
+Node 412 added.
+*add_nodes 36.0 -12.0 0
+Node 413 added.
+*add_nodes 40.0 -12.0 0
+Node 414 added.
+*add_nodes 20 -8.0 0
+Node 415 added.
+*add_nodes 24.0 -8.0 0
+Node 416 added.
+*add_nodes 28.0 -8.0 0
+Node 417 added.
+*add_nodes 32.0 -8.0 0
+Node 418 added.
+*add_nodes 36.0 -8.0 0
+Node 419 added.
+*add_nodes 40.0 -8.0 0
+Node 420 added.
+*add_nodes 20 -4.0 0
+Node 421 added.
+*add_nodes 24.0 -4.0 0
+Node 422 added.
+*add_nodes 28.0 -4.0 0
+Node 423 added.
+*add_nodes 32.0 -4.0 0
+Node 424 added.
+*add_nodes 36.0 -4.0 0
+Node 425 added.
+*add_nodes 40.0 -4.0 0
+Node 426 added.
+*add_nodes 20 0.0 0
+Node 427 added.
+*add_nodes 24.0 0.0 0
+Node 428 added.
+*add_nodes 28.0 0.0 0
+Node 429 added.
+*add_nodes 32.0 0.0 0
+Node 430 added.
+*add_nodes 36.0 0.0 0
+Node 431 added.
+*add_nodes 40.0 0.0 0
+Node 432 added.
+*add_elements 109 110 116 115
+ERROR: Couldn't find node 109!
+ERROR: Couldn't find node 115!
+*add_elements 110 111 117 116
+Element 266 added.
+*add_elements 111 112 118 117
+Element 267 added.
+*add_elements 112 113 119 118
+Element 268 added.
+*add_elements 113 114 120 119
+Element 269 added.
+*add_elements 115 116 122 121
+ERROR: Couldn't find node 115!
+ERROR: Couldn't find node 121!
+*add_elements 116 117 123 122
+Element 270 added.
+*add_elements 117 118 124 123
+Element 271 added.
+*add_elements 118 119 125 124
+Element 272 added.
+*add_elements 119 120 126 125
+Element 273 added.
+*add_elements 121 122 128 127
+ERROR: Couldn't find node 121!
+ERROR: Couldn't find node 127!
+*add_elements 122 123 129 128
+Element 274 added.
+*add_elements 123 124 130 129
+Element 275 added.
+*add_elements 124 125 131 130
+Element 276 added.
+*add_elements 125 126 132 131
+Element 277 added.
+*add_elements 127 128 134 133
+ERROR: Couldn't find node 127!
+ERROR: Couldn't find node 133!
+*add_elements 128 129 135 134
+Element 278 added.
+*add_elements 129 130 136 135
+Element 279 added.
+*add_elements 130 131 137 136
+Element 280 added.
+*add_elements 131 132 138 137
+Element 281 added.
+*add_elements 133 134 140 139
+ERROR: Couldn't find node 133!
+ERROR: Couldn't find node 139!
+*add_elements 134 135 141 140
+Element 282 added.
+*add_elements 135 136 142 141
+Element 283 added.
+*add_elements 136 137 143 142
+Element 284 added.
+*add_elements 137 138 144 143
+Element 285 added.
+*add_nodes -20 0 0
+Node 433 added.
+*add_nodes -16.0 0 0
+Node 434 added.
+*add_nodes -12.0 0 0
+Node 435 added.
+*add_nodes -8.0 0 0
+Node 436 added.
+*add_nodes -4.0 0 0
+Node 437 added.
+*add_nodes 0.0 0 0
+Node 438 added.
+*add_nodes -20 4.0 0
+Node 439 added.
+*add_nodes -16.0 4.0 0
+Node 440 added.
+*add_nodes -12.0 4.0 0
+Node 441 added.
+*add_nodes -8.0 4.0 0
+Node 442 added.
+*add_nodes -4.0 4.0 0
+Node 443 added.
+*add_nodes 0.0 4.0 0
+Node 444 added.
+*add_nodes -20 8.0 0
+Node 445 added.
+*add_nodes -16.0 8.0 0
+Node 446 added.
+*add_nodes -12.0 8.0 0
+Node 447 added.
+*add_nodes -8.0 8.0 0
+Node 448 added.
+*add_nodes -4.0 8.0 0
+Node 449 added.
+*add_nodes 0.0 8.0 0
+Node 450 added.
+*add_nodes -20 12.0 0
+Node 451 added.
+*add_nodes -16.0 12.0 0
+Node 452 added.
+*add_nodes -12.0 12.0 0
+Node 453 added.
+*add_nodes -8.0 12.0 0
+Node 454 added.
+*add_nodes -4.0 12.0 0
+Node 455 added.
+*add_nodes 0.0 12.0 0
+Node 456 added.
+*add_nodes -20 16.0 0
+Node 457 added.
+*add_nodes -16.0 16.0 0
+Node 458 added.
+*add_nodes -12.0 16.0 0
+Node 459 added.
+*add_nodes -8.0 16.0 0
+Node 460 added.
+*add_nodes -4.0 16.0 0
+Node 461 added.
+*add_nodes 0.0 16.0 0
+Node 462 added.
+*add_nodes -20 20.0 0
+Node 463 added.
+*add_nodes -16.0 20.0 0
+Node 464 added.
+*add_nodes -12.0 20.0 0
+Node 465 added.
+*add_nodes -8.0 20.0 0
+Node 466 added.
+*add_nodes -4.0 20.0 0
+Node 467 added.
+*add_nodes 0.0 20.0 0
+Node 468 added.
+*add_elements 145 146 152 151
+ERROR: Couldn't find node 145!
+ERROR: Couldn't find node 146!
+*add_elements 146 147 153 152
+ERROR: Couldn't find node 146!
+ERROR: Couldn't find node 147!
+*add_elements 147 148 154 153
+ERROR: Couldn't find node 147!
+ERROR: Couldn't find node 148!
+*add_elements 148 149 155 154
+ERROR: Couldn't find node 148!
+ERROR: Couldn't find node 149!
+*add_elements 149 150 156 155
+ERROR: Couldn't find node 149!
+ERROR: Couldn't find node 150!
+ERROR: Couldn't find node 156!
+*add_elements 151 152 158 157
+Element 286 added.
+*add_elements 152 153 159 158
+Element 287 added.
+*add_elements 153 154 160 159
+Element 288 added.
+*add_elements 154 155 161 160
+Element 289 added.
+*add_elements 155 156 162 161
+ERROR: Couldn't find node 156!
+ERROR: Couldn't find node 162!
+*add_elements 157 158 164 163
+Element 290 added.
+*add_elements 158 159 165 164
+Element 291 added.
+*add_elements 159 160 166 165
+Element 292 added.
+*add_elements 160 161 167 166
+Element 293 added.
+*add_elements 161 162 168 167
+ERROR: Couldn't find node 162!
+ERROR: Couldn't find node 168!
+*add_elements 163 164 170 169
+Element 294 added.
+*add_elements 164 165 171 170
+Element 295 added.
+*add_elements 165 166 172 171
+Element 296 added.
+*add_elements 166 167 173 172
+Element 297 added.
+*add_elements 167 168 174 173
+ERROR: Couldn't find node 168!
+ERROR: Couldn't find node 174!
+*add_elements 169 170 176 175
+Element 298 added.
+*add_elements 170 171 177 176
+Element 299 added.
+*add_elements 171 172 178 177
+Element 300 added.
+*add_elements 172 173 179 178
+Element 301 added.
+*add_elements 173 174 180 179
+ERROR: Couldn't find node 174!
+ERROR: Couldn't find node 180!
+*add_nodes 20 0 0
+Node 469 added.
+*add_nodes 24.0 0 0
+Node 470 added.
+*add_nodes 28.0 0 0
+Node 471 added.
+*add_nodes 32.0 0 0
+Node 472 added.
+*add_nodes 36.0 0 0
+Node 473 added.
+*add_nodes 40.0 0 0
+Node 474 added.
+*add_nodes 20 4.0 0
+Node 475 added.
+*add_nodes 24.0 4.0 0
+Node 476 added.
+*add_nodes 28.0 4.0 0
+Node 477 added.
+*add_nodes 32.0 4.0 0
+Node 478 added.
+*add_nodes 36.0 4.0 0
+Node 479 added.
+*add_nodes 40.0 4.0 0
+Node 480 added.
+*add_nodes 20 8.0 0
+Node 481 added.
+*add_nodes 24.0 8.0 0
+Node 482 added.
+*add_nodes 28.0 8.0 0
+Node 483 added.
+*add_nodes 32.0 8.0 0
+Node 484 added.
+*add_nodes 36.0 8.0 0
+Node 485 added.
+*add_nodes 40.0 8.0 0
+Node 486 added.
+*add_nodes 20 12.0 0
+Node 487 added.
+*add_nodes 24.0 12.0 0
+Node 488 added.
+*add_nodes 28.0 12.0 0
+Node 489 added.
+*add_nodes 32.0 12.0 0
+Node 490 added.
+*add_nodes 36.0 12.0 0
+Node 491 added.
+*add_nodes 40.0 12.0 0
+Node 492 added.
+*add_nodes 20 16.0 0
+Node 493 added.
+*add_nodes 24.0 16.0 0
+Node 494 added.
+*add_nodes 28.0 16.0 0
+Node 495 added.
+*add_nodes 32.0 16.0 0
+Node 496 added.
+*add_nodes 36.0 16.0 0
+Node 497 added.
+*add_nodes 40.0 16.0 0
+Node 498 added.
+*add_nodes 20 20.0 0
+Node 499 added.
+*add_nodes 24.0 20.0 0
+Node 500 added.
+*add_nodes 28.0 20.0 0
+Node 501 added.
+*add_nodes 32.0 20.0 0
+Node 502 added.
+*add_nodes 36.0 20.0 0
+Node 503 added.
+*add_nodes 40.0 20.0 0
+Node 504 added.
+*add_elements 181 182 188 187
+ERROR: Couldn't find node 181!
+ERROR: Couldn't find node 182!
+ERROR: Couldn't find node 187!
+*add_elements 182 183 189 188
+ERROR: Couldn't find node 182!
+ERROR: Couldn't find node 183!
+*add_elements 183 184 190 189
+ERROR: Couldn't find node 183!
+ERROR: Couldn't find node 184!
+*add_elements 184 185 191 190
+ERROR: Couldn't find node 184!
+ERROR: Couldn't find node 185!
+*add_elements 185 186 192 191
+ERROR: Couldn't find node 185!
+ERROR: Couldn't find node 186!
+*add_elements 187 188 194 193
+ERROR: Couldn't find node 187!
+ERROR: Couldn't find node 193!
+*add_elements 188 189 195 194
+Element 302 added.
+*add_elements 189 190 196 195
+Element 303 added.
+*add_elements 190 191 197 196
+Element 304 added.
+*add_elements 191 192 198 197
+Element 305 added.
+*add_elements 193 194 200 199
+ERROR: Couldn't find node 193!
+ERROR: Couldn't find node 199!
+*add_elements 194 195 201 200
+Element 306 added.
+*add_elements 195 196 202 201
+Element 307 added.
+*add_elements 196 197 203 202
+Element 308 added.
+*add_elements 197 198 204 203
+Element 309 added.
+*add_elements 199 200 206 205
+ERROR: Couldn't find node 199!
+ERROR: Couldn't find node 205!
+*add_elements 200 201 207 206
+Element 310 added.
+*add_elements 201 202 208 207
+Element 311 added.
+*add_elements 202 203 209 208
+Element 312 added.
+*add_elements 203 204 210 209
+Element 313 added.
+*add_elements 205 206 212 211
+ERROR: Couldn't find node 205!
+ERROR: Couldn't find node 211!
+*add_elements 206 207 213 212
+Element 314 added.
+*add_elements 207 208 214 213
+Element 315 added.
+*add_elements 208 209 215 214
+Element 316 added.
+*add_elements 209 210 216 215
+Element 317 added.
+*add_nodes -20 20 0
+Node 505 added.
+*add_nodes -16.0 20 0
+Node 506 added.
+*add_nodes -12.0 20 0
+Node 507 added.
+*add_nodes -8.0 20 0
+Node 508 added.
+*add_nodes -4.0 20 0
+Node 509 added.
+*add_nodes 0.0 20 0
+Node 510 added.
+*add_nodes -20 24.0 0
+Node 511 added.
+*add_nodes -16.0 24.0 0
+Node 512 added.
+*add_nodes -12.0 24.0 0
+Node 513 added.
+*add_nodes -8.0 24.0 0
+Node 514 added.
+*add_nodes -4.0 24.0 0
+Node 515 added.
+*add_nodes 0.0 24.0 0
+Node 516 added.
+*add_nodes -20 28.0 0
+Node 517 added.
+*add_nodes -16.0 28.0 0
+Node 518 added.
+*add_nodes -12.0 28.0 0
+Node 519 added.
+*add_nodes -8.0 28.0 0
+Node 520 added.
+*add_nodes -4.0 28.0 0
+Node 521 added.
+*add_nodes 0.0 28.0 0
+Node 522 added.
+*add_nodes -20 32.0 0
+Node 523 added.
+*add_nodes -16.0 32.0 0
+Node 524 added.
+*add_nodes -12.0 32.0 0
+Node 525 added.
+*add_nodes -8.0 32.0 0
+Node 526 added.
+*add_nodes -4.0 32.0 0
+Node 527 added.
+*add_nodes 0.0 32.0 0
+Node 528 added.
+*add_nodes -20 36.0 0
+Node 529 added.
+*add_nodes -16.0 36.0 0
+Node 530 added.
+*add_nodes -12.0 36.0 0
+Node 531 added.
+*add_nodes -8.0 36.0 0
+Node 532 added.
+*add_nodes -4.0 36.0 0
+Node 533 added.
+*add_nodes 0.0 36.0 0
+Node 534 added.
+*add_nodes -20 40.0 0
+Node 535 added.
+*add_nodes -16.0 40.0 0
+Node 536 added.
+*add_nodes -12.0 40.0 0
+Node 537 added.
+*add_nodes -8.0 40.0 0
+Node 538 added.
+*add_nodes -4.0 40.0 0
+Node 539 added.
+*add_nodes 0.0 40.0 0
+Node 540 added.
+*add_elements 217 218 224 223
+ERROR: Couldn't find node 217!
+ERROR: Couldn't find node 218!
+*add_elements 218 219 225 224
+ERROR: Couldn't find node 218!
+ERROR: Couldn't find node 219!
+*add_elements 219 220 226 225
+ERROR: Couldn't find node 219!
+ERROR: Couldn't find node 220!
+*add_elements 220 221 227 226
+ERROR: Couldn't find node 220!
+ERROR: Couldn't find node 221!
+*add_elements 221 222 228 227
+ERROR: Couldn't find node 221!
+ERROR: Couldn't find node 222!
+*add_elements 223 224 230 229
+Element 318 added.
+*add_elements 224 225 231 230
+Element 319 added.
+*add_elements 225 226 232 231
+Element 320 added.
+*add_elements 226 227 233 232
+Element 321 added.
+*add_elements 227 228 234 233
+Element 322 added.
+*add_elements 229 230 236 235
+Element 323 added.
+*add_elements 230 231 237 236
+Element 324 added.
+*add_elements 231 232 238 237
+Element 325 added.
+*add_elements 232 233 239 238
+Element 326 added.
+*add_elements 233 234 240 239
+Element 327 added.
+*add_elements 235 236 242 241
+Element 328 added.
+*add_elements 236 237 243 242
+Element 329 added.
+*add_elements 237 238 244 243
+Element 330 added.
+*add_elements 238 239 245 244
+Element 331 added.
+*add_elements 239 240 246 245
+Element 332 added.
+*add_elements 241 242 248 247
+Element 333 added.
+*add_elements 242 243 249 248
+Element 334 added.
+*add_elements 243 244 250 249
+Element 335 added.
+*add_elements 244 245 251 250
+Element 336 added.
+*add_elements 245 246 252 251
+Element 337 added.
+*add_nodes 0 20 0
+Node 541 added.
+*add_nodes 4.0 20 0
+Node 542 added.
+*add_nodes 8.0 20 0
+Node 543 added.
+*add_nodes 12.0 20 0
+Node 544 added.
+*add_nodes 16.0 20 0
+Node 545 added.
+*add_nodes 20.0 20 0
+Node 546 added.
+*add_nodes 0 24.0 0
+Node 547 added.
+*add_nodes 4.0 24.0 0
+Node 548 added.
+*add_nodes 8.0 24.0 0
+Node 549 added.
+*add_nodes 12.0 24.0 0
+Node 550 added.
+*add_nodes 16.0 24.0 0
+Node 551 added.
+*add_nodes 20.0 24.0 0
+Node 552 added.
+*add_nodes 0 28.0 0
+Node 553 added.
+*add_nodes 4.0 28.0 0
+Node 554 added.
+*add_nodes 8.0 28.0 0
+Node 555 added.
+*add_nodes 12.0 28.0 0
+Node 556 added.
+*add_nodes 16.0 28.0 0
+Node 557 added.
+*add_nodes 20.0 28.0 0
+Node 558 added.
+*add_nodes 0 32.0 0
+Node 559 added.
+*add_nodes 4.0 32.0 0
+Node 560 added.
+*add_nodes 8.0 32.0 0
+Node 561 added.
+*add_nodes 12.0 32.0 0
+Node 562 added.
+*add_nodes 16.0 32.0 0
+Node 563 added.
+*add_nodes 20.0 32.0 0
+Node 564 added.
+*add_nodes 0 36.0 0
+Node 565 added.
+*add_nodes 4.0 36.0 0
+Node 566 added.
+*add_nodes 8.0 36.0 0
+Node 567 added.
+*add_nodes 12.0 36.0 0
+Node 568 added.
+*add_nodes 16.0 36.0 0
+Node 569 added.
+*add_nodes 20.0 36.0 0
+Node 570 added.
+*add_nodes 0 40.0 0
+Node 571 added.
+*add_nodes 4.0 40.0 0
+Node 572 added.
+*add_nodes 8.0 40.0 0
+Node 573 added.
+*add_nodes 12.0 40.0 0
+Node 574 added.
+*add_nodes 16.0 40.0 0
+Node 575 added.
+*add_nodes 20.0 40.0 0
+Node 576 added.
+*add_elements 253 254 260 259
+ERROR: Couldn't find node 253!
+ERROR: Couldn't find node 254!
+ERROR: Couldn't find node 259!
+*add_elements 254 255 261 260
+ERROR: Couldn't find node 254!
+ERROR: Couldn't find node 255!
+*add_elements 255 256 262 261
+ERROR: Couldn't find node 255!
+ERROR: Couldn't find node 256!
+*add_elements 256 257 263 262
+ERROR: Couldn't find node 256!
+ERROR: Couldn't find node 257!
+*add_elements 257 258 264 263
+ERROR: Couldn't find node 257!
+ERROR: Couldn't find node 258!
+*add_elements 259 260 266 265
+ERROR: Couldn't find node 259!
+ERROR: Couldn't find node 265!
+*add_elements 260 261 267 266
+Element 338 added.
+*add_elements 261 262 268 267
+Element 339 added.
+*add_elements 262 263 269 268
+Element 340 added.
+*add_elements 263 264 270 269
+Element 341 added.
+*add_elements 265 266 272 271
+ERROR: Couldn't find node 265!
+ERROR: Couldn't find node 271!
+*add_elements 266 267 273 272
+Element 342 added.
+*add_elements 267 268 274 273
+Element 343 added.
+*add_elements 268 269 275 274
+Element 344 added.
+*add_elements 269 270 276 275
+Element 345 added.
+*add_elements 271 272 278 277
+ERROR: Couldn't find node 271!
+ERROR: Couldn't find node 277!
+*add_elements 272 273 279 278
+Element 346 added.
+*add_elements 273 274 280 279
+Element 347 added.
+*add_elements 274 275 281 280
+Element 348 added.
+*add_elements 275 276 282 281
+Element 349 added.
+*add_elements 277 278 284 283
+ERROR: Couldn't find node 277!
+ERROR: Couldn't find node 283!
+*add_elements 278 279 285 284
+Element 350 added.
+*add_elements 279 280 286 285
+Element 351 added.
+*add_elements 280 281 287 286
+Element 352 added.
+*add_elements 281 282 288 287
+Element 353 added.
+*add_nodes 20 20 0
+Node 577 added.
+*add_nodes 24.0 20 0
+Node 578 added.
+*add_nodes 28.0 20 0
+Node 579 added.
+*add_nodes 32.0 20 0
+Node 580 added.
+*add_nodes 36.0 20 0
+Node 581 added.
+*add_nodes 40.0 20 0
+Node 582 added.
+*add_nodes 20 24.0 0
+Node 583 added.
+*add_nodes 24.0 24.0 0
+Node 584 added.
+*add_nodes 28.0 24.0 0
+Node 585 added.
+*add_nodes 32.0 24.0 0
+Node 586 added.
+*add_nodes 36.0 24.0 0
+Node 587 added.
+*add_nodes 40.0 24.0 0
+Node 588 added.
+*add_nodes 20 28.0 0
+Node 589 added.
+*add_nodes 24.0 28.0 0
+Node 590 added.
+*add_nodes 28.0 28.0 0
+Node 591 added.
+*add_nodes 32.0 28.0 0
+Node 592 added.
+*add_nodes 36.0 28.0 0
+Node 593 added.
+*add_nodes 40.0 28.0 0
+Node 594 added.
+*add_nodes 20 32.0 0
+Node 595 added.
+*add_nodes 24.0 32.0 0
+Node 596 added.
+*add_nodes 28.0 32.0 0
+Node 597 added.
+*add_nodes 32.0 32.0 0
+Node 598 added.
+*add_nodes 36.0 32.0 0
+Node 599 added.
+*add_nodes 40.0 32.0 0
+Node 600 added.
+*add_nodes 20 36.0 0
+Node 601 added.
+*add_nodes 24.0 36.0 0
+Node 602 added.
+*add_nodes 28.0 36.0 0
+Node 603 added.
+*add_nodes 32.0 36.0 0
+Node 604 added.
+*add_nodes 36.0 36.0 0
+Node 605 added.
+*add_nodes 40.0 36.0 0
+Node 606 added.
+*add_nodes 20 40.0 0
+Node 607 added.
+*add_nodes 24.0 40.0 0
+Node 608 added.
+*add_nodes 28.0 40.0 0
+Node 609 added.
+*add_nodes 32.0 40.0 0
+Node 610 added.
+*add_nodes 36.0 40.0 0
+Node 611 added.
+*add_nodes 40.0 40.0 0
+Node 612 added.
+*add_elements 289 290 296 295
+ERROR: Couldn't find node 289!
+ERROR: Couldn't find node 290!
+ERROR: Couldn't find node 295!
+*add_elements 290 291 297 296
+ERROR: Couldn't find node 290!
+ERROR: Couldn't find node 291!
+*add_elements 291 292 298 297
+ERROR: Couldn't find node 291!
+ERROR: Couldn't find node 292!
+*add_elements 292 293 299 298
+ERROR: Couldn't find node 292!
+ERROR: Couldn't find node 293!
+*add_elements 293 294 300 299
+ERROR: Couldn't find node 293!
+ERROR: Couldn't find node 294!
+*add_elements 295 296 302 301
+ERROR: Couldn't find node 295!
+ERROR: Couldn't find node 301!
+*add_elements 296 297 303 302
+Element 354 added.
+*add_elements 297 298 304 303
+Element 355 added.
+*add_elements 298 299 305 304
+Element 356 added.
+*add_elements 299 300 306 305
+Element 357 added.
+*add_elements 301 302 308 307
+ERROR: Couldn't find node 301!
+ERROR: Couldn't find node 307!
+*add_elements 302 303 309 308
+Element 358 added.
+*add_elements 303 304 310 309
+Element 359 added.
+*add_elements 304 305 311 310
+Element 360 added.
+*add_elements 305 306 312 311
+Element 361 added.
+*add_elements 307 308 314 313
+ERROR: Couldn't find node 307!
+ERROR: Couldn't find node 313!
+*add_elements 308 309 315 314
+Element 362 added.
+*add_elements 309 310 316 315
+Element 363 added.
+*add_elements 310 311 317 316
+Element 364 added.
+*add_elements 311 312 318 317
+Element 365 added.
+*add_elements 313 314 320 319
+ERROR: Couldn't find node 313!
+ERROR: Couldn't find node 319!
+*add_elements 314 315 321 320
+Element 366 added.
+*add_elements 315 316 322 321
+Element 367 added.
+*add_elements 316 317 323 322
+Element 368 added.
+*add_elements 317 318 324 323
+Element 369 added.
+*sweep_all
+Deleting 288 duplicate nodes !
+Deleting 0 collapsed elements !
+Deleting 144 duplicate elements!
+*new_md_table 1 1
+*table_name "ramp_input"
+ERROR: Table name ramp_input already exists!
+*set_md_table_type 1 "time"
+*set_md_table_step_v 1 100
+*set_md_table_step_f 1 100
+*set_md_table_method_formula
+*md_table_formula v1
+Formula evaluation successful.
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_yy1
+ERROR: Boundary condition name bc_fd_yy1 already exists!
+*apply_dof y
+*apply_dof_value y 0
+node_y: Cannot find node 72!
+node_y: Cannot find node 73!
+node_y: Cannot find node 79!
+node_y: Cannot find node 85!
+node_y: Cannot find node 91!
+node_y: Cannot find node 97!
+node_y: Cannot find node 103!
+node_y: Cannot find node 104!
+node_y: Cannot find node 105!
+node_y: Cannot find node 106!
+node_y: Cannot find node 107!
+node_y: Cannot find node 108!
+node_y: Cannot find node 109!
+node_y: Cannot find node 115!
+node_y: Cannot find node 121!
+node_y: Cannot find node 127!
+node_y: Cannot find node 133!
+node_y: Cannot find node 139!
+node_y: Cannot find node 145!
+node_y: Cannot find node 146!
+node_y: Cannot find node 147!
+node_y: Cannot find node 148!
+node_y: Cannot find node 149!
+node_y: Cannot find node 150!
+node_y: Cannot find node 156!
+node_y: Cannot find node 162!
+node_y: Cannot find node 168!
+node_y: Cannot find node 174!
+node_y: Cannot find node 180!
+node_y: Cannot find node 181!
+node_y: Cannot find node 182!
+node_y: Cannot find node 183!
+node_y: Cannot find node 184!
+node_y: Cannot find node 185!
+node_y: Cannot find node 186!
+node_y: Cannot find node 187!
+node_y: Cannot find node 193!
+node_y: Cannot find node 199!
+node_y: Cannot find node 205!
+node_y: Cannot find node 211!
+node_y: Cannot find node 217!
+node_y: Cannot find node 218!
+node_y: Cannot find node 219!
+node_y: Cannot find node 220!
+node_y: Cannot find node 221!
+node_y: Cannot find node 222!
+node_y: Cannot find node 253!
+node_y: Cannot find node 254!
+node_y: Cannot find node 255!
+node_y: Cannot find node 256!
+*add_apply_nodes 
+31 
+32 
+33 
+34 
+35 
+36 
+175 
+176 
+177 
+178 
+179 
+212 
+213 
+214 
+215 
+216 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_yy2
+ERROR: Boundary condition name bc_fd_yy2 already exists!
+*apply_dof y
+*apply_dof_value y 10.0
+*apply_dof_table y ramp_input
+node_y: Cannot find node 72!
+node_y: Cannot find node 73!
+node_y: Cannot find node 79!
+node_y: Cannot find node 85!
+node_y: Cannot find node 91!
+node_y: Cannot find node 97!
+node_y: Cannot find node 103!
+node_y: Cannot find node 104!
+node_y: Cannot find node 105!
+node_y: Cannot find node 106!
+node_y: Cannot find node 107!
+node_y: Cannot find node 108!
+node_y: Cannot find node 109!
+node_y: Cannot find node 115!
+node_y: Cannot find node 121!
+node_y: Cannot find node 127!
+node_y: Cannot find node 133!
+node_y: Cannot find node 139!
+node_y: Cannot find node 145!
+node_y: Cannot find node 146!
+node_y: Cannot find node 147!
+node_y: Cannot find node 148!
+node_y: Cannot find node 149!
+node_y: Cannot find node 150!
+node_y: Cannot find node 156!
+node_y: Cannot find node 162!
+node_y: Cannot find node 168!
+node_y: Cannot find node 174!
+node_y: Cannot find node 180!
+node_y: Cannot find node 181!
+node_y: Cannot find node 182!
+node_y: Cannot find node 183!
+node_y: Cannot find node 184!
+node_y: Cannot find node 185!
+node_y: Cannot find node 186!
+node_y: Cannot find node 187!
+node_y: Cannot find node 193!
+node_y: Cannot find node 199!
+node_y: Cannot find node 205!
+node_y: Cannot find node 211!
+node_y: Cannot find node 217!
+node_y: Cannot find node 218!
+node_y: Cannot find node 219!
+node_y: Cannot find node 220!
+node_y: Cannot find node 221!
+node_y: Cannot find node 222!
+node_y: Cannot find node 253!
+node_y: Cannot find node 254!
+node_y: Cannot find node 255!
+node_y: Cannot find node 256!
+*add_apply_nodes 
+31 
+32 
+33 
+34 
+35 
+36 
+175 
+176 
+177 
+178 
+179 
+212 
+213 
+214 
+215 
+216 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_xx1
+ERROR: Boundary condition name bc_fd_xx1 already exists!
+*apply_dof x
+*apply_dof_value x 0
+node_x: Cannot find node 72!
+node_x: Cannot find node 73!
+node_x: Cannot find node 79!
+node_x: Cannot find node 85!
+node_x: Cannot find node 91!
+node_x: Cannot find node 97!
+node_x: Cannot find node 103!
+node_x: Cannot find node 104!
+node_x: Cannot find node 105!
+node_x: Cannot find node 106!
+node_x: Cannot find node 107!
+node_x: Cannot find node 108!
+node_x: Cannot find node 109!
+node_x: Cannot find node 115!
+node_x: Cannot find node 121!
+node_x: Cannot find node 127!
+node_x: Cannot find node 133!
+node_x: Cannot find node 139!
+node_x: Cannot find node 145!
+node_x: Cannot find node 146!
+node_x: Cannot find node 147!
+node_x: Cannot find node 148!
+node_x: Cannot find node 149!
+node_x: Cannot find node 150!
+node_x: Cannot find node 156!
+node_x: Cannot find node 162!
+node_x: Cannot find node 168!
+node_x: Cannot find node 174!
+node_x: Cannot find node 180!
+node_x: Cannot find node 181!
+node_x: Cannot find node 182!
+node_x: Cannot find node 183!
+node_x: Cannot find node 184!
+node_x: Cannot find node 185!
+node_x: Cannot find node 186!
+node_x: Cannot find node 187!
+node_x: Cannot find node 193!
+node_x: Cannot find node 199!
+node_x: Cannot find node 205!
+node_x: Cannot find node 211!
+node_x: Cannot find node 217!
+node_x: Cannot find node 218!
+node_x: Cannot find node 219!
+node_x: Cannot find node 220!
+node_x: Cannot find node 221!
+node_x: Cannot find node 222!
+node_x: Cannot find node 253!
+node_x: Cannot find node 254!
+node_x: Cannot find node 255!
+node_x: Cannot find node 256!
+*add_apply_nodes 
+6 
+12 
+18 
+24 
+30 
+36 
+78 
+84 
+90 
+96 
+102 
+#
+*new_apply
+*apply_type fixed_displacement
+*apply_name bc_fd_xx2
+ERROR: Boundary condition name bc_fd_xx2 already exists!
+*apply_dof x
+*apply_dof_value x 0
+node_x: Cannot find node 72!
+node_x: Cannot find node 73!
+node_x: Cannot find node 79!
+node_x: Cannot find node 85!
+node_x: Cannot find node 91!
+node_x: Cannot find node 97!
+node_x: Cannot find node 103!
+node_x: Cannot find node 104!
+node_x: Cannot find node 105!
+node_x: Cannot find node 106!
+node_x: Cannot find node 107!
+node_x: Cannot find node 108!
+node_x: Cannot find node 109!
+node_x: Cannot find node 115!
+node_x: Cannot find node 121!
+node_x: Cannot find node 127!
+node_x: Cannot find node 133!
+node_x: Cannot find node 139!
+node_x: Cannot find node 145!
+node_x: Cannot find node 146!
+node_x: Cannot find node 147!
+node_x: Cannot find node 148!
+node_x: Cannot find node 149!
+node_x: Cannot find node 150!
+node_x: Cannot find node 156!
+node_x: Cannot find node 162!
+node_x: Cannot find node 168!
+node_x: Cannot find node 174!
+node_x: Cannot find node 180!
+node_x: Cannot find node 181!
+node_x: Cannot find node 182!
+node_x: Cannot find node 183!
+node_x: Cannot find node 184!
+node_x: Cannot find node 185!
+node_x: Cannot find node 186!
+node_x: Cannot find node 187!
+node_x: Cannot find node 193!
+node_x: Cannot find node 199!
+node_x: Cannot find node 205!
+node_x: Cannot find node 211!
+node_x: Cannot find node 217!
+node_x: Cannot find node 218!
+node_x: Cannot find node 219!
+node_x: Cannot find node 220!
+node_x: Cannot find node 221!
+node_x: Cannot find node 222!
+node_x: Cannot find node 253!
+node_x: Cannot find node 254!
+node_x: Cannot find node 255!
+node_x: Cannot find node 256!
+*add_apply_nodes 
+6 
+12 
+18 
+24 
+30 
+36 
+78 
+84 
+90 
+96 
+102 
+#
+*geometry_type mech_planar_pstrain
+*add_geometry_elements all_existing
+*new_mater standard
+*mater_option general:state:solid
+*mater_option general:skip_structural:off
+*mater_name "Mold Star 15"
+*mater_option structural:type:ogden
+*mater_param structural:ogden_nterm 3
+*mater_param structural:ogden_modulus_1 -6.50266e-06
+*mater_param structural:ogden_exp_1 -21.322
+*mater_param structural:ogden_modulus_2 0.216863
+*mater_param structural:ogden_exp_2 1.1797
+*mater_param structural:ogden_modulus_3 0.00137158
+*mater_param structural:ogden_exp_3 4.88396
+*add_mater_elements all_existing
+*new_cbody mesh
+*contact_option state:solid
+*contact_option skip_structural:off
+*add_contact_body_elements all_existing
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase1
+ERROR: Loadcase name lcase1 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_1
+ERROR: Job name job_1 already exists!
+*add_job_loadcases lcase1
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1_5x5_20x20_1_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud.
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+9 
+12 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5_a18d78bd4b8b92b2db3f779136c8c22e_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+8 
+9 
+12 
+14 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+9 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_1_45c48cce2e2d7fbdea1afc51c7c6ad26\grid_1_45c48cce2e2d7fbdea1afc51c7c6ad26.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_1_45c48cce2e2d7fbdea1afc51c7c6ad26\grid_1_45c48cce2e2d7fbdea1afc51c7c6ad26.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_1_45c48cce2e2d7fbdea1afc51c7c6ad26_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_1_45c48cce2e2d7fbdea1afc51c7c6ad26\grid_1_45c48cce2e2d7fbdea1afc51c7c6ad26_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+9 
+12 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_2_d2cd829158fed731b2527f45ad79ab38\grid_2_d2cd829158fed731b2527f45ad79ab38.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_2_d2cd829158fed731b2527f45ad79ab38\grid_2_d2cd829158fed731b2527f45ad79ab38.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_2_d2cd829158fed731b2527f45ad79ab38_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_2_d2cd829158fed731b2527f45ad79ab38\grid_2_d2cd829158fed731b2527f45ad79ab38_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+7 
+8 
+9 
+13 
+17 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_7_bd14e87f8df306d83cd0b105c45f86b7_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+12 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_4_cd9ec73abfee0dc493c4e1b67bac7337\grid_4_cd9ec73abfee0dc493c4e1b67bac7337.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_4_cd9ec73abfee0dc493c4e1b67bac7337\grid_4_cd9ec73abfee0dc493c4e1b67bac7337.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_4_cd9ec73abfee0dc493c4e1b67bac7337_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_4_cd9ec73abfee0dc493c4e1b67bac7337\grid_4_cd9ec73abfee0dc493c4e1b67bac7337_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+8 
+9 
+13 
+14 
+17 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6_fe098c1584fab29121c5a6adccdde043_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+8 
+18 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_2_fec440984ed75a559d63a099faf596b3\grid_2_fec440984ed75a559d63a099faf596b3.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_2_fec440984ed75a559d63a099faf596b3\grid_2_fec440984ed75a559d63a099faf596b3.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_2_fec440984ed75a559d63a099faf596b3_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_2_fec440984ed75a559d63a099faf596b3\grid_2_fec440984ed75a559d63a099faf596b3_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+8 
+9 
+14 
+17 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_4_5612974b870227d730f0de411549c0aa\grid_4_5612974b870227d730f0de411549c0aa.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_4_5612974b870227d730f0de411549c0aa\grid_4_5612974b870227d730f0de411549c0aa.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_4_5612974b870227d730f0de411549c0aa_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_4_5612974b870227d730f0de411549c0aa\grid_4_5612974b870227d730f0de411549c0aa_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*remove_elements 
+8 
+12 
+13 
+14 
+18 
+19 
+#
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud.
+*edit_job job_1
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6_4fb6a1cab68ba66a8df0402a20555984_job_1 - - - - - n n - - 0 1 1 0 - -
+Job job_1 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984_job_1.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Templates\grid_1_5x5_20x20_1\grid_1_5x5_20x20_1 opened.
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7 opened.
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+12:0 
+14:0 
+22:0 
+23:0 
+24:0 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+6:1 
+12:1 
+16:1 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+2:2 
+3:2 
+4:2 
+12:2 
+14:2 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+10:3 
+14:3 
+20:3 
+#
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_2
+*add_job_loadcases lcase2
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud.
+*edit_job job_2
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_7_bd14e87f8df306d83cd0b105c45f86b7_job_2 - - - - - n n - - 0 1 1 0 - -
+Job job_2 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7_job_2.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_3
+*add_job_loadcases lcase3
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7.mud.
+*edit_job job_3
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_7_bd14e87f8df306d83cd0b105c45f86b7_job_3 - - - - - n n - - 0 1 1 0 - -
+Job job_3 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_7_bd14e87f8df306d83cd0b105c45f86b7\grid_7_bd14e87f8df306d83cd0b105c45f86b7_job_3.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043 opened.
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+19:0 
+22:0 
+23:0 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+7:1 
+12:1 
+16:1 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+3:2 
+4:2 
+12:2 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+10:3 
+15:3 
+19:3 
+#
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_2
+*add_job_loadcases lcase2
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud.
+*edit_job job_2
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6_fe098c1584fab29121c5a6adccdde043_job_2 - - - - - n n - - 0 1 1 0 - -
+Job job_2 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043_job_2.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_3
+*add_job_loadcases lcase3
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043.mud.
+*edit_job job_3
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6_fe098c1584fab29121c5a6adccdde043_job_3 - - - - - n n - - 0 1 1 0 - -
+Job job_3 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_fe098c1584fab29121c5a6adccdde043\grid_6_fe098c1584fab29121c5a6adccdde043_job_3.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984 opened.
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+17:0 
+23:0 
+24:0 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+7:1 
+11:1 
+17:1 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+3:2 
+7:2 
+9:2 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+9:3 
+15:3 
+20:3 
+#
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_2
+*add_job_loadcases lcase2
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud.
+*edit_job job_2
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6_4fb6a1cab68ba66a8df0402a20555984_job_2 - - - - - n n - - 0 1 1 0 - -
+Job job_2 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984_job_2.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_3
+*add_job_loadcases lcase3
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984.mud.
+*edit_job job_3
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_6_4fb6a1cab68ba66a8df0402a20555984_job_3 - - - - - n n - - 0 1 1 0 - -
+Job job_3 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_6_4fb6a1cab68ba66a8df0402a20555984\grid_6_4fb6a1cab68ba66a8df0402a20555984_job_3.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e opened.
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+17:0 
+23:0 
+24:0 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+8:1 
+11:1 
+13:1 
+17:1 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+4:2 
+7:2 
+13:2 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+10:3 
+13:3 
+15:3 
+20:3 
+#
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_2
+*add_job_loadcases lcase2
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud.
+*edit_job job_2
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5_a18d78bd4b8b92b2db3f779136c8c22e_job_2 - - - - - n n - - 0 1 1 0 - -
+Job job_2 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e_job_2.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_3
+*add_job_loadcases lcase3
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e.mud.
+*edit_job job_3
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5_a18d78bd4b8b92b2db3f779136c8c22e_job_3 - - - - - n n - - 0 1 1 0 - -
+Job job_3 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_a18d78bd4b8b92b2db3f779136c8c22e\grid_5_a18d78bd4b8b92b2db3f779136c8c22e_job_3.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*open_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud"
+File has been written by Mentat 2019.
+Model file C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud opened for reading.
+Model C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc opened.
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+13:0 
+19:0 
+22:0 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+7:1 
+11:1 
+13:1 
+16:1 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_yn
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+3:2 
+4:2 
+7:2 
+#
+*new_apply
+*apply_type edge_load
+*apply_name bc_load_xp
+*apply_dof p
+*apply_dof_value p 0.01
+*apply_dof_table p ramp_input
+*add_apply_edges 
+10:3 
+13:3 
+15:3 
+18:3 
+#
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_2
+*add_job_loadcases lcase2
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud.
+*edit_job job_2
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc_job_2 - - - - - n n - - 0 1 1 0 - -
+Job job_2 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc_job_2.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*new_loadcase
+*loadcase_type struc:static
+*loadcase_name lcase2
+ERROR: Loadcase name lcase2 already exists!
+*clear_loadcase_loads
+*add_loadcase_loads bc_fd_yy1
+*add_loadcase_loads bc_fd_yy2
+*add_loadcase_loads bc_fd_xx1
+*add_loadcase_loads bc_fd_xx2
+*add_loadcase_loads bc_load_yp
+*add_loadcase_loads bc_load_xn
+*add_loadcase_loads bc_load_yn
+*add_loadcase_loads bc_load_xp
+*loadcase_value nsteps 4
+*prog_use_current_job on
+*new_job structural
+*job_name job_3
+*add_job_loadcases lcase3
+*job_option strain:large
+*job_option follow:on
+*add_post_tensor stress_g
+*add_post_tensor strain
+*add_post_var von_mises
+*add_post_var te_energy
+*set_save_formatted off
+*save_as_model "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud" yes
+Model saved to C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc.mud.
+*edit_job job_3
+*update_job
+*submit_job 1
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+WARNING: Contact body cbody1:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+WARNING: Contact body cbody2:
+Mesh body has neither model sections nor elements!
+The body will be ignored.
+INFO: Found 0 errors and 2 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc_job_3 - - - - - n n - - 0 1 1 0 - -
+Job job_3 submitted!
+*monitor_job
+@main(results) @popup(modelplot_pm) *post_open "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_5x5_20x20_1\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc\grid_5_b8f1bed2e1149c4e8c8c333854a8f1bc_job_3.t16"
+Number of increments detected : 5
+*post_numerics
+*post_rewind
+*post_value Displacement X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force X
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force Y
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Total Strain Energy Density
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 11 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Comp 22 of Total Strain
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Displacement
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_value Reaction Force
+*post_next
+*post_next
+*post_next
+*post_next
+*post_next
+*post_rewind
+*post_close
+*identify_applys
+*redraw

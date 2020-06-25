@@ -5,7 +5,7 @@ import linecache
 import numpy
 import pandas
 
-from evolve_soft_2d import utility
+from evolve_soft_2d import plotting, utility
 from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.result import obtain
 
@@ -46,6 +46,12 @@ def sel_best_u(
     #   Read the list of units created during the last simulation
     lu = obtain.read_lu(fp_lu)
 
+    #   Determine the maximum amount of units that can be selected
+    sel_max = len(lu)
+
+    #   Ensure that the amount of units selected is within bounds
+    sel = utility.clean_int(sel, sel_max)
+
     #   Create a list of the number of elements removed from every element
     n_e = [utility.find_int_in_str(i) for i in lu]
 
@@ -69,6 +75,12 @@ def sel_best_u(
 
         #   Add the values to the dataframe
         data[label[i]] = v[i]
+
+    #   Read the timestamp of the simulation
+    tm = utility.read_str(fp_lu, -25, -4)
+
+    #   Plot the desired graphs from the results
+    plotting.plot_all(template, v, n_e, label, tm)
 
     #   Check the case identifier
     if template.case == 1:

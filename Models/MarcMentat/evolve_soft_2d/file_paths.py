@@ -7,6 +7,7 @@ from evolve_soft_2d import utility
 
 #   Fixed file paths
 fp = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat'
+fp_g = fp + r'\Graphs'
 fp_r = fp + r'\Results'
 fp_t = fp + r'\Templates'
 fp_u = fp + r'\Units'
@@ -25,6 +26,7 @@ def create_fp_folder(
         The unit template parameters
     p : str
         The specific folder
+        "g" - The graph files
         "r" - The results folder
         "t" - The unit template folder
         "u" - The unit folder
@@ -39,7 +41,9 @@ def create_fp_folder(
     fp_folder = r'\grid_' + template.t_id
 
     #   Determine which folder path to generate the folder name along
-    if p == "r":
+    if p == "g":
+        fp_folder = fp_g + fp_folder
+    elif p == "r":
         fp_folder = fp_r + fp_folder
     elif p == "t":
         fp_folder = fp_t + fp_folder
@@ -70,6 +74,7 @@ def create_fp_file(
     p : str
         The specific file path
         "l" - The log file of units generated during the current run of the programme
+        "g" - The graph files
         "r" - The results files
         "t" - The unit template files
         "u" - The unit files
@@ -83,6 +88,9 @@ def create_fp_file(
     """    
     
     #   Determine which folder path to generate the file name along
+    if p == "g":
+        fp_folder = create_fp_folder(template, "g")
+        fp_file = fp_folder + "\\" + l + ".png"
     if p == "l":
         fp_file = fp_u + r'\grid_' + template.t_id + l + ".log"
     elif p == "r":

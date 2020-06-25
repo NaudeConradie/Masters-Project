@@ -332,6 +332,47 @@ def read_val(
 
 ################################################################################
 
+def read_xym(
+    template,
+    l: str,
+    t: str,
+    ) -> list:
+    """Read the X, Y, and magnitude values for a type of result
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    l : str
+        The label for the results file
+        Either a template or unit identifier
+    t : str
+        The type of result
+
+    Returns
+    -------
+    list
+        The list of result values
+    """    
+
+    #   Initialisations
+    label = []
+    label.append(t + " X_")
+    label.append(t + " Y_")
+    label.append(t + "_")
+
+    val = []
+
+    #   Loop through the list of labels
+    for i in label:
+
+        #   Add the result value to the list
+        val.append(read_val(template, i + l + "_1"))
+
+    return val
+    
+################################################################################
+
 def read_all(
     l: str,
     n_e: list,
@@ -383,10 +424,6 @@ def read_all(
         print("Warning: {} models failed to deliver results!".format(v_f))
 
     v = list(map(abs, v))
-
-    #   Plot the results
-    # plotting.histogram(v, l, "Frequency", "Energy (J)")
-    # plotting.scatterplot(template, n_e, v, l, "Energy (J)", "Number Of Elements Removed")
 
     return v
 

@@ -13,7 +13,6 @@ class ogd_mat:
     """Ogden material model
     """
 
-
     def __init__(
         self,
         name: str,
@@ -70,9 +69,10 @@ class template:
         n_steps: int,
         tab_nam: str,
         apply: list,
+        neighbours: bool,
         run_success: bool = False,
-        c_e: float = 0,
-        i_e: float = 0,
+        c_e: list = [0, 0, 0],
+        i_e: list = [0, 0, 0],
         ) -> None:
         """Unit template parameters
 
@@ -102,12 +102,14 @@ class template:
             The name of the table containing the function of the load to be applied
         apply : list
             The conditions to be applied to the unit template
+        neighbours : bool
+            The decision to add neighbouring grids
         run_success : bool, optional
             The success of the unit template's run, by default False
-        c_e : float, optional
-            The constraint energy of the unit template, by default 0
-        i_e : float, optional
-            The internal energy of the unit template, by default 0
+        c_e : list, optional
+            The constraint energy of the unit template, by default [0, 0, 0]
+        i_e : list, optional
+            The internal energy of the unit template, by default [0, 0, 0]
         """
 
         self.case = case
@@ -122,6 +124,7 @@ class template:
         self.n_steps = n_steps
         self.tab_nam = tab_nam
         self.apply = apply
+        self.neighbours = neighbours
         self.run_success = run_success
         self.c_e = c_e
         self.i_e = i_e
@@ -173,16 +176,20 @@ class template:
         """
 
         r_cas = "Case: {}\nParameters:\n".format(self.case)
-        r_ori = "Origin:            ({},{})\n".format(self.x0, self.y0)
-        r_dim = "Dimensions:        {} elements\n".format(self.n_e_l)
-        r_int = "Internal elements: {}\n".format(self.e_internal)
-        r_ste = "Analysis steps:    {}\n".format(self.n_steps)
-        r_run = "Run successful:    {}\n".format(self.run_success)
-        r_c_e = "Constraint energy: {} J\n".format(self.c_e)
-        r_i_e = "Internal energy:   {} J\n\n".format(self.i_e)
-        r_ogd = "Ogden material parameters:\n{}\n\n".format(self.ogd_mat)
-        r_tim = "Time created:      {}".format(time.ctime())
-        return r_cas + r_ori + r_dim + r_int + r_ste + r_run + r_c_e + r_i_e + r_ogd + r_tim
+        r_ori = "Origin:                ({},{})\n".format(self.x0, self.y0)
+        r_dim = "Dimensions:            {} elements\n".format(self.n_e_l)
+        r_siz = "Size:                  {} mm\n".format(self.s_l)
+        r_bou = "Boundary thickness:    {} elements\n".format(self.b)
+        r_int = "Internal element IDs:  {}\n".format(self.e_internal)
+        r_app = "Applied displacement:  {} mm\nApplied pressure:      {} MPa\n".format(self.apply[0], self.apply[1])
+        r_nei = "Neighbours added:      {}\n".format(self.neighbours)
+        r_ste = "Analysis steps:        {}\n".format(self.n_steps)
+        r_run = "Run successful:        {}\n".format(self.run_success)
+        r_c_e = "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])
+        r_i_e = "Internal energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.i_e[0], self.i_e[1], self.i_e[2])
+        r_ogd = "\nOgden material parameters:\n{}\n".format(self.ogd_mat)
+        r_tim = "\nTime created:          {}".format(time.ctime())
+        return r_cas + r_ori + r_dim + r_siz + r_bou + r_int + r_app + r_nei + r_ste + r_run + r_c_e + r_i_e + r_ogd + r_tim
 
 ################################################################################
 
@@ -196,8 +203,8 @@ class unit_p:
         rem: list,
         grid: list,
         run_success: bool = False,
-        c_e: float = 0,
-        i_e: float = 0,
+        c_e: list = [0, 0, 0],
+        i_e: list = [0, 0, 0],
         ) -> None:
         """The unit parameters
 
@@ -211,10 +218,10 @@ class unit_p:
             The representative grid with the elements removed
         run_success : bool, optional
             The success of the unit's run, by default False
-        c_e : int, optional
-            The constraint energy of the unit, by default 0
-        i_e : int, optional
-            The internal energy of the unit, by default 0
+        c_e : list, optional
+            The constraint energy of the unit template, by default [0, 0, 0]
+        i_e : list, optional
+            The internal energy of the unit template, by default [0, 0, 0]
         """
 
         self.template = template
@@ -254,9 +261,9 @@ class unit_p:
         r_rem = "Removed elements:  {}\n".format(self.rem)
         r_gri = "Representative grid:\n{}\n".format(self.grid_l)
         r_run = "Run successful:    {}\n".format(self.run_success)
-        r_c_e = "Constraint energy: {} J\n".format(self.c_e)
-        r_i_e = "Internal energy:   {} J\n\n".format(self.i_e)
-        r_tem = "Template details:\n{}".format(self.template)
+        r_c_e = "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])
+        r_i_e = "Internal energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.i_e[0], self.i_e[1], self.i_e[2])
+        r_tem = "\nTemplate details:\n{}".format(self.template)
         return r_mod + r_rem + r_gri + r_run + r_c_e + r_i_e + r_tem
 
     def format_grid(self) -> str:

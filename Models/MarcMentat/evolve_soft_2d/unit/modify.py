@@ -76,13 +76,18 @@ def create_nodes(template) -> None:
 
 ################################################################################
  
-def create_elements(template, n_init: int = 1) -> None:
+def create_elements(
+    template,
+    n_init: int = 1,
+    ) -> None:
     """Create an element grid on the node grid
 
     Parameters
     ----------
     template 
         The unit template parameters
+    n_init : int, optional
+        The initial node number, by default 1
     """
 
     #   Loop through the elements in the y-direction
@@ -105,6 +110,57 @@ def create_elements(template, n_init: int = 1) -> None:
             n2 = n2 + 1
             n3 = n3 + 1
             n4 = n4 + 1
+
+    return
+
+################################################################################
+
+def add_neighbours(template) -> None:
+    """Add solid neighbouring grids
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    """    
+
+    #   Initialisations
+    x = [-template.x_s, template.x0, template.x_s]
+    y = [-template.y_s, template.y0, template.y_s]
+
+    x_mid = template.x0
+    y_mid = template.y0
+
+    n = 1
+
+    #   Loop through all y-axis initial coordinates
+    for i in y:
+
+        #   Loop through all x-axis initial coordinates
+        for j in x:
+
+            #   Check if the starting coordinates are the original grid's
+            if i == y_mid and j == x_mid:
+
+                #   Skip this step in the loop
+                continue
+
+            #   Set the initial coordinates of the template
+            template.x0 = j
+            template.y0 = i
+
+            #   Set the initial node ID
+            n_init = n*template.n_n + 1
+                        
+            #   Construct the neighbouring grid
+            create_nodes(template)
+            create_elements(template, n_init = n_init)
+
+            #   Increment the counter
+            n += 1
+
+    #   Merge overlapping nodes
+    sweep()
 
     return
 
@@ -245,6 +301,48 @@ def add_bc_fd_node(
 
 ################################################################################
 
+def add_bc_fr_node(
+    label: str,
+    tab_nam: str,
+    a: str,
+    n: int,
+    d: float,
+    ) -> None:
+    """Add fixed displacement boundary conditions on a single node
+
+    Parameters
+    ----------
+    label : str
+        The label of the boundary condition
+    tab_nam : str
+        The name of the table defining the displacement function if applicable
+    a : str
+        The axis of the boundary condition
+        "x" or "y"
+    n : int
+        The node number of the boundary condition
+    d : float
+        The magnitude of the applied displacement
+    """
+
+    #   Apply the fixed rotation boundary condition
+    py_send("*new_apply")
+    py_send("*apply_type fixed_displacement")
+    py_send("*apply_name bc_fr_{}".format(label))
+    py_send("*apply_dof r{}".format(a))
+    py_send("*apply_dof_value r{} {}".format(a, d))
+    
+    #   Apply the displacement function if applicable
+    if tab_nam != "":
+        py_send("*apply_dof_table r{} {}".format(a, tab_nam))
+
+    #   Apply the boundary condition to the selected nodes
+    py_send("*add_apply_nodes {} #".format(n))
+
+    return
+
+################################################################################
+
 def add_bc_p_internal(unit_p) -> None:
     """Add pressure boundary conditions to all internal edges
 
@@ -373,7 +471,11 @@ def add_contact_body() -> None:
 
 ################################################################################
  
-def add_lcase(template, l_id: int, l_bc: list) -> None:
+def add_lcase(
+    template,
+    l_id: int,
+    l_bc: list,
+    ) -> None:
     """Add a loadcase
 
     Parameters
@@ -499,6 +601,16 @@ def run_model(
         analyse.internal_energy(template, l + "_" + str(j_id))
         
     return run_success
+
+################################################################################
+
+def sweep() -> None:
+    """Merge all overlapping nodes
+    """
+
+    py_send("*sweep_all")
+
+    return
 
 ################################################################################
 

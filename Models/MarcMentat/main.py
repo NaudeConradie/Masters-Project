@@ -42,14 +42,16 @@ def main():
     #   The thickness of the unit boundary
     b = 1
     #   The number of increments per second to analyse
-    n_steps = 4
+    n_steps = 5
     #   The text name of the table used for the applied displacement and load
     table_name = "ramp_input"
     #   The applied displacement and load
-    app = [y_s/2, 0.01]
+    app = [y_s/2, 0.025]
+    #   The decision to add neighbouring grids
+    neighbours = False
 
     #   Prepare the unit parameters
-    temp = classes.template(case, x0, y0, x_e, y_e, x_s, y_s, b, classes.mold_star_15, n_steps, table_name, app)
+    temp = classes.template(case, x0, y0, x_e, y_e, x_s, y_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
 
     #   Create the template
     if temp.case == 1:
@@ -57,17 +59,15 @@ def main():
     elif temp.case == 2:
         create.template_2(temp)
 
-    # #   Generate a number of units and save their results
-    # fp_lu, fp_bu = create.gen_units(temp, 1)
+    #   Generate a number of units and save their results
+    fp_lu, fp_bu = create.gen_units(temp, 100)
 
-    # #   Analyse the results
-    # analyse.sel_best_u(temp, fp_lu, fp_bu, 1)
+    #   Analyse the results
+    analyse.sel_best_u(temp, fp_lu, fp_bu, 15)
 
-    # #   Reanalyse the best units
-    # if temp.case == 1:
-    #     create.template_1_test(fp_bu)
-
-    create.neighbours(temp)
+    #   Reanalyse the best units
+    if temp.case == 1:
+        create.template_1_test(fp_bu)
 
     #   View the boundary conditions of the template
     inspect.view_bc()

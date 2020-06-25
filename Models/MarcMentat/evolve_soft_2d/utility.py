@@ -512,6 +512,34 @@ def find_int_in_str(s: str) -> int:
 
 ################################################################################
 
+def read_str(
+    s: str,
+    i1: int,
+    i2: int,
+    ) -> str:
+    """Read a string segment
+
+    Parameters
+    ----------
+    s : str
+        The entire string
+    i1 : int
+        The initial index
+    i2 : int
+        The last index
+
+    Returns
+    -------
+    str
+        The string segment
+    """    
+
+    s_last = s[i1:i2]
+
+    return s_last
+
+################################################################################
+
 def save_v(
     v,
     fp: str,

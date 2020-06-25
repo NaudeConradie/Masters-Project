@@ -48,8 +48,7 @@ def main():
     #   p_mag = 25
     app = [y_s/2, 10]
 
-    #   Prepare the unit parameters
-    temp = classes.template(case, x0, y0, x_e, y_e, x_s, y_s, b, classes.mold_star_15, n_steps, table_name, app)
+    
 
     return
 

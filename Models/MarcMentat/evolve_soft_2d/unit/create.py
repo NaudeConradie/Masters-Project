@@ -68,6 +68,7 @@ def gen_units(
         #   Set the number of units to be generated to the maximum number of unique combinations
         n = max_n
 
+    #   Open the template file
     modify.open_model(template.fp_t_mud)
 
     #   Loop through the desired number of units to be created
@@ -105,6 +106,7 @@ def gen_units(
 
             #   Check if the unit ID is not in the list of unit IDs generated already
             if u_id not in all_u_id:
+
                 exists = False
 
         #   Remove the elements from the unit
@@ -123,8 +125,8 @@ def gen_units(
         if curr_mod.run_success:
 
             #   Obtain the constraint and internal energies of the current model
-            curr_mod.c_e = obtain.read_val(template, "Constraint Energy_" + curr_mod.u_id + "_1")
-            curr_mod.i_e = obtain.read_val(template, "Internal Energy_" + curr_mod.u_id + "_1")
+            curr_mod.c_e = obtain.read_xym(template, curr_mod.u_id, "Constraint Energy")
+            curr_mod.i_e = obtain.read_xym(template, curr_mod.u_id, "Internal Energy")
 
         #   Log the current unit parameters
         print(curr_mod, file = open(curr_mod.fp_u_l, "w"))
@@ -132,12 +134,93 @@ def gen_units(
 
         #   Log the current unit ID
         print(curr_mod.u_id, file = open(fp_lu, "a"))
-        all_u_id.append(curr_mod.u_id)
+        all_u_id.append(u_id)
 
         #   Reopen the template
         modify.open_model(template.fp_t_mud)
     
     return fp_lu, fp_bu
+
+################################################################################
+
+def pre_temp_pre(template) -> None:
+    """Apply the initial template properties
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    """
+
+    #   Clear the workspace
+    py_send("*new_model yes")
+
+    #   Construct the grid
+    modify.create_nodes(template)
+    modify.create_elements(template)
+
+    #   Add the application graph
+    modify.add_ramp(template)
+
+    return
+
+################################################################################
+
+def pre_temp_mid(template):
+    """Apply template properties
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    """    
+
+    #   Check if neighbouring grids are required
+    if template.neighbours == True:
+
+        #   Add neighbouring grids
+        modify.add_neighbours(template)
+
+    #   Add template properties
+    modify.add_geom_prop()
+    modify.add_mat_ogden(template.ogd_mat)
+    modify.add_contact_body()
+
+    return
+
+################################################################################
+
+def pre_temp_pos(template):
+    """Apply the final template properties
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    """    
+
+    #   Add the job
+    modify.add_job(1)
+    modify.save_model(template.fp_t_mud)
+
+    #   Run the model
+    template.run_success = modify.run_model(template, 1, template.t_id, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
+
+    #   Check if the model run was successful
+    if template.run_success:
+
+        #   Obtain the constraint energy of the current model
+        template.c_e = obtain.read_xym(template, template.t_id, "Constraint Energy")
+        template.i_e = obtain.read_xym(template, template.t_id, "Internal Energy")
+
+    #   Save the template
+    modify.save_model(template.fp_t_mud)
+
+    #   Log the template parameters
+    print(template, file = open(template.fp_t_l, "w"))
+    utility.save_v(template, template.t_id)
+
+    return
 
 ################################################################################
 
@@ -153,44 +236,23 @@ def template_1(template) -> None:
         The unit template parameters
     """
 
-    #   Clear the workspace
-    py_send("*new_model yes")
-
-    #   Grid construction
-    modify.create_nodes(template)
-    modify.create_elements(template)
-
-    #   Add template properties
-    modify.add_ramp(template)
+    #   Apply the initial template conditions
+    pre_temp_pre(template)
+    
+    #   Add the boundary conditions
     modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
     modify.add_bc_fd_edge("yy2", template.tab_nam, "y", "y", template.y_s, template.apply[0])
     modify.add_bc_fd_edge("xx1", "",               "x", "x", template.x0,  0)
     modify.add_bc_fd_edge("xx2", "",               "x", "x", template.x_s, 0)
-    modify.add_geom_prop()
-    modify.add_mat_ogden(template.ogd_mat)
-    modify.add_contact_body()
+
+    #   Apply template conditions
+    pre_temp_mid(template)
+    
+    #   Add the loadcase
     modify.add_lcase(template, 1, ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2"])
 
-    #   Add the job
-    modify.add_job(1)
-    modify.save_model(template.fp_t_mud)
-
-    #   Run the model
-    template.run_success = modify.run_model(template, 1, template.t_id, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
-
-    #   Check if the model run was successful
-    if template.run_success:
-
-        #   Obtain the constraint energy of the current model
-        template.c_e = obtain.read_val(template, "Constraint Energy_" + template.t_id + "_1")
-        template.i_e = obtain.read_val(template, "Internal Energy_" + template.t_id + "_1")
-
-    #   Save the template
-    modify.save_model(template.fp_t_mud)
-
-    #   Log the template parameters
-    print(template, file = open(template.fp_t_l, "w"))
-    utility.save_v(template, template.t_id)
+    #   Apply the final template conditions
+    pre_temp_pos(template)
 
     return
 
@@ -260,110 +322,20 @@ def template_2(template) -> None:
         The unit template parameters
     """
 
-    #   Clear the workspace
-    py_send("*new_model yes")
+    #   Apply the initial template conditions
+    pre_temp_pre(template)
 
-    #   Grid construction
-    modify.create_nodes(template)
-    modify.create_elements(template)
-
-    #   Add template properties
-    modify.add_ramp(template)
     modify.add_bc_fd_edge("xy1", "",               "x", "y", template.y0,  0)
     modify.add_bc_fd_edge("xy2", template.tab_nam, "x", "y", template.y_s, template.apply[0])
     modify.add_bc_fd_edge("yx1", "",               "y", "x", template.x0,  0)
     modify.add_bc_fd_edge("yx2", "",               "y", "x", template.x_s, 0)
-    modify.add_geom_prop()
-    modify.add_mat_ogden(template.ogd_mat)
-    modify.add_contact_body()
+
+    #   Apply template conditions
+    pre_temp_mid(template)
+
     modify.add_lcase(template, 1, ["bc_fd_xy1", "bc_fd_xy2", "bc_fd_yx1", "bc_fd_yx2"])
 
-     #   Add the job
-    modify.add_job(1)
-    modify.save_model(template.fp_t_mud)
-
-    #   Run the model
-    template.run_success = modify.run_model(template, 1, template.t_id, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
-
-    #   Check if the model run was successful
-    if template.run_success:
-
-        #   Obtain the constraint energy of the current model
-        template.c_e = obtain.read_val(template, "Constraint Energy_" + template.t_id + "_1")
-        template.i_e = obtain.read_val(template, "Internal Energy_" + template.t_id + "_1")
-
-    #   Save the template
-    modify.save_model(template.fp_t_mud)
-
-    print(template, file = open(template.fp_t_l, "w"))
-    utility.save_v(template, template.t_id)
-
-    return
-
-################################################################################
-
-def neighbours(template) -> None:
-    """Create a template from which elements may be removed
-
-    Case:   1
-    Pure strain in the y-direction
-
-    Parameters
-    ----------
-    template : template
-        The unit template parameters
-    """
-
-    modify.open_model(template.fp_t_mud)
-
-    x = [-template.x_s, template.x0, template.x_s]
-    y = [-template.y_s, template.y0, template.y_s]
-
-    x_mid = template.x0
-    y_mid = template.y0
-
-    n = 1
-
-    for i in y:
-
-        for j in x:
-
-            if i == y_mid and j == x_mid:
-
-                # n += 1
-
-                continue
-
-            template.x0 = j
-            template.y0 = i
-
-            n_init = n*template.n_n + 1
-
-            n += 1
-
-            #   Grid construction
-            modify.create_nodes(template)
-            modify.create_elements(template, n_init = n_init)
-
-    # #   Add the job
-    # modify.add_job(1)
-    # modify.save_model(template.fp_t_mud)
-
-    # #   Run the model
-    # template.run_success = modify.run_model(template, 1, template.t_id, template.fp_t_mud, template.fp_t_log, template.fp_t_t16)
-
-    # #   Check if the model run was successful
-    # if template.run_success:
-
-    #     #   Obtain the constraint energy of the current model
-    #     template.c_e = obtain.read_val(template, "Constraint Energy_" + template.t_id + "_1")
-    #     template.i_e = obtain.read_val(template, "Internal Energy_" + template.t_id + "_1")
-
-    #   Save the template
-    modify.save_model(template.fp_t_mud)
-
-    # #   Log the template parameters
-    # print(template, file = open(template.fp_t_l, "w"))
-    # utility.save_v(template, template.t_id)
+    #   Apply the final template conditions
+    pre_temp_pos(template)
 
     return

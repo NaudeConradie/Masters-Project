@@ -4,9 +4,13 @@
 import math
 import matplotlib.pyplot as plot
 
+from evolve_soft_2d import file_paths
+
 ################################################################################
 
 def histogram(
+    template,
+    tm: str,
     data: list,
     t: str,
     y: str,
@@ -18,6 +22,10 @@ def histogram(
 
     Parameters
     ----------
+    template
+        The unit template parameters
+    tm : str
+        The timestamp of the current simulation
     data : list
         The data to be plotted
     t : str
@@ -26,8 +34,6 @@ def histogram(
         The label of the y-axis
     x : str
         The label of the x-axis
-    alpha : int, optional
-        The alpha value of the graph, by default 0.5
     bins : optional
         The bin settings, by default "auto"
     color : str, optional
@@ -46,8 +52,11 @@ def histogram(
     plot.gca().set(title = t, ylabel = y, xlabel = x)
     plot.xlim(0, bin_max)
 
-    #   Show the plot
-    plot.show()
+    # #   Show the plot
+    # plot.show()
+
+    #   Save the figure
+    save_plot(template, t, tm)
 
     return
 
@@ -55,6 +64,7 @@ def histogram(
 
 def scatterplot(
     template,
+    tm: str,
     x_data: list,
     y_data: list,
     t: str,
@@ -67,8 +77,10 @@ def scatterplot(
 
     Parameters
     ----------
-    template : template
+    template
         The unit template parameters
+    tm : str
+        The timestamp of the current simulation
     x_data : list
         The data to be plotted on the x-axis
     y_data : list
@@ -97,7 +109,79 @@ def scatterplot(
     plot.gca().set(title = t, ylabel = y, xlabel = x)
     plot.xlim(0, x_max)
 
-    #   Show the plot
-    plot.show()
+    # #   Show the plot
+    # plot.show()
+
+    #   Save the figure
+    save_plot(template, t, tm)
+
+    return
+
+################################################################################
+
+def plot_all(
+    template,
+    v: list,
+    n_e: list,
+    l: list,
+    tm: str,
+    ) -> None:
+    """Plot all desired figures
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    v : list
+        The data to be plotted
+    n_e : list
+        The list of the number of elements removed from every element
+    l : list
+        The list of labels of the data
+    tm : str
+        The timestamp of the current simulation
+    """
+
+    #   Loop through the types of data
+    for i in range(0, len(v)):
+
+        #   Plot the histogram
+        histogram(template, tm, v[i], l[i], "Frequency", "Energy (J)")
+
+        #   Plot the scatterplot
+        scatterplot(template, tm, n_e, v[i], l[i], "Energy (J)", "Number of Elements Removed")
+
+    #   Plot a scatterplot
+    scatterplot(template, tm, v[0], v[1], "Constraint Energy (J)", "Y-direction", "X-direction")
+
+    return
+
+################################################################################
+
+def save_plot(
+    template,
+    t: str,
+    tm: str,
+    ) -> None:
+    """Save a figure
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    t : str
+        The title of the graph
+    tm : str
+        The timestamp of the current simulation
+    """    
+
+    #   Create the file path of the figure
+    fp_p = file_paths.create_fp_file(template, t + tm, "g")
+
+    #   Save the figure
+    plot.savefig(fp_p, dpi = 100)
+
+    #   Close the figure
+    plot.close()
 
     return
