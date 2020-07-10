@@ -4,6 +4,7 @@
 import importlib
 
 from evolve_soft_2d import classes, file_paths, log, plotting, utility
+from evolve_soft_2d.evolve import lsystems
 from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.unit import create, inspect, modify, rep_grid
 
@@ -20,6 +21,7 @@ def main():
     importlib.reload(file_paths)
     importlib.reload(plotting)
     importlib.reload(utility)
+    importlib.reload(lsystems)
     importlib.reload(analyse)
     importlib.reload(obtain)
     importlib.reload(create)

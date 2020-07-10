@@ -146,6 +146,50 @@ def max_b(
 
 ################################################################################
 
+def find_e_coord(
+    grid: list,
+    e_internal: list,
+    ) -> list:
+    """Find the element coordinates to be removed from a given grid
+
+    Parameters
+    ----------
+    grid : list
+        The grid
+    e_internal : list
+        The list of all internal elements
+
+    Returns
+    -------
+    list
+        The list of element coordinates
+    """    
+
+    #   Initialisations
+    coord = []
+
+    #   Create a copy of the grid
+    grid_e = grid[:]
+
+    #   Reverse the order of the grid
+    grid_e.reverse()
+
+    #   Convert the grid into a 1D list
+    grid_e = [i for j in grid_e for i in j]
+
+    #   Loop through the number of internal elements
+    for i in range(0, len(e_internal)):
+
+        #   Check if the element is a zero
+        if grid_e[i] == 0:
+
+            #   Add the element coordinate to the list
+            coord.append(e_internal[i])
+
+    return coord
+
+################################################################################
+
 def view_bc() -> None:
     """Display all boundary conditions
     """

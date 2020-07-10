@@ -204,7 +204,17 @@ def sel_random(
 
 ################################################################################
 
-#   Generate a random hash code from a given string
+def gen_random(l: list, n: int) -> str:
+
+    s = ""
+
+    for _ in range(0, n):
+
+        s += numpy.random.choice(l)
+
+    return s
+
+################################################################################
 
 #   The string to be hashed
 def gen_hash(s: str) -> str:
@@ -299,6 +309,14 @@ def add_sort_list(
 
     #   Sort the added lists
     l.sort()
+
+    return l
+
+################################################################################
+
+def normalise_list(l: list) -> list:
+
+    l = [i - min(l) for i in l]
 
     return l
 

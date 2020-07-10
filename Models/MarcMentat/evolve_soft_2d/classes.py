@@ -44,10 +44,10 @@ class ogd_mat:
             Formatted representation of the Ogden material class for the log
         """
 
-        r_nam = "Name:  {}\n".format(self.name)
-        r_mu =  "Mu:    {}\n".format(self.mu)
-        r_alp = "Alpha: {}".format(self.alpha)
-        return r_nam + r_mu + r_alp
+        r = "Name:  {}\n".format(self.name)
+        r += "Mu:    {}\n".format(self.mu)
+        r += "Alpha: {}".format(self.alpha)
+        return r
 
 ################################################################################
 
@@ -155,7 +155,7 @@ class template:
         self.t_id = str(self.case) + "_" + self.n_e_l + "_" + self.s_l + "_" + str(self.b)
 
         #   The representative grid of ones
-        self.grid = rep_grid.create_grid(self.x_e, self.y_e)
+        self.grid = rep_grid.create_grid(self.x_e, self.y_e, 1)
 
         #   The file path of the template file
         self.fp_t_mud = create_fp_file(self, ".mud", "t")
@@ -167,7 +167,7 @@ class template:
         self.fp_t_l = create_fp_file(self, ".log", "t")
 
     def __repr__(self) -> str:
-        """Format a representation of the template
+        """Format a representation of the template for the log
 
         Returns
         -------
@@ -175,21 +175,21 @@ class template:
             Formatted representation of the template class for the log
         """
 
-        r_cas = "Case: {}\nParameters:\n".format(self.case)
-        r_ori = "Origin:                ({},{})\n".format(self.x0, self.y0)
-        r_dim = "Dimensions:            {} elements\n".format(self.n_e_l)
-        r_siz = "Size:                  {} mm\n".format(self.s_l)
-        r_bou = "Boundary thickness:    {} elements\n".format(self.b)
-        r_int = "Internal element IDs:  {}\n".format(self.e_internal)
-        r_app = "Applied displacement:  {} mm\nApplied pressure:      {} MPa\n".format(self.apply[0], self.apply[1])
-        r_nei = "Neighbours added:      {}\n".format(self.neighbours)
-        r_ste = "Analysis steps:        {}\n".format(self.n_steps)
-        r_run = "Run successful:        {}\n".format(self.run_success)
-        r_c_e = "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])
-        r_i_e = "Internal energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.i_e[0], self.i_e[1], self.i_e[2])
-        r_ogd = "\nOgden material parameters:\n{}\n".format(self.ogd_mat)
-        r_tim = "\nTime created:          {}".format(time.ctime())
-        return r_cas + r_ori + r_dim + r_siz + r_bou + r_int + r_app + r_nei + r_ste + r_run + r_c_e + r_i_e + r_ogd + r_tim
+        r = "Case: {}\nParameters:\n".format(self.case)
+        r += "Origin:               ({},{})\n".format(self.x0, self.y0)
+        r += "Dimensions:           {} elements\n".format(self.n_e_l)
+        r += "Size:                 {} mm\n".format(self.s_l)
+        r += "Boundary thickness:   {} elements\n".format(self.b)
+        r += "Internal element IDs: {}\n".format(self.e_internal)
+        r += "Applied displacement: {} mm\nApplied pressure:      {} MPa\n".format(self.apply[0], self.apply[1])
+        r += "Neighbours added:     {}\n".format(self.neighbours)
+        r += "Analysis steps:       {}\n".format(self.n_steps)
+        r += "Run successful:       {}\n".format(self.run_success)
+        r += "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])
+        r += "Internal energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.i_e[0], self.i_e[1], self.i_e[2])
+        r += "\nOgden material parameters:\n{}\n".format(self.ogd_mat)
+        r += "\nTime created: {}".format(time.ctime())
+        return r
 
 ################################################################################
 
@@ -257,14 +257,14 @@ class unit_p:
         str
             Formatted representation of the unit class for the log
         """        
-        r_mod = "Unit:              {}\n".format(self.u_id)
-        r_rem = "Removed elements:  {}\n".format(self.rem)
-        r_gri = "Representative grid:\n{}\n".format(self.grid_l)
-        r_run = "Run successful:    {}\n".format(self.run_success)
-        r_c_e = "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])
-        r_i_e = "Internal energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.i_e[0], self.i_e[1], self.i_e[2])
-        r_tem = "\nTemplate details:\n{}".format(self.template)
-        return r_mod + r_rem + r_gri + r_run + r_c_e + r_i_e + r_tem
+        r = "Unit:             {}\n".format(self.u_id)
+        r += "Removed elements: {}\n".format(self.rem)
+        r += "Representative grid:\n{}\n".format(self.grid_l)
+        r += "Run successful:   {}\n".format(self.run_success)
+        r += "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])
+        r += "Internal energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.i_e[0], self.i_e[1], self.i_e[2])
+        r += "\nTemplate details:\n{}".format(self.template)
+        return r
 
     def format_grid(self) -> str:
         """Function to format the representative grid for the log
@@ -275,7 +275,7 @@ class unit_p:
             The representative grid of the unit as a string
         """
         
-        grid_l = rep_grid.create_grid(self.template.x_e, self.template.y_e)
+        grid_l = rep_grid.create_grid(self.template.x_e, self.template.y_e, 1)
 
         for i in range(0, len(self.grid)):
             grid_l[i] = " ".join(map(str, self.grid[i]))
