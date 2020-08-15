@@ -1,0 +1,68 @@
+Unit:             37_['F', 'FFF+)']
+Removed elements: [26, 29, 31, 32, 35, 36, 37, 40, 43, 44, 48, 50, 52, 55, 56, 59, 63, 64, 65, 66, 68, 70, 72, 74, 75, 77, 78, 79, 82, 85, 86, 87, 90, 91, 93, 96, 100]
+Grammar:
+F -> FFF+)
+Axiom:                +[F]++++[F]
+Number Of Iterations: 4
+Resulting Word:       +[FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)+)+)]++++[FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)FFF+)FFF+)FFF+)+)+)+)]
+
+L-System Vocabulary:
+F: Create an element at the current position and increment the position
+f: Increment the position
++: Rotate the current direction by 45 degrees counterclockwise
+-: Rotate the current direction by 45 degrees clockwise
+[: Push the current position
+]: Pop to the previously pushed position
+(: Push and reflect the current position
+): Pop and unreflect to the previously pushed and reflected position
+
+Representative grid:
+1 1 1 1 1 1 1 1 1 1 1
+0 1 1 1 1 1 1 1 1 1 1
+1 0 0 1 0 1 1 0 1 1 1
+0 0 1 1 0 1 1 0 0 0 1
+1 0 1 0 1 0 1 0 0 1 0
+0 1 1 0 1 1 1 0 0 0 0
+1 1 1 0 1 0 1 0 1 1 0
+1 0 0 0 1 1 0 1 1 0 0
+1 1 1 0 1 1 0 1 0 0 1
+1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1
+Run successful:   True
+Constraint energy:
+X        : 9.078993865787814e-09 J
+Y        : 0.020912876161491515 J
+Magnitude: 0.03332511445778661 J
+Internal energy:
+X        : -17.774743669906627 J
+Y        : 17.66611994447777 J
+Magnitude: 3.6910127061059748 J
+
+Template details:
+Case: 1
+Parameters:
+Origin:               (0,0)
+Dimensions:           11x11 elements
+Size:                 22x22 mm
+Boundary thickness:   2 elements
+Internal element IDs: [25, 26, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 41, 42, 47, 48, 49, 50, 51, 52, 53, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71, 72, 73, 74, 75, 80, 81, 82, 83, 84, 85, 86, 91, 92, 93, 94, 95, 96, 97]
+Applied displacement: 11.0 mm
+Applied pressure:     0.025 MPa
+Neighbours added:     False
+Analysis steps:       5
+Run successful:       True
+Constraint energy:
+X        : -3.0389817179159503e-09 J
+Y        : 52.8855188902419 J
+Magnitude: 128.8335898718154 J
+Internal energy:
+X        : -2.9519539920114246e-09 J
+Y        : 58.38697385787964 J
+Magnitude: 5992.6552734375 J
+
+Ogden material parameters:
+Name:  Mold Star 15
+Mu:    [-6.50266e-06, 0.216863, 0.00137158]
+Alpha: [-21.322, 1.1797, 4.88396]
+
+Time created: Thu Jul 16 12:04:46 2020

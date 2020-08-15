@@ -3,7 +3,7 @@
 #   Imports
 from evolve_soft_2d import utility
 
-from py_mentat import py_send
+from py_mentat import py_send, py_get_float
 
 ################################################################################
 
@@ -61,7 +61,7 @@ def find_e_internal(
             e_external.append((i + b)*x_e - j + 1)
 
     #   Determine the list of internal elements
-    e_internal = list((set(e) | set(e_external)) - (set(e) & set(e_external)))
+    e_internal = utility.unique_list(e, e_external)
 
     #   Sort the list of internal elements
     e_internal.sort()
@@ -108,6 +108,32 @@ def find_n_external(
 
 ################################################################################
 
+def find_n_coord(n: list) -> [list, list]:
+    """Find the coordinates of a list of nodes
+
+    Parameters
+    ----------
+    n : list
+        The list of nodes
+
+    Returns
+    -------
+    [list, list]
+        The x and y coordinates
+    """
+
+    x = []
+    y = []
+
+    for i in n:
+
+        x.append(py_get_float("node_x({})".format(i)))
+        y.append(py_get_float("node_y({})".format(i)))
+        
+    return x, y
+
+################################################################################
+
 def max_b(
     x_e: int,
     y_e: int,
@@ -143,50 +169,6 @@ def max_b(
         b_max = min_s/2 - 1
 
     return b_max
-
-################################################################################
-
-def find_e_coord(
-    grid: list,
-    e_internal: list,
-    ) -> list:
-    """Find the element coordinates to be removed from a given grid
-
-    Parameters
-    ----------
-    grid : list
-        The grid
-    e_internal : list
-        The list of all internal elements
-
-    Returns
-    -------
-    list
-        The list of element coordinates
-    """    
-
-    #   Initialisations
-    coord = []
-
-    #   Create a copy of the grid
-    grid_e = grid[:]
-
-    #   Reverse the order of the grid
-    grid_e.reverse()
-
-    #   Convert the grid into a 1D list
-    grid_e = [i for j in grid_e for i in j]
-
-    #   Loop through the number of internal elements
-    for i in range(0, len(e_internal)):
-
-        #   Check if the element is a zero
-        if grid_e[i] == 0:
-
-            #   Add the element coordinate to the list
-            coord.append(e_internal[i])
-
-    return coord
 
 ################################################################################
 

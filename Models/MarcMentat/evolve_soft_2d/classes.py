@@ -115,8 +115,17 @@ class template:
         self.case = case
         self.x0 = x0
         self.y0 = y0
-        self.x_e = x_e
-        self.y_e = y_e
+
+        if x_e % 2 == 0:
+            self.x_e = x_e + 1
+        else:
+            self.x_e = x_e
+
+        if y_e % 2 == 0:
+            self.y_e = y_e + 1
+        else:
+            self.y_e = y_e    
+
         self.x_s = x_s
         self.y_s = y_s
         self.b = b
@@ -181,7 +190,7 @@ class template:
         r += "Size:                 {} mm\n".format(self.s_l)
         r += "Boundary thickness:   {} elements\n".format(self.b)
         r += "Internal element IDs: {}\n".format(self.e_internal)
-        r += "Applied displacement: {} mm\nApplied pressure:      {} MPa\n".format(self.apply[0], self.apply[1])
+        r += "Applied displacement: {} mm\nApplied pressure:     {} MPa\n".format(self.apply[0], self.apply[1])
         r += "Neighbours added:     {}\n".format(self.neighbours)
         r += "Analysis steps:       {}\n".format(self.n_steps)
         r += "Run successful:       {}\n".format(self.run_success)
@@ -202,6 +211,8 @@ class unit_p:
         template,
         rem: list,
         grid: list,
+        ls = None,
+        cp = None,
         run_success: bool = False,
         c_e: list = [0, 0, 0],
         i_e: list = [0, 0, 0],
@@ -227,6 +238,8 @@ class unit_p:
         self.template = template
         self.rem = rem
         self.grid = grid
+        self.ls = ls
+        self.cp = cp
         self.run_success = run_success
         self.c_e = c_e
         self.i_e = i_e
@@ -234,8 +247,18 @@ class unit_p:
         #   The list of elements removed from the unit as a string
         self.rem_l = utility.list_to_str(rem, "_")
 
-        #   The unique unit hash ID
-        self.u_id = str(len(self.rem)) + "_" + utility.gen_hash(self.rem_l)
+        #   Generate the unique unit ID according to the method of unit generation
+        if self.ls != None:
+
+            self.u_id = str(len(self.rem)) + "_" + utility.list_to_str(self.ls.gramm, "_")
+
+        elif self.cp != None:
+
+            self.u_id = str(len(self.rem)) + "_" + str(self.cp.mod_id) + "_" + str(self.cp.cppn.n_n) + "_" + str(self.cp.cppn.hl_size) + "_" + str(self.cp.cppn.scale) + "_" + str(self.cp.cppn.af_n) + "_" + str(self.cp.cppn.seed) + "_" + str(self.cp.cppn.threshold)
+
+        else:
+            
+            self.u_id = str(len(self.rem)) + "_" + utility.gen_hash(self.rem_l)
 
         #   The representative grid with the elements removed as a string label
         self.grid_l = self.format_grid()
@@ -259,6 +282,15 @@ class unit_p:
         """        
         r = "Unit:             {}\n".format(self.u_id)
         r += "Removed elements: {}\n".format(self.rem)
+
+        if self.ls != None:
+
+            r += "{}\n".format(self.ls)
+
+        elif self.cp != None:
+
+            r += "{}\n".format(self.cp)
+
         r += "Representative grid:\n{}\n".format(self.grid_l)
         r += "Run successful:   {}\n".format(self.run_success)
         r += "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])

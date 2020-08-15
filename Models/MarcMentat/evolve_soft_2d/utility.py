@@ -2,6 +2,7 @@
 
 #   Imports
 import hashlib
+import math
 import numpy
 import os.path
 import pickle
@@ -145,6 +146,131 @@ def make_folder(l: str) -> None:
 
 ################################################################################
 
+def sigmoid(x: numpy.array) -> numpy.array:
+    """Sigmoid function
+
+    Parameters
+    ----------
+    x : numpy.array
+        The input data
+
+    Returns
+    -------
+    numpy.array
+        The output data
+    """
+
+    s = 1/(numpy.exp(-1*x) + 1)
+
+    return s
+
+################################################################################
+
+def smooth_relu(x: numpy.array) -> numpy.array:
+    """Smooth ReLu function
+
+    Parameters
+    ----------
+    x : numpy.array
+        The input data
+
+    Returns
+    -------
+    numpy.array
+        The output data
+    """
+
+    s_r = numpy.log(numpy.exp(x) + 1)
+
+    return s_r
+
+################################################################################
+
+def nCr(
+    n: int,
+    r: int = 0,
+    l: list = [],
+    ) -> int:
+    """Calculate the n Choose r value for a single, multiple or all r
+
+    Parameters
+    ----------
+    n : int
+        The number to choose from
+    r : int, optional
+        The numbers to choose, by default 0
+    l : list, optional
+        The list of numbers to choose, by default []
+
+    Returns
+    -------
+    int
+        The total possible choices
+    """
+
+    #   Initialisations
+    c = 0
+
+    #   Check if the list is not empty
+    if l != []:
+
+        #   Loop through the list
+        for i in l:
+
+            #   Cumulatively calculate the n Choose r value for each list item
+            c += comb(n, i, exact = True)
+
+    #   Check if r is not zero
+    elif r != 0:
+
+        #   Calculate the n Choose r value
+        c = comb(n, r, exact = True)
+
+    else:
+
+        #   Loop through all possible r
+        for i in range(0, n):
+
+            #   Cumulatively calculate the n Choose r value
+            c += comb(n, i, exact = True)
+
+    return c
+
+################################################################################
+
+def square_to_circle(
+    x: list,
+    y: list,
+    ) -> [list, list]:
+
+    x_c = []
+    y_c = []
+
+    for i in range(0, len(x)):
+
+        x_i = 1 - pow(y[i], 2)/2
+        y_i = 1 - pow(x[i], 2)/2
+
+        if x_i < 0:
+
+            x_c.append(x[i]*-math.sqrt(abs(x_i)))
+
+        else:
+
+            x_c.append(x[i]*math.sqrt(x_i))
+
+        if y_i < 0:
+
+            y_c.append(y[i]*-math.sqrt(abs(y_i)))
+
+        else:
+
+            y_c.append(y[i]*math.sqrt(y_i))
+
+    return x_c, y_c
+
+################################################################################
+
 def sel_random(
     l: list,
     f: int = 0,
@@ -204,19 +330,38 @@ def sel_random(
 
 ################################################################################
 
-def gen_random(l: list, n: int) -> str:
+def gen_random(
+    l: list,
+    n: int,
+    ) -> str:
+    """Generate a random string from a list of characters
 
+    Parameters
+    ----------
+    l : list
+        The list of characters
+    n : int
+        The length of the string
+
+    Returns
+    -------
+    str
+        The randomly generated string
+    """
+
+    #   Initialisations
     s = ""
 
+    #   Loop for the desired length of the string
     for _ in range(0, n):
 
+        #   Append the next random character
         s += numpy.random.choice(l)
 
     return s
 
 ################################################################################
 
-#   The string to be hashed
 def gen_hash(s: str) -> str:
     """Generate a random hash code from a given string
 
@@ -285,6 +430,31 @@ def search_text_file(
 
 ################################################################################
 
+def unique_list(
+    l1: list,
+    l2: list,
+    ) -> list:
+    """Find unique members among two lists
+
+    Parameters
+    ----------
+    l1 : list
+        The first list
+    l2 : list
+        The second list
+
+    Returns
+    -------
+    list
+        The unique list members
+    """
+
+    l = list((set(l1) | set(l2)) - (set(l1) & set(l2)))
+
+    return l
+
+################################################################################
+
 def add_sort_list(
     l1: list,
     l2: list,
@@ -314,9 +484,27 @@ def add_sort_list(
 
 ################################################################################
 
-def normalise_list(l: list) -> list:
+def normalise_list(
+    l: list,
+    d: int,
+    f: int = 1,
+    ) -> list:
+    """Normalise a list according to a given displacement
 
-    l = [i - min(l) for i in l]
+    Parameters
+    ----------
+    l : list
+        The list of values
+    n : int, optional
+        The displacement, by default 0
+
+    Returns
+    -------
+    list
+        The normalised list
+    """    
+
+    l = [i/f + d for i in l]
 
     return l
 
@@ -398,55 +586,35 @@ def clean_int(
 
 ################################################################################
 
-def nCr(
-    n: int,
-    r: int = 0,
-    l: list = [],
-    ) -> int:
-    """Calculate the n Choose r value for a single, multiple or all r
+def clean_str(
+    s: str,
+    l: list,
+    r: list,
+    ) -> str:
+    """Replace substrings within a given string
 
     Parameters
     ----------
-    n : int
-        The number to choose from
-    r : int, optional
-        The numbers to choose, by default 0
-    l : list, optional
-        The list of numbers to choose, by default []
+    s : str
+        The string
+    l : list
+        The list of substrings
+    r : list
+        The list of replacement substrings
 
     Returns
     -------
-    int
-        The total possible choices
-    """
+    str
+        The string with the substrings removed
+    """    
 
-    #   Initialisations
-    c = 0
+    #   Loop through every substring in the list
+    for i in range(0, len(l)):
 
-    #   Check if the list is not empty
-    if l != []:
+        #   Remove all occurrences of the substring
+        s = s.replace(l[i], r[i])
 
-        #   Loop through the list
-        for i in l:
-
-            #   Cumulatively calculate the n Choose r value for each list item
-            c += comb(n, i, exact = True)
-
-    #   Check if r is not zero
-    elif r != 0:
-
-        #   Calculate the n Choose r value
-        c = comb(n, r, exact = True)
-
-    else:
-
-        #   Loop through all possible r
-        for i in range(0, n):
-
-            #   Cumulatively calculate the n Choose r value
-            c += comb(n, i, exact = True)
-
-    return c
+    return s
 
 ################################################################################
 

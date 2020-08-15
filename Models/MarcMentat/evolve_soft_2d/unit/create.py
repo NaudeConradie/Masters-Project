@@ -6,6 +6,7 @@ import time
 from py_mentat import py_send
 
 from evolve_soft_2d import classes, utility
+from evolve_soft_2d.evolve import cppns, lsystems
 from evolve_soft_2d.unit import inspect, modify, rep_grid
 from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.file_paths import create_fp_file
@@ -15,9 +16,11 @@ from evolve_soft_2d.file_paths import create_fp_file
 def gen_units(
     template,
     n: int,
+    l: int = 0,
+    c: list = [],
     f: int = 0,
     r: list = [],
-    ) -> str:
+    ) -> [str, str]:
     """Generate multiple units
 
     Parameters
@@ -26,6 +29,10 @@ def gen_units(
         The unit template parameters
     n : int
         The number of units to generate
+    l : int, optional
+        The length of L-system rules, by default 0
+    c : list, optional
+        The list of CPPN parameters, by default []
     f : int, optional
         The fixed amount of elements to remove, by default 0
     r : list, optional
@@ -33,24 +40,41 @@ def gen_units(
 
     Returns
     -------
-    str
-        The file path of the log file of units generated
+    [str, str]
+        The file paths of the log files of all units generated and the best units generated
     """
 
     #   Initialisations
     all_u_id = []
+    seed = 0
 
-    #   Check if a range of elements has been specified
-    if r != []:
+    #   Check if the L-System rule length is 0
+    if l == 0:
 
-        #   Ensure no out-of-bounds or repeated values are in the range
-        r = utility.clean_list(r, len(template.e_internal))
+        #   Check if the list of CPPN parameters is empty
+        if c == []:
 
-    #   Check if a fixed number of elements has been specified
-    elif f != 0:
+            #   Check if a range of elements has been specified
+            if r != []:
 
-        #   Ensure the number is not out-of-bends
-        f = utility.clean_int(f, len(template.e_internal))
+                #   Ensure no out-of-bounds or repeated values are in the range
+                r = utility.clean_list(r, len(template.e_internal))
+
+            #   Check if a fixed number of elements has been specified
+            elif f != 0:
+
+                #   Ensure the number is not out-of-bounds
+                f = utility.clean_int(f, len(template.e_internal))
+
+        else:
+
+            #   Ensure the rounding threshold is within bounds
+            c[5] = utility.clean_int(c[5], 0.9)
+
+    else:
+
+        #   Calculate the number of iterations for the L-Systenm
+        l_n = round(template.x_n/2 - template.b)
 
     #   The time the unit generation starts as a string label
     t = time.strftime("_%Y-%m-%d--%H-%M-%S", time.gmtime())
@@ -76,12 +100,40 @@ def gen_units(
 
         #   Initialisations
         exists = True
-
+        ls = None
+        cp = None
+        
         #   Loop until a new unit ID is generated
         while exists:
 
-            #   Obtain the list of element IDs to be removed
-            rem = utility.sel_random(template.e_internal, f = f, r = r)
+            #   Increment the seed for the CPPN
+            seed += 1
+
+            #   Check if the length of the L-system rules is not 0
+            if l != 0:
+
+                #   Generate a random L-System
+                ls = lsystems.gen_lsystem(lsystems.e_vocabulary, l, l_n)
+
+                #   Obtain the list of elements to be removed
+                rem = lsystems.interpret_word(template, ls.word)
+
+            #   Check if the list of CPPN parameters is not empty
+            elif c != []:
+
+                #   Generate a random CPPN
+                cp_n = cppns.cppn(c[0], c[1], c[2], template.x_e - 2*template.b, template.y_e - 2*template.b, c[3], c[4], seed, c[5])
+
+                #   Save the CPPN model
+                cp = cppns.cppn_i(cp_n, 0)
+
+                #   Obtain the list of elements to be removed
+                rem = cppns.cppn_rem(template, cp.grid)
+
+            else:   
+
+                #   Obtain the list of element IDs to be removed
+                rem = utility.sel_random(template.e_internal, f = f, r = r)
 
             #   Remove the elements from the representative grid
             grid_rem = rep_grid.rem_el_grid(template, rem)
@@ -113,7 +165,7 @@ def gen_units(
         modify.rem_el(rem)
 
         #   Save the current unit parameters
-        curr_mod = classes.unit_p(template, rem, grid_rem)
+        curr_mod = classes.unit_p(template, rem, grid_rem, ls = ls, cp = cp)
 
         #   Save the altered unit
         modify.save_model(curr_mod.fp_u_mud)
@@ -325,6 +377,7 @@ def template_2(template) -> None:
     #   Apply the initial template conditions
     pre_temp_pre(template)
 
+    #   Add the boundary conditions
     modify.add_bc_fd_edge("xy1", "",               "x", "y", template.y0,  0)
     modify.add_bc_fd_edge("xy2", template.tab_nam, "x", "y", template.y_s, template.apply[0])
     modify.add_bc_fd_edge("yx1", "",               "y", "x", template.x0,  0)
@@ -334,6 +387,138 @@ def template_2(template) -> None:
     pre_temp_mid(template)
 
     modify.add_lcase(template, 1, ["bc_fd_xy1", "bc_fd_xy2", "bc_fd_yx1", "bc_fd_yx2"])
+
+    #   Apply the final template conditions
+    pre_temp_pos(template)
+
+    return
+
+################################################################################
+
+def template_2_test(fp_bu: str) -> None:
+    """Test the best units for case 2
+
+    Parameters
+    ----------
+    fp_bu : str
+        The file path of the list of best units
+    """    
+
+    #   Store the list of best units
+    bu = obtain.read_lu(fp_bu)
+
+    #   Loop through the list of best units
+    for i in bu:
+
+        #   Open the current unit parameter class object
+        curr_mod = utility.open_v(i)
+
+        #   Open the current unit model
+        modify.open_model(curr_mod.fp_u_mud)
+
+        #   Add the internal pressure boundary conditions
+        modify.add_bc_p_internal(curr_mod)
+
+        #   Add the loadcase for the internal pressure
+        modify.add_lcase(curr_mod.template, 2, ["bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
+
+        #   Add the job for the second loadcase
+        modify.add_job(2)
+
+        #   Save the unit
+        modify.save_model(curr_mod.fp_u_mud)
+
+        #   Run the unit
+        curr_mod.run_success = modify.run_model(curr_mod.template, 2, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[1], curr_mod.fp_u_t16[1])
+
+        #   Add the loadcase for all bouondary conditions
+        modify.add_lcase(curr_mod.template, 2, ["bc_fd_xy1", "bc_fd_xy2", "bc_fd_yx1", "bc_fd_yx2", "bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
+
+        #   Add the job for the third loadcase
+        modify.add_job(3)
+
+        #   Save the unit
+        modify.save_model(curr_mod.fp_u_mud)
+
+        #   Run the unit
+        curr_mod.run_success = modify.run_model(curr_mod.template, 3, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[2], curr_mod.fp_u_t16[2])
+
+    return
+
+################################################################################
+
+def template_3(template) -> None:
+    """Create a template from which elements may be removed
+
+    Case:   3
+    Elongation of one side
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
+
+    #   Apply the initial template conditions
+    pre_temp_pre(template)
+
+    #   Add the boundary conditions
+    modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
+    modify.add_bc_fd_edge("yy2", "",               "y", "y", template.y_s, 0)
+    modify.add_bc_fd_node("xf1", "",               "x", 1,            0)
+    modify.add_bc_fd_node("xf2", "",               "x", template.x_n, 0)
+    modify.add_bc_fd_node("xn",  template.tab_nam, "x", template.n_n - template.x_n + 1, -template.apply[0])
+    modify.add_bc_fd_node("xp",  template.tab_nam, "x", template.n_n, template.apply[0])
+
+    #   Apply template conditions
+    pre_temp_mid(template)
+
+    modify.add_lcase(template, 1, ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xf1", "bc_fd_xf2", "bc_fd_xn", "bc_fd_xp"])
+
+    #   Apply the final template conditions
+    pre_temp_pos(template)
+
+    return
+
+################################################################################
+
+def template_4(template) -> None:
+    """Create a template from which elements may be removed
+
+    Case:   4
+    Reshape to a circle of a specified radius
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
+
+    bc = []
+
+    #   Apply the initial template conditions
+    pre_temp_pre(template)
+
+    #   Add the boundary conditions
+    x, y = inspect.find_n_coord(template.n_external)
+    x = utility.normalise_list(x, -1, f = template.x_s/2)
+    y = utility.normalise_list(y, -1, f = template.y_s/2)
+    x, y = utility.square_to_circle(x, y)
+    # x = [i*template.x_n/2 for i in x]
+    # y = [i*template.y_n/2 for i in y]
+
+    for i in range(0, len(template.n_external)):
+
+        modify.add_bc_fd_node("x{}".format(i), template.tab_nam, "x", template.n_external[i], x[i])
+        modify.add_bc_fd_node("y{}".format(i), template.tab_nam, "y", template.n_external[i], y[i])
+
+        bc.append("bc_fd_x{}".format(i))
+        bc.append("bc_fd_y{}".format(i))
+
+    #   Apply template conditions
+    pre_temp_mid(template)
+
+    modify.add_lcase(template, 1, bc)
 
     #   Apply the final template conditions
     pre_temp_pos(template)

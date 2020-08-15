@@ -1,0 +1,69 @@
+Unit:             38_['F', 'FFf[f]--']_['f', '[+fF][f][+F][+F]']
+Removed elements: [25, 26, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 47, 48, 49, 50, 51, 53, 59, 63, 69, 71, 72, 73, 74, 75, 82, 83, 84, 85, 86, 91, 92, 93, 94, 95, 96, 97]
+Grammar:
+F -> FFf[f]--
+f -> [+fF][f][+F][+F]
+Axiom:                --[F]++++[F]
+Number Of Iterations: 4
+Resulting Word:       --[FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]]--FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]]--[+[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][[+[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--]]--]++++[FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]]--FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]]--[+[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][[+[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][[+[+fF][f][+F][+F]FFf[f]--][[+fF][f][+F][+F]][+FFf[f]--][+FFf[f]--]][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--][+FFf[f]--FFf[f]--[+fF][f][+F][+F][[+fF][f][+F][+F]]--]]--]
+
+L-System Vocabulary:
+F: Create an element at the current position and increment the position
+f: Increment the position
++: Rotate the current direction by 45 degrees counterclockwise
+-: Rotate the current direction by 45 degrees clockwise
+[: Push the current position
+]: Pop to the previously pushed position
+(: Push and reflect the current position
+): Pop and unreflect to the previously pushed and reflected position
+
+Representative grid:
+1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1
+1 1 0 0 0 0 0 0 0 1 1
+1 1 1 1 0 0 0 0 0 1 1
+1 1 0 1 0 0 0 0 0 1 1
+1 1 1 0 1 1 1 0 1 1 1
+1 1 0 0 0 0 0 1 0 1 1
+1 1 0 0 0 0 0 1 1 1 1
+1 1 0 0 0 0 0 0 0 1 1
+1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1
+Run successful:   True
+Constraint energy:
+X        : 3.2126366533262387e-07 J
+Y        : 0.021763041021261493 J
+Magnitude: 0.032516687149333805 J
+Internal energy:
+X        : -20.544466245919466 J
+Y        : 19.867071893066168 J
+Magnitude: 4.076250515601714 J
+
+Template details:
+Case: 1
+Parameters:
+Origin:               (0,0)
+Dimensions:           11x11 elements
+Size:                 22x22 mm
+Boundary thickness:   2 elements
+Internal element IDs: [25, 26, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 41, 42, 47, 48, 49, 50, 51, 52, 53, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71, 72, 73, 74, 75, 80, 81, 82, 83, 84, 85, 86, 91, 92, 93, 94, 95, 96, 97]
+Applied displacement: 11.0 mm
+Applied pressure:     0.025 MPa
+Neighbours added:     False
+Analysis steps:       5
+Run successful:       True
+Constraint energy:
+X        : -3.0389817179159503e-09 J
+Y        : 52.8855188902419 J
+Magnitude: 128.8335898718154 J
+Internal energy:
+X        : -2.9519539920114246e-09 J
+Y        : 58.38697385787964 J
+Magnitude: 5992.6552734375 J
+
+Ogden material parameters:
+Name:  Mold Star 15
+Mu:    [-6.50266e-06, 0.216863, 0.00137158]
+Alpha: [-21.322, 1.1797, 4.88396]
+
+Time created: Thu Jul 30 17:04:59 2020

@@ -1,0 +1,63 @@
+Unit:             8_['F', '+f+-F']_['f', '+-++[']
+Removed elements: [8, 9, 12, 13, 14, 17, 18, 19]
+Grammar:
+F -> +f+-F
+f -> +-++[
+Axiom:                -[F]++++[F]
+Number Of Iterations: 2
+Resulting Word:       -[++-++[+-+f+-F]++++[++-++[+-+f+-F]
+
+L-System Vocabulary:
+F: Create an element at the current position and increment the position
+f: Increment the position
++: Rotate the current direction by 45 degrees counterclockwise
+-: Rotate the current direction by 45 degrees clockwise
+[: Push the current position
+]: Pop to the previously pushed position
+(: Push and reflect the current position
+): Pop and unreflect to the previously pushed and reflected position
+
+Representative grid:
+1 1 1 1 1
+1 0 0 0 1
+1 0 0 0 1
+1 1 0 0 1
+1 1 1 1 1
+Run successful:   False
+Constraint energy:
+X        : 0 J
+Y        : 0 J
+Magnitude: 0 J
+Internal energy:
+X        : 0 J
+Y        : 0 J
+Magnitude: 0 J
+
+Template details:
+Case: 4
+Parameters:
+Origin:               (0,0)
+Dimensions:           5x5 elements
+Size:                 20x20 mm
+Boundary thickness:   1 elements
+Internal element IDs: [7, 8, 9, 12, 13, 14, 17, 18, 19]
+Applied displacement: 10.0 mm
+Applied pressure:     0.025 MPa
+Neighbours added:     False
+Analysis steps:       5
+Run successful:       False
+Constraint energy:
+X        : 0 J
+Y        : 0 J
+Magnitude: 0 J
+Internal energy:
+X        : 0 J
+Y        : 0 J
+Magnitude: 0 J
+
+Ogden material parameters:
+Name:  Mold Star 15
+Mu:    [-6.50266e-06, 0.216863, 0.00137158]
+Alpha: [-21.322, 1.1797, 4.88396]
+
+Time created: Sun Jul 19 14:11:58 2020

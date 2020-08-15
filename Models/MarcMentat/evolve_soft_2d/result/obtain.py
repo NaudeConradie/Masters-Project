@@ -443,9 +443,14 @@ def read_lu(fp_lu: str) -> list:
         The list of units
     """
 
+    lu = []
+
     #   Read the list from the file
-    with open(fp_lu) as f:
-        lu = f.readlines()
+    for i in open(fp_lu, "r"):
+
+        i = i.replace('"', '').strip()
+
+        lu.append(i)
 
     #   Clean the list
     lu = [i.rstrip() for i in lu]

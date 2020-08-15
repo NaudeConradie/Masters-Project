@@ -308,7 +308,7 @@ def add_bc_fr_node(
     n: int,
     d: float,
     ) -> None:
-    """Add fixed displacement boundary conditions on a single node
+    """Add fixed rotation boundary conditions on a single node
 
     Parameters
     ----------
