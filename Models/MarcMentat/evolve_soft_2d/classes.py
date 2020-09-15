@@ -212,7 +212,7 @@ class unit_p:
         rem: list,
         grid: list,
         ls = None,
-        cp = None,
+        cp = [],
         run_success: bool = False,
         c_e: list = [0, 0, 0],
         i_e: list = [0, 0, 0],
@@ -254,7 +254,7 @@ class unit_p:
 
         elif self.cp != None:
 
-            self.u_id = str(len(self.rem)) + "_" + str(self.cp.mod_id) + "_" + str(self.cp.cppn.n_n) + "_" + str(self.cp.cppn.hl_size) + "_" + str(self.cp.cppn.scale) + "_" + str(self.cp.cppn.af_n) + "_" + str(self.cp.cppn.seed) + "_" + str(self.cp.cppn.threshold)
+            self.u_id = str(len(self.rem)) + "_" + str(self.cp.mod_id) + "_" + str(self.cp.cppn.hl_n) + "_" + str(self.cp.cppn.hl_s) + "_" + str(self.cp.cppn.scale) + "_" + str(self.cp.cppn.seed) + "_" + str(self.cp.cppn.perc)
 
         else:
             

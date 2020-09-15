@@ -1,0 +1,73 @@
+Unit:             81_['F', 'fFF[F]']_['f', 'FfF--']
+Removed elements: [49, 50, 51, 52, 53, 54, 55, 56, 57, 64, 65, 66, 67, 68, 69, 70, 71, 72, 79, 80, 81, 82, 83, 84, 85, 86, 87, 94, 95, 96, 97, 98, 99, 100, 101, 102, 109, 110, 111, 112, 113, 114, 115, 116, 117, 124, 125, 126, 127, 128, 129, 130, 131, 132, 139, 140, 141, 142, 143, 144, 145, 146, 147, 154, 155, 156, 157, 158, 159, 160, 161, 162, 169, 170, 171, 172, 173, 174, 175, 176, 177]
+Grammar:
+F -> fFF[F]
+f -> FfF--
+Axiom:                +[F]++++[F]
+Number Of Iterations: 1
+Resulting Word:       +[fFF[F]]++++[fFF[F]]
+
+L-System Vocabulary:
+F: Create an element at the current position and increment the position
+f: Increment the position
++: Rotate the current direction by 45 degrees counterclockwise
+-: Rotate the current direction by 45 degrees clockwise
+[: Push the current position
+]: Pop to the previously pushed position
+(: Push and reflect the current position
+): Pop and unreflect to the previously pushed and reflected position
+
+Representative grid:
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 0 0 0 0 0 0 0 0 0 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Run successful:   True
+Constraint energy:
+X        : -6.6739398221858e-10 J
+Y        : 0.05188269935487014 J
+Magnitude: 0.05485008366625475 J
+Internal energy:
+X        : 0.8195933732204139 J
+Y        : -0.6978455102653243 J
+Magnitude: 0.13231595242268668 J
+
+Template details:
+Case: 1
+Parameters:
+Origin:               (0,0)
+Dimensions:           15x15 elements
+Size:                 30x30 mm
+Boundary thickness:   3 elements
+Internal element IDs: [49, 50, 51, 52, 53, 54, 55, 56, 57, 64, 65, 66, 67, 68, 69, 70, 71, 72, 79, 80, 81, 82, 83, 84, 85, 86, 87, 94, 95, 96, 97, 98, 99, 100, 101, 102, 109, 110, 111, 112, 113, 114, 115, 116, 117, 124, 125, 126, 127, 128, 129, 130, 131, 132, 139, 140, 141, 142, 143, 144, 145, 146, 147, 154, 155, 156, 157, 158, 159, 160, 161, 162, 169, 170, 171, 172, 173, 174, 175, 176, 177]
+Applied displacement: 15.0 mm
+Applied pressure:     0.02 MPa
+Neighbours added:     False
+Analysis steps:       5
+Run successful:       True
+Constraint energy:
+X        : -4.1966895567407144e-09 J
+Y        : 98.34083769103074 J
+Magnitude: 241.22856774796486 J
+Internal energy:
+X        : -3.7217025156133232e-09 J
+Y        : 103.79906797409058 J
+Magnitude: 10653.609375 J
+
+Ogden material parameters:
+Name:  Mold Star 15
+Mu:    [-6.50266e-06, 0.216863, 0.00137158]
+Alpha: [-21.322, 1.1797, 4.88396]
+
+Time created: Mon Sep 14 10:56:30 2020

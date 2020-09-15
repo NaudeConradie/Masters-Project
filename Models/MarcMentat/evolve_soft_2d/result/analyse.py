@@ -6,6 +6,8 @@ import linecache
 import numpy
 import pandas
 
+from scipy.spatial.distance import directed_hausdorff
+
 from evolve_soft_2d import plotting, utility
 from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.result import obtain
@@ -37,12 +39,13 @@ def sel_best_u(
     data = pandas.DataFrame()
 
     label = []
-    label.append("Constraint Energy X")
-    label.append("Constraint Energy Y")
-    label.append("Constraint Energy")
-    label.append("Internal Energy X")
-    label.append("Internal Energy Y")
-    label.append("Internal Energy")
+    label.append("Hausdorff Displacement")
+    # label.append("Constraint Energy X")
+    # label.append("Constraint Energy Y")
+    # label.append("Constraint Energy")
+    # label.append("Internal Energy X")
+    # label.append("Internal Energy Y")
+    # label.append("Internal Energy")
 
     #   Read the list of units created during the last simulation
     lu = obtain.read_lu(fp_lu)
@@ -80,14 +83,16 @@ def sel_best_u(
     #   Read the timestamp of the simulation
     tm = utility.read_str(fp_lu, -25, -4)
 
-    #   Plot the desired graphs from the results
-    plotting.plot_all(template, v, n_e, label, tm)
+    # #   Plot the desired graphs from the results
+    # plotting.plot_all(template, v, n_e, label, tm)
 
     #   Check the case identifier
     if template.case == 1:
 
         #   Sort the relevant values in the dataframe in ascending order
-        data.sort_values(by = ["Constraint Energy Y", "Constraint Energy X"], inplace = True, ignore_index = True)
+        # data.sort_values(by = ["Constraint Energy Y", "Constraint Energy X"], inplace = True, ignore_index = True)
+
+        data.sort_values(by = ["Hausdorff Distance"], inplace = True, ignore_index = True)
         
     elif template.case == 2:
 
@@ -226,6 +231,47 @@ def internal_energy(
 
         #   Save the internal energy to a .csv file
         save_numpy_array_to_csv(template, label_i_e[i] + "_" + l, i_e)
+
+    return
+
+################################################################################
+def disp(
+    template,
+    l: str,
+    ) -> list:
+
+    d_e = []
+
+    #   Create the file path of the results file
+    fp_r_f = create_fp_file(template, "Displacement_" + l, "r")
+
+    #   Store the results from the file
+    d = numpy.genfromtxt(fp_r_f, delimiter = ",")
+
+    d = d[-1]
+
+    #   Decrement the node IDs of the external nodes by 1 to be used as array indices
+    n_external_i = [i - 1 for i in template.n_external]
+
+    #   Store only the external node values
+    d_e = d[n_external_i]
+
+    return d_e
+
+################################################################################
+
+def hausdorff_d(
+    template,
+    d_temp: list,
+    l: str,
+    ) -> float:
+
+    d_e = disp(template, l)
+
+    h_d = directed_hausdorff(d_e, d_temp)
+
+    #   Save the internal energy to a .csv file
+    save_numpy_array_to_csv(template, "Hausdorff Distance_" + l, h_d)
 
     return
 

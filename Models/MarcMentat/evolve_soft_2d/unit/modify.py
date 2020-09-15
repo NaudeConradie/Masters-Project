@@ -1,6 +1,7 @@
 ##  Functions used with the Marc Mentat units
 
 #   Imports
+from evolve_soft_2d import utility
 from evolve_soft_2d.log import m_log
 from evolve_soft_2d.result import analyse, obtain
 
@@ -160,6 +161,48 @@ def add_neighbours(template) -> None:
             n += 1
 
     #   Merge overlapping nodes
+    sweep()
+
+    return
+
+################################################################################
+
+def copy_neighbours(template) -> None:
+
+    #   Initialisations
+    x = [-template.x_s, template.x0, template.x_s]
+    y = [-template.y_s, template.y0, template.y_s]
+
+    x_mid = template.x0
+    y_mid = template.y0
+
+    n_l = ["n:{}".format(i) for i in range(1, template.n_n + 1)]
+    e_l = ["e:{}".format(i) for i in range(1, template.n_e + 1)]
+
+    n_l = utility.list_to_str(n_l, " ")
+    e_l = utility.list_to_str(e_l, " ")
+
+    l = utility.list_to_str([n_l, e_l], " ")
+
+    #   Loop through all y-axis initial coordinates
+    for i in y:
+
+        #   Loop through all x-axis initial coordinates
+        for j in x:
+
+            #   Check if the starting coordinates are the original grid's
+            if i == y_mid and j == x_mid:
+
+                #   Skip this step in the loop
+                continue
+
+            py_send("*set_duplicate_translation x {}".format(j))
+            py_send("*set_duplicate_translation y {}".format(i))
+
+            py_send("*duplicate_combined")
+
+            py_send("{} #".format(l))
+
     sweep()
 
     return

@@ -160,7 +160,7 @@ def sigmoid(x: numpy.array) -> numpy.array:
         The output data
     """
 
-    s = 1/(numpy.exp(-1*x) + 1)
+    s = 1/(numpy.exp(-x) + 1)
 
     return s
 

@@ -452,6 +452,8 @@ def determine_c(
 
 def gen_lsystem(
     v: vocabulary,
+    a_i: int,
+    r_n: int,
     r_l: int,
     n: int,
     ) -> lsystem:
@@ -475,8 +477,8 @@ def gen_lsystem(
     #   Initialisations
     g = []
 
-    #   Select the axiom randomly from the list of axioms
-    a = numpy.random.choice(a_all)
+    #   Select the axiom from the list of axioms
+    aos = a_all[a_i]
 
     #   Loop until a rule including the command to draw an element is defined
     while 1:
@@ -493,17 +495,32 @@ def gen_lsystem(
     #   Save the first rule
     g.append(["F", g2])
 
-    #   Check if the command to move without drawing the element is included in the first rule
-    if "f" in g2:
+    # for _ in range(1, r_n):
 
-        #   Generate a random rule
-        g2 = utility.gen_random(l_c, r_l)
+        # while 1:
 
-        #   Svae the second rule
-        g.append(["f", g2])
+        #     g1 = numpy.random.choice(e_vocab[1:3])
+
+        #     if g1 not in [i[0]for i in g]:
+                
+        #         break
+
+    g2 = utility.gen_random(l_c, r_l)
+
+    g.append(["f", g2])
+
+
+    # #   Check if the command to move without drawing the element is included in the first rule
+    # if "f" in g2:
+
+    #     #   Generate a random rule
+    #     g2 = utility.gen_random(l_c, r_l)
+
+    #     #   Svae the second rule
+    #     g.append(["f", g2])
 
     #   Define the L-system
-    ls = lsystem(v, g, a, n)
+    ls = lsystem(v, g, aos, n)
 
     return ls
 

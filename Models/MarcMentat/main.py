@@ -32,7 +32,7 @@ def main():
 
     #   Initialisations
     #   The template case identifier
-    case = 2
+    case = 1
     #   The initial coordinates
     x0 = 0
     y0 = 0
@@ -45,13 +45,24 @@ def main():
     #   The thickness of the unit boundary
     b = 2
     #   The number of increments per second to analyse
-    n_steps = 5
+    n_steps = 20
     #   The text name of the table used for the applied displacement and load
     table_name = "ramp_input"
     #   The applied displacement and load
     app = [y_s/2, 0.02]
     #   The decision to add neighbouring grids
     neighbours = False
+
+    #   L-system rule length
+    l = 3
+
+    #   CPPN parameters
+    mod_n = 5
+    hl_n = 10
+    hl_s = 20
+    scale = 1
+    perc = 0.5
+    c = [mod_n, hl_n, hl_s, scale, perc]
 
     #   Prepare the unit parameters
     temp = classes.template(case, x0, y0, x_e, y_e, x_s, y_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
@@ -67,7 +78,7 @@ def main():
         create.template_4(temp)
 
     #   Generate a number of units and save their results
-    fp_lu, fp_bu = create.gen_units(temp, 100, l = 4)
+    fp_lu, fp_bu = create.gen_units(temp, 100, c = c)
 
     #   Analyse the results
     analyse.sel_best_u(temp, fp_lu, fp_bu, 50)

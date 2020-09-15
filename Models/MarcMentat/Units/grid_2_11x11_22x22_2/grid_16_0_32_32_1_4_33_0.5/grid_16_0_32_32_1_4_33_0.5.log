@@ -1,0 +1,67 @@
+Unit:             16_0_32_32_1_4_33_0.5
+Removed elements: [25, 26, 31, 37, 39, 41, 47, 63, 70, 81, 82, 85, 86, 91, 95, 97]
+Model ID: 0
+CPPN Parameters:
+Model Dimensions:          7x7 elements
+Seed:                      33
+Rounding Threshold:        0.5
+Model Scale:               1:1
+Size Of Hidden Layer:      32
+Number Of Nodes Per Layer: 32
+Activation Functions:
+smooth ReLu
+cos
+cos
+tanh
+sigmoid
+
+Representative grid:
+1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1
+1 1 0 1 1 1 0 1 0 1 1
+1 1 1 0 0 1 1 0 0 1 1
+1 1 1 0 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 0 1 1 1
+1 1 0 1 1 1 1 1 1 1 1
+1 1 1 0 1 0 1 0 1 1 1
+1 1 0 0 1 1 1 1 0 1 1
+1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1
+Run successful:   True
+Constraint energy:
+X        : 0.011004049362289383 J
+Y        : 3.4986287187327284e-06 J
+Magnitude: 0.02187726089821075 J
+Internal energy:
+X        : 5.819555008856696 J
+Y        : -5.044205878628418 J
+Magnitude: 1.863191401171207 J
+
+Template details:
+Case: 2
+Parameters:
+Origin:               (0,0)
+Dimensions:           11x11 elements
+Size:                 22x22 mm
+Boundary thickness:   2 elements
+Internal element IDs: [25, 26, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 41, 42, 47, 48, 49, 50, 51, 52, 53, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71, 72, 73, 74, 75, 80, 81, 82, 83, 84, 85, 86, 91, 92, 93, 94, 95, 96, 97]
+Applied displacement: 11.0 mm
+Applied pressure:     0.02 MPa
+Neighbours added:     False
+Analysis steps:       5
+Run successful:       True
+Constraint energy:
+X        : 0.01571587814460866 J
+Y        : -2.4599211445609697e-09 J
+Magnitude: 0.030663872042957258 J
+Internal energy:
+X        : 8.644031181931496 J
+Y        : -8.641405701637268 J
+Magnitude: 2.3472061417996883 J
+
+Ogden material parameters:
+Name:  Mold Star 15
+Mu:    [-6.50266e-06, 0.216863, 0.00137158]
+Alpha: [-21.322, 1.1797, 4.88396]
+
+Time created: Sun Aug 16 12:59:40 2020

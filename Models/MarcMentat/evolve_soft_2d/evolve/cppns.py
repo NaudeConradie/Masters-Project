@@ -1,6 +1,7 @@
 ##  CPPN functions and classes
 
 #   Imports
+import math
 import numpy
 
 from evolve_soft_2d import utility
@@ -14,14 +15,13 @@ class cppn:
     def __init__(
         self,
         mod_n: int,
-        n_n: int,
-        hl_size: int,
+        hl_n: int,
+        hl_s: int,
         x: int,
         y: int,
         scale: float,
-        af_n: int,
         seed: int,
-        threshold: float = 0.5,
+        thresh: float,
         ) -> None:
         """The CPPN parameters
 
@@ -29,33 +29,30 @@ class cppn:
         ----------
         mod_n : int
             The number of models to be generated from a particular seed
-        n_n : int
-            The number of nodes in each fully connected layer of the network
-        hl_size : int
-            The size of the hidden layers
+        hl_n : int
+            The number of hidden layers
+        hl_s : int
+            The size of the initial hidden layer
         x : int
             The number of elements in the x-direction
         y : int
             The number of elements in the y-direction
         scale : float
             The scale of the focus on the model
-        af_n : int
-            The umber of activation functions to apply
         seed : int
             The seed for the random generation
-        threshold : float, optional
-            The rounding threshold of the model element values, by default 0.5
+        thresh : float
+            The rounding/removal threshold
         """
 
         self.mod_n = mod_n
-        self.n_n = n_n
-        self.hl_size = hl_size
+        self.hl_n = hl_n
+        self.hl_s = hl_s
         self.x = x
         self.y = y
         self.scale = scale
-        self.af_n = af_n
         self.seed = seed
-        self.threshold = threshold
+        self.thresh = thresh
 
         #   The resolution of the grid
         self.res = self.x*self.y
@@ -72,17 +69,17 @@ class cppn:
             Formatted representation of the CPPN for the log
         """
 
-        r = "Model Dimensions:          {}x{} elements\n".format(self.x, self.y)
-        r += "Seed:                      {}\n".format(self.seed)
-        r += "Rounding Threshold:        {}\n".format(self.threshold)
-        r += "Model Scale:               1:{}\n".format(self.scale)
-        r += "Size Of Hidden Layer:      {}\n".format(self.hl_size)
-        r += "Number Of Nodes Per Layer: {}\n".format(self.n_n)
+        r = "Model Dimensions:               {}x{} elements\n".format(self.x, self.y)
+        r += "Seed:                           {}\n".format(self.seed)
+        r += "Percentage Of Elements Removed: {}\n".format(self.thresh)
+        r += "Model Scale:                    1:{}\n".format(self.scale)
+        r += "Number Of Hidden Layers:        {}\n".format(self.hl_s)
+        r += "Number Of Nodes Per Layer:      {}\n".format(self.hl_n)
         r += "Activation Functions:\n"
 
-        for i in range(0, self.af_n + 1):
+        for i in self.af:
 
-            r += "{}\n".format(self.af[i])
+            r += "{}\n".format(i)
 
         return r
 
@@ -100,13 +97,13 @@ class cppn:
 
         #   The list of possible activation functions
         af_l = [self.cppn_sin, self.cppn_cos, self.cppn_tanh, self.cppn_sigm, self.cppn_srel]
-        af_o = [self.cppn_sigm_o, self.cppn_srel_o]
+        af_o = [self.cppn_sigm, self.cppn_srel]
 
         #   Set the random generation seed
         numpy.random.seed(seed = self.seed)
 
-        #   Generate the hidden layer for each model
-        hl = numpy.random.uniform(low = -1, high = 1, size = (self.mod_n, self.hl_size)).astype(numpy.float32)
+        #   Generate the initial hidden layer for each model
+        hl = numpy.random.uniform(low = -1, high = 1, size = (self.mod_n, self.hl_s)).astype(numpy.float32)
 
         #   Generate the grid matrix
         x_r = numpy.linspace(-1*self.scale, self.scale, num = self.x)
@@ -114,48 +111,47 @@ class cppn:
 
         y_r = numpy.linspace(-1*self.scale, self.scale, num = self.y)
         y_m = numpy.matmul(y_r.reshape((self.y, 1)), numpy.ones((1, self.x)))
-        
+
         r_m = numpy.sqrt(x_m*x_m + y_m*y_m)
 
         x_d = numpy.tile(x_m.flatten(), self.mod_n).reshape(self.mod_n, self.res, 1)
         y_d = numpy.tile(y_m.flatten(), self.mod_n).reshape(self.mod_n, self.res, 1)
         r_d = numpy.tile(r_m.flatten(), self.mod_n).reshape(self.mod_n, self.res, 1)
 
-        #   Scale the hidden layers
-        hl_scale = numpy.reshape(hl, (self.mod_n, 1, self.hl_size))*numpy.ones((self.res, 1), dtype = numpy.float32)*self.scale
+        #   Scale the initial hidden layers
+        hl_scale = numpy.reshape(hl, (self.mod_n, 1, self.hl_s))*numpy.ones((self.res, 1), dtype = numpy.float32)*self.scale
 
         #   Unwrap the grid matrices
         x_d_unwrap = numpy.reshape(x_d, (self.mod_n*self.res, 1))
         y_d_unwrap = numpy.reshape(y_d, (self.mod_n*self.res, 1))
         r_d_unwrap = numpy.reshape(r_d, (self.mod_n*self.res, 1))
-        hl_unwrap = numpy.reshape(hl_scale, (self.mod_n*self.res, self.hl_size))
+        hl_unwrap = numpy.reshape(hl_scale, (self.mod_n*self.res, self.hl_s))
 
         #   Build the network
-        n = self.fully_connected(hl_unwrap, self.n_n, True) + self.fully_connected(x_d_unwrap, self.n_n, False) + self.fully_connected(y_d_unwrap, self.n_n, False) + self.fully_connected(r_d_unwrap, self.n_n, False)
+        n = self.fully_connected(hl_unwrap, self.hl_n, True, self.seed) + self.fully_connected(x_d_unwrap, self.hl_n, False, self.seed + 1) + self.fully_connected(y_d_unwrap, self.hl_n, False, self.seed + 2) + self.fully_connected(r_d_unwrap, self.hl_n, False, self.seed + 3)
 
-        #    Build the model
-        mod = numpy.tanh(n)
+        #   Transpose the network
+        n = n.T
 
-        #   Loop through the desired number of activation functions
-        for i in range(0, self.af_n):
+        #   Loop through the second to second-last hidden layers
+        for i in range(1, self.hl_n - 1):
 
+            #   Set the seed for each layer
             numpy.random.seed(seed = self.seed + i)
 
             #   Select and record the activation function
-            mod, af_c = numpy.random.choice(af_l)(mod)
+            n[i], af_c = numpy.random.choice(af_l)(n[i - 1])
             self.af.append(af_c)
 
+        #   Set the seed for the final layer
         numpy.random.seed(seed = self.seed)
 
         #   Apply and record the final function
-        mod, af_o = numpy.random.choice(af_o)(mod)
+        n[-1], af_o = numpy.random.choice(af_o)(n[-2])
         self.af.append(af_o)
 
-        #   Round the grid according to the given threshold
-        mod = [0 if i < self.threshold else 1 for i in mod]
-
         #   Reshape the grid to fit the given dimensions
-        mod = numpy.reshape(mod, (self.mod_n, self.x, self.y))
+        mod = numpy.reshape(n[-1], (self.mod_n, self.x, self.y))
 
         return mod
 
@@ -164,8 +160,9 @@ class cppn:
         i_v: numpy.array,
         o_d,
         w_bias: bool,
+        seed: int,
         ) -> numpy.array:
-        """Connect the hidden layers of the CPPN
+        """Connect all layers of the CPPN
 
         Parameters
         ----------
@@ -173,6 +170,8 @@ class cppn:
             The input vector
         o_d
             The output dimensions
+        seed : int
+            The random generation
         w_bias : bool
             If the layers should be connected with bias
 
@@ -180,10 +179,10 @@ class cppn:
         -------
         numpy.array
             The connected results
-        """        
+        """
 
         #   Set the random generation seed
-        numpy.random.seed(seed = self.seed)
+        numpy.random.seed(seed = seed)
 
         #   Generate the random matrix
         m = numpy.random.standard_normal(size = (i_v.shape[1], o_d)).astype(numpy.float32)
@@ -199,6 +198,52 @@ class cppn:
 
             #   Add the bias to the result
             result += bias*numpy.ones((i_v.shape[0], 1), dtype = numpy.float32)
+
+        return result
+
+    def partly_connected(
+        self,
+        i_v: numpy.array,
+        o_d,
+        w_bias: bool,
+        seed: int,
+        ) -> numpy.array:
+        """Connect a single layer of the hidden network
+
+        Parameters
+        ----------
+        i_v : numpy.array
+            The input vector
+        o_d
+            The dimensions of the output
+        w_bias : bool
+            The random generation
+        seed : int
+            If the layers should be connected with bias
+
+        Returns
+        -------
+        numpy.array
+            The connected results
+        """
+
+        #   Set the random generation seed
+        numpy.random.seed(seed = seed)
+
+        #   Generate the random matrix
+        m = numpy.random.standard_normal(size = (i_v.shape[0], o_d)).astype(numpy.float32)
+
+        #   Multiply the input with the matrix
+        result = numpy.matmul(i_v, m)
+
+        #   Check if the bias must be included
+        if w_bias:
+
+            #   Generate the random bias
+            bias = numpy.random.standard_normal(size = (o_d)).astype(numpy.float32)
+            
+            #   Add the bias to the result
+            result += bias.T
 
         return result
 
@@ -222,7 +267,7 @@ class cppn:
 
         name = "sin"
 
-        out = numpy.sin(self.fully_connected(hl, self.n_n, True))
+        out = numpy.sin(self.partly_connected(hl, self.res*self.mod_n, True, self.seed))
 
         return out, name
 
@@ -246,7 +291,7 @@ class cppn:
 
         name = "cos"
 
-        out = numpy.cos(self.fully_connected(hl, self.n_n, True))
+        out = numpy.cos(self.partly_connected(hl, self.res*self.mod_n, True, self.seed))
 
         return out, name
 
@@ -270,7 +315,7 @@ class cppn:
 
         name = "tanh"
 
-        out = numpy.tanh(self.fully_connected(hl, self.n_n, True))
+        out = numpy.tanh(self.partly_connected(hl, self.res*self.mod_n, True, self.seed))
 
         return out, name
 
@@ -294,7 +339,7 @@ class cppn:
 
         name = "sigmoid"
 
-        out = utility.sigmoid(self.fully_connected(hl, self.n_n, True))
+        out = utility.sigmoid(self.partly_connected(hl, self.res*self.mod_n, True, self.seed))
 
         return out, name
 
@@ -318,55 +363,7 @@ class cppn:
 
         name = "smooth ReLu"
 
-        out = utility.smooth_relu(self.fully_connected(hl, self.n_n, True))
-
-        return out, name
-
-    def cppn_sigm_o(
-        self,
-        hl: numpy.array
-        ) -> (numpy.array, str):
-        """Apply a sigmoid as the activation function for the final layer
-
-        Parameters
-        ----------
-        hl : numpy.array
-            The current layer
-
-        Returns
-        -------
-        numpy.array, str:
-            The new layer
-            The label of the activation function
-        """
-
-        name = "sigmoid"
-
-        out = utility.sigmoid(self.fully_connected(hl, 1, True))
-
-        return out, name
-
-    def cppn_srel_o(
-        self,
-        hl: numpy.array
-        ) -> (numpy.array, str):
-        """Apply smooth ReLu as the activation function for the final layer
-
-        Parameters
-        ----------
-        hl : numpy.array
-            The current layer
-
-        Returns
-        -------
-        numpy.array, str:
-            The new layer
-            The label of the activation function
-        """
-
-        name = "smooth ReLu"
-
-        out = utility.smooth_relu(self.fully_connected(hl, 1, True))
+        out = utility.smooth_relu(self.partly_connected(hl, self.res*self.mod_n, True, self.seed))
 
         return out, name
 
@@ -395,7 +392,7 @@ class cppn_i:
         self.mod_id = mod_id
 
         #   The model grid
-        self.grid = self.cppn.grid[self.mod_id].tolist()
+        self.grid = self.rem_thresh(self.cppn.grid[self.mod_id])
 
     def __repr__(self) -> str:
         """Format a representation of the CPPN model
@@ -410,6 +407,77 @@ class cppn_i:
         r += "CPPN Parameters:\n{}".format(self.cppn)
 
         return r
+
+    def rem_thresh(
+        self,
+        grid: numpy.array
+        ) -> numpy.array:
+        """Removes elements from a grid according to the specified threshold
+
+        Parameters
+        ----------
+        grid : numpy.array
+            The grid from which elements are to be removed
+
+        Returns
+        -------
+        numpy.array
+            The grid with the elements removed
+        """        
+
+        #   Check if the threshold indicates that a percentage of elements should be removed
+        if self.cppn.thresh > 1:
+
+            #   Calculate the percentage as a decimal
+            perc = self.cppn.thresh/100
+
+            #   Calculate the number of elements to be removed
+            b = int(math.ceil(self.cppn.x*self.cppn.y*perc))
+
+            #   Obtain the IDs of the elements to be removed
+            ids = numpy.argpartition(grid, b, axis = None)
+
+            #   Reshape the grid to be one-dimensional
+            grid = grid.flatten()
+
+            #   Loop through all elements
+            for i in range(0, self.cppn.res):
+
+                #   Check if the current element ID refers to an element that needs to be removed
+                if i in ids[:b]:
+
+                    #   Remove the element
+                    grid[i] = 0
+
+                else:
+
+                    #   Add the element
+                    grid[i] = 1
+
+            #   Reshape the grid to its original dimensions
+            grid = grid.reshape(self.cppn.x, self.cppn.y)
+
+        else:
+
+            #   Loop through the grid
+            for i in grid:
+
+                for j in range(0, len(i)):
+
+                    #   Check if the current value is above the threshold
+                    if i[j] > self.cppn.thresh:
+
+                        #   Set the element to exist
+                        i[j] = 1
+
+                    else:
+
+                        #   Remove the element
+                        i[j] = 0
+
+                print(i)
+
+        return grid
 
 ################################################################################
 
@@ -439,7 +507,7 @@ def cppn_rem(
     g_temp = grid[:]
 
     #   Reverse the order of the grid
-    g_temp.reverse()
+    g_temp = g_temp[::-1]
 
     #   Calculate the element ID offset according to the boundary thickness
     offset = template.x_e*template.b + template.b + 1

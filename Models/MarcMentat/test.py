@@ -20,8 +20,8 @@ def main():
     importlib.reload(file_paths)
     importlib.reload(plotting)
     importlib.reload(utility)
-    importlib.reload(cppns)
     importlib.reload(lsystems)
+    importlib.reload(cppns)
     importlib.reload(analyse)
     importlib.reload(obtain)
     importlib.reload(create)
@@ -36,56 +36,41 @@ def main():
     x0 = 0
     y0 = 0
     #   The number of elements in each axis direction
-    x_e = 11
-    y_e = 11
+    x_e = 15
+    y_e = 15
     #   The length of each side in mm
-    x_s = 22
-    y_s = 22
+    x_s = 30
+    y_s = 30
     #   The thickness of the unit boundary
-    b = 2
+    b = 3
     #   The number of increments per second to analyse
     n_steps = 5
     #   The text name of the table used for the applied displacement and load
     table_name = "ramp_input"
     #   The applied displacement and load
-    app = [y_s/2, 0.025]
+    app = [y_s/2, 0.02]
     #   The decision to add neighbouring grids
     neighbours = False
+
+    #   L-system parameters
+    l_max = [8, 3, 6, 6]
+    l_min = [0, 1, 2, 1]
+
+#   CPPN parameters
+    c_max = [6, 11, 33, 11, 101, 96]
+    c_min = [1, 2, 5, 1, 1, 10]
 
     #   Prepare the unit parameters
     temp = classes.template(case, x0, y0, x_e, y_e, x_s, y_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
 
-    m = 1
-    n_s = 32
-    hv_s = 32
-    scale = 1
-    af = 5
-    seed = 1
-    thresh = 0.5
+    create.template_1(temp)
 
-    #   Create the template
-    if temp.case == 1:
-        create.template_1(temp)
-    elif temp.case == 2:
-        create.template_2(temp)
-    elif temp.case == 3:
-        create.template_3(temp)
-    elif temp.case == 4:
-        create.template_4(temp)
+    pop_i = create.gen_units(temp, 3, l = [l_max, l_min])
 
-    #   Generate a number of units and save their results
-    fp_lu, fp_bu = create.gen_units(temp, 3, c = [m, n_s, hv_s, scale, af, thresh])
+    fp_lu, fp_bu = create.run_units(temp, pop_i, "l")
 
-    #   Analyse the results
-    analyse.sel_best_u(temp, fp_lu, fp_bu, 1)
+    analyse.sel_best_u(temp, fp_lu, fp_bu, 2)
 
-    #   Reanalyse the best units
-    if temp.case == 1:
-        create.template_1_test(fp_bu)
-    elif temp.case == 2:
-        create.template_2_test(fp_bu)
-
-    #   View the boundary conditions of the template
-    inspect.view_bc()
+    return
 
 # main()
