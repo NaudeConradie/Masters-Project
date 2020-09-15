@@ -212,7 +212,7 @@ class unit_p:
         rem: list,
         grid: list,
         ls = None,
-        cp = [],
+        cp = None,
         run_success: bool = False,
         c_e: list = [0, 0, 0],
         i_e: list = [0, 0, 0],
