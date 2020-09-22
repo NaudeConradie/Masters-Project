@@ -273,8 +273,8 @@ def square_to_circle(
 
 def sel_random(
     l: list,
-    f: int = 0,
-    r: list = [],
+    f: int = None,
+    seed: int = None,
     ) -> list:
     """Randomly select a random number of numbers from a given list of numbers
 
@@ -283,9 +283,9 @@ def sel_random(
     l : list
         The given list of numbers
     f : int, optional
-        How many numbers to select, by default 0
-    r : list, optional
-        A range of numbers that may be selected, by default []
+        How many numbers to select, by default None
+    seed : int, optional
+        The seed for random generation, by default None
 
     Returns
     -------
@@ -297,25 +297,27 @@ def sel_random(
     sel = []
     l_temp = l[:]
 
-    #   Check if the range is not empty
-    if r != []:
-
-        #   Determine how many numbers to select from the given range of numbers
-        n_sel = numpy.random.choice(numpy.asarray(r))
-
     #   Check if how many numbers to select is not zero
-    elif f != 0:
+    if f is not None:
 
         #   Determine how many numbers to select from the given number
         n_sel = f
 
     else:
 
+        if seed is not None:
+
+            numpy.random.seed(seed = seed)
+
         #   Determine how many numbers to select from the given list
         n_sel = numpy.random.randint(low = 1, high = len(l_temp))
 
     #   Loop through the amount of numbers to be selected
     for i in range(0, n_sel):
+
+        if seed is not None:
+
+            numpy.random.seed(seed = seed + i)
         
         #   Select a random number from the list of numbers
         sel.append(numpy.random.choice(numpy.asarray(l_temp)))
@@ -333,6 +335,7 @@ def sel_random(
 def gen_random(
     l: list,
     n: int,
+    seed: int = None
     ) -> str:
     """Generate a random string from a list of characters
 
@@ -353,7 +356,11 @@ def gen_random(
     s = ""
 
     #   Loop for the desired length of the string
-    for _ in range(0, n):
+    for i in range(0, n):
+
+        if seed is not None:
+
+            numpy.random.seed(seed + i)
 
         #   Append the next random character
         s += numpy.random.choice(l)

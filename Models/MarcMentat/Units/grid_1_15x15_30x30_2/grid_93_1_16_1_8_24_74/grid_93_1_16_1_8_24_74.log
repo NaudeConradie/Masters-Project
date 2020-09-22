@@ -1,0 +1,74 @@
+Unit:             93_1_16_1_8_24_74
+Removed elements: [33, 35, 37, 39, 41, 42, 43, 48, 49, 50, 51, 52, 54, 56, 57, 58, 64, 65, 66, 68, 69, 70, 71, 72, 73, 78, 79, 80, 81, 82, 84, 85, 86, 87, 88, 93, 94, 95, 96, 98, 99, 100, 101, 102, 103, 109, 111, 116, 117, 118, 123, 124, 125, 127, 128, 129, 131, 132, 133, 138, 140, 142, 145, 146, 147, 148, 153, 156, 157, 158, 159, 160, 161, 162, 163, 170, 172, 173, 174, 175, 176, 177, 178, 183, 185, 186, 187, 188, 189, 190, 191, 192, 193]
+Model ID: 1
+CPPN Parameters:
+Model Dimensions:               11x11 elements
+Model Seed:                     16
+Number Of Models Generated:     2
+Model Scale:                    1:1
+Number Of Hidden Layers:        8
+Size Of Initial Hidden Layer:   24
+Percentage Of Elements Removed: 74%
+Activation Functions:
+cos
+tanh
+tanh
+sigmoid
+cos
+smooth ReLu
+smooth ReLu
+
+Representative grid:
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 0 1 0 0 0 0 0 0 0 0 0 1 1
+1 1 1 1 0 1 0 0 0 0 0 0 0 1 1
+1 1 0 1 1 0 0 0 0 0 0 0 0 1 1
+1 1 0 1 0 1 0 1 1 0 0 0 0 1 1
+1 1 0 0 0 1 0 0 0 1 0 0 0 1 1
+1 1 1 0 1 0 1 1 1 1 0 0 0 1 1
+1 1 0 0 0 0 1 0 0 0 0 0 0 1 1
+1 1 0 0 0 0 0 1 0 0 0 0 0 1 1
+1 1 1 0 0 0 1 0 0 0 0 0 0 1 1
+1 1 0 0 0 0 0 1 0 1 0 0 0 1 1
+1 1 0 1 0 1 0 1 0 1 0 0 0 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Run successful:   True
+Constraint energy:
+X        : 1.4676406357401487e-10 J
+Y        : 0.03404487637148304 J
+Magnitude: 0.03796750714334086 J
+Internal energy:
+X        : 0.5868375798034507 J
+Y        : -0.3612490280286085 J
+Magnitude: 0.0787345570525852 J
+
+Template details:
+Case: 1
+Parameters:
+Origin:               (0,0)
+Dimensions:           15x15 elements
+Size:                 30x30 mm
+Boundary thickness:   2 elements
+Internal element IDs: [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193]
+Applied displacement: 15.0 mm
+Applied pressure:     0.1 MPa
+Neighbours added:     False
+Analysis steps:       5
+Run successful:       True
+Constraint energy:
+X        : -4.1966895567407144e-09 J
+Y        : 98.34083769103074 J
+Magnitude: 241.22856774796486 J
+Internal energy:
+X        : -3.7217025156133232e-09 J
+Y        : 103.79906797409058 J
+Magnitude: 10653.609375 J
+
+Ogden material parameters:
+Name:  Mold Star 15
+Mu:    [-6.50266e-06, 0.216863, 0.00137158]
+Alpha: [-21.322, 1.1797, 4.88396]
+
+Time created: Thu Sep 17 13:46:38 2020

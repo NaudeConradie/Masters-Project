@@ -16,8 +16,10 @@ class vocabulary:
 
     def __init__(
         self,
-        vocab: list,
-        descr: list,
+        var: list,
+        con: list,
+        var_descr: list,
+        con_descr: list,
         ) -> None:
         """Vocabulary parameters
 
@@ -29,8 +31,10 @@ class vocabulary:
             The description of the vocabulary members
         """
 
-        self.vocab = vocab
-        self.descr = descr
+        self.var = var
+        self.con = con
+        self.var_descr = var_descr
+        self.con_descr = con_descr
 
     def __repr__(self) -> str:
         """Format a representation of the L-system vocabulary for the log
@@ -41,10 +45,12 @@ class vocabulary:
             Formatted representation of the L-system vocabulary for the log
         """
 
-        r = "L-System Vocabulary:\n"
-
-        for i in range(0, len(self.vocab)):
-            r += "{}: {}\n".format(self.vocab[i], self.descr[i])
+        r = "L-System Variables:\n"
+        for i in range(0, len(self.var)):
+            r += "{}: {}\n".format(self.var[i], self.var_descr[i])
+        r += "L-System Constants:\n"
+        for i in range(0, len(self.con)):
+            r += "{}: {}\n".format(self.con[i], self.con_descr[i])
 
         return r
 
@@ -60,7 +66,8 @@ class lsystem:
         gramm: list,
         axiom: str,
         n: int,
-        ) -> None:
+        seed: int = None,
+        ) -> None:      
         """Lindenmayer system parameters
 
         Parameters
@@ -73,8 +80,11 @@ class lsystem:
             The initial axiom of the L-system
         n : int
             The number of iterations of the L-system
+        seed : int, optional
+            The seed for the random generation, by default None
         """
 
+        self.seed = seed
         self.vocab = vocab
         self.gramm = gramm
         self.axiom = axiom
@@ -99,6 +109,8 @@ class lsystem:
         r += "Number Of Iterations: {}\n".format(self.n)
         r += "Resulting Word:       {}\n".format(self.word)
         r += "\n{}".format(self.vocab)
+        if self.seed is not None:
+            r += "\nSeed: {}\n".format(self.seed)
 
         return r
 
@@ -169,13 +181,16 @@ class lsystem:
         """
 
         #   Initialisation
-        rw = self.axiom
+        rw = "F"
 
         #   Loop for the specified number of iterations
         for _ in range(0, self.n):
 
             #   Rewrite the current string
             rw = self.rewrite(rw)
+
+        #   Apply the axiom
+        rw = self.axiom.replace("F", rw)
 
         return rw
 
@@ -212,13 +227,7 @@ def interpret_word(
     y_stack.append(y)
     d_stack.append(d)
 
-    useless = ["[]", "++++++++", "--------", "+-", "-+"]
-    replace = ["", "", "", "", ""]
-
     keep = []
-
-    #   Remove useless substrings
-    w = utility.clean_str(w, useless, replace)
 
     #   Determine how many reflections are initiated
     reflections = w.count("(")
@@ -451,6 +460,7 @@ def determine_c(
 ################################################################################
 
 def gen_lsystem(
+    seed: int,
     v: vocabulary,
     a_i: int,
     r_n: int,
@@ -461,21 +471,29 @@ def gen_lsystem(
 
     Parameters
     ----------
+    seed : int
+        The seed for the random generation
     v : vocabulary
         The vocabulary of the L-system
+    a_i : int
+        The index of the axis of symmetry to use
+    r_n : int
+        The number of rules to generate
     r_l : int
         The length of the rules
     n : int
-        The number of iterations
+        The number of iterations for the L-System
 
     Returns
     -------
     lsystem
-        The L-system
-    """
+        The L-System
+    """    
 
     #   Initialisations
     g = []
+    i = 0
+    j = 0
 
     #   Select the axiom from the list of axioms
     aos = a_all[a_i]
@@ -484,7 +502,7 @@ def gen_lsystem(
     while 1:
 
         #   Generate a random rule
-        g2 = utility.gen_random(l_c, r_l)
+        g2 = utility.gen_random(l_c, r_l, seed + i)
 
         #   Check if the command to draw an element is included in the rule
         if "F" in g2:
@@ -492,35 +510,38 @@ def gen_lsystem(
             #   Exit the loop
             break
 
+        i += 1
+
     #   Save the first rule
     g.append(["F", g2])
 
-    # for _ in range(1, r_n):
+    #   Loop through the number of rules to generate
+    for i in range(1, r_n):
 
-        # while 1:
+        #   Loop until a rule applied to a new character is generated
+        while 1:
 
-        #     g1 = numpy.random.choice(e_vocab[1:3])
+            numpy.random.seed(seed = seed + j)
 
-        #     if g1 not in [i[0]for i in g]:
+            #   Select a character
+            g1 = numpy.random.choice(e_var[1:])
+
+            #   Check if the character already has a rule applied to it
+            if g1 not in [i[0]for i in g]:
                 
-        #         break
+                #   Exit the loop
+                break
 
-    g2 = utility.gen_random(l_c, r_l)
+            j += 1
 
-    g.append(["f", g2])
+        #   Generate the rule
+        g2 = utility.gen_random(l_c, r_l, seed = seed + i)
 
-
-    # #   Check if the command to move without drawing the element is included in the first rule
-    # if "f" in g2:
-
-    #     #   Generate a random rule
-    #     g2 = utility.gen_random(l_c, r_l)
-
-    #     #   Svae the second rule
-    #     g.append(["f", g2])
+        #   Add the rule to the list of rules
+        g.append([g1, g2])
 
     #   Define the L-system
-    ls = lsystem(v, g, aos, n)
+    ls = lsystem(v, g, aos, n, seed = seed)
 
     return ls
 
@@ -528,20 +549,25 @@ def gen_lsystem(
 
 #   The L-system vocabulary used to generate internal elements
 
-e_vocab = ["F", "f", "+", "-", "[", "]", "(", ")"]
+e_var = ["F", "f", "+", "-"]
 
-e_descr = [
+e_con = ["[", "]", "(", ")"]
+
+e_var_descr = [
     "Create an element at the current position and increment the position",
     "Increment the position",
     "Rotate the current direction by 45 degrees counterclockwise",
     "Rotate the current direction by 45 degrees clockwise",
+    ]
+
+e_con_descr = [
     "Push the current position",
     "Pop to the previously pushed position",
     "Push and reflect the current position",
     "Pop and unreflect to the previously pushed and reflected position",
     ]
 
-e_vocabulary = vocabulary(e_vocab, e_descr)
+e_vocabulary = vocabulary(e_var, e_con, e_var_descr, e_con_descr)
 
 #   L-system axioms for symmetry
 

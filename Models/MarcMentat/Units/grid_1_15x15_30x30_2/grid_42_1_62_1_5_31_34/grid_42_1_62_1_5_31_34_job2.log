@@ -1,0 +1,171 @@
+ 
+Program name         : marc  
+Job ID               : C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_15x15_30x30_2\grid_42_1_62_1_5_31_34\grid_42_1_62_1_5_31_34_job2   
+Version type         : i8  
+User subroutine name :   
+User objects/libs    :   
+Restart file job ID  :    
+Substructure file ID :    
+Post file job ID     :    
+Defaults file ID     :    
+View factor file ID  :    
+Save generated module: no 
+MPI library          : intelmpi 
+Contact decoupling   : 0 
+DDM processes        :  
+Element loop threads :  
+Solver processes     :  
+Solver threads       :  
+GPGPU option         :  
+Host file            :    
+Distributed i/o      :    
+Run directory        : C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_15x15_30x30_2\grid_42_1_62_1_5_31_34 
+Scratch directory    : C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_15x15_30x30_2\grid_42_1_62_1_5_31_34 
+Default bin directory: C:\marc2019\bin\win64i8 
+Material database    : C:\marc2019\AF_flowmat\  
+  
+ 
+2020-09-17 
+05:31 PM
+ 
+ Marc grid_42_1_62_1_5_31_34_job2 begins execution
+
+     (c) COPYRIGHT 2019 MSC Software Corporation, all rights reserved
+
+
+ Requested number of element threads                     =    1
+ Requested number of solver threads                      =    1
+
+
+ VERSION: Marc 2019, build 664220 (2019/07/01)
+
+
+
+     Date: Thu Sep 17 17:31:13 2020
+
+                              Marc execution begins
+ Date:          Thu Sep 17 17:31:26 2020
+ MSC Id:        00090faa0001 (ethernet) (Intel)
+ Hostname:      DESKTOP-UFIB03G (user Naude Conradie, display DESKTOP-UFIB03G)
+ License files: 1700@license2.stb.sun.ac.za
+ CEID:          56B8415D-4C978F4G
+ User:          Naude Conradie
+ Display:       DESKTOP-UFIB03G
+ LAPI Version:  LAPI 10.4.6 (FLEXlm 11.13.1.3)
+Acquired 20 licenses for Group MSCONE (Marc) from license server on host license2.stb.sun.ac.za
+
+
+             general memory initially set to =        25 MByte
+
+             maximum available memory set to =      8126 MByte
+
+             general memory increasing from      25 MByte to     106 MByte
+
+   MSC Customer Entitlement ID
+        56B8415D-4C978F4G
+
+             wall time =          26.00
+
+             wall time =          26.00
+
+
+             total  memory =          143  MByte
+
+             e n d   o f   i n c r e m e n t       0
+             wall time =          27.00
+
+
+              remeshing body       1 due to user request 
+
+
+              remeshing body       1 due to user request 
+
+
+ run_exe: "C:\marc2019\bin\win64i8\afmesh2d" "C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat\Units\grid_1_15x15_30x30_2\grid_42_1_62_1_5_31_34\grid_42_1_62_1_5_31_34_job2_b1"
+ Date:          Thu Sep 17 17:31:53 2020
+ MSC Id:        00090faa0001 (ethernet) (Intel)
+ Hostname:      DESKTOP-UFIB03G (user Naude Conradie, display DESKTOP-UFIB03G)
+ License files: 1700@license2.stb.sun.ac.za
+ CEID:          56B8415D-4C978F4G
+ User:          Naude Conradie
+ Display:       DESKTOP-UFIB03G
+ LAPI Version:  LAPI 10.4.6 (FLEXlm 11.13.1.3)
+Acquired 1 license for Marc 2D-Mesh from license server on host license2.stb.sun.ac.za
+STATUS: Generating mesh... 
+STATUS: Generating mesh... 
+ERROR: Meshing failed!
+Returned 1 license for Marc 2D-Mesh
+
+ run_exe - status : 1
+             ***error***
+              mesher failed with error number:     1
+Returned 20 licenses for Group MSCONE (Marc)
+
+
+             memory usage:                       MByte       words  % of total
+
+              within general memory:           
+               element stiffness matrices:           0       87352         0.2
+               solver: first part                    1      162096         0.4
+               overallocation initial allocation   106    27740548        72.1
+               other:                                0       13868         0.0
+              allocated separately:
+               incremental backup:                   4      975068         2.5
+               global remeshing:                     0        4020         0.0
+               nodal vectors:                        2      412044         1.1
+               defined sets:                         0        3666         0.0
+               contact:                              1      182248         0.5
+               transformations:                      0        8464         0.0
+               kinematic boundary conditions:        0       19332         0.1
+               tables:                               0         958         0.0
+               points, curves and surfaces:          0         144         0.0
+               mem_none:                             1      142262         0.4
+               element storage:                      7     1729614         4.5
+               material properties:                  0        4600         0.0
+               executable and common blocks:        27     7000000        18.2
+               miscellaneous                         0         212         0.0
+               ---------------------------------------------------------------
+               total:                              147    38486496
+
+               general memory allocated:           107    28003864
+               general memory used:                  1      263316
+
+               peak memory usage:                  159    41557520
+
+
+             timing information:                             wall time      cpu time
+
+               total time for input:                              0.69          0.69
+               total time for stiffness matrix assembly:          0.00          0.00
+               total time for mass matrix assembly:               0.00          0.00
+               total time for stress recovery:                    0.06          0.06
+               total time for matrix solution:                    0.00          0.00
+               total time for contact:                            0.01          0.00
+               total time for remeshing/rezoning:                 0.00          0.00
+               total time for output:                             0.25          0.25
+               total time for miscellaneous:                     47.99          0.83
+               ---------------------------------------------------------------------
+               total time:                                       49.00          1.83
+
+
+             **************************************************************************
+
+
+             
+             The mesher failed to create a mesh. Check error messages
+             in the output file (jidname.out) or in the log file.
+             
+
+
+
+
+             **************************************************************************
+
+
+
+
+
+                                        Marc 2019
+
+                                        Exit number 5059
+

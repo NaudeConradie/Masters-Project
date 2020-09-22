@@ -77,20 +77,20 @@ def main():
     elif temp.case == 4:
         create.template_4(temp)
 
-    #   Generate a number of units and save their results
-    fp_lu, fp_bu = create.gen_units(temp, 100, c = c)
+    # #   Generate a number of units and save their results
+    # fp_lu, fp_lu_rank = create.gen_init_units(temp, 100, c = c)
 
-    #   Analyse the results
-    analyse.sel_best_u(temp, fp_lu, fp_bu, 50)
+    # #   Analyse the results
+    # analyse.rank_u(temp, fp_lu, fp_lu_rank, 50)
 
-    #   Reanalyse the best units
-    if temp.case == 1:
-        create.template_1_test(fp_bu)
-    elif temp.case == 2:
-        create.template_2_test(fp_bu)
+    # #   Reanalyse the best units
+    # if temp.case == 1:
+    #     create.template_1_test(fp_lu_rank)
+    # elif temp.case == 2:
+    #     create.template_2_test(fp_lu_rank)
 
-    #   View the boundary conditions of the template
-    inspect.view_bc()
+    # #   View the boundary conditions of the template
+    # inspect.view_bc()
 
     return
 

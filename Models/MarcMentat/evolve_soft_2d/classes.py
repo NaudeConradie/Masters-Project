@@ -62,8 +62,7 @@ class template:
         y0: int,
         x_e: int,
         y_e: int,
-        x_s: float,
-        y_s: float,
+        e_s: float,
         b: int,
         ogd_mat: ogd_mat,
         n_steps: int,
@@ -126,8 +125,10 @@ class template:
         else:
             self.y_e = y_e    
 
-        self.x_s = x_s
-        self.y_s = y_s
+        self.e_s = e_s
+
+        self.x_s = self.e_s*self.x_e
+        self.y_s = self.e_s*self.x_e
         self.b = b
         self.ogd_mat = ogd_mat
         self.n_steps = n_steps
@@ -142,10 +143,6 @@ class template:
         self.x_n = self.x_e + 1
         #   The number of nodes in the y-direction
         self.y_n = self.y_e + 1
-        #   The side length of an element in the x-direction
-        self.x_e_s = self.x_s/self.x_e
-        #   The side length of an element in the y-direction
-        self.y_e_s = self.y_s/self.y_e
         #   The total number of elements
         self.n_e = self.x_e * self.y_e
         #   The total number of nodes
@@ -216,6 +213,7 @@ class unit_p:
         run_success: bool = False,
         c_e: list = [0, 0, 0],
         i_e: list = [0, 0, 0],
+        d: list = [],
         ) -> None:
         """The unit parameters
 
@@ -243,6 +241,7 @@ class unit_p:
         self.run_success = run_success
         self.c_e = c_e
         self.i_e = i_e
+        self.d = d
 
         #   The list of elements removed from the unit as a string
         self.rem_l = utility.list_to_str(rem, "_")
@@ -254,7 +253,7 @@ class unit_p:
 
         elif self.cp != None:
 
-            self.u_id = str(len(self.rem)) + "_" + str(self.cp.mod_id) + "_" + str(self.cp.cppn.hl_n) + "_" + str(self.cp.cppn.hl_s) + "_" + str(self.cp.cppn.scale) + "_" + str(self.cp.cppn.seed) + "_" + str(self.cp.cppn.perc)
+            self.u_id = str(len(self.rem)) + "_" + str(self.cp.mod_id) + "_" + str(self.cp.cppn.seed) + "_" + str(self.cp.cppn.scale) + "_" + str(self.cp.cppn.hl_n) + "_" + str(self.cp.cppn.hl_s) + "_" + str(self.cp.cppn.thresh)
 
         else:
             

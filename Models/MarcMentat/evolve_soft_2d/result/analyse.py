@@ -14,13 +14,12 @@ from evolve_soft_2d.result import obtain
 
 ################################################################################
 
-def sel_best_u(
+def rank_u(
     template,
     fp_lu: str,
-    fp_bu: str,
-    sel: int,
+    fp_lu_rank: str,
     ) -> None:
-    """Monte Carlo analysis
+    """Rank units according to their performance
 
     Parameters
     ----------
@@ -28,7 +27,7 @@ def sel_best_u(
         The unit template parameters
     fp_lu : str
         The file path of the log file of units created during the last simulation
-    fp_bu : str
+    fp_lu_rank : str
         The file path of the log file of the best units created during the last simulation
     sel : int
         The number of best units to select
@@ -49,12 +48,6 @@ def sel_best_u(
 
     #   Read the list of units created during the last simulation
     lu = obtain.read_lu(fp_lu)
-
-    #   Determine the maximum amount of units that can be selected
-    sel_max = len(lu)
-
-    #   Ensure that the amount of units selected is within bounds
-    sel = utility.clean_int(sel, sel_max)
 
     #   Create a list of the number of elements removed from every element
     n_e = [utility.find_int_in_str(i) for i in lu]
@@ -86,24 +79,21 @@ def sel_best_u(
     # #   Plot the desired graphs from the results
     # plotting.plot_all(template, v, n_e, label, tm)
 
-    #   Check the case identifier
-    if template.case == 1:
+    data.sort_values(by = ["Hausdorff Distance"], inplace = True, ignore_index = True)
 
-        #   Sort the relevant values in the dataframe in ascending order
-        # data.sort_values(by = ["Constraint Energy Y", "Constraint Energy X"], inplace = True, ignore_index = True)
+    # #   Check the case identifier
+    # if template.case == 1:
 
-        data.sort_values(by = ["Hausdorff Distance"], inplace = True, ignore_index = True)
-        
-    elif template.case == 2:
+    #     #   Sort the relevant values in the dataframe in ascending order
+    #     data.sort_values(by = ["Constraint Energy Y", "Constraint Energy X"], inplace = True, ignore_index = True)
 
-        #   Sort the relevant values in the dataframe in ascending order
-        data.sort_values(by = ["Constraint Energy", "Internal Energy"], inplace = True, ignore_index = True)
+    # elif template.case == 2:
 
-    #   Select the requested number of best performing units
-    unit_select = data.iloc[0:sel]
+    #     #   Sort the relevant values in the dataframe in ascending order
+    #     data.sort_values(by = ["Constraint Energy", "Internal Energy"], inplace = True, ignore_index = True)
     
     #   Save the list of best performing units
-    unit_select["Unit ID"].to_csv(fp_bu, header = False, index = False)
+    data["Unit ID"].to_csv(fp_lu_rank, header = False, index = False)
 
     return
 
@@ -235,6 +225,7 @@ def internal_energy(
     return
 
 ################################################################################
+
 def disp(
     template,
     l: str,

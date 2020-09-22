@@ -14,46 +14,46 @@ class cppn:
 
     def __init__(
         self,
+        seed: int,
         mod_n: int,
+        scale: float,
         hl_n: int,
         hl_s: int,
+        thresh: float,
         x: int,
         y: int,
-        scale: float,
-        seed: int,
-        thresh: float,
         ) -> None:
         """The CPPN parameters
 
         Parameters
         ----------
+        seed : int
+            The seed for the random generation
         mod_n : int
             The number of models to be generated from a particular seed
+        scale : float
+            The scale of the focus on the model
         hl_n : int
             The number of hidden layers
         hl_s : int
             The size of the initial hidden layer
+        thresh : float
+            The rounding/removal threshold
         x : int
             The number of elements in the x-direction
         y : int
             The number of elements in the y-direction
-        scale : float
-            The scale of the focus on the model
-        seed : int
-            The seed for the random generation
-        thresh : float
-            The rounding/removal threshold
         """
 
+        self.seed = seed
         self.mod_n = mod_n
+        self.scale = scale
         self.hl_n = hl_n
         self.hl_s = hl_s
+        self.thresh = thresh
         self.x = x
         self.y = y
-        self.scale = scale
-        self.seed = seed
-        self.thresh = thresh
-
+        
         #   The resolution of the grid
         self.res = self.x*self.y
 
@@ -70,15 +70,17 @@ class cppn:
         """
 
         r = "Model Dimensions:               {}x{} elements\n".format(self.x, self.y)
-        r += "Seed:                           {}\n".format(self.seed)
-        r += "Percentage Of Elements Removed: {}\n".format(self.thresh)
+        r += "Model Seed:                     {}\n".format(self.seed)
+        r += "Number Of Models Generated:     {}\n".format(self.mod_n)
         r += "Model Scale:                    1:{}\n".format(self.scale)
-        r += "Number Of Hidden Layers:        {}\n".format(self.hl_s)
-        r += "Number Of Nodes Per Layer:      {}\n".format(self.hl_n)
+        r += "Number Of Hidden Layers:        {}\n".format(self.hl_n)
+        r += "Size Of Initial Hidden Layer:   {}\n".format(self.hl_s)
+        if self.thresh < 1:
+            r += "Rounding Threshold:             {}\n".format(self.thresh)
+        else:
+            r += "Percentage Of Elements Removed: {}%\n".format(self.thresh)
         r += "Activation Functions:\n"
-
         for i in self.af:
-
             r += "{}\n".format(i)
 
         return r
@@ -423,7 +425,7 @@ class cppn_i:
         -------
         numpy.array
             The grid with the elements removed
-        """        
+        """
 
         #   Check if the threshold indicates that a percentage of elements should be removed
         if self.cppn.thresh > 1:
@@ -434,28 +436,35 @@ class cppn_i:
             #   Calculate the number of elements to be removed
             b = int(math.ceil(self.cppn.x*self.cppn.y*perc))
 
-            #   Obtain the IDs of the elements to be removed
-            ids = numpy.argpartition(grid, b, axis = None)
+            if b == self.cppn.x*self.cppn.y:
 
-            #   Reshape the grid to be one-dimensional
-            grid = grid.flatten()
+                #   Reshape the grid to be one-dimensional
+                grid = numpy.zeros((self.cppn.x, self.cppn.y))
 
-            #   Loop through all elements
-            for i in range(0, self.cppn.res):
+            else:
 
-                #   Check if the current element ID refers to an element that needs to be removed
-                if i in ids[:b]:
+                #   Obtain the IDs of the elements to be removed
+                ids = numpy.argpartition(grid, b, axis = None)
 
-                    #   Remove the element
-                    grid[i] = 0
+                #   Reshape the grid to be one-dimensional
+                grid = grid.flatten()
 
-                else:
+                #   Loop through all elements
+                for i in range(0, self.cppn.res):
 
-                    #   Add the element
-                    grid[i] = 1
+                    #   Check if the current element ID refers to an element that needs to be removed
+                    if i in ids[:b]:
 
-            #   Reshape the grid to its original dimensions
-            grid = grid.reshape(self.cppn.x, self.cppn.y)
+                        #   Remove the element
+                        grid[i] = 0
+
+                    else:
+
+                        #   Add the element
+                        grid[i] = 1
+
+                #   Reshape the grid to its original dimensions
+                grid = grid.reshape(self.cppn.x, self.cppn.y)
 
         else:
 
@@ -474,8 +483,6 @@ class cppn_i:
 
                         #   Remove the element
                         i[j] = 0
-
-                print(i)
 
         return grid
 

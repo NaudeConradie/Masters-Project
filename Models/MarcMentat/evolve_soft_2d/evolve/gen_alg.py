@@ -5,6 +5,7 @@
 import numpy
 
 from evolve_soft_2d import utility
+from evolve_soft_2d.evolve import lsystems
 from evolve_soft_2d.unit import create
 
 ################################################################################
@@ -22,48 +23,46 @@ from evolve_soft_2d.unit import create
 #     c: float = 1,
 #     ) -> None:
 
-#     if meth == "l":
-
-#         pop_i = create.gen_units(template, pop_n, l = [all_max, all_min])
-
-#     elif meth == "c":
-
-#         pop_i = create.gen_units(template, pop_n, c = [all_max, all_min])
-
-#     else:
-
-#         pop_i = create.gen_units(template, pop_n)
+#     pop_i = create.gen_init_units(template, pop_n, meth, [all_max, all_min])
 
 #     pop_all = []
 #     pop_all.append(pop_i)
-#     pop_ip1 = pop_i[:]
-#     pop_best = numpy.zeros((gen, chrom))
+#     par = []
+#     pop_best = []
 
-#     for i in range(0, gen):
+#     for _ in range(0, gen):
 
 #         #   Fitness evaluation
+#         fp_lu, fp_lu_rank = create.run_units(template, pop_i, meth)
 
 #         for j in range(0, pop_n, 2):
 
-#             par_1 = sel_par(pop_n, c, fit_i, pop_i)
-#             par_2 = sel_par(pop_n, c, fit_i, pop_i)
+#             par_1 = sel_par(pop_n, fit_i, pop_i, c)
+#             par_2 = sel_par(pop_n, fit_i, pop_i, c)
 
-#             chi_1, chi_2 = crossover(chrom, prob_co, co_point_n, par_1, par_2)
+#             chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
 
-#             chi_1 = mut(chrom, all_max, all_min, prob_m, chi_1)
-#             chi_2 = mut(chrom, all_max, all_min, prob_m, chi_2)
+#             chi_1 = mut(chrom, all_max, all_min, prob[1], point[1], chi_1)
+#             chi_2 = mut(chrom, all_max, all_min, prob[1], point[1], chi_2)
 
-#             chi_1 = mut_bias(chrom, all_max, all_min, prob_bm, chi_1)
-#             chi_2 = mut_bias(chrom, all_max, all_min, prob_bm, chi_2)
+#             chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
+#             chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
 
-#             pop_ip1[j] = chi_1
-#             pop_ip1[j + 1] = chi_2
-
-#         pop_i = pop_ip1
-
-#         pop_all.append(pop_i)
+#             par[j] = chi_1
+#             par[j + 1] = chi_2
 
 #         #   Store the best member of the current generation
+#         pop_best.append(pop_i[fit_i[0]])
+
+#         if meth == "c":
+
+#             pop_i = create.gen_bred_units(template, meth, par, c_mod_max = all_max[0])
+
+#         else:
+
+#             pop_i = create.gen_bred_units(template, meth, par)
+
+#         pop_all.append(pop_i)
 
 #     return
 
@@ -149,8 +148,8 @@ def sel_par(
     while i < pop_n and not par_found:
 
         #   Calculate the upper and lower bounds for comparison with the threshold
-        x_bel = sum([fit_check(pop_n, c, j) for j in range(1, i + 1)])
-        x_abo = sum([fit_check(pop_n, c, j) for j in range(1, i + 2)])
+        x_bel = sum([fit_weight(pop_n, c, j) for j in range(1, i + 1)])
+        x_abo = sum([fit_weight(pop_n, c, j) for j in range(1, i + 2)])
 
         #   Check if the threshold is within the bounds
         if x_bel < x and x <= x_abo:
@@ -260,13 +259,16 @@ def mut(
     #   Loop for the number of potential random mutations
     for _ in range(0, point_m):
 
-        #   
+        #   Generate a random value between 0 and 1
         x = numpy.random.uniform(size = 1)
 
+        #   Check if the value is less than the probability for random mutations
         if x < prob_m:
 
+            #   Select the point of random mutation
             m_point = numpy.random.randint(0, chrom)
 
+            #   Apply the mutation
             chi[m_point] = numpy.random.randint(all_min[m_point], all_max[m_point])
 
     return chi
@@ -278,37 +280,95 @@ def mut_bias(
     all_max: list,
     all_min: list,
     prob_bm: float,
+    point_bm: float,
     chi: list,
     ) -> list:
+    """Apply biased mutation to a member
 
-    x = numpy.random.uniform(size = 1)
+    Parameters
+    ----------
+    chrom : int
+        The number of chromosomes a member has
+    all_max : list
+        The list of the maximum allele values
+    all_min : list
+        The list of the minimum allele values
+    prob_bm : float
+        The probability of biased mutation occurring
+    point_bm : float
+        The number of potential biased mutations
+    chi : list
+        The member
 
-    if x < prob_bm:
+    Returns
+    -------
+    list
+        The mutated member
+    """    
 
-        bm_point = numpy.random.randint(0, chrom)
+    #   Loop for the number of potential biased mutations
+    for _ in range(0, point_bm):
 
-        y = numpy.random.uniform(size = 1)
+        #   Generate a random value between 0 and 1
+        x = numpy.random.uniform(size = 1)
 
-        if y < 0.5:
+        #   Check if the value is less than the probability for biased mutations
+        if x < prob_bm:
 
-            chi[bm_point] -= 1
+            #   Select the point of biased mutation
+            bm_point = numpy.random.randint(0, chrom)
 
-        else:
+            #   Generate a random value between 0 and 1
+            y = numpy.random.uniform(size = 1)
 
-            chi[bm_point] += 1
+            #   Check if the value is less than 0.5
+            if y < 0.5:
 
-        chi[bm_point] = utility.clean_int(chi[bm_point], all_max[bm_point], lb = all_min[bm_point])
+                #   Decrease the allele value by 1
+                chi[bm_point] -= 1
+
+            else:
+
+                #   Increase the allele value by 1
+                chi[bm_point] += 1
+
+            #   Ensure that the allele value is not out of bounds
+            chi[bm_point] = utility.clean_int(chi[bm_point], all_max[bm_point], lb = all_min[bm_point])
 
     return chi
 
 ################################################################################
 
-def fit_check(
+def fit_weight(
     p: int,
     c: int,
-    x: int,
+    r: int,
     ) -> float:
+    """The fitness weighting function
 
-    y = (2*((p + 1 - x)**c))/(p**2 + p)
+    Parameters
+    ----------
+    p : int
+        The population size
+    c : int
+        The fitness constant
+    r : int
+        The rank of the selected member
+
+    Returns
+    -------
+    float
+        The fitness weight
+    """    
+
+    y = (2*((p + 1 - r)**c))/(p**2 + p)
 
     return y
+
+################################################################################
+
+ls_all_max = [101, 8, len(lsystems.e_var) + 1, 6, 6]
+ls_all_min = [1, 0, 1, 2, 1]
+
+cppn_all_max = [101, 2, 2, 11, 32, 100]
+cppn_all_min = [1, 1, 1, 2, 2, 1]

@@ -68,10 +68,10 @@ def create_nodes(template) -> None:
             py_send("*add_nodes {} {} {}".format(x, y, z))
 
             #   Increment the x-coordinate
-            x = x + template.x_e_s
+            x = x + template.e_s
 
         #   Increment the y-coordinate
-        y = y + template.y_e_s
+        y = y + template.e_s
 
     return
 
@@ -168,6 +168,13 @@ def add_neighbours(template) -> None:
 ################################################################################
 
 def copy_neighbours(template) -> None:
+    """Surround the current grid with copies of itself
+
+    Parameters
+    ----------
+    template
+        The unit template parameters
+    """
 
     #   Initialisations
     x = [-template.x_s, template.x0, template.x_s]
@@ -196,13 +203,15 @@ def copy_neighbours(template) -> None:
                 #   Skip this step in the loop
                 continue
 
+            #   Set the origin coordinates of the copy
             py_send("*set_duplicate_translation x {}".format(j))
             py_send("*set_duplicate_translation y {}".format(i))
 
+            #   Copy the grid
             py_send("*duplicate_combined")
-
             py_send("{} #".format(l))
 
+    #   Clear all duplicate nodes
     sweep()
 
     return
@@ -463,6 +472,30 @@ def add_bc_p_edge(
 
 ################################################################################
 
+def add_inertia_rel() -> None:
+    """Add inertia relief
+    """    
+
+    py_send("*loadcase_option inertia_relief:on")
+
+    #   Loop through the degrees of freedom
+    for i in range(1, 7):
+
+        #   Check if the current degree of freedom is translation in the z-direction
+        if i == 3:
+
+            #   Skip this step in the loop
+            continue
+
+        py_send("*set_loadcase_inert_rlf_supp_dof_def {}".format(i))
+
+    #   Add node 1 as the support node
+    py_send("*add_loadcase_inert_rlf_supp_nodes 1 #")
+
+    return
+
+################################################################################
+
 def add_geom_prop() -> None:
     """Add plane strain geometrical properties
     """
@@ -518,6 +551,7 @@ def add_lcase(
     template,
     l_id: int,
     l_bc: list,
+    ir: bool = False,
     ) -> None:
     """Add a loadcase
 
@@ -529,6 +563,8 @@ def add_lcase(
         The loadcase ID
     l_bc : list
         The list of loadcase boundary conditions
+    ir : bool, optional
+        Whether or not to include inertia relief, by default False
     """
 
     py_send("*new_loadcase")
@@ -542,13 +578,22 @@ def add_lcase(
         #   Add the boundary conditions
         py_send("*add_loadcase_loads {}".format(i))
 
+    #   Check if inertia relief is required
+    if ir == True:
+
+        #   Add inertia relief
+        add_inertia_rel()
+
     py_send("*loadcase_value nsteps {}".format(template.n_steps))
 
     return
 
 ################################################################################
 
-def add_job(j_id: int) -> None:
+def add_job(
+    j_id: int,
+    j_bc: list,
+    ) -> None:
     """Add a job
 
     Parameters
@@ -561,6 +606,14 @@ def add_job(j_id: int) -> None:
     py_send("*new_job structural")
     py_send("*job_name job_{}".format(j_id))
     py_send("*add_job_loadcases lcase{}".format(j_id))
+    py_send("*clear_job_applys")
+
+    #   Loop through the list of boundary conditions
+    for i in j_bc:
+
+        #   Add the boundary conditions
+        py_send("*add_job_applys {}".format(i))
+
     py_send("*job_option strain:large")
     py_send("*job_option follow:on")
     py_send("*add_post_tensor stress_g")
@@ -603,6 +656,7 @@ def run_model(
     fp_mud: str,
     fp_log: str,
     fp_t16: str,
+    d_temp: list = None,
     ) -> bool:
     """Run a model
 
@@ -642,6 +696,10 @@ def run_model(
         #   Analyse the results
         analyse.constraint_energy(template, l + "_" + str(j_id))
         analyse.internal_energy(template, l + "_" + str(j_id))
+
+        if d_temp is not None:
+
+            analyse.hausdorff_d(template, d_temp, l + "_" + str(j_id))
         
     return run_success
 
