@@ -68,14 +68,8 @@ def main():
     temp = classes.template(case, x0, y0, x_e, y_e, x_s, y_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
 
     #   Create the template
-    if temp.case == 1:
-        create.template_1(temp)
-    elif temp.case == 2:
-        create.template_2(temp)
-    elif temp.case == 3:
-        create.template_3(temp)
-    elif temp.case == 4:
-        create.template_4(temp)
+
+    create.temp_create(temp)
 
     # #   Generate a number of units and save their results
     # fp_lu, fp_lu_rank = create.gen_init_units(temp, 100, c = c)

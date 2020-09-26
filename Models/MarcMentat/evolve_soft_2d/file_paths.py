@@ -1,5 +1,46 @@
 ##  File paths
 
+# astroid==2.3.3
+# bleach==3.1.4
+# certifi==2020.4.5.1
+# chardet==3.0.4
+# colorama==0.4.3
+# cycler==0.10.0
+# docutils==0.16
+# idna==2.9
+# importlib-metadata==1.6.0
+# isort==4.3.21
+# keyring==21.2.0
+# kiwisolver==1.2.0
+# lazy-object-proxy==1.4.3
+# matplotlib==3.2.1
+# mccabe==0.6.1
+# mpmath==1.1.0
+# numpy==1.15.1
+# pandas==1.0.3
+# pkginfo==1.5.0.1
+# pyDOE==0.3.8
+# Pygments==2.6.1
+# pylint==2.4.4
+# pyparsing==2.4.7
+# python-dateutil==2.8.1
+# pytz==2019.3
+# pywin32-ctypes==0.2.0
+# readme-renderer==25.0
+# requests==2.23.0
+# requests-toolbelt==0.9.1
+# scipy==1.4.1
+# seaborn==0.10.1
+# six==1.14.0
+# sympy==1.5.1
+# tqdm==4.45.0
+# twine==3.1.1
+# typed-ast==1.4.1
+# urllib3==1.25.9
+# webencodings==0.5.1
+# wrapt==1.11.2
+# zipp==3.1.0
+
 #   Imports
 from evolve_soft_2d import utility
 
