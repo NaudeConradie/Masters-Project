@@ -4,4 +4,21 @@ File is Mentat, version unknown.
 Model file c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\dump.mfd opened for reading.
 Model c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\dump opened.
 Command > *fill_view
-Command > *quit yes
+Command > @main(results) *post_open_default
+Default post file does not exist!
+Command > @main(results) *post_open_default
+Default post file does not exist!
+Command > *edit_job job_2
+Enter edit job : 
+Command > *update_job
+Command > *submit_job 1 *monitor_job
+INFO: Analysis dimension is derived from geometric property type Structural Plane Strain.
+INFO: Assuming planar analysis!
+INFO: Found 0 errors and 0 warnings.
+"C:\MENTAT~1\bin\submit1.bat" marc default 1 1 - - dump_job_2 - - - - - n n - - 0 1 1 0 - -
+Job job_2 submitted!
+Command > *job_edit_output
+Command > @popdown(job_properties_pm) @main(results) @popup(modelplot_pm) *post_open_default
+Number of increments detected : 6
+Command > *post_skip_to_last
+Command > *fill_view

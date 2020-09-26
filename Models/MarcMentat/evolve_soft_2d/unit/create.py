@@ -293,8 +293,8 @@ def rem_el_run_results(
     rem: list,
     grid_rem: list,
     fp_lu: str,
-    ls: int = None,
-    cp: list = None,
+    ls = None,
+    cp = None,
     ) -> None:
     """Remove the elements from the unit model, save and run the model, obtain the desired results from the model and reopen the template model
 
@@ -342,11 +342,14 @@ def rem_el_run_results(
         curr_mod.i_e = obtain.read_xym(template, curr_mod.u_id, "Internal Energy")
 
     #   Log the current unit parameters
-    print(curr_mod, file = open(curr_mod.fp_u_l, "w"))
+    with open(curr_mod.fp_u_l, "w") as f:
+        print(curr_mod, file = f)
+
     utility.save_v(curr_mod, curr_mod.u_id)
 
     #   Log the current unit ID
-    print(curr_mod.u_id, file = open(fp_lu, "a"))
+    with open(fp_lu, "a") as f:
+        print(curr_mod.u_id, file = f)
 
     #   Reopen the template
     modify.open_model(template.fp_t_mud)
@@ -422,7 +425,9 @@ def temp_create(template) -> list:
     modify.save_model(template.fp_t_mud)
 
     #   Log the template parameters
-    print(template, file = open(template.fp_t_l, "w"))
+    with open(template.fp_t_l, "w") as f:
+        print(template, file = f)
+        
     utility.save_v(template, template.t_id)
 
     return

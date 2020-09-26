@@ -7,4 +7,13 @@
 |
 *open_model "c:\users\naude conradie\desktop\repository\masters-project\models\marcmentat\dump.mfd"
 *fill_view
-*quit yes
+@main(results) *post_open_default
+@main(results) *post_open_default
+*edit_job job_2
+
+*update_job
+*submit_job 1 *monitor_job
+*job_edit_output
+@popdown(job_properties_pm) @main(results) @popup(modelplot_pm) *post_open_default
+*post_skip_to_last
+*fill_view
