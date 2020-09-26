@@ -59,7 +59,7 @@ def main():
 
     create.temp_create(temp)
 
-    pop_i = create.gen_init_units(temp, 1, meth, [[101, len(temp.e_internal) + 1], [1, 0]])
+    pop_i = create.gen_init_units(temp, 10, meth, [[101, len(temp.e_internal) + 1], [1, 0]])
 
     print(pop_i)
 
