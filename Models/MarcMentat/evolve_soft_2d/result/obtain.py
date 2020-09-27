@@ -374,10 +374,9 @@ def read_xym(
 ################################################################################
 
 def read_all(
-    l: str,
-    n_e: list,
-    lu: list,
     template,
+    lu: list,
+    l: str,
     ) -> list:
     """Read all result values from a list of units and plot them
 
@@ -385,8 +384,6 @@ def read_all(
     ----------
     l : str
         The result label
-    n_e : list
-        The list of the number of elements removed from every element
     lu : list
         The list of units
     template : template
@@ -408,7 +405,7 @@ def read_all(
         v.append([])
 
         #   Create the file path of the results file
-        fp_r_f = create_fp_file(template, l + "_" + lu[i] + "_1", "r")
+        fp_r_f = create_fp_file(template, l + "_" + lu[i] + "_2", "r")
 
         #   Store the results from the file
         v[i] = linecache.getline(fp_r_f, template.n_steps + 1)
@@ -426,6 +423,39 @@ def read_all(
     v = list(map(abs, v))
 
     return v
+
+################################################################################
+
+def read_all_hd(
+    template,
+    lu: list,
+    ) -> list:
+
+    #   Initialisations
+    hd = []
+
+    #   Loop through all units
+    for i in range(0, len(lu)):
+
+        #   Create the file path of the results file
+        fp_r_f = create_fp_file(template, "Hausdorff Distance_" + lu[i] + "_2", "r")
+
+        #   Store the results from the file
+        hd.append(linecache.getline(fp_r_f, 1))
+
+    #   Clean the list
+    hd = [i.rstrip() for i in hd]
+
+    #   Cast the list items to floats and check for any failed results
+    (hd, hd_f) = utility.list_to_float(hd)
+
+    #   Output a warning if any models failed to deliver results
+    if hd_f != 0:
+        print("Warning: {} models failed to deliver results!".format(hd_f))
+
+    hd = list(map(abs, hd))
+
+    return hd
 
 ################################################################################
 

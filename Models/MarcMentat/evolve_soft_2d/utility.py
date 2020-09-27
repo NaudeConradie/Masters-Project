@@ -653,7 +653,7 @@ def list_to_float(l: list) -> [list, int]:
 
         #   Increment the failure counter
         except:
-            l_o.append(10)
+            l_o.append(0)
             l_f += 1
 
     return l_o, l_f

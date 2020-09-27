@@ -68,8 +68,8 @@ def scatterplot(
     x_data: list,
     y_data: list,
     t: str,
-    y: str,
-    x: str,
+    x_l: str,
+    y_l: str,
     color: str = "b",
     marker: str = "o"
     ) -> None:
@@ -106,7 +106,7 @@ def scatterplot(
     #   Plot the scatter plot
     plot.rcParams.update({"figure.figsize":(7, 5), "figure.dpi":100})
     plot.scatter(x_data, y_data, c = color, marker = marker)
-    plot.gca().set(title = t, ylabel = y, xlabel = x)
+    plot.gca().set(title = t, ylabel = y_l, xlabel = x_l)
     plot.xlim(0, x_max)
 
     # #   Show the plot
@@ -142,17 +142,22 @@ def plot_all(
         The timestamp of the current simulation
     """
 
-    #   Loop through the types of data
-    for i in range(0, len(v)):
+    scatterplot(template, tm, v[0], v[1], "Constraint Energy X vs Y", "Constraint Energy X (J)", "Constraint Energy Y (J)")
+    scatterplot(template, tm, v[3], v[4], "Internal Energy X vs Y", "Internal Energy X (J)", "Internal Energy Y (J)")
 
-        #   Plot the histogram
-        histogram(template, tm, v[i], l[i], "Frequency", "Energy (J)")
+    scatterplot(template, tm, n_e, v[6], "Elements Removed vs Hausdorff Distance", "Number of Elements Removed", "Hausdorff Distance")
 
-        #   Plot the scatterplot
-        scatterplot(template, tm, n_e, v[i], l[i], "Energy (J)", "Number of Elements Removed")
+    # #   Loop through the types of data
+    # for i in range(0, len(v)):
 
-    #   Plot a scatterplot
-    scatterplot(template, tm, v[0], v[1], "Constraint Energy (J)", "Y-direction", "X-direction")
+    #     #   Plot the histogram
+    #     histogram(template, tm, v[i], l[i], "Frequency", "Energy (J)")
+
+    #     #   Plot the scatterplot
+    #     scatterplot(template, tm, n_e, v[i], l[i], "Energy (J)", "Number of Elements Removed")
+
+    # #   Plot a scatterplot
+    # scatterplot(template, tm, v[0], v[1], "Constraint Energy (J)", "Y-direction", "X-direction")
 
     return
 
@@ -179,7 +184,7 @@ def save_plot(
     fp_p = file_paths.create_fp_file(template, t + tm, "g")
 
     #   Save the figure
-    plot.savefig(fp_p, dpi = 100)
+    plot.savefig(fp_p, dpi = 300)
 
     #   Close the figure
     plot.close()

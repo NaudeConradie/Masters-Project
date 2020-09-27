@@ -213,28 +213,24 @@ def run_units(
 
     #   The time the unit generation starts as a string label
     t = time.strftime("_%Y-%m-%d--%H-%M-%S", time.gmtime())
-    print("Yes")
 
     #   Create the file path of the log file of units created during the simulation
     fp_lu = create_fp_file(template, t, "l")
     fp_lu_rank = create_fp_file(template, t + "_ranked", "l")
-    print("Yes")
 
     for i in l_u:
 
         #   Open the template file
         modify.open_model(template.fp_t_mud)
-        print("Yes")
 
         #   Generate the grid with elements removed, search for any free element clusters, and update the grid and list
         grid_rem, rem = gen_grid_rem_free(template, i[0])
-        print("Yes")
 
         if meth == "l":
 
             #   Remove the elements, save and run the model and obtain the desired results
             rem_el_run_results(template, rem, grid_rem, fp_lu, ls = i[1])
-            print("Yes")
+
 
         elif meth == "c":
 

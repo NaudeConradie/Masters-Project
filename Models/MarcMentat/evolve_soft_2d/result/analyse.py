@@ -38,13 +38,12 @@ def rank_u(
     data = pandas.DataFrame()
 
     label = []
-    label.append("Hausdorff Displacement")
-    # label.append("Constraint Energy X")
-    # label.append("Constraint Energy Y")
-    # label.append("Constraint Energy")
-    # label.append("Internal Energy X")
-    # label.append("Internal Energy Y")
-    # label.append("Internal Energy")
+    label.append("Constraint Energy X")
+    label.append("Constraint Energy Y")
+    label.append("Constraint Energy")
+    label.append("Internal Energy X")
+    label.append("Internal Energy Y")
+    label.append("Internal Energy")
 
     #   Read the list of units created during the last simulation
     lu = obtain.read_lu(fp_lu)
@@ -59,7 +58,12 @@ def rank_u(
         v.append([])
 
         #   Read and plot all values
-        v[i].append(obtain.read_all(label[i], n_e, lu, template))
+        v[i].append(obtain.read_all(template, lu, label[i]))
+
+    label.append("Hausdorff Distance")
+
+    v.append([])
+    v[-1].append(obtain.read_all_hd(template, lu))
 
     #   Remove unnecessary brackets from the values
     v = [i[0] for i in v]
@@ -75,6 +79,8 @@ def rank_u(
 
     #   Read the timestamp of the simulation
     tm = utility.read_str(fp_lu, -25, -4)
+
+    # plot_data = 
 
     # #   Plot the desired graphs from the results
     # plotting.plot_all(template, v, n_e, label, tm)
@@ -233,33 +239,40 @@ def disp(
 
     d_e = []
 
-    #   Create the file path of the results file
-    fp_r_f = create_fp_file(template, "Displacement_" + l, "r")
+    label = []
+    label.append("Displacement X")
+    label.append("Displacement Y")
 
-    #   Store the results from the file
-    d = numpy.genfromtxt(fp_r_f, delimiter = ",")
+    d = numpy.zeros((len(label), template.n_steps + 1, template.n_n))
 
-    d = d[-1]
+    for i in range(0, len(label)):
+
+        #   Create the file path of the results file
+        fp_r_f = create_fp_file(template, label[i] + "_" + l, "r")
+
+        #   Store the results from the file
+        d[i] = numpy.genfromtxt(fp_r_f, delimiter = ",")
 
     #   Decrement the node IDs of the external nodes by 1 to be used as array indices
     n_external_i = [i - 1 for i in template.n_external]
 
     #   Store only the external node values
-    d_e = d[n_external_i]
+    d_ex = d[:, :, n_external_i]
 
-    return d_e
+    return d_ex
 
 ################################################################################
 
 def hausdorff_d(
     template,
-    d_temp: list,
     l: str,
     ) -> float:
 
     d_e = disp(template, l)
 
-    h_d = directed_hausdorff(d_e, d_temp)
+    d_e = d_e[:, template.n_steps, :]
+
+    h_d = directed_hausdorff(d_e, template.d[:, template.n_steps, :])
 
     #   Save the internal energy to a .csv file
     save_numpy_array_to_csv(template, "Hausdorff Distance_" + l, h_d)

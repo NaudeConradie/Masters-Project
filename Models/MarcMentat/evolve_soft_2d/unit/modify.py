@@ -699,7 +699,7 @@ def run_model(
 
         if d_temp is not None:
 
-            analyse.hausdorff_d(template, d_temp, l + "_" + str(j_id))
+            analyse.hausdorff_d(template, l + "_" + str(j_id))
         
     return run_success
 
