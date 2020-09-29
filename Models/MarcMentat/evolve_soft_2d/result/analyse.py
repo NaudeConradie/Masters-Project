@@ -9,8 +9,32 @@ import pandas
 from scipy.spatial.distance import directed_hausdorff
 
 from evolve_soft_2d import plotting, utility
+from evolve_soft_2d.evolve import gen_alg
 from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.result import obtain
+from evolve_soft_2d.unit import create
+
+################################################################################
+
+def monte_carlo(
+    template,
+    meth: str,
+    ) -> None:
+
+    if meth == "l":
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])
+
+    elif meth == "c":
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.cppn_all_max, gen_alg.cppn_all_min])
+
+    else:
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [[gen_alg.n_u + 1, len(template.e_internal) + 1], [1, 0]])
+
+    fp_lu, fp_lu_rank = create.run_units(template, l_u, meth)
+
+    rank_u(template, fp_lu, fp_lu_rank)
+
+    return
 
 ################################################################################
 

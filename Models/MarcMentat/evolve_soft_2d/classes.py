@@ -249,7 +249,7 @@ class unit_p:
         #   Generate the unique unit ID according to the method of unit generation
         if self.ls != None:
 
-            self.u_id = str(len(self.rem)) + "_" + utility.list_to_str(self.ls.gramm, "_")
+            self.u_id = str(len(self.rem)) + "_" + utility.gen_hash(utility.list_to_str(self.ls.gramm, "_"))
 
         elif self.cp != None:
 

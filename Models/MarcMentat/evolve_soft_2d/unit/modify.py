@@ -472,26 +472,30 @@ def add_bc_p_edge(
 
 ################################################################################
 
-def add_inertia_rel() -> None:
+def add_inertia_rel(n) -> None:
     """Add inertia relief
     """    
 
     py_send("*loadcase_option inertia_relief:on")
 
+    #   Add node 1 as the support node
+    py_send("*add_loadcase_inert_rlf_supp_nodes 1 #")
+
     #   Loop through the degrees of freedom
     for i in range(1, 7):
 
         #   Check if the current degree of freedom is translation in the z-direction
-        if i == 3:
+        if i == 2 or i == 3:
 
             #   Skip this step in the loop
             continue
 
-        py_send("*set_loadcase_inert_rlf_supp_dof_def {}".format(i))
+        py_send("*loadcase_inert_rlf_supp_dof 1 {}".format(i))
 
-    #   Add node 1 as the support node
-    py_send("*add_loadcase_inert_rlf_supp_nodes 1 #")
+    py_send("*add_loadcase_inert_rlf_supp_nodes {} #".format(n))
 
+    py_send("*loadcase_inert_rlf_supp_dof 2 2")
+    
     return
 
 ################################################################################
@@ -579,10 +583,10 @@ def add_lcase(
         py_send("*add_loadcase_loads {}".format(i))
 
     #   Check if inertia relief is required
-    if ir == True:
+    if ir:
 
         #   Add inertia relief
-        add_inertia_rel()
+        add_inertia_rel(template.n_n)
 
     py_send("*loadcase_value nsteps {}".format(template.n_steps))
 

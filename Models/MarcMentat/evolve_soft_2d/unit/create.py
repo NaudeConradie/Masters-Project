@@ -321,7 +321,7 @@ def rem_el_run_results(
 
     modify.copy_neighbours(template)
 
-    modify.add_lcase(template, 2, template_bc_ip)
+    modify.add_lcase(template, 2, template_bc_ip, ir = True)
     modify.add_job(2, template_bc_ip)
 
     #   Save the altered unit

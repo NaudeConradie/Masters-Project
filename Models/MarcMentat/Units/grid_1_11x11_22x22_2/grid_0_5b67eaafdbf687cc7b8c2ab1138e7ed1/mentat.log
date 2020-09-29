@@ -1,0 +1,33 @@
+Marc Mentat (C)Copyright 1994-2019, MSC Software Corporation, all rights reserved
+Command > *open_model c:\users\19673418\documents\masters-project\models\marcmentat\units\grid_1_11x11_22x22_2\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1.mud
+File has been written by Mentat 2019.
+Model file c:\users\19673418\documents\masters-project\models\marcmentat\units\grid_1_11x11_22x22_2\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1.mud opened for reading.
+Model c:\users\19673418\documents\masters-project\models\marcmentat\units\grid_1_11x11_22x22_2\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1 opened.
+Command > *fill_view
+Command > *identify_applys *redraw
+Command > *edit_loadcase lcase2
+Enter loadcase to edit : 
+Command > *loadcase_option inertia_relief:on
+Command > *add_loadcase_inert_rlf_supp_nodes
+Enter add loadcase inertia relief support nodes list :  144
+Enter add loadcase inertia relief support nodes list : # | End of List
+Enter add loadcase inertia relief support nodes list : *loadcase_inert_rlf_supp_dof 1 2
+Command > *loadcase_inert_rlf_supp_dof 1 1
+Command > *loadcase_inert_rlf_supp_dof 1 3
+Command > *loadcase_inert_rlf_supp_dof 1 4
+Command > *loadcase_inert_rlf_supp_dof 1 5
+Command > *loadcase_inert_rlf_supp_dof 1 6
+Command > *clear_loadcase_inert_rlf_supp_dof 1 6
+Command > *clear_loadcase_inert_rlf_supp_dof 1 5
+Command > *clear_loadcase_inert_rlf_supp_dof 1 4
+Command > *clear_loadcase_inert_rlf_supp_dof 1 3
+Command > *clear_loadcase_inert_rlf_supp_dof 1 1
+Command > *add_loadcase_inert_rlf_supp_nodes
+Enter add loadcase inertia relief support nodes list :  1
+Enter add loadcase inertia relief support nodes list : # | End of List
+Enter add loadcase inertia relief support nodes list : *loadcase_inert_rlf_supp_dof 2 1
+Command > *loadcase_inert_rlf_supp_dof 2 2
+Command > *loadcase_inert_rlf_supp_dof 2 4
+Command > *loadcase_inert_rlf_supp_dof 2 5
+Command > *loadcase_inert_rlf_supp_dof 2 6
+Command > *clear_loadcase_inert_rlf_supp_dof 2 2
