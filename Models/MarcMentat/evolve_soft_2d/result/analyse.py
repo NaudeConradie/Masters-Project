@@ -261,8 +261,6 @@ def disp(
     l: str,
     ) -> list:
 
-    d_e = []
-
     label = []
     label.append("Displacement X")
     label.append("Displacement Y")

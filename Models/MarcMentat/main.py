@@ -53,7 +53,7 @@ def main():
     #   The decision to add neighbouring grids
     neighbours = False
     #   The unit generation method
-    g_meth = "c"
+    g_meth = "l"
     #   The analysis method
     a_meth = "m"
 

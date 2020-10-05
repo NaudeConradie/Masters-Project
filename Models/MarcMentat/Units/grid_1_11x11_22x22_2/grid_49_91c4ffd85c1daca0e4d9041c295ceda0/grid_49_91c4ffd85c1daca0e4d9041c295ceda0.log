@@ -2,9 +2,9 @@ Unit:             49_91c4ffd85c1daca0e4d9041c295ceda0
 Removed elements: [25, 26, 27, 28, 29, 30, 31, 36, 37, 38, 39, 40, 41, 42, 47, 48, 49, 50, 51, 52, 53, 58, 59, 60, 61, 62, 63, 64, 69, 70, 71, 72, 73, 74, 75, 80, 81, 82, 83, 84, 85, 86, 91, 92, 93, 94, 95, 96, 97]
 Grammar:
 F -> f----+Ff
-Axiom:                -[F]++++[F]
-Number Of Iterations: 3
-Resulting Word:       -[f----+f----+f----+Ffff]++++[f----+f----+f----+Ffff]
+Axiom:                +[F]++++(F)
+Number Of Iterations: 5
+Resulting Word:       +[f----+f----+f----+f----+f----+Ffffff]++++(f----+f----+f----+f----+f----+Ffffff)
 
 L-System Variables:
 F: Create an element at the current position and increment the position
@@ -17,7 +17,7 @@ L-System Constants:
 (: Push and reflect the current position
 ): Pop and unreflect to the previously pushed and reflected position
 
-Seed: 28
+Seed: 24
 
 Representative grid:
 1 1 1 1 1 1 1 1 1 1 1
@@ -68,4 +68,4 @@ Name:  Mold Star 15
 Mu:    [-6.50266e-06, 0.216863, 0.00137158]
 Alpha: [-21.322, 1.1797, 4.88396]
 
-Time created: Tue Sep 29 14:07:57 2020
+Time created: Tue Sep 29 17:55:47 2020
