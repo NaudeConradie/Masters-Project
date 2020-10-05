@@ -4,6 +4,7 @@
 from evolve_soft_2d import utility
 from evolve_soft_2d.log import m_log
 from evolve_soft_2d.result import analyse, obtain
+from evolve_soft_2d.unit import rep_grid
 
 from py_mentat import py_send, py_get_int, py_get_float
 
@@ -480,20 +481,10 @@ def add_inertia_rel(n) -> None:
 
     #   Add node 1 as the support node
     py_send("*add_loadcase_inert_rlf_supp_nodes 1 #")
-
-    #   Loop through the degrees of freedom
-    for i in range(1, 7):
-
-        #   Check if the current degree of freedom is translation in the z-direction
-        if i == 2 or i == 3:
-
-            #   Skip this step in the loop
-            continue
-
-        py_send("*loadcase_inert_rlf_supp_dof 1 {}".format(i))
+    py_send("*loadcase_inert_rlf_supp_dof 1 1")
+    py_send("*loadcase_inert_rlf_supp_dof 1 2")
 
     py_send("*add_loadcase_inert_rlf_supp_nodes {} #".format(n))
-
     py_send("*loadcase_inert_rlf_supp_dof 2 2")
     
     return
@@ -753,5 +744,42 @@ def rem_bc(bc: str) -> None:
 
     py_send("*edit_apply {}".format(bc))
     py_send("*remove_current_apply")
+
+    return
+
+################################################################################
+
+def rem_connect(
+    template,
+    grid: list,
+    ) -> None:
+
+    n_new = template.n_n
+
+    dp_p, dp_n = rep_grid.find_dia(template, grid)
+
+    for i in dp_p:
+
+        x = template.e_s*(i[1]%template.y_e - 1)
+        y = template.e_s*(i[1]//template.x_e)
+        n = template.x_n*(i[1]//template.x_e) + (i[1]%template.y_e)
+
+        py_send("*add_nodes {} {} 0".format(x, y))
+        
+        n_new += 1
+
+        py_send("*edit_elements {}\n {}\n {}\n".format(i[1], n, n_new))
+
+    for i in dp_n:
+
+        x = template.e_s*(i[1]%template.y_e)
+        y = template.e_s*(i[1]//template.x_e)
+        n = template.x_n*(i[1]//template.x_e) + (i[1]%template.y_e + 1)
+
+        py_send("*add_nodes {} {} 0".format(x, y))
+        
+        n_new += 1
+
+        py_send("*edit_elements {}\n {}\n {}\n".format(i[1], n, n_new))
 
     return

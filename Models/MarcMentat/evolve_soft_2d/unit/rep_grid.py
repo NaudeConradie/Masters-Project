@@ -2,6 +2,7 @@
 
 #   Imports
 import numpy
+import itertools
 
 from scipy.ndimage import measurements
 
@@ -57,7 +58,7 @@ def find_cluster(grid: list) -> [bool, list]:
     """
 
     #   Initialisations
-    s = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+    s = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
 
     #   Identify the clusters in the grid
     grid_label, cluster = measurements.label(grid, structure = s)
@@ -79,6 +80,39 @@ def find_cluster(grid: list) -> [bool, list]:
         found = False
 
     return found, grid_label
+
+################################################################################
+
+def find_dia(
+    template,
+    grid: list,
+    ) -> [list, list]:
+
+    dia_pairs_pos = []
+    dia_pairs_neg = []
+
+    grid_flat = list(reversed(grid))
+    grid_flat = list(itertools.chain.from_iterable(grid_flat))
+
+    e_check = [i - 1 for i in template.e_internal]
+
+    e_check = e_check[:-(template.x_e - 2*template.b)]
+
+    for i in e_check:
+
+        if grid_flat[i] == 1:
+
+            if grid_flat[i + 1] == 0 and grid_flat[i + template.x_e] == 0 and grid_flat[i + template.x_e + 1] == 1:
+
+                dia_pairs_pos.append([i + 1, i + template.x_e + 1 + 1])
+
+        elif grid_flat[i] == 0:
+
+            if grid_flat[i + 1] == 1 and grid_flat[i + template.x_e] == 1 and grid_flat[i + template.x_e + 1] == 0:
+
+                dia_pairs_neg.append([i + 1 + 1, i + template.x_e + 1])
+
+    return dia_pairs_pos, dia_pairs_neg
 
 ################################################################################
 

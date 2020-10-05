@@ -12,7 +12,7 @@ from evolve_soft_2d import plotting, utility
 from evolve_soft_2d.evolve import gen_alg
 from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.result import obtain
-from evolve_soft_2d.unit import create
+from evolve_soft_2d.unit import create, modify
 
 ################################################################################
 
@@ -260,6 +260,8 @@ def disp(
     template,
     l: str,
     ) -> list:
+
+    d_e = []
 
     label = []
     label.append("Displacement X")

@@ -216,9 +216,16 @@ def run_units(
 
     #   Create the file path of the log file of units created during the simulation
     fp_lu = create_fp_file(template, t, "l")
+    fp_lu_empty = create_fp_file(template, t + "_empty", "l")
+    fp_lu_full = create_fp_file(template, t + "_full", "l")
+    fp_lu_fail = create_fp_file(template, t + "_failed", "l")
     fp_lu_rank = create_fp_file(template, t + "_ranked", "l")
 
+    empty_id, full_id = empty_full(template, fp_lu, fp_lu_fail)    
+
     for i in l_u:
+
+        exc = False
 
         #   Open the template file
         modify.open_model(template.fp_t_mud)
@@ -226,21 +233,35 @@ def run_units(
         #   Generate the grid with elements removed, search for any free element clusters, and update the grid and list
         grid_rem, rem = gen_grid_rem_free(template, i[0])
 
-        if meth == "l":
+        if len(rem) == len(template.e_internal):
 
-            #   Remove the elements, save and run the model and obtain the desired results
-            rem_el_run_results(template, rem, grid_rem, fp_lu, ls = i[1])
+            exc = True
+
+            add_exc(template, fp_lu_empty, rem, grid_rem, empty_id, meth, i[1])
+        
+        elif len(rem) == 0:
+
+            exc = True
+
+            add_exc(template, fp_lu_full, rem, grid_rem, full_id, meth, i[1])
+
+        if not exc:
+
+            if meth == "l":
+
+                #   Remove the elements, save and run the model and obtain the desired results
+                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail, ls = i[1])
 
 
-        elif meth == "c":
+            elif meth == "c":
 
-            #   Remove the elements, save and run the model and obtain the desired results
-            rem_el_run_results(template, rem, grid_rem, fp_lu, cp = i[1])
+                #   Remove the elements, save and run the model and obtain the desired results
+                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail, cp = i[1])
 
-        else:
+            else:
 
-            #   Remove the elements, save and run the model and obtain the desired results
-            rem_el_run_results(template, rem, grid_rem, fp_lu)
+                #   Remove the elements, save and run the model and obtain the desired results
+                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail)
 
     return fp_lu, fp_lu_rank
 
@@ -289,6 +310,7 @@ def rem_el_run_results(
     rem: list,
     grid_rem: list,
     fp_lu: str,
+    fp_lu_fail: str,
     ls = None,
     cp = None,
     ) -> None:
@@ -316,6 +338,8 @@ def rem_el_run_results(
     #   Remove the elements from the unit
     modify.rem_el(rem)
 
+    modify.rem_connect(template, grid_rem)
+
     #   Add the internal pressure boundary conditions
     modify.add_bc_p_internal(curr_mod)
 
@@ -336,19 +360,88 @@ def rem_el_run_results(
         #   Obtain the constraint and internal energies of the current model
         curr_mod.c_e = obtain.read_xym(template, curr_mod.u_id, "Constraint Energy")
         curr_mod.i_e = obtain.read_xym(template, curr_mod.u_id, "Internal Energy")
+    
+        #   Log the current unit ID
+        with open(fp_lu, "a") as f:
+            print(curr_mod.u_id, file = f)
+
+    else:
+
+        #   Log the current unit ID
+        with open(fp_lu_fail, "a") as f:
+            print(curr_mod.u_id, file = f)
 
     #   Log the current unit parameters
     with open(curr_mod.fp_u_l, "w") as f:
         print(curr_mod, file = f)
 
-    utility.save_v(curr_mod, curr_mod.u_id)
+    utility.save_v(template, curr_mod, curr_mod.u_id)
+
+    #   Reopen the template
+    modify.open_model(template.fp_t_mud)
+
+    return
+
+################################################################################
+
+def empty_full(
+    template,
+    fp_lu: str,
+    fp_lu_fail: str,
+    ) -> [str, str]:
+
+    #   Generate the grid with elements removed, search for any free element clusters, and update the grid and list
+    grid_rem_e, rem_e = gen_grid_rem_free(template, template.e_internal)
+    rem_el_run_results(template, rem_e, grid_rem_e, fp_lu, fp_lu_fail)
+    empty_id = str(len(rem_e)) + "_" + utility.gen_hash(utility.list_to_str(rem_e, "_"))
+
+    #   Generate the grid with elements removed, search for any free element clusters, and update the grid and list
+    grid_rem_f, rem_f = gen_grid_rem_free(template, [])
+    rem_el_run_results(template, rem_f, grid_rem_f, fp_lu, fp_lu_fail)
+    full_id = str(len(rem_f)) + "_" + utility.gen_hash(utility.list_to_str(rem_f, "_"))
+
+    return empty_id, full_id
+
+##################################################################################
+
+def add_exc(
+    template,
+    fp_lu: str,
+    rem: list,
+    grid_rem: list,
+    u_id: str,
+    meth: str,
+    meth_v: list,
+    ) -> None:
+
+    if meth == "l":
+
+        #   Save the current unit parameters
+        curr_mod = classes.unit_p(template, rem, grid_rem, ls = meth_v)
+
+    elif meth == "c":
+
+        #   Save the current unit parameters
+        curr_mod = classes.unit_p(template, rem, grid_rem, cp = meth_v)
+
+    else:
+
+        #   Save the current unit parameters
+        curr_mod = classes.unit_p(template, rem, grid_rem)
+
+    curr_mod.c_e = obtain.read_xym(template, u_id, "Constraint Energy")
+    curr_mod.i_e = obtain.read_xym(template, u_id, "Internal Energy")
+
+
+    #   Log the current unit parameters
+    with open(curr_mod.fp_u_l, "w") as f:
+        print(curr_mod, file = f)
+
+    utility.save_v(template, curr_mod, curr_mod.u_id)
 
     #   Log the current unit ID
     with open(fp_lu, "a") as f:
         print(curr_mod.u_id, file = f)
-
-    #   Reopen the template
-    modify.open_model(template.fp_t_mud)
 
     return
 
@@ -424,7 +517,7 @@ def temp_create(template) -> list:
     with open(template.fp_t_l, "w") as f:
         print(template, file = f)
         
-    utility.save_v(template, template.t_id)
+    utility.save_v(template, template, template.t_id)
 
     return
 
