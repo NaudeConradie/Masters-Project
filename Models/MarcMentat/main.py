@@ -49,7 +49,7 @@ def main():
     #   The text name of the table used for the applied displacement and load
     table_name = "ramp_input"
     #   The applied displacement and load
-    app = [y_e*e_s/2, 0.025]
+    app = [y_e*e_s/2, 0.1]
     #   The decision to add neighbouring grids
     neighbours = False
     #   The unit generation method
@@ -63,8 +63,8 @@ def main():
     #   Create the template
     create.temp_create(temp)
 
+    #   Check if the analysis method is the Monte Carlo method
     if a_meth == "m":
-
         analyse.monte_carlo(temp, g_meth)
 
     #   View the boundary conditions of the template

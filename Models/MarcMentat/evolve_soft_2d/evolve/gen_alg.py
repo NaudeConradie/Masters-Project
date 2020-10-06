@@ -6,6 +6,7 @@ import numpy
 
 from evolve_soft_2d import utility
 from evolve_soft_2d.evolve import lsystems
+from evolve_soft_2d.result import analyse
 from evolve_soft_2d.unit import create
 
 ################################################################################
@@ -34,6 +35,7 @@ from evolve_soft_2d.unit import create
 
 #         #   Fitness evaluation
 #         fp_lu, fp_lu_rank = create.run_units(template, pop_i, meth)
+#         analyse.rank_u(template, fp_lu, fp_lu_rank)
 
 #         for j in range(0, pop_n, 2):
 

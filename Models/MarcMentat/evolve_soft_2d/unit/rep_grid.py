@@ -87,29 +87,52 @@ def find_dia(
     template,
     grid: list,
     ) -> [list, list]:
+    """Find diagonally connected elements
 
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    grid : list
+        The representative grid
+
+    Returns
+    -------
+    [list, list]
+        The lists of diagonally connected element pairs
+    """    
+
+    #   Initialisations
     dia_pairs_pos = []
     dia_pairs_neg = []
 
+    #   Prepare the grid for analysis
     grid_flat = list(reversed(grid))
     grid_flat = list(itertools.chain.from_iterable(grid_flat))
 
+    #   Set the list of elements to be checked as all internal elements except the last row
     e_check = [i - 1 for i in template.e_internal]
-
     e_check = e_check[:-(template.x_e - 2*template.b)]
 
+    #   Loop through the list of elements to be checked
     for i in e_check:
 
+        #   Check if the current element exists
         if grid_flat[i] == 1:
 
+            #   Check if the element only has a diagonal neighbour in the positive direction
             if grid_flat[i + 1] == 0 and grid_flat[i + template.x_e] == 0 and grid_flat[i + template.x_e + 1] == 1:
 
+                #   Add the diagonally connected element pair coordinates to the list
                 dia_pairs_pos.append([i + 1, i + template.x_e + 1 + 1])
 
+        #   Check if the current element does not exist
         elif grid_flat[i] == 0:
 
+            #   Check if the next element only has a diagonal neighbour in the negative direction
             if grid_flat[i + 1] == 1 and grid_flat[i + template.x_e] == 1 and grid_flat[i + template.x_e + 1] == 0:
 
+                #   Add the diagonally connected element pair coordinates to the list
                 dia_pairs_neg.append([i + 1 + 1, i + template.x_e + 1])
 
     return dia_pairs_pos, dia_pairs_neg
