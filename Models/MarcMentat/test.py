@@ -52,20 +52,19 @@ def main():
     #   The decision to add neighbouring grids
     neighbours = False
 
-    meth = "r"
+    meth = "l"
 
     #   Prepare the unit parameters
     temp = classes.template(case, x0, y0, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
 
-    # create.temp_create(temp)
+    create.temp_create(temp)
 
-    t = "_2020-09-27--10-40-13"
+    l_u = create.gen_init_units(temp, 100, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])
 
-    fp_lu = file_paths.create_fp_file(temp, t, "l")
-    fp_lu_rank = file_paths.create_fp_file(temp, t + "_ranked", "l")
+    fp_lu, fp_lu_rank = create.run_units(temp, l_u, meth)
 
     analyse.rank_u(temp, fp_lu, fp_lu_rank)
 
     return
 
-main()
+# main()

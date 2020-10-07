@@ -9,8 +9,55 @@ import pandas
 from scipy.spatial.distance import directed_hausdorff
 
 from evolve_soft_2d import plotting, utility
+from evolve_soft_2d.evolve import gen_alg
 from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.result import obtain
+from evolve_soft_2d.unit import create, modify
+
+################################################################################
+
+def monte_carlo(
+    template,
+    meth: str,
+    ) -> None:
+    """Perform a Monte Carlo analysis on a population of units
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    meth : str
+        The unit generation method
+        l : L-Systems
+        c : CPPNs
+        r : Random generation
+    """
+
+    #   Check if the unit generation method is set to L-Systems
+    if meth == "l":
+        
+        #   Generate a list of unit parameters
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])
+
+    #   Check if the unit generation method is set to CPPNs
+    elif meth == "c":
+
+        #   Generate a list of unit parameters
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.cppn_all_max, gen_alg.cppn_all_min])
+
+    #   Check if the unit generation method is set to random
+    else:
+
+        #   Generate a list of unit parameters
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [[gen_alg.n_u + 1, len(template.e_internal) + 1], [1, 0]])
+
+    #   Run the population of units
+    fp_lu, fp_lu_rank = create.run_units(template, l_u, meth)
+
+    #   Rank the population of units
+    rank_u(template, fp_lu, fp_lu_rank)
+
+    return
 
 ################################################################################
 
@@ -29,8 +76,6 @@ def rank_u(
         The file path of the log file of units created during the last simulation
     fp_lu_rank : str
         The file path of the log file of the best units created during the last simulation
-    sel : int
-        The number of best units to select
     """
 
     #   Initialisations
@@ -57,11 +102,13 @@ def rank_u(
         #   Initialisations
         v.append([])
 
-        #   Read and plot all values
+        #   Read all values
         v[i].append(obtain.read_all(template, lu, label[i]))
 
+    #   Add the Hausdorff distance to the list of labels
     label.append("Hausdorff Distance")
 
+    #   Read the Hausdorff distance variables
     v.append([])
     v[-1].append(obtain.read_all_hd(template, lu))
 
@@ -86,17 +133,6 @@ def rank_u(
     # plotting.plot_all(template, v, n_e, label, tm)
 
     data.sort_values(by = ["Hausdorff Distance"], inplace = True, ignore_index = True)
-
-    # #   Check the case identifier
-    # if template.case == 1:
-
-    #     #   Sort the relevant values in the dataframe in ascending order
-    #     data.sort_values(by = ["Constraint Energy Y", "Constraint Energy X"], inplace = True, ignore_index = True)
-
-    # elif template.case == 2:
-
-    #     #   Sort the relevant values in the dataframe in ascending order
-    #     data.sort_values(by = ["Constraint Energy", "Internal Energy"], inplace = True, ignore_index = True)
     
     #   Save the list of best performing units
     data["Unit ID"].to_csv(fp_lu_rank, header = False, index = False)
@@ -113,7 +149,7 @@ def constraint_energy(
 
     Parameters
     ----------
-    template 
+    template : template
         The unit template parameters
     l : str
         The label for the results file
@@ -236,7 +272,23 @@ def disp(
     template,
     l: str,
     ) -> list:
+    """Read the displacement values for a unit
 
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    l : str
+        The label for the results file
+        Either a template or unit identifier
+
+    Returns
+    -------
+    list
+        The list of displacement values
+    """    
+
+    #   Initialisations
     d_e = []
 
     label = []
@@ -245,6 +297,7 @@ def disp(
 
     d = numpy.zeros((len(label), template.n_steps + 1, template.n_n))
 
+    #   Loop through the list of labels
     for i in range(0, len(label)):
 
         #   Create the file path of the results file
@@ -266,12 +319,23 @@ def disp(
 def hausdorff_d(
     template,
     l: str,
-    ) -> float:
+    ) -> None:
+    """Calculate the Hausdorff distance values for a unit
 
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    l : str
+        The label for the results file
+        Either a template or unit identifier
+    """    
+
+    #   Read the displacement values of the unit
     d_e = disp(template, l)
-
     d_e = d_e[:, template.n_steps, :]
 
+    #   Calculate the Hausdorff distance between the unit and the template displacements
     h_d = directed_hausdorff(d_e, template.d[:, template.n_steps, :])
 
     #   Save the internal energy to a .csv file

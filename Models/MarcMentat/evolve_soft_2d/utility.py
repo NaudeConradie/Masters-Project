@@ -12,6 +12,8 @@ import time
 from pathlib import Path
 from scipy.special import comb
 
+from evolve_soft_2d import file_paths
+
 ################################################################################
 
 def wait(
@@ -734,8 +736,9 @@ def read_str(
 ################################################################################
 
 def save_v(
+    template,
     v,
-    fp: str,
+    l: str,
     ) -> None:
     """Save a variable as a file
 
@@ -743,9 +746,11 @@ def save_v(
     ----------
     v : 
         The variable to be saved
-    fp : str
+    l : str
         The file path
-    """    
+    """
+
+    fp = file_paths.create_fp_file(template, l, "v")
 
     #   Open the file to be written to
     f = open(fp, 'wb')
@@ -760,7 +765,10 @@ def save_v(
 
 ################################################################################
 
-def open_v(fp: str):
+def open_v(
+    template,
+    l: str,
+    ):
     """Open a variable saved to a file
 
     Parameters
@@ -772,7 +780,9 @@ def open_v(fp: str):
     -------
     
         The saved variable
-    """    
+    """
+
+    fp = file_paths.create_fp_file(template, l, "v")
 
     #   Open the file to be read from
     f = open(fp, "rb")

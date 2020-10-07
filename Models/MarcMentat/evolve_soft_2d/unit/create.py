@@ -210,15 +210,44 @@ def run_units(
     l_u: list,
     meth: str,
     ) -> [str, str]:
+    """Run a list of units
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    l_u : list
+        The list of unit parameters
+    meth : str
+        The unit generation method
+        l:  L-Systems
+        c:  CPPNs
+        r:  Random
+
+    Returns
+    -------
+    [str, str]
+        The file paths of the list of units generated and ranked
+    """    
 
     #   The time the unit generation starts as a string label
     t = time.strftime("_%Y-%m-%d--%H-%M-%S", time.gmtime())
 
-    #   Create the file path of the log file of units created during the simulation
+    #   Create the file paths of the log files of units created during the simulation
     fp_lu = create_fp_file(template, t, "l")
+    fp_lu_empty = create_fp_file(template, t + "_empty", "l")
+    fp_lu_full = create_fp_file(template, t + "_full", "l")
+    fp_lu_fail = create_fp_file(template, t + "_failed", "l")
     fp_lu_rank = create_fp_file(template, t + "_ranked", "l")
 
+    #   Run the empty and full units
+    empty_id, full_id = empty_full(template, fp_lu, fp_lu_fail)    
+
+    #   Loop through the list of units generated
     for i in l_u:
+
+        #   Initialisations
+        exc = False
 
         #   Open the template file
         modify.open_model(template.fp_t_mud)
@@ -226,21 +255,44 @@ def run_units(
         #   Generate the grid with elements removed, search for any free element clusters, and update the grid and list
         grid_rem, rem = gen_grid_rem_free(template, i[0])
 
-        if meth == "l":
+        #   Check if all internal elements were removed from the current unit
+        if len(rem) == len(template.e_internal):
 
-            #   Remove the elements, save and run the model and obtain the desired results
-            rem_el_run_results(template, rem, grid_rem, fp_lu, ls = i[1])
+            #   Set the exception flag to true
+            exc = True
 
+            #   Add an exception for an empty unit
+            add_exc(template, fp_lu_empty, rem, grid_rem, empty_id, meth, i[1])
+        
+        #   Check if no internal elements were removed from the current unit
+        elif len(rem) == 0:
 
-        elif meth == "c":
+            #   Set the exception flag to true
+            exc = True
 
-            #   Remove the elements, save and run the model and obtain the desired results
-            rem_el_run_results(template, rem, grid_rem, fp_lu, cp = i[1])
+            #   Add an exception for a full unit
+            add_exc(template, fp_lu_full, rem, grid_rem, full_id, meth, i[1])
 
-        else:
+        #   Check if the exception flag was not set
+        if not exc:
 
-            #   Remove the elements, save and run the model and obtain the desired results
-            rem_el_run_results(template, rem, grid_rem, fp_lu)
+            #   Check if the unit generation method is set to L-Systems
+            if meth == "l":
+
+                #   Remove the elements, save and run the model and obtain the desired results
+                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail, ls = i[1])
+
+            #   Check if the unit generation method is set to CPPNs
+            elif meth == "c":
+
+                #   Remove the elements, save and run the model and obtain the desired results
+                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail, cp = i[1])
+
+            #   Check if the unit generation method is set to random
+            else:
+
+                #   Remove the elements, save and run the model and obtain the desired results
+                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail)
 
     return fp_lu, fp_lu_rank
 
@@ -289,6 +341,7 @@ def rem_el_run_results(
     rem: list,
     grid_rem: list,
     fp_lu: str,
+    fp_lu_fail: str,
     ls = None,
     cp = None,
     ) -> None:
@@ -304,6 +357,8 @@ def rem_el_run_results(
         The representative grid with the elements removed
     fp_lu : str
         The file path of the log file of the list of all units generated
+    fp_lu_fail : str
+        The file path of the log file of the list of failed units generated
     ls : int, optional
         The L-system rule length, by default None
     cp : list, optional
@@ -316,13 +371,21 @@ def rem_el_run_results(
     #   Remove the elements from the unit
     modify.rem_el(rem)
 
+    #   Remove connections between diagonally connected elements
+    modify.rem_connect(template, grid_rem)
+
     #   Add the internal pressure boundary conditions
     modify.add_bc_p_internal(curr_mod)
 
+    #   Copy the unit to create neighbours
     modify.copy_neighbours(template)
 
-    modify.add_lcase(template, 2, template_bc_ip)
-    modify.add_job(2, template_bc_ip)
+    #   Add the boundary conditions for the neighbouring units
+    run_bc(curr_mod)
+
+    #   Add the loadcase and job
+    modify.add_lcase(template, 2, bc_ip + bc_fd)
+    modify.add_job(2, bc_ip + bc_fd)
 
     #   Save the altered unit
     modify.save_model(curr_mod.fp_u_mud)
@@ -336,19 +399,136 @@ def rem_el_run_results(
         #   Obtain the constraint and internal energies of the current model
         curr_mod.c_e = obtain.read_xym(template, curr_mod.u_id, "Constraint Energy")
         curr_mod.i_e = obtain.read_xym(template, curr_mod.u_id, "Internal Energy")
+    
+        #   Log the current unit ID
+        with open(fp_lu, "a") as f:
+            print(curr_mod.u_id, file = f)
+
+    else:
+
+        #   Log the current unit ID
+        with open(fp_lu_fail, "a") as f:
+            print(curr_mod.u_id, file = f)
 
     #   Log the current unit parameters
     with open(curr_mod.fp_u_l, "w") as f:
         print(curr_mod, file = f)
 
-    utility.save_v(curr_mod, curr_mod.u_id)
+    #   Save the current unit class object
+    utility.save_v(template, curr_mod, curr_mod.u_id)
+
+    #   Reopen the template
+    modify.open_model(template.fp_t_mud)
+
+    return
+
+################################################################################
+
+def empty_full(
+    template,
+    fp_lu: str,
+    fp_lu_fail: str,
+    ) -> [str, str]:
+    """Run the empty and full unit cases
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    fp_lu : str
+        The file path of the log file of the list of all units generated
+    fp_lu_fail : str
+        The file path of the log file of the list of failed units generated
+
+    Returns
+    -------
+    [str, str]
+        The unit IDs of the empty and full units
+    """    
+
+    #   Generate the grid with all elements removed
+    grid_rem_e, rem_e = gen_grid_rem_free(template, template.e_internal)
+
+    #   Remove the elements, save and run the model and obtain the desired results
+    rem_el_run_results(template, rem_e, grid_rem_e, fp_lu, fp_lu_fail)
+
+    #   Generate the unit ID of the empty unit
+    empty_id = str(len(rem_e)) + "_" + utility.gen_hash(utility.list_to_str(rem_e, "_"))
+
+    #   Generate the grid with all elements removed
+    grid_rem_f, rem_f = gen_grid_rem_free(template, [])
+
+    #   Remove the elements, save and run the model and obtain the desired results
+    rem_el_run_results(template, rem_f, grid_rem_f, fp_lu, fp_lu_fail)
+
+    #   Generate the unit ID of the full unit
+    full_id = str(len(rem_f)) + "_" + utility.gen_hash(utility.list_to_str(rem_f, "_"))
+
+    return empty_id, full_id
+
+##################################################################################
+
+def add_exc(
+    template,
+    fp_lu: str,
+    rem: list,
+    grid_rem: list,
+    u_id: str,
+    meth: str,
+    meth_v: list,
+    ) -> None:
+    """Add an exception case to the list of units
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    fp_lu : str
+        The file path of the list of exception units
+    rem : list
+        The list of elements to be removed
+    grid_rem : list
+        The representative grid with elements removed
+    u_id : str
+        The relevant unit ID
+    meth : str
+        The unit generation method
+    meth_v : list
+        The unit generation method class object
+    """    
+
+    #   Check if the unit generation method is set to L-Systems
+    if meth == "l":
+
+        #   Save the unit parameters
+        curr_mod = classes.unit_p(template, rem, grid_rem, ls = meth_v)
+
+    #   Check if the unit generation method is set to CPPNs
+    elif meth == "c":
+
+        #   Save the unit parameters
+        curr_mod = classes.unit_p(template, rem, grid_rem, cp = meth_v)
+
+    #   Check if the unit generation method is set to random
+    else:
+
+        #   Save the unit parameters
+        curr_mod = classes.unit_p(template, rem, grid_rem)
+
+    #   Read the constraint and internal energy values from the prerun case
+    curr_mod.c_e = obtain.read_xym(template, u_id, "Constraint Energy")
+    curr_mod.i_e = obtain.read_xym(template, u_id, "Internal Energy")
+
+    #   Log the unit parameters
+    with open(curr_mod.fp_u_l, "w") as f:
+        print(curr_mod, file = f)
+
+    #   Save the unit class object
+    utility.save_v(template, curr_mod, curr_mod.u_id)
 
     #   Log the current unit ID
     with open(fp_lu, "a") as f:
         print(curr_mod.u_id, file = f)
-
-    #   Reopen the template
-    modify.open_model(template.fp_t_mud)
 
     return
 
@@ -424,13 +604,20 @@ def temp_create(template) -> list:
     with open(template.fp_t_l, "w") as f:
         print(template, file = f)
         
-    utility.save_v(template, template.t_id)
+    utility.save_v(template, template, template.t_id)
 
     return
 
 ################################################################################
 
 def template_1_bc(template) -> None:
+    """Apply the displacement boundary conditions for case 1
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """    
 
     #   Add the boundary conditions
     modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
@@ -443,6 +630,13 @@ def template_1_bc(template) -> None:
 ################################################################################
 
 def template_2_bc(template) -> None:
+    """Apply the displacement boundary conditions for case 2
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
 
     #   Add the boundary conditions
     modify.add_bc_fd_edge("xy1", "",               "x", "y", template.y0,  0)
@@ -455,6 +649,13 @@ def template_2_bc(template) -> None:
 ################################################################################
 
 def template_3_bc(template) -> None:
+    """Apply the displacement boundary conditions for case 3
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
 
     #   Add the boundary conditions
     modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
@@ -466,7 +667,26 @@ def template_3_bc(template) -> None:
 
     return
 
-# ################################################################################
+################################################################################
+
+def run_bc(unit_p) -> None:
+    """Apply the fixed displacement boundary conditions to the corners
+
+    Parameters
+    ----------
+    unit_p : unit_p
+        The unit parameters
+    """
+
+    #   Find the corner node IDs
+    n_corn = inspect.find_n_corn(unit_p)
+
+    #   Apply the fixed displacement boundary conditions
+    modify.add_bc_fds_nodes("xy_corn", "", n_corn, 0)
+
+    return
+
+################################################################################
 
 # def template_1_test(fp_lu_rank: str) -> None:
 #     """Test the best units for case 1
@@ -623,4 +843,6 @@ template_bc_fd = [
     ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xf1", "bc_fd_xf2", "bc_fd_xn", "bc_fd_xp"],
     ]
 
-template_bc_ip = ["bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"]
+bc_ip = ["bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"]
+
+bc_fd = ["bc_fd_xy_corn"]

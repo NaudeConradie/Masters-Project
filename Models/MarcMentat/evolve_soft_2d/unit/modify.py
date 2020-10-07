@@ -4,6 +4,7 @@
 from evolve_soft_2d import utility
 from evolve_soft_2d.log import m_log
 from evolve_soft_2d.result import analyse, obtain
+from evolve_soft_2d.unit import rep_grid
 
 from py_mentat import py_send, py_get_int, py_get_float
 
@@ -161,7 +162,7 @@ def add_neighbours(template) -> None:
             n += 1
 
     #   Merge overlapping nodes
-    sweep()
+    sweep_all()
 
     return
 
@@ -177,8 +178,8 @@ def copy_neighbours(template) -> None:
     """
 
     #   Initialisations
-    x = [-template.x_s, template.x0, template.x_s]
-    y = [-template.y_s, template.y0, template.y_s]
+    x = [-2*template.x_s, -template.x_s, template.x0, template.x_s, 2*template.x_s,]
+    y = [-2*template.y_s, -template.y_s, template.y0, template.y_s, 2*template.y_s,]
 
     x_mid = template.x0
     y_mid = template.y0
@@ -212,7 +213,7 @@ def copy_neighbours(template) -> None:
             py_send("{} #".format(l))
 
     #   Clear all duplicate nodes
-    sweep()
+    sweep_neighbours(template)
 
     return
 
@@ -273,7 +274,7 @@ def add_bc_fd_edge(
     n_l = []
 
     #   Fetch the total number of nodes
-    n_n = py_get_int("nnodes()")
+    n_n = py_get_int("max_node_id()")
 
     #   Apply the fixed boundary condition
     py_send("*new_apply")
@@ -348,6 +349,55 @@ def add_bc_fd_node(
 
     #   Apply the boundary condition to the selected nodes
     py_send("*add_apply_nodes {} #".format(n))
+
+    return
+
+################################################################################
+
+def add_bc_fds_nodes(
+    label: str,
+    tab_nam: str,
+    n_l: list,
+    d: float,
+    ) -> None:
+    """Add fixed displacement boundary conditions on a single node
+
+    Parameters
+    ----------
+    label : str
+        The label of the boundary condition
+    tab_nam : str
+        The name of the table defining the displacement function if applicable
+    n : int
+        The node number of the boundary condition
+    d : float
+        The magnitude of the applied displacement
+    """
+
+    #   Apply the fixed boundary condition
+    py_send("*new_apply")
+    py_send("*apply_type fixed_displacement")
+    py_send("*apply_name bc_fd_{}".format(label))
+
+    py_send("*apply_dof x")
+    py_send("*apply_dof_value x {}".format(d))
+
+    py_send("*apply_dof y")
+    py_send("*apply_dof_value y {}".format(d))
+    
+    #   Apply the displacement function if applicable
+    if tab_nam != "":
+        py_send("*apply_dof_table x {}".format(tab_nam))
+        py_send("*apply_dof_table y {}".format(tab_nam))
+
+    #   Apply the boundary condition to the selected nodes
+    py_send("*add_apply_nodes ")
+
+    for i in n_l:
+
+        py_send("{} ".format(i))
+
+    py_send("#")
 
     return
 
@@ -472,26 +522,20 @@ def add_bc_p_edge(
 
 ################################################################################
 
-def add_inertia_rel() -> None:
+def add_inertia_rel(n) -> None:
     """Add inertia relief
     """    
 
     py_send("*loadcase_option inertia_relief:on")
 
-    #   Loop through the degrees of freedom
-    for i in range(1, 7):
-
-        #   Check if the current degree of freedom is translation in the z-direction
-        if i == 3:
-
-            #   Skip this step in the loop
-            continue
-
-        py_send("*set_loadcase_inert_rlf_supp_dof_def {}".format(i))
-
     #   Add node 1 as the support node
     py_send("*add_loadcase_inert_rlf_supp_nodes 1 #")
+    py_send("*loadcase_inert_rlf_supp_dof 1 1")
+    py_send("*loadcase_inert_rlf_supp_dof 1 2")
 
+    py_send("*add_loadcase_inert_rlf_supp_nodes {} #".format(n))
+    py_send("*loadcase_inert_rlf_supp_dof 2 2")
+    
     return
 
 ################################################################################
@@ -579,10 +623,10 @@ def add_lcase(
         py_send("*add_loadcase_loads {}".format(i))
 
     #   Check if inertia relief is required
-    if ir == True:
+    if ir:
 
         #   Add inertia relief
-        add_inertia_rel()
+        add_inertia_rel(template.n_n)
 
     py_send("*loadcase_value nsteps {}".format(template.n_steps))
 
@@ -705,11 +749,77 @@ def run_model(
 
 ################################################################################
 
-def sweep() -> None:
+def sweep_all() -> None:
     """Merge all overlapping nodes
     """
 
     py_send("*sweep_all")
+
+    return
+
+################################################################################
+
+def sweep_nodes(
+    a: str,
+    c: int,
+    ) -> None:
+    """Sweep a specific set of nodes
+
+    Parameters
+    ----------
+    a : str
+        The axis of the nodes
+    c : int
+        The coordinate of the nodes
+    """    
+
+    #   Initialisations
+    n_l = []
+
+    #   Fetch the total number of nodes
+    n_n = py_get_int("max_node_id()")
+
+    #   Loop through the number of nodes
+    for i in range(1, n_n + 1):
+
+        #   Fetch the relevant coordinate of the current node
+        c_n = py_get_float("node_{}({})".format(a, i))
+
+        #   Check if the selected coordinate matches the desirec coordinate
+        if c_n == c:
+
+            #   Add the node to the list
+            n_l.append(i)
+
+    #   Sweep the nodes
+    py_send("*sweep_nodes ")
+
+    #   Loop through the selected nodes
+    for i in n_l:
+        py_send("{} ".format(i))
+
+    py_send("#")
+
+    return
+
+################################################################################
+
+def sweep_neighbours(template) -> None:
+    """Sweep copied neighbour boundary nodes
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """    
+
+    x_coord = [-template.x_s, 0, template.x_s, 2*template.x_s]
+    y_coord = [-template.y_s, 0, template.y_s, 2*template.y_s]
+
+    for i in range(0, len(x_coord)):
+
+        sweep_nodes("x", x_coord[i])
+        sweep_nodes("y", y_coord[i])
 
     return
 
@@ -749,5 +859,67 @@ def rem_bc(bc: str) -> None:
 
     py_send("*edit_apply {}".format(bc))
     py_send("*remove_current_apply")
+
+    return
+
+################################################################################
+
+def rem_connect(
+    template,
+    grid: list,
+    ) -> None:
+    """Remove diagonal connections between internal elements
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    grid : list
+        The representative grid
+    """    
+
+    #   Initialisations
+    n_new = template.n_n
+
+    #   Find the diagonally connected element pairs
+    dp_p, dp_n = rep_grid.find_dia(template, grid)
+
+    #   Loop through the list of element pairs connected diagonally in the positive direction
+    for i in dp_p:
+
+        #   Calculate the x- and y-coordinates of the connecting node
+        x = template.e_s*(i[1]%template.y_e - 1)
+        y = template.e_s*(i[1]//template.x_e)
+
+        #   Add the new node
+        py_send("*add_nodes {} {} 0".format(x, y))
+
+        #   Increment the new node ID
+        n_new += 1
+
+        #   Calculate the node ID of the connecting node
+        n = template.x_n*(i[1]//template.x_e) + (i[1]%template.y_e)
+        
+        #   Edit the top right element's bottom left node
+        py_send("*edit_elements {}\n {}\n {}\n".format(i[1], n, n_new))
+
+    #   Loop through the list of element pairs connected diagonally in the negative direction
+    for i in dp_n:
+
+        #   Calculate the x- and y-coordinates of the connecting node
+        x = template.e_s*(i[1]%template.y_e)
+        y = template.e_s*(i[1]//template.x_e)
+        
+        #   Add the new node
+        py_send("*add_nodes {} {} 0".format(x, y))
+        
+        #   Increment the new node ID
+        n_new += 1
+
+        #   Calculate the node ID of the connecting node
+        n = template.x_n*(i[1]//template.x_e) + (i[1]%template.y_e + 1)
+
+        #   Edit the top left element's bottom right node
+        py_send("*edit_elements {}\n {}\n {}\n".format(i[1], n, n_new))
 
     return

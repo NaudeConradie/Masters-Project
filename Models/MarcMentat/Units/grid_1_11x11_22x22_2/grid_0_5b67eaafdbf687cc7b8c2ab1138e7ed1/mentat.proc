@@ -1,0 +1,36 @@
+| Created by Marc Mentat 2019 (64bit)
+*prog_option compatibility:prog_version:ment2019
+*prog_analysis_class structural
+*prog_use_current_job on
+*set_default_length_unit millimeter
+*set_model_length_unit millimeter
+|
+*open_model c:\users\19673418\documents\masters-project\models\marcmentat\units\grid_1_11x11_22x22_2\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1\grid_0_5b67eaafdbf687cc7b8c2ab1138e7ed1.mud
+*fill_view
+*identify_applys *redraw
+*edit_loadcase lcase2
+
+*loadcase_option inertia_relief:on
+*add_loadcase_inert_rlf_supp_nodes
+ 144
+# | End of List
+*loadcase_inert_rlf_supp_dof 1 2
+*loadcase_inert_rlf_supp_dof 1 1
+*loadcase_inert_rlf_supp_dof 1 3
+*loadcase_inert_rlf_supp_dof 1 4
+*loadcase_inert_rlf_supp_dof 1 5
+*loadcase_inert_rlf_supp_dof 1 6
+*clear_loadcase_inert_rlf_supp_dof 1 6
+*clear_loadcase_inert_rlf_supp_dof 1 5
+*clear_loadcase_inert_rlf_supp_dof 1 4
+*clear_loadcase_inert_rlf_supp_dof 1 3
+*clear_loadcase_inert_rlf_supp_dof 1 1
+*add_loadcase_inert_rlf_supp_nodes
+ 1
+# | End of List
+*loadcase_inert_rlf_supp_dof 2 1
+*loadcase_inert_rlf_supp_dof 2 2
+*loadcase_inert_rlf_supp_dof 2 4
+*loadcase_inert_rlf_supp_dof 2 5
+*loadcase_inert_rlf_supp_dof 2 6
+*clear_loadcase_inert_rlf_supp_dof 2 2

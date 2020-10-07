@@ -47,12 +47,14 @@ from evolve_soft_2d import utility
 ################################################################################
 
 #   Fixed file paths
-fp = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat'
+# fp = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat'
 # fp = r'C:\Users\19673418\Documents\Masters-Project\Models\MarcMentat'
+fp = r'D:\Models'
 fp_g = fp + r'\Graphs'
 fp_r = fp + r'\Results'
 fp_t = fp + r'\Templates'
 fp_u = fp + r'\Units'
+fp_v = fp + r'\Variables'
 
 ################################################################################
 
@@ -91,6 +93,8 @@ def create_fp_folder(
         fp_folder = fp_t + fp_folder
     elif p == "u":
         fp_folder = fp_u + fp_folder
+    elif p == "v":
+        fp_folder = fp_v + fp_folder
 
     #   Create the folder if it does not exist
     utility.make_folder(fp_folder)
@@ -131,23 +135,26 @@ def create_fp_file(
     
     #   Determine which folder path to generate the file name along
     if p == "g":
-        fp_folder = create_fp_folder(template, "g")
+        fp_folder = create_fp_folder(template, p)
         fp_file = fp_folder + "\\" + l + ".png"
     if p == "l":
         fp_file = fp_u + r'\grid_' + template.t_id + l + ".log"
     elif p == "r":
-        fp_folder = create_fp_folder(template, "r")
+        fp_folder = create_fp_folder(template, p)
         fp_file = fp_folder + "\\" + l + ".csv"
     elif p == "t":
-        fp_folder = create_fp_folder(template, "t")
+        fp_folder = create_fp_folder(template, p)
         fp_file = fp_folder + r'\grid_' + template.t_id + l
     elif p == "u":
-        fp_folder = create_fp_folder(template, "u")
+        fp_folder = create_fp_folder(template, p)
         fp_file = fp_folder + r'\grid_' + unit.u_id
 
         #   Create the folder if it does not exist
         utility.make_folder(fp_file)
         
         fp_file = fp_file + r'\grid_' + unit.u_id + l
+    elif p == "v":
+        fp_folder = create_fp_folder(template, p)
+        fp_file = fp_folder + "\\" + l
 
     return fp_file

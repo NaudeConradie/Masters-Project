@@ -6,11 +6,12 @@ import numpy
 
 from evolve_soft_2d import utility
 from evolve_soft_2d.evolve import lsystems
+from evolve_soft_2d.result import analyse
 from evolve_soft_2d.unit import create
 
 ################################################################################
 
-# def genetic(
+# def genetic_a(
 #     template,
 #     pop_n: int,
 #     chrom: int,
@@ -34,6 +35,7 @@ from evolve_soft_2d.unit import create
 
 #         #   Fitness evaluation
 #         fp_lu, fp_lu_rank = create.run_units(template, pop_i, meth)
+#         analyse.rank_u(template, fp_lu, fp_lu_rank)
 
 #         for j in range(0, pop_n, 2):
 
@@ -367,8 +369,10 @@ def fit_weight(
 
 ################################################################################
 
-ls_all_max = [101, 8, len(lsystems.e_var) + 1, 6, 6]
+n_u = 1000
+
+ls_all_max = [n_u + 1, len(lsystems.a_all) + 1, len(lsystems.e_var) + 1, 6, 6]
 ls_all_min = [1, 0, 1, 2, 1]
 
-cppn_all_max = [101, 2, 2, 11, 32, 100]
-cppn_all_min = [1, 1, 1, 2, 2, 1]
+cppn_all_max = [n_u + 1, 2, 2, 11, 32, 101]
+cppn_all_min = [1, 1, 1, 2, 2, 0]

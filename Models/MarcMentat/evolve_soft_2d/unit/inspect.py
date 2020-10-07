@@ -3,7 +3,7 @@
 #   Imports
 from evolve_soft_2d import utility
 
-from py_mentat import py_send, py_get_float
+from py_mentat import py_send, py_get_float, py_get_int
 
 ################################################################################
 
@@ -131,6 +131,39 @@ def find_n_coord(n: list) -> [list, list]:
         y.append(py_get_float("node_y({})".format(i)))
         
     return x, y
+
+################################################################################
+
+def find_n_corn(unit_p) -> list:
+    """Find the corner node IDs of a grid
+
+    Parameters
+    ----------
+    unit_p : unit_p
+        The unit parameters
+
+    Returns
+    -------
+    list
+        The list of node IDs
+    """
+
+    #   Initialisations
+    n_corn = []
+
+    #   Calculate the element IDs of the corner elements
+    e_corn = [unit_p.template.n_e + 1]
+    e_corn.append(unit_p.template.n_e*5 - len(unit_p.rem)*4 + unit_p.template.x_e)
+    e_corn.append(unit_p.template.n_e*25 - len(unit_p.rem)*24)
+    e_corn.append(unit_p.template.n_e*21 - len(unit_p.rem)*20 - unit_p.template.x_e + 1)
+    
+    #   Loop through the list of corner elements
+    for i in range(1, len(e_corn) + 1):
+
+        #   Determine the node ID of the corner node
+        n_corn.append(py_get_int("element_node_id({}, {})".format(e_corn[i - 1], i)))
+    
+    return n_corn
 
 ################################################################################
 
