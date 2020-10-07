@@ -611,6 +611,13 @@ def temp_create(template) -> list:
 ################################################################################
 
 def template_1_bc(template) -> None:
+    """Apply the displacement boundary conditions for case 1
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """    
 
     #   Add the boundary conditions
     modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
@@ -623,6 +630,13 @@ def template_1_bc(template) -> None:
 ################################################################################
 
 def template_2_bc(template) -> None:
+    """Apply the displacement boundary conditions for case 2
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
 
     #   Add the boundary conditions
     modify.add_bc_fd_edge("xy1", "",               "x", "y", template.y0,  0)
@@ -635,6 +649,13 @@ def template_2_bc(template) -> None:
 ################################################################################
 
 def template_3_bc(template) -> None:
+    """Apply the displacement boundary conditions for case 3
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
 
     #   Add the boundary conditions
     modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
@@ -649,9 +670,18 @@ def template_3_bc(template) -> None:
 ################################################################################
 
 def run_bc(unit_p) -> None:
+    """Apply the fixed displacement boundary conditions to the corners
 
+    Parameters
+    ----------
+    unit_p : unit_p
+        The unit parameters
+    """
+
+    #   Find the corner node IDs
     n_corn = inspect.find_n_corn(unit_p)
 
+    #   Apply the fixed displacement boundary conditions
     modify.add_bc_fds_nodes("xy_corn", "", n_corn, 0)
 
     return

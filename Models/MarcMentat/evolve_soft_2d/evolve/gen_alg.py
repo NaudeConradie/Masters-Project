@@ -11,7 +11,7 @@ from evolve_soft_2d.unit import create
 
 ################################################################################
 
-# def genetic(
+# def genetic_a(
 #     template,
 #     pop_n: int,
 #     chrom: int,
