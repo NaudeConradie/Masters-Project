@@ -2,6 +2,7 @@
 
 #   Imports
 import csv
+import fileinput
 import linecache
 import numpy
 import pandas
@@ -37,25 +38,29 @@ def monte_carlo(
     if meth == "l":
         
         #   Generate a list of unit parameters
-        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])
+        l_u, par = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])
 
     #   Check if the unit generation method is set to CPPNs
     elif meth == "c":
 
         #   Generate a list of unit parameters
-        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.cppn_all_max, gen_alg.cppn_all_min])
+        l_u, par = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.cppn_all_max, gen_alg.cppn_all_min])
 
     #   Check if the unit generation method is set to random
     else:
 
         #   Generate a list of unit parameters
-        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [[gen_alg.n_u + 1, len(template.e_internal) + 1], [1, 0]])
+        l_u, par = create.gen_init_units(template, gen_alg.n_u, meth, [[gen_alg.n_u + 1, len(template.e_internal) + 1], [1, 0]])
 
     #   Run the population of units
-    fp_lu, fp_lu_rank = create.run_units(template, l_u, meth)
+    fp_lu = create.run_units(template, l_u, meth)
 
     #   Rank the population of units
-    rank_u(template, fp_lu, fp_lu_rank)
+    rank_u(template, fp_lu)
+
+    empty_id = "49_e43d862169605c50222e999b40714037"
+    full_id = "0_d41d8cd98f00b204e9800998ecf8427e"
+    rank_pop(fp_lu, empty_id, full_id, par)
 
     return
 
@@ -63,8 +68,7 @@ def monte_carlo(
 
 def rank_u(
     template,
-    fp_lu: str,
-    fp_lu_rank: str,
+    fp_lu: list,
     ) -> None:
     """Rank units according to their performance
 
@@ -74,8 +78,6 @@ def rank_u(
         The unit template parameters
     fp_lu : str
         The file path of the log file of units created during the last simulation
-    fp_lu_rank : str
-        The file path of the log file of the best units created during the last simulation
     """
 
     #   Initialisations
@@ -91,7 +93,7 @@ def rank_u(
     label.append("Internal Energy")
 
     #   Read the list of units created during the last simulation
-    lu = obtain.read_lu(fp_lu)
+    lu = obtain.read_lu(fp_lu[1])
 
     #   Create a list of the number of elements removed from every element
     n_e = [utility.find_int_in_str(i) for i in lu]
@@ -125,7 +127,7 @@ def rank_u(
         data[label[i]] = v[i]
 
     #   Read the timestamp of the simulation
-    tm = utility.read_str(fp_lu, -25, -4)
+    tm = utility.read_str(fp_lu[0], -25, -4)
 
     # plot_data = 
 
@@ -135,25 +137,88 @@ def rank_u(
     data.sort_values(by = ["Hausdorff Distance"], inplace = True, ignore_index = True)
     
     #   Save the list of best performing units
-    data["Unit ID"].to_csv(fp_lu_rank, header = False, index = False)
+    data["Unit ID"].to_csv(fp_lu[5], header = False, index = False)
 
     return
 
 ################################################################################
 
 def rank_pop(
-    fp_lu_rank: str,
-    fp_lu_empty: str,
-    fp_lu_full: str,
-    fp_lu_fail: str,
+    fp_lu: list,
     empty_id: str,
     full_id: str,
-    lu: list,
+    par: list,
     ) -> list:
 
-    
+    lu = obtain.read_lu(fp_lu[0])
 
+    with open(fp_lu[5], 'r') as f:
+        lu_rank = f.read()
 
+    try:
+        
+        with open(fp_lu[3], 'r') as f:
+            lu_empty = f.read()
+
+        lu_rank = lu_rank.replace(empty_id, lu_empty)
+
+    except:
+        
+        lu_rank = lu_rank.replace(empty_id, "")
+
+    try:
+
+        with open(fp_lu[4], 'r') as f:
+            lu_full = f.read()
+
+        lu_rank = lu_rank.replace(full_id, lu_full)
+
+    except:
+
+        lu_rank = lu_rank.replace(full_id, "")
+
+    try:
+
+        with open(fp_lu[2], 'r') as f:
+            lu_fail = f.read()
+
+        lu_rank += lu_fail
+
+    except:
+
+        pass
+
+    print(lu_rank)
+
+    lu_rank = list(lu_rank.split("\n"))
+
+    print(lu_rank)
+
+    while "" in lu_rank:
+        lu_rank.remove("")
+
+    print(lu_rank)
+
+    data = pandas.DataFrame()
+
+    print(lu)
+    data["Unit ID"] = lu
+    print(data)
+    data["Parameters"] = par
+
+    print(data)
+
+    lu_rank_index = dict(zip(lu_rank, range(0, len(lu_rank))))
+
+    data["Rank"] = data["Unit ID"].map(lu_rank_index)
+
+    data.sort_values(["Rank"], ascending = [True], inplace = True)
+
+    data.drop("Rank", 1, inplace = True)
+
+    print(data)
+
+    return
 
 ################################################################################
 

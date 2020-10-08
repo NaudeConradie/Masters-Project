@@ -69,10 +69,10 @@ def find_cluster(grid: list) -> [bool, list]:
         #   Set flag
         found = True
 
-        if cluster == 2:
-            m_log.warning("{} free element cluster found!".format(cluster - 1))
-        else:
-            m_log.warning("{} free element clusters found!".format(cluster - 1))
+        # if cluster == 2:
+        #     m_log.warning("{} free element cluster found!".format(cluster - 1))
+        # else:
+        #     m_log.warning("{} free element clusters found!".format(cluster - 1))
 
     else:
 

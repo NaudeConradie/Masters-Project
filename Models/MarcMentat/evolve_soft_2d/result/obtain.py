@@ -103,36 +103,36 @@ def check_out(
 
         m_log.error("License server connection timed out or failed")
 
-        #   Loop until a valid decision is made
-        while not decided:
+        # #   Loop until a valid decision is made
+        # while not decided:
 
-            #   Request a user response
-            dec = input("Would you like to run again? (y/n) ")
+        #     #   Request a user response
+        #     dec = input("Would you like to run again? (y/n) ")
 
-            #   Check if the response was yes
-            if dec == "y":
+        #     #   Check if the response was yes
+        #     if dec == "y":
 
-                #   Set flag that a decision was made
-                decided = True
+        #         #   Set flag that a decision was made
+        #         decided = True
 
-                #   Rerun the job
-                modify.run_job(j_id)
+        #   Rerun the job
+        modify.run_job(j_id)
 
-                #   Check if the updated output files exist
-                success = check_out(fp_mud, fp_log, fp_t16, j_id)
+        #   Check if the updated output files exist
+        success = check_out(fp_mud, fp_log, fp_t16, j_id)
 
-            #   Check if the response was no
-            elif dec == "n":
+            # #   Check if the response was no
+            # elif dec == "n":
 
-                #   Set flag that a decision was made
-                decided = True
+            #     #   Set flag that a decision was made
+            #     decided = True
 
-                m_log.warning("Results cannot be analysed")
+            #     m_log.warning("Results cannot be analysed")
 
-            #   Check if response was invalid
-            else:
-                m_log.error("Invalid input received")
-                print("Please either type a single \"y\" for yes or \"n\" for no")
+            # #   Check if response was invalid
+            # else:
+            #     m_log.error("Invalid input received")
+            #     print("Please either type a single \"y\" for yes or \"n\" for no")
 
     #   Output a warning
     else:

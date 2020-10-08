@@ -11,62 +11,62 @@ from evolve_soft_2d.unit import create
 
 ################################################################################
 
-def g_a(
-    template,
-    pop_n: int,
-    chrom: int,
-    all_max: list,
-    all_min: list,
-    gen: int,
-    prob: list,
-    point: list,
-    meth: str,
-    c: float = 1,
-    ) -> None:
+# def g_a(
+#     template,
+#     pop_n: int,
+#     chrom: int,
+#     all_max: list,
+#     all_min: list,
+#     gen: int,
+#     prob: list,
+#     point: list,
+#     meth: str,
+#     c: float = 1,
+#     ) -> None:
 
-    pop_i = create.gen_init_units(template, pop_n, meth, [all_max, all_min])
+#     pop_i = create.gen_init_units(template, pop_n, meth, [all_max, all_min])
 
-    pop_all = []
-    pop_all.append(pop_i)
-    par = []
-    pop_best = []
+#     pop_all = []
+#     pop_all.append(pop_i)
+#     par = []
+#     pop_best = []
 
-    for _ in range(0, gen):
+#     for _ in range(0, gen):
 
-        #   Fitness evaluation
-        fp_lu, fp_lu_rank = create.run_units(template, pop_i, meth)
-        analyse.rank_u(template, fp_lu, fp_lu_rank)
+#         #   Fitness evaluation
+#         fp_lu = create.run_units(template, pop_i, meth)
+#         analyse.rank_u(template, fp_lu)
 
-        for j in range(0, pop_n, 2):
+#         for j in range(0, pop_n, 2):
 
-            par_1 = sel_par(pop_n, fit_i, pop_i, c)
-            par_2 = sel_par(pop_n, fit_i, pop_i, c)
+#             par_1 = sel_par(pop_n, fit_i, pop_i, c)
+#             par_2 = sel_par(pop_n, fit_i, pop_i, c)
 
-            chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
+#             chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
 
-            chi_1 = mut(chrom, all_max, all_min, prob[1], point[1], chi_1)
-            chi_2 = mut(chrom, all_max, all_min, prob[1], point[1], chi_2)
+#             chi_1 = mut(chrom, all_max, all_min, prob[1], point[1], chi_1)
+#             chi_2 = mut(chrom, all_max, all_min, prob[1], point[1], chi_2)
 
-            chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
-            chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
+#             chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
+#             chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
 
-            par[j] = chi_1
-            par[j + 1] = chi_2
+#             par[j] = chi_1
+#             par[j + 1] = chi_2
 
-        #   Store the best member of the current generation
-        pop_best.append(pop_i[fit_i[0]])
+#         #   Store the best member of the current generation
+#         pop_best.append(pop_i[fit_i[0]])
 
-        if meth == "c":
+#         if meth == "c":
 
-            pop_i = create.gen_bred_units(template, meth, par, c_mod_max = all_max[0])
+#             pop_i = create.gen_bred_units(template, meth, par, c_mod_max = all_max[0])
 
-        else:
+#         else:
 
-            pop_i = create.gen_bred_units(template, meth, par)
+#             pop_i = create.gen_bred_units(template, meth, par)
 
-        pop_all.append(pop_i)
+#         pop_all.append(pop_i)
 
-    return
+#     return
 
 ################################################################################
 
@@ -369,9 +369,9 @@ def fit_weight(
 
 ################################################################################
 
-n_u = 1000
+n_u = 10
 
-ls_all_max = [n_u + 1, len(lsystems.a_all) + 1, len(lsystems.e_var) + 1, 6, 6]
+ls_all_max = [n_u + 1, len(lsystems.a_all), len(lsystems.e_var) + 1, 6, 6]
 ls_all_min = [1, 0, 1, 2, 1]
 
 cppn_all_max = [n_u + 1, 2, 2, 11, 32, 101]

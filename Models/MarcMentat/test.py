@@ -57,14 +57,8 @@ def main():
     #   Prepare the unit parameters
     temp = classes.template(case, x0, y0, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
 
-    create.temp_create(temp)
-
-    l_u = create.gen_init_units(temp, 100, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])
-
-    fp_lu, fp_lu_rank = create.run_units(temp, l_u, meth)
-
-    analyse.rank_u(temp, fp_lu, fp_lu_rank)
+    # create.temp_create(temp)
 
     return
 
-# main()
+main()

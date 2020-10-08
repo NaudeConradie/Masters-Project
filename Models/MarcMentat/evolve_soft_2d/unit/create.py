@@ -44,7 +44,6 @@ def gen_init_units(
 
     #   Initialisations
     rem = []
-    u_id = []
 
     #   Check if the generation method is specified as L-Systems
     if meth == "l":
@@ -53,10 +52,10 @@ def gen_init_units(
         ls = []
 
         #   Generate the random parameters
-        ls_par = gen_alg.gen_par(n, 5, a[0], a[1])
+        par = gen_alg.gen_par(n, 5, a[0], a[1])
 
         #   Loop through the list of parameters
-        for i in ls_par:
+        for i in par:
 
             #   Create the current L-System instance
             ls_i = lsystems.gen_lsystem(i[0], lsystems.e_vocabulary, i[1], i[2], i[3], i[4])
@@ -67,10 +66,8 @@ def gen_init_units(
             #   Obtain the list of elements to be removed
             rem.append(lsystems.interpret_word(template, ls_i.word))
 
-            u_id.append(str(len(rem[-1])) + "_" + utility.gen_hash(utility.list_to_str(ls_i.gramm, "_")))
-
         #   Save the list of units
-        lu = numpy.array([rem, ls, u_id, ls_par]).T.tolist()
+        lu = numpy.array([rem, ls]).T.tolist()
 
     #   Check if the generation method is specified as CPPNs
     elif meth == "c":
@@ -79,10 +76,10 @@ def gen_init_units(
         cp = []
 
         #   Generate the random parameters
-        cp_par = gen_alg.gen_par(n, 6, a[0], a[1])
+        par = gen_alg.gen_par(n, 6, a[0], a[1])
 
         #   Loop through the list of parameters
-        for i in cp_par:
+        for i in par:
 
             #   Generate the CPPN
             cp_c = cppns.cppn(i[0], a[0][1], i[2], i[3], i[4], i[5], template.x_e - 2*template.b, template.y_e - 2*template.b)
@@ -96,28 +93,24 @@ def gen_init_units(
             #   Obtain the list of elements to be removed
             rem.append(cppns.cppn_rem(template, cp_i.grid))
 
-            u_id.append(str(len(rem[-1])) + "_" + str(cp_i.mod_id) + "_" + str(cp_i.cppn.seed) + "_" + str(cp_i.cppn.scale) + "_" + str(cp_i.cppn.hl_n) + "_" + str(cp_i.cppn.hl_s) + "_" + str(cp_i.cppn.thresh))
-
         #   Save the list of units
-        lu = numpy.array([rem, cp, u_id, cp_par]).T.tolist()
+        lu = numpy.array([rem, cp]).T.tolist()
 
     else:
 
         #   Generate the random parameters
-        r_par = gen_alg.gen_par(n, 2, a[0], a[1])
+        par = gen_alg.gen_par(n, 2, a[0], a[1])
 
         #   Loop through the list of parameters
-        for i in r_par:
+        for i in par:
 
             #   Add the list of elements to be removed
             rem.append(utility.sel_random(template.e_internal, f = i[1], seed = i[0]))
 
-            u_id.append(str(len(rem[-1])) + "_" + utility.gen_hash(utility.list_to_str(rem[-1], "_")))
-
         #   Save the list of units
-        lu = numpy.array([rem, r_par, u_id, r_par]).T.tolist()
+        lu = numpy.array([rem, par]).T.tolist()
 
-    return lu
+    return lu, par
 
 ################################################################################
 
@@ -241,20 +234,19 @@ def run_units(
     t = time.strftime("_%Y-%m-%d--%H-%M-%S", time.gmtime())
 
     #   Create the file paths of the log files of units created during the simulation
-    fp_lu = create_fp_file(template, t, "l")
-    fp_lu_empty = create_fp_file(template, t + "_empty", "l")
-    fp_lu_full = create_fp_file(template, t + "_full", "l")
-    fp_lu_fail = create_fp_file(template, t + "_failed", "l")
-    fp_lu_rank = create_fp_file(template, t + "_ranked", "l")
+    #   0:  all
+    #   1:  successful
+    #   2:  failed
+    #   3:  empty
+    #   4:  full
+    #   5:  ranked
+    fp_lu = [create_fp_file(template, t, "l"), create_fp_file(template, t + "_success", "l"), create_fp_file(template, t + "_failed", "l"), create_fp_file(template, t + "_empty", "l"), create_fp_file(template, t + "_full", "l"), create_fp_file(template, t + "_ranked", "l")]
 
     #   Run the empty and full units
-    empty_id, full_id = empty_full(template, fp_lu, fp_lu_fail)    
+    empty_id, full_id = empty_full(template, fp_lu)    
 
     #   Loop through the list of units generated
     for i in l_u:
-
-        #   Initialisations
-        exc = False
 
         #   Open the template file
         modify.open_model(template.fp_t_mud)
@@ -265,43 +257,35 @@ def run_units(
         #   Check if all internal elements were removed from the current unit
         if len(rem) == len(template.e_internal):
 
-            #   Set the exception flag to true
-            exc = True
-
             #   Add an exception for an empty unit
-            add_exc(template, fp_lu_empty, rem, grid_rem, empty_id, meth, i[1])
-        
-        #   Check if no internal elements were removed from the current unit
+            add_exc(template, fp_lu, rem, grid_rem, empty_id, meth, i[1])
+
         elif len(rem) == 0:
 
-            #   Set the exception flag to true
-            exc = True
+            #   Add an exception for an empty unit
+            add_exc(template, fp_lu, rem, grid_rem, full_id, meth, i[1])
 
-            #   Add an exception for a full unit
-            add_exc(template, fp_lu_full, rem, grid_rem, full_id, meth, i[1])
-
-        #   Check if the exception flag was not set
-        if not exc:
+        else:
 
             #   Check if the unit generation method is set to L-Systems
             if meth == "l":
 
                 #   Remove the elements, save and run the model and obtain the desired results
-                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail, ls = i[1])
+                rem_el_run_results(template, rem, grid_rem, fp_lu, ls = i[1])
 
             #   Check if the unit generation method is set to CPPNs
             elif meth == "c":
 
                 #   Remove the elements, save and run the model and obtain the desired results
-                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail, cp = i[1])
+                rem_el_run_results(template, rem, grid_rem, fp_lu, cp = i[1])
 
             #   Check if the unit generation method is set to random
             else:
 
                 #   Remove the elements, save and run the model and obtain the desired results
-                rem_el_run_results(template, rem, grid_rem, fp_lu, fp_lu_fail)
+                rem_el_run_results(template, rem, grid_rem, fp_lu)
 
-    return fp_lu, fp_lu_rank
+    return fp_lu
 
 ################################################################################
 
@@ -347,8 +331,8 @@ def rem_el_run_results(
     template,
     rem: list,
     grid_rem: list,
-    fp_lu: str,
-    fp_lu_fail: str,
+    fp_lu: list,
+    log_flag: bool = True,
     ls = None,
     cp = None,
     ) -> None:
@@ -364,8 +348,6 @@ def rem_el_run_results(
         The representative grid with the elements removed
     fp_lu : str
         The file path of the log file of the list of all units generated
-    fp_lu_fail : str
-        The file path of the log file of the list of failed units generated
     ls : int, optional
         The L-system rule length, by default None
     cp : list, optional
@@ -408,13 +390,17 @@ def rem_el_run_results(
         curr_mod.i_e = obtain.read_xym(template, curr_mod.u_id, "Internal Energy")
     
         #   Log the current unit ID
-        with open(fp_lu, "a") as f:
+        with open(fp_lu[1], "a") as f:
             print(curr_mod.u_id, file = f)
 
     else:
 
         #   Log the current unit ID
-        with open(fp_lu_fail, "a") as f:
+        with open(fp_lu[2], "a") as f:
+            print(curr_mod.u_id, file = f)
+
+    if log_flag:
+        with open(fp_lu[0], "a") as f:
             print(curr_mod.u_id, file = f)
 
     #   Log the current unit parameters
@@ -433,8 +419,7 @@ def rem_el_run_results(
 
 def empty_full(
     template,
-    fp_lu: str,
-    fp_lu_fail: str,
+    fp_lu: list,
     ) -> [str, str]:
     """Run the empty and full unit cases
 
@@ -444,8 +429,6 @@ def empty_full(
         The unit template parameters
     fp_lu : str
         The file path of the log file of the list of all units generated
-    fp_lu_fail : str
-        The file path of the log file of the list of failed units generated
 
     Returns
     -------
@@ -457,7 +440,7 @@ def empty_full(
     grid_rem_e, rem_e = gen_grid_rem_free(template, template.e_internal)
 
     #   Remove the elements, save and run the model and obtain the desired results
-    rem_el_run_results(template, rem_e, grid_rem_e, fp_lu, fp_lu_fail)
+    rem_el_run_results(template, rem_e, grid_rem_e, fp_lu, log_flag = False)
 
     #   Generate the unit ID of the empty unit
     empty_id = str(len(rem_e)) + "_" + utility.gen_hash(utility.list_to_str(rem_e, "_"))
@@ -466,14 +449,14 @@ def empty_full(
     grid_rem_f, rem_f = gen_grid_rem_free(template, [])
 
     #   Remove the elements, save and run the model and obtain the desired results
-    rem_el_run_results(template, rem_f, grid_rem_f, fp_lu, fp_lu_fail)
+    rem_el_run_results(template, rem_f, grid_rem_f, fp_lu, log_flag = False)
 
     #   Generate the unit ID of the full unit
     full_id = str(len(rem_f)) + "_" + utility.gen_hash(utility.list_to_str(rem_f, "_"))
 
     return empty_id, full_id
 
-##################################################################################
+################################################################################
 
 def add_exc(
     template,
@@ -533,8 +516,19 @@ def add_exc(
     #   Save the unit class object
     utility.save_v(template, curr_mod, curr_mod.u_id)
 
-    #   Log the current unit ID
-    with open(fp_lu, "a") as f:
+    if len(rem) != 0:
+
+        #   Log the current unit ID
+        with open(fp_lu[3], "a") as f:
+            print(curr_mod.u_id, file = f)
+
+    else:
+
+        #   Log the current unit ID
+        with open(fp_lu[4], "a") as f:
+            print(curr_mod.u_id, file = f)
+
+    with open(fp_lu[0], "a") as f:
         print(curr_mod.u_id, file = f)
 
     return
@@ -695,17 +689,17 @@ def run_bc(unit_p) -> None:
 
 ################################################################################
 
-# def template_1_test(fp_lu_rank: str) -> None:
+# def template_1_test(fp_lu[4]: str) -> None:
 #     """Test the best units for case 1
 
 #     Parameters
 #     ----------
-#     fp_lu_rank : str
+#     fp_lu[4] : str
 #         The file path of the list of best units
 #     """    
 
 #     #   Store the list of best units
-#     bu = obtain.read_lu(fp_lu_rank)
+#     bu = obtain.read_lu(fp_lu[4])
 
 #     #   Loop through the list of best units
 #     for i in bu:
@@ -747,17 +741,17 @@ def run_bc(unit_p) -> None:
 
 # ################################################################################
 
-# def template_2_test(fp_lu_rank: str) -> None:
+# def template_2_test(fp_lu[4]: str) -> None:
 #     """Test the best units for case 2
 
 #     Parameters
 #     ----------
-#     fp_lu_rank : str
+#     fp_lu[4] : str
 #         The file path of the list of best units
 #     """    
 
 #     #   Store the list of best units
-#     bu = obtain.read_lu(fp_lu_rank)
+#     bu = obtain.read_lu(fp_lu[4])
 
 #     #   Loop through the list of best units
 #     for i in bu:
