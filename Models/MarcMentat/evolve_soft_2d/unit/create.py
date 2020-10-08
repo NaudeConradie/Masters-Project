@@ -44,6 +44,7 @@ def gen_init_units(
 
     #   Initialisations
     rem = []
+    u_id = []
 
     #   Check if the generation method is specified as L-Systems
     if meth == "l":
@@ -66,8 +67,10 @@ def gen_init_units(
             #   Obtain the list of elements to be removed
             rem.append(lsystems.interpret_word(template, ls_i.word))
 
+            u_id.append(str(len(rem[-1])) + "_" + utility.gen_hash(utility.list_to_str(ls_i.gramm, "_")))
+
         #   Save the list of units
-        lu = numpy.array([rem, ls]).T.tolist()
+        lu = numpy.array([rem, ls, u_id, ls_par]).T.tolist()
 
     #   Check if the generation method is specified as CPPNs
     elif meth == "c":
@@ -93,8 +96,10 @@ def gen_init_units(
             #   Obtain the list of elements to be removed
             rem.append(cppns.cppn_rem(template, cp_i.grid))
 
+            u_id.append(str(len(rem[-1])) + "_" + str(cp_i.mod_id) + "_" + str(cp_i.cppn.seed) + "_" + str(cp_i.cppn.scale) + "_" + str(cp_i.cppn.hl_n) + "_" + str(cp_i.cppn.hl_s) + "_" + str(cp_i.cppn.thresh))
+
         #   Save the list of units
-        lu = numpy.array([rem, cp]).T.tolist()
+        lu = numpy.array([rem, cp, u_id, cp_par]).T.tolist()
 
     else:
 
@@ -107,8 +112,10 @@ def gen_init_units(
             #   Add the list of elements to be removed
             rem.append(utility.sel_random(template.e_internal, f = i[1], seed = i[0]))
 
+            u_id.append(str(len(rem[-1])) + "_" + utility.gen_hash(utility.list_to_str(rem[-1], "_")))
+
         #   Save the list of units
-        lu = numpy.array([rem, r_par]).T.tolist()
+        lu = numpy.array([rem, r_par, u_id, r_par]).T.tolist()
 
     return lu
 

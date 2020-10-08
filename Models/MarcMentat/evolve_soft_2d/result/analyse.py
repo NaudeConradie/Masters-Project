@@ -141,6 +141,22 @@ def rank_u(
 
 ################################################################################
 
+def rank_pop(
+    fp_lu_rank: str,
+    fp_lu_empty: str,
+    fp_lu_full: str,
+    fp_lu_fail: str,
+    empty_id: str,
+    full_id: str,
+    lu: list,
+    ) -> list:
+
+    
+
+
+
+################################################################################
+
 def constraint_energy(
     template,
     l: str,
