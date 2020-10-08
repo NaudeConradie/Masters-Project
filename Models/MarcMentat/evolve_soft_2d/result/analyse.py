@@ -38,29 +38,25 @@ def monte_carlo(
     if meth == "l":
         
         #   Generate a list of unit parameters
-        l_u, par = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.ls_all_max, gen_alg.ls_all_min])[0]
 
     #   Check if the unit generation method is set to CPPNs
     elif meth == "c":
 
         #   Generate a list of unit parameters
-        l_u, par = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.cppn_all_max, gen_alg.cppn_all_min])
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [gen_alg.cppn_all_max, gen_alg.cppn_all_min])[0]
 
     #   Check if the unit generation method is set to random
     else:
 
         #   Generate a list of unit parameters
-        l_u, par = create.gen_init_units(template, gen_alg.n_u, meth, [[gen_alg.n_u + 1, len(template.e_internal) + 1], [1, 0]])
+        l_u = create.gen_init_units(template, gen_alg.n_u, meth, [[gen_alg.n_u + 1, len(template.e_internal) + 1], [1, 0]])[0]
 
     #   Run the population of units
-    fp_lu = create.run_units(template, l_u, meth)
+    fp_lu = create.run_units(template, l_u, meth)[0]
 
     #   Rank the population of units
     rank_u(template, fp_lu)
-
-    empty_id = "49_e43d862169605c50222e999b40714037"
-    full_id = "0_d41d8cd98f00b204e9800998ecf8427e"
-    rank_pop(fp_lu, empty_id, full_id, par)
 
     return
 
@@ -150,75 +146,80 @@ def rank_pop(
     par: list,
     ) -> list:
 
+    #   Initialisations
+    data = pandas.DataFrame()
+
+    #   Read the list of all units created
     lu = obtain.read_lu(fp_lu[0])
 
+    #   Read the ranked list of all units created
     with open(fp_lu[5], 'r') as f:
         lu_rank = f.read()
 
     try:
         
+        #   Read the list of empty units created
         with open(fp_lu[3], 'r') as f:
             lu_empty = f.read()
 
+        #   Replace the placeholder empty unit ID in the ranked list with all generated empty units
         lu_rank = lu_rank.replace(empty_id, lu_empty)
 
     except:
         
+        #   Replace the placeholder empty unit ID in the ranked list with a blank space
         lu_rank = lu_rank.replace(empty_id, "")
 
     try:
 
+        #   Read the list of full units created
         with open(fp_lu[4], 'r') as f:
             lu_full = f.read()
 
+        #   Replace the placeholder full unit ID in the ranked list with all generated empty units
         lu_rank = lu_rank.replace(full_id, lu_full)
 
     except:
 
+        #   Replace the placeholder full unit ID in the ranked list with a blank space
         lu_rank = lu_rank.replace(full_id, "")
 
     try:
 
+        #   Read the list of failed units created
         with open(fp_lu[2], 'r') as f:
             lu_fail = f.read()
 
+        #   Append the list of failed units to the ranked list
         lu_rank += lu_fail
 
     except:
-
         pass
 
-    print(lu_rank)
-
+    #   Format the list of ranked units
     lu_rank = list(lu_rank.split("\n"))
-
-    print(lu_rank)
-
     while "" in lu_rank:
         lu_rank.remove("")
 
-    print(lu_rank)
-
-    data = pandas.DataFrame()
-
-    print(lu)
+    #   Add the relevant data to the dataframe
     data["Unit ID"] = lu
-    print(data)
     data["Parameters"] = par
 
-    print(data)
-
+    #   Create the sorting index according to the ranked unit list
     lu_rank_index = dict(zip(lu_rank, range(0, len(lu_rank))))
 
+    #   Add the sorting index to the dataframe
     data["Rank"] = data["Unit ID"].map(lu_rank_index)
 
+    #   Sort the dataframe according to the sorting index
     data.sort_values(["Rank"], ascending = [True], inplace = True)
 
+    #   Remove the sorting index from the dataframe
     data.drop("Rank", 1, inplace = True)
 
-    print(data)
+    par_sort = data["Parameters"].tolist()
 
-    return
+    return par_sort
 
 ################################################################################
 
@@ -370,8 +371,6 @@ def disp(
     """    
 
     #   Initialisations
-    d_e = []
-
     label = []
     label.append("Displacement X")
     label.append("Displacement Y")

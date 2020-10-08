@@ -19,7 +19,7 @@ def gen_init_units(
     n: int,
     meth: str,
     a: list,
-    ) -> list:
+    ) -> [list, list]:
     """Generate an initial population of units
 
     Parameters
@@ -119,7 +119,7 @@ def gen_bred_units(
     meth: str,
     par: list,
     c_mod_max: int = None,
-    ) -> list:
+    ) -> [list, list]:
     """Generate a bred population of units
 
     Parameters
@@ -209,7 +209,7 @@ def run_units(
     template,
     l_u: list,
     meth: str,
-    ) -> [str, str]:
+    ) -> [list, str, str]:
     """Run a list of units
 
     Parameters
@@ -285,7 +285,7 @@ def run_units(
                 #   Remove the elements, save and run the model and obtain the desired results
                 rem_el_run_results(template, rem, grid_rem, fp_lu)
 
-    return fp_lu
+    return fp_lu, empty_id, full_id
 
 ################################################################################
 

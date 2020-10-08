@@ -11,62 +11,82 @@ from evolve_soft_2d.unit import create
 
 ################################################################################
 
-# def g_a(
-#     template,
-#     pop_n: int,
-#     chrom: int,
-#     all_max: list,
-#     all_min: list,
-#     gen: int,
-#     prob: list,
-#     point: list,
-#     meth: str,
-#     c: float = 1,
-#     ) -> None:
+def g_a(
+    template,
+    gen: int,
+    prob: list,
+    point: list,
+    meth: str,
+    c: float = 1,
+    ) -> None:
 
-#     pop_i = create.gen_init_units(template, pop_n, meth, [all_max, all_min])
+    #   Check if the unit generation method is set to L-Systems
+    if meth == "l":
 
-#     pop_all = []
-#     pop_all.append(pop_i)
-#     par = []
-#     pop_best = []
+        all_max = ls_all_max
+        all_min = ls_all_min
+        
+    #   Check if the unit generation method is set to CPPNs
+    elif meth == "c":
 
-#     for _ in range(0, gen):
+        all_max = cppn_all_max
+        all_min = cppn_all_min
 
-#         #   Fitness evaluation
-#         fp_lu = create.run_units(template, pop_i, meth)
-#         analyse.rank_u(template, fp_lu)
+    #   Check if the unit generation method is set to random
+    else:
 
-#         for j in range(0, pop_n, 2):
+        all_max = [n_u + 1, len(template.e_internal) + 1]
+        all_min = [1, 0]
 
-#             par_1 = sel_par(pop_n, fit_i, pop_i, c)
-#             par_2 = sel_par(pop_n, fit_i, pop_i, c)
+    chrom = len(all_max)
+        
+    #   Generate a list of unit parameters
+    pop_i, par_i = create.gen_init_units(template, n_u, meth, [all_max, all_min])
 
-#             chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
+    pop_all = []
+    pop_all.append(pop_i)
+    par = []
+    pop_best = []
 
-#             chi_1 = mut(chrom, all_max, all_min, prob[1], point[1], chi_1)
-#             chi_2 = mut(chrom, all_max, all_min, prob[1], point[1], chi_2)
+    for _ in range(0, gen):
 
-#             chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
-#             chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
+        #   Fitness evaluation
+        fp_lu, empty_id, full_id = create.run_units(template, pop_i, meth)
+        analyse.rank_u(template, fp_lu)
+        fit_i = analyse.rank_pop(fp_lu, empty_id, full_id, par_i)
 
-#             par[j] = chi_1
-#             par[j + 1] = chi_2
+        for j in range(0, n_u, 2):
 
-#         #   Store the best member of the current generation
-#         pop_best.append(pop_i[fit_i[0]])
+            par_1 = sel_par(n_u, fit_i, pop_i, c)
+            par_2 = sel_par(n_u, fit_i, pop_i, c)
 
-#         if meth == "c":
+            chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
 
-#             pop_i = create.gen_bred_units(template, meth, par, c_mod_max = all_max[0])
+            chi_1 = mut(chrom, all_max, all_min, prob[1], point[1], chi_1)
+            chi_2 = mut(chrom, all_max, all_min, prob[1], point[1], chi_2)
 
-#         else:
+            chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
+            chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
 
-#             pop_i = create.gen_bred_units(template, meth, par)
+            par[j] = chi_1
+            par[j + 1] = chi_2
 
-#         pop_all.append(pop_i)
+        #   Store the best member of the current generation
+        pop_best.append(pop_i[fit_i[0]])
 
-#     return
+        if meth == "c":
+
+            pop_i = create.gen_bred_units(template, meth, par, c_mod_max = all_max[0])
+
+        else:
+
+            pop_i = create.gen_bred_units(template, meth, par)
+
+        par_i = par
+
+        pop_all.append(pop_i)
+
+    return
 
 ################################################################################
 

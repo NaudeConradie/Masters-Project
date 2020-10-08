@@ -57,6 +57,11 @@ def main():
     #   The analysis method
     a_meth = "m"
 
+    #   Genetic algorithm parameters
+    gen = 10
+    prob = [0.5, 0.1, 0.5]
+    point = [1, 2, 2]
+
     #   Prepare the unit parameters
     temp = classes.template(case, x0, y0, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
 
@@ -66,6 +71,8 @@ def main():
     #   Check if the analysis method is the Monte Carlo method
     if a_meth == "m":
         analyse.monte_carlo(temp, g_meth)
+    elif a_meth == "g":
+        gen_alg.g_a(temp, gen, prob, point, g_meth)
 
     #   View the boundary conditions of the template
     inspect.view_bc()
