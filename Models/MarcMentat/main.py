@@ -52,6 +52,7 @@ def main():
     app = [y_e*e_s/2, 0.025]
     #   The decision to add neighbouring grids
     neighbours = False
+    
     #   The unit generation method
     g_meth = "c"
     #   The analysis method
@@ -71,6 +72,8 @@ def main():
     #   Check if the analysis method is the Monte Carlo method
     if a_meth == "m":
         analyse.monte_carlo(temp, g_meth)
+
+    #   Check if the analysis method is the Genetic Algorithm method
     elif a_meth == "g":
         gen_alg.g_a(temp, gen, prob, point, g_meth)
 
