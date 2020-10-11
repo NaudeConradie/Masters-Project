@@ -392,6 +392,8 @@ def disp(
     #   Store only the external node values
     d_ex = d[:, :, n_external_i]
 
+    d_ex = d_ex[:, template.n_steps]
+
     return d_ex
 
 ################################################################################
@@ -412,8 +414,22 @@ def hausdorff_d(
     """    
 
     #   Read the displacement values of the unit
-    d_e = disp(template, l)
-    d_e = d_e[:, template.n_steps, :]
+    d_def = disp(template, l)
+    d_def = numpy.transpose(d_def)
+
+    d_des = numpy.transpose(template.d)
+
+    if template.case == 1:
+
+        d_def_b = sides_for_hd(template, d_def)[0]
+        d_des_b = sides_for_hd(template, d_des)[0]
+
+        hd_b = directed_hausdorff(d_def_b, d_des_b)[0]
+
+        for i in d_def:
+        
+
+    
 
     #   Calculate the Hausdorff distance between the unit and the template displacements
     h_d = directed_hausdorff(d_e, template.d[:, template.n_steps, :])
@@ -422,6 +438,20 @@ def hausdorff_d(
     save_numpy_array_to_csv(template, "Hausdorff Distance_" + l, h_d)
 
     return
+
+################################################################################
+
+def sides_for_hd(
+    template,
+    d: numpy.array,
+    ) -> [numpy.array, numpy.array, numpy.array, numpy.array]:
+
+    d_b = d[0:template.x_n]
+    d_t = d[-(template.x_n):len(template.n_external)]
+    d_l = [d[0]] + [d[i] for i in range(template.x_n, len(template.n_external) - (template.x_n - 1), 2)]
+    d_r = [d[i] for i in range(template.x_n - 1, len(template.n_external) - (template.x_n - 1), 2)] + [d[len(template.n_external)]]
+
+    return d_b, d_t, d_l, d_r
 
 ################################################################################
 

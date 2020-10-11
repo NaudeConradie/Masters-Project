@@ -59,6 +59,16 @@ def main():
 
     # create.temp_create(temp)
 
+    print(temp.n_external)
+
+    n_b = temp.n_external[0:temp.x_n]
+    n_t = temp.n_external[-(temp.x_n):len(temp.n_external)]
+    n_l = [1] + [temp.n_external[i] for i in range(temp.x_n, len(temp.n_external) - (temp.x_n - 1), 2)]
+    n_r = [temp.n_external[i] for i in range(temp.x_n - 1, len(temp.n_external) - (temp.x_n - 1), 2)] + [temp.n_n]
+
+    print(n_l)
+    print(n_r)
+
     return
 
 main()
