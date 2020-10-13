@@ -7,6 +7,7 @@ import linecache
 import numpy
 import pandas
 
+from scipy.optimize import curve_fit
 from scipy.spatial.distance import directed_hausdorff
 
 from evolve_soft_2d import plotting, utility
@@ -109,6 +110,12 @@ def rank_u(
     #   Read the Hausdorff distance variables
     v.append([])
     v[-1].append(obtain.read_all_hd(template, lu))
+
+    if template.case == 1:
+
+        label.append("Height:Width Ratio")
+        label.append("Width")
+
 
     #   Remove unnecessary brackets from the values
     v = [i[0] for i in v]
@@ -398,6 +405,55 @@ def disp(
 
 ################################################################################
 
+def disp_fit(
+    template,
+    l: str,
+    ) -> None:
+
+    d_def = disp(template, l)
+
+    if template.case == 1:
+
+        fit_m = disp_fit_1(template, d_def)
+
+        label = "Case 1 Fitness Measures_"
+
+    #   Save the internal energy to a .csv file
+    save_numpy_array_to_csv(template, label + l, fit_m)
+
+    return
+
+################################################################################
+
+def disp_fit_1(
+    template,
+    d: list,
+    ) -> list:
+
+    d_b, d_t, d_l, d_r = split_d(template, d)
+
+    d_l = utility.list_swap_i(d_l, 0, 1)
+    d_r = utility.list_swap_i(d_r, 0, 1)
+
+    d_split = [d_b, d_t, d_l, d_r]
+
+    d_a = []
+
+    for i in d_split:
+
+        d_a.append(curve_fit(utility.f_const, i[0], i[1]))
+
+    h_w_ratio = (d_a[1] - d_a[1])/(d_a[3] - d_a[2])
+
+    w = d_a[3] - d_a[2]
+
+    fit_m = [h_w_ratio, w]
+    fit_m = numpy.array(fit_m)
+
+    return fit_m
+
+################################################################################
+
 def hausdorff_d(
     template,
     l: str,
@@ -419,20 +475,8 @@ def hausdorff_d(
 
     d_des = numpy.transpose(template.d)
 
-    if template.case == 1:
-
-        d_def_b = sides_for_hd(template, d_def)[0]
-        d_des_b = sides_for_hd(template, d_des)[0]
-
-        hd_b = directed_hausdorff(d_def_b, d_des_b)[0]
-
-        for i in d_def:
-        
-
-    
-
     #   Calculate the Hausdorff distance between the unit and the template displacements
-    h_d = directed_hausdorff(d_e, template.d[:, template.n_steps, :])
+    h_d = directed_hausdorff(d_def, d_des)
 
     #   Save the internal energy to a .csv file
     save_numpy_array_to_csv(template, "Hausdorff Distance_" + l, h_d)
@@ -441,7 +485,7 @@ def hausdorff_d(
 
 ################################################################################
 
-def sides_for_hd(
+def split_d(
     template,
     d: numpy.array,
     ) -> [numpy.array, numpy.array, numpy.array, numpy.array]:

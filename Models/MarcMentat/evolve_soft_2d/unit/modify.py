@@ -53,14 +53,14 @@ def create_nodes(template) -> None:
     """
 
     #   Initialisations
-    y = template.y0
+    y = 0
     z = 0
 
     #   Loop through the nodes in the y-direction
     for _ in range(0, template.y_n):
 
         #   Initialise the x-coordinate
-        x = template.x0
+        x = 0
 
         #   Loop through the nodes in the x-direction
         for _ in range(0, template.x_n):
@@ -117,57 +117,6 @@ def create_elements(
 
 ################################################################################
 
-def add_neighbours(template) -> None:
-    """Add solid neighbouring grids
-
-    Parameters
-    ----------
-    template
-        The unit template parameters
-    """    
-
-    #   Initialisations
-    x = [-template.x_s, template.x0, template.x_s]
-    y = [-template.y_s, template.y0, template.y_s]
-
-    x_mid = template.x0
-    y_mid = template.y0
-
-    n = 1
-
-    #   Loop through all y-axis initial coordinates
-    for i in y:
-
-        #   Loop through all x-axis initial coordinates
-        for j in x:
-
-            #   Check if the starting coordinates are the original grid's
-            if i == y_mid and j == x_mid:
-
-                #   Skip this step in the loop
-                continue
-
-            #   Set the initial coordinates of the template
-            template.x0 = j
-            template.y0 = i
-
-            #   Set the initial node ID
-            n_init = n*template.n_n + 1
-                        
-            #   Construct the neighbouring grid
-            create_nodes(template)
-            create_elements(template, n_init = n_init)
-
-            #   Increment the counter
-            n += 1
-
-    #   Merge overlapping nodes
-    sweep_all()
-
-    return
-
-################################################################################
-
 def copy_neighbours(template) -> None:
     """Surround the current grid with copies of itself
 
@@ -178,11 +127,8 @@ def copy_neighbours(template) -> None:
     """
 
     #   Initialisations
-    x = [-2*template.x_s, -template.x_s, template.x0, template.x_s, 2*template.x_s,]
-    y = [-2*template.y_s, -template.y_s, template.y0, template.y_s, 2*template.y_s,]
-
-    x_mid = template.x0
-    y_mid = template.y0
+    x = [-2*template.x_s, -template.x_s, 0, template.x_s, 2*template.x_s,]
+    y = [-2*template.y_s, -template.y_s, 0, template.y_s, 2*template.y_s,]
 
     n_l = ["n:{}".format(i) for i in range(1, template.n_n + 1)]
     e_l = ["e:{}".format(i) for i in range(1, template.n_e + 1)]
@@ -199,7 +145,7 @@ def copy_neighbours(template) -> None:
         for j in x:
 
             #   Check if the starting coordinates are the original grid's
-            if i == y_mid and j == x_mid:
+            if i == 0 and j == 0:
 
                 #   Skip this step in the loop
                 continue
@@ -244,20 +190,18 @@ def add_ramp(template) -> None:
     
 def add_bc_fd_edge(
     label: str,
-    tab_nam: str,
     a: str,
     d: str,
     e: int,
     m: float,
+    tab_nam: str = None,
     ) -> None:
-    """Add fixed displacement boundary conditions along an entire edge
+    """[summary]
 
     Parameters
     ----------
     label : str
         The label of the boundary condition
-    tab_nam : str
-        The name of the table defining the displacement function if applicable
     a : str
         The axis of the applied boundary condition
         "x" or "y"
@@ -268,6 +212,8 @@ def add_bc_fd_edge(
         The edge coordinate of the boundary condition
     m : float
         The magnitude of the applied displacement
+    tab_nam : str, optional
+        The name of the table defining the displacement function, by default None
     """
 
     #   Initialisation
@@ -284,7 +230,7 @@ def add_bc_fd_edge(
     py_send("*apply_dof_value {} {}".format(a, m))
     
     #   Apply the displacement function if applicable
-    if tab_nam != "":
+    if tab_nam is not None:
         py_send("*apply_dof_table {} {}".format(a, tab_nam))
 
     #   Loop through the number of nodes
@@ -314,19 +260,17 @@ def add_bc_fd_edge(
 
 def add_bc_fd_node(
     label: str,
-    tab_nam: str,
     a: str,
     n: int,
     d: float,
+    tab_nam: str = None,
     ) -> None:
-    """Add fixed displacement boundary conditions on a single node
+    """Add a fixed displacement boundary condition to a single node
 
     Parameters
     ----------
     label : str
         The label of the boundary condition
-    tab_nam : str
-        The name of the table defining the displacement function if applicable
     a : str
         The axis of the boundary condition
         "x" or "y"
@@ -334,6 +278,8 @@ def add_bc_fd_node(
         The node number of the boundary condition
     d : float
         The magnitude of the applied displacement
+    tab_nam : str, optional
+        The name of the table defining the displacement function, by default None
     """
 
     #   Apply the fixed boundary condition
@@ -344,7 +290,7 @@ def add_bc_fd_node(
     py_send("*apply_dof_value {} {}".format(a, d))
     
     #   Apply the displacement function if applicable
-    if tab_nam != "":
+    if tab_nam is not None:
         py_send("*apply_dof_table {} {}".format(a, tab_nam))
 
     #   Apply the boundary condition to the selected nodes
@@ -356,25 +302,25 @@ def add_bc_fd_node(
 
 def add_bc_fds_nodes(
     label: str,
-    tab_nam: str,
     n_l: list,
     d: float,
+    tab_nam: str = None,
     ) -> None:
-    """Add fixed displacement boundary conditions on a single node
+    """Add fixed displacement boundary conditions to a list of nodes
 
     Parameters
     ----------
     label : str
         The label of the boundary condition
-    tab_nam : str
-        The name of the table defining the displacement function if applicable
-    n : int
-        The node number of the boundary condition
+    n_l : list
+        The list of node IDs
     d : float
         The magnitude of the applied displacement
+    tab_nam : str, optional
+        The name of the table defining the displacement function, by default None
     """
-
-    #   Apply the fixed boundary condition
+    
+    #   Apply the fixed displacement boundary condition
     py_send("*new_apply")
     py_send("*apply_type fixed_displacement")
     py_send("*apply_name bc_fd_{}".format(label))
@@ -386,7 +332,7 @@ def add_bc_fds_nodes(
     py_send("*apply_dof_value y {}".format(d))
     
     #   Apply the displacement function if applicable
-    if tab_nam != "":
+    if tab_nam is not None:
         py_send("*apply_dof_table x {}".format(tab_nam))
         py_send("*apply_dof_table y {}".format(tab_nam))
 
@@ -394,7 +340,6 @@ def add_bc_fds_nodes(
     py_send("*add_apply_nodes ")
 
     for i in n_l:
-
         py_send("{} ".format(i))
 
     py_send("#")
@@ -405,10 +350,10 @@ def add_bc_fds_nodes(
 
 def add_bc_fr_node(
     label: str,
-    tab_nam: str,
     a: str,
     n: int,
     d: float,
+    tab_nam: str = None,
     ) -> None:
     """Add fixed rotation boundary conditions on a single node
 
@@ -435,7 +380,7 @@ def add_bc_fr_node(
     py_send("*apply_dof_value r{} {}".format(a, d))
     
     #   Apply the displacement function if applicable
-    if tab_nam != "":
+    if tab_nam is not None:
         py_send("*apply_dof_table r{} {}".format(a, tab_nam))
 
     #   Apply the boundary condition to the selected nodes
@@ -468,7 +413,7 @@ def add_bc_p_internal(unit_p) -> None:
     for i in range(0, 4):
 
         #   Add the pressure boundary condition in the current direction
-        add_bc_p_edge(label[i], unit_p.template.apply[1], unit_p.template.tab_nam, i, ip_e[i])
+        add_bc_p_edge(label[i], unit_p.template.p_mag, i, ip_e[i], tab_nam = unit_p.template.tab_nam)
 
     return
 
@@ -477,9 +422,9 @@ def add_bc_p_internal(unit_p) -> None:
 def add_bc_p_edge(
     label: str,
     p: float, 
-    tab_nam: str, 
     d: int,
     e: list,
+    tab_nam: str = None,
     ) -> None:
     """Add a pressure boundary condition to a list of elements in a given direction
 
@@ -489,13 +434,13 @@ def add_bc_p_edge(
         The label of the boundary condition
     p : float
         The magnitude of the pressure
-    tab_nam : str
-        The name of the table defining the pressure function
     d : int
         The direction of the applied pressure
         0, 1, 2 or 3
     e : list
         The list of elements
+    tab_nam : str, optional
+        The name of the table defining the pressure function, by default None
     """
 
     py_send("*new_apply")
@@ -522,9 +467,14 @@ def add_bc_p_edge(
 
 ################################################################################
 
-def add_inertia_rel(n) -> None:
+def add_inertia_rel(n: int) -> None:
     """Add inertia relief
-    """    
+
+    Parameters
+    ----------
+    n : int
+        The second node to apply inertia relief to
+    """ 
 
     py_send("*loadcase_option inertia_relief:on")
 
@@ -606,7 +556,7 @@ def add_lcase(
     l_id : int
         The loadcase ID
     l_bc : list
-        The list of loadcase boundary conditions
+        The list of loadcase boundary condition labels
     ir : bool, optional
         Whether or not to include inertia relief, by default False
     """
@@ -743,6 +693,7 @@ def run_model(
 
         if d_temp is not None:
 
+            analyse.disp_fit(template, l + "_" + str(j_id))
             analyse.hausdorff_d(template, l + "_" + str(j_id))
         
     return run_success

@@ -370,7 +370,7 @@ def rem_el_run_results(
     modify.copy_neighbours(template)
 
     #   Add the boundary conditions for the neighbouring units
-    run_bc(curr_mod)
+    corner_bc(curr_mod)
 
     #   Add the loadcase and job
     modify.add_lcase(template, 2, bc_ip + bc_fd)
@@ -539,7 +539,9 @@ def temp_create(template) -> list:
     """Create a template from which elements may be removed
 
     Case:   1
-    Pure strain in the y-direction
+    Unidirectional extension
+    Case:   2
+    Bidirectional extension
     Case:   2
     Pure shear strain
     Case:   3
@@ -561,18 +563,15 @@ def temp_create(template) -> list:
     #   Add the application graph
     modify.add_ramp(template)
 
+    #   Determine which case is selected and apply the appropriate boundary conditions
     if template.case == 1:
         template_1_bc(template)
     elif template.case == 2:
         template_2_bc(template)
-    else:
+    elif template.case == 3:
         template_3_bc(template)
-
-    #   Check if neighbouring grids are required
-    if template.neighbours == True:
-
-        #   Add neighbouring grids
-        modify.add_neighbours(template)
+    else:
+        template_4_bc(template)
 
     #   Add template properties
     modify.add_geom_prop()
@@ -621,12 +620,13 @@ def template_1_bc(template) -> None:
     """    
 
     #   Add the boundary conditions
-    modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
-    modify.add_bc_fd_edge("yy2", template.tab_nam, "y", "y", template.y_s, template.apply[0])
-    modify.add_bc_fd_edge("xx1", "",               "x", "x", template.x0,  0)
-    modify.add_bc_fd_edge("xx2", "",               "x", "x", template.x_s, 0)
+    modify.add_bc_fd_edge("yy1", "y", "y", 0, 0)
+    modify.add_bc_fd_edge("yy2", "y", "y", template.y_s, template.d_mag, tab_nam = template.tab_nam)
+    modify.add_bc_fd_edge("xx1", "x", "x", 0, 0)
+    modify.add_bc_fd_edge("xx2", "x", "x", template.x_s, 0)
 
     return
+
 
 ################################################################################
 
@@ -640,10 +640,10 @@ def template_2_bc(template) -> None:
     """
 
     #   Add the boundary conditions
-    modify.add_bc_fd_edge("xy1", "",               "x", "y", template.y0,  0)
-    modify.add_bc_fd_edge("xy2", template.tab_nam, "x", "y", template.y_s, template.apply[0])
-    modify.add_bc_fd_edge("yx1", "",               "y", "x", template.x0,  0)
-    modify.add_bc_fd_edge("yx2", "",               "y", "x", template.x_s, 0)
+    modify.add_bc_fd_edge("yy1", "y", "y", 0, 0)
+    modify.add_bc_fd_edge("yy2", "y", "y", template.y_s, template.d_mag, tab_nam = template.tab_nam)
+    modify.add_bc_fd_edge("xx1", "x", "x", 0, 0)
+    modify.add_bc_fd_edge("xx2", "x", "x", template.x_s, template.d_mag, tab_nam = template.tab_nam)
 
     return
 
@@ -659,19 +659,39 @@ def template_3_bc(template) -> None:
     """
 
     #   Add the boundary conditions
-    modify.add_bc_fd_edge("yy1", "",               "y", "y", template.y0,  0)
-    modify.add_bc_fd_edge("yy2", "",               "y", "y", template.y_s, 0)
-    modify.add_bc_fd_node("xf1", "",               "x", 1,            0)
-    modify.add_bc_fd_node("xf2", "",               "x", template.x_n, 0)
-    modify.add_bc_fd_node("xn",  template.tab_nam, "x", template.n_n - template.x_n + 1, -template.apply[0])
-    modify.add_bc_fd_node("xp",  template.tab_nam, "x", template.n_n, template.apply[0])
+    modify.add_bc_fd_edge("xy1", "x", "y", 0, 0)
+    modify.add_bc_fd_edge("xy2", "x", "y", template.y_s, template.d_mag, tab_nam = template.tab_nam)
+    modify.add_bc_fd_edge("yx1", "y", "x", 0, 0)
+    modify.add_bc_fd_edge("yx2", "y", "x", template.x_s, 0)
 
     return
 
 ################################################################################
 
-def run_bc(unit_p) -> None:
-    """Apply the fixed displacement boundary conditions to the corners
+def template_4_bc(template) -> None:
+    """Apply the displacement boundary conditions for case 3
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    """
+
+    #   Add the boundary conditions
+    modify.add_bc_fd_edge("yy1", "y", "y", 0,            0)
+    modify.add_bc_fd_edge("yy2", "y", "y", template.y_s, 0)
+    
+    modify.add_bc_fd_node("xf1", "x", 1,            0)
+    modify.add_bc_fd_node("xf2", "x", template.x_n, 0)
+    modify.add_bc_fd_node("xn",  "x", template.n_n - template.x_n + 1, -template.d_mag, tab_nam = template.tab_nam)
+    modify.add_bc_fd_node("xp",  "x", template.n_n, template.d_mag, tab_nam = template.tab_nam)
+
+    return
+
+################################################################################
+
+def corner_bc(unit_p) -> None:
+    """Apply the fixed displacement boundary conditions to the corner nodes
 
     Parameters
     ----------
@@ -683,162 +703,14 @@ def run_bc(unit_p) -> None:
     n_corn = inspect.find_n_corn(unit_p)
 
     #   Apply the fixed displacement boundary conditions
-    modify.add_bc_fds_nodes("xy_corn", "", n_corn, 0)
+    modify.add_bc_fds_nodes("xy_corn", n_corn, 0)
 
     return
 
 ################################################################################
 
-# def template_1_test(fp_lu[4]: str) -> None:
-#     """Test the best units for case 1
-
-#     Parameters
-#     ----------
-#     fp_lu[4] : str
-#         The file path of the list of best units
-#     """    
-
-#     #   Store the list of best units
-#     bu = obtain.read_lu(fp_lu[4])
-
-#     #   Loop through the list of best units
-#     for i in bu:
-
-#         #   Open the current unit parameter class object
-#         curr_mod = utility.open_v(i)
-
-#         #   Open the current unit model
-#         modify.open_model(curr_mod.fp_u_mud)
-
-#         #   Add the internal pressure boundary conditions
-#         modify.add_bc_p_internal(curr_mod)
-
-#         #   Add the loadcase for the internal pressure
-#         modify.add_lcase(curr_mod.template, 2, ["bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
-
-#         #   Add the job for the second loadcase
-#         modify.add_job(2)
-
-#         #   Save the unit
-#         modify.save_model(curr_mod.fp_u_mud)
-
-#         #   Run the unit
-#         curr_mod.run_success = modify.run_model(curr_mod.template, 2, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[1], curr_mod.fp_u_t16[1])
-
-#         #   Add the loadcase for all bouondary conditions
-#         modify.add_lcase(curr_mod.template, 2, ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2", "bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
-
-#         #   Add the job for the third loadcase
-#         modify.add_job(3)
-
-#         #   Save the unit
-#         modify.save_model(curr_mod.fp_u_mud)
-
-#         #   Run the unit
-#         curr_mod.run_success = modify.run_model(curr_mod.template, 3, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[2], curr_mod.fp_u_t16[2])
-
-#     return
-
-# ################################################################################
-
-# def template_2_test(fp_lu[4]: str) -> None:
-#     """Test the best units for case 2
-
-#     Parameters
-#     ----------
-#     fp_lu[4] : str
-#         The file path of the list of best units
-#     """    
-
-#     #   Store the list of best units
-#     bu = obtain.read_lu(fp_lu[4])
-
-#     #   Loop through the list of best units
-#     for i in bu:
-
-#         #   Open the current unit parameter class object
-#         curr_mod = utility.open_v(i)
-
-#         #   Open the current unit model
-#         modify.open_model(curr_mod.fp_u_mud)
-
-#         #   Add the internal pressure boundary conditions
-#         modify.add_bc_p_internal(curr_mod)
-
-#         #   Add the loadcase for the internal pressure
-#         modify.add_lcase(curr_mod.template, 2, ["bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
-
-#         #   Add the job for the second loadcase
-#         modify.add_job(2)
-
-#         #   Save the unit
-#         modify.save_model(curr_mod.fp_u_mud)
-
-#         #   Run the unit
-#         curr_mod.run_success = modify.run_model(curr_mod.template, 2, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[1], curr_mod.fp_u_t16[1])
-
-#         #   Add the loadcase for all bouondary conditions
-#         modify.add_lcase(curr_mod.template, 2, ["bc_fd_xy1", "bc_fd_xy2", "bc_fd_yx1", "bc_fd_yx2", "bc_load_yp", "bc_load_xn", "bc_load_yn", "bc_load_xp"])
-
-#         #   Add the job for the third loadcase
-#         modify.add_job(3)
-
-#         #   Save the unit
-#         modify.save_model(curr_mod.fp_u_mud)
-
-#         #   Run the unit
-#         curr_mod.run_success = modify.run_model(curr_mod.template, 3, curr_mod.u_id, curr_mod.fp_u_mud, curr_mod.fp_u_log[2], curr_mod.fp_u_t16[2])
-
-#     return
-
-# ################################################################################
-
-# def template_4(template) -> None:
-#     """Create a template from which elements may be removed
-
-#     Case:   4
-#     Reshape to a circle of a specified radius
-
-#     Parameters
-#     ----------
-#     template : template
-#         The unit template parameters
-#     """
-
-#     bc = []
-
-#     #   Apply the initial template conditions
-#     temp_pre(template)
-
-#     #   Add the boundary conditions
-#     x, y = inspect.find_n_coord(template.n_external)
-#     x = utility.normalise_list(x, -1, f = template.x_s/2)
-#     y = utility.normalise_list(y, -1, f = template.y_s/2)
-#     x, y = utility.square_to_circle(x, y)
-#     # x = [i*template.x_n/2 for i in x]
-#     # y = [i*template.y_n/2 for i in y]
-
-#     for i in range(0, len(template.n_external)):
-
-#         modify.add_bc_fd_node("x{}".format(i), template.tab_nam, "x", template.n_external[i], x[i])
-#         modify.add_bc_fd_node("y{}".format(i), template.tab_nam, "y", template.n_external[i], y[i])
-
-#         bc.append("bc_fd_x{}".format(i))
-#         bc.append("bc_fd_y{}".format(i))
-
-#     #   Apply template conditions
-#     pre_temp_mid(template)
-
-#     modify.add_lcase(template, 1, bc)
-
-#     #   Apply the final template conditions
-#     temp_pos(template)
-
-#     return
-
-################################################################################
-
 template_bc_fd = [
+    ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2"],
     ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2"],
     ["bc_fd_xy1", "bc_fd_xy2", "bc_fd_yx1", "bc_fd_yx2"],
     ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xf1", "bc_fd_xf2", "bc_fd_xn", "bc_fd_xp"],

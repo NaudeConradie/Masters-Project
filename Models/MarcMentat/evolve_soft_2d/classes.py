@@ -58,8 +58,6 @@ class template:
     def __init__(
         self, 
         case: int,
-        x0: int,
-        y0: int,
         x_e: int,
         y_e: int,
         e_s: float,
@@ -67,42 +65,36 @@ class template:
         ogd_mat: ogd_mat,
         n_steps: int,
         tab_nam: str,
-        apply: list,
-        neighbours: bool,
+        d_mag: float,
+        p_mag: float,
         run_success: bool = False,
         c_e: list = [0, 0, 0],
         i_e: list = [0, 0, 0],
         ) -> None:
-        """Unit template parameters
+        """[summary]
 
         Parameters
         ----------
         case : int
             The unit template case identifier
-        x0 : int
-            The initial x-coordinate
-        y0 : int
-            The initial y-coordinate
         x_e : int
             The number of elements in the x-direction
         y_e : int
             The number of elements in the y-direction
-        x_s : float
-            The side length of the unit in the x-direction
-        y_s : float
-            The side length of the unit in the y-direction
+        e_s : float
+            The element size in mm
         b : int
             The number of elements in the boundary of the unit
-        ogd_mat : class
+        ogd_mat : ogd_mat
             The Ogden material model
         n_steps : int
             The number of steps in the second of the simulation
         tab_nam : str
             The name of the table containing the function of the load to be applied
-        apply : list
-            The conditions to be applied to the unit template
-        neighbours : bool
-            The decision to add neighbouring grids
+        d_mag : float
+            The magnitude of the applied displacement in mm
+        p_mag : float
+            The magnitude of the applied internal pressure in MPa
         run_success : bool, optional
             The success of the unit template's run, by default False
         c_e : list, optional
@@ -112,8 +104,6 @@ class template:
         """
 
         self.case = case
-        self.x0 = x0
-        self.y0 = y0
 
         if x_e % 2 == 0:
             self.x_e = x_e + 1
@@ -126,18 +116,18 @@ class template:
             self.y_e = y_e    
 
         self.e_s = e_s
-
-        self.x_s = self.e_s*self.x_e
-        self.y_s = self.e_s*self.x_e
         self.b = b
         self.ogd_mat = ogd_mat
         self.n_steps = n_steps
         self.tab_nam = tab_nam
-        self.apply = apply
-        self.neighbours = neighbours
+        self.d_mag = d_mag
+        self.p_mag = p_mag
         self.run_success = run_success
         self.c_e = c_e
         self.i_e = i_e
+
+        self.x_s = self.e_s*self.x_e
+        self.y_s = self.e_s*self.x_e
 
         #   The number of nodes in the x-direction
         self.x_n = self.x_e + 1
@@ -182,13 +172,12 @@ class template:
         """
 
         r = "Case: {}\nParameters:\n".format(self.case)
-        r += "Origin:               ({},{})\n".format(self.x0, self.y0)
         r += "Dimensions:           {} elements\n".format(self.n_e_l)
         r += "Size:                 {} mm\n".format(self.s_l)
         r += "Boundary thickness:   {} elements\n".format(self.b)
         r += "Internal element IDs: {}\n".format(self.e_internal)
-        r += "Applied displacement: {} mm\nApplied pressure:     {} MPa\n".format(self.apply[0], self.apply[1])
-        r += "Neighbours added:     {}\n".format(self.neighbours)
+        r += "Applied displacement: {} mm\n".format(self.d_mag)
+        r += "Applied pressure:     {} MPa\n".format(self.p_mag)
         r += "Analysis steps:       {}\n".format(self.n_steps)
         r += "Run successful:       {}\n".format(self.run_success)
         r += "Constraint energy:\nX        : {} J\nY        : {} J\nMagnitude: {} J\n".format(self.c_e[0], self.c_e[1], self.c_e[2])
@@ -205,7 +194,7 @@ class unit_p:
 
     def __init__(
         self,
-        template,
+        template: template,
         rem: list,
         grid: list,
         ls = None,
@@ -219,18 +208,24 @@ class unit_p:
 
         Parameters
         ----------
-        template : class
+        template : template
             The unit template parameters
         rem : list
             The list of elements removed from the unit
         grid : list
             The representative grid with the elements removed
+        ls : lsystem, optional
+            The L-System, by default None
+        cp : cppn_i, optional
+            The CPPN model, by default None
         run_success : bool, optional
             The success of the unit's run, by default False
         c_e : list, optional
             The constraint energy of the unit template, by default [0, 0, 0]
         i_e : list, optional
             The internal energy of the unit template, by default [0, 0, 0]
+        d : list, optional
+            [description], by default []
         """
 
         self.template = template

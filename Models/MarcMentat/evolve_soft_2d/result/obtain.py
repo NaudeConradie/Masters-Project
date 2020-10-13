@@ -459,6 +459,50 @@ def read_all_hd(
 
 ################################################################################
 
+def read_all_fit(
+    template,
+    lu: list,
+    ) -> list:
+
+    if template.case == 1:
+
+        #   Initialisations
+        r = []
+        w = []
+
+        #   Loop through all units
+        for i in range(0, len(lu)):
+
+            #   Create the file path of the results file
+            fp_r_f = create_fp_file(template, "Case 1 Fitness Measures_" + lu[i] + "_2", "r")
+
+            #   Store the results from the file
+            r.append(linecache.getline(fp_r_f, 1))
+            w.append(linecache.getline(fp_r_f, 2))
+
+        #   Clean the list
+        r = [i.rstrip() for i in r]
+        w = [i.rstrip() for i in w]
+
+        #   Cast the list items to floats and check for any failed results
+        (r, r_f) = utility.list_to_float(r)
+        (w, w_f) = utility.list_to_float(w)  
+
+        #   Output a warning if any models failed to deliver results
+        if r_f != 0:
+            print("Warning: {} models failed to deliver results!".format(r_f))
+        if w_f != 0:
+            print("Warning: {} models failed to deliver results!".format(w_f))
+
+        r = list(map(abs, r))
+        w = list(map(abs, w))
+
+        fit_m = [r, w]
+
+    return fit_m
+
+################################################################################
+
 def read_lu(fp_lu: str) -> list:
     """Read the list of units
 

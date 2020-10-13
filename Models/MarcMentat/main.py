@@ -34,25 +34,22 @@ def main():
     #   Initialisations
     #   The template case identifier
     case = 1
-    #   The initial coordinates
-    x0 = 0
-    y0 = 0
     #   The number of elements in each axis direction
     x_e = 11
     y_e = 11
     #   The length of each side in mm
-    e_s = 2
+    e_s = 5
     #   The thickness of the unit boundary
     b = 2
     #   The number of increments per second to analyse
     n_steps = 5
     #   The text name of the table used for the applied displacement and load
     table_name = "ramp_input"
-    #   The applied displacement and load
-    app = [y_e*e_s/2, 0.025]
-    #   The decision to add neighbouring grids
-    neighbours = False
-    
+    #   The magnitude of the applied displacement in mm
+    d_mag = y_e*e_s/2
+    #   The magnitude of the applied internal pressure in MPa
+    p_mag = 0.025
+
     #   The unit generation method
     g_meth = "c"
     #   The analysis method
@@ -64,7 +61,7 @@ def main():
     point = [1, 2, 2]
 
     #   Prepare the unit parameters
-    temp = classes.template(case, x0, y0, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
+    temp = classes.template(case, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, d_mag, p_mag)
 
     #   Create the template
     create.temp_create(temp)

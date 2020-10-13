@@ -148,6 +148,15 @@ def make_folder(l: str) -> None:
 
 ################################################################################
 
+def f_const(
+    x,
+    const,
+    ):
+
+    return const
+
+################################################################################
+
 def sigmoid(x: numpy.array) -> numpy.array:
     """Sigmoid function
 
@@ -237,39 +246,6 @@ def nCr(
             c += comb(n, i, exact = True)
 
     return c
-
-################################################################################
-
-def square_to_circle(
-    x: list,
-    y: list,
-    ) -> [list, list]:
-
-    x_c = []
-    y_c = []
-
-    for i in range(0, len(x)):
-
-        x_i = 1 - pow(y[i], 2)/2
-        y_i = 1 - pow(x[i], 2)/2
-
-        if x_i < 0:
-
-            x_c.append(x[i]*-math.sqrt(abs(x_i)))
-
-        else:
-
-            x_c.append(x[i]*math.sqrt(x_i))
-
-        if y_i < 0:
-
-            y_c.append(y[i]*-math.sqrt(abs(y_i)))
-
-        else:
-
-            y_c.append(y[i]*math.sqrt(y_i))
-
-    return x_c, y_c
 
 ################################################################################
 
@@ -514,6 +490,18 @@ def normalise_list(
     """    
 
     l = [i/f + d for i in l]
+
+    return l
+
+################################################################################
+
+def list_swap_i(
+    l: list,
+    i1: int,
+    i2: int,
+    ) -> list:
+
+    l[i1], l[i2] = l[i2], l[i1]
 
     return l
 

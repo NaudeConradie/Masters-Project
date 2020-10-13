@@ -6,6 +6,8 @@ import re
 import numpy
 import pandas
 
+from scipy.optimize import curve_fit
+
 from evolve_soft_2d import classes, file_paths, log, plotting, utility
 from evolve_soft_2d.evolve import cppns, gen_alg, lsystems
 from evolve_soft_2d.result import analyse, obtain
@@ -33,41 +35,46 @@ def main():
     #   Initialisations
     #   The template case identifier
     case = 1
-    #   The initial coordinates
-    x0 = 0
-    y0 = 0
     #   The number of elements in each axis direction
     x_e = 11
     y_e = 11
     #   The length of each side in mm
-    e_s = 2
+    e_s = 5
     #   The thickness of the unit boundary
     b = 2
     #   The number of increments per second to analyse
     n_steps = 5
     #   The text name of the table used for the applied displacement and load
     table_name = "ramp_input"
-    #   The applied displacement and load
-    app = [y_e*e_s/2, 0.025]
-    #   The decision to add neighbouring grids
-    neighbours = False
+    #   The magnitude of the applied displacement in mm
+    d_mag = y_e*e_s/2
+    #   The magnitude of the applied internal pressure in MPa
+    p_mag = 0.025
 
-    meth = "l"
+    #   The unit generation method
+    g_meth = "c"
+    #   The analysis method
+    a_meth = "m"
+
+    #   Genetic algorithm parameters
+    gen = 10
+    prob = [0.5, 0.1, 0.5]
+    point = [1, 2, 2]
 
     #   Prepare the unit parameters
-    temp = classes.template(case, x0, y0, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, app, neighbours)
+    temp = classes.template(case, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, d_mag, p_mag)
 
     # create.temp_create(temp)
 
-    print(temp.n_external)
+    y = [1, 3, 2]
+    x = [1, 2, 3]
 
-    n_b = temp.n_external[0:temp.x_n]
-    n_t = temp.n_external[-(temp.x_n):len(temp.n_external)]
-    n_l = [1] + [temp.n_external[i] for i in range(temp.x_n, len(temp.n_external) - (temp.x_n - 1), 2)]
-    n_r = [temp.n_external[i] for i in range(temp.x_n - 1, len(temp.n_external) - (temp.x_n - 1), 2)] + [temp.n_n]
+    def f(x, a):
+        return a
 
-    print(n_l)
-    print(n_r)
+    p = curve_fit(f, x, y)[0]
+
+    print(p)
 
     return
 

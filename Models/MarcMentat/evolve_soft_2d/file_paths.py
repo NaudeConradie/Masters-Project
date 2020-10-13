@@ -47,9 +47,9 @@ from evolve_soft_2d import utility
 ################################################################################
 
 #   Fixed file paths
-fp = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat'
+# fp = r'C:\Users\Naude Conradie\Desktop\Repository\Masters-Project\Models\MarcMentat'
 # fp = r'C:\Users\19673418\Documents\Masters-Project\Models\MarcMentat'
-# fp = r'D:\Models'
+fp = r'D:\Models'
 fp_g = fp + r'\Graphs'
 fp_r = fp + r'\Results'
 fp_t = fp + r'\Templates'
