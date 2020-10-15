@@ -17,7 +17,6 @@ def g_a(
     prob: list,
     point: list,
     meth: str,
-    c: float = 1,
     ) -> None:
 
     #   Check if the unit generation method is set to L-Systems
@@ -41,24 +40,25 @@ def g_a(
     chrom = len(all_max)
         
     #   Generate a list of unit parameters
-    pop_i, par_i = create.gen_init_units(template, n_u, meth, [all_max, all_min])
+    pop_i, param_i = create.gen_init_units(template, n_u, meth, [all_max, all_min])
 
     pop_all = []
     pop_all.append(pop_i)
-    par = []
     pop_best = []
 
     for _ in range(0, gen):
 
+        par_i = []
+
         #   Fitness evaluation
         fp_lu, empty_id, full_id = create.run_units(template, pop_i, meth)
         analyse.rank_u(template, fp_lu)
-        fit_i = analyse.rank_pop(fp_lu, empty_id, full_id, par_i)
+        param_rank_i = analyse.rank_pop(fp_lu, empty_id, full_id, param_i)
 
-        for j in range(0, n_u, 2):
+        for _ in range(0, n_u, 2):
 
-            par_1 = sel_par(n_u, fit_i, pop_i, c)
-            par_2 = sel_par(n_u, fit_i, pop_i, c)
+            par_1 = sel_par(n_u, param_rank_i)
+            par_2 = sel_par(n_u, param_rank_i)
 
             chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
 
@@ -68,21 +68,23 @@ def g_a(
             chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
             chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
 
-            par[j] = chi_1
-            par[j + 1] = chi_2
+            par_i.append(chi_1)
+            par_i.append(chi_2)
 
         #   Store the best member of the current generation
-        pop_best.append(pop_i[fit_i[0]])
+        pop_best.append(param_rank_i[0])
+
+        print(par_i)
 
         if meth == "c":
 
-            pop_i = create.gen_bred_units(template, meth, par, c_mod_max = all_max[0])
+            pop_i = create.gen_bred_units(template, meth, par_i, c_mod_max = all_max[0])
 
         else:
 
-            pop_i = create.gen_bred_units(template, meth, par)
+            pop_i = create.gen_bred_units(template, meth, par_i)
 
-        par_i = par
+        param_i = par_i
 
         pop_all.append(pop_i)
 
@@ -135,9 +137,7 @@ def gen_par(
 
 def sel_par(
     pop_n: int,
-    fit_i: list,
-    pop: list,
-    c: float,
+    param_i: list,
     ) -> list:
     """Select a parent to produce the new generation
 
@@ -161,7 +161,7 @@ def sel_par(
     #   Initialisations
     i = 0
     par_found = False
-    par = pop[fit_i[0]]
+    par = param_i[0]
 
     #   Generate a random threshold between 0 and 1
     x = numpy.random.uniform(size = 1)
@@ -170,16 +170,16 @@ def sel_par(
     while i < pop_n and not par_found:
 
         #   Calculate the upper and lower bounds for comparison with the threshold
-        x_bel = sum([fit_weight(pop_n, c, j) for j in range(1, i + 1)])
-        x_abo = sum([fit_weight(pop_n, c, j) for j in range(1, i + 2)])
+        x_bel = sum([fit_weight(pop_n, j) for j in range(1, i + 1)])
+        x_abo = sum([fit_weight(pop_n, j) for j in range(1, i + 2)])
 
         #   Check if the threshold is within the bounds
         if x_bel < x and x <= x_abo:
 
             #   Assign the parent
-            par = pop[fit_i[i]]
+            par = param_i[i]
 
-            #   Set the exit flaf
+            #   Set the exit flag
             par_found = True
 
         else:
@@ -233,15 +233,15 @@ def crossover(
         if x < prob_co:
 
             #   Select a random index for crossover to occur
-            co_point = numpy.random.randint(1, chrom - 1)
+            co_point = numpy.random.randint(1, chrom - 2)
 
             #   Create temporary copies of the children
             chi_1_c = chi_1[:]
             chi_2_c = chi_2[:]
 
             #   Apply the crossover
-            chi_1 = chi_1_c[:co_point] + chi_2_c[co_point + 1:]
-            chi_2 = chi_2_c[:co_point] + chi_2_c[co_point + 1:]
+            chi_1 = chi_1_c[:co_point] + chi_2_c[co_point:]
+            chi_2 = chi_2_c[:co_point] + chi_1_c[co_point:]
 
     return chi_1, chi_2
 
@@ -288,7 +288,7 @@ def mut(
         if x < prob_m:
 
             #   Select the point of random mutation
-            m_point = numpy.random.randint(0, chrom)
+            m_point = numpy.random.randint(0, chrom - 1)
 
             #   Apply the mutation
             chi[m_point] = numpy.random.randint(all_min[m_point], all_max[m_point])
@@ -338,7 +338,7 @@ def mut_bias(
         if x < prob_bm:
 
             #   Select the point of biased mutation
-            bm_point = numpy.random.randint(0, chrom)
+            bm_point = numpy.random.randint(0, chrom - 1)
 
             #   Generate a random value between 0 and 1
             y = numpy.random.uniform(size = 1)
@@ -363,8 +363,8 @@ def mut_bias(
 
 def fit_weight(
     p: int,
-    c: int,
     r: int,
+    c: int = 1,
     ) -> float:
     """The fitness weighting function
 
@@ -381,7 +381,7 @@ def fit_weight(
     -------
     float
         The fitness weight
-    """    
+    """
 
     y = (2*((p + 1 - r)**c))/(p**2 + p)
 
@@ -389,7 +389,7 @@ def fit_weight(
 
 ################################################################################
 
-n_u = 1000
+n_u = 10
 
 ls_all_max = [n_u + 1, len(lsystems.a_all), len(lsystems.e_var) + 1, 6, 6]
 ls_all_min = [1, 0, 1, 2, 1]

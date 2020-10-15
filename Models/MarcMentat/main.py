@@ -53,7 +53,7 @@ def main():
     #   The unit generation method
     g_meth = "c"
     #   The analysis method
-    a_meth = "m"
+    a_meth = "g"
 
     #   Genetic algorithm parameters
     gen = 10

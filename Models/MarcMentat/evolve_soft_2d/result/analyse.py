@@ -96,29 +96,26 @@ def rank_u(
     n_e = [utility.find_int_in_str(i) for i in lu]
 
     #   Loop through all labels
-    for i in range(0, len(label)):
+    for i in label:
 
         #   Initialisations
-        v.append([])
-
-        #   Read all values
-        v[i].append(obtain.read_all(template, lu, label[i]))
+        v.append(obtain.read_all(template, lu, i))
 
     #   Add the Hausdorff distance to the list of labels
     label.append("Hausdorff Distance")
 
     #   Read the Hausdorff distance variables
-    v.append([])
-    v[-1].append(obtain.read_all_hd(template, lu))
+    v.append(obtain.read_all_hd(template, lu))
 
     if template.case == 1:
 
         label.append("Height:Width Ratio")
         label.append("Width")
 
+        v_fit = obtain.read_all_fit(template, lu)
 
-    #   Remove unnecessary brackets from the values
-    v = [i[0] for i in v]
+        for i in v_fit:
+            v.append(i)
 
     #   Store the list of units
     data["Unit ID"] = lu
@@ -129,6 +126,14 @@ def rank_u(
         #   Add the values to the dataframe
         data[label[i]] = v[i]
 
+    if template.case == 1:
+
+        data["Height:Width Ratio"] = (data["Height:Width Ratio"] - data["Height:Width Ratio"].mean())/data["Height:Width Ratio"].std()
+
+        data["Width"] = (data["Width"] - data["Width"].mean())/data["Width"].std()
+
+        data["Fitness"] = data["Height:Width Ratio"] + data["Width"]
+
     #   Read the timestamp of the simulation
     tm = utility.read_str(fp_lu[0], -25, -4)
 
@@ -137,7 +142,7 @@ def rank_u(
     # #   Plot the desired graphs from the results
     # plotting.plot_all(template, v, n_e, label, tm)
 
-    data.sort_values(by = ["Hausdorff Distance"], inplace = True, ignore_index = True)
+    data.sort_values(by = ["Fitness"], ascending = False, inplace = True, ignore_index = True)
     
     #   Save the list of best performing units
     data["Unit ID"].to_csv(fp_lu[5], header = False, index = False)
@@ -441,11 +446,21 @@ def disp_fit_1(
 
     for i in d_split:
 
-        d_a.append(curve_fit(utility.f_const, i[0], i[1]))
+        a = curve_fit(utility.f_const, i[0], i[1])[0]
+
+        d_a.append(a[0])
+
+    print(d_a)
 
     h_w_ratio = (d_a[1] - d_a[1])/(d_a[3] - d_a[2])
 
-    w = d_a[3] - d_a[2]
+    if abs(d_a[3] - d_a[2]) >= template.x_s:
+
+        w = abs((d_a[3] - d_a[2])/template.x_s)
+
+    else:
+
+        w = abs(template.x_s/(d_a[3] - d_a[2]))
 
     fit_m = [h_w_ratio, w]
     fit_m = numpy.array(fit_m)
@@ -490,10 +505,10 @@ def split_d(
     d: numpy.array,
     ) -> [numpy.array, numpy.array, numpy.array, numpy.array]:
 
-    d_b = d[0:template.x_n]
-    d_t = d[-(template.x_n):len(template.n_external)]
-    d_l = [d[0]] + [d[i] for i in range(template.x_n, len(template.n_external) - (template.x_n - 1), 2)]
-    d_r = [d[i] for i in range(template.x_n - 1, len(template.n_external) - (template.x_n - 1), 2)] + [d[len(template.n_external)]]
+    d_b = d[:, 0:template.x_n]
+    d_t = d[:, -(template.x_n):len(template.n_external)]
+    d_l = [[d[0, 0]] + [d[0, i] for i in range(template.x_n, len(template.n_external) - (template.x_n - 1), 2)], [d[1, 0]] + [d[1, i] for i in range(template.x_n, len(template.n_external) - (template.x_n - 1), 2)]]
+    d_r = [[d[0, i] for i in range(template.x_n - 1, len(template.n_external) - (template.x_n - 1), 2)] + [d[0, len(template.n_external) - 1]], [d[1, i] for i in range(template.x_n - 1, len(template.n_external) - (template.x_n - 1), 2)] + [d[1, len(template.n_external) - 1]]]
 
     return d_b, d_t, d_l, d_r
 

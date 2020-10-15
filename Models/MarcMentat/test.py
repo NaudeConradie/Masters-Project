@@ -66,15 +66,11 @@ def main():
 
     # create.temp_create(temp)
 
-    y = [1, 3, 2]
-    x = [1, 2, 3]
+    y = [1, 2, 3, 4, 5, 6]
 
-    def f(x, a):
-        return a
+    print(y[:3])
+    print(y[3:])
 
-    p = curve_fit(f, x, y)[0]
-
-    print(p)
 
     return
 
