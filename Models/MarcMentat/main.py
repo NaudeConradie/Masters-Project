@@ -35,12 +35,12 @@ def main():
     #   The template case identifier
     case = 1
     #   The number of elements in each axis direction
-    x_e = 11
-    y_e = 11
+    x_e = 15
+    y_e = 15
     #   The length of each side in mm
-    e_s = 5
+    e_s = 10
     #   The thickness of the unit boundary
-    b = 2
+    b = 3
     #   The number of increments per second to analyse
     n_steps = 5
     #   The text name of the table used for the applied displacement and load
@@ -51,9 +51,9 @@ def main():
     p_mag = 0.025
 
     #   The unit generation method
-    g_meth = "c"
+    g_meth = "l"
     #   The analysis method
-    a_meth = "g"
+    a_meth = "m"
 
     #   Genetic algorithm parameters
     gen = 10
