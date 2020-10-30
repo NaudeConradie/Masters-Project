@@ -709,6 +709,8 @@ def corner_bc(unit_p) -> None:
 
 ################################################################################
 
+#   Lists of template boundary condition labels
+
 template_bc_fd = [
     ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2"],
     ["bc_fd_yy1", "bc_fd_yy2", "bc_fd_xx1", "bc_fd_xx2"],

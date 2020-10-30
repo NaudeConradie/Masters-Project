@@ -98,7 +98,7 @@ def rank_u(
     #   Loop through all labels
     for i in label:
 
-        #   Initialisations
+        #   Append the data to the list
         v.append(obtain.read_all(template, lu, i))
 
     #   Add the Hausdorff distance to the list of labels
@@ -107,13 +107,17 @@ def rank_u(
     #   Read the Hausdorff distance variables
     v.append(obtain.read_all_hd(template, lu))
 
+    #   Check if the template case is 1
     if template.case == 1:
 
-        label.append("Height:Width Ratio")
-        label.append("Width")
+        #   Add the necessary labels for comparison
+        label.append("Height:Width")
+        label.append("Absolute Change In Width")
 
+        #   Read the fitness data
         v_fit = obtain.read_all_fit(template, lu)
 
+        #   Append the fitness data to the list
         for i in v_fit:
             v.append(i)
 
@@ -126,13 +130,15 @@ def rank_u(
         #   Add the values to the dataframe
         data[label[i]] = v[i]
 
+    #   Check if the template case is 1
     if template.case == 1:
 
-        data["Height:Width Ratio"] = (data["Height:Width Ratio"] - data["Height:Width Ratio"].mean())/data["Height:Width Ratio"].std()
+        #   Studentize the fitness values
+        data["Height:Width"] = (data["Height:Width"] - data["Height:Width"].mean())/data["Height:Width"].std()
+        data["Absolute Change In Width"] = (data["Absolute Change In Width"] - data["Absolute Change In Width"].mean())/data["Absolute Change In Width"].std()
 
-        data["Width"] = (data["Width"] - data["Width"].mean())/data["Width"].std()
-
-        data["Fitness"] = data["Height:Width Ratio"] + data["Width"]
+        #   Calculate a single fitness value
+        data["Fitness"] = data["Height:Width"] + data["Absolute Change In Width"]
 
     #   Read the timestamp of the simulation
     tm = utility.read_str(fp_lu[0], -25, -4)
@@ -142,6 +148,7 @@ def rank_u(
     # #   Plot the desired graphs from the results
     # plotting.plot_all(template, v, n_e, label, tm)
 
+    #   Sort the dataframe according to the fitness values
     data.sort_values(by = ["Fitness"], ascending = False, inplace = True, ignore_index = True)
     
     #   Save the list of best performing units
@@ -404,6 +411,7 @@ def disp(
     #   Store only the external node values
     d_ex = d[:, :, n_external_i]
 
+    #   Store only the final values in the simulation
     d_ex = d_ex[:, template.n_steps]
 
     return d_ex
@@ -414,13 +422,27 @@ def disp_fit(
     template,
     l: str,
     ) -> None:
+    """Calculate and save the displacement fitness values
 
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    l : str
+        The label for the results file
+        Either a template or unit identifier
+    """
+
+    #   Obtain the deformed boundary displacement values
     d_def = disp(template, l)
 
+    #   Check if the template case is 1
     if template.case == 1:
 
+        #   Obtain the fitness measures for case 1
         fit_m = disp_fit_1(template, d_def)
 
+        #   Define the label
         label = "Case 1 Fitness Measures_"
 
     #   Save the internal energy to a .csv file
@@ -434,35 +456,58 @@ def disp_fit_1(
     template,
     d: list,
     ) -> list:
+    """Obtain the displacement fitness values for case 1
 
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    d : list
+        The displacement values
+
+    Returns
+    -------
+    list
+        The fitness values
+    """
+
+    #   Initialisations
+    d_a = []
+
+    #   Split the displacement values according to the four sides of the unit
     d_b, d_t, d_l, d_r = split_d(template, d)
 
+    #   Swap the x- and y-coordinates of the left and right sides
     d_l = utility.list_swap_i(d_l, 0, 1)
     d_r = utility.list_swap_i(d_r, 0, 1)
 
+    #   Add all side values to one list
     d_split = [d_b, d_t, d_l, d_r]
 
-    d_a = []
-
+    #   Loop through the side values
     for i in d_split:
 
+        #   Fit a horizontal curve through the side coordinates
         a = curve_fit(utility.f_const, i[0], i[1])[0]
 
+        #   Add the curve height to the list of side displacements
         d_a.append(a[0])
 
-    print(d_a)
+    #   Calculate the height to width ratio
+    h_w = (d_a[1] - d_a[1])/(d_a[3] - d_a[2])
 
-    h_w_ratio = (d_a[1] - d_a[1])/(d_a[3] - d_a[2])
-
+    #   Check if the deformed width is larger than the original width
     if abs(d_a[3] - d_a[2]) >= template.x_s:
 
+        #   Calculate the deformed width to original width ratio
         w = abs((d_a[3] - d_a[2])/template.x_s)
 
     else:
 
+        #   Calculate the deformed width to original width ratio
         w = abs(template.x_s/(d_a[3] - d_a[2]))
 
-    fit_m = [h_w_ratio, w]
+    fit_m = [h_w, w]
     fit_m = numpy.array(fit_m)
 
     return fit_m
@@ -504,6 +549,20 @@ def split_d(
     template,
     d: numpy.array,
     ) -> [numpy.array, numpy.array, numpy.array, numpy.array]:
+    """Split the displacement values according to the four sides of the unit, including corner nodes
+
+    Parameters
+    ----------
+    template : template
+        The unit template parameters
+    d : numpy.array
+        The displacement values
+
+    Returns
+    -------
+    [numpy.array, numpy.array, numpy.array, numpy.array]
+        The split displacement values
+    """    
 
     d_b = d[:, 0:template.x_n]
     d_t = d[:, -(template.x_n):len(template.n_external)]

@@ -152,6 +152,20 @@ def f_const(
     x,
     const,
     ):
+    """A constant function
+
+    Parameters
+    ----------
+    x
+        x data
+    const
+        A constant
+
+    Returns
+    -------
+    
+        A constant
+    """    
 
     return const
 
@@ -500,6 +514,22 @@ def list_swap_i(
     i1: int,
     i2: int,
     ) -> list:
+    """Swap list values at specified indices
+
+    Parameters
+    ----------
+    l : list
+        The list
+    i1 : int
+        The first index
+    i2 : int
+        The second index
+
+    Returns
+    -------
+    list
+        The list with swapped indices
+    """    
 
     l[i1], l[i2] = l[i2], l[i1]
 

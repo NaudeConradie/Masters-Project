@@ -19,6 +19,10 @@ def g_a(
     meth: str,
     ) -> None:
 
+    #   Initialisations
+    pop_all = []
+    pop_best = []
+
     #   Check if the unit generation method is set to L-Systems
     if meth == "l":
 
@@ -37,55 +41,67 @@ def g_a(
         all_max = [n_u + 1, len(template.e_internal) + 1]
         all_min = [1, 0]
 
+    #   Obtain the number of chromosomes
     chrom = len(all_max)
         
     #   Generate a list of unit parameters
     pop_i, param_i = create.gen_init_units(template, n_u, meth, [all_max, all_min])
 
-    pop_all = []
     pop_all.append(pop_i)
-    pop_best = []
 
+    #   Loop through the number of generations
     for _ in range(0, gen):
 
+        #   Initialisations
         par_i = []
 
-        #   Fitness evaluation
+        #   Run the current population of units
         fp_lu, empty_id, full_id = create.run_units(template, pop_i, meth)
         analyse.rank_u(template, fp_lu)
+        
+        #   Rank the current population of units
         param_rank_i = analyse.rank_pop(fp_lu, empty_id, full_id, param_i)
 
+        #   Loop through the population size in increments of 2 
         for _ in range(0, n_u, 2):
 
+            #   Select two parents
             par_1 = sel_par(n_u, param_rank_i)
             par_2 = sel_par(n_u, param_rank_i)
 
+            #   Potentially apply crossover between the parents to produce two children
             chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
 
+            #   Potentially randomly mutate the children
             chi_1 = mut(chrom, all_max, all_min, prob[1], point[1], chi_1)
             chi_2 = mut(chrom, all_max, all_min, prob[1], point[1], chi_2)
 
+            #   Potentially apply biased mutation to the children
             chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
             chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
 
+            #   Add the children to the list of parameters
             par_i.append(chi_1)
             par_i.append(chi_2)
 
         #   Store the best member of the current generation
         pop_best.append(param_rank_i[0])
 
-        print(par_i)
-
+        #   Check if the unit generation method is CPPNs
         if meth == "c":
 
+            #   Create the list of unit class objects from the list of parameters
             pop_i = create.gen_bred_units(template, meth, par_i, c_mod_max = all_max[0])
 
         else:
 
+            #   Create the list of unit class objects from the list of parameters
             pop_i = create.gen_bred_units(template, meth, par_i)
 
+        #   Store the new list of parameters
         param_i = par_i
 
+        #   Add the current population to the list of all populations
         pop_all.append(pop_i)
 
     return
@@ -389,10 +405,13 @@ def fit_weight(
 
 ################################################################################
 
+#   The number of units per generation
 n_u = 1000
 
+#   The L-System allele ranges
 ls_all_max = [n_u + 1, len(lsystems.a_all), len(lsystems.e_var) + 1, 6, 6]
 ls_all_min = [1, 0, 1, 2, 1]
 
+#   The CPPN allele ranges
 cppn_all_max = [n_u + 1, 2, 2, 11, 32, 101]
 cppn_all_min = [1, 1, 1, 2, 2, 0]

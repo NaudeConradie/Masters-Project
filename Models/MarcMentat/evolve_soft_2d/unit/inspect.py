@@ -122,6 +122,7 @@ def find_n_coord(n: list) -> [list, list]:
         The x and y coordinates
     """
 
+    #   Initialisations
     x = []
     y = []
 
