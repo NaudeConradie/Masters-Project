@@ -1,4 +1,4 @@
- \documentclass[12pt,oneside,openany,a4paper,%..... Layout
+\documentclass[12pt,oneside,openany,a4paper,%..... Layout
                %afrikaans, 
                english,%.............. Global language selection
                ]{memoir}
@@ -53,11 +53,19 @@
 %
 % Please insert user defined commands here
 
-%\usepackage[disable]{todonotes}
-%\usepackage{todonotes}
 \usepackage{hyperref}
 \graphicspath{figs/}
 
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{rotating}
+\usepackage{pdflscape}
 
 % and NOT in the document itself!
 %
@@ -71,7 +79,7 @@
              \normalfont\small\itshape
              (``The Virtual Evolution of 2D Soft Robots'')
             }{%-- English -------------------------------------------
-             The Virtual Evolution of 2D Soft Robots
+             Quarterly Report 2
             }}
 
 \author{N. T.\ Conradie}{Naud\'e Thomas Conradie}
@@ -96,7 +104,7 @@
 \supervisor{Dr.\ M. P.\ Venter}
 %\cosupervisor{Mnr.\ J.\ Smith}
 
-\setdate{11}{2020}
+\setdate{2}{2020}
 
 %\SetSponsor{The financial assistance of the National Research Foundation (NRF)
 %    towards this research is hereby acknowledged. Opinions expressed and
@@ -114,13 +122,14 @@
 
 %==== Front matter ==================================================
  \frontmatter
- \WaterMark{UScrest-WM}
+% \WaterMark{UScrest-WM}
  \TitlePage
 
- \DeclarationDate{2020/11/30}
+ \DeclarationDate{2020/11/20}
  \DeclarationPage
+ \clearpage
 
- \include{frontmatter/Chap-Front}
+ %\include{frontmatter/Chap-Front}
 
  \tableofcontents
  \clearpage
@@ -132,7 +141,7 @@
  \listoftables
  \clearpage
 
- \include{frontmatter/Nomencl}
+% \include{frontmatter/Nomencl}
 
 %==== Main document =================================================
 \mainmatter
@@ -149,7 +158,7 @@
 
 %==== Appendices ====================================================
 \appendix
-\appendixpage\relax
+\appendixpage
 
 \include{contents/App-1}
 %\include{contents/App-2}

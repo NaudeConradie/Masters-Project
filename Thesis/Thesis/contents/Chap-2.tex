@@ -4,15 +4,40 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Soft Robotics}
 
-The field of soft robotics is relatively new and developmental. Soft robots inherently differ from traditional robots. They are constructed from compliant and pliable materials. Soft robots generally have fixed joints and locomotive actuators between joints, as opposed to traditional robots which usually have locomotive actuated joints connected by rigid sections. \cite{Whitesides2018}
+The field of soft robotics comprises robots and robotic actuators constructed from compliant and pliable materials, or exhibiting compliant behaviour \cite{Wang2015, Ilievski2011}. Hyper-elastic materials are often used in the construction of soft robots.
 
-Soft robots offer many advantages over traditional robots. They provide a safer working environment around humans and with fragile materials, as they are much lighter, more pliable and move slower and with less force than traditional robots. They require lower tolerances for manufacture due to their inherent less precise nature. They are much more lightweight compared to traditional robots. \cite{Whitesides2018}
+Soft
 
-\subsection{Actuators}
+Soft robots generally have fixed joints and locomotive actuators between joints, as opposed to traditional hard robots which usually have locomotive actuated joints connected by rigid sections \cite{Whitesides2018}, as illustrated in Figure~\ref{fig:rad}.
+
+\begin{figure}
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{SR_JA.png}
+		\caption{Soft Robot Actuation}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{TR_JA.png}
+		\caption{Traditional Robot Actuation}
+	\end{subfigure}
+	\caption{Robot Actuation Differences}
+	\label{fig:rad}
+\end{figure} 
+
+Soft robots offer many advantages over traditional robots. Soft robots are safer in working environments alongside humans. Traditional robots are generally comprised of non-compliant hard materials such as steel or aluminium. These materials are often dense and heavy. Traditional robots usually have fixed motion paths and do not deviate easily. Humans working alongside traditional robots may easily be injured by these robots if they are struck or trapped by them. Soft robots are built with compliant and lightweight materials. Soft robots also generally exert lower forces than their traditional counterparts \cite{Martinez2013}.
+
+Soft robots are more suited to working with fragile and irregular objects such as fruit. In addition to the reasons listed above, soft robots easily adjust to deviations when deforming \cite{Martinez2013, Whitesides2018}.
+
+
+New soft robot developments
+
+
+
+\section{Actuators}
 
 Actuators are components that cause controlled motion, generally used in robotics and machinery \cite{Sekhar2012}. There are currently a few major types of soft robotic actuators in use \cite{Boyraz2018}.
 
-\subsubsection{Actuator Types}
+\subsection{Actuator Types}
 
 Shape Memory Alloys (SMA) are metallic alloys capable of being formed into a specific shape while above an inherent transformation temperature, as well as being formed into another shape below the transformation temperature. When the material is then heated or cooled above or below the transformation temperature, it reforms into those respective shapes. This property exists due to the transition between the martensite phase of the material below the transformation temperature, and the austenite phase above the transformation temperature. SMA actuators are heated by applying a current directly to the material. SMA actuators are small, lightweight, silent, and have a high force-to-weight ratio. When shaped straight, they can exert high forces, but only achieve small displacements relative to their length. When coiled, they can extend more, but exert smaller forces. \cite{Villoslada2015}
 
@@ -24,7 +49,7 @@ Electro-Magnetic Actuators (EMA) make use of magnetic microparticles within a po
 
 Fluid Elastomeric Actuators (FEA) use soft polymeric structures with internal geometry designed for specific types of motion when driven by fluid pressure. Fluid pressure may be obtained from pressurized containers or chemical reactions. They are simple to design, manufacture and control, and are lightweight and usually inexpensive. They are scalable to different sizes and resistant to many types of damage. \cite{Shepherd2011,Onal2017}
 
-\subsubsection{Actuator Shapes}
+\subsection{Actuator Shapes}
 
 Multiple types of soft robotic actuators implement linear extension. This allows for an increase in reach and activation of levers or switches. Torsional extension is a variant of linear extension. Torsionally extending actuators twist as they extend, resulting in an angular difference between the ends of the actuator. \cite{Whitesides2018}
 
