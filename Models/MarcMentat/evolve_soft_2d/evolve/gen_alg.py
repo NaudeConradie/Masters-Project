@@ -405,12 +405,8 @@ def fit_weight(
 
 ################################################################################
 
-<<<<<<< Updated upstream
 #   The number of units per generation
-n_u = 1000
-=======
-n_u = 50
->>>>>>> Stashed changes
+n_u = 10
 
 #   The L-System allele ranges
 ls_all_max = [n_u + 1, len(lsystems.a_all), len(lsystems.e_var) + 1, 6, 6]
