@@ -41,11 +41,19 @@ def g_a(
         all_max = [n_u + 1, len(template.e_internal) + 1]
         all_min = [1, 0]
 
+    print(all_max)
+    print(all_min)
+
     #   Obtain the number of chromosomes
     chrom = len(all_max)
+
+    print(chrom)
         
     #   Generate a list of unit parameters
     pop_i, param_i = create.gen_init_units(template, n_u, meth, [all_max, all_min])
+
+    print(pop_i)
+    print(param_i)
 
     pop_all.append(pop_i)
 
@@ -62,12 +70,17 @@ def g_a(
         #   Rank the current population of units
         param_rank_i = analyse.rank_pop(fp_lu, empty_id, full_id, param_i)
 
+        print(param_rank_i)
+
         #   Loop through the population size in increments of 2 
         for _ in range(0, n_u, 2):
 
             #   Select two parents
             par_1 = sel_par(n_u, param_rank_i)
             par_2 = sel_par(n_u, param_rank_i)
+
+            print(par_1)
+            print(par_2)
 
             #   Potentially apply crossover between the parents to produce two children
             chi_1, chi_2 = crossover(chrom, prob[0], point[0], par_1, par_2)
@@ -79,6 +92,9 @@ def g_a(
             #   Potentially apply biased mutation to the children
             chi_1 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_1)
             chi_2 = mut_bias(chrom, all_max, all_min, prob[2], point[2], chi_2)
+
+            print(chi_1)
+            print(chi_2)
 
             #   Add the children to the list of parameters
             par_i.append(chi_1)
