@@ -1,12 +1,38 @@
 \chapter{Introduction}
-\label{chp:Intro}
+\label{chp:I}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Background}
 
-Manufacturing capabilities have greatly increased over the past decades with the advent of three dimensional (3D) printing and other advanced manufacturing technologies. Development of new products and systems may now be limited by design capabilities. Improving and creating new design methods may lead to innovative designs not yet seen before \cite{Shea2005}.
+Manufacturing capabilities have greatly increased over the past decades. The advent of three dimensional (3D) printing and other advanced manufacturing technologies has allowed for the production of novel geometries that were previously unattainable. \cite{Buchanan2019,Luis2020}
 
-The field of soft robotics is particularly suited for creative and novel approaches to the design of components. Soft robotic geometries are often highly complex and free-form. Soft robotic actuators may move in imprecise and non-trivial manners \cite{Whitesides2018}. Materials used in the construction of soft robotic components may behave with non-linear responses\cite{Boyraz2018}. Novel soft robotic actuator designs with new and non-trivial behaviours are actively being created and implemented \cite{Ellis2020}.
+Development of new products and systems may now be limited by current design capabilities of humans. Improving and creating new design methods may lead to innovative designs not yet seen before. Design methods involving collaboration with computers executing generative design procedures allows for exploration of complex geometries. \cite{Shea2005}
 
-A computationally efficient generative design approach may be used to explore the design space of soft robotics. Generative design is a powerful automated approach to design that evaluates the performance of many different potential design solutions. Generative design is useful when performing manual design evaluations may become tedious or impossible within realistic time constraints \citep{Brose1993}.
+The field of soft robotics is particularly suited to creative and novel approaches to the design of components. Soft robotic geometries are often highly complex and free-form. Soft robotic actuators may move in imprecise and non-trivial manners \cite{Whitesides2018}. Materials used in the construction of soft robotic components may behave with non-linear responses \cite{Boyraz2018}. Novel soft robotic actuator designs with new and non-trivial behaviours are actively being created and implemented \cite{Ellis2020}.
+
+A computationally efficient generative design approach may be used to explore the design space of soft robotics. Hyper-elastic non-linear material models are computationally expensive. Simplifying the model representation or evaluation is thus desirable \cite{Niroomandi2010}. Generative design is a powerful automated approach to design that evaluates the performance of many different potential design solutions. Generative design is useful when performing manual design evaluations may become tedious or impossible within realistic time constraints \cite{Brose1993}.
+
+\section{Aim and Objectives}
+
+The aim of this project is to implement a scale-invariant generative design process that results in replicable soft robotic actuator components. The design process should be compatible with multiple objective functions for the actuators. The design software should be easily modifiable and adaptable. To this end, the project's objectives are outlined as:
+
+\begin{enumerate}
+	\item Review existing approaches to modeling and designing soft bodies
+	\item Implement a scale-invariant generative design process capable of generating manufacturable soft robotic actuator components fulfilling a given objective function
+	\item Verify the simulated performance of generated bodies by constructing and examining a physical model
+\end{enumerate}
+
+\section{Scope and Assumptions}
+
+Some assumptions are made to reasonably limit the scope of the project:
+
+\begin{enumerate}
+	\item The design approach will be generalised as much as possible to allow for modularity and adaptability
+	\item The design approach will be limited to the consideration of soft materials
+	\item The design space will be limited to 2D solutions
+\end{enumerate}
+
+\section{Project Overview}
+
+Chapter~\ref{chp:LR} consists of a literature review exploring the field of soft robotics in general, as well as focusing on soft robotic actuators and design approaches. The literature review also discusses generative design approaches including genetic algorithms, Monte Carlo simulations, L-Systems, and CPPNs. A short discussion on the phenomenon of emergent properties is also included. Chapter~\ref{chp:MaM} encapsulates the methods and materials relevant to this project. The generative design methods as applied are discussed in detail. The software implementation is elaborated upon. The materials used in the simulation and practical testing thereof are also discussed. Chapter~\ref{chp:R} discusses results obtained from running simulations according to specified parameters. Chapter~\ref{chp:PT} showcases a physical replication of models generated during the simulations. A conclusion to the project is presented in Chapter~\ref{chp:C}.
