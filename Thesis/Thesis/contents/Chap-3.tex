@@ -1,63 +1,137 @@
-\chapter{Methods and Materials}
+\chapter{Materials and Methods}
 \label{chp:MaM}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Evolutionary Algorithm}
-\label{sec:EA}
 
-A population is run, evaluated and evolved for the number of generations specified.
+This chapter covers the materials considered during this project and the methodologies applied throughout. The methodologies encompass generative design approaches such as L-Systems, CPPNs, and evolutionary algorithms. Modeling methods, specifically the FEM settings, are outlined. A detailed overview of the software pipeline is provided.
 
-Two parent population members are selected for evolution. Parents are ranked in descending order according to their fitness. The ranking procedure is discussed in detail in Section~\ref{sec:R}. The parent population is iterated through from the most fit to the least fit parent until a parent has been selected. A random number between 0 and 1 for selection is generated. A fitness weighting function is used to determine the selection of a parent. The fitness weighting function is defined as
+\section{Materials}
+
+\subsection{Modeling}
+
+The modeling of materials undergoing relatively large deformations is a non-trivial problem. Stored strain energy density may be used to compute stress in hyperelastic materials. The strain energy density is defined using invariants of strain. The three invariants are given as \citep{Kim2015}
 
 \begin{equation}
-	y=\frac{2\left ( p+1-r \right )^{c}}{p^{2}+p}
+	I_{1}=\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}
 \end{equation}
 
-Where
+\begin{equation}
+	I_{2}=\lambda_{1}^{2}\lambda_{2}^{2}+\lambda_{2}^{2}\lambda_{3}^{2}+\lambda_{3}^{2}\lambda_{1}^{2}
+\end{equation}
 
-\begin{itemize}
-	\item $y$ is the fitness weighting
-	\item $p$ is the population size
-	\item $r$ is the rank of the selected member
-	\item $c$ is a user-defined fitness constant set to 1
-\end{itemize}
+and
 
-The cumulative fitness weighting of all units before and after the current population member is calculated. If the random number is between the two cumulative fitness weightings, the member is selected as the parent.
+\begin{equation}
+	I_{3}=\lambda_{1}^{2}\lambda_{2}^{2}\lambda_{3}^{2}
+\end{equation}
 
-Population members may evolve in three ways.
+where $\lambda_{1}^{2}$, $\lambda_{2}^{2}$, and $\lambda_{3}^{2}$ are three eigenvalues. The undeformed state is used as the frame of reference. The three invariants will not change when using different coordinate systems. The three invariants must be positive for the deformation to be valid. The square root of $I_{3}$ measures the volume change of the material. $I_{3}=1$ if the material is incompressible. \citep{Kim2015}
 
-Crossover may occur between two parents. For every crossover point, a random number between 0 and 1 is generated. If the number is below the specified probability, crossover occurs. A random index in the list of parent parameters is selected. The parameters are swapped between parents from this index onwards. The two resulting children are potentially evolved further.
+The distortional strain energy density is defined as \citep{Kim2015}
 
-Random mutation of a child parameter may occur. For every random mutation point, a random number between 0 and 1 is generated. If the number is below the specified probability, random mutation occurs. A random parameter of the child is selected. The parameter is randomly changed to any allowed value for that parameter.
+\begin{equation}
+	W_{1}\left ( I_{1},I_{2} \right )=\sum_{m+n=1}^{\infty}A_{mn}\left ( I_{1}-3 \right )^{m}\left ( I_{2}-3 \right )^{n}
+\end{equation}
 
-Biased mutation of a child parameter may occur. For every biased mutation point, a random number between 0 and 1 is generated. If the number is below the specified probability, biased mutation occurs. A random parameter of the child is selected. Another random number between 0 and 1 is generated. If the number is below 0.5, the parameter is decreased by 1. If the number is above or equal to 0.5, the parameter is increased by 1. The parameter is bounded by the allowed ranges.
+The Ogden model uses the principal stretches to define the distortional strain energy density as \citep{Ogden1972}
 
-All children are added to the population list. The new population list is used to generate the next population of units.
+\begin{equation}
+	\label{eq:om}
+	W_{1}\left ( \lambda_{1},  \lambda_{2}, \lambda_{3} \right )=\sum_{i=1}^{N}\frac{\mu_{i}}{\alpha_{i}}\left ( \lambda_{1}^{\alpha_{i}} + \lambda_{2}^{\alpha_{i}} + \lambda_{3}^{\alpha_{i}} \right )
+\end{equation}
 
-\section{L-Systems}
-\label{sec:LS}
+where $N$, $\mu_{i}$, and $\alpha_{i}$ are material parameters. $N$ is usually three. The principal stretches are the three eigenvalues of the deformation gradient. If the material is incompressible, the three principal stresses are not independent, meaning $\lambda_{1}\lambda_{2}\lambda_{3}=1$. The shear modulus is \citep{Ogden1972}
 
-An L-System-like generation method is implemented due to the L-System features of efficiency, compactness and scalability. L-Systems are defined using class objects containing all necessary information.
+\begin{equation}
+	\mu=\frac{1}{2}\sum_{i=1}^{N}\alpha_{i}\mu_{i}
+\end{equation}
 
-\subsection{Parameters}
+The Ogden model correlates well with simple tension test data that is elongated up to 700\%. The model accommodates for slightly compressible behaviour and a nonconstant shear modulus \citep{Ogden1972, Kim2015}.
 
-L-System class object parameters are
+\subsection{Selection}
 
-\begin{itemize}
-	\item \textit{vocab} - The L-System vocabulary
-	\item \textit{gramm} - The L-System grammar
-	\item \textit{axiom} - The initial axiom of the L-System
-	\item \textit{n} - The number of iterations to apply to the L-System
-	\item \textit{seed} - The random generation seed used to generate the L-System if applicable
-	\item \textit{word} - The resulting word of the L-System
-\end{itemize}
+Compliant and elastic materials are commonly used in the construction of soft robots. Three specific silicon-based rubbers that are readily accessible and affordable were characterized by~\cite{Ellis2020}. These rubbers' Ogden material model parameters are shown in Table~\ref{tab:ogdpar}.
 
-The L-System vocabulary is itself a class object. The vocabulary is predefined. It consists of variables and constants. The vocabulary and its interpretations are outlined in Tables~\ref{tab:lsvarint} and~\ref{tab:lsconint}. The vocabulary is separated according to variables and constants. The vocabulary interpretation differs from traditional L-System interpretations. The interpretation is required to fill in elements of a grid. Traditional L-System interpretations result in lines of varying lengths and angles being drawn. A unique interpreter was designed and implemented for the purposes of this project.
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
+\begin{table}[H]
+\centering
+\caption{Silicon-based rubber Ogden material model parameters \citep{Ellis2020}}
+\label{tab:ogdpar}
+\begin{tabular}{@{}crrr@{}}
+\toprule
+\multirow{2}{*}{\textbf{Parameter}} & \multicolumn{3}{c}{\textbf{Parameter Number}}                                                    \\ \cmidrule(l){2-4} 
+                                    & \multicolumn{1}{c}{\textbf{1}} & \multicolumn{1}{c}{\textbf{2}} & \multicolumn{1}{c}{\textbf{3}} \\ \midrule
+\multicolumn{4}{c}{\textbf{Ecoflex 00-30}}           \\ \midrule
+$\mu$    & -0.0142909   & -3.64558e-06 & 9.59447e-08 \\
+$\alpha$ & -5.22444     & -0.162804    & 11.3772     \\ \midrule
+\multicolumn{4}{c}{\textbf{Mold Star 15 SLOW}}       \\ \midrule
+$\mu$    & -6.50266e-06 & 0.216863     & 0.00137158  \\
+$\alpha$ & -21.322      & 1.1797       & 4.88396     \\ \midrule
+\multicolumn{4}{c}{\textbf{Smooth-Sil 950}}          \\ \midrule
+$\mu$    & -0.30622     & 0.0283304    & 6.5963e-09  \\
+$\alpha$ & -3.0594      & 4.59654      & 17.6852     \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Mold Star 15 SLOW is selected as the main material to be digitally modelled and manufactured for the purposes of the project. Mold Star 15's stiffness lies between EcoFlex and Smooth Sil's.  Mold Star 15 is selected because of its availability and physical properties. Mold Star 15 is deliverable to the premises where testing is to be done and available from a registered supplier. It is suitable for inflation while being capable of supporting itself at the relevant scale of construction. Additional relevant properties are listed in Table~\ref{tab:msp}.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
+\caption{Additional Mold Star 15 SLOW material properties \citep{MoldStar}}
+\label{tab:msp}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Property}} & \multicolumn{1}{c}{\textbf{Value}} \\ \midrule
+Pot life (\si{\minute})                        & 50                                 \\
+Cure time (\si{\minute})                       & 240                                \\
+Tensile strength (\si{MPa})                & 2.7579                             \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Mold Star 15's long pot life allows for adequate time to prepare specimens thoroughly. Mold Star 15's relatively short cure life prevents long delays while waiting for specimens to cure. Mold Star 15's relatively high tensile strength prevents tears or ruptures at significant deformations.
+
+\subsection{Mixing and Casting}
+\label{ssec:mac}
+
+Mold Star 15 as provided by the manufacturer consists of two components: Mold Star 15-A and Mold Star 15-B. Mold-Star 15-A is white in colour while Mold Star 15-B is blueish-green. The two components remain liquid when exposed to air or other surfaces. When mixed with each other, the components' pot life begins and the mixed material will begin to set. However, unless mixed adequately in the correct amounts, the material properties will differ from those specified and it may not set entirely.
+
+The two components of the material need to be mixed according to a 1:1 mass ratio. A clean mixing bowl is placed on an electronic scale and the scale is zeroed. Mold-Star 15-A is added to the bowl according to half the desired amount of Mold-Star 15. The mass of Mold Star 15-A is carefully noted and the scale is zeroed again. An equal amount of Mold Star 15-B is added to the mixing bowl.
+
+A clean disposable stirrer such as a tongue depressor is used to mix the two Mold Star components thoroughly. The mixture is considered to be thorough when it is one uniform colour and no lighter or darker streaks are visible.
+
+The mixture must be degassed to remove any air bubbles formed during pouring or mixing. The mixture in the bowl is placed inside a degasser and the pressure is lowered to a vacuum pressure. Bubbles will rise to the top of the mixture and pop. When no bubbles have appeared for a minute, the mixture is considered degassed. It may be removed from the degasser once the pressure has equalised.
+
+The mixture may now be cast into a mould. Care must be taken during casting to prevent the formation of more bubbles. If the mould is movable and fits within the degasser, this may be done to remove any extra bubbles formed during casting.
+
+If the mould is open, the material must be levelled to remove excess material and prevent any minuscuses from forming, which would affect the specimen's thickness. The material is leveled by applying a scraper across the surface slowly. If the scraper is moved too fast, it may remove too much material, as the mixture is viscous and sticky. If the surface area is too large, a flat cover may be applied by slowly lowering it at an angle.
+
+According to Mold Star 15's pot life, the process detailed above must be completed within \SI{45}{\minute}. The cast specimen will be ready \SI{4}{\hour} after the pot life has ended.
+
+\section{Pattern Generation}
+
+A component of the generative design process of this project is the construction of internal geometries. The project scope is limited to a 2D grid of squares. Pattern generation methods capable of evolving are implemented in order to generate initial geometries and improve upon them.
+
+\subsection{L-Systems}
+\label{ssec:LS}
+
+L-Systems are implemented in the code pipeline as a pattern generation method. L-Systems are implemented according to a context-free L-System structure as defined by~\cite{Prusinkiewicz2004}. Stochastic L-Systems are not implemented to maintain replicability. Parametric L-Systems are not implemented as a single discrete model state is desirable. Maps are not implemented as the resulting reflections when branches collide with the border wall may negatively impact the scalability of the L-Systems. Reflections inward may quickly fill up the available space or result in geometries dissimilar to ones resulting from the same L-System at higher resolutions. Interactions between elements drawn are also not considered.
+
+The L-System unit generation method is implemented due to the features of efficiency, compactness and scalability. L-Systems are defined in the Python code using class objects containing all necessary information.
+
+\subsubsection{Parameters}
+
+The L-System vocabulary is defined as a class object in the Python code. The vocabulary is predefined. It consists of variables and constants. The vocabulary and its interpretations are outlined in Tables~\ref{tab:lsvarint} and~\ref{tab:lsconint}. The vocabulary is separated according to variables and constants. The vocabulary interpretation differs from traditional L-System interpretations. The interpretation is required to fill in elements of a grid. Traditional L-System interpretations result in lines of varying lengths and angles being drawn. A unique interpreter was designed and implemented for the purposes of this project.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{L-System variable interpretation}
+\label{tab:lsvarint}
 \begin{tabular}{@{}cl@{}}
 \toprule
 \textbf{Variable} & \multicolumn{1}{c}{\textbf{Interpretation}}             \\ \midrule
@@ -66,14 +140,14 @@ f                 & Increment the current position in the current direction \\
 +                 & Rotate the current direction by 45\textdegree  clockwise           \\
 -                 & Rotate the current direction by 45\textdegree  counterclockwise    \\ \bottomrule
 \end{tabular}
-\caption{L-System variable interpretation}
-\label{tab:lsvarint}
 \end{table}
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
+\caption{L-System constant interpretation}
+\label{tab:lsconint}
 \begin{tabular}{@{}cl@{}}
 \toprule
 \textbf{Constant} & \multicolumn{1}{c}{\textbf{Interpretation}}                                                                                \\ \midrule
@@ -83,8 +157,6 @@ f                 & Increment the current position in the current direction \\
   \begin{tabular}[c]{@{}l@{}}Push the current position to the position memory stack\\ All directional variables, i.e. + and -, in the word\\ following this constant are reversed until the )\\ constant is encountered\end{tabular} \\
 )                 & \begin{tabular}[c]{@{}l@{}}Pop the latest position on the position memory stack\\ and return to that position\end{tabular} \\ \bottomrule
 \end{tabular}
-\caption{L-System constant interpretation}
-\label{tab:lsconint}
 \end{table}
 
 Randomly generated L-Systems are manipulated using a random generation seed. Randomly generated L-Systems have requirements and specifications implemented to ensure the validity of the L-System.
@@ -97,6 +169,8 @@ Rule components are selected from a predefined list included in Table~\ref{tab:l
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
+\caption{L-System rule components and their interpretations}
+\label{tab:lsrulecom}
 \begin{tabular}{@{}ccl@{}}
 \toprule
 \textbf{Number} &
@@ -145,13 +219,11 @@ Rule components are selected from a predefined list included in Table~\ref{tab:l
   {[}-fF{]} &
   \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 4, then 7, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\ \bottomrule
 \end{tabular}
-\caption{L-System rule components and their interpretations}
-\label{tab:lsrulecom}
 \end{table}
 
-During initial trials, many issues were encountered in allowing rules to be generated with single or unevenly matched brackets. The predefined L-System axioms contain square and round brackets. If rules contain single or unevenly matched brackets, the interpretation of the resulting word will not adhere to the specified symmetrical conditions.
+During initial trials, issues were encountered in allowing rules to be generated with completely random variables and constants. Unmatched brackets did not allow for the correct interpretation of the axioms. Without forcing the inclusion of the "F" character in at least one rule or applying at least one rule to the "F" character, many L-Systems did not result in the creation of any elements. If constants were treated as variables, the brackets could also end up unmatched.
 
-Twelve axioms are predefined and outlined in Table~\ref{tab:lsaxiom}. Axioms were defined according to desirable symmetry conditions. Symmetry conditions are illustrated in Figures~\ref{fig:lssymex} and~\ref{fig:lssym}. 
+Twelve axioms are predefined and outlined in Table~\ref{tab:lsaxiom}. Axioms were defined according to desirable symmetry conditions. Symmetry conditions are illustrated in Figure~\ref{fig:lssym} according to the reference shape in Figure~\ref{fig:lssymex}.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
@@ -174,7 +246,7 @@ Negative diagonal & -{[}F{]}++++{[}F{]}  & -{[}F{]}++++(F)  \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{LSSym.png}
-	\caption{L-System symmetry interpretation example layout}
+	\caption{L-System symmetry interpretation reference layout}
 	\label{fig:lssymex}
 \end{figure}
 
@@ -255,9 +327,9 @@ Negative diagonal & -{[}F{]}++++{[}F{]}  & -{[}F{]}++++(F)  \\
 	\label{fig:lssym}
 \end{figure}
 
-The true axiom is a single "F". All rules are applied for the specified number of iterations. The resulting word is placed within the axiom at all positions occupied by an "F". This allows for the symmetry conditions to be maintained across iterations while retaining "+" and "-" as variables.
+All L-System rule interpretations are first applied as if the axiom were a single "F". The rules are applied for the specified number of iterations. The resulting word is then placed within the specified axiom of symmetry at all positions occupied by an "F". This allows for the symmetry conditions to be maintained across iterations while retaining "+" and "-" as variables.
 
-\subsection{Interpretation}
+\subsubsection{Interpretation}
 
 The final word is interpreted according to the specified internal dimensions of the template. The word is interpreted character by character.
 
@@ -316,8 +388,8 @@ If the character is "[", the current position and direction is added to the stac
 
 The complete list of coordinates is sorted in ascending order. All duplicate element coordinates are removed. The coordinates are shifted from centering around the origin to centering around the central element of the unit. All coordinates outside of the internal space of the unit are dropped. The remaining coordinates are interpreted as element indices. The element indices are compared to the list of all internal element indices and the list of elements to be removed is obtained.
 
-\section{CPPNs}
-\label{sec:CPPN}
+\subsection{CPPNs}
+\label{ssec:CPPN}
 
 An CPPN-like generation method is implemented due to the CPPN features of image generation and scalability. CPPNs are defined using class objects containing all necessary information. CPPN class object parameters are:
 
@@ -348,7 +420,7 @@ The threshold parameter allows for two approaches to the removal of elements. Th
 
 The x- and y-dimensions are specified initially. All hidden layers barring the initial layer have a number of nodes equal to the x-dimension multiplied with the y-dimension. The CPPN will result in a model that fits perfectly within the internal space of the unit.
 
-CPPN models obtained for the purposes of this this thesis are at much lower resolutions than traditional CPPN models. A reduction in complexity was deemed appropriate. Traditional CPPNs allow for unique activation functions to be applied to each node. This was not implemented in order to reduce complexity. Five activation functions are available for the hidden layers of the CPPN. Activation functions are applied to an entire layer. The activation functions are
+CPPN models obtained for the purposes of this this thesis are at much lower resolutions than traditional CPPN models. A reduction in complexity was deemed appropriate. Traditional CPPNs allow for unique activation functions to be applied to each node. This was not implemented in order to reduce complexity. Five activation functions are available for the hidden layers of the CPPN. Activation functions are applied to an entire layer. The activation functions included in this project are
 
 \begin{itemize}
 	\item sin
@@ -358,26 +430,56 @@ CPPN models obtained for the purposes of this this thesis are at much lower reso
 	\item smooth ReLu
 \end{itemize}
 
-Only the last two activation functions are available for the output layer of the CPPN. They result in values ranging only from 0 to 1.
+Only the last two activation functions are available for the output layer of the CPPN. They result in values ranging only from 0 to 1. The values are rounded according to the specified threshold parameter.
 
-\section{Software}
-\label{sec:SW}
+\section{Generative Design Approaches}
+\label{sec:GD}
 
-The software pipeline is complex, and many components are interrelated. Details considered trivial or irrelevant are not discussed. The entirety of the code is available to the reader if they would wish to investigate or make use of it. The code is extensively commented for any clarification needed.
+Generative design methods are required to assist in the determination of well-performing units generated by the pattern generation methods. Large populations of unique units must be created. Each individual's performance should be ranked according to a predefined objective function. Better-performing units should be identified and favoured by the generative design methods.
 
-\subsection{Software Selection}
+\subsection{Monte Carlo Simulations}
 
-The Finite Element Method (FEM) is an approach to numerically solving field problems. Field problems require the determination of one or more dependent variables' distribution in space. Field problems are mathematically described with differential equations or integral expressions. Finite elements can be expressed as small parts of a larger body. A field quantity within an element may only have a simple spatial variation, such as being described by polynomial terms no higher than the second order. FEM differs from calculus as calculus uses infinitesimal elements. FEM thus delivers approximate solutions. \cite{Cook2002}
+Monte Carlo simulations operate on the principle that a large enough population of calculated solutions should be fairly representative of the entire population of possible solutions~\citep{Metropolis1949}. A Monte Carlo simulation of units is thus implemented as a generative design method.
 
-Several commercial FEM software packages capable of realistically modeling soft bodies are available. LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \cite{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \cite{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modeling and analysis. It has an extensive set of options available for post-processing \cite{MSC}. MSC.Marc Mentat 2019 is selected for this project.
+A population of units is randomly generated according to the specified unit generation method. The unit generation process is outlined in Section~\ref{ssec:ug}. The entire unit population is simulated and ranked according to an objective function specified by the template case. The ranking process is discussed in more detail in Section~\ref{ssec:rank}. Further evaluation of unit performance may be carried out by manual inspection of high-ranking units.
 
-Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python.
+\subsection{Evolutionary Algorithms}
+\label{sec:EA}
+
+Evolutionary algorithms involve the initial generation of a random population and the improvement of the population members' fitness according to some objective function over a number of generations. An evolutionary algorithm is thus implemented as a generative design method.
+
+An initial random population is generated, run, and evaluated. Two parent population members are selected for evolution. Parents are ranked in descending order according to their fitness. The ranking procedure is discussed in detail in Section~\ref{ssec:rank}. The parent population is iterated through from the most fit to the least fit parent until a parent has been selected. A random number between 0 and 1 for selection is generated. A fitness weighting function is used to determine the selection of a parent. The fitness weighting function is defined as
+
+\begin{equation}
+	y=\frac{2\left ( p+1-r \right )^{c}}{p^{2}+p}
+\end{equation}
+
+Where
+
+\begin{itemize}
+	\item $y$ is the fitness weighting
+	\item $p$ is the population size
+	\item $r$ is the rank of the selected member
+	\item $c$ is a user-defined fitness constant set to 1
+\end{itemize}
+
+The cumulative fitness weighting of all units before and after the current population member is calculated. If the random number is between the two cumulative fitness weightings, the member is selected as the parent. Population members may evolve in three ways.
+
+Crossover may occur between two parents. For every crossover point, a random number between 0 and 1 is generated. If the number is below the specified probability, crossover occurs. A random index in the list of parent parameters is selected. The parameters are swapped between parents from this index onwards. The two resulting children are potentially evolved further.
+
+Random mutation of a child parameter may occur. For every random mutation point, a random number between 0 and 1 is generated. If the number is below the specified probability, random mutation occurs. A random parameter of the child is selected. The parameter is randomly changed to any allowed value for that parameter.
+
+Biased mutation of a child parameter may occur. For every biased mutation point, a random number between 0 and 1 is generated. If the number is below the specified probability, biased mutation occurs. A random parameter of the child is selected. Another random number between 0 and 1 is generated. If the number is below 0.5, the parameter is decreased by 1. If the number is above or equal to 0.5, the parameter is increased by 1. The parameter is bounded by the allowed ranges.
+
+All children are added to the population list. The new population list is used to generate the next population of units.
+
+\section{FEM}
 
 \subsection{Template}
 
-The generative design approach as implemented requires large populations of similar units to be created and run. The units need to be similar to meaningfully draw comparisons between them and select the best performing units. A template unit is created containing all necessary and non-unique specifications. The template has all appropriate FEM settings applied. The template can be altered according to the specified design methodology.
+The generative design approach as discussed in Section~\ref{sec:GD} requires large populations of similar units to be created and run. The units need to be similar to meaningfully draw comparisons between them and select the best performing units. A template unit is created containing all necessary and non-unique specifications. The template has all appropriate FEM settings applied. The template can be altered according to the specified unit generation method.
 
-The template is a 2D grid of square elements. 2D quad shell elements are used. The template has boundary conditions applied causing deformation according to a specified case. Cases are outlined in Section.
+The template is a 2D grid of square elements. 2D quad shell elements are used. The template has boundary conditions applied causing deformation according to a specified case. Cases are outlined in Section~\ref{sec:UC}.
 
 Template parameters need to be specified by the user. Relevant template parameters include:
 
@@ -434,6 +536,211 @@ Mechanical planar strain geometric properties are added to all elements. The Ogd
 The template is saved at this point. All units created during a simulation are built from this template. The template job is run and its success evaluated. The process of running a simulation and evaluating its success is outlined in Section~\ref{ssec:run}.
 
 The template model is saved again. Meaningful template parameters and data obtained from the template is written in a human-readable manner to a log file. The template class object is saved to a file that can be accessed later.
+
+\section{Unit Deformation Cases}
+\label{sec:UC}
+
+Three unit deformation cases were defined, implemented and evaluated with the software pipeline. The pipeline allows for easy implementation of new unit deformation cases and methods of evaluation. The unit deformation cases were selected due to their robustness, potential applications and simplicity.
+
+\subsection{Uniaxial Elongation}
+
+Case 1 is a case of uniaxial elongation as defined by Kim \citep{Kim2015}. This case has no rigid body modes. Four boundary conditions are applied. They are outlined in Table~\ref{tab:c1}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lllc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Label}} & \multicolumn{1}{c}{\textbf{Boundary}} & \multicolumn{1}{c}{\textbf{Constraint}} & \textbf{Direction} \\ \midrule
+\textit{bc\_fd\_yy1} & Bottom edge & Fixed               & y \\
+\textit{bc\_fd\_yy2} & Top edge    & Forced displacement & y \\
+\textit{bc\_fd\_xx1} & Left edge   & Fixed               & x \\
+\textit{bc\_fd\_xx2} & Right edge  & Fixed               & x \\ \bottomrule
+\end{tabular}
+\caption{Uniaxial elongation boundary conditions \citep{Kim2015}}
+\label{tab:c1}
+\end{table}
+
+The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c1def}. The original shape is outlined in pink.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{C1BC.png}
+		\caption{Uniaxial elongation boundary conditions as applied in Marc Mentat}
+		\label{fig:c1bc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{C1Def.png}
+		\caption{Resulting deformation of uniaxial elongation}
+		\label{fig:c1def}
+	\end{subfigure}
+	\caption{Uniaxial elongation boundary conditions and resulting deformation}
+	\label{fig:c1}
+\end{figure}
+
+This case has applications in causing extension. Multiple units combined and oriented in the same direction would result in a linearly extending actuator.
+
+\subsection{Biaxial Elongation}
+
+Case 2 is a case of biaxial elongation. Four boundary conditions are applied. They are outlined in Table~\ref{tab:c2}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lllc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Label}} & \multicolumn{1}{c}{\textbf{Boundary}} & \multicolumn{1}{c}{\textbf{Constraint}} & \textbf{Direction} \\ \midrule
+\textit{bc\_fd\_yy1} & Bottom edge & Fixed               & y \\
+\textit{bc\_fd\_yy2} & Top edge    & Forced displacement & y \\
+\textit{bc\_fd\_xx1} & Left edge   & Fixed               & x \\
+\textit{bc\_fd\_xx2} & Right edge  & Forced displacement & x \\ \bottomrule
+\end{tabular}
+\caption{Biaxial elongation boundary conditions}
+\label{tab:c2}
+\end{table}
+
+The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c2bc}. The boundary conditions are visually identical to Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c2def}. The original shape is outlined in pink.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{C1BC.png}
+		\caption{Biaxial elongation boundary conditions as applied in Marc Mentat}
+		\label{fig:c2bc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{C2Def.png}
+		\caption{Resulting deformation of biaxial elongation}
+		\label{fig:c2def}
+	\end{subfigure}
+	\caption{Biaxial elongation boundary conditions and resulting deformation}
+	\label{fig:c2}
+\end{figure}
+
+This case has applications in causing expansion. Multiple units combined and would result in an inflating actuator that retains its shape.
+
+\subsection{Pure Shear}
+
+Case 3 is a case of pure shear as defined by Kim \citep{Kim2015}. This case has no rigid body modes. Four boundary conditions are applied. They are outlined in Table~\ref{tab:c3}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lllc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Label}} & \multicolumn{1}{c}{\textbf{Boundary}} & \multicolumn{1}{c}{\textbf{Constraint}} & \textbf{Direction} \\ \midrule
+\textit{bc\_fd\_xy1} & Bottom edge & Fixed               & x \\
+\textit{bc\_fd\_xy2} & Top edge    & Forced displacement & x \\
+\textit{bc\_fd\_yx1} & Left edge   & Fixed               & y \\
+\textit{bc\_fd\_yx2} & Right edge  & Fixed				 & y \\ \bottomrule
+\end{tabular}
+\caption{Pure shear boundary conditions \citep{Kim2015}}
+\label{tab:c3}
+\end{table}
+
+The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c3bc}. The resulting deformation is illustrated in Figure~\ref{fig:c3def}. The original shape is outlined in pink.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{C3BC.png}
+		\caption{Pure shear boundary conditions as applied in Marc Mentat}
+		\label{fig:c3bc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{C3Def.png}
+		\caption{Resulting deformation of pure shear}
+		\label{fig:c3def}
+	\end{subfigure}
+	\caption{Pure shear boundary conditions and resulting deformation}
+	\label{fig:c3}
+\end{figure}
+
+This case has applications in causing angular deformation. Multiple units combined and oriented in the same direction would result in an angular actuator. Combining multiple actuators could result in curling actuators or actuators with more complex behaviours.
+
+\section{Model Validation}
+\label{sec:TP}
+
+Validation of the FEM models is preferable to verify the accuracy of the experimentally obtained Ogden material model parameters and justify the code pipeline's identification of better-performing units. An experimental setup is designed and constructed to validate the FEM models.
+
+\subsection{Physical Components}
+
+A modular mould is designed for the casting of multiple units. Modularity is desirable as all units are derived from a single template, but individual units may vary greatly. Manufacturing times, costs and complexity would be too high if a mould had to be constructed for every unit that was desired to be tested.
+
+The modular mould consists of a mould frame and two types of mould cells. The mould frame is square with dimensions indicated in Figure~\ref{fig:mb}. The cells are square with thicknesses of either \SI{2}{mm} or \SI{4}{mm}, as illustrated in Figure~\ref{fig:mc}. The mould frame is placed on a smooth, level granite tabletop. The mould cells are arranged within the frame according to the layout of the unit to be cast. \SI{2}{mm} cells are placed where elements exist according to the unit layout. \SI{4}{mm} cells are placed where elements have been removed. Figure~ illustrates an example unit layout and the arrangement of the mould before the material has been cast.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{MB.png}
+	\caption{Dimensioned modular mould base}
+	\label{fig:mb}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[c]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{MCS.png}
+		\caption{Small mould cell}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{MCL.png}
+		\caption{Large mould cell}
+	\end{subfigure}
+	\caption{Dimensioned mould cells}
+	\label{fig:mc}
+\end{figure}
+
+The experimental setup is comprised of two perspex plates separated by 4 \SI{2}{mm} thick washers kept in place by 4 screws, bolts and footpieces on a level surface. The bottom perspex plate has a hole in its centre with a pressure supply tube attached to it. Figure~\ref{fig:exp} illustrates the experimental setup. A camera is affixed to a tripod, positioned over the experimental setup and aimed directly downward at it.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{ER.png}
+	\caption{Experimental setup model}
+	\label{fig:exp}
+\end{figure}
+
+Perspex is selected as the testing surface for various reasons. It has a low frictional coefficient, decreasing the effects of friction on the experiment. It is transparent, allowing for the effects of the applied internal pressure to be viewed and recorded. It is durable enough at the thickness used to resist the internal pressures applied and be manufacturable.
+
+\subsection{Experimental Procedure}
+
+The material is cast in the mould after having been prepared as outlined in Section~\ref{ssec:mac}. The physical unit is removed from the mould once it has set completely. The mould may then be rearranged according to a new unit configuration after having been appropriately cleaned.
+
+The FEM models applied a linearly ramping internal pressure up to a set maximum to the units. The experimental setup will replicate applied pressures at specific points along the ramp and potentially beyond the maximum simulated pressure.
+
+The experimental setup is put in place with the top perspex plate and bolts having not yet been placed. The surfaces of the perspex plates which will come into contact with the physical unit are lubricated with a silicon-based spray. The spray will react with the physical unit over time, causing it to degrade. Tests must be done in a timely manner to prevent the effects of the spray from impacting results.
+
+The physical unit is placed on the bottom plate with its cavity positioned over the pressure inlet hole. The top plate is affixed to the bottom plate separated by the \SI{2}{mm} washers. The camera is switched on and placed into focus. The pressure valve is slowly opened to desirable pressure intervals. At each interval, photographs are taken of the deformation and the pressure applied is noted.
+
+\section{Software Pipeline}
+\label{sec:SW}
+
+The software pipeline is complex, and many components are interrelated. Details considered trivial or irrelevant are not discussed. The entirety of the code is available to the reader if they would wish to investigate or make use of it. The code is extensively commented for any clarification needed.
+
+\subsection{Software Selection}
+
+The Finite Element Method (FEM) is an approach to numerically solving field problems. Field problems require the determination of one or more dependent variables' distribution in space. Field problems are mathematically described with differential equations or integral expressions. Finite elements can be expressed as small parts of a larger body. A field quantity within an element may only have a simple spatial variation, such as being described by polynomial terms no higher than the second order. FEM differs from calculus as calculus uses infinitesimal elements. FEM thus delivers approximate solutions. \citep{Cook2002}
+
+Several commercial FEM software packages capable of realistically modeling soft bodies are available. LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \citep{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \citep{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modeling and analysis. It has an extensive set of options available for post-processing \citep{MSC}. MSC.Marc Mentat 2019 is selected for this project.
+
+Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python.
+
+
 
 \subsection{Analysis Approach}
 
@@ -542,7 +849,18 @@ Unit generation refers to the process of automatically specifying internal geome
 
 Random generation is implemented as a baseline to compare with the other two unit generation methods. A random generation seed is used to allow for replicability. A number of elements to be removed is first selected. This number has a possible range of zero to all internal elements. A list of unique internal element IDs is then selected and sorted.
 
-L-Systems and CPPNs as outlined in Sections~\ref{sec:LS} and~\ref{sec:CPPN} respectively are also available for unit generation.
+L-Systems and CPPNs as outlined in Sections~\ref{ssec:LS} and~\ref{ssec:CPPN} respectively are also available for unit generation.
+
+L-System class object parameters are
+
+\begin{itemize}
+	\item \textit{vocab} - The L-System vocabulary
+	\item \textit{gramm} - The L-System grammar
+	\item \textit{axiom} - The initial axiom of the L-System
+	\item \textit{n} - The number of iterations to apply to the L-System
+	\item \textit{seed} - The random generation seed used to generate the L-System if applicable
+	\item \textit{word} - The resulting word of the L-System
+\end{itemize}
 
 \subsection{Running a Job}
 \label{ssec:run}
@@ -599,204 +917,3 @@ Where
 \end{itemize}
 
 All fitness values applicable to a unit are summed together. Units are ranked in descending order according to the fitness value. The unit with the largest fitness value is deemed the most fit.
-
-\section{Unit Deformation Cases}
-\label{sec:UC}
-
-\subsection{Uniaxial Elongation}
-
-Case 1 is a case of uniaxial elongation as defined by Kim \cite{Kim2015}. This case has no rigid body modes. This case has applications in causing extension. Four boundary conditions are applied. They are outlined in Table~\ref{tab:c1}.
-
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[H]
-\centering
-\begin{tabular}{@{}lllc@{}}
-\toprule
-\multicolumn{1}{c}{\textbf{Label}} & \multicolumn{1}{c}{\textbf{Boundary}} & \multicolumn{1}{c}{\textbf{Constraint}} & \textbf{Direction} \\ \midrule
-\textit{bc\_fd\_yy1} & Bottom edge & Fixed               & y \\
-\textit{bc\_fd\_yy2} & Top edge    & Forced displacement & y \\
-\textit{bc\_fd\_xx1} & Left edge   & Fixed               & x \\
-\textit{bc\_fd\_xx2} & Right edge  & Fixed               & x \\ \bottomrule
-\end{tabular}
-\caption{Uniaxial elongation boundary conditions \cite{Kim2015}}
-\label{tab:c1}
-\end{table}
-
-The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c1def}. The original shape is outlined in pink.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{C1BC.png}
-	\caption{Uniaxial elongation boundary conditions as applied in Marc Mentat}
-	\label{fig:c1bc}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{C1Def.png}
-	\caption{Resulting deformation of uniaxial elongation}
-	\label{fig:c1def}
-\end{figure}
-
-\subsection{Biaxial Elongation}
-
-Case 2 is a case of biaxial elongation. This case has applications in causing expansion. Four boundary conditions are applied. They are outlined in Table~\ref{tab:c2}.
-
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[H]
-\centering
-\begin{tabular}{@{}lllc@{}}
-\toprule
-\multicolumn{1}{c}{\textbf{Label}} & \multicolumn{1}{c}{\textbf{Boundary}} & \multicolumn{1}{c}{\textbf{Constraint}} & \textbf{Direction} \\ \midrule
-\textit{bc\_fd\_yy1} & Bottom edge & Fixed               & y \\
-\textit{bc\_fd\_yy2} & Top edge    & Forced displacement & y \\
-\textit{bc\_fd\_xx1} & Left edge   & Fixed               & x \\
-\textit{bc\_fd\_xx2} & Right edge  & Forced displacement & x \\ \bottomrule
-\end{tabular}
-\caption{Biaxial elongation boundary conditions}
-\label{tab:c2}
-\end{table}
-
-The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are visually identical to Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c2def}. The original shape is outlined in pink.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{C2Def.png}
-	\caption{Resulting deformation of biaxial elongation}
-	\label{fig:c2def}
-\end{figure}
-
-\subsection{Pure Shear}
-
-Case 3 is a case of pure shear as defined by Kim \cite{Kim2015}. This case has no rigid body modes. This case has applications in causing angular extension or deformation. Four boundary conditions are applied. They are outlined in Table~\ref{tab:c3}.
-
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[H]
-\centering
-\begin{tabular}{@{}lllc@{}}
-\toprule
-\multicolumn{1}{c}{\textbf{Label}} & \multicolumn{1}{c}{\textbf{Boundary}} & \multicolumn{1}{c}{\textbf{Constraint}} & \textbf{Direction} \\ \midrule
-\textit{bc\_fd\_xy1} & Bottom edge & Fixed               & x \\
-\textit{bc\_fd\_xy2} & Top edge    & Forced displacement & x \\
-\textit{bc\_fd\_yx1} & Left edge   & Fixed               & y \\
-\textit{bc\_fd\_yx2} & Right edge  & Fixed				 & y \\ \bottomrule
-\end{tabular}
-\caption{Pure shear boundary conditions \cite{Kim2015}}
-\label{tab:c3}
-\end{table}
-
-The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c3bc}. The resulting deformation is illustrated in Figure~\ref{fig:c3def}. The original shape is outlined in pink.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{C3BC.png}
-	\caption{Pure shear boundary conditions as applied in Marc Mentat}
-	\label{fig:c3bc}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{C3Def.png}
-	\caption{Resulting deformation of pure shear}
-	\label{fig:c3def}
-\end{figure}
-
-\section{Material}
-
-\subsection{Material Modeling}
-
-The modeling of materials undergoing relatively large deformations is an active research field. Stored strain energy density may be used to compute stress in hyperelastic materials. The strain energy density is defined using invariants of strain. The three invariants are given as
-
-\begin{equation}
-	I_{1}=\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}
-\end{equation}
-
-\begin{equation}
-	I_{2}=\lambda_{1}^{2}\lambda_{2}^{2}+\lambda_{2}^{2}\lambda_{3}^{2}+\lambda_{3}^{2}\lambda_{1}^{2}
-\end{equation}
-
-and
-
-\begin{equation}
-	I_{3}=\lambda_{1}^{2}\lambda_{2}^{2}\lambda_{3}^{2}
-\end{equation}
-
-where $\lambda_{1}^{2}$, $\lambda_{2}^{2}$, and $\lambda_{3}^{2}$ are three eigenvalues. The undeformed state is used as the frame of reference. The three invariants will not change when using different coordinate systems. The three invariants must be positive for the deformation to be valid. The square root of $I_{3}$ measures the volume change of the material. $I_{3}=1$ if the material is incompressible \cite{Kim2015}.
-
-The distortional strain energy density is defined as
-
-\begin{equation}
-	W_{1}\left ( I_{1},I_{2} \right )=\sum_{m+n=1}^{\infty}A_{mn}\left ( I_{1}-3 \right )^{m}\left ( I_{2}-3 \right )^{n}
-\end{equation}
-
-The Ogden model uses the principal stretches to define the distortional strain energy density as
-
-\begin{equation}
-	\label{eq:om}
-	W_{1}\left ( \lambda_{1},  \lambda_{2}, \lambda_{3} \right )=\sum_{i=1}^{N}\frac{\mu_{i}}{\alpha_{i}}\left ( \lambda_{1}^{\alpha_{i}} + \lambda_{2}^{\alpha_{i}} + \lambda_{3}^{\alpha_{i}} \right )
-\end{equation}
-
-where $N$, $\mu_{i}$, and $\alpha_{i}$ are material parameters. $N$ is usually three. The principal stretches are the three eigenvalues of the deformation gradient. If the material is incompressible, the three principal stresses are not independent, meaning $\lambda_{1}\lambda_{2}\lambda_{3}=1$. The shear modulus is
-
-\begin{equation}
-	\mu=\frac{1}{2}\sum_{i=1}^{N}\alpha_{i}\mu_{i}
-\end{equation}
-
-The Ogden model correlates well with simple tension test data that is elongated up to 700\%. The model accommodates for slightly compressible behaviour and a nonconstant shear modulus \cite{Kim2015}.
-
-\subsection{Material Selection}
-
-Compliant and elastic materials are commonly used in the construction of soft robots. Three specific silicon-based rubbers that are readily accessible and affordable were characterized by Ellis \cite{Ellis2020}. These rubbers are outlined with basic material properties in Table~\ref{tab:ogdpar}.
-
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% \usepackage{multirow}
-\begin{table}[H]
-\centering
-\begin{tabular}{@{}crrr@{}}
-\toprule
-\multirow{2}{*}{\textbf{Parameter}} & \multicolumn{3}{c}{\textbf{Parameter Number}}                                                    \\ \cmidrule(l){2-4} 
-                                    & \multicolumn{1}{c}{\textbf{1}} & \multicolumn{1}{c}{\textbf{2}} & \multicolumn{1}{c}{\textbf{3}} \\ \midrule
-\multicolumn{4}{c}{\textbf{Ecoflex 00-30}}           \\ \midrule
-$\mu$    & -0.0142909   & -3.64558e-06 & 9.59447e-08 \\
-$\alpha$ & -5.22444     & -0.162804    & 11.3772     \\ \midrule
-\multicolumn{4}{c}{\textbf{Mold Star 15 SLOW}}       \\ \midrule
-$\mu$    & -6.50266e-06 & 0.216863     & 0.00137158  \\
-$\alpha$ & -21.322      & 1.1797       & 4.88396     \\ \midrule
-\multicolumn{4}{c}{\textbf{Smooth-Sil 950}}          \\ \midrule
-$\mu$    & -0.30622     & 0.0283304    & 6.5963e-09  \\
-$\alpha$ & -3.0594      & 4.59654      & 17.6852     \\ \bottomrule
-\end{tabular}
-\caption{Silicon-based Rubber Ogden Material Model Parameters \cite{Ellis2020}}
-\label{tab:ogdpar}
-\end{table}
-
-Mold Star 15 SLOW is selected as the main material to be digitally modelled and manufactured for the purposes of the project. Mold Star 15's stiffness lies between EcoFlex and Smooth Sil's.  Mold Star 15 is selected because of its availability and properties. Mold Star 15 is deliverable to the premises where testing is to be done and available from a registered supplier. Additional properties are listed in Table~\ref{tab:gmp}.
-
-\begin{table}[H]
-	\centering
-	\caption{Given Material Properties \cite{MoldStar}}
-	\label{tab:gmp}
-	\resizebox{\textwidth}{!}{%
-		\begin{tabular}{@{}ccccc@{}}
-		\toprule
-		\textbf{Material} & \textbf{Cost/kg} & \textbf{Pot life (min)} & \textbf{Cure time (hr)} & \textbf{Tensile strength (MPa)} \\ \midrule
-		Mold Star 15 SLOW & R332.00 & 50 & 4 & 2.7579 \\ \bottomrule
-		\end{tabular}%
-	}
-\end{table}
-
-Mold Star 15's long pot life allows for adequate time to prepare specimens thoroughly. The two components of the material need to be mixed according to a 1:1 ratio and stirred until completely mixed. The material then needs to be degassed, poured into the moulds, degassed again, and levelled.
-
-Mold Star 15 has a hyper-elastic non-linear response. It is suitable for inflation while being capable of supporting itself at the relevant scale of construction.
-
-The necessary properties to correctly digitally model Mold Star 15 are not available from the supplier. Testing is done according to ISO 37 and ISO 7743 standards for tensile and compression testing respectively to obtain data to construct an accurate Ogden model for the material \cite{ISO37,ISO7743}.
-
-ISO 37 standards allow for the determination of the tensile stress-strain properties of vulcanised or thermoplastic rubbers. According to the given standards, dumb-bells of type 1A are cast and used used for testing purposes. Dumb-bell specimens are illustrated in Figure~.
-
-\section{Testing Procedure}
-
-

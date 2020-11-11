@@ -30,13 +30,13 @@
 %==== Ref's, Bib's and Nomencl ======================================
  \usepackage{usnomencl}%.......................... List of symbols (in usthesis pack)
  \usepackage{usbib}%.............................. Bibliography    (in usthesis pack)
-    \bibliographystyle{usmeg-n}
+    \bibliographystyle{usmeg-a}
     \renewcommand\bibfont{\small}
 
     %% For usmeg-a, the bib is a list of references. If you
     %% are using usmeg-n comment out the following lines
     %\addto{\captionsafrikaans}{\renewcommand{\bibname}{Lys van Verwysings}}
-    %\addto{\captionsenglish}{\renewcommand{\bibname}{List of References}}
+    \addto{\captionsenglish}{\renewcommand{\bibname}{List of References}}
 
 %==== Graphics and Color ============================================
 \usepackage{graphicx}%........................... Graphicx loaded in usthesis
@@ -63,6 +63,7 @@
 \usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{float}
+\floatstyle{plaintop}
 \restylefloat{table}
 \usepackage{rotating}
 \usepackage{pdflscape}

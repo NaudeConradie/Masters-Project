@@ -4,19 +4,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Soft Robotics}
 
-The field of soft robotics comprises robots and robotic actuators constructed from compliant and pliable materials, or exhibiting compliant behaviour \cite{Wang2015, Ilievski2011}. Soft robots often aim to mimic biological muscles and locomotion. Hyper-elastic materials are often used in the construction of soft robots.
+The field of soft robotics comprises robots and robotic actuators constructed from compliant and pliable materials, or exhibiting compliant behaviour \citep{Wang2015, Ilievski2011}. Soft robots often aim to mimic biological muscles and locomotion. Hyper-elastic materials are often used in the construction of soft robots.
 
-Soft robots generally have fixed joints and locomotive actuators between joints, as opposed to traditional hard robots which usually have locomotive actuated joints connected by rigid sections \cite{Whitesides2018}, as illustrated in Figure~\ref{fig:actdif}.
+Soft robots generally have fixed joints and locomotive actuators between joints, as opposed to traditional hard robots which usually have locomotive actuated joints connected by rigid sections \citep{Whitesides2018}, as illustrated in Figure~\ref{fig:actdif}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
-	\begin{subfigure}[c]{0.4\textwidth}
+	\begin{subfigure}[c]{0.3\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{SR_JA.png}
 		\caption{An example of soft robot actuation}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[c]{0.4\textwidth}
+	\begin{subfigure}[c]{0.3\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{TR_JA.png}
 		\caption{An example of traditional robot actuation}
@@ -25,98 +25,98 @@ Soft robots generally have fixed joints and locomotive actuators between joints,
 	\label{fig:actdif}
 \end{figure} 
 
-Soft robots offer many advantages over traditional robots. Soft robots are safer in working environments alongside humans. Traditional robots are generally constructed using non-compliant hard, dense, and heavy materials such as steel or aluminium. Traditional robots usually have fixed motion paths and do not allow for much deviation. Humans working alongside traditional robots may easily be injured by these robots if they are struck or trapped by them. Conversely, soft robots are built with compliant and lightweight materials. Soft robots also generally exert lower forces than their traditional counterparts. Soft robots are unlikely to cause injuries to humans. \cite{Whitesides2018, Martinez2013}
+Soft robots offer many advantages over traditional robots. Soft robots are safer in working environments alongside humans. Traditional robots are generally constructed using non-compliant hard, dense, and heavy materials such as steel or aluminium. Traditional robots usually have fixed motion paths and do not allow for much deviation. Humans working alongside traditional robots may easily be injured by these robots if they are struck or trapped by them. Conversely, soft robots are built with compliant and lightweight materials. Soft robots also generally exert lower forces than their traditional counterparts. Soft robots are unlikely to cause injuries to humans. \citep{Whitesides2018, Martinez2013}
 
-Soft robots are more suited to working with fragile and irregular objects such as fruit. In addition to the reasons listed above, soft robots easily adjust to deviations when deforming.  \cite{Whitesides2018, Martinez2013}
+Soft robots are more suited to working with fragile and irregular objects such as fruit. In addition to the reasons listed above, soft robots easily adjust to deviations when deforming.  \citep{Whitesides2018, Martinez2013}
 
-Combining soft robots' safeness around humans and ability to work with fragile and irregular objects has led to many applications of soft robotics in the biomedical engineering field. Soft direct cardiac compression devices can assist in providing enough blood flow. Soft surgical manipulators and grippers provide safer, compliant and less invasive tools for surgery. Soft rehabilitative devices assist in the diagnosis and treatment of patients. \cite{Hsiao2019}
+Combining soft robots' safeness around humans and ability to work with fragile and irregular objects has led to many applications of soft robotics in the biomedical engineering field. Soft direct cardiac compression devices can assist in providing enough blood flow. Soft surgical manipulators and grippers provide safer, compliant and less invasive tools for surgery. Soft rehabilitative devices assist in the diagnosis and treatment of patients. \citep{Hsiao2019}
 
 \section{Actuators}
 
-Actuators are components that cause controlled motion, generally used in robotics and machinery \cite{Sekhar2012}. There are currently a few major types of soft robotic actuators in use \cite{Boyraz2018}.
+Actuators are components that cause controlled motion, generally used in robotics and machinery \citep{Sekhar2012}. There are currently a few major types of soft robotic actuators in use \citep{Boyraz2018}.
 
 \subsection{Soft Actuator Types}
 
-Shape Memory Alloys (SMA) are metallic alloys capable of being formed into a specific shape while above an inherent transformation temperature, as well as being formed into another shape below the transformation temperature. When the material is then heated or cooled above or below the transformation temperature, it reforms into those respective shapes. This property exists due to the transition between the martensite phase of the material below the transformation temperature, and the austenite phase above the transformation temperature. SMA actuators are heated by applying a current directly to the material. SMA actuators are small, lightweight, silent, and have a high force-to-weight ratio. When shaped straight, they can exert high forces, but only achieve small displacements relative to their length. When coiled, they can extend more, but exert smaller forces. \cite{Villoslada2015}
+Shape Memory Alloys (SMA) are metallic alloys capable of being formed into a specific shape while above an inherent transformation temperature, as well as being formed into another shape below the transformation temperature. When the material is then heated or cooled above or below the transformation temperature, it reforms into those respective shapes. This property exists due to the transition between the martensite phase of the material below the transformation temperature, and the austenite phase above the transformation temperature. SMA actuators are heated by applying a current directly to the material. SMA actuators are small, lightweight, silent, and have a high force-to-weight ratio. When shaped straight, they can exert high forces, but only achieve small displacements relative to their length. When coiled, they can extend more, but exert smaller forces. \citep{Villoslada2015}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{SMA.png}
-	\caption{A flexible SMA actuator designed by Villoslada et al. \cite{Villoslada2015}}
+	\includegraphics[width=0.8\textwidth]{SMA.png}
+	\caption{A flexible SMA actuator designed by \cite{Villoslada2015}}
 	\label{fig:sma}
 \end{figure}
 
-Shape Memory Polymers (SMP) are similar to SMAs, consisting of smart polymers with the same shape memory properties, instead of metallic alloys. The initial is shape is determined during the manufacturing process. The transformed shape is obtained by cooling the SMP and shaping it as desired. SMPs use electricity or light as a heat source for transformation \cite{Behl2007}. They have a high deformation capacity and shape recovery. They are lighter, cheaper and easier to produce than SMAs. They are limited in size due to their low recovery stresses \cite{Huang2005, Rodriguez2016, Behl2007}.
+Shape Memory Polymers (SMP) are similar to SMAs, consisting of smart polymers with the same shape memory properties, instead of metallic alloys. The initial is shape is determined during the manufacturing process. The transformed shape is obtained by cooling the SMP and shaping it as desired. SMPs use electricity or light as a heat source for transformation \citep{Behl2007}. They have a high deformation capacity and shape recovery. They are lighter, cheaper and easier to produce than SMAs. They are limited in size due to their low recovery stresses \citep{Huang2005, Rodriguez2016, Behl2007}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{SMP.png}
-	\caption{SMP water-driven recovery over time \cite{Huang2005}}
+	\includegraphics[width=0.5\textwidth]{SMP.png}
+	\caption{SMP water-driven recovery over time \citep{Huang2005}}
 	\label{fig:smp}
 \end{figure}
 
-Dieelectric/Electrically-Actuated Polymers (DEAP) consist of layers of polymers interspersed with conductive material. When the conductive material receives an electrical input, a chemical reaction occurs that causes a change in volume across the layers. This causes the layers to bend in a predetermined direction. DEAPs are lightweight, silent and use little energy. They are biocompatible and functional in water. They are well-suited to mimicking real muscles. Their reactions under high voltages are not fully understood yet and accurately modelling them is highly complicated. \cite{Mutlu2014}
+Dieelectric/Electrically-Actuated Polymers (DEAP) consist of layers of polymers interspersed with conductive material. When the conductive material receives an electrical input, a chemical reaction occurs that causes a change in volume across the layers. This causes the layers to bend in a predetermined direction. DEAPs are lightweight, silent and use little energy. They are biocompatible and functional in water. They are well-suited to mimicking real muscles. Their reactions under high voltages are not fully understood yet and accurately modelling them is highly complicated. \citep{Mutlu2014}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{EAP.png}
-	\caption{EAP actuator structure and operating principles \cite{Mutlu2014}}
+	\includegraphics[width=0.5\textwidth]{EAP.png}
+	\caption{EAP actuator structure and operating principles \citep{Mutlu2014}}
 	\label{fig:eap}
 \end{figure}
 
-Electro-Magnetic Actuators (EMA) make use of magnetic microparticles within a polymer matrix. The particles are manipulated to cause motion by an external magnetic field from an electromagnet. This allows for a wide range of motion by varying the orientation and magnitude of the electromagnetic field. EMAs are small, require low voltages and are efficient. They have quick response times and high dynamic ranges. They are still an emerging technology in the early stages of development. \cite{Do2018}
+Electro-Magnetic Actuators (EMA) make use of magnetic microparticles within a polymer matrix. The particles are manipulated to cause motion by an external magnetic field from an electromagnet. This allows for a wide range of motion by varying the orientation and magnitude of the electromagnetic field. EMAs are small, require low voltages and are efficient. They have quick response times and high dynamic ranges. They are still an emerging technology in the early stages of development. \citep{Do2018}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{EMA.png}
-	\caption{EMA coil heating with differing mass ratios of EGaIn and polymer \cite{Do2018}}
+	\caption{EMA coil heating with differing mass ratios of EGaIn and polymer \citep{Do2018}}
 	\label{fig:ema}
 \end{figure}
 
-Fluid Elastomeric Actuators (FEA) use soft polymeric structures with internal geometry designed for specific types of motion when driven by fluid pressure. Fluid pressure may be obtained from pressurized containers or chemical reactions. They are simple to design, manufacture and control, and are lightweight and usually inexpensive. They are scalable to different sizes and resistant to many types of damage. \cite{Shepherd2011, Onal2017}
+Fluid Elastomeric Actuators (FEA) use soft polymeric structures with internal geometry designed for specific types of motion when driven by fluid pressure. Fluid pressure may be obtained from pressurized containers or chemical reactions. They are simple to design, manufacture and control, and are lightweight and usually inexpensive. They are scalable to different sizes and resistant to many types of damage. \citep{Shepherd2011, Onal2017}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{FEA.png}
-	\caption{Cross section of an FEA at atmospheric and actuated pressures \cite{Shepherd2011}}
+	\includegraphics[width=0.8\textwidth]{FEA.png}
+	\caption{Cross section of an FEA at atmospheric and actuated pressures \citep{Shepherd2011}}
 	\label{fig:fea}
 \end{figure}
 
 \subsection{Soft Actuator Designs}
 
-Some soft robotic actuators implement linear extension, which has many applications. Extending actuators allow for an increase in reach of robotic bodies. Extension may be used to activate levers or switches. Extension may be used to lift objects or bodies. \cite{Martinez2012}
+Some soft robotic actuators implement linear extension, which has many applications. Extending actuators allow for an increase in reach of robotic bodies. Extension may be used to activate levers or switches. Extension may be used to lift objects or bodies. \citep{Martinez2012}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{LinearExtension.png}
-	\caption{Linearly extending soft actuator lifting \SI{1}{kg} \cite{Martinez2012}}
+	\caption{Linearly extending soft actuator lifting \SI{1}{kg} \citep{Martinez2012}}
 	\label{fig:lea}
 \end{figure}
 
-Torsional extension is a variant of linear extension. Torsionally extending actuators twist as they extend, resulting in an angular difference between the ends of the actuator. In addition to the uses of linearly extending actuators, torsionally extending actuators may be used to twist, turn or screw components or objects. \cite{Yan2018}
+Torsional extension is a variant of linear extension. Torsionally extending actuators twist as they extend, resulting in an angular difference between the ends of the actuator. In addition to the uses of linearly extending actuators, torsionally extending actuators may be used to twist, turn or screw components or objects. \citep{Yan2018}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{TorsionalExtension.png}
-	\caption{Torsionally extending soft actuator displaying rotation \cite{Yan2018}}
+	\includegraphics[width=0.8\textwidth]{TorsionalExtension.png}
+	\caption{Torsionally extending soft actuator displaying rotation \citep{Yan2018}}
 	\label{fig:tea}
 \end{figure}
 
-FEAs can be built to curl while expanding and straighten out while contracting. This has a range of applications, especially when multiple of these FEAs are used in conjunction with one another. One application is as a gripper, where a number of these FEAs are arranged similarly to a hand or tentacles all curling inward. Grippers are well-suited to picking up and manipulating soft and/or irregularly shaped objects. \cite{Ilievski2011}
+FEAs can be built to curl while expanding and straighten out while contracting. This has a range of applications, especially when multiple of these FEAs are used in conjunction with one another. One application is as a gripper, where a number of these FEAs are arranged similarly to a hand or tentacles all curling inward. Grippers are well-suited to picking up and manipulating soft and/or irregularly shaped objects. \citep{Ilievski2011}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Gripper.png}
-	\caption{Soft robotic gripper picking up an egg \cite{Ilievski2011}}
+	\caption{Soft robotic gripper picking up an egg \citep{Ilievski2011}}
 	\label{fig:grip}
 \end{figure}
 
-More complex actuators are manufacturable. A bimodal FEA was developed by Ellis in 2020. The actuator has a crimped paper strip acting as a strain limiter embedded within a stiff layer of Ecoflex 0030. The strain-limiting layer is alongside multiple Mold-Star 15 cells. When pressurised by a linearly increasing single pressure source, the actuator  first curls inwards, then back outwards while extending linearly. \cite{Ellis2020}
+More complex actuators are manufacturable. A bimodal FEA was developed by Ellis in 2020. The actuator has a crimped paper strip acting as a strain limiter embedded within a stiff layer of Ecoflex 0030. The strain-limiting layer is alongside multiple Mold-Star 15 cells. When pressurised by a linearly increasing single pressure source, the actuator  first curls inwards, then back outwards while extending linearly. \citep{Ellis2020}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{BimodalActuator.png}
-	\caption{Bimodal FEA exhibiting different responses as pressure increases \cite{Ellis2020}}
+	\caption{Bimodal FEA exhibiting different responses as pressure increases \citep{Ellis2020}}
 	\label{fig:bifea}
 \end{figure}
 
@@ -127,42 +127,42 @@ To prevent having to physically construct every design of a soft body, a computa
 
 \subsection{FEM}
 
-The Finite Element Method (FEM) has been used to successfully model soft robotic actuators and components. FEM models made use of the Ogden material model or the Yeoh material model. Models were validated with experimental data. \cite{Elsayed2014, Runge2017}
+The Finite Element Method (FEM) has been used to successfully model soft robotic actuators and components. FEM models made use of the Ogden material model or the Yeoh material model. Models were validated with experimental data. \citep{Elsayed2014, Runge2017}
 
 \subsection{Voxels}
 
-Voxels are three dimensional (3D) pixels. Voxels are usually cubical. Realistic physical properties may be applied to voxels in specific software packages, such as the free VoxCAD software. Bodies may be constructed and undergo deformation when constructed from voxels in these software packages. It is relatively simple to construct bodies from voxels. \cite{Cheney2013,Cheney2015}
+Voxels are three dimensional (3D) pixels. Voxels are usually cubical. Realistic physical properties may be applied to voxels in specific software packages, such as the free VoxCAD software. Bodies may be constructed and undergo deformation when constructed from voxels in these software packages. It is relatively simple to construct bodies from voxels. \citep{Cheney2013,Cheney2015}
 
-In 2013, Cheney et al used voxels to model soft bodies in VoxCAD. VoxCAD is free voxel-modelling software. Soft bodies were evolved using CPPN-NEAT. CPPN morphologies were found to appear natural and produce interesting and varying results. Three materials were used for the construction of the soft bodies. The three materials differed in hardness, being compliant, partially compliant and stiff. Compliant and partially compliant voxels acted as the actuators. Soft bodies were tasked either with traversing along a linear path or squeezing through a tight space. Simulations were run multiple times with different penalty functions. Penalty functions included costs for actuated voxels, voxel connections and the total number of voxels. It was found that with differing penalty functions, different bodies evolved and performed better. Final bodies are 3D printable. They are actuated by placing them within a pressure chamber where the pressure is sinusoidally varied. This limits their practical application. \cite{Cheney2013,Cheney2015}
+In 2013, Cheney et al used voxels to model soft bodies in VoxCAD. VoxCAD is free voxel-modelling software. Soft bodies were evolved using CPPN-NEAT. CPPN morphologies were found to appear natural and produce interesting and varying results. Three materials were used for the construction of the soft bodies. The three materials differed in hardness, being compliant, partially compliant and stiff. Compliant and partially compliant voxels acted as the actuators. Soft bodies were tasked either with traversing along a linear path or squeezing through a tight space. Simulations were run multiple times with different penalty functions. Penalty functions included costs for actuated voxels, voxel connections and the total number of voxels. It was found that with differing penalty functions, different bodies evolved and performed better. Final bodies are 3D printable. They are actuated by placing them within a pressure chamber where the pressure is sinusoidally varied. This limits their practical application. \citep{Cheney2013,Cheney2015}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{Voxel.png}
-	\caption{Soft robot constructed from voxels \cite{Cheney2013}}
+	\includegraphics[width=0.4\textwidth]{Voxel.png}
+	\caption{Soft robot constructed from voxels \citep{Cheney2013}}
 	\label{fig:vox}
 \end{figure}
 
 \subsection{Tetrahedral Meshes}
 
-In 2012, Rieffel et al applied evolutionary algorithms to soft bodies. They used NVidia's PhysX engine to model soft tetrahedral meshes. The physics engine allows for the manipulation of a material's stiffness and damping coefficient. Three properties of the bodies were used to control the evolution. The properties were the body shape, body motion, and material properties. Three different simulations were run. For each one, one of the three properties were fixed, while the other two were allowed to evolve. The mesh resolution was also manipulated. Higher resolutions allowed for smoother surfaces at the cost of computing power. The final bodies are 3D printable, but lack a simple actuation mechanism. \cite{Rieffel2013}
+In 2012, Rieffel et al applied evolutionary algorithms to soft bodies. They used NVidia's PhysX engine to model soft tetrahedral meshes. The physics engine allows for the manipulation of a material's stiffness and damping coefficient. Three properties of the bodies were used to control the evolution. The properties were the body shape, body motion, and material properties. Three different simulations were run. For each one, one of the three properties were fixed, while the other two were allowed to evolve. The mesh resolution was also manipulated. Higher resolutions allowed for smoother surfaces at the cost of computing power. The final bodies are 3D printable, but lack a simple actuation mechanism. \citep{Rieffel2013}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Mesh.png}
-	\caption{Soft robot constructed from a tetrahedral mesh \cite{Rieffel2013}}
+	\caption{Soft robot constructed from a tetrahedral mesh \citep{Rieffel2013}}
 	\label{fig:mesh}
 \end{figure}
 
 \subsection{Gaussian Mixtures}
 
-The Gaussian mixtures representation \cite{Pernkopf2005} uses a density field analogy to a level-set method. The density field is initialised as having zero density. Points of density with Gaussian falloff are added within the field. The points may have positive or negative weights. Positive weights contribute to the density, while negative weights subtract from it. If a single point was used, a solid sphere would be the thresholded result. \cite{Hiller2012}
+The Gaussian mixtures representation \citep{Pernkopf2005} uses a density field analogy to a level-set method. The density field is initialised as having zero density. Points of density with Gaussian falloff are added within the field. The points may have positive or negative weights. Positive weights contribute to the density, while negative weights subtract from it. If a single point was used, a solid sphere would be the thresholded result. \citep{Hiller2012}
 
-In 2012, Hiller and Lipson modelled soft amorphous bodies using the Gaussian mixtures representation. Gaussian points are listed in a 3D workspace. Densities and falloff ranges are associated with the points. This results in smooth, free-form shapes. Material properties are stored in the points and distributed accordingly between points. The Gaussian mixtures representation is a computationally efficient method of storing and representing complex smooth shapes. Shapes were evolved using evolutionary algorithms. The Gaussian points' coordinates, densities, falloff ranges and material indices were used as parameters of interest during evolution. \cite{Hiller2012}
+In 2012, Hiller and Lipson modelled soft amorphous bodies using the Gaussian mixtures representation. Gaussian points are listed in a 3D workspace. Densities and falloff ranges are associated with the points. This results in smooth, free-form shapes. Material properties are stored in the points and distributed accordingly between points. The Gaussian mixtures representation is a computationally efficient method of storing and representing complex smooth shapes. Shapes were evolved using evolutionary algorithms. The Gaussian points' coordinates, densities, falloff ranges and material indices were used as parameters of interest during evolution. \citep{Hiller2012}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Gauss.png}
-	\caption{Soft body represented by a Gaussian density mixture \cite{Hiller2012}}
+	\caption{Soft body represented by a Gaussian density mixture \citep{Hiller2012}}
 	\label{fig:gauss}
 \end{figure}
 
@@ -173,50 +173,50 @@ Optimization of discretely represented mathematical model problems, such as virt
 
 \subsection{Generative Design}
 
-A generative encoding is a type of encoding that specifies the construction of a phenotype. A genotype is a programmed representation of a potential individual or problem solution. A phenotype is a set of characteristics of an individual resulting from the composite of its genotypes \cite{Sims1994a}. It may scale well because of its inherent self-similar and hierarchical structure. \cite{Hornby2001b}
+A generative encoding is a type of encoding that specifies the construction of a phenotype. A genotype is a programmed representation of a potential individual or problem solution. A phenotype is a set of characteristics of an individual resulting from the composite of its genotypes \citep{Sims1994a}. It may scale well because of its inherent self-similar and hierarchical structure. \citep{Hornby2001b}
 
-An early approach to generative design used a model that encompassed the domain of all components and their possible interactions to design physical bodies with desired behaviours. This approach divided the behaviours and constructed appropriate design fragments for them. These fragments were incrementally composed until a design that obeyed the desired behaviours was obtained. \cite{Brose1993} 
+An early approach to generative design used a model that encompassed the domain of all components and their possible interactions to design physical bodies with desired behaviours. This approach divided the behaviours and constructed appropriate design fragments for them. These fragments were incrementally composed until a design that obeyed the desired behaviours was obtained. \citep{Brose1993} 
 
 \subsection{The Monte Carlo Method}
 
-The Monte Carlo method may be applied to physical problems described by systems with moderate numbers of parts. The method involves producing large numbers of results of a given problem. The relative number of successful iterations may be analysed. The method will never yield results with complete certainty. The method may yield results within certain limits with great probability. The method is well suited to generative design problems of which individual iterations are not too computationally expensive \cite{Metropolis1949}.
+The Monte Carlo method may be applied to physical problems described by systems with moderate numbers of parts. The method involves producing large numbers of results of a given problem. The relative number of successful iterations may be analysed. The method will never yield results with complete certainty. The method may yield results within certain limits with great probability. The method is well suited to generative design problems of which individual iterations are not too computationally expensive \citep{Metropolis1949}.
 
 \subsection{Evolutionary Algorithms}
 
-Evolutionary algorithms, also known as genetic algorithms, are a robust approach to solving optimization problems. They derive their name from their similarity to the evolution of biological organisms. They typically start with a randomly generated population of solutions to a given problem. Each individual solution's suitability is checked. The more suitable solutions are used to generate a new population, by "breeding" existing members of the population, and introducing some random variations. The new population is checked again, and this process is repeated for some number of generations \cite{Groenwold1999}. Evolutionary algorithms are versatile. They can be applied to the optimization of functions and the evolution of complex behaviours and bodily morphologies. They have been specifically applied to the evolution of robotic bodies for many years \cite{Sims1994a,Sims1994b}.
+Evolutionary algorithms, also known as genetic algorithms, are a robust approach to solving optimization problems. They derive their name from their similarity to the evolution of biological organisms. They typically start with a randomly generated population of solutions to a given problem. Each individual solution's suitability is checked. The more suitable solutions are used to generate a new population, by "breeding" existing members of the population, and introducing some random variations. The new population is checked again, and this process is repeated for some number of generations \citep{Groenwold1999}. Evolutionary algorithms are versatile. They can be applied to the optimization of functions and the evolution of complex behaviours and bodily morphologies. They have been specifically applied to the evolution of robotic bodies for many years \citep{Sims1994a,Sims1994b}.
 
-Evolutionary algorithms require a measure of the population's performance. Within the context of evolving simulated physical bodies, a realistic physically simulated goal is usually set. Examples include traversing the greatest distance within a set amount of time, jumping or climbing over an obstacle, or drawing another object closer to it. Fitness measures may also be implemented as survival criteria in testing, such as energy requirements, size, and complexity of the respective bodies. \cite{Sims1994a, Sims1994b}
+Evolutionary algorithms require a measure of the population's performance. Within the context of evolving simulated physical bodies, a realistic physically simulated goal is usually set. Examples include traversing the greatest distance within a set amount of time, jumping or climbing over an obstacle, or drawing another object closer to it. Fitness measures may also be implemented as survival criteria in testing, such as energy requirements, size, and complexity of the respective bodies. \citep{Sims1994a, Sims1994b}
 
-Evolutionary algorithms typically use direct encodings of solutions. They may struggle to successfully design highly complex systems using direct encodings. \cite{Hornby2001b}
+Evolutionary algorithms typically use direct encodings of solutions. They may struggle to successfully design highly complex systems using direct encodings. \citep{Hornby2001b}
 
-In 1994, Karl Sims introduced the concept of evolving three dimensional virtual bodies with the aid of evolutionary algorithms. Four simulations with different fitness evaluation functions were run. The four functions were swimming as far as possible within a limited time period, moving across a flat surface as far as possible within a limited time period, jumping as high as possible from a stationary position, and following a light source. The bodies were simply modelled. Nodes describe the rigid parts of the body, the joints between parts and their parent parts, and the set of connections they have to other nodes. Rigid parts have specific dimension. Joints have different types and limits of motion. Node connections describe a part's relationship to its parent. The bodies are described as a set of nodes. These bodies are evolved in three dimensions according to their performance against one of the simulation fitness functions using evolutionary algorithms for a number of generations. The best-performing models were inspected at the end \cite{Sims1994a}. Further tests were done where two bodies were evolved in the same environment. The bodies had to compete with each other to keep a cube as close to themselves and as far away from the other body as possible. This study investigated the effect of competition between organisms on evolution and optimisation \cite{Sims1994b}.
+In 1994, Karl Sims introduced the concept of evolving three dimensional virtual bodies with the aid of evolutionary algorithms. Four simulations with different fitness evaluation functions were run. The four functions were swimming as far as possible within a limited time period, moving across a flat surface as far as possible within a limited time period, jumping as high as possible from a stationary position, and following a light source. The bodies were simply modelled. Nodes describe the rigid parts of the body, the joints between parts and their parent parts, and the set of connections they have to other nodes. Rigid parts have specific dimension. Joints have different types and limits of motion. Node connections describe a part's relationship to its parent. The bodies are described as a set of nodes. These bodies are evolved in three dimensions according to their performance against one of the simulation fitness functions using evolutionary algorithms for a number of generations. The best-performing models were inspected at the end \citep{Sims1994a}. Further tests were done where two bodies were evolved in the same environment. The bodies had to compete with each other to keep a cube as close to themselves and as far away from the other body as possible. This study investigated the effect of competition between organisms on evolution and optimisation \citep{Sims1994b}.
 
 \subsection{Lindenmayer Systems (L-systems)}
 
-L-systems were originally conceived as a mathematical theory of plant development. They are used in theoretical biology to describe and simulate natural growth processes. They did not originally include enough detail to completely model higher-level plants. They focused on plant topology and not geometry. \cite{Kolodziej2002,Prusinkiewicz2004}
+L-systems were originally conceived as a mathematical theory of plant development. They are used in theoretical biology to describe and simulate natural growth processes. They did not originally include enough detail to completely model higher-level plants. They focused on plant topology and not geometry. \citep{Kolodziej2002,Prusinkiewicz2004}
 
-The main component of L-systems is rewriting. Rewriting is used to define complex objects by successively replacing parts (letters) of an initial, simple object (word) according to a set of rules (grammar). Grammars are applied in parallel and simultaneously replace all letters in a given word \cite{Prusinkiewicz2004}. This makes L-systems suitable for describing and generating fractal structures. Words generated by L-systems can be used as genotypes for virtual bodies \cite{Kolodziej2002}.
+The main component of L-systems is rewriting. Rewriting is used to define complex objects by successively replacing parts (letters) of an initial, simple object (word) according to a set of rules (grammar). Grammars are applied in parallel and simultaneously replace all letters in a given word \citep{Prusinkiewicz2004}. This makes L-systems suitable for describing and generating fractal structures. Words generated by L-systems can be used as genotypes for virtual bodies \citep{Kolodziej2002}.
 
-There are many variations of L-systems. Deterministic and context-free L-systems (DOL-systems) use edge rewriting to replace polygon edges with figures and node rewriting to operate on polygon vertices. Stochastic L-systems implement randomization to obtain variation in productions. A context-sensitive L-system's productions' expression may depend on its predecessors' context.  \cite{Prusinkiewicz2004}
+There are many variations of L-systems. Deterministic and context-free L-systems (DOL-systems) use edge rewriting to replace polygon edges with figures and node rewriting to operate on polygon vertices. Stochastic L-systems implement randomization to obtain variation in productions. A context-sensitive L-system's productions' expression may depend on its predecessors' context.  \citep{Prusinkiewicz2004}
 
-Original L-systems are discrete in time and space. Model states are known only at specific time intervals and only a finite number exist. Parametric L-systems allow for infinite model states due to the assignments of continuous attributes to model components. Parametric L-systems are not limited by all values being reduced to integer multiples of a unit segment. \cite{Prusinkiewicz2004}
+Original L-systems are discrete in time and space. Model states are known only at specific time intervals and only a finite number exist. Parametric L-systems allow for infinite model states due to the assignments of continuous attributes to model components. Parametric L-systems are not limited by all values being reduced to integer multiples of a unit segment. \citep{Prusinkiewicz2004}
 
-Map L-systems allow for the formation of cycles in a production. Maps are finite sets of regions. Regions are surrounded by boundaries consisting of finite, circular sequences of edges meeting at vertices. Each edge has one or two vertices associated with it (only one if the edge forms a loop). Edges cannot cross without forming a vertex. There are no vertices not associated with an edge. Every edge is part of the boundary of a region. The set of all edges is connected. \cite{Prusinkiewicz2004}
+Map L-systems allow for the formation of cycles in a production. Maps are finite sets of regions. Regions are surrounded by boundaries consisting of finite, circular sequences of edges meeting at vertices. Each edge has one or two vertices associated with it (only one if the edge forms a loop). Edges cannot cross without forming a vertex. There are no vertices not associated with an edge. Every edge is part of the boundary of a region. The set of all edges is connected. \citep{Prusinkiewicz2004}
 
-Some simulations of the branching patterns often achieved by L-systems consider the interactions among the growing features, structures and environment. This makes models more realistic and introduces some complexity. \cite{Prusinkiewicz2004}
+Some simulations of the branching patterns often achieved by L-systems consider the interactions among the growing features, structures and environment. This makes models more realistic and introduces some complexity. \citep{Prusinkiewicz2004}
 
 \subsubsection{Compositional Pattern Producing Networks (CPPN)}
 
-To obtain a solution from a space encompassing high dimensionality, an indirect encoding mapping smaller numbers of genotypes to phenotypes may be necessary. Developmental encoding incorporates elements of development as seen in biological processes over time to indirect encodings. \cite{Hornby2001}
+To obtain a solution from a space encompassing high dimensionality, an indirect encoding mapping smaller numbers of genotypes to phenotypes may be necessary. Developmental encoding incorporates elements of development as seen in biological processes over time to indirect encodings. \citep{Hornby2001}
 
-CPPNs as an encoding describe the structural relationships that would develop without having to simulate the development process. The encoding is composed of functions based on gradient patterns as found in natural embryos. CPPNs structurally resemble neural networks and can make use of existing efficient evolutionary methods used for them. \cite{Stanley2006}
+CPPNs as an encoding describe the structural relationships that would develop without having to simulate the development process. The encoding is composed of functions based on gradient patterns as found in natural embryos. CPPNs structurally resemble neural networks and can make use of existing efficient evolutionary methods used for them. \citep{Stanley2006}
 
-Features obtained from the use of CPPN-NEAT algorithms include symmetry, reuse, and preservation and elaboration of regularities. \cite{Stanley2006}
+Features obtained from the use of CPPN-NEAT algorithms include symmetry, reuse, and preservation and elaboration of regularities. \citep{Stanley2006}
 
 \section{Emergent Properties}
 
-Data base amplification is the generation of seemingly complex objects from very concise descriptions \cite{Prusinkiewicz2004}. Emergent properties occur when not all components of a given property satisfy that property. An emergent property is not satisfied by the constituent components of a system, but is satisfied by the overall system. If the required condition for a specific property to exist can be determined, it is possible to construct a system satisfying that property from components that do not satisfy that property. If the target property of a system and the property of a component is known, it can be determined if the other component can have a property that will result in the system satisfying the target property. If that property exists, it can be found. \cite{Zakinthinos1998}
+Data base amplification is the generation of seemingly complex objects from very concise descriptions \citep{Prusinkiewicz2004}. Emergent properties occur when not all components of a given property satisfy that property. An emergent property is not satisfied by the constituent components of a system, but is satisfied by the overall system. If the required condition for a specific property to exist can be determined, it is possible to construct a system satisfying that property from components that do not satisfy that property. If the target property of a system and the property of a component is known, it can be determined if the other component can have a property that will result in the system satisfying the target property. If that property exists, it can be found. \citep{Zakinthinos1998}
 
-Reactive systems consist of interconnected sub-components that are a part of structural links defining communication methods. These systems may exhibit emergent properties that are unpredictable even when complete knowledge of the systems is accessible. This implies the systems are complex in such a manner that they cannot be simplified to rules based on inferences from their properties. Knowledge of the rules of interactions between the sub-components is also necessary. \cite{Aiguier2008}
+Reactive systems consist of interconnected sub-components that are a part of structural links defining communication methods. These systems may exhibit emergent properties that are unpredictable even when complete knowledge of the systems is accessible. This implies the systems are complex in such a manner that they cannot be simplified to rules based on inferences from their properties. Knowledge of the rules of interactions between the sub-components is also necessary. \citep{Aiguier2008}
 
-Emergent properties are sometimes encountered with generative design. Emergent properties may be complex behaviours that are difficult to predict \cite{Aiguier2008} and challenging to understand initially, that arise from the combination of the simple elements and rules used to construct the generative design algorithms. For example, virtually evolved bodies may end up being complexly constructed in such a way that the methods of completing their objectives are not initially obvious \cite{Damper2000}. These emergent properties are desirable, as one advantage of generative design processes is that they may arrive at original and unique designs that may be extremely difficult for a human to arrive at \cite{Sims1994a}. 
+Emergent properties are sometimes encountered with generative design. Emergent properties may be complex behaviours that are difficult to predict \citep{Aiguier2008} and challenging to understand initially, that arise from the combination of the simple elements and rules used to construct the generative design algorithms. For example, virtually evolved bodies may end up being complexly constructed in such a way that the methods of completing their objectives are not initially obvious \citep{Damper2000}. These emergent properties are desirable, as one advantage of generative design processes is that they may arrive at original and unique designs that may be extremely difficult for a human to arrive at \citep{Sims1994a}. 
