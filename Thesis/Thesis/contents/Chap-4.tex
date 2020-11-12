@@ -3,4 +3,118 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+This chapter illustrates results obtained from sample simulations of large populations of units according to the outlined unit generation methods in Section~ and the analysis approaches outlined in Section~. The software pipeline described in Section~ was used to generate the units and obtain the results.
 
+Table~\ref{tab:defpar} contains the default parameter values. Unless specified otherwise, parameters were set to the values in Table~\ref{tab:defpar}. Additional parameters for evolutionary algorithms are included in Table~\ref{tab:eaeventpar}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{Default simulation parameter values}
+\label{tab:defpar}
+\begin{tabular}{@{}lc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Parameter}} & \textbf{Value}                 \\ \midrule
+\textit{n\_u}                          & 1000                           \\
+\textit{y\_e}                          & 15                             \\
+\textit{e\_s}                          & 10                             \\
+\textit{b}                             & 3                              \\
+\textit{n\_steps}                      & 5                              \\
+\textit{d\_mag}                        & $\frac{y\_e\times e\_s}{2}=75$ \\
+\textit{p\_mag}                        & 0.025                          \\ \midrule
+\multicolumn{2}{c}{\textbf{Monte Carlo Analysis}}                       \\ \midrule
+\textit{n\_u}                          & 1000                           \\ \midrule
+\multicolumn{2}{c}{\textbf{Evolutionary Algorithm}}                     \\ \midrule
+\textit{n\_u}                          & 50                             \\
+\textit{gen}                           & 50                             \\ \bottomrule
+\end{tabular}
+\end{table}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{Evolutionary algorithm event parameter values}
+\label{tab:eaeventpar}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Event}} & \textbf{Probability (\%)} & \textbf{\begin{tabular}[c]{@{}c@{}}Potential Number\\ of Occurences\end{tabular}} \\ \midrule
+Crossover       & 50 & 1 \\
+Random mutation & 10 & 2 \\
+Biased mutation & 50 & 2 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Random Unit Generation}
+
+\subsection{Monte Carlo Analysis}
+
+Parameter ranges are outlined in Table~\ref{tab:ranmc}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{Random unit generation parameters for a Monte Carlo analysis}
+\label{tab:ranmc}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Parameter}} & \textbf{Minimum} & \textbf{Maximum} \\ \midrule
+Seed                                   & 1                & 1000             \\
+Number of elements removed             & 0                & 81               \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Figures~ and ~ represent the relationships between the parameters in Table~\ref{tab:ranmc} and the score as calculated in Section~.
+
+\section{L-System Unit Generation}
+
+\subsection{Monte Carlo Analysis}
+
+Parameter ranges are outlined in Table~\ref{tab:lsmc}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{L-System unit generation parameters for a Monte Carlo analysis}
+\label{tab:lsmc}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Parameter}} & \textbf{Minimum} & \textbf{Maximum} \\ \midrule
+Seed                                   & 1                & 1000             \\
+Axiom ID                               & 1                & 12               \\
+Number of rules                        & 1                & 4                \\
+Rule length                            & 2                & 5                \\
+Number of iterations                   & 1                & 5                \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Figures~ to ~ represent the relationships between the parameters in Table~\ref{tab:lsmc} and the score as calculated in Section~.
+
+\section{CPPN Unit Generation}
+
+\subsection{Monte Carlo Analysis}
+
+Parameter ranges are outlined in Table~\ref{tab:cppnmc}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{CPPN unit generation parameters for a Monte Carlo analysis}
+\label{tab:cppnmc}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Parameter}} & \textbf{Minimum} & \textbf{Maximum} \\ \midrule
+Seed                                   & 1                & 1000             \\
+Model ID                               & 1                & N/A              \\
+Scale                                  & 1                & N/A              \\
+Number of hidden layers                & 2                & 10               \\
+Size of the initial hidden layer       & 2                & 32               \\
+Element removal threshold              & 0                & 100              \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Figures~ to ~ represent the relationships between the parameters in Table~\ref{tab:cppnmc} and the score as calculated in Section~.

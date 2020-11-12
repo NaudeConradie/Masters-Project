@@ -56,7 +56,7 @@ def main():
     a_meth = "g"
 
     #   Genetic algorithm parameters
-    gen = 3
+    gen = 5
     prob = [0.5, 0.1, 0.5]
     point = [1, 2, 2]
 

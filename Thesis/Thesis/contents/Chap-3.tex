@@ -475,13 +475,17 @@ All children are added to the population list. The new population list is used t
 
 \section{FEM}
 
+A FEM analysis of material behaviour is implemented. Licensed and maintained FEM software is readily available. As per Section~\ref{sec:SaA}, original FEM code will not be implemented to reduce the scope of the project.
+
 \subsection{Template}
 
-The generative design approach as discussed in Section~\ref{sec:GD} requires large populations of similar units to be created and run. The units need to be similar to meaningfully draw comparisons between them and select the best performing units. A template unit is created containing all necessary and non-unique specifications. The template has all appropriate FEM settings applied. The template can be altered according to the specified unit generation method.
+The generative design approach as discussed in Section~\ref{sec:GD} requires large populations of similar units to be created and run. The units need to be similar to meaningfully draw comparisons between them and select the best performing units. A template unit is created containing all necessary and non-unique specifications. The template can be altered according to the specified unit generation method.
 
-The template is a 2D grid of square elements. 2D quad shell elements are used. The template has boundary conditions applied causing deformation according to a specified case. Cases are outlined in Section~\ref{sec:UC}.
+The template has all appropriate FEM settings applied. The template is a 2D grid of square elements. 2D quad shell elements, each having four nodes, are used. Plane strain geometrical properties are applied to all elements. A single contact body is defined containing all elements. Material properties are added to all elements according to the Ogden material model. Mold Star 15's Ogden material model parameters as per Table~\ref{tab:ogdpar} are applied.
 
-Template parameters need to be specified by the user. Relevant template parameters include:
+The template has boundary conditions applied causing deformation according to a specified case. Cases are outlined in Section~\ref{sec:UC}. Forced displacement boundary conditions are applied to relevant nodes. Displacement magnitudes are either 0 or a desired magnitude applied according to a table. The table used is defined as a simple $y=x$ function across the interval \SI{0}{\second} to \SI{1}{\second}.
+
+Certain template parameters need to be specified by the user. Relevant template parameters include:
 
 \begin{itemize}
 	\item \textit{case} - The template case identifier
@@ -536,6 +540,8 @@ Mechanical planar strain geometric properties are added to all elements. The Ogd
 The template is saved at this point. All units created during a simulation are built from this template. The template job is run and its success evaluated. The process of running a simulation and evaluating its success is outlined in Section~\ref{ssec:run}.
 
 The template model is saved again. Meaningful template parameters and data obtained from the template is written in a human-readable manner to a log file. The template class object is saved to a file that can be accessed later.
+
+\section{Unit Simulations}
 
 \section{Unit Deformation Cases}
 \label{sec:UC}
@@ -736,11 +742,11 @@ The software pipeline is complex, and many components are interrelated. Details 
 
 The Finite Element Method (FEM) is an approach to numerically solving field problems. Field problems require the determination of one or more dependent variables' distribution in space. Field problems are mathematically described with differential equations or integral expressions. Finite elements can be expressed as small parts of a larger body. A field quantity within an element may only have a simple spatial variation, such as being described by polynomial terms no higher than the second order. FEM differs from calculus as calculus uses infinitesimal elements. FEM thus delivers approximate solutions. \citep{Cook2002}
 
-Several commercial FEM software packages capable of realistically modeling soft bodies are available. LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \citep{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \citep{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modeling and analysis. It has an extensive set of options available for post-processing \citep{MSC}. MSC.Marc Mentat 2019 is selected for this project.
+Several commercial FEM software packages capable of realistically modeling soft bodies are available. LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \citep{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \citep{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modeling and analysis. It has an extensive set of options available for post-processing \citep{MSC}.
+
+MSC.Marc Mentat 2019 is selected for this project. Marc Mentat is actively maintained and updated. Tutorials and reference manuals are built into the software. Support is available if issues are encountered or for any other reason. Limitations include the necessity of having continuous access to a license server. An official VPN configuration as well as remote desktop tools allowed for access to the software as long as a network connection could be established.
 
 Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python.
-
-
 
 \subsection{Analysis Approach}
 
