@@ -494,7 +494,7 @@ def disp_fit_1(
         d_a.append(a[0])
 
     #   Calculate the height to width ratio
-    h_w = (d_a[1] - d_a[1])/(d_a[3] - d_a[2])
+    h_w = (d_a[1] - d_a[0])/(d_a[3] - d_a[2])
 
     #   Check if the deformed width is larger than the original width
     if abs(d_a[3] - d_a[2]) >= template.x_s:

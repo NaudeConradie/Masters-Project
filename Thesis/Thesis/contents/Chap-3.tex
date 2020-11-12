@@ -57,7 +57,7 @@ Compliant and elastic materials are commonly used in the construction of soft ro
 % \usepackage{multirow}
 \begin{table}[H]
 \centering
-\caption{Silicon-based rubber Ogden material model parameters \citep{Ellis2020}}
+\caption[Ogden material model parameters]{Silicon-based rubber Ogden material model parameters \citep{Ellis2020}}
 \label{tab:ogdpar}
 \begin{tabular}{@{}crrr@{}}
 \toprule
@@ -81,7 +81,7 @@ Mold Star 15 SLOW is selected as the main material to be digitally modelled and 
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
-\caption{Additional Mold Star 15 SLOW material properties \citep{MoldStar}}
+\caption[Mold Star 15 material properties]{Additional Mold Star 15 SLOW material properties \citep{MoldStar}}
 \label{tab:msp}
 \begin{tabular}{@{}lr@{}}
 \toprule
@@ -137,8 +137,8 @@ The L-System vocabulary is defined as a class object in the Python code. The voc
 \textbf{Variable} & \multicolumn{1}{c}{\textbf{Interpretation}}             \\ \midrule
 F & \begin{tabular}[c]{@{}l@{}}Create an element at the current position and increment\\ the current position in the current direction\end{tabular} \\
 f                 & Increment the current position in the current direction \\
-+                 & Rotate the current direction by 45\textdegree  clockwise           \\
--                 & Rotate the current direction by 45\textdegree  counterclockwise    \\ \bottomrule
++                 & Rotate the current direction by \SI{45}{\degree} clockwise           \\
+-                 & Rotate the current direction by \SI{45}{\degree} counterclockwise    \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -163,13 +163,13 @@ Randomly generated L-Systems are manipulated using a random generation seed. Ran
 
 At least one L-System rule must be defined. This rule must apply to the variable "F" and must itself contain at least one instance of the letter "F". Up to three additional rules may be defined, one for each of the remaining variables.
 
-Rule components are selected from a predefined list included in Table~\ref{tab:lsrulecom}. Rule components were selected for various reasons. Rule components containing more than one character allow for variability in rule length. Rule components containing two identical directional variables specify 90\textdegree rotations. Rule components enclosed within square brackets allow for branches to exist within the L-System.
+Rule components are selected from a predefined list included in Table~\ref{tab:lsrulecom}. Rule components were selected for various reasons. Rule components containing more than one character allow for variability in rule length. Rule components containing two identical directional variables specify \SI{90}{\degree} rotations. Rule components enclosed within square brackets allow for branches to exist within the L-System.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
-\caption{L-System rule components and their interpretations}
+\caption[L-System rule components]{L-System rule components and their interpretations}
 \label{tab:lsrulecom}
 \begin{tabular}{@{}ccl@{}}
 \toprule
@@ -184,16 +184,16 @@ Rule components are selected from a predefined list included in Table~\ref{tab:l
   \begin{tabular}[c]{@{}l@{}}Increment the current position in the current\\ direction\end{tabular} \\
 3 &
   + &
-  Rotate the current direction by 45\textdegree  clockwise \\
+  Rotate the current direction by \SI{45}{\degree}  clockwise \\
 4 &
   - &
-  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by 45\textdegree\\ counterclockwise\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by \SI{45}{\degree}\\ counterclockwise\end{tabular} \\
 5 &
   ++ &
-  Rotate the current direction by 90\textdegree  clockwise \\
+  Rotate the current direction by \SI{90}{\degree}  clockwise \\
 6 &
   -- &
-  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by 90\textdegree\\ counterclockwise\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by \SI{90}{\degree}\\ counterclockwise\end{tabular} \\
 7 &
   fF &
   2, then 1 \\
@@ -246,7 +246,7 @@ Negative diagonal & -{[}F{]}++++{[}F{]}  & -{[}F{]}++++(F)  \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{LSSym.png}
-	\caption{L-System symmetry interpretation reference layout}
+	\caption[L-System symmetry reference]{L-System symmetry interpretation reference layout}
 	\label{fig:lssymex}
 \end{figure}
 
@@ -323,7 +323,7 @@ Negative diagonal & -{[}F{]}++++{[}F{]}  & -{[}F{]}++++(F)  \\
 		\includegraphics[width=\textwidth]{LSSymRefDND.png}
 		\caption{Diagonal and negative diagonal reflection}
 	\end{subfigure}
-	\caption{L-System interpretation of symmetry axioms according to Figure~\ref{fig:lssymex}. Axes of symmetry are indicated with dotted lines}
+	\caption[L-System symmetry interpretations]{L-System interpretation of symmetry axioms according to Figure~\ref{fig:lssymex}. Axes of symmetry are indicated with dotted lines}
 	\label{fig:lssym}
 \end{figure}
 
@@ -335,12 +335,12 @@ The final word is interpreted according to the specified internal dimensions of 
 
 The number of open round brackets in the word is counted. For every open round bracket, the first subsequent closed round bracket is identified. Each string segment starting and ending with an open and closed round bracket is extracted. The round brackets are replaced with the equivalent square brackets. Pluses and minuses are swapped to invert all directional changes within the round brackets. This allows for reflection symmetry conditions to be applied. The original string segment is replaced with the adjusted string segment.
 
-Every character in the word is interpreted from the initial character. The interpretation applies to a grid of squares identified by x- and y-coordinates. The origin square is defined by the coordinates (0, 0). Positive and negative directions are applied as per standard convention. The interpretation starts at the origin with the direction at 0\textdegree, i.e. in the positive y-direction.
+Every character in the word is interpreted from the initial character. The interpretation applies to a grid of squares identified by x- and y-coordinates. The origin square is defined by the coordinates $\left (0,0  \right )$. Positive and negative directions are applied as per standard convention. The interpretation starts at the origin with the direction at \SI{0}{\degree}, i.e. in the positive y-direction.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{LSOrigin.png}
-	\caption{Example 5x5 grid for L-System interpretation indicating the origin and orientation. The current position is outlined.}
+	\caption[L-System origin and orientation]{Example 5x5 grid for L-System interpretation indicating the origin and orientation. The current position is outlined.}
 	\label{fig:lso}
 \end{figure}
 
@@ -361,11 +361,11 @@ If the character is "f", the procedure is identical to the procedure for the cha
 		\includegraphics[width=\textwidth]{LSfsmall.png}
 		\caption{Interpretation of "f" from the origin.}
 	\end{subfigure}
-	\caption{L-System interpretation of movement variables}
+	\caption[L-System movement interpretation]{L-System interpretation of movement variables}
 	\label{fig:lsmove}
 \end{figure}
 
-If the character is "+", the current direction is incremented by 45\textdegree. If the character is "-", the current direction is decremented by 45\textdegree.
+If the character is "+", the current direction is incremented by \SI{45}{\degree}. If the character is "-", the current direction is decremented by \SI{45}{\degree}.
 
 \begin{figure}[H]
 	\centering
@@ -380,7 +380,7 @@ If the character is "+", the current direction is incremented by 45\textdegree. 
 		\includegraphics[width=\textwidth]{LS-.png}
 		\caption{Interpretation of "-" from the origin}
 	\end{subfigure}
-	\caption{L-System interpretation of rotational variables}
+	\caption[L-System rotation interpretation]{L-System interpretation of rotational variables}
 	\label{fig:lsrot}
 \end{figure}
 
@@ -485,63 +485,15 @@ The template has all appropriate FEM settings applied. The template is a 2D grid
 
 The template has boundary conditions applied causing deformation according to a specified case. Cases are outlined in Section~\ref{sec:UC}. Forced displacement boundary conditions are applied to relevant nodes. Displacement magnitudes are either 0 or a desired magnitude applied according to a table. The table used is defined as a simple $y=x$ function across the interval \SI{0}{\second} to \SI{1}{\second}.
 
-Certain template parameters need to be specified by the user. Relevant template parameters include:
+Certain template parameters need to be specified by the user. These parameters are detailed in Section~\ref{ssec:init}. Once the user-specified parameters have been applied, the template may be created. Template creation is described in Section~\ref{ssec:tempcr}.
 
-\begin{itemize}
-	\item \textit{case} - The template case identifier
-	\item \textit{x\_e} - The number of elements in the x-direction 
-	\item \textit{y\_e} - The number of elements in the y-direction
-	\item \textit{e\_s} - The side length of the element in mm
-	\item \textit{b} - The number of elements reserved for the unit boundary width
-	\item \textit{ogd\_mat} - The Ogden material model parameters
-	\item \textit{n\_steps} - The number of analysis steps in the second of analysis
-	\item \textit{table\_name} - The name of the function applied to the template
-	\item \textit{d\_mag} - The applied displacement in mm
-	\item \textit{p\_mag} - The applied internal pressure in MPa
-\end{itemize}
+\subsection{Unit Simulations}
 
-The template case identifier refers to one of three deformation cases applied to the template. These cases are discussed in detail in Section~\ref{sec:UC}.
+Units are altered templates. Units have some internal elements removed. It is assumed that units are actuated by an internal pressure. Internal pressures are applied in the FEM models by edge loads perpendicular to all internal edges which have no neighbouring elements. Figure~ illustrates the internal pressure boundary conditions as applied by the software pipeline.
 
-The user-specified template parameters are used to define a template class object. The template class object calculates more parameters used in the construction of the template. The relevant calculated parameters are outlined in Table~\ref{tab:tempcalcpar}.
+Units are not expected to be utilised independently. It is assumed that multiple units will be arranged together in grid-like patterns to construct actuators with desirable behaviours. Units are thus not modelled in isolation. Units are copied to create a $5\times 5$ grid of identical units. Figure~ illustrates a single unit and the $5\times 5$ grid created from it. Only the central unit is considered during analysis of the results. The central unit is assumed to be representative of a typical unit in a large arrangement.
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[H]
-\centering
-\begin{tabular}{@{}lcl@{}}
-\toprule
-\textbf{Variable}    & \multicolumn{1}{l}{\textbf{Formula}} & \textbf{Description}                                                                                      \\ \midrule
-\textit{x\_s}        & $e\_s\times x\_e$                    & \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in mm in the x-direction\end{tabular}        \\
-\textit{y\_s}        & $e\_s\times y\_e$                    & \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in mm in the y-direction\end{tabular}        \\
-\textit{ogd\_mat}    &                                      & \begin{tabular}[c]{@{}l@{}}The non-linear Ogden material\\ model\end{tabular}                             \\
-\textit{x\_n}        & $x\_e+1$                             & \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ x-direction\end{tabular}                          \\
-\textit{y\_n}        & $y\_e+1$                             & \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ y-direction\end{tabular}                          \\
-\textit{n\_e}        & $x\_e\times y\_e$                    & \begin{tabular}[c]{@{}l@{}}The total number of elements\\ in the template\end{tabular}                    \\
-\textit{n\_n}        & $x\_n\times y\_n$                    & \begin{tabular}[c]{@{}l@{}}The total number of nodes in the\\ template\end{tabular}                       \\
-\textit{e\_internal} &                                      & \begin{tabular}[c]{@{}l@{}}The list of internal element IDs\\ that are allowed to be removed\end{tabular} \\
-\textit{n\_external} &                                      & The list of external node IDs                                                                             \\
-\textit{t\_id} &
-  \begin{tabular}[c]{@{}c@{}}\textless{}\textit{case}\textgreater{}\_\textless{}\textit{x\_e}\textgreater{}x\textless{}\textit{y\_e}\textgreater\\ \_\textless{}\textit{x\_s}\textgreater{}x\textless{}\textit{y\_s}\textgreater{}\end{tabular} &
-  The template ID \\
-\textit{grid}        &                                      & A representative grid of ones                                                                             \\ \bottomrule
-\end{tabular}
-\caption{Calculated and internal template class object parameters}
-\label{tab:tempcalcpar}
-\end{table}
-
-The template is then created in MarcMentat. The nodes are created starting at the global origin on the XY-plane. The nodes are incrementally added in the positive x-direction. The nodes are spaced apart as defined by \textit{e\_s}. Once a row of nodes is completed as defined by \textit{x\_n}, the y-coordinate is positively incremented as defined by \textit{e\_s}. A new row of nodes is created. This process is repeated until completed as defined by \textit{y\_n}.
-
-Four nodes are used to make square 2D elements. Starting at the global origin, elements are incrementally added in the x-direction until completed as defined by \textit{x\_e}. All rows are added until completed as defined by \textit{y\_e}.
-
-The graph used to apply the boundary conditions is defined. The boundary conditions are applied according to the case identifier. The boundary conditions related to each case are detailed in Section~\ref{sec:UC}.
-
-Mechanical planar strain geometric properties are added to all elements. The Ogden material model for Mold-Star 15 is applied to all elements. A single contact body is defined containing all elements. The loadcase containing the fixed and forced displacement boundary conditions is created. The job for the loadcase is created.
-
-The template is saved at this point. All units created during a simulation are built from this template. The template job is run and its success evaluated. The process of running a simulation and evaluating its success is outlined in Section~\ref{ssec:run}.
-
-The template model is saved again. Meaningful template parameters and data obtained from the template is written in a human-readable manner to a log file. The template class object is saved to a file that can be accessed later.
-
-\section{Unit Simulations}
+Fixed boundary conditions are applied to prevent rigid body modes. The four outermost nodes of the $5\times 5$ grid arrangement are fixed in the x- and y-direction.
 
 \section{Unit Deformation Cases}
 \label{sec:UC}
@@ -564,11 +516,11 @@ Case 1 is a case of uniaxial elongation as defined by Kim \citep{Kim2015}. This 
 \textit{bc\_fd\_xx1} & Left edge   & Fixed               & x \\
 \textit{bc\_fd\_xx2} & Right edge  & Fixed               & x \\ \bottomrule
 \end{tabular}
-\caption{Uniaxial elongation boundary conditions \citep{Kim2015}}
+\caption[Uniaxial elongation boundary conditions]{Uniaxial elongation boundary conditions \citep{Kim2015}}
 \label{tab:c1}
 \end{table}
 
-The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c1def}. The original shape is outlined in pink.
+The boundary conditions as applied in Marc Mentat to a template of $5\times 5$ elements are illustrated in Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c1def}.
 
 \begin{figure}[H]
 	\centering
@@ -582,10 +534,10 @@ The boundary conditions as applied in Marc Mentat to a template of 5x5 elements 
 	\begin{subfigure}[b]{0.4\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{C1Def.png}
-		\caption{Resulting deformation of uniaxial elongation}
+		\caption{Resulting deformation of uniaxial elongation. The original shape is outlined in pink.}
 		\label{fig:c1def}
 	\end{subfigure}
-	\caption{Uniaxial elongation boundary conditions and resulting deformation}
+	\caption[Uniaxial elongation boundary conditions and deformation]{Uniaxial elongation boundary conditions and resulting deformation.}
 	\label{fig:c1}
 \end{figure}
 
@@ -611,7 +563,7 @@ Case 2 is a case of biaxial elongation. Four boundary conditions are applied. Th
 \label{tab:c2}
 \end{table}
 
-The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c2bc}. The boundary conditions are visually identical to Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c2def}. The original shape is outlined in pink.
+The boundary conditions as applied in Marc Mentat to a template of $5\times 5$ elements are illustrated in Figure~\ref{fig:c2bc}. The boundary conditions are visually identical to Figure~\ref{fig:c1bc}. The resulting deformation is illustrated in Figure~\ref{fig:c2def}.
 
 \begin{figure}[H]
 	\centering
@@ -628,7 +580,7 @@ The boundary conditions as applied in Marc Mentat to a template of 5x5 elements 
 		\caption{Resulting deformation of biaxial elongation}
 		\label{fig:c2def}
 	\end{subfigure}
-	\caption{Biaxial elongation boundary conditions and resulting deformation}
+	\caption[Biaxial elongation boundary conditions and deformation]{Biaxial elongation boundary conditions and resulting deformation}
 	\label{fig:c2}
 \end{figure}
 
@@ -650,11 +602,11 @@ Case 3 is a case of pure shear as defined by Kim \citep{Kim2015}. This case has 
 \textit{bc\_fd\_yx1} & Left edge   & Fixed               & y \\
 \textit{bc\_fd\_yx2} & Right edge  & Fixed				 & y \\ \bottomrule
 \end{tabular}
-\caption{Pure shear boundary conditions \citep{Kim2015}}
+\caption[Pure shear boundary conditions]{Pure shear boundary conditions \citep{Kim2015}}
 \label{tab:c3}
 \end{table}
 
-The boundary conditions as applied in Marc Mentat to a template of 5x5 elements are illustrated in Figure~\ref{fig:c3bc}. The resulting deformation is illustrated in Figure~\ref{fig:c3def}. The original shape is outlined in pink.
+The boundary conditions as applied in Marc Mentat to a template of $5\times 5$ elements are illustrated in Figure~\ref{fig:c3bc}. The resulting deformation is illustrated in Figure~\ref{fig:c3def}.
 
 \begin{figure}[H]
 	\centering
@@ -671,11 +623,70 @@ The boundary conditions as applied in Marc Mentat to a template of 5x5 elements 
 		\caption{Resulting deformation of pure shear}
 		\label{fig:c3def}
 	\end{subfigure}
-	\caption{Pure shear boundary conditions and resulting deformation}
+	\caption[Pure shear boundary conditions and deformation]{Pure shear boundary conditions and resulting deformation}
 	\label{fig:c3}
 \end{figure}
 
 This case has applications in causing angular deformation. Multiple units combined and oriented in the same direction would result in an angular actuator. Combining multiple actuators could result in curling actuators or actuators with more complex behaviours.
+
+\subsection{Objective Functions}
+
+To enable the software pipeline to identify well-performing units according to the given template deformation case, objective functions unique to each case must be defined. If cases are added to the software pipeline, objective functions must be added for them as well.
+
+For case 1, it is desired that the unit elongate while its width remains constant. Two objective functions are identified. The objective function defining elongation is
+
+\begin{equation}
+	f=\frac{h}{w}
+\end{equation}
+
+Where
+
+\begin{itemize}
+	\item $f$ is the objective function value
+	\item $h$ is the height of the unit
+	\item $w$ is the width of the unit
+\end{itemize}
+
+The objective function defining constant width is
+
+\begin{equation}
+	f=\max\left (\frac{w}{w_{t}},\frac{w_{t}}{w} \right )
+\end{equation}
+
+Where
+
+\begin{itemize}
+	\item $w_{t}$ is the width of the template
+\end{itemize}
+
+It is desired to maximise both of these functions.
+
+For case 2, it is desired that the unit retains its shape while enlarging. Retaining its shape implies that the height to width ratio remains as close to 1 as possible and that the outer sides remain as straight as possible. Two objective functions are identified. The objective function defining retaining the height to width ratio is
+
+\begin{equation}
+	f=\left | h-w \right |
+\end{equation}
+
+The objective function defining the outer sides remaining straight is
+
+\begin{equation}
+	f=\sum_{i=1}^{4}H_{d}\left ( s_{t,i},s_{i} \right )
+\end{equation}
+
+Where
+
+\begin{itemize}
+	\item $s_{t}$ is the set of node coordinates of a side of the template
+	\item $s$ is the set of node coordinates of a side of the unit
+	\item $H_{d}\left ( x,y \right )$ is the Hausdorff distance as defined in Section~\ref{ssec:Hd}
+\end{itemize}
+
+It is desired to minimize both of these functions.
+
+An objective function regarding the enlargement is not defined. The same pressure is applied to all units regardless of the number of elements removed. Units with more elements removed have more edge loads applied. Each edge load is a pressure load of the same magnitude. Elements with more internal edges will have higher total pressures applied and will enlarge more. This would be an unfair objective function compared to the other two selected objective functions. A unit with all internal elements removed may enlarge by a comparatively bigger factor than another element retains its shape, and thus outrank it.
+
+\subsubsection{Hausdorff Distance}
+\label{ssec:Hd}
 
 \section{Model Validation}
 \label{sec:TP}
@@ -747,6 +758,68 @@ Several commercial FEM software packages capable of realistically modeling soft 
 MSC.Marc Mentat 2019 is selected for this project. Marc Mentat is actively maintained and updated. Tutorials and reference manuals are built into the software. Support is available if issues are encountered or for any other reason. Limitations include the necessity of having continuous access to a license server. An official VPN configuration as well as remote desktop tools allowed for access to the software as long as a network connection could be established.
 
 Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python.
+
+\subsection{Initialisation}
+\label{ssec:init}
+
+Relevant template parameters include:
+
+\begin{itemize}
+	\item \textit{case} - The template case identifier
+	\item \textit{x\_e} - The number of elements in the x-direction 
+	\item \textit{y\_e} - The number of elements in the y-direction
+	\item \textit{e\_s} - The side length of the element in mm
+	\item \textit{b} - The number of elements reserved for the unit boundary width
+	\item \textit{ogd\_mat} - The Ogden material model parameters
+	\item \textit{n\_steps} - The number of analysis steps in the second of analysis
+	\item \textit{table\_name} - The name of the function applied to the template
+	\item \textit{d\_mag} - The applied displacement in mm
+	\item \textit{p\_mag} - The applied internal pressure in MPa
+\end{itemize}
+
+The template case identifier refers to one of three deformation cases applied to the template. These cases are discussed in detail in Section~\ref{sec:UC}.
+
+The user-specified template parameters are used to define a template class object. The template class object calculates more parameters used in the construction of the template. The relevant calculated parameters are outlined in Table~\ref{tab:tempcalcpar}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcl@{}}
+\toprule
+\textbf{Variable}    & \multicolumn{1}{l}{\textbf{Formula}} & \textbf{Description}                                                                                      \\ \midrule
+\textit{x\_s}        & $e\_s\times x\_e$                    & \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in mm in the x-direction\end{tabular}        \\
+\textit{y\_s}        & $e\_s\times y\_e$                    & \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in mm in the y-direction\end{tabular}        \\
+\textit{ogd\_mat}    &                                      & \begin{tabular}[c]{@{}l@{}}The non-linear Ogden material\\ model\end{tabular}                             \\
+\textit{x\_n}        & $x\_e+1$                             & \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ x-direction\end{tabular}                          \\
+\textit{y\_n}        & $y\_e+1$                             & \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ y-direction\end{tabular}                          \\
+\textit{n\_e}        & $x\_e\times y\_e$                    & \begin{tabular}[c]{@{}l@{}}The total number of elements\\ in the template\end{tabular}                    \\
+\textit{n\_n}        & $x\_n\times y\_n$                    & \begin{tabular}[c]{@{}l@{}}The total number of nodes in the\\ template\end{tabular}                       \\
+\textit{e\_internal} &                                      & \begin{tabular}[c]{@{}l@{}}The list of internal element IDs\\ that are allowed to be removed\end{tabular} \\
+\textit{n\_external} &                                      & The list of external node IDs                                                                             \\
+\textit{t\_id} &
+  \begin{tabular}[c]{@{}c@{}}\textless{}\textit{case}\textgreater{}\_\textless{}\textit{x\_e}\textgreater{}x\textless{}\textit{y\_e}\textgreater\\ \_\textless{}\textit{x\_s}\textgreater{}x\textless{}\textit{y\_s}\textgreater{}\end{tabular} &
+  The template ID \\
+\textit{grid}        &                                      & A representative grid of ones                                                                             \\ \bottomrule
+\end{tabular}
+\caption[Template parameters]{Calculated and internal template class object parameters}
+\label{tab:tempcalcpar}
+\end{table}
+
+\subsection{Template Creation}
+\label{ssec:tempcr}
+
+The template is then created in MarcMentat. The nodes are created starting at the global origin on the XY-plane. The nodes are incrementally added in the positive x-direction. The nodes are spaced apart as defined by \textit{e\_s}. Once a row of nodes is completed as defined by \textit{x\_n}, the y-coordinate is positively incremented as defined by \textit{e\_s}. A new row of nodes is created. This process is repeated until completed as defined by \textit{y\_n}.
+
+Four nodes are used to make square 2D elements. Starting at the global origin, elements are incrementally added in the x-direction until completed as defined by \textit{x\_e}. All rows are added until completed as defined by \textit{y\_e}.
+
+The graph used to apply the boundary conditions is defined. The boundary conditions are applied according to the case identifier. The boundary conditions related to each case are detailed in Section~\ref{sec:UC}.
+
+Mechanical planar strain geometric properties are added to all elements. The Ogden material model for Mold-Star 15 is applied to all elements. A single contact body is defined containing all elements. The loadcase containing the fixed and forced displacement boundary conditions is created. The job for the loadcase is created.
+
+The template is saved at this point. All units created during a simulation are built from this template. The template job is run and its success evaluated. The process of running a simulation and evaluating its success is outlined in Section~\ref{ssec:run}.
+
+The template model is saved again. Meaningful template parameters and data obtained from the template is written in a human-readable manner to a log file. The template class object is saved to a file that can be accessed later.
 
 \subsection{Analysis Approach}
 
@@ -836,7 +909,7 @@ Scale &
   \begin{tabular}[c]{@{}l@{}}The complete range of elements which\\ may potentially be removed is included\end{tabular} \\ \bottomrule
 \end{tabular}%
 }
-\caption{Unit generation method parameter ranges and motivations}
+\caption[Unit generation method parameter ranges]{Unit generation method parameter ranges and motivations}
 \label{tab:ungenmethpar}
 \end{table}
 
@@ -871,7 +944,7 @@ L-System class object parameters are
 \subsection{Running a Job}
 \label{ssec:run}
 
-The command to run the job is sent to Marc Mentat. Jobs may take anywhere from 0.01 seconds to 300 seconds to complete. This depends on the complexity of the model and the number of cut-backs during calculation required to accurately solve for the model behavior.
+The command to run the job is sent to Marc Mentat. Jobs may take anywhere from \SI{0.01}{\second} to \SI{300}{\second} to complete. This depends on the complexity of the model and the number of cut-backs during calculation required to accurately solve for the model behavior.
 
 Marc Mentat creates several files during the process of running a job. The log file specifies the exit condition of the job. The log file is not created at the start of the job.
 
