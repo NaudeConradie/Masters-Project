@@ -3,7 +3,7 @@
 #   Imports
 import math
 import matplotlib.pyplot as plot
-import seaborn
+# import seaborn
 
 from evolve_soft_2d import file_paths
 
