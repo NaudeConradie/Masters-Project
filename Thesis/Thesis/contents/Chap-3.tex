@@ -475,7 +475,7 @@ All children are added to the population list. The new population list is used t
 
 \section{FEM}
 
-A FEM analysis of material behaviour is implemented. Licensed and maintained FEM software is readily available. As per Section~\ref{sec:SaA}, original FEM code will not be implemented to reduce the scope of the project.
+A FEM analysis of material behaviour is implemented. Licensed and maintained FEM software is readily available. As per Section~\ref{sec:SaA}, original FEM code will not be implemented to limit the scope of the project.
 
 \subsection{Template}
 
@@ -489,11 +489,25 @@ Certain template parameters need to be specified by the user. These parameters a
 
 \subsection{Unit Simulations}
 
-Units are altered templates. Units have some internal elements removed. It is assumed that units are actuated by an internal pressure. Internal pressures are applied in the FEM models by edge loads perpendicular to all internal edges which have no neighbouring elements. Figure~ illustrates the internal pressure boundary conditions as applied by the software pipeline.
+Units are altered templates. Units have some internal elements removed. It is assumed that units are actuated by an internal pressure. Internal pressures are applied in the FEM models by edge loads perpendicular to all internal edges which have no neighbouring elements. Figure~\ref{fig:uip} illustrates the internal pressure boundary conditions as applied by the software pipeline.
 
-Units are not expected to be utilised independently. It is assumed that multiple units will be arranged together in grid-like patterns to construct actuators with desirable behaviours. Units are thus not modelled in isolation. Units are copied to create a $5\times 5$ grid of identical units. Figure~ illustrates a single unit and the $5\times 5$ grid created from it. Only the central unit is considered during analysis of the results. The central unit is assumed to be representative of a typical unit in a large arrangement.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{5x5Single.png}
+	\caption[Unit internal pressure boundary conditions]{Unit internal pressure boundary conditions. The unit ID is grid\_39\_1\_973\_1\_8\_28\_42.}
+	\label{fig:uip}
+\end{figure}
 
-Fixed boundary conditions are applied to prevent rigid body modes. The four outermost nodes of the $5\times 5$ grid arrangement are fixed in the x- and y-direction.
+Units are not expected to be utilised independently. It is assumed that multiple units will be arranged together in grid-like patterns to construct actuators with desirable behaviours. Units are thus not modelled in isolation. Units are copied to create a $5\times 5$ grid of identical units. Figure~\ref{fig:5x5grid} illustrates the $5\times 5$ grid created from the unit in Figure~\ref{fig:uip}. Only the central unit is considered during analysis of the results. The central unit is assumed to be representative of a typical unit in a large arrangement.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{5x5Layout.png}
+	\caption[$5\times 5$ grid layout with fixed boundary conditions indicated]{$5\times 5$ grid layout of the unit in Figure~\ref{fig:uip} with fixed boundary conditions indicated}
+	\label{fig:5x5grid}
+\end{figure}
+
+Fixed boundary conditions are applied to prevent rigid body modes. The four outermost nodes of the $5\times 5$ grid arrangement are fixed in the x- and y-direction. These boundary conditions are visible in Figure~\ref{fig:5x5grid}.
 
 \section{Unit Deformation Cases}
 \label{sec:UC}
@@ -633,7 +647,7 @@ This case has applications in causing angular deformation. Multiple units combin
 
 To enable the software pipeline to identify well-performing units according to the given template deformation case, objective functions unique to each case must be defined. If cases are added to the software pipeline, objective functions must be added for them as well.
 
-For case 1, it is desired that the unit elongate while its width remains constant. Two objective functions are identified. The objective function defining elongation is
+For the uniaxial elongation case, it is desired that the unit elongate while its width remains constant. Two objective functions are identified. The objective function defining elongation is
 
 \begin{equation}
 	f=\frac{h}{w}
@@ -661,7 +675,7 @@ Where
 
 It is desired to maximise both of these functions.
 
-For case 2, it is desired that the unit retains its shape while enlarging. Retaining its shape implies that the height to width ratio remains as close to 1 as possible and that the outer sides remain as straight as possible. Two objective functions are identified. The objective function defining retaining the height to width ratio is
+For the biaxial elongation case, it is desired that the unit retains its shape while enlarging. Retaining its shape implies that the height to width ratio remains as close to 1 as possible and that the outer sides remain as straight as possible. Two objective functions are identified. The objective function defining retaining the height to width ratio is
 
 \begin{equation}
 	f=\left | h-w \right |
@@ -684,6 +698,41 @@ Where
 It is desired to minimize both of these functions.
 
 An objective function regarding the enlargement is not defined. The same pressure is applied to all units regardless of the number of elements removed. Units with more elements removed have more edge loads applied. Each edge load is a pressure load of the same magnitude. Elements with more internal edges will have higher total pressures applied and will enlarge more. This would be an unfair objective function compared to the other two selected objective functions. A unit with all internal elements removed may enlarge by a comparatively bigger factor than another element retains its shape, and thus outrank it.
+
+For the pure shear case, it is desired that the top left and right corners shift horizontally to the right with respect to the bottom left and right corners respectively. Three objective functions are identified. The objective functions defining the rightward shift of the top corners are defined as
+
+\begin{equation}
+	f=x_{tl}-x_{bl}
+\end{equation}
+
+And
+
+\begin{equation}
+	f=x_{tr}-x_{br}
+\end{equation}
+
+Where
+
+\begin{itemize}
+	\item $x_{tl}$ is the x-coordinate of the top left corner
+	\item $x_{bl}$ is the x-coordinate of the bottom left corner
+	\item $x_{tr}$ is the x-coordinate of the top right corner
+	\item $x_{br}$ is the x-coordinate of the bottom right corner
+\end{itemize}
+
+The objective function defining constant height is
+
+\begin{equation}
+	f=\max\left (\frac{h}{h_{t}},\frac{h_{t}}{h} \right )
+\end{equation}
+
+Where
+
+\begin{itemize}
+	\item $h_{t}$ is the height of the template
+\end{itemize}
+
+It is desired to maximise both of these functions.
 
 \subsubsection{Hausdorff Distance}
 \label{ssec:Hd}
