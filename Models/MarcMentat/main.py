@@ -51,12 +51,12 @@ def main():
     p_mag = 0.025
 
     #   The unit generation method
-    g_meth = "r"
+    g_meth = "c"
     #   The analysis method
-    a_meth = "m"
+    a_meth = "g"
 
     #   Genetic algorithm parameters
-    gen = 5
+    gen = 15
     prob = [0.5, 0.1, 0.5]
     point = [1, 2, 2]
 
