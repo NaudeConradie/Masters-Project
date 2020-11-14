@@ -51,7 +51,7 @@ def main():
     p_mag = 0.025
 
     #   The unit generation method
-    g_meth = "l"
+    g_meth = "r"
     #   The analysis method
     a_meth = "m"
 
