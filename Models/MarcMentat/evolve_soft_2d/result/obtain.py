@@ -51,6 +51,10 @@ def check_out(
     #   Time to wait for files
     t = 1
 
+    #   Time allowed for files to run
+    t_max = 300
+    t_out = 0
+
     #   Text to look for when searching the log files
     exit_number_str = re.compile("exit number", re.IGNORECASE)
     access_viol_str = re.compile("access violation", re.IGNORECASE)
@@ -64,6 +68,8 @@ def check_out(
 
     #   Loop until an exit number is detected
     while 1:
+
+        t_out += 1
 
         #   Search the log file for an exit number
         found_e_n, e_n = utility.search_text_file(fp_log, exit_number_str)
@@ -85,6 +91,12 @@ def check_out(
 
             #   Exit the loop
             break
+
+        elif t_out >= t_max:
+
+            exit_number = 0
+            py_send("*kill_job *monitor_job")
+
 
         #   Wait and check again
         else:
@@ -133,6 +145,10 @@ def check_out(
             # else:
             #     m_log.error("Invalid input received")
             #     print("Please either type a single \"y\" for yes or \"n\" for no")
+
+    elif exit_number == 0:
+
+        en_log.error("Model took too long to run. Job terminated")
 
     #   Output a warning
     else:

@@ -806,27 +806,50 @@ Several commercial FEM software packages capable of realistically modeling soft 
 
 MSC.Marc Mentat 2019 is selected for this project. Marc Mentat is actively maintained and updated. Tutorials and reference manuals are built into the software. Support is available if issues are encountered or for any other reason. Limitations include the necessity of having continuous access to a license server. An official VPN configuration as well as remote desktop tools allowed for access to the software as long as a network connection could be established.
 
-Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python.
+Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python. The Python code is accessible, installable and editable. Additional information on how to install and edit the code is available in Appendix~.
 
 \subsection{Initialisation}
 \label{ssec:init}
 
-Relevant template parameters include:
+Before a set of units is created, the user needs to specify certain parameters for the template, analysis approach and unit generation method.
 
-\begin{itemize}
-	\item \textit{case} - The template case identifier
-	\item \textit{x\_e} - The number of elements in the x-direction 
-	\item \textit{y\_e} - The number of elements in the y-direction
-	\item \textit{e\_s} - The side length of the element in mm
-	\item \textit{b} - The number of elements reserved for the unit boundary width
-	\item \textit{ogd\_mat} - The Ogden material model parameters
-	\item \textit{n\_steps} - The number of analysis steps in the second of analysis
-	\item \textit{table\_name} - The name of the function applied to the template
-	\item \textit{d\_mag} - The applied displacement in mm
-	\item \textit{p\_mag} - The applied internal pressure in MPa
-\end{itemize}
+Template parameters that need to be specified are outlined in Table~\ref{tab:temppar}. Prerequisites for the parameters are included where applicable.
 
-The template case identifier refers to one of three deformation cases applied to the template. These cases are discussed in detail in Section~\ref{sec:UC}.
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+\centering
+\caption{Template class object initialisation parameters and prerequisites}
+\label{tab:temppar}
+\begin{tabular}{@{}llc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Parameter}} & \multicolumn{1}{c}{\textbf{Description}}                                                              & \textbf{Prerequisite} \\ \midrule
+\textit{case}                          & The template case identifier                                                                          & 1, 2, 3               \\
+\textit{x\_e}                          & \begin{tabular}[c]{@{}l@{}}The number of elements in the\\ x-direction\end{tabular}                   & $>0$, int             \\
+\textit{y\_e}                          & \begin{tabular}[c]{@{}l@{}}The number of elements in the\\ y-direction\end{tabular}                   & $>0$, int             \\
+\textit{e\_s}                          & \begin{tabular}[c]{@{}l@{}}The side length of the element in\\ \textbackslash{}si\{mm\}\end{tabular}  & $>0$                  \\
+\textit{b}                             & \begin{tabular}[c]{@{}l@{}}The number of elements reserved\\ for the unit boundary width\end{tabular} & $>0$, int             \\
+\textit{ogd\_mat} &
+  \begin{tabular}[c]{@{}l@{}}The Ogden material model\\ parameters\end{tabular} &
+  \begin{tabular}[c]{@{}c@{}}mold\_star\_15\\ ecoflex\_0030\\ smooth\_sil\_950\end{tabular} \\
+\textit{n\_steps}                      & \begin{tabular}[c]{@{}l@{}}The number of analysis steps in\\ the second of analysis\end{tabular}      & $>0$, int             \\
+\textit{table\_name}                   & \begin{tabular}[c]{@{}l@{}}The name of the function applied\\ to the template\end{tabular}            & str                   \\
+\textit{d\_mag}                        & The applied displacement in \textbackslash{}si\{mm\}                                                  &                       \\
+\textit{p\_mag}                        & \begin{tabular}[c]{@{}l@{}}The applied internal pressure in\\ \textbackslash{}si\{MPa\}\end{tabular}  &                       \\ \bottomrule
+\end{tabular}
+\end{table}
+
+The template case identifier refers to the unit deformation cases in order as outlined in Section~\ref{sec:UC}. Additional unit deformation cases may be defined by adding the appropriate code, as well as additional Ogden material models.
+
+A unit boundary is always included. The unit boundary is a layer of elements along the side of the unit which are not allowed to be removed by the unit generation process. The unit boundary ensures that the internal geometry remains enclosed to allow for inflation. The unit boundary also ensures that units will always be capable of being packed into a grid alongside one another.
+
+The name of the function applied to the template is a simple string label to identify the graph type applied to the deformation and internal pressure boundary conditions. The graph may be modified from the currently implemented ramp input to any graphical function by editing the Python code appropriately.
+
+
+Analysis approach parameters that need to be specified are outlined in Table~\ref{tab:temppar}. Prerequisites for the parameters are included where applicable.
+
+
+\subsection{Template Creation}
 
 The user-specified template parameters are used to define a template class object. The template class object calculates more parameters used in the construction of the template. The relevant calculated parameters are outlined in Table~\ref{tab:tempcalcpar}.
 
