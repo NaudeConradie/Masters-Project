@@ -3,7 +3,8 @@
 #   Imports
 import math
 import matplotlib.pyplot as plot
-# import seaborn
+import pandas
+import seaborn
 
 from evolve_soft_2d import file_paths
 
@@ -58,6 +59,25 @@ def histogram(
 
     #   Save the figure
     save_plot(template, t, tm)
+
+    return
+
+################################################################################
+
+def hist_all(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    ) -> None:
+
+    data_col = [i for i in data.columns]
+
+    for i in data_col:
+
+        seaborn.displot(data, x = i, bins = 20)
+
+        #   Save the figure
+        save_plot(template, i, tm)
 
     return
 

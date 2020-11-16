@@ -1,19 +1,20 @@
-##  Test program
+##  Main program
 
 #   Imports
 import importlib
-import re
-import numpy
-import pandas
-
-from scipy.optimize import curve_fit
 
 from evolve_soft_2d import classes, file_paths, log, plotting, utility
 from evolve_soft_2d.evolve import cppns, gen_alg, lsystems
 from evolve_soft_2d.result import analyse, obtain
 from evolve_soft_2d.unit import create, inspect, modify, rep_grid
 
+from evolve_soft_2d.file_paths import create_fp_file
+
 from py_mentat import py_connect, py_disconnect
+
+################################################################################
+
+#   Main function
 
 def main():
 
@@ -36,12 +37,12 @@ def main():
     #   The template case identifier
     case = 1
     #   The number of elements in each axis direction
-    x_e = 11
-    y_e = 11
+    x_e = 15
+    y_e = 15
     #   The length of each side in mm
-    e_s = 5
+    e_s = 10
     #   The thickness of the unit boundary
-    b = 2
+    b = 3
     #   The number of increments per second to analyse
     n_steps = 5
     #   The text name of the table used for the applied displacement and load
@@ -52,25 +53,23 @@ def main():
     p_mag = 0.025
 
     #   The unit generation method
-    g_meth = "c"
+    g_meth = "r"
     #   The analysis method
-    a_meth = "m"
+    a_meth = "g"
 
     #   Genetic algorithm parameters
-    gen = 10
+    gen = 15
     prob = [0.5, 0.1, 0.5]
     point = [1, 2, 2]
 
     #   Prepare the unit parameters
     temp = classes.template(case, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, d_mag, p_mag)
 
-    # create.temp_create(temp)
+    t = "_2020-11-14--07-51-17"
 
-    y = [1, 2, 3, 4, 5, 6]
+    fp_lu = [create_fp_file(temp, t, "l"), create_fp_file(temp, t + "_success", "l"), create_fp_file(temp, t + "_failed", "l"), create_fp_file(temp, t + "_empty", "l"), create_fp_file(temp, t + "_full", "l"), create_fp_file(temp, t + "_ranked", "l")]
 
-    print(y[:3])
-    print(y[3:])
-
+    analyse.rank_u(temp, g_meth, fp_lu)
 
     return
 

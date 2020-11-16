@@ -11,7 +11,7 @@ from scipy.optimize import curve_fit
 from scipy.spatial.distance import directed_hausdorff
 
 from evolve_soft_2d import plotting, utility
-from evolve_soft_2d.evolve import gen_alg
+from evolve_soft_2d.evolve import gen_alg, lsystems
 from evolve_soft_2d.file_paths import create_fp_file
 from evolve_soft_2d.result import obtain
 from evolve_soft_2d.unit import create, modify
@@ -57,7 +57,7 @@ def monte_carlo(
     fp_lu = create.run_units(template, l_u, meth)[0]
 
     #   Rank the population of units
-    rank_u(template, fp_lu)
+    rank_u(template, meth, fp_lu)
 
     return
 
@@ -65,6 +65,7 @@ def monte_carlo(
 
 def rank_u(
     template,
+    g_meth: str,
     fp_lu: list,
     ) -> None:
     """Rank units according to their performance
@@ -92,9 +93,6 @@ def rank_u(
     #   Read the list of units created during the last simulation
     lu = obtain.read_lu(fp_lu[1])
 
-    #   Create a list of the number of elements removed from every element
-    n_e = [utility.find_int_in_str(i) for i in lu]
-
     #   Loop through all labels
     for i in label:
 
@@ -106,6 +104,11 @@ def rank_u(
 
     #   Read the Hausdorff distance variables
     v.append(obtain.read_all_hd(template, lu))
+
+    label.append("Number of Elements Removed")
+
+    #   Create a list of the number of elements removed from every element
+    v.append([utility.find_int_in_str(i) for i in lu])
 
     #   Check if the template case is 1
     if template.case == 1:
@@ -121,8 +124,61 @@ def rank_u(
         for i in v_fit:
             v.append(i)
 
-    if 
+    if g_meth == "l":
 
+        label.append("Axiom ID")
+        label.append("Number of Rules")
+        label.append("Rule Length")
+        label.append("Number of Iterations")
+
+        l_axiom = []
+        l_rule_n = []
+        l_rule_l = []
+        l_i = []
+
+        for i in lu:
+
+            curr_mod = utility.open_v(template, i)
+
+            l_axiom.append(lsystems.a_all.index(curr_mod.ls.axiom))
+            l_rule_n.append(len(curr_mod.ls.gramm))
+            l_rule_l.append(ls_avg_rule_l(curr_mod.ls))
+            l_i.append(curr_mod.ls.n)
+
+        v.append(l_axiom)
+        v.append(l_rule_n)
+        v.append(l_rule_l)
+        v.append(l_i)
+
+    elif g_meth == "c":
+
+        label.append("Model ID")
+        label.append("Scale")
+        label.append("Number of Hidden Layers")
+        label.append("Size of the Initial Hidden Layer")
+        label.append("Element Removal Threshold")
+
+        c_m_id = []
+        c_scale = []
+        c_hl_n = []
+        c_hl_s = []
+        c_thresh = []
+
+        for i in lu:
+
+            curr_mod = utility.open_v(template, i)
+
+            c_m_id.append(curr_mod.cp.mod_id)
+            c_scale.append(curr_mod.cp.cppn.scale)
+            c_hl_n.append(curr_mod.cp.cppn.hl_n)
+            c_hl_s.append(curr_mod.cp.cppn.hl_s)
+            c_thresh.append(curr_mod.cp.cppn.thresh)
+
+        v.append(c_m_id)
+        v.append(c_scale)
+        v.append(c_hl_n)
+        v.append(c_hl_s)
+        v.append(c_thresh)
 
     #   Store the list of units
     data["Unit ID"] = lu
@@ -150,6 +206,8 @@ def rank_u(
 
     # #   Plot the desired graphs from the results
     # plotting.plot_all(template, v, n_e, label, tm)
+
+    plotting.hist_all(template, tm, data)
 
     #   Sort the dataframe according to the fitness values
     data.sort_values(by = ["Fitness"], ascending = False, inplace = True, ignore_index = True)
@@ -242,6 +300,16 @@ def rank_pop(
     par_sort = data["Parameters"].tolist()
 
     return par_sort
+
+################################################################################
+
+def ls_avg_rule_l(ls) -> float:
+
+    ls_rules = [i[1] for i in ls.gramm]
+
+    avg_rule_l = utility.avg_str_l(ls_rules)
+
+    return avg_rule_l
 
 ################################################################################
 

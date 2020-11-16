@@ -37,16 +37,16 @@ Actuators are components that cause controlled motion, generally used in robotic
 
 \subsection{Soft Actuator Types}
 
-Shape Memory Alloys (SMA) are metallic alloys capable of being formed into a specific shape while above an inherent transformation temperature, as well as being formed into another shape below the transformation temperature. When the material is then heated or cooled above or below the transformation temperature, it reforms into those respective shapes. This property exists due to the transition between the martensite phase of the material below the transformation temperature, and the austenite phase above the transformation temperature. SMA actuators are heated by applying a current directly to the material. SMA actuators are small, lightweight, silent, and have a high force-to-weight ratio. When shaped straight, they can exert high forces, but only achieve small displacements relative to their length. When coiled, they can extend more, but exert smaller forces. \citep{Villoslada2015}
+Shape Memory Alloys (SMA) are metallic alloys capable of being formed into a specific shape while above an inherent transformation temperature, as well as being formed into another shape below the transformation temperature. When the material is then heated or cooled above or below the transformation temperature, it reforms into those respective shapes. This property exists due to the transition between the martensite phase of the material below the transformation temperature, and the austenite phase above the transformation temperature. SMA actuators are heated by applying a current directly to the material. SMA actuators are small, lightweight, silent, and have a high force-to-weight ratio. When shaped straight, they can exert high forces, but only achieve small displacements relative to their length. When coiled, they can extend more, but exert smaller forces. \citep{Villoslada2014}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{SMA.png}
-	\caption[A flexible SMA actuator]{A flexible SMA actuator designed by \cite{Villoslada2015}}
+	\caption[A flexible SMA actuator]{A flexible SMA actuator designed by \cite{Villoslada2014}}
 	\label{fig:sma}
 \end{figure}
 
-Shape Memory Polymers (SMP) are similar to SMAs, consisting of smart polymers with the same shape memory properties, instead of metallic alloys. The initial is shape is determined during the manufacturing process. The transformed shape is obtained by cooling the SMP and shaping it as desired. SMPs use electricity or light as a heat source for transformation \citep{Behl2007}. They have a high deformation capacity and shape recovery. They are lighter, cheaper and easier to produce than SMAs. They are limited in size due to their low recovery stresses \citep{Huang2005, Rodriguez2016, Behl2007}.
+Shape Memory Polymers (SMP) are similar to SMAs, consisting of smart polymers with the same shape memory properties, instead of metallic alloys. The initial shape is determined during the manufacturing process. The transformed shape is obtained by cooling the SMP and shaping it as desired. SMPs use electricity or light as a heat source for transformation \citep{Behl2007}. They have a high deformation capacity and shape recovery. They are lighter, cheaper and easier to produce than SMAs. They are limited in size due to their low recovery stresses \citep{Huang2005, Rodriguez2016, Behl2007}.
 
 \begin{figure}[H]
 	\centering
@@ -55,7 +55,7 @@ Shape Memory Polymers (SMP) are similar to SMAs, consisting of smart polymers wi
 	\label{fig:smp}
 \end{figure}
 
-Dieelectric/Electrically-Actuated Polymers (DEAP) consist of layers of polymers interspersed with conductive material. When the conductive material receives an electrical input, a chemical reaction occurs that causes a change in volume across the layers. This causes the layers to bend in a predetermined direction. DEAPs are lightweight, silent and use little energy. They are biocompatible and functional in water. They are well-suited to mimicking real muscles. Their reactions under high voltages are not fully understood yet and accurately modelling them is highly complicated. \citep{Mutlu2014}
+Dielectric/Electrically-Actuated Polymers (DEAP) consist of layers of polymers interspersed with conductive material. When the conductive material receives an electrical input, a chemical reaction occurs that causes a change in volume across the layers. This causes the layers to bend in a predetermined direction. DEAPs are lightweight, silent and use little energy. They are biocompatible and functional in water. They are well-suited to mimicking real muscles. Their reactions under high voltages are not fully understood yet and accurately modelling them is highly complicated. \citep{Mutlu2014}
 
 \begin{figure}[H]
 	\centering
@@ -111,7 +111,7 @@ FEAs can be built to curl while expanding and straighten out while contracting. 
 	\label{fig:grip}
 \end{figure}
 
-More complex actuators are manufacturable. A bimodal FEA was developed by Ellis in 2020. The actuator has a crimped paper strip acting as a strain limiter embedded within a stiff layer of Ecoflex 0030. The strain-limiting layer is alongside multiple Mold-Star 15 cells. When pressurised by a linearly increasing single pressure source, the actuator  first curls inwards, then back outwards while extending linearly. \citep{Ellis2020}
+More complex actuators are manufacturable. A bimodal FEA was developed by \cite{Ellis2020}. The actuator has a crimped paper strip acting as a strain limiter embedded within a stiff layer of Ecoflex 0030. The strain-limiting layer is alongside multiple Mold-Star 15 cells. When pressurised by a linearly increasing single pressure source, the actuator  first curls inwards, then back outwards while extending linearly. \citep{Ellis2020}
 
 \begin{figure}[H]
 	\centering
@@ -121,9 +121,9 @@ More complex actuators are manufacturable. A bimodal FEA was developed by Ellis 
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Soft Robot Modeling Approaches}
+\section{Soft Robot Modelling Approaches}
 
-To prevent having to physically construct every design of a soft body, a computationally efficient and accurate digital model can be constructed.
+To prevent the necessity of physically constructing every design of a soft body, a computationally efficient and accurate digital model can be constructed.
 
 \subsection{FEM}
 
@@ -133,7 +133,7 @@ The Finite Element Method (FEM) has been used to successfully model soft robotic
 
 Voxels are three dimensional (3D) pixels. Voxels are usually cubical. Realistic physical properties may be applied to voxels in specific software packages, such as the free VoxCAD software. Bodies may be constructed and undergo deformation when constructed from voxels in these software packages. It is relatively simple to construct bodies from voxels. \citep{Cheney2013,Cheney2015}
 
-In 2013, Cheney et al used voxels to model soft bodies in VoxCAD. VoxCAD is free voxel-modelling software. Soft bodies were evolved using CPPN-NEAT. CPPN morphologies were found to appear natural and produce interesting and varying results. Three materials were used for the construction of the soft bodies. The three materials differed in hardness, being compliant, partially compliant and stiff. Compliant and partially compliant voxels acted as the actuators. Soft bodies were tasked either with traversing along a linear path or squeezing through a tight space. Simulations were run multiple times with different penalty functions. Penalty functions included costs for actuated voxels, voxel connections and the total number of voxels. It was found that with differing penalty functions, different bodies evolved and performed better. Final bodies are 3D printable. They are actuated by placing them within a pressure chamber where the pressure is sinusoidally varied. This limits their practical application. \citep{Cheney2013,Cheney2015}
+\cite{Cheney2013} used voxels to model soft bodies in VoxCAD. VoxCAD is free voxel-modelling software. Soft bodies were evolved using CPPN-NEAT. CPPN morphologies were found to appear natural and produce interesting and varying results. Three materials were used for the construction of the soft bodies. The three materials differed in hardness, being compliant, partially compliant and stiff. Compliant and partially compliant voxels acted as the actuators. Soft bodies were tasked either with traversing along a linear path or squeezing through a tight space. Simulations were run multiple times with different penalty functions. Penalty functions included costs for actuated voxels, voxel connections and the total number of voxels. It was found that with differing penalty functions, different bodies evolved and performed better. Final bodies are 3D printable. They are actuated by placing them within a pressure chamber where the pressure is sinusoidally varied. This limits their practical application. \citep{Cheney2013,Cheney2015}
 
 \begin{figure}[H]
 	\centering
@@ -144,7 +144,7 @@ In 2013, Cheney et al used voxels to model soft bodies in VoxCAD. VoxCAD is free
 
 \subsection{Tetrahedral Meshes}
 
-In 2012, Rieffel et al applied evolutionary algorithms to soft bodies. They used NVidia's PhysX engine to model soft tetrahedral meshes. The physics engine allows for the manipulation of a material's stiffness and damping coefficient. Three properties of the bodies were used to control the evolution. The properties were the body shape, body motion, and material properties. Three different simulations were run. For each one, one of the three properties were fixed, while the other two were allowed to evolve. The mesh resolution was also manipulated. Higher resolutions allowed for smoother surfaces at the cost of computing power. The final bodies are 3D printable, but lack a simple actuation mechanism. \citep{Rieffel2013}
+\cite{Rieffel2013} et al applied evolutionary algorithms to soft bodies. They used NVidia's PhysX engine to model soft tetrahedral meshes. The physics engine allows for the manipulation of a material's stiffness and damping coefficient. Three properties of the bodies were used to control the evolution. The properties were the body shape, body motion, and material properties. Three different simulations were run. For each one, one of the three properties were fixed, while the other two were allowed to evolve. The mesh resolution was also manipulated. Higher resolutions allowed for smoother surfaces at the cost of computing power. The final bodies are 3D printable, but lack a simple actuation mechanism. \citep{Rieffel2013}
 
 \begin{figure}[H]
 	\centering
@@ -199,7 +199,7 @@ The main component of L-systems is rewriting. Rewriting is used to define comple
 
 There are many variations of L-systems. Deterministic and context-free L-systems (DOL-systems) use edge rewriting to replace polygon edges with figures and node rewriting to operate on polygon vertices. Stochastic L-systems implement randomization to obtain variation in productions. A context-sensitive L-system's productions' expression may depend on its predecessors' context.  \citep{Prusinkiewicz2004}
 
-Original L-systems are discrete in time and space. Model states are known only at specific time intervals and only a finite number exist. Parametric L-systems allow for infinite model states due to the assignments of continuous attributes to model components. Parametric L-systems are not limited by all values being reduced to integer multiples of a unit segment. \citep{Prusinkiewicz2004}
+Original L-systems are discrete in time and space. Model states are known only at specific time intervals. Only a finite number of model states exist. Parametric L-systems allow for infinite model states due to the assignments of continuous attributes to model components. Parametric L-systems are not limited by all values being reduced to integer multiples of a unit segment. \citep{Prusinkiewicz2004}
 
 Map L-systems allow for the formation of cycles in a production. Maps are finite sets of regions. Regions are surrounded by boundaries consisting of finite, circular sequences of edges meeting at vertices. Each edge has one or two vertices associated with it (only one if the edge forms a loop). Edges cannot cross without forming a vertex. There are no vertices not associated with an edge. Every edge is part of the boundary of a region. The set of all edges is connected. \citep{Prusinkiewicz2004}
 

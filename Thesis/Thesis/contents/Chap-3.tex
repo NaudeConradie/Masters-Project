@@ -3,13 +3,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter covers the materials considered during this project and the methodologies applied throughout. The methodologies encompass generative design approaches such as L-Systems, CPPNs, and evolutionary algorithms. Modeling methods, specifically the FEM settings, are outlined. A detailed overview of the software pipeline is provided.
+This chapter covers the materials considered during this project and the methodologies applied throughout. The methodologies encompass generative design approaches such as L-Systems, CPPNs, and evolutionary algorithms. Modelling methods, specifically the FEM settings, are outlined. A detailed overview of the software pipeline is provided.
 
 \section{Materials}
 
-\subsection{Modeling}
+\subsection{Modelling}
 
-The modeling of materials undergoing relatively large deformations is a non-trivial problem. Stored strain energy density may be used to compute stress in hyperelastic materials. The strain energy density is defined using invariants of strain. The three invariants are given as \citep{Kim2015}
+The modelling of materials undergoing relatively large deformations is a non-trivial problem. Stored strain energy density may be used to compute stress in hyperelastic materials. The strain energy density is defined using invariants of strain. The three invariants are given as \citep{Kim2015}
 
 \begin{equation}
 	I_{1}=\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}
@@ -107,7 +107,7 @@ The mixture must be degassed to remove any air bubbles formed during pouring or 
 
 The mixture may now be cast into a mould. Care must be taken during casting to prevent the formation of more bubbles. If the mould is movable and fits within the degasser, this may be done to remove any extra bubbles formed during casting.
 
-If the mould is open, the material must be levelled to remove excess material and prevent any minuscuses from forming, which would affect the specimen's thickness. The material is leveled by applying a scraper across the surface slowly. If the scraper is moved too fast, it may remove too much material, as the mixture is viscous and sticky. If the surface area is too large, a flat cover may be applied by slowly lowering it at an angle.
+If the mould is open, the material must be levelled to remove excess material and prevent any menisci from forming, which would affect the specimen's thickness. The material is levelled by applying a scraper across the surface slowly. If the scraper is moved too fast, it may remove too much material, as the mixture is viscous and sticky. If the surface area is too large, a flat cover may be applied by slowly lowering it at an angle.
 
 According to Mold Star 15's pot life, the process detailed above must be completed within \SI{45}{\minute}. The cast specimen will be ready \SI{4}{\hour} after the pot life has ended.
 
@@ -118,7 +118,7 @@ A component of the generative design process of this project is the construction
 \subsection{L-Systems}
 \label{ssec:LS}
 
-L-Systems are implemented in the code pipeline as a pattern generation method. L-Systems are implemented according to a context-free L-System structure as defined by~\cite{Prusinkiewicz2004}. Stochastic L-Systems are not implemented to maintain replicability. Parametric L-Systems are not implemented as a single discrete model state is desirable. Maps are not implemented as the resulting reflections when branches collide with the border wall may negatively impact the scalability of the L-Systems. Reflections inward may quickly fill up the available space or result in geometries dissimilar to ones resulting from the same L-System at higher resolutions. Interactions between elements drawn are also not considered.
+L-Systems are implemented in the code pipeline as a pattern generation method. L-Systems are implemented according to a context-free L-System structure as defined by~\cite{Prusinkiewicz2004}. Stochastic L-Systems are not implemented to maintain replicability. Parametric L-Systems are not implemented because a single discrete model state is desirable. Maps are not implemented as the resulting reflections when branches collide with the border wall may negatively impact the scalability of the L-Systems. Reflections inward may quickly fill up the available space or result in geometries dissimilar to ones resulting from the same L-System at higher resolutions. Interactions between elements drawn are also not considered.
 
 The L-System unit generation method is implemented due to the features of efficiency, compactness and scalability. L-Systems are defined in the Python code using class objects containing all necessary information.
 
@@ -134,11 +134,11 @@ The L-System vocabulary is defined as a class object in the Python code. The voc
 \label{tab:lsvarint}
 \begin{tabular}{@{}cl@{}}
 \toprule
-\textbf{Variable} & \multicolumn{1}{c}{\textbf{Interpretation}}             \\ \midrule
-F & \begin{tabular}[c]{@{}l@{}}Create an element at the current position and increment\\ the current position in the current direction\end{tabular} \\
-f                 & Increment the current position in the current direction \\
-+                 & Rotate the current direction by \SI{45}{\degree} clockwise           \\
--                 & Rotate the current direction by \SI{45}{\degree} counterclockwise    \\ \bottomrule
+\textbf{Variable} & \multicolumn{1}{c}{\textbf{Interpretation}}                                                         \\ \midrule
+F & \begin{tabular}[c]{@{}l@{}}Create an element at the current position and increment\\ the current position in the current direction\end{tabular} \\ \midrule
+f                 & Increment the current position in the current direction                                             \\ \midrule
++                 & Rotate the current direction by \SI{45}{\degree} clockwise        \\ \midrule
+-                 & Rotate the current direction by \SI{45}{\degree} counterclockwise \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -151,10 +151,10 @@ f                 & Increment the current position in the current direction \\
 \begin{tabular}{@{}cl@{}}
 \toprule
 \textbf{Constant} & \multicolumn{1}{c}{\textbf{Interpretation}}                                                                                \\ \midrule
-{[}               & Push the current position to the position memory stack                                                                     \\
-{]}               & \begin{tabular}[c]{@{}l@{}}Pop the latest position on the position memory stack\\ and return to that position\end{tabular} \\
+{[}               & Push the current position to the position memory stack                                                                     \\ \midrule
+{]}               & \begin{tabular}[c]{@{}l@{}}Pop the latest position on the position memory stack\\ and return to that position\end{tabular} \\ \midrule
 ( &
-  \begin{tabular}[c]{@{}l@{}}Push the current position to the position memory stack\\ All directional variables, i.e. + and -, in the word\\ following this constant are reversed until the )\\ constant is encountered\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Push the current position to the position memory stack.\\ All directional variables, i.e. "+" and "-", in the word\\ following this constant are reversed until the ")"\\ constant is encountered\end{tabular} \\ \midrule
 )                 & \begin{tabular}[c]{@{}l@{}}Pop the latest position on the position memory stack\\ and return to that position\end{tabular} \\ \bottomrule
 \end{tabular}
 \end{table}
@@ -173,48 +173,48 @@ Rule components are selected from a predefined list included in Table~\ref{tab:l
 \label{tab:lsrulecom}
 \begin{tabular}{@{}ccl@{}}
 \toprule
-\textbf{Number} &
+\multicolumn{1}{l}{\textbf{Number}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}Rule\\ Component\end{tabular}} &
   \multicolumn{1}{c}{\textbf{Interpretation}} \\ \midrule
 1 &
   F &
-  \begin{tabular}[c]{@{}l@{}}Create an element at the current position and\\ increment the current position in the current\\ direction\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Create an element at the current position and\\ increment the current position in the current\\ direction\end{tabular} \\ \midrule
 2 &
   f &
-  \begin{tabular}[c]{@{}l@{}}Increment the current position in the current\\ direction\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Increment the current position in the current\\ direction\end{tabular} \\ \midrule
 3 &
   + &
-  Rotate the current direction by \SI{45}{\degree}  clockwise \\
+  Rotate the current direction by \SI{45}{\degree} clockwise \\ \midrule
 4 &
   - &
-  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by \SI{45}{\degree}\\ counterclockwise\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by \SI{45}{\degree}\\ counterclockwise\end{tabular} \\ \midrule
 5 &
   ++ &
-  Rotate the current direction by \SI{90}{\degree}  clockwise \\
+  Rotate the current direction by \SI{90}{\degree} clockwise \\ \midrule
 6 &
   -- &
-  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by \SI{90}{\degree}\\ counterclockwise\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Rotate the current direction by \SI{90}{\degree}\\ counterclockwise\end{tabular} \\ \midrule
 7 &
   fF &
-  2, then 1 \\
+  2, then 1 \\ \midrule
 8 &
   Ff &
-  1, then 2 \\
+  1, then 2 \\ \midrule
 9 &
   {[}F{]} &
-  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 1, then pop the latest\\ position on the position memory stack and\\ return to that position\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\  memory stack, then 1, then pop the latest\\ position on the position memory stack and\\ return to that position\end{tabular} \\ \midrule
 10 &
   {[}f{]} &
-  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 2, then pop the latest\\ position on the position memory stack and\\ return to that position\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 2, then pop the latest\\ position on the position memory stack and\\ return to that position\end{tabular} \\ \midrule
 11 &
   {[}+F{]} &
-  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 3, then 1, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 3, then 1, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\ \midrule
 12 &
   {[}+fF{]} &
-  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 3, then 7, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 3, then 7, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\ \midrule
 13 &
   {[}-F{]} &
-  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 4, then 1, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\
+  \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 4, then 1, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\ \midrule
 14 &
   {[}-fF{]} &
   \begin{tabular}[c]{@{}l@{}}Push the current position to the position\\ memory stack, then 4, then 7, then pop the\\ latest position on the position memory stack\\ and return to that position\end{tabular} \\ \bottomrule
@@ -738,11 +738,12 @@ It is desired to maximise both of these functions.
 \label{ssec:Hd}
 
 \section{Model Validation}
-\label{sec:TP}
+\label{sec:MV}
 
 Validation of the FEM models is preferable to verify the accuracy of the experimentally obtained Ogden material model parameters and justify the code pipeline's identification of better-performing units. An experimental setup is designed and constructed to validate the FEM models.
 
 \subsection{Physical Components}
+\label{ssec:pc}
 
 A modular mould is designed for the casting of multiple units. Modularity is desirable as all units are derived from a single template, but individual units may vary greatly. Manufacturing times, costs and complexity would be too high if a mould had to be constructed for every unit that was desired to be tested.
 
@@ -802,7 +803,7 @@ The software pipeline is complex, and many components are interrelated. Details 
 
 The Finite Element Method (FEM) is an approach to numerically solving field problems. Field problems require the determination of one or more dependent variables' distribution in space. Field problems are mathematically described with differential equations or integral expressions. Finite elements can be expressed as small parts of a larger body. A field quantity within an element may only have a simple spatial variation, such as being described by polynomial terms no higher than the second order. FEM differs from calculus as calculus uses infinitesimal elements. FEM thus delivers approximate solutions. \citep{Cook2002}
 
-Several commercial FEM software packages capable of realistically modeling soft bodies are available. LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \citep{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \citep{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modeling and analysis. It has an extensive set of options available for post-processing \citep{MSC}.
+Several commercial FEM software packages capable of realistically modelling soft bodies are available. LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \citep{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \citep{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modelling and analysis. It has an extensive set of options available for post-processing \citep{MSC}.
 
 MSC.Marc Mentat 2019 is selected for this project. Marc Mentat is actively maintained and updated. Tutorials and reference manuals are built into the software. Support is available if issues are encountered or for any other reason. Limitations include the necessity of having continuous access to a license server. An official VPN configuration as well as remote desktop tools allowed for access to the software as long as a network connection could be established.
 

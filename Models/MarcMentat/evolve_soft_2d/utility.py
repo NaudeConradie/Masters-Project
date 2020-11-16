@@ -812,3 +812,17 @@ def open_v(
     f.close()
 
     return v
+
+################################################################################
+
+def avg_str_l(l: list) -> float:
+
+    l_len = []
+
+    for i in l:
+
+        l_len.append(len(i))
+
+    avg = sum(l_len)/len(l_len)
+
+    return avg
