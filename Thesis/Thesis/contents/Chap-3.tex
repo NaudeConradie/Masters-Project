@@ -817,9 +817,9 @@ Template parameters that need to be specified are outlined in Table~\ref{tab:tem
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
-\begin{table}[]
+\begin{table}[H]
 \centering
-\caption{Template class object initialisation parameters and prerequisites}
+\caption[Template class object initial parameters]{Template class object initialisation parameters and prerequisites}
 \label{tab:temppar}
 \begin{tabular}{@{}llc@{}}
 \toprule
@@ -827,15 +827,15 @@ Template parameters that need to be specified are outlined in Table~\ref{tab:tem
 \textit{case}                          & The template case identifier                                                                          & 1, 2, 3               \\
 \textit{x\_e}                          & \begin{tabular}[c]{@{}l@{}}The number of elements in the\\ x-direction\end{tabular}                   & $>0$, int             \\
 \textit{y\_e}                          & \begin{tabular}[c]{@{}l@{}}The number of elements in the\\ y-direction\end{tabular}                   & $>0$, int             \\
-\textit{e\_s}                          & \begin{tabular}[c]{@{}l@{}}The side length of the element in\\ \textbackslash{}si\{mm\}\end{tabular}  & $>0$                  \\
+\textit{e\_s}                          & \begin{tabular}[c]{@{}l@{}}The side length of the element in\\ \si{mm}\end{tabular}  & $>0$                  \\
 \textit{b}                             & \begin{tabular}[c]{@{}l@{}}The number of elements reserved\\ for the unit boundary width\end{tabular} & $>0$, int             \\
 \textit{ogd\_mat} &
   \begin{tabular}[c]{@{}l@{}}The Ogden material model\\ parameters\end{tabular} &
   \begin{tabular}[c]{@{}c@{}}mold\_star\_15\\ ecoflex\_0030\\ smooth\_sil\_950\end{tabular} \\
 \textit{n\_steps}                      & \begin{tabular}[c]{@{}l@{}}The number of analysis steps in\\ the second of analysis\end{tabular}      & $>0$, int             \\
 \textit{table\_name}                   & \begin{tabular}[c]{@{}l@{}}The name of the function applied\\ to the template\end{tabular}            & str                   \\
-\textit{d\_mag}                        & The applied displacement in \textbackslash{}si\{mm\}                                                  &                       \\
-\textit{p\_mag}                        & \begin{tabular}[c]{@{}l@{}}The applied internal pressure in\\ \textbackslash{}si\{MPa\}\end{tabular}  &                       \\ \bottomrule
+\textit{d\_mag}                        & The applied displacement in \si{mm} &                       \\
+\textit{p\_mag}                        & \begin{tabular}[c]{@{}l@{}}The applied internal pressure in\\ \si{MPa}\end{tabular}  &                       \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -845,9 +845,26 @@ A unit boundary is always included. The unit boundary is a layer of elements alo
 
 The name of the function applied to the template is a simple string label to identify the graph type applied to the deformation and internal pressure boundary conditions. The graph may be modified from the currently implemented ramp input to any graphical function by editing the Python code appropriately.
 
+Analysis approach parameters that need to be specified are outlined in Table~\ref{tab:analpar}. Prerequisites for the parameters are included where applicable.
 
-Analysis approach parameters that need to be specified are outlined in Table~\ref{tab:temppar}. Prerequisites for the parameters are included where applicable.
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{Analysis approach initialisation parameters and prerequisites}
+\label{tab:analpar}
+\begin{tabular}{@{}llc@{}}
+\toprule
+\textit{\textbf{Parameter}} & \textit{\textbf{Description}} & \multicolumn{1}{l}{\textit{\textbf{Prerequisite}}} \\ \midrule
+\textit{a\_meth} & The analysis approach method    & m, g      \\
+\textit{g\_meth} & The unit generation method      & r, l, c   \\
+\textit{n\_u}    & The number of units to generate & $>0$, int \\ \bottomrule
+\end{tabular}
+\end{table}
 
+The analysis approach method is specified by a single character. An "m" indicates the Monte Carlo method should be used. A "g" indicates the evolutionary algorithm method should be used. The unit generation method is specified by a single character. An "r" indicates random unit generation should be used. An "l" indicates L-Systems should be used. A "c" indicates CPPNs should be used. Additional analysis approach methods and unit generation methods may be defined by adding the appropriate code.
+
+The number of units to generate applies to the entire Monte Carlo method, or a single generation's population if the evolutionary algorithm is used.
 
 \subsection{Template Creation}
 
@@ -857,31 +874,65 @@ The user-specified template parameters are used to define a template class objec
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
-\begin{tabular}{@{}lcl@{}}
-\toprule
-\textbf{Variable}    & \multicolumn{1}{l}{\textbf{Formula}} & \textbf{Description}                                                                                      \\ \midrule
-\textit{x\_s}        & $e\_s\times x\_e$                    & \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in mm in the x-direction\end{tabular}        \\
-\textit{y\_s}        & $e\_s\times y\_e$                    & \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in mm in the y-direction\end{tabular}        \\
-\textit{ogd\_mat}    &                                      & \begin{tabular}[c]{@{}l@{}}The non-linear Ogden material\\ model\end{tabular}                             \\
-\textit{x\_n}        & $x\_e+1$                             & \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ x-direction\end{tabular}                          \\
-\textit{y\_n}        & $y\_e+1$                             & \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ y-direction\end{tabular}                          \\
-\textit{n\_e}        & $x\_e\times y\_e$                    & \begin{tabular}[c]{@{}l@{}}The total number of elements\\ in the template\end{tabular}                    \\
-\textit{n\_n}        & $x\_n\times y\_n$                    & \begin{tabular}[c]{@{}l@{}}The total number of nodes in the\\ template\end{tabular}                       \\
-\textit{e\_internal} &                                      & \begin{tabular}[c]{@{}l@{}}The list of internal element IDs\\ that are allowed to be removed\end{tabular} \\
-\textit{n\_external} &                                      & The list of external node IDs                                                                             \\
-\textit{t\_id} &
-  \begin{tabular}[c]{@{}c@{}}\textless{}\textit{case}\textgreater{}\_\textless{}\textit{x\_e}\textgreater{}x\textless{}\textit{y\_e}\textgreater\\ \_\textless{}\textit{x\_s}\textgreater{}x\textless{}\textit{y\_s}\textgreater{}\end{tabular} &
-  The template ID \\
-\textit{grid}        &                                      & A representative grid of ones                                                                             \\ \bottomrule
-\end{tabular}
-\caption[Template parameters]{Calculated and internal template class object parameters}
+\caption{Template class object internally calculated parameters}
 \label{tab:tempcalcpar}
+\begin{tabular}{@{}llc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Variable}} &
+  \multicolumn{1}{c}{\textbf{Description}} &
+  \textbf{Formula} \\ \midrule
+\textit{x\_s} &
+  \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in \si{mm} in the x-direction\end{tabular} &
+  $e\_s\times x\_e$ \\
+\textit{y\_s} &
+  \begin{tabular}[c]{@{}l@{}}The side length of the template\\ in \si{mm} in the y-direction\end{tabular} &
+  $e\_s\times y\_e$ \\
+\textit{x\_n} &
+  \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ x-direction\end{tabular} &
+  $x\_e+1$ \\
+\textit{y\_n} &
+  \begin{tabular}[c]{@{}l@{}}The number of nodes in the\\ y-direction\end{tabular} &
+  $y\_e+1$ \\
+\textit{n\_e} &
+  \begin{tabular}[c]{@{}l@{}}The total number of elements\\ in the template\end{tabular} &
+  $x\_e\times y\_e$ \\
+\textit{n\_n} &
+  \begin{tabular}[c]{@{}l@{}}The total number of nodes in\\ the template\end{tabular} &
+  $x\_n\times y\_n$ \\
+\textit{e\_internal} & \begin{tabular}[c]{@{}l@{}}The list of internal element IDs\\ that are allowed to be removed\end{tabular} & \multicolumn{1}{l}{Function} \\
+\textit{n\_external} &
+  The list of external node IDs &
+  \multicolumn{1}{l}{Function} \\
+\textit{t\_id} &
+  The template ID &
+  \multicolumn{1}{l}{Function} \\
+\textit{grid} &
+  A representative grid of ones &
+  \multicolumn{1}{l}{Function} \\
+\textit{fp\_t} &
+  The file paths of all relevant files &
+  \multicolumn{1}{l}{Function} \\ \bottomrule
+\end{tabular}
 \end{table}
+
+The list of internal element IDs refers to the elements contained within the boundary of the unit. Only these elements are allowed to be removed by the unit generation method. The IDs are obtained by an internal function. The function algorithm is detailed in Figure~.
+
+The template ID is a formatted string. The ID is generated using unique template class object parameters. The ID is formatted as
+
+\vspace{\baselineskip}
+
+\centerline{grid\_<\textit{case}>\_<\textit{x\_e}>x<\textit{y\_e}>\_<\textit{x\_s}>x<\textit{y\_s}>}
+
+\vspace{\baselineskip}
+
+A grid of ones is generated to represent the template in coordinate calculations. The grid is generated according to the element resolution of the template. Ones are representative of elements in place. When elements are removed during unit generation, they are replaced with zeroes.
+
+The file paths are generated for all relevant files. The template ID is used as the base name of every file. Additional identifiers and file formats are appended as necessary. A more detailed description of the file management system may be found in Section~.
 
 \subsection{Template Creation}
 \label{ssec:tempcr}
 
-The template is then created in MarcMentat. The nodes are created starting at the global origin on the XY-plane. The nodes are incrementally added in the positive x-direction. The nodes are spaced apart as defined by \textit{e\_s}. Once a row of nodes is completed as defined by \textit{x\_n}, the y-coordinate is positively incremented as defined by \textit{e\_s}. A new row of nodes is created. This process is repeated until completed as defined by \textit{y\_n}.
+The template is created in MarcMentat. The nodes are created starting at the global origin on the XY-plane. The nodes are incrementally added in the positive x-direction. The nodes are spaced apart as defined by \textit{e\_s}. Once a row of nodes is completed as defined by \textit{x\_n}, the y-coordinate is positively incremented as defined by \textit{e\_s}. A new row of nodes is created. This process is repeated until completed as defined by \textit{y\_n}.
 
 Four nodes are used to make square 2D elements. Starting at the global origin, elements are incrementally added in the x-direction until completed as defined by \textit{x\_e}. All rows are added until completed as defined by \textit{y\_e}.
 
@@ -893,16 +944,7 @@ The template is saved at this point. All units created during a simulation are b
 
 The template model is saved again. Meaningful template parameters and data obtained from the template is written in a human-readable manner to a log file. The template class object is saved to a file that can be accessed later.
 
-\subsection{Analysis Approach}
-
-The analysis approach is user-specified. Two analysis methods are available: a Monte Carlo-styled analysis and an evolutionary algorithm-based analysis. For the Monte Carlo-styled analysis, the user must specify the unit generation method and the number of units to be generated. For the evolutionary algorithm, the user-specified parameters are:
-
-\begin{itemize}
-	\item \textit{gen} - The number of generations
-	\item \textit{prob} - The probabilities of an occurrence of crossover, random mutation, and biased mutation
-	\item \textit{point} - The potential number of occurrences per unit of crossover, random mutation, and biased mutation
-	\item \textit{meth} - The unit generation method
-\end{itemize}
+\subsection{Unit Generation and Analysis}
 
 A population of units is generated according to the specified unit generation method. The unit generation process is outlined in Section~\ref{ssec:ug}. Both analysis methods use the same approach to the initial population generation.
 
