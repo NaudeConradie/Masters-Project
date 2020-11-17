@@ -53,7 +53,7 @@ def main():
     p_mag = 0.025
 
     #   The unit generation method
-    g_meth = "r"
+    g_meth = "l"
     #   The analysis method
     a_meth = "g"
 
@@ -65,11 +65,31 @@ def main():
     #   Prepare the unit parameters
     temp = classes.template(case, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, d_mag, p_mag)
 
-    t = "_2020-11-14--07-51-17"
+    t = "_2020-10-28--16-00-12"
+
+    # 2020-10-29--14-18-46 
+    # 2020-11-14--07-51-17
+    # 2020-10-28--16-00-12
+
+    #   Generate the grid with all elements removed
+    grid_rem_e, rem_e = create.gen_grid_rem_free(temp, temp.e_internal)
+
+    #   Generate the unit ID of the empty unit
+    empty_id = str(len(rem_e)) + "_" + utility.gen_hash(utility.list_to_str(rem_e, "_"))
+
+    #   Generate the grid with all elements removed
+    grid_rem_f, rem_f = create.gen_grid_rem_free(temp, [])
+
+    #   Generate the unit ID of the full unit
+    full_id = str(len(rem_f)) + "_" + utility.gen_hash(utility.list_to_str(rem_f, "_"))
 
     fp_lu = [create_fp_file(temp, t, "l"), create_fp_file(temp, t + "_success", "l"), create_fp_file(temp, t + "_failed", "l"), create_fp_file(temp, t + "_empty", "l"), create_fp_file(temp, t + "_full", "l"), create_fp_file(temp, t + "_ranked", "l")]
 
-    analyse.rank_u(temp, g_meth, fp_lu)
+    # lu = analyse.ranking(fp_lu, empty_id, full_id)
+
+    # print(lu)
+
+    analyse.rank_u(temp, g_meth, empty_id, full_id, fp_lu)
 
     return
 

@@ -65,7 +65,7 @@ def g_a(
 
         #   Run the current population of units
         fp_lu, empty_id, full_id = create.run_units(template, pop_i, meth)
-        analyse.rank_u(template, fp_lu)
+        analyse.rank_u(template, meth, fp_lu)
         
         #   Rank the current population of units
         param_rank_i = analyse.rank_pop(fp_lu, empty_id, full_id, param_i)

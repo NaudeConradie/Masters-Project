@@ -83,6 +83,27 @@ def hist_all(
 
 ################################################################################
 
+def scat_all(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    ) -> None:
+
+    data_col = [i for i in data.columns]
+
+    for i in data_col:
+
+        for j in data_col:
+
+            seaborn.relplot(x = i, y = j, data = data)
+
+            #   Save the figure
+            save_plot(template, i + "_vs_" + j, tm)
+
+    return
+
+################################################################################
+
 def scatterplot(
     template,
     tm: str,

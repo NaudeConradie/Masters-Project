@@ -20,6 +20,7 @@ from evolve_soft_2d.unit import create, modify
 
 def monte_carlo(
     template,
+
     meth: str,
     ) -> None:
     """Perform a Monte Carlo analysis on a population of units
@@ -54,10 +55,10 @@ def monte_carlo(
         l_u = create.gen_init_units(template, gen_alg.n_u, meth, [[gen_alg.n_u + 1, len(template.e_internal) + 1], [1, 0]])[0]
 
     #   Run the population of units
-    fp_lu = create.run_units(template, l_u, meth)[0]
+    fp_lu, empty_id, full_id = create.run_units(template, l_u, meth)
 
     #   Rank the population of units
-    rank_u(template, meth, fp_lu)
+    rank_u(template, meth, empty_id, full_id, fp_lu)
 
     return
 
@@ -66,6 +67,8 @@ def monte_carlo(
 def rank_u(
     template,
     g_meth: str,
+    empty_id: str,
+    full_id: str,
     fp_lu: list,
     ) -> None:
     """Rank units according to their performance
@@ -91,7 +94,7 @@ def rank_u(
     label.append("Internal Energy")
 
     #   Read the list of units created during the last simulation
-    lu = obtain.read_lu(fp_lu[1])
+    lu = ranking(fp_lu, empty_id, full_id)
 
     #   Loop through all labels
     for i in label:
@@ -114,7 +117,7 @@ def rank_u(
     if template.case == 1:
 
         #   Add the necessary labels for comparison
-        label.append("Height:Width")
+        label.append("Height to Width Ratio")
         label.append("Absolute Change In Width")
 
         #   Read the fitness data
@@ -168,6 +171,8 @@ def rank_u(
 
             curr_mod = utility.open_v(template, i)
 
+            print(curr_mod)
+
             c_m_id.append(curr_mod.cp.mod_id)
             c_scale.append(curr_mod.cp.cppn.scale)
             c_hl_n.append(curr_mod.cp.cppn.hl_n)
@@ -193,11 +198,11 @@ def rank_u(
     if template.case == 1:
 
         #   Studentize the fitness values
-        data["Height:Width"] = (data["Height:Width"] - data["Height:Width"].mean())/data["Height:Width"].std()
+        data["Height to Width Ratio"] = (data["Height to Width Ratio"] - data["Height to Width Ratio"].mean())/data["Height to Width Ratio"].std()
         data["Absolute Change In Width"] = (data["Absolute Change In Width"] - data["Absolute Change In Width"].mean())/data["Absolute Change In Width"].std()
 
         #   Calculate a single fitness value
-        data["Fitness"] = data["Height:Width"] + data["Absolute Change In Width"]
+        data["Fitness"] = data["Height to Width Ratio"] + data["Absolute Change In Width"]
 
     #   Read the timestamp of the simulation
     tm = utility.read_str(fp_lu[0], -25, -4)
@@ -208,6 +213,7 @@ def rank_u(
     # plotting.plot_all(template, v, n_e, label, tm)
 
     plotting.hist_all(template, tm, data)
+    plotting.scat_all(template, tm, data)
 
     #   Sort the dataframe according to the fitness values
     data.sort_values(by = ["Fitness"], ascending = False, inplace = True, ignore_index = True)
@@ -216,6 +222,68 @@ def rank_u(
     data["Unit ID"].to_csv(fp_lu[5], header = False, index = False)
 
     return
+
+################################################################################
+
+def ranking(
+    fp_lu: list,
+    empty_id: str,
+    full_id: str,
+    ) -> list:
+
+    # #   Read the list of all units created
+    # lu = obtain.read_lu(fp_lu[0])
+
+    #   Read the ranked list of all units created
+    with open(fp_lu[5], 'r') as f:
+        lu_rank = f.read()
+
+    try:
+        
+        #   Read the list of empty units created
+        with open(fp_lu[3], 'r') as f:
+            lu_empty = f.read()
+
+        #   Replace the placeholder empty unit ID in the ranked list with all generated empty units
+        lu_rank = lu_rank.replace(empty_id, lu_empty)
+
+    except:
+        
+        #   Replace the placeholder empty unit ID in the ranked list with a blank space
+        lu_rank = lu_rank.replace(empty_id, "")
+
+    try:
+
+        #   Read the list of full units created
+        with open(fp_lu[4], 'r') as f:
+            lu_full = f.read()
+
+        #   Replace the placeholder full unit ID in the ranked list with all generated empty units
+        lu_rank = lu_rank.replace(full_id, lu_full)
+
+    except:
+
+        #   Replace the placeholder full unit ID in the ranked list with a blank space
+        lu_rank = lu_rank.replace(full_id, "")
+
+    try:
+
+        #   Read the list of failed units created
+        with open(fp_lu[2], 'r') as f:
+            lu_fail = f.read()
+
+        #   Append the list of failed units to the ranked list
+        lu_rank += lu_fail
+
+    except:
+        pass
+
+    #   Format the list of ranked units
+    lu_rank = list(lu_rank.split("\n"))
+    while "" in lu_rank:
+        lu_rank.remove("")
+
+    return lu_rank
 
 ################################################################################
 

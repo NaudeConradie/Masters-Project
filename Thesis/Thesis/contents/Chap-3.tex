@@ -777,12 +777,7 @@ The experimental setup is put in place with the top perspex plate and bolts havi
 
 The physical unit is placed on the bottom plate with its cavity positioned over the pressure inlet hole. The top plate is affixed to the bottom plate separated by the \SI{2}{mm} washers. The camera is switched on and placed into focus. The pressure valve is slowly opened to desirable pressure intervals. At each interval, photographs are taken of the deformation and the pressure applied is noted.
 
-\section{Software Pipeline}
-\label{sec:SW}
-
-The software pipeline is complex, and many components are interrelated. Details considered trivial or irrelevant are not discussed. The entirety of the code is available to the reader if they would wish to investigate or make use of it. The code is extensively commented for any clarification needed.
-
-\subsection{Software Selection}
+\section{Software Selection}
 
 The Finite Element Method (FEM) is an approach to numerically solving field problems. Field problems require the determination of one or more dependent variables' distribution in space. Field problems are mathematically described with differential equations or integral expressions. Finite elements can be expressed as small parts of a larger body. A field quantity within an element may only have a simple spatial variation, such as being described by polynomial terms no higher than the second order. FEM differs from calculus as calculus uses infinitesimal elements. FEM thus delivers approximate solutions. \citep{Cook2002}
 
@@ -791,6 +786,11 @@ Several commercial FEM software packages capable of realistically modelling soft
 MSC.Marc Mentat 2019 is selected for this project. Marc Mentat is actively maintained and updated. Tutorials and reference manuals are built into the software. Support is available if issues are encountered or for any other reason. Limitations include the necessity of having continuous access to a license server. An official VPN configuration as well as remote desktop tools allowed for access to the software as long as a network connection could be established.
 
 Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python. The Python code is accessible, installable and editable. Additional information on how to install and edit the code is available in Appendix~.
+
+\section{Software Pipeline}
+\label{sec:SW}
+
+The software pipeline is complex, and many components are interrelated. Details considered trivial or irrelevant are not discussed. The entirety of the code is available to the reader if they would wish to investigate or make use of it. The code is extensively commented for any clarification needed.
 
 \subsection{Initialisation}
 \label{ssec:init}
