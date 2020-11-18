@@ -4,7 +4,7 @@
 \contentsline {chapter}{Acknowledgements}{iii}{chapter*.5}%
 \contentsline {chapter}{Contents}{iv}{section*.6}%
 \contentsline {chapter}{List of Figures}{vi}{section*.7}%
-\contentsline {chapter}{List of Tables}{vii}{section*.8}%
+\contentsline {chapter}{List of Tables}{viii}{section*.8}%
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Aim and Objectives}{2}{section.1.2}%
@@ -25,8 +25,9 @@
 \contentsline {subsection}{\numberline {2.4.2}The Monte Carlo Method}{13}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}Evolutionary Algorithms}{13}{subsection.2.4.3}%
 \contentsline {subsection}{\numberline {2.4.4}Lindenmayer Systems (L-systems)}{14}{subsection.2.4.4}%
-\contentsline {subsubsection}{\numberline {2.4.4.1}Compositional Pattern Producing Networks (CPPN)}{15}{subsubsection.2.4.4.1}%
+\contentsline {subsection}{\numberline {2.4.5}Compositional Pattern Producing Networks (CPPN)}{15}{subsection.2.4.5}%
 \contentsline {section}{\numberline {2.5}Emergent Properties}{15}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Hausdorff Distance}{16}{section.2.6}%
 \contentsline {chapter}{\chapternumberline {3}Materials and Methods}{17}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Materials}{17}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Modelling}{17}{subsection.3.1.1}%
@@ -48,13 +49,12 @@
 \contentsline {subsection}{\numberline {3.5.2}Biaxial Elongation}{35}{subsection.3.5.2}%
 \contentsline {subsection}{\numberline {3.5.3}Pure Shear}{35}{subsection.3.5.3}%
 \contentsline {subsection}{\numberline {3.5.4}Objective Functions}{36}{subsection.3.5.4}%
-\contentsline {subsubsection}{\numberline {3.5.4.1}Hausdorff Distance}{38}{subsubsection.3.5.4.1}%
 \contentsline {section}{\numberline {3.6}Model Validation}{38}{section.3.6}%
 \contentsline {subsection}{\numberline {3.6.1}Physical Components}{39}{subsection.3.6.1}%
 \contentsline {subsection}{\numberline {3.6.2}Experimental Procedure}{41}{subsection.3.6.2}%
-\contentsline {section}{\numberline {3.7}Software Selection}{41}{section.3.7}%
+\contentsline {section}{\numberline {3.7}Software Selection}{42}{section.3.7}%
 \contentsline {section}{\numberline {3.8}Software Pipeline}{42}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Initialisation}{42}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.1}Initialisation}{43}{subsection.3.8.1}%
 \contentsline {subsection}{\numberline {3.8.2}Template Creation}{44}{subsection.3.8.2}%
 \contentsline {subsection}{\numberline {3.8.3}Unit and Population Generation}{46}{subsection.3.8.3}%
 \contentsline {subsection}{\numberline {3.8.4}Running a Job}{49}{subsection.3.8.4}%
@@ -62,22 +62,22 @@
 \contentsline {subsection}{\numberline {3.8.6}Ranking}{50}{subsection.3.8.6}%
 \contentsline {subsection}{\numberline {3.8.7}File Management}{51}{subsection.3.8.7}%
 \contentsline {chapter}{\chapternumberline {4}Results}{54}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Random Unit Generation}{55}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Monte Carlo Analysis}{55}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}L-System Unit Generation}{55}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Monte Carlo Analysis}{55}{subsection.4.2.1}%
-\contentsline {section}{\numberline {4.3}CPPN Unit Generation}{56}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Monte Carlo Analysis}{56}{subsection.4.3.1}%
-\contentsline {chapter}{\chapternumberline {5}Model Validation}{57}{chapter.5}%
-\contentsline {section}{\numberline {5.1}FEM}{57}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Mixing and Casting}{57}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Experimental Setup}{58}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Results}{58}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Unit 1}{59}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Unit 2}{61}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Unit 3}{61}{subsection.5.4.3}%
-\contentsline {section}{\numberline {5.5}Issues Encountered}{61}{section.5.5}%
-\contentsline {chapter}{\chapternumberline {6}Conclusions}{62}{chapter.6}%
-\contentsline {chapter}{Appendices}{63}{section*.40}%
-\contentsline {appendix}{\chapternumberline {A}Test}{64}{appendix.A}%
-\contentsline {chapter}{List of References}{65}{appendix*.41}%
+\contentsline {section}{\numberline {4.1}Monte Carlo Analysis}{54}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Random Unit Generation}{54}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}L-System Unit Generation}{55}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}CPPN Unit Generation}{56}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Scale Invariance}{57}{section.4.2}%
+\contentsline {chapter}{\chapternumberline {5}Model Validation}{58}{chapter.5}%
+\contentsline {section}{\numberline {5.1}FEM}{58}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Mixing and Casting}{58}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Experimental Setup}{59}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Results}{59}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Unit 1}{60}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Unit 2}{63}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Unit 3}{66}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}Results}{69}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Issues, Discrepancies and Solutions}{69}{section.5.6}%
+\contentsline {chapter}{\chapternumberline {6}Conclusions}{71}{chapter.6}%
+\contentsline {chapter}{Appendices}{72}{section*.52}%
+\contentsline {appendix}{\chapternumberline {A}Test}{73}{appendix.A}%
+\contentsline {chapter}{List of References}{74}{appendix*.53}%

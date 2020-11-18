@@ -5,7 +5,9 @@
 
 This chapter illustrates results obtained from sample simulations of large populations of units according to the outlined unit generation methods in Section~\ref{ssec:uapg} and the analysis approaches outlined in Section~\ref{ssec:aa}. The software pipeline described in Section~\ref{sec:SW} was used to generate the units and obtain the results.
 
-Table~\ref{tab:defpar} contains the default parameter values. Unless specified otherwise, parameters were set to the values in Table~\ref{tab:defpar}. Additional parameters for evolutionary algorithms are included in Table~\ref{tab:eaeventpar}.
+\section{Monte Carlo Analysis}
+
+Table~\ref{tab:defpar} contains the default parameter values. Unless specified otherwise, parameters were set to the values in Table~\ref{tab:defpar}.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
@@ -22,33 +24,12 @@ Table~\ref{tab:defpar} contains the default parameter values. Unless specified o
 \textit{b}                             & 3                              \\
 \textit{n\_steps}                      & 5                              \\
 \textit{d\_mag}                        & $\frac{y\_e\times e\_s}{2}=75$ \\
-\textit{p\_mag}                        & 0.025                          \\ \midrule
-\multicolumn{2}{c}{\textbf{Monte Carlo Analysis}}                       \\ \midrule
-\textit{n\_u}                          & 1000                           \\ \midrule
-\multicolumn{2}{c}{\textbf{Evolutionary Algorithm}}                     \\ \midrule
-\textit{n\_u}                          & 50                             \\
-\textit{gen}                           & 50                             \\ \bottomrule
+\textit{p\_mag}                        & 0.025                          \\
+\textit{n\_u}                          & 1000                           \\ \bottomrule
 \end{tabular}
 \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-\begin{table}[H]
-\centering
-\caption{Evolutionary algorithm event parameter values}
-\label{tab:eaeventpar}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-\multicolumn{1}{c}{\textbf{Event}} & \textbf{Probability (\%)} & \textbf{\begin{tabular}[c]{@{}c@{}}Potential Number\\ of Occurences\end{tabular}} \\ \midrule
-Crossover       & 50 & 1 \\
-Random mutation & 10 & 2 \\
-Biased mutation & 50 & 2 \\ \bottomrule
-\end{tabular}
-\end{table}
-
-\section{Random Unit Generation}
-
-\subsection{Monte Carlo Analysis}
+\subsection{Random Unit Generation}
 
 Parameter ranges are outlined in Table~\ref{tab:ranmc}.
 
@@ -66,11 +47,7 @@ Number of elements removed             & 0                & 81               \\ 
 \end{tabular}
 \end{table}
 
-Figures~ and ~ represent the relationships between the parameters in Table~\ref{tab:ranmc} and the score as calculated in Section~.
-
-\section{L-System Unit Generation}
-
-\subsection{Monte Carlo Analysis}
+\subsection{L-System Unit Generation}
 
 Parameter ranges are outlined in Table~\ref{tab:lsmc}.
 
@@ -91,11 +68,38 @@ Number of iterations                   & 1                & 5                \\ 
 \end{tabular}
 \end{table}
 
-Figures~ to ~ represent the relationships between the parameters in Table~\ref{tab:lsmc} and the score as calculated in Section~.
+The distributions of the parameters are displayed in Figure~\ref{fig:lspardis}.
 
-\section{CPPN Unit Generation}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Axiom ID_2020-10-28--16-00-12.png}
+		\caption{Axiom ID distribution}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Number of Rules_2020-10-28--16-00-12.png}
+		\caption{Number of rules distribution}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Rule Length_2020-10-28--16-00-12.png}
+		\caption{Average rule length distribution}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{Number of Iterations_2020-10-28--16-00-12.png}
+		\caption{Number of iterations distribution}
+	\end{subfigure}
+	\caption[L-System parameter distributions]{L-System parameter distribution histograms}
+	\label{fig:lspardis}
+\end{figure}
 
-\subsection{Monte Carlo Analysis}
+\subsection{CPPN Unit Generation}
 
 Parameter ranges are outlined in Table~\ref{tab:cppnmc}.
 
@@ -117,4 +121,4 @@ Element removal threshold              & 0                & 100              \\ 
 \end{tabular}
 \end{table}
 
-Figures~ to ~ represent the relationships between the parameters in Table~\ref{tab:cppnmc} and the score as calculated in Section~.
+\section{Scale Invariance}

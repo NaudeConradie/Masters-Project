@@ -74,7 +74,8 @@ def hist_all(
 
     for i in data_col:
 
-        seaborn.displot(data, x = i, bins = 20)
+        seaborn.displot(data, x = i)
+        # seaborn.displot(data, x = i, bins = 20)
 
         #   Save the figure
         save_plot(template, i, tm)
