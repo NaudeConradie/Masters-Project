@@ -171,8 +171,6 @@ def rank_u(
 
             curr_mod = utility.open_v(template, i)
 
-            print(curr_mod)
-
             c_m_id.append(curr_mod.cp.mod_id)
             c_scale.append(curr_mod.cp.cppn.scale)
             c_hl_n.append(curr_mod.cp.cppn.hl_n)

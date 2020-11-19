@@ -75,7 +75,7 @@ $\alpha$ & -3.0594      & 4.59654      & 17.6852     \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Mold Star 15 SLOW is selected as the main material to be digitally modelled and manufactured for the purposes of the project. Mold Star 15's stiffness lies between EcoFlex and Smooth Sil's.  Mold Star 15 is selected because of its availability and physical properties. Mold Star 15 is deliverable to the premises where testing is to be done and available from a registered supplier. It is suitable for inflation while being capable of supporting itself at the relevant scale of construction. Additional relevant properties are listed in Table~\ref{tab:msp}.
+Mold Star 15 SLOW is selected as the material to be digitally modelled and manufactured for the project. Mold Star 15's stiffness lies between EcoFlex and Smooth Sil's. Mold Star 15 is deliverable to the premises where testing is to be done and available from a registered supplier. Additional relevant properties are listed in Table~\ref{tab:msp}.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
@@ -92,7 +92,7 @@ Tensile strength (\si{MPa})                & 2.7579                             
 \end{tabular}
 \end{table}
 
-Mold Star 15's long pot life allows for adequate time to prepare specimens thoroughly. Mold Star 15's relatively short cure life prevents long delays while waiting for specimens to cure. Mold Star 15's relatively high tensile strength prevents tears or ruptures at significant deformations.
+Mold Star 15's long pot life allows for adequate time to prepare specimens thoroughly. Mold Star 15's relatively short cure life prevents long delays while waiting for specimens to cure. Mold Star 15's relatively high tensile strength prevents tears or ruptures at significant deformations. It is suitable for inflation while being capable of supporting itself at the relevant scale of construction. 
 
 \subsection{Mixing and Casting}
 \label{ssec:mac}
@@ -395,21 +395,25 @@ A CPPN-like generation method is implemented due to the CPPN features of image g
 
 A random generation seed is used to determine the CPPN's initial layer, hidden layers, and activation functions. The random generation seed allows for replicability of CPPNs.
 
-A CPPN model may be scaled inwards or outwards. The scale parameter was set at 1, i.e. no scaling, in order to reduce complexity. The functionality of the scaling was left implemented to allow for future tests.
-
-The threshold parameter allows for two approaches to the removal of elements. The CPPN outputs 2D arrays of values ranging from 0 to 1. If the threshold parameter is set from 0 to 1, it is interpreted as a rounding threshold. All values above or equal to the threshold are set to 1 and all values below or equal to the threshold are set to 0. If the threshold parameter is set above 1 to 100, it is interpreted as a percentage of elements to remove. The lowest values making up the specified percentage of all values are set to 0 and the rest of the values are set to 1.
+A CPPN model may be scaled inwards or outwards. This is equivalent to zooming in and out of a fractal image. The function evaluations are updated as the scale is increased or decreased to be applicable to the current scale.
 
 The x- and y-dimensions are specified initially. All hidden layers barring the initial layer have a number of nodes equal to the x-dimension multiplied with the y-dimension. The CPPN will result in a model that fits perfectly within the internal space of the unit.
 
-CPPN models obtained for the purposes of this this thesis are at much lower resolutions than traditional CPPN models. A reduction in complexity was deemed appropriate. Traditional CPPNs allow for unique activation functions to be applied to each node. This was not implemented in order to reduce complexity. Five activation functions are available for the hidden layers of the CPPN. Activation functions are applied to an entire layer. The activation functions included in this project are
+CPPN models obtained for the purposes of this this thesis are at much lower resolutions than traditional CPPN models. A reduction in complexity was deemed appropriate. Traditional CPPNs allow for unique activation functions to be applied to each node. This was not implemented in order to reduce complexity. Five activation functions are available for the hidden layers of the CPPN. Activation functions are applied to an entire layer. The activation functions included in this project are:
 
 \begin{itemize}
-	\item sin
-	\item cos
-	\item tanh
-	\item sigmoid
-	\item smooth ReLu
+	\item $\sin$
+	\item $\cos$
+	\item $\tanh$
+	\item The sigmoid function
+	\item The smooth ReLu function
 \end{itemize}
+
+The smooth ReLu function is also known as the Softplus function. It is defined as \citep{Dugas2001}:
+
+\begin{equation}
+	f\left ( x \right )=\ln \left ( 1+e^{x} \right )
+\end{equation}
 
 Only the last two activation functions are available for the output layer of the CPPN. They result in values ranging only from 0 to 1. The values are rounded according to the specified threshold parameter.
 
@@ -429,22 +433,22 @@ A population of units is randomly generated according to the specified unit gene
 
 Evolutionary algorithms involve the initial generation of a random population and the improvement of the population members' fitness according to some objective function over a number of generations. An evolutionary algorithm is thus implemented as a generative design method.
 
-An initial random population is generated, run, and evaluated. Two parent population members are selected for evolution. Parents are ranked in descending order according to their fitness. The ranking procedure is discussed in detail in Section~\ref{ssec:rank}. The parent population is iterated through from the most fit to the least fit parent until a parent has been selected. A random number between 0 and 1 is generated for selection. A fitness weighting function is used to determine the selection of a parent. The fitness weighting function is defined as
+An initial random population is generated, run, and evaluated. Two parent population members are selected for evolution. Parents are ranked in descending order according to their fitness. The ranking procedure is discussed in detail in Section~\ref{ssec:rank}. The parent population is iterated through from the most fit to the least fit parent until a parent has been selected. A random number between 0 and 1 is generated for selection. A fitness weighting function is used to determine the selection of a parent. The fitness weighting function is defined as \citep{Groenwold1999}:
 
 \begin{equation}
 	y=\frac{2\left ( p+1-r \right )^{c}}{p^{2}+p}
 \end{equation}
 
-Where
+Where:
 
 \begin{itemize}
-	\item $y$ is the fitness weighting
-	\item $p$ is the population size
-	\item $r$ is the rank of the selected member
-	\item $c$ is a user-defined fitness constant set to 1
+	\item $y$ is the fitness weighting.
+	\item $p$ is the population size.
+	\item $r$ is the rank of the selected member.
+	\item $c$ is a user-defined fitness constant set to 1.
 \end{itemize}
 
-The cumulative fitness weighting of all units before and after the current population member is calculated. If the random number is between the two cumulative fitness weightings, the member is selected as the parent. Population members may evolve in three ways.
+The sum of all fitnesses is equal to 1. A random number between 0 and 1 is generated. The largest population member with a fitness value smaller than the randomly generated number is selected as a parent. Two parents are selected at a time two produce two offspring. This fitness function was chosen for its simplicity.
 
 Crossover may occur between two parents. For every crossover point, a random number between 0 and 1 is generated. If the number is below the specified probability, crossover occurs. A random index in the list of parent parameters is selected. The parameters are swapped between parents from this index onwards. The two resulting children are potentially evolved further.
 
@@ -473,7 +477,7 @@ Certain template parameters need to be specified by the user. These parameters a
 
 Units are altered templates. Units have some internal elements removed. It is assumed that units are actuated by an internal pressure. Internal pressures are applied in the FEM models by edge loads perpendicular to all internal edges which have no neighbouring elements. Figure~\ref{fig:uip} illustrates the internal pressure boundary conditions as applied by the software pipeline.
 
-\begin{figure}[H]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{5x5Single.png}
 	\caption[Unit internal pressure boundary conditions]{Unit internal pressure boundary conditions. The unit ID is grid\_39\_1\_973\_1\_8\_28\_42.}
@@ -482,14 +486,14 @@ Units are altered templates. Units have some internal elements removed. It is as
 
 Units are not expected to be utilised independently. It is assumed that multiple units will be arranged together in grid-like patterns to construct actuators with desirable behaviours. Units are thus not modelled in isolation. Units are copied to create a $5\times 5$ grid of identical units. Figure~\ref{fig:5x5grid} illustrates the $5\times 5$ grid created from the unit in Figure~\ref{fig:uip}. Only the central unit is considered during analysis of the results. The central unit is assumed to be representative of a typical unit in a large arrangement.
 
+Fixed boundary conditions are applied to prevent rigid body modes. The four outermost nodes of the $5\times 5$ grid arrangement are fixed in the x- and y-direction. These boundary conditions are visible in Figure~\ref{fig:5x5grid}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{5x5Layout.png}
 	\caption[$5\times 5$ grid layout with fixed boundary conditions indicated]{$5\times 5$ grid layout of the unit in Figure~\ref{fig:uip} with fixed boundary conditions indicated}
 	\label{fig:5x5grid}
 \end{figure}
-
-Fixed boundary conditions are applied to prevent rigid body modes. The four outermost nodes of the $5\times 5$ grid arrangement are fixed in the x- and y-direction. These boundary conditions are visible in Figure~\ref{fig:5x5grid}.
 
 \section{Unit Deformation Cases}
 \label{sec:UC}
@@ -629,92 +633,92 @@ This case has applications in causing angular deformation. Multiple units combin
 
 To enable the software pipeline to identify well-performing units according to the given template deformation case, objective functions unique to each case must be defined. If cases are added to the software pipeline, objective functions must be added for them as well.
 
-For the uniaxial elongation case, it is desired that the unit elongates while its width remains constant. Two objective functions are identified. The objective function defining elongation is
+For the uniaxial elongation case, it is desired that the unit elongates while its width remains constant. Two objective functions are identified. The objective function defining elongation is:
 
 \begin{equation}
 	f=\frac{h}{w}
 \end{equation}
 
-Where
+Where:
 
 \begin{itemize}
-	\item $f$ is the objective function value
-	\item $h$ is the height of the unit
-	\item $w$ is the width of the unit
+	\item $f$ is the objective function value.
+	\item $h$ is the height of the unit.
+	\item $w$ is the width of the unit.
 \end{itemize}
 
-The objective function defining constant width is
+The objective function defining constant width is:
 
 \begin{equation}
 	f=\max\left (\frac{w}{w_{t}},\frac{w_{t}}{w} \right )
 \end{equation}
 
-Where
+Where:
 
 \begin{itemize}
-	\item $w_{t}$ is the width of the template
+	\item $w_{t}$ is the width of the template.
 \end{itemize}
 
 It is desired to maximise both of these functions.
 
-For the biaxial elongation case, it is desired that the unit retains its shape while enlarging. Retaining its shape implies that the height to width ratio remains as close to 1 as possible and that the outer sides remain as straight as possible. Two objective functions are identified. The objective function defining the retention of the height to width ratio is
+For the biaxial elongation case, it is desired that the unit retains its shape while enlarging. Retaining its shape implies that the height to width ratio remains as close to 1 as possible and that the outer sides remain as straight as possible. Two objective functions are identified. The objective function defining the retention of the height to width ratio is:
 
 \begin{equation}
 	f=\left | h-w \right |
 \end{equation}
 
-The objective function defining the outer sides remaining straight is
+The objective function defining the outer sides remaining straight is:
 
 \begin{equation}
 	f=\sum_{i=1}^{4}H_{d}\left ( s_{t,i},s_{i} \right )
 \end{equation}
 
-Where
+Where:
 
 \begin{itemize}
-	\item $s_{t}$ is the set of node coordinates of a side of the template
-	\item $s$ is the set of node coordinates of a side of the unit
-	\item $H_{d}\left ( x,y \right )$ is the Hausdorff distance as defined in Section~\ref{sec:HD}
+	\item $s_{t}$ is the set of node coordinates of a side of the template.
+	\item $s$ is the set of node coordinates of a side of the unit.
+	\item $H_{d}\left ( X,Y \right )$ is the Hausdorff distance as defined in Section~\ref{sec:HD}.
 \end{itemize}
 
 It is desired to minimize both of these functions.
 
 An objective function regarding the enlargement is not defined. The same pressure is applied to all units regardless of the number of elements removed. Units with more elements removed have more edge loads applied. Each edge load is a pressure load of the same magnitude. Elements with more internal edges will have higher total pressures applied and will enlarge more. This would be an unfair objective function compared to the other two selected objective functions. A unit with all internal elements removed may enlarge by a significant factor while another element retains its shape better. The empty unit may rank higher due to a singular high fitness value.
 
-For the pure shear case, it is desired that the top left and right corners shift horizontally to the right with respect to the bottom left and right corners respectively. Three objective functions are identified. The objective functions defining the rightward shift of the top corners are defined as
+For the pure shear case, it is desired that the top left and right corners shift horizontally to the right with respect to the bottom left and right corners respectively. Three objective functions are identified. The objective functions defining the rightward shift of the top corners are defined as:
 
 \begin{equation}
 	f=x_{tl}-x_{bl}
 \end{equation}
 
-And
+And:
 
 \begin{equation}
 	f=x_{tr}-x_{br}
 \end{equation}
 
-Where
+Where:
 
 \begin{itemize}
-	\item $x_{tl}$ is the x-coordinate of the top left corner
-	\item $x_{bl}$ is the x-coordinate of the bottom left corner
-	\item $x_{tr}$ is the x-coordinate of the top right corner
-	\item $x_{br}$ is the x-coordinate of the bottom right corner
+	\item $x_{tl}$ is the x-coordinate of the top left corner.
+	\item $x_{bl}$ is the x-coordinate of the bottom left corner.
+	\item $x_{tr}$ is the x-coordinate of the top right corner.
+	\item $x_{br}$ is the x-coordinate of the bottom right corner.
 \end{itemize}
 
-The objective function defining constant height is
+The objective function defining constant height is:
 
 \begin{equation}
 	f=\max\left (\frac{h}{h_{t}},\frac{h_{t}}{h} \right )
 \end{equation}
 
-Where
+Where:
 
 \begin{itemize}
-	\item $h_{t}$ is the height of the template
+	\item $h_{t}$ is the height of the template.
 \end{itemize}
 
-It is desired to maximise both of these functions.
+It is desired to maximise all three of these functions.
 
 \section{Model Validation}
 \label{sec:MV}
@@ -730,7 +734,7 @@ The modular mould consists of a mould frame and two types of mould cells. The mo
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{MB.png}
+	\includegraphics[width=0.8\textwidth]{MB.png}
 	\caption{Dimensioned modular mould base}
 	\label{fig:mb}
 \end{figure}
@@ -790,6 +794,52 @@ The FEM models applied a linearly ramping internal pressure to the units. The in
 The experimental setup is put in place with the top perspex plate and bolts having not yet been placed. The surfaces of the perspex plates which will come into contact with the physical unit are lubricated with a silicon-based spray. The spray will react with the physical unit over time, causing it to degrade. Tests must be done in a timely manner to prevent the effects of the spray from impacting results.
 
 The physical unit is placed on the bottom plate with its cavity positioned over the pressure inlet hole. The top plate is affixed to the bottom plate separated by the \SI{2}{mm} washers. The camera is switched on and placed into focus. The pressure valve is slowly opened to desirable pressure intervals. At each interval, photographs are taken of the deformation and the pressure applied is noted.
+
+\section{System Energy}
+\label{sec:SE}
+
+Constraint energy and internal energy are defined as performance and comparative measures when investigating results. Efficiency is a desirable quality in manufacturing and performance. Reducing the amount of energy required for deformation, applied to materials and existing as strain energy is sensible.
+
+\subsection{Constraint Energy}
+
+The deformation of the boundary of a unit is an important aspect of the unit. Unit boundary deformations as related to the deformation case are an indicator of the applicability of the unit. Inspecting the energy on the boundary as related to the deformation may be an indication of the relative performance of the unit.
+
+Units are simulated within the context of neighbouring units. Neighbouring units exert forces on the boundary of the central evaluated unit. The less force exerted by neighbouring units onto each other, the easier units will expand.
+
+Considering the desired energy quantity, boundary deformation and reactive forces on the boundary, constraint energy is defined as:
+
+\begin{equation}
+	E_{C}=\sum_{i=1}^{n\_e}\left | d_{i}F_{r,i} \right |
+\end{equation}
+
+Where:
+
+\begin{itemize}
+	\item $E_{C}$ is the constraint energy of the system.
+	\item \textit{n\_e} is the list of external node indices.
+	\item $d_{i}$ is the node displacement.
+	\item $F_{r,i}$ is the node reaction force.
+\end{itemize}
+
+$d_{i}$ and $F_{r,i}$ are obtained from simulation results files.
+
+\subsection{Internal Energy}
+
+High strain energy density implies high amounts of energy stored within a non-linear material, which in turn implies high forces acting on the unit or large deformations. A low strain energy density may be indicative of a unit requiring low forces to deform. The internal energy of a unit is defined as:
+
+\begin{equation}
+	E_{I}=\sum_{i=1}^{n\_n}\left | U_{i} \right |
+\end{equation}
+
+Where:
+
+\begin{itemize}
+	\item $E_{I}$ is the internal energy of the system.
+	\item \textit{n\_n} is the total number of nodes.
+	\item $U_{i}$ is the node strain energy.
+\end{itemize}
+
+$U_{i}$ is obtained from simulation results files.
 
 \section{Software Selection}
 
@@ -873,7 +923,7 @@ The user-specified template parameters are used to define a template class objec
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \caption[Template class object calculated parameters]{Template class object internally calculated parameters}
 \label{tab:tempcalcpar}
@@ -918,9 +968,9 @@ The user-specified template parameters are used to define a template class objec
 \end{tabular}
 \end{table}
 
-The list of internal element IDs refers to the elements contained within the boundary of the unit. Only these elements are allowed to be removed by the unit generation method. The IDs are obtained by an internal function. The function algorithm is detailed in Figure~.
+The list of internal element IDs refers to the elements contained within the boundary of the unit. Only these elements are allowed to be removed by the unit generation method. The IDs are obtained by an internal function.
 
-The template ID is a formatted string. The ID is generated using unique template class object parameters. The ID is formatted as
+The template ID is a formatted string. The ID is generated using unique template class object parameters. The ID is formatted as:
 
 \vspace{\baselineskip}
 
@@ -957,7 +1007,7 @@ L-Systems and CPPNs as outlined in Sections~\ref{ssec:LS} and~\ref{ssec:CPPN} re
 % \usepackage{booktabs}
 % \usepackage{multirow}
 % \usepackage{graphicx}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}lccl@{}}
@@ -1036,7 +1086,7 @@ If the unit generation method is specified as L-Systems, the parameters are used
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \caption{L-System class object parameters and descriptions}
 \label{tab:lspardes}
@@ -1093,6 +1143,8 @@ If the unit generation method is specified as CPPNs, the parameters are used to 
 \end{tabular}
 \end{table}
 
+The threshold parameter allows for two approaches to the removal of elements. The CPPN outputs 2D arrays of values ranging from 0 to 1. If the threshold parameter is set from 0 to 1, it is interpreted as a rounding threshold. All values above or equal to the threshold are set to 1 and all values below or equal to the threshold are set to 0. If the threshold parameter is set above 1 to 100, it is interpreted as a percentage of elements to remove. The lowest values making up the specified percentage of all values are set to 0 and the rest of the values are set to 1.
+
 The resulting grid from the CPPN model class object is a binary 2D grid dimensioned according to the internal space from which elements may be removed. The binary 2D grid is interpreted to obtain element indices for every zero. This list of element indices is the list of elements to be removed.
 
 Each list of elements to be removed is paired with its unit generation method class object or list of parameters. Each pair is added to the population list. For each population member, the template is opened and the relevant elements are removed. Further settings are applied as outlined in Section~\ref{ssec:us}.
@@ -1114,7 +1166,7 @@ If the exit number string is found, the exit number is evaluated. Two exit numbe
 % \usepackage{booktabs}
 % \usepackage[normalem]{ulem}
 % \useunder{\uline}{\ul}{}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \begin{tabular}{@{}cl@{}}
 \toprule
@@ -1127,9 +1179,7 @@ Other                & An unsuccessful run                            \\ \bottom
 \label{tab:exno}
 \end{table}
 
-If exit number 3004 is found, the model is recognized as having run successfully. The model output file is opened. All relevant data is read from the model output file and written to clearly labeled CSV files. Any relevant data that must be calculated externally from Marc Mentat is calculated and also written to clearly labeled CSV files. Relevant data is outlined and motivated in Section .
-
-If exit number 67 is found, the job is rerun and the entire process as detailed above is repeated until the exit number can be rerun again. If an access violation string is found, it is treated identically to exit number 67.
+If exit number 3004 is found, the model is recognized as having run successfully. The model output file is opened. All relevant data is read from the model output file and written to clearly labeled CSV files. Any relevant data that must be calculated externally from Marc Mentat is calculated and also written to clearly labeled CSV files. Relevant data is outlined in Section~\ref{sec:SE}. If exit number 67 is found, the job is rerun and the entire process as detailed above is repeated until the exit number can be rerun again. If an access violation string is found, it is treated identically to exit number 67.
 
 If any other exit number is found, an error message with the number is displayed. No results are obtained from the model. The model ID is logged appropriately.
 
@@ -1145,19 +1195,19 @@ If the analysis approach was specified as evolutionary algorithms, multiple popu
 \subsection{Ranking}
 \label{ssec:rank}
 
-Unit objective function evaluations, or performance measures, are weighted equally. To compare performance measures equivalently, values are studentized according to
+Unit objective function evaluations, or performance measures, are weighted equally. To compare performance measures equivalently, values are studentized according to:
 
 \begin{equation}
 	f=\frac{x-mean}{std}
 \end{equation}
 
-Where
+Where:
 
 \begin{itemize}
-	\item $f$ is the fitness value
-	\item $x$ is the performance measure
-	\item $mean$ is the mean of all units' performance measures
-	\item $std$ is the standard deviation of all units' performance measures
+	\item $f$ is the fitness value.
+	\item $x$ is the performance measure.
+	\item $mean$ is the mean of all units' performance measures.
+	\item $std$ is the standard deviation of all units' performance measures.
 \end{itemize}
 
 All fitness values applicable to a unit are summed together. Units are ranked in either descending or ascending order, depending on whether objective functions were desired to be maximised or minimised respectively.
@@ -1174,7 +1224,7 @@ File names and paths are necessarily generated by the Python code. A hierarchica
 Figure~\ref{fig:fh} illustrates the file hierarchy. Parameters are outlined in Table~\ref{tab:fhpar}.
 
 \begin{landscape}
- \begin{figure}[H]
+ \begin{figure}[ht]
   \centering
   \includegraphics[width=1.4\textwidth]{FileHierarchy.png}
   \caption{File hierarchy flow diagram}
@@ -1184,7 +1234,7 @@ Figure~\ref{fig:fh} illustrates the file hierarchy. Parameters are outlined in T
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
-\begin{table}[H]
+\begin{table}[ht]
 \centering
 \caption[File hierarchy parameters]{File hierarchy parameters and descriptions}
 \label{tab:fhpar}
@@ -1202,7 +1252,7 @@ Type                                   & The type of units logged               
 
 The template ID is described in Section~\ref{ssec:tempcr}. The job ID refers to one of two jobs. The first job applies the unit deformation boundary conditions as described in Section~\ref{sec:UC}. The second job applies the internal pressure boundary conditions as described in Section~\ref{ssec:us}.
 
-The unit ID is determined by the unit generation method. All unit IDs start with the number of elements removed followed by an underscore. If the unit generation method is random, a unique hash code is generated according to the list of element IDs that have been removed. If the unit generation method is an L-System, a unique hash code is generated according to the L-System rules. If the unit generation method is a CPPN, the unit ID is formatted as
+The unit ID is determined by the unit generation method. All unit IDs start with the number of elements removed followed by an underscore. If the unit generation method is random, a unique hash code is generated according to the list of element IDs that have been removed. If the unit generation method is an L-System, a unique hash code is generated according to the L-System rules. If the unit generation method is a CPPN, the unit ID is formatted as:
 
 \vspace{\baselineskip}
 
@@ -1213,10 +1263,10 @@ The unit ID is determined by the unit generation method. All unit IDs start with
 The type of units logged in the log files are one of six possible types:
 
 \begin{itemize}
-	\item No Type - All units
-	\item success - All units that have run successfully
-	\item failed - All units that have run unsuccessfully
-	\item empty - All units that have no internal elements
-	\item full - All units that have all internal elements
-	\item ranked - All units ranked according to their fitness values
+	\item No Type - All units.
+	\item success - All units that have run successfully.
+	\item failed - All units that have run unsuccessfully.
+	\item empty - All units that have no internal elements.
+	\item full - All units that have all internal elements.
+	\item ranked - All units ranked according to their fitness values.
 \end{itemize}

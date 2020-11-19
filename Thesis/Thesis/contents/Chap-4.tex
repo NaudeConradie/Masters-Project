@@ -18,7 +18,8 @@ Table~\ref{tab:defpar} contains the default parameter values. Unless specified o
 \begin{tabular}{@{}lc@{}}
 \toprule
 \multicolumn{1}{c}{\textbf{Parameter}} & \textbf{Value}                 \\ \midrule
-\textit{n\_u}                          & 1000                           \\
+\textit{case}                          & 1                              \\
+\textit{x\_e}                          & 15                             \\
 \textit{y\_e}                          & 15                             \\
 \textit{e\_s}                          & 10                             \\
 \textit{b}                             & 3                              \\
@@ -68,71 +69,67 @@ Number of iterations                   & 1                & 5                \\ 
 \end{tabular}
 \end{table}
 
-Figure~\ref{fig:ls_v_ce} contains scatter plots relating L-System parameters to the constraint energy. The average rule length in characters is used and not the number of rule components used in the rule generation.
+Figure~\ref{fig:ls_v_e} contains box-and-whisker plots relating L-System parameters to the system energies. The axiom IDs have no massive outliers with regards to their relationship with the system energies. The number of rules and iterations have a somewhat inverse relationship with the system energies. This relationship is more evident with the internal energy.
+
+Figure~\ref{fig:rl_v_e} contains scatter plots relating the average length to the system energies. The average rule length in characters is used and not the number of rule components used in the rule generation. There is no strong relationship between the average rule length and the system energies.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[c]{0.45\textwidth}
+	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{aid_vs_ce.png}
 		\caption{Axiom ID vs constraint energy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[c]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{nor_vs_ce.png}
-		\caption{Number of rules vs constraint energy}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[c]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{rl_vs_ce.png}
-		\caption{Average rule length vs constraint energy}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[c]{0.45\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{noi_vs_ce.png}
-		\caption{Number of iterations vs constraint energy}
-	\end{subfigure}
-	\caption[L-System parameters vs constraint energy]{L-System parameters vs constraint energy (\si{mJ}) scatter plots}
-	\label{fig:ls_v_ce}
-\end{figure}
-
-The L-System parameters have no discernible relationships with the constraint energy. The only exception to the general distribution is in the case of 1 rule iteration, for which the constraint energy is generally high.
-
-Figure~\ref{fig:ls_v_ie} contains scatter plots relating L-System parameters to the constraint energy.
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[c]{0.45\textwidth}
+	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{aid_vs_ie.png}
 		\caption{Axiom ID vs internal energy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[c]{0.45\textwidth}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{nor_vs_ce.png}
+		\caption{Number of rules vs constraint energy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{nor_vs_ie.png}
 		\caption{Number of rules vs internal energy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[c]{0.45\textwidth}
+	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{rl_vs_ie.png}
-		\caption{Average rule length vs internal energy}
+		\includegraphics[width=\textwidth]{noi_vs_ce.png}
+		\caption{Number of iterations vs constraint energy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[c]{0.45\textwidth}
+	\begin{subfigure}[t]{0.45\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{noi_vs_ie.png}
 		\caption{Number of iterations vs internal energy}
 	\end{subfigure}
-	\caption[L-System parameters vs internal energy]{L-System parameters vs internal energy (\si{mJ}) scatter plots}
-	\label{fig:ls_v_ie}
+	\caption[L-System parameters vs system energies]{L-System parameters vs constraint and internal energy (\si{mJ}) box-and-whisker plots}
+	\label{fig:ls_v_e}
 \end{figure}
 
-The L-System parameters have no discernible relationships with the internal energy.
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{rl_vs_ce.png}
+		\caption{Rule length vs constraint energy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{rl_vs_ie.png}
+		\caption{Rule length vs internal energy}
+	\end{subfigure}
+	\caption[Rule length vs system energies]{Average rule length vs constraint and internal energy (\si{mJ}) scatter plots}
+	\label{fig:rl_v_e}
+\end{figure}
 
 \subsection{CPPN Unit Generation}
 
@@ -156,6 +153,42 @@ Element removal threshold              & 0                & 100              \\ 
 \end{tabular}
 \end{table}
 
+Figure~\ref{fig:nhl_v_e} contains box-and-whisker plots relating the number of hidden layers to the system energies. The number of hidden layers have no discernible relationship with the system energies. Figure~\ref{fig:sihl_v_e} contains scatter plots relating the size of the initial hidden layer to the system energies. There is no strong relationship between the size of the initial hidden layer and the system energies.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{nhl_vs_ce.png}
+		\caption{Number of hidden layers vs constraint energy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{nhl_vs_ie.png}
+		\caption{Number of hidden layers vs internal energy}
+	\end{subfigure}
+	\caption[Number of hidden layers vs system energies]{Number of hidden layers vs constraint and internal energy (\si{mJ}) box-and-whisker plots}
+	\label{fig:nhl_v_e}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{sihl_vs_ce.png}
+		\caption{Size of the initial hidden layer vs constraint energy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{sihl_vs_ie.png}
+		\caption{Size of the initial hidden layer vs internal energy}
+	\end{subfigure}
+	\caption[Size of the initial hidden layer vs system energies]{Size of the initial hidden layer vs constraint and internal energy (\si{mJ}) scatter plots}
+	\label{fig:sihl_v_e}
+\end{figure}
+
 \subsection{Comparison}
 
 The distribution of the constraint and internal energies for the three unit generation methods is compared in Figure~\ref{fig:ciecomp}.
@@ -173,8 +206,29 @@ The distribution of the constraint and internal energies for the three unit gene
 		\includegraphics[width=\textwidth]{ie_ls.png}
 		\caption{Internal energy distribution of L-Systems}
 	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ce_cppn.png}
+		\caption{Constraint energy distribution of CPPNs}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ie_cppn.png}
+		\caption{Internal energy distribution of CPPNs}
+	\end{subfigure}
 	\caption[Constraint and internal energy distribution comparison]{Constraint and internal energy distribution comparison between random, L-System and CPPN unit generation}
 	\label{fig:ciecomp}
 \end{figure}
 
 \section{Scale Invariance}
+
+Scale invariance in the context of this project refers to the capability of generated units to exhibit similar behaviours when their resolutions, size or layout is changed.
+Unit layouts are defined using simple systems that are subject to changes in resolution and physical dimensions. Unit behaviours may remain similar at varying resolutions and physical dimensions. 
+
+\subsection{Single Units}
+
+\subsubsection{L-Systems}
+
+L-Systems have the potential to be scale invariant with an increase in unit size and resolution. L-Systems are constructed on the principle of recursiveness. 

@@ -55,7 +55,7 @@ def main():
     p_mag = 0.025
 
     #   The unit generation method
-    g_meth = "l"
+    g_meth = "r"
     #   The analysis method
     a_meth = "g"
 
@@ -67,7 +67,7 @@ def main():
     #   Prepare the unit parameters
     temp = classes.template(case, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, d_mag, p_mag)
 
-    t = "_2020-10-28--16-00-12"
+    t = "_2020-11-14--07-51-17"
 
     # 2020-10-29--14-18-46 
     # 2020-11-14--07-51-17
@@ -89,18 +89,22 @@ def main():
 
     data = analyse.rank_u(temp, g_meth, empty_id, full_id, fp_lu)
 
-    # data_c_e = data[(data["Constraint Energy"] >= 0) & (data["Constraint Energy"] < 0.0002)]
+    data["Constraint Energy"] = data["Constraint Energy"]*1000
 
+    data = data[(data["Constraint Energy"] >= 0) & (data["Constraint Energy"] < 0.1)]
+
+    plotting.hist(temp, t, data, "Constraint Energy")
     plotting.hist(temp, t, data, "Internal Energy")
 
-    data_col = [i for i in data.columns]
+    data_x = ["Number of Hidden Layers", "Size of the Initial Hidden Layer"]
 
-    for i in data_col:
+    data_y = ["Constraint Energy", "Internal Energy"]
 
-        seaborn.relplot(x = i, y = "Internal Energy", data = data)
+    # plotting.scat_all(temp, t, data, ["Size of the Initial Hidden Layer"], data_y)
+    
+    # plotting.boxp_all(temp, t, data, ["Number of Hidden Layers"], data_y)
 
-        #   Save the figure
-        plotting.save_plot(temp, i + "_vs_Internal Energy", t)
+    plotting.lreg_all(temp, t, data, ["Number of Elements Removed"], data_y)
 
     return
 

@@ -224,3 +224,17 @@ Emergent properties are sometimes encountered with generative design. Emergent p
 \section{Hausdorff Distance}
 \label{sec:HD}
 
+The Hausdorff distance is the largest possible distance from any point in one set to its closest point in another set. Two sets of coordinates have a small Hausdorff distance if every point in both sets is close to another point in the other set. The Hausdorff distance between set $A$ and set $B$ is \citep{Tyrrell1997}:
+
+\begin{equation}
+	d_{H}\left ( A,B \right )= \underset{x,y\epsilon \mathbb{R}^{2}}{\sup}\left | d_{A}\left ( x,y \right )-d_{B}\left ( x,y \right ) \right |
+\end{equation}
+
+Where:
+
+\begin{itemize}
+	\item $A,B$ are non-empty subsets of a real 2D metric space.
+	\item $d$ is the coordinate set of a member of set $A$ or $B$.
+\end{itemize}
+
+The Hausdorff distance is applicable to shape identification in images. Outlines and prominent features are capable of being identified even when rotated or shifted. \citep{Huttenlocher1993}

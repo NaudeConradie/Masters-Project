@@ -100,17 +100,76 @@ def hist(
 
 ################################################################################
 
+def boxp(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    x: str,
+    y: str,
+    ) -> None:
+
+    seaborn.boxplot(x = x, y = y, data = data)
+
+    #   Save the figure
+    save_plot(template, x + "_vs_" + y, tm)
+
+    return
+
+################################################################################
+
+def boxp_all(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    x: list,
+    y: list,
+    ) -> None:
+
+    for i in x:
+
+        for j in y:
+
+            seaborn.boxplot(x = i, y = j, data = data)
+
+            #   Save the figure
+            save_plot(template, i + "_vs_" + j, tm)
+
+    return
+
+################################################################################
+
+def boxp_melt(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    x: list,
+    y: list,
+    ) -> None:
+
+    for i in x:
+
+        data_melt = data.melt(id_vars = i, value_vars = y, var_name = "Type of Energy", value_name = "Energy (mJ)") 
+
+        seaborn.boxplot(x = i, y = "Energy (mJ)", hue = "Type of Energy", data = data_melt)
+
+        #   Save the figure
+        save_plot(template, i + "_vs_" + "Energy (mJ)", tm)
+
+    return
+
+################################################################################
+
 def scat_all(
     template,
     tm,
     data: pandas.DataFrame,
+    x: list,
+    y: list,
     ) -> None:
 
-    data_col = [i for i in data.columns]
+    for i in x:
 
-    for i in data_col:
-
-        for j in data_col:
+        for j in y:
 
             seaborn.relplot(x = i, y = j, data = data)
 
@@ -173,6 +232,28 @@ def scatterplot(
 
     #   Save the figure
     save_plot(template, t, tm)
+
+    return
+
+################################################################################
+
+def lreg_all(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    x: list,
+    y: list,
+    order: int = 1
+    ) -> None:
+
+    for i in x:
+
+        for j in y:
+
+            seaborn.regplot(x = i, y = j, data = data, order = order)
+
+            #   Save the figure
+            save_plot(template, i + "_vs_" + j, tm)
 
     return
 

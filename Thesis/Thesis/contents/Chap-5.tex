@@ -7,11 +7,11 @@ Physical replicas of selected units are constructed and inflated. The deformatio
 
 \section{FEM}
 
-FEM models were adapted for model validation. Only a single unit was manufactured at a time. Units were modelled and manufactured with $\SI{1}{cm}\times \SI{1}{cm}$ sized elements. Constructing a $5\times 5$ grid of the unit is impractical at the current scale. FEM models selected for model validation were adjusted accordingly. Surrounding units were removed. A fixed displacement boundary condition was applied to the bottom left node of the unit.
+Units were modelled and manufactured with $\SI{1}{cm}\times \SI{1}{cm}$ sized elements. Only a single unit was manufactured at a time. Constructing a $5\times 5$ grid of the unit is impractical at the current scale. FEM models selected for model validation were adjusted accordingly. Surrounding units were removed. A fixed displacement boundary condition was applied to the bottom left node of the unit.
 
 \section{Mixing and Casting}
 
-The modular mould as described in Section~\ref{ssec:pc} is assembled according to the desired unit layout. Mold Star 15 is mixed and cast as per Section~\ref{ssec:mac}. Figure~\ref{fig:fillmould} shows a filled mould. After the cure time has passed the unit is removed from the mould and excess material is carefully cut off. 
+The modular mould as described in Section~\ref{ssec:pc} is assembled according to the desired unit layout. Mold Star 15 is mixed and cast as per Section~\ref{ssec:mac}. Figure~\ref{fig:fillmould} shows a filled mould. After the cure time has passed, the unit is removed from the mould and excess material is carefully cut off. 
 
 \begin{figure}[H]
 	\centering
@@ -43,16 +43,20 @@ The first unit selected is grid\_36\_d68df4e04590e068b46c0e75dcdf5818. This unit
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{unit1bc.png}
-	\caption[FEM validation model of unit 1]{grid\_36\_d68df4e04590e068b46c0e75dcdf5818 FEM model with applied boundary conditions}
-	\label{fig:unit1bc}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{unit1mod.png}
-	\caption[Physical validation model of unit 1]{grid\_36\_d68df4e04590e068b46c0e75dcdf5818 physical model}
-	\label{fig:unit1mod}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{unit1bc.png}
+		\caption{FEM validation model with applied boundary conditions}
+		\label{fig:unit1bc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{unit1mod.png}
+		\caption{Physical validation model}
+		\label{fig:unit1mod}
+	\end{subfigure}
+	\caption[FEM and physical models of unit 1]{grid\_36\_d68df4e04590e068b46c0e75dcdf5818 FEM and physical validation models}
+	\label{fig:unit1}
 \end{figure}
 
 Figure~\ref{fig:unit1def} shows comparisons between the FEM model and the physical model as the internal pressure is increased. Figure~\ref{fig:unit1over} illustrates an overlay of the FEM model deformation with the physical model's deformation. The FEM deformation is taken from step 2 of the simulation. The physical deformation is the final deformation.
@@ -87,16 +91,20 @@ The second unit selected is grid\_57\_292a241d90d8d6b4753d110deca32360. This uni
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{unit2bc.png}
-	\caption[FEM validation model of unit 2]{grid\_57\_292a241d90d8d6b4753d110deca32360 FEM model with applied boundary conditions}
-	\label{fig:unit2bc}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{unit2mod.png}
-	\caption[Physical validation model of unit 2]{grid\_57\_292a241d90d8d6b4753d110deca32360 physical model}
-	\label{fig:unit2mod}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{unit2bc.png}
+		\caption{FEM validation model with applied boundary conditions}
+		\label{fig:unit2bc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{unit2mod.png}
+		\caption{Physical validation model}
+		\label{fig:unit2mod}
+	\end{subfigure}
+	\caption[FEM and physical models of unit 2]{grid\_57\_292a241d90d8d6b4753d110deca32360 FEM and physical validation models}
+	\label{fig:unit2}
 \end{figure}
 
 Figure~\ref{fig:unit2def} shows comparisons between the FEM model and the physical model as the internal pressure is increased. Figure~\ref{fig:unit2over} illustrates an overlay of the FEM model deformation with the physical model's deformation. The FEM deformation is taken from step 3 of the simulation. The physical deformation is the final deformation.
@@ -131,16 +139,20 @@ The third unit selected is grid\_50\_9a02e87afe77b71561f73745d87b35bd. This unit
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth]{unit3bc.png}
-	\caption[FEM validation model of unit 3]{grid\_50\_9a02e87afe77b71561f73745d87b35bd FEM model with applied boundary conditions}
-	\label{fig:unit3bc}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{unit3mod.png}
-	\caption[Physical validation model of unit 3]{grid\_50\_9a02e87afe77b71561f73745d87b35bd physical model}
-	\label{fig:unit3mod}
+	\begin{subfigure}[t]{0.5\textwidth}
+		\includegraphics[width=\textwidth]{unit3bc.png}
+		\caption{FEM validation model with applied boundary conditions}
+		\label{fig:unit3bc}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{unit3mod.png}
+		\caption{Physical validation model}
+		\label{fig:unit3mod}
+	\end{subfigure}
+	\caption[FEM and physical models of unit 2]{grid\_57\_292a241d90d8d6b4753d110deca32360 FEM and physical validation models}
+	\label{fig:unit3}
 \end{figure}
 
 Figure~\ref{fig:unit3def} shows comparisons between the FEM model and the physical model as the internal pressure is increased. Figure~\ref{fig:unit3over} illustrates an overlay of the FEM model deformation with the physical model's deformation. The FEM deformation is taken from step 2 of the simulation. The physical deformation is the final deformation.
@@ -177,7 +189,7 @@ The FEM models were predictive of the behaviour of the physical units. The compl
 
 Some issues were encountered during model validation. Some were attempted to account for beforehand and some were unforeseen.
 
-Mould cells were not manufactured exactly to tolerances. A number of small and large mould cells were sanded by handed to remove rough edges or protrusions and to reduce their overall size. A number of mould cells had uneven sides due to manufacturing or sanding. Material seeped into gaps between mould cells during casting. The bottom of the unit had excess material where the cast material had seeped into gaps. Excess material was carefully removed by hand but the surface was not perfectly smooth. Mould cells were laser cut. Having mould cells machined may be more costly but could result in higher quality mould cells.
+Mould cells were not manufactured exactly to tolerances. A number of small and large mould cells were sanded by hand to remove rough edges or protrusions and to reduce their overall size. A number of mould cells had uneven sides due to manufacturing or sanding. Material seeped into gaps between mould cells during casting. The bottom of the unit had excess material where the cast material had seeped into gaps. Excess material was carefully removed by hand but the surface was not perfectly smooth. Mould cells were laser cut. Having mould cells machined may be more costly but could result in higher quality mould cells.
 
 Units placed between the perspex plates did not seal the internal area completely. Under higher pressures, air escaped by deforming the unit up or down against the perspex plates in order for it to escape past the unit boundary. Clamps were applied to the edges of the perspex plates in order to seal the material better. Clamps may be a necessary permanent component of the experimental setup.
 
