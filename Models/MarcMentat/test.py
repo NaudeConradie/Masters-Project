@@ -2,6 +2,8 @@
 
 #   Imports
 import importlib
+import numpy
+import seaborn
 
 from evolve_soft_2d import classes, file_paths, log, plotting, utility
 from evolve_soft_2d.evolve import cppns, gen_alg, lsystems
@@ -85,11 +87,20 @@ def main():
 
     fp_lu = [create_fp_file(temp, t, "l"), create_fp_file(temp, t + "_success", "l"), create_fp_file(temp, t + "_failed", "l"), create_fp_file(temp, t + "_empty", "l"), create_fp_file(temp, t + "_full", "l"), create_fp_file(temp, t + "_ranked", "l")]
 
-    # lu = analyse.ranking(fp_lu, empty_id, full_id)
+    data = analyse.rank_u(temp, g_meth, empty_id, full_id, fp_lu)
 
-    # print(lu)
+    # data_c_e = data[(data["Constraint Energy"] >= 0) & (data["Constraint Energy"] < 0.0002)]
 
-    analyse.rank_u(temp, g_meth, empty_id, full_id, fp_lu)
+    plotting.hist(temp, t, data, "Internal Energy")
+
+    data_col = [i for i in data.columns]
+
+    for i in data_col:
+
+        seaborn.relplot(x = i, y = "Internal Energy", data = data)
+
+        #   Save the figure
+        plotting.save_plot(temp, i + "_vs_Internal Energy", t)
 
     return
 

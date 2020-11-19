@@ -212,16 +212,18 @@ def rank_u(
     # #   Plot the desired graphs from the results
     # plotting.plot_all(template, v, n_e, label, tm)
 
-    plotting.hist_all(template, tm, data)
-    plotting.scat_all(template, tm, data)
+    data = data.replace(0, numpy.nan)
+
+    # plotting.hist_all(template, tm, data)
+    # plotting.scat_all(template, tm, data)
 
     #   Sort the dataframe according to the fitness values
     data.sort_values(by = ["Fitness"], ascending = False, inplace = True, ignore_index = True)
     
     #   Save the list of best performing units
-    data["Unit ID"].to_csv(fp_lu[5], header = False, index = False)
+    # data["Unit ID"].to_csv(fp_lu[5], header = False, index = False)
 
-    return
+    return data
 
 ################################################################################
 
@@ -266,17 +268,17 @@ def ranking(
         #   Replace the placeholder full unit ID in the ranked list with a blank space
         lu_rank = lu_rank.replace(full_id, "")
 
-    try:
+    # try:
 
-        #   Read the list of failed units created
-        with open(fp_lu[2], 'r') as f:
-            lu_fail = f.read()
+    #     #   Read the list of failed units created
+    #     with open(fp_lu[2], 'r') as f:
+    #         lu_fail = f.read()
 
-        #   Append the list of failed units to the ranked list
-        lu_rank += lu_fail
+    #     #   Append the list of failed units to the ranked list
+    #     lu_rank += lu_fail
 
-    except:
-        pass
+    # except:
+    #     pass
 
     #   Format the list of ranked units
     lu_rank = list(lu_rank.split("\n"))

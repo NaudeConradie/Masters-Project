@@ -68,36 +68,71 @@ Number of iterations                   & 1                & 5                \\ 
 \end{tabular}
 \end{table}
 
-The distributions of the parameters are displayed in Figure~\ref{fig:lspardis}.
+Figure~\ref{fig:ls_v_ce} contains scatter plots relating L-System parameters to the constraint energy. The average rule length in characters is used and not the number of rule components used in the rule generation.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[c]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Axiom ID_2020-10-28--16-00-12.png}
-		\caption{Axiom ID distribution}
+		\includegraphics[width=\textwidth]{aid_vs_ce.png}
+		\caption{Axiom ID vs constraint energy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[c]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Number of Rules_2020-10-28--16-00-12.png}
-		\caption{Number of rules distribution}
+		\includegraphics[width=\textwidth]{nor_vs_ce.png}
+		\caption{Number of rules vs constraint energy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[c]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Rule Length_2020-10-28--16-00-12.png}
-		\caption{Average rule length distribution}
+		\includegraphics[width=\textwidth]{rl_vs_ce.png}
+		\caption{Average rule length vs constraint energy}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[c]{0.45\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{Number of Iterations_2020-10-28--16-00-12.png}
-		\caption{Number of iterations distribution}
+		\includegraphics[width=\textwidth]{noi_vs_ce.png}
+		\caption{Number of iterations vs constraint energy}
 	\end{subfigure}
-	\caption[L-System parameter distributions]{L-System parameter distribution histograms}
-	\label{fig:lspardis}
+	\caption[L-System parameters vs constraint energy]{L-System parameters vs constraint energy (\si{mJ}) scatter plots}
+	\label{fig:ls_v_ce}
 \end{figure}
+
+The L-System parameters have no discernible relationships with the constraint energy. The only exception to the general distribution is in the case of 1 rule iteration, for which the constraint energy is generally high.
+
+Figure~\ref{fig:ls_v_ie} contains scatter plots relating L-System parameters to the constraint energy.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{aid_vs_ie.png}
+		\caption{Axiom ID vs internal energy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{nor_vs_ie.png}
+		\caption{Number of rules vs internal energy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{rl_vs_ie.png}
+		\caption{Average rule length vs internal energy}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{noi_vs_ie.png}
+		\caption{Number of iterations vs internal energy}
+	\end{subfigure}
+	\caption[L-System parameters vs internal energy]{L-System parameters vs internal energy (\si{mJ}) scatter plots}
+	\label{fig:ls_v_ie}
+\end{figure}
+
+The L-System parameters have no discernible relationships with the internal energy.
 
 \subsection{CPPN Unit Generation}
 
@@ -120,5 +155,26 @@ Size of the initial hidden layer       & 2                & 32               \\
 Element removal threshold              & 0                & 100              \\ \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Comparison}
+
+The distribution of the constraint and internal energies for the three unit generation methods is compared in Figure~\ref{fig:ciecomp}.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ce_ls.png}
+		\caption{Constraint energy distribution of L-Systems}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ie_ls.png}
+		\caption{Internal energy distribution of L-Systems}
+	\end{subfigure}
+	\caption[Constraint and internal energy distribution comparison]{Constraint and internal energy distribution comparison between random, L-System and CPPN unit generation}
+	\label{fig:ciecomp}
+\end{figure}
 
 \section{Scale Invariance}

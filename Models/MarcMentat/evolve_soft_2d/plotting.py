@@ -84,6 +84,22 @@ def hist_all(
 
 ################################################################################
 
+def hist(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    x: str,
+    ) -> None:
+
+    seaborn.displot(data, x = x)
+
+    #   Save the figure
+    save_plot(template, x, tm)
+
+    return
+
+################################################################################
+
 def scat_all(
     template,
     tm,
@@ -225,6 +241,8 @@ def save_plot(
 
     #   Create the file path of the figure
     fp_p = file_paths.create_fp_file(template, t + tm, "g")
+
+    plot.tight_layout()
 
     #   Save the figure
     plot.savefig(fp_p, dpi = 300)
