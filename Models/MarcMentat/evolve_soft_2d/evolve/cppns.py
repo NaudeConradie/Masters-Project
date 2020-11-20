@@ -135,22 +135,37 @@ class cppn:
         #   Transpose the network
         n = n.T
 
-        #   Loop through the second to second-last hidden layers
-        for i in range(1, self.hl_n - 1):
+        if self.hl_n > 1:
+
+            #   Loop through the second to second-last hidden layers
+            for i in range(1, self.hl_n - 1):
+
+                #   Set the seed for each layer
+                numpy.random.seed(seed = self.seed + i)
+
+                #   Select and record the activation function
+                n[i], af_c = numpy.random.choice(af_l)(n[i - 1])
+                self.af.append(af_c)
+
+            #   Set the seed for the final layer
+            numpy.random.seed(seed = self.seed)
+
+            #   Apply and record the final function
+            n[-1], af_o = numpy.random.choice(af_o)(n[-2])
+            self.af.append(af_o)
+
+        else:
 
             #   Set the seed for each layer
-            numpy.random.seed(seed = self.seed + i)
+            numpy.random.seed(seed = self.seed)
 
             #   Select and record the activation function
-            n[i], af_c = numpy.random.choice(af_l)(n[i - 1])
+            n[0], af_c = numpy.random.choice(af_l)(n[0])
             self.af.append(af_c)
 
-        #   Set the seed for the final layer
-        numpy.random.seed(seed = self.seed)
-
-        #   Apply and record the final function
-        n[-1], af_o = numpy.random.choice(af_o)(n[-2])
-        self.af.append(af_o)
+            #   Apply and record the final function
+            n[0], af_o = numpy.random.choice(af_o)(n[0])
+            self.af.append(af_o)
 
         #   Reshape the grid to fit the given dimensions
         mod = numpy.reshape(n[-1], (self.mod_n, self.x, self.y))

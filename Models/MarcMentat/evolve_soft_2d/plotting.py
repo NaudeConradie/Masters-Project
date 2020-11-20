@@ -259,6 +259,22 @@ def lreg_all(
 
 ################################################################################
 
+def grid_plot(
+    template,
+    tm,
+    data: pandas.DataFrame,
+    l: str,
+    ) -> None:
+
+    seaborn.heatmap(data, linewidths=1, linecolor='black', cmap = "Greys")
+
+    #   Save the figure
+    save_plot(template, l, tm)
+
+    return
+
+################################################################################
+
 def plot_all(
     template,
     v: list,

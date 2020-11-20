@@ -67,44 +67,62 @@ def main():
     #   Prepare the unit parameters
     temp = classes.template(case, x_e, y_e, e_s, b, classes.mold_star_15, n_steps, table_name, d_mag, p_mag)
 
-    t = "_2020-11-14--07-51-17"
+    # for i in range(1, 10):
 
-    # 2020-10-29--14-18-46 
-    # 2020-11-14--07-51-17
-    # 2020-10-28--16-00-12
+    #     l = lsystems.lsystem(lsystems.e_vocabulary, [["F", "FF++f"], ["f", "--FFF"]], lsystems.a_rot_hor, i)
 
-    #   Generate the grid with all elements removed
-    grid_rem_e, rem_e = create.gen_grid_rem_free(temp, temp.e_internal)
+    #     c = lsystems.interpret_word_raw(l.word)
 
-    #   Generate the unit ID of the empty unit
-    empty_id = str(len(rem_e)) + "_" + utility.gen_hash(utility.list_to_str(rem_e, "_"))
+    #     grid = utility.coord_to_grid(c)
 
-    #   Generate the grid with all elements removed
-    grid_rem_f, rem_f = create.gen_grid_rem_free(temp, [])
+    #     plotting.grid_plot(temp, "_layout", grid, "ls_" + str(i))
 
-    #   Generate the unit ID of the full unit
-    full_id = str(len(rem_f)) + "_" + utility.gen_hash(utility.list_to_str(rem_f, "_"))
+    for xy in range (5, 31, 5):
 
-    fp_lu = [create_fp_file(temp, t, "l"), create_fp_file(temp, t + "_success", "l"), create_fp_file(temp, t + "_failed", "l"), create_fp_file(temp, t + "_empty", "l"), create_fp_file(temp, t + "_full", "l"), create_fp_file(temp, t + "_ranked", "l")]
+        c = cppns.cppn(1, 1, 1, 1, 5, 75, xy, xy)
 
-    data = analyse.rank_u(temp, g_meth, empty_id, full_id, fp_lu)
+        c_i = cppns.cppn_i(c, 0)
 
-    data["Constraint Energy"] = data["Constraint Energy"]*1000
+        plotting.grid_plot(temp, "_layout", c_i.grid, "cppn_" + str(xy))
 
-    data = data[(data["Constraint Energy"] >= 0) & (data["Constraint Energy"] < 0.1)]
+    # t = "_2020-11-14--07-51-17"
 
-    plotting.hist(temp, t, data, "Constraint Energy")
-    plotting.hist(temp, t, data, "Internal Energy")
+    # # 2020-10-29--14-18-46 
+    # # 2020-11-14--07-51-17
+    # # 2020-10-28--16-00-12
 
-    data_x = ["Number of Hidden Layers", "Size of the Initial Hidden Layer"]
+    # #   Generate the grid with all elements removed
+    # grid_rem_e, rem_e = create.gen_grid_rem_free(temp, temp.e_internal)
 
-    data_y = ["Constraint Energy", "Internal Energy"]
+    # #   Generate the unit ID of the empty unit
+    # empty_id = str(len(rem_e)) + "_" + utility.gen_hash(utility.list_to_str(rem_e, "_"))
 
-    # plotting.scat_all(temp, t, data, ["Size of the Initial Hidden Layer"], data_y)
+    # #   Generate the grid with all elements removed
+    # grid_rem_f, rem_f = create.gen_grid_rem_free(temp, [])
+
+    # #   Generate the unit ID of the full unit
+    # full_id = str(len(rem_f)) + "_" + utility.gen_hash(utility.list_to_str(rem_f, "_"))
+
+    # fp_lu = [create_fp_file(temp, t, "l"), create_fp_file(temp, t + "_success", "l"), create_fp_file(temp, t + "_failed", "l"), create_fp_file(temp, t + "_empty", "l"), create_fp_file(temp, t + "_full", "l"), create_fp_file(temp, t + "_ranked", "l")]
+
+    # data = analyse.rank_u(temp, g_meth, empty_id, full_id, fp_lu)
+
+    # data["Constraint Energy"] = data["Constraint Energy"]*1000
+
+    # data = data[(data["Constraint Energy"] >= 0) & (data["Constraint Energy"] < 0.1)]
+
+    # plotting.hist(temp, t, data, "Constraint Energy")
+    # plotting.hist(temp, t, data, "Internal Energy")
+
+    # data_x = ["Number of Hidden Layers", "Size of the Initial Hidden Layer"]
+
+    # data_y = ["Constraint Energy", "Internal Energy"]
+
+    # # plotting.scat_all(temp, t, data, ["Size of the Initial Hidden Layer"], data_y)
     
-    # plotting.boxp_all(temp, t, data, ["Number of Hidden Layers"], data_y)
+    # # plotting.boxp_all(temp, t, data, ["Number of Hidden Layers"], data_y)
 
-    plotting.lreg_all(temp, t, data, ["Number of Elements Removed"], data_y)
+    # plotting.lreg_all(temp, t, data, ["Number of Elements Removed"], data_y)
 
     return
 

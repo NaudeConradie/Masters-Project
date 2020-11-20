@@ -9,7 +9,7 @@ This chapter covers the materials considered during this project and the methodo
 
 \subsection{Modelling}
 
-The modelling of materials undergoing relatively large deformations is a non-trivial problem. Stored strain energy density may be used to compute stress in hyperelastic materials. The strain energy density is defined using invariants of strain. The three invariants are given as \citep{Kim2015}
+The modelling of materials undergoing relatively large deformations is a non-trivial problem. Stored strain energy density may be used to compute stress in hyperelastic materials. The strain energy density is defined using invariants of strain. The three invariants are given as \citep{Kim2015}:
 
 \begin{equation}
 	I_{1}=\lambda_{1}^{2}+\lambda_{2}^{2}+\lambda_{3}^{2}
@@ -27,26 +27,26 @@ and
 
 where $\lambda_{1}^{2}$, $\lambda_{2}^{2}$, and $\lambda_{3}^{2}$ are three eigenvalues. The undeformed state is used as the frame of reference. The three invariants will not change when using different coordinate systems. The three invariants must be positive for the deformation to be valid. The square root of $I_{3}$ measures the volume change of the material. $I_{3}=1$ if the material is incompressible. \citep{Kim2015}
 
-The distortional strain energy density is defined as \citep{Kim2015}
+The distortional strain energy density is defined as \citep{Kim2015}:
 
 \begin{equation}
 	W_{1}\left ( I_{1},I_{2} \right )=\sum_{m+n=1}^{\infty}A_{mn}\left ( I_{1}-3 \right )^{m}\left ( I_{2}-3 \right )^{n}
 \end{equation}
 
-The Ogden model uses the principal stretches to define the distortional strain energy density as \citep{Ogden1972}
+The Ogden model uses the principal stretches to define the distortional strain energy density as \citep{Ogden1972}:
 
 \begin{equation}
 	\label{eq:om}
 	W_{1}\left ( \lambda_{1},  \lambda_{2}, \lambda_{3} \right )=\sum_{i=1}^{N}\frac{\mu_{i}}{\alpha_{i}}\left ( \lambda_{1}^{\alpha_{i}} + \lambda_{2}^{\alpha_{i}} + \lambda_{3}^{\alpha_{i}} \right )
 \end{equation}
 
-where $N$, $\mu_{i}$, and $\alpha_{i}$ are material parameters. $N$ is usually three. The principal stretches are the three eigenvalues of the deformation gradient. If the material is incompressible, the three principal stresses are not independent, meaning $\lambda_{1}\lambda_{2}\lambda_{3}=1$. The shear modulus is \citep{Ogden1972}
+where $N$, $\mu_{i}$, and $\alpha_{i}$ are material parameters. $N$ is usually three. The principal stretches are the three eigenvalues of the deformation gradient. If the material is incompressible, the three principal stresses are not independent, meaning $\lambda_{1}\lambda_{2}\lambda_{3}=1$. The shear modulus is \citep{Ogden1972}:
 
 \begin{equation}
 	\mu=\frac{1}{2}\sum_{i=1}^{N}\alpha_{i}\mu_{i}
 \end{equation}
 
-The Ogden model correlates well with simple tension test data that is elongated up to 700\%. The model accommodates for slightly compressible behaviour and a nonconstant shear modulus \citep{Ogden1972, Kim2015}.
+The Ogden model correlates well with simple tension test data that is elongated up to 700\%. The model accommodates for slightly compressible behaviour and a non-constant shear modulus \citep{Ogden1972, Kim2015}.
 
 \subsection{Selection}
 
@@ -103,7 +103,7 @@ The two components of the material need to be mixed according to a 1:1 mass rati
 
 A clean disposable stirrer such as a tongue depressor is used to mix the two Mold Star components thoroughly. The mixture is considered to be thorough when it is one uniform colour and no lighter or darker streaks are visible.
 
-The mixture must be degassed to remove any air bubbles formed during pouring or mixing. The mixture in the bowl is placed inside a degasser and the pressure is lowered to a vacuum pressure. Bubbles will rise to the top of the mixture and pop. When no bubbles have appeared for a minute, the mixture is considered degassed. It may be removed from the degasser once the pressure has equalised.
+The mixture must be degassed to remove any air bubbles formed during pouring or mixing. The mixture in the bowl is placed inside a degasser and the pressure is lowered to vacuum pressure. Bubbles will rise to the top of the mixture and pop. When no bubbles have appeared for a minute, the mixture is considered degassed. It may be removed from the degasser once the pressure has equalized.
 
 The mixture may now be cast into a mould. Care must be taken during casting to prevent the formation of more bubbles. If the mould is movable and fits within the degasser, this may be done to remove any extra bubbles formed during casting.
 
@@ -113,18 +113,18 @@ According to Mold Star 15's pot life, the process detailed above must be complet
 
 \section{Pattern Generation}
 
-A component of the generative design process of this project is the construction of internal geometries. The project scope is limited to a 2D grid of squares. Pattern generation methods capable of evolving are implemented in order to generate initial geometries and improve upon them.
+A component of the generative design process of this project is the construction of internal geometries. The project scope is limited to a 2D grid of squares. Pattern generation methods capable of evolving are implemented to generate initial geometries and improve upon them.
 
 \subsection{L-Systems}
 \label{ssec:LS}
 
-L-Systems are implemented in the code pipeline as a pattern generation method. L-Systems are implemented according to a context-free L-System structure as defined by~\cite{Prusinkiewicz2004}. The L-System unit generation method is implemented due to the features of efficiency, compactness and scalability. L-Systems are defined in the Python code using class objects containing all necessary information.
+L-Systems are implemented in the code pipeline as a pattern generation method. L-Systems are implemented according to a context-free L-System structure as defined by~\cite{Prusinkiewicz2004}. The L-System unit generation method is implemented due to the features of efficiency, compactness, and scalability. L-Systems are defined in the Python code using class objects containing all necessary information.
 
 \subsubsection{Parameters}
 
 Stochastic L-Systems are not implemented to maintain replicability. Parametric L-Systems are not implemented because a single discrete model state is desirable. Maps are not implemented as the resulting reflections when branches collide with the border wall may negatively impact the scalability of the L-Systems. Reflections inward may quickly fill up the available space or result in geometries dissimilar to ones resulting from the same L-System at higher resolutions. Interactions between elements drawn are also not considered.
 
-The L-System vocabulary is defined as a class object in the Python code. The vocabulary is predefined. It consists of variables and constants. The vocabulary and its interpretations are outlined in Tables~\ref{tab:lsvarint} and~\ref{tab:lsconint}. The vocabulary is separated according to variables and constants. The vocabulary interpretation differs from traditional L-System interpretations. The interpretation is required to fill in elements of a grid. Traditional L-System interpretations result in lines of varying lengths and angles being drawn. A unique interpreter was designed and implemented for the purposes of this project.
+The L-System vocabulary is defined as a class object in the Python code. The vocabulary is predefined. It consists of variables and constants. The vocabulary and its interpretations are outlined in Tables~\ref{tab:lsvarint} and~\ref{tab:lsconint}. The vocabulary is separated according to variables and constants. The vocabulary interpretation differs from traditional L-System interpretations. The interpretation is required to fill in elements of a grid. Traditional L-System interpretations result in lines of varying lengths and angles being drawn. A unique interpreter was designed and implemented for this project.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
@@ -391,15 +391,15 @@ The complete list of coordinates is sorted in ascending order. All duplicate ele
 \subsection{CPPNs}
 \label{ssec:CPPN}
 
-A CPPN-like generation method is implemented due to the CPPN features of image generation and scalability. CPPNs are defined using class objects containing all necessary information. A single CPPN may generate a number of models. CPPN models are also defined as class objects containing all necessary information.
+A CPPN-like generation method is implemented due to the CPPN features of image generation and scalability. CPPNs are defined using class objects containing all necessary information. A single CPPN may generate several models. CPPN models are also defined as class objects containing all necessary information.
 
 A random generation seed is used to determine the CPPN's initial layer, hidden layers, and activation functions. The random generation seed allows for replicability of CPPNs.
 
-A CPPN model may be scaled inwards or outwards. This is equivalent to zooming in and out of a fractal image. The function evaluations are updated as the scale is increased or decreased to be applicable to the current scale.
+A CPPN model may be scaled inwards or outwards. This is equivalent to zooming in and out of a fractal image. The function evaluations are updated as the scale is increased or decreased to apply to the current scale.
 
 The x- and y-dimensions are specified initially. All hidden layers barring the initial layer have a number of nodes equal to the x-dimension multiplied with the y-dimension. The CPPN will result in a model that fits perfectly within the internal space of the unit.
 
-CPPN models obtained for the purposes of this this thesis are at much lower resolutions than traditional CPPN models. A reduction in complexity was deemed appropriate. Traditional CPPNs allow for unique activation functions to be applied to each node. This was not implemented in order to reduce complexity. Five activation functions are available for the hidden layers of the CPPN. Activation functions are applied to an entire layer. The activation functions included in this project are:
+CPPN models obtained for this thesis are at much lower resolutions than traditional CPPN models. A reduction in complexity was deemed appropriate. Traditional CPPNs allow for unique activation functions to be applied to each node. This was not implemented to reduce complexity. Five activation functions are available for the hidden layers of the CPPN. Activation functions are applied to an entire layer. The activation functions included in this project are:
 
 \begin{itemize}
 	\item $\sin$
@@ -431,7 +431,7 @@ A population of units is randomly generated according to the specified unit gene
 \subsection{Evolutionary Algorithms}
 \label{ssec:ea}
 
-Evolutionary algorithms involve the initial generation of a random population and the improvement of the population members' fitness according to some objective function over a number of generations. An evolutionary algorithm is thus implemented as a generative design method.
+Evolutionary algorithms involve the initial generation of a random population and the improvement of the population members' fitness according to some objective function over several generations. An evolutionary algorithm is thus implemented as a generative design method.
 
 An initial random population is generated, run, and evaluated. Two parent population members are selected for evolution. Parents are ranked in descending order according to their fitness. The ranking procedure is discussed in detail in Section~\ref{ssec:rank}. The parent population is iterated through from the most fit to the least fit parent until a parent has been selected. A random number between 0 and 1 is generated for selection. A fitness weighting function is used to determine the selection of a parent. The fitness weighting function is defined as \citep{Groenwold1999}:
 
@@ -475,7 +475,7 @@ Certain template parameters need to be specified by the user. These parameters a
 \subsection{Unit Simulations}
 \label{ssec:us}
 
-Units are altered templates. Units have some internal elements removed. It is assumed that units are actuated by an internal pressure. Internal pressures are applied in the FEM models by edge loads perpendicular to all internal edges which have no neighbouring elements. Figure~\ref{fig:uip} illustrates the internal pressure boundary conditions as applied by the software pipeline.
+Units are altered templates. Units have some internal elements removed. It is assumed that units are actuated by internal pressure. Internal pressures are applied in the FEM models by edge loads perpendicular to all internal edges which have no neighbouring elements. Figure~\ref{fig:uip} illustrates the internal pressure boundary conditions as applied by the software pipeline.
 
 \begin{figure}[ht]
 	\centering
@@ -484,7 +484,7 @@ Units are altered templates. Units have some internal elements removed. It is as
 	\label{fig:uip}
 \end{figure}
 
-Units are not expected to be utilised independently. It is assumed that multiple units will be arranged together in grid-like patterns to construct actuators with desirable behaviours. Units are thus not modelled in isolation. Units are copied to create a $5\times 5$ grid of identical units. Figure~\ref{fig:5x5grid} illustrates the $5\times 5$ grid created from the unit in Figure~\ref{fig:uip}. Only the central unit is considered during analysis of the results. The central unit is assumed to be representative of a typical unit in a large arrangement.
+Units are not expected to be utilized independently. It is assumed that multiple units will be arranged together in grid-like patterns to construct actuators with desirable behaviours. Units are thus not modelled in isolation. Units are copied to create a $5\times 5$ grid of identical units. Figure~\ref{fig:5x5grid} illustrates the $5\times 5$ grid created from the unit in Figure~\ref{fig:uip}. Only the central unit is considered during the analysis of the results. The central unit is assumed to be representative of a typical unit in a large arrangement.
 
 Fixed boundary conditions are applied to prevent rigid body modes. The four outermost nodes of the $5\times 5$ grid arrangement are fixed in the x- and y-direction. These boundary conditions are visible in Figure~\ref{fig:5x5grid}.
 
@@ -498,7 +498,7 @@ Fixed boundary conditions are applied to prevent rigid body modes. The four oute
 \section{Unit Deformation Cases}
 \label{sec:UC}
 
-Three unit deformation cases were defined, implemented and evaluated with the software pipeline. The pipeline allows for easy implementation of new unit deformation cases and methods of evaluation. The unit deformation cases were selected due to their robustness, potential applications and simplicity.
+Three unit deformation cases were defined, implemented, and evaluated with the software pipeline. The pipeline allows for easy implementation of new unit deformation cases and methods of evaluation. The unit deformation cases were selected due to their robustness, potential applications, and simplicity.
 
 \subsection{Uniaxial Elongation}
 
@@ -537,7 +537,7 @@ The boundary conditions as applied in Marc Mentat to a template of $5\times 5$ e
 		\caption{Resulting deformation of uniaxial elongation. The original shape is outlined in pink.}
 		\label{fig:c1def}
 	\end{subfigure}
-	\caption[Uniaxial elongation boundary conditions and deformation]{Uniaxial elongation boundary conditions and resulting deformation.}
+	\caption[Uniaxial elongation boundary conditions and deformation]{Uniaxial elongation boundary conditions and the resulting deformation.}
 	\label{fig:c1}
 \end{figure}
 
@@ -580,7 +580,7 @@ The boundary conditions as applied in Marc Mentat to a template of $5\times 5$ e
 		\caption{Resulting deformation of biaxial elongation}
 		\label{fig:c2def}
 	\end{subfigure}
-	\caption[Biaxial elongation boundary conditions and deformation]{Biaxial elongation boundary conditions and resulting deformation}
+	\caption[Biaxial elongation boundary conditions and deformation]{Biaxial elongation boundary conditions and the resulting deformation}
 	\label{fig:c2}
 \end{figure}
 
@@ -623,7 +623,7 @@ The boundary conditions as applied in Marc Mentat to a template of $5\times 5$ e
 		\caption{Resulting deformation of pure shear}
 		\label{fig:c3def}
 	\end{subfigure}
-	\caption[Pure shear boundary conditions and deformation]{Pure shear boundary conditions and resulting deformation}
+	\caption[Pure shear boundary conditions and deformation]{Pure shear boundary conditions and the resulting deformation}
 	\label{fig:c3}
 \end{figure}
 
@@ -659,7 +659,7 @@ Where:
 	\item $w_{t}$ is the width of the template.
 \end{itemize}
 
-It is desired to maximise both of these functions.
+It is desired to maximize both of these functions.
 
 For the biaxial elongation case, it is desired that the unit retains its shape while enlarging. Retaining its shape implies that the height to width ratio remains as close to 1 as possible and that the outer sides remain as straight as possible. Two objective functions are identified. The objective function defining the retention of the height to width ratio is:
 
@@ -718,7 +718,7 @@ Where:
 	\item $h_{t}$ is the height of the template.
 \end{itemize}
 
-It is desired to maximise all three of these functions.
+It is desired to maximize all three of these functions.
 
 \section{Model Validation}
 \label{sec:MV}
@@ -728,7 +728,7 @@ Validation of the FEM models is preferable in order to verify the accuracy of th
 \subsection{Physical Components}
 \label{ssec:pc}
 
-A modular mould is designed for the casting of multiple units. Modularity is desirable as all units are derived from a single template, but individual units may vary greatly. Manufacturing times, costs and complexity would be too high if a mould had to be constructed for every unit that was desired to be tested.
+A modular mould is designed for the casting of multiple units. Modularity is desirable as all units are derived from a single template, but individual units may vary greatly. Manufacturing times, costs, and complexity would be too high if a mould had to be constructed for every unit that was desired to be tested.
 
 The modular mould consists of a mould frame and two types of mould cells. The mould frame is square with dimensions indicated in Figure~\ref{fig:mb}. The cells are square with thicknesses of either \SI{2}{mm} or \SI{4}{mm}, as illustrated in Figure~\ref{fig:mc}. The mould frame is placed on a smooth, level granite tabletop. The mould cells are arranged within the frame according to the layout of the unit to be cast. \SI{2}{mm} cells are placed where elements exist according to the unit layout. \SI{4}{mm} cells are placed where elements have been removed. Figure~\ref{fig:emptymould} illustrates an example unit layout and the arrangement of the mould before the material has been cast.
 
@@ -773,7 +773,7 @@ The modular mould consists of a mould frame and two types of mould cells. The mo
 	\label{fig:emptymould}
 \end{figure}
 
-The experimental setup is comprised of two perspex plates separated by 4 \SI{2}{mm} thick washers kept in place by 4 screws, bolts and footpieces on a level surface. The bottom perspex plate has a hole in its centre with a pressure supply tube attached to it. Figure~\ref{fig:exp} illustrates the experimental setup. A camera is affixed to a tripod, positioned over the experimental setup and aimed directly downward at it.
+The experimental setup is comprised of two perspex plates separated by 4 \SI{2}{mm} thick washers kept in place by 4 screws, bolts, and footpieces on a level surface. The bottom perspex plate has a hole in its centre with a pressure supply tube attached to it. Figure~\ref{fig:exp} illustrates the experimental setup. A camera is affixed to a tripod, positioned over the experimental setup and aimed directly downward at it.
 
 \begin{figure}[H]
 	\centering
@@ -798,15 +798,15 @@ The physical unit is placed on the bottom plate with its cavity positioned over 
 \section{System Energy}
 \label{sec:SE}
 
-Constraint energy and internal energy are defined as performance and comparative measures when investigating results. Efficiency is a desirable quality in manufacturing and performance. Reducing the amount of energy required for deformation, applied to materials and existing as strain energy is sensible.
+Constraint energy and internal energy are defined as performance and comparative measures when investigating results. Efficiency is a desirable quality in manufacturing and performance. Reducing the amount of energy that is required for deformation, is applied to materials, and exists as strain energy is sensible.
 
 \subsection{Constraint Energy}
 
-The deformation of the boundary of a unit is an important aspect of the unit. Unit boundary deformations as related to the deformation case are an indicator of the applicability of the unit. Inspecting the energy on the boundary as related to the deformation may be an indication of the relative performance of the unit.
+The deformation of the boundary of a unit is an important aspect of the unit. Unit boundary deformations, as related to the deformation case, are an indicator of the applicability of the unit. Inspecting the energy on the boundary as related to the deformation may be an indication of the relative performance of the unit.
 
 Units are simulated within the context of neighbouring units. Neighbouring units exert forces on the boundary of the central evaluated unit. The less force exerted by neighbouring units onto each other, the easier units will expand.
 
-Considering the desired energy quantity, boundary deformation and reactive forces on the boundary, constraint energy is defined as:
+Considering the desired energy quantity, boundary deformation, and reactive forces on the boundary, constraint energy is defined as:
 
 \begin{equation}
 	E_{C}=\sum_{i=1}^{n\_e}\left | d_{i}F_{r,i} \right |
@@ -845,18 +845,18 @@ $U_{i}$ is obtained from simulation results files.
 
 The Finite Element Method (FEM) is an approach to numerically solving field problems. Field problems require the determination of one or more dependent variables' distribution in space. Field problems are mathematically described with differential equations or integral expressions. Finite elements can be expressed as small parts of a larger body. A field quantity within an element may only have a simple spatial variation, such as being described by polynomial terms no higher than the second order. FEM differs from calculus as calculus uses infinitesimal elements. FEM thus delivers approximate solutions. \citep{Cook2002}
 
-Several commercial FEM software packages capable of realistically modelling soft bodies are available. LSDyna is a FEM software package widely used in industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \citep{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for graphical design of components \citep{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modelling and analysis. It has an extensive set of options available for post-processing \citep{MSC}.
+Several commercial FEM software packages capable of realistically modelling soft bodies are available. LSDyna is a FEM software package widely used in the industry. It is owned by ANSYS and maintained by LSTC. The software's code is based on highly non-linear and transient dynamic FEM with explicit time integration \citep{LSDyna}. Siemens NX 12 is an integrated software package capable of performing FEM analysis. The software package has a user-friendly interface for the graphical design of components \citep{NX12}. MSC.Marc Mentat is a pre- and postprocessing software for the MSC.Marc FEM solver. It is focused on nonlinear material modelling and analysis. It has an extensive set of options available for post-processing \citep{MSC}.
 
 MSC.Marc Mentat 2019 is selected for this project. Marc Mentat is actively maintained and updated. Tutorials and reference manuals are built into the software. Support is available if issues are encountered or for any other reason. Limitations include the necessity of having continuous access to a license server. An official VPN configuration as well as remote desktop tools allowed for access to the software as long as a network connection could be established.
 
-Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python. The Python code is accessible, installable and editable. Additional information on how to install and edit the code is available in Appendix~.
+Python 3.6 is used to construct a modelling pipeline. Packages are available that allow for the integration of Python and Marc. Many advanced numerical analysis packages are also available for Python. The Python code is accessible, installable, and editable. Additional information on how to install and edit the code is available in Appendix~\ref{app:CM}.
 
 \section{Software Pipeline}
 \label{sec:SW}
 
-The software pipeline is complex, and many components are interrelated. Details considered trivial or irrelevant are not discussed. The entirety of the code is available to the reader if they would wish to investigate or make use of it. The code is extensively commented for any clarification needed.
+The software pipeline is complex, and many components are interrelated. Details considered trivial or irrelevant are not discussed. The entirety of the code is available to the reader if they would wish to investigate or make use of it. The code is extensively commented on for any clarification needed.
 
-\subsection{Initialisation}
+\subsection{Initialization}
 \label{ssec:init}
 
 Before a set of units is created, the user needs to specify certain parameters for the template, analysis approach and unit generation method.
@@ -867,7 +867,7 @@ Template parameters that need to be specified are outlined in Table~\ref{tab:tem
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
-\caption[Template class object initial parameters]{Template class object initialisation parameters and prerequisites}
+\caption[Template class object initial parameters]{Template class object initialization parameters and prerequisites}
 \label{tab:temppar}
 \begin{tabular}{@{}llc@{}}
 \toprule
@@ -901,7 +901,7 @@ Analysis approach parameters that need to be specified are outlined in Table~\re
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
-\caption{Analysis approach initialisation parameters and prerequisites}
+\caption{Analysis approach initialization parameters and prerequisites}
 \label{tab:analpar}
 \begin{tabular}{@{}llc@{}}
 \toprule
@@ -980,7 +980,7 @@ The template ID is a formatted string. The ID is generated using unique template
 
 A grid of ones is generated to represent the template in coordinate calculations. The grid is generated according to the element resolution of the template. Ones are representative of elements in place. When elements are removed during unit generation, they are replaced with zeroes.
 
-The file paths are generated for all relevant files. The template ID is used as the base name of every file. Additional identifiers and file formats are appended as necessary. A more detailed description of the file management system may be found in Section~.
+The file paths are generated for all relevant files. The template ID is used as the base name of every file. Additional identifiers and file formats are appended as necessary. A more detailed description of the file management system may be found in Section~\ref{ssec:fm}.
 
 The template is created in Marc Mentat. The nodes are created starting at the global origin on the XY-plane. The nodes are incrementally added in the positive x-direction. The nodes are spaced apart as defined by \textit{e\_s}. Once a row of nodes is completed as defined by \textit{x\_n}, the y-coordinate is positively incremented as defined by \textit{e\_s}. A new row of nodes is created. This process is repeated until completed as defined by \textit{y\_n}.
 
@@ -997,7 +997,7 @@ The template model is saved again. Meaningful template parameters and data obtai
 \subsection{Unit and Population Generation}
 \label{ssec:uapg}
 
-Unit generation refers to the process of automatically generating internal geometry of a unit based on the predefined template. Three methods of unit generation are implemented and investigated. All three methods provide a list of internal element IDs provided to MarcMentat as elements to be removed from the template file.
+Unit generation refers to the process of automatically generating the internal geometry of a unit based on the predefined template. Three methods of unit generation are implemented and investigated. All three methods provide a list of internal element IDs provided to MarcMentat as elements to be removed from the template file.
 
 Random generation is implemented as a baseline to compare with the other two unit generation methods. A random generation seed is used to allow for replicability. A number of elements to be removed is first selected. A list of unique internal element IDs is then selected and sorted.
 
@@ -1158,7 +1158,7 @@ The command to run the job is sent to Marc Mentat. Jobs may take anywhere from \
 
 Marc Mentat creates several files during the process of running a job. The log file specifies the exit condition of the job. The log file is not created at the start of the job.
 
-A model is always saved just before a job is run. The time stamp of this saved model is used for evaluation of the log file. It is first determined if the log file exists. If it does not exist, the code waits for 1 second before checking again. This repeats until the log file is found to exist. If the log file is found, its time stamp is compared to the model file's time stamp. If the log file is older than the model, i.e. it is a log file of a previous run of the model, the code waits 1 second before checking if it has been updated. If the log file is newer than the model, it is inspected for the exit number string or the access violation string.
+A model is always saved just before a job is run. The timestamp of this saved model is used for the evaluation of the log file. It is first determined if the log file exists. If it does not exist, the code waits for 1 second before checking again. This repeats until the log file is found to exist. If the log file is found, its timestamp is compared to the model file's timestamp. If the log file is older than the model, i.e. it is a log file of a previous run of the model, the code waits 1 second before checking if it has been updated. If the log file is newer than the model, it is inspected for the exit number string or the access violation string.
 
 If the exit number string is found, the exit number is evaluated. Two exit numbers and an error case are identified and defined in Table~\ref{tab:exno}.
 
@@ -1210,7 +1210,7 @@ Where:
 	\item $std$ is the standard deviation of all units' performance measures.
 \end{itemize}
 
-All fitness values applicable to a unit are summed together. Units are ranked in either descending or ascending order, depending on whether objective functions were desired to be maximised or minimised respectively.
+All fitness values applicable to a unit are summed together. Units are ranked in either descending or ascending order, depending on whether objective functions were desired to be maximized or minimized respectively.
 
 A list of the ranked population members is generated. All empty or full units are inserted in the list at the position occupied by the initially generated empty or full units. All failed units are appended to the end of the list.
 

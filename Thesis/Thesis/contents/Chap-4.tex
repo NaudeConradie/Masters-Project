@@ -3,7 +3,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This chapter illustrates results obtained from sample simulations of large populations of units according to the outlined unit generation methods in Section~\ref{ssec:uapg} and the analysis approaches outlined in Section~\ref{ssec:aa}. The software pipeline described in Section~\ref{sec:SW} was used to generate the units and obtain the results.
+This chapter illustrates results obtained from sample simulations of large populations of units according to the outlined unit generation methods in Section~\ref{ssec:uapg} and the analytical approaches outlined in Section~\ref{ssec:aa}. The software pipeline described in Section~\ref{sec:SW} was used to generate the units and obtain the results.
 
 \section{Monte Carlo Analysis}
 
@@ -69,7 +69,7 @@ Number of iterations                   & 1                & 5                \\ 
 \end{tabular}
 \end{table}
 
-Figure~\ref{fig:ls_v_e} contains box-and-whisker plots relating L-System parameters to the system energies. The axiom IDs have no massive outliers with regards to their relationship with the system energies. The number of rules and iterations have a somewhat inverse relationship with the system energies. This relationship is more evident with the internal energy.
+Figure~\ref{fig:ls_v_e} contains box-and-whisker plots relating L-System parameters to the system energies. The axiom IDs have no massive outliers with regard to their relationship with the system energies. The number of rules and iterations have a somewhat inverse relationship with the system energies. This relationship is more evident with the internal energy.
 
 Figure~\ref{fig:rl_v_e} contains scatter plots relating the average length to the system energies. The average rule length in characters is used and not the number of rule components used in the rule generation. There is no strong relationship between the average rule length and the system energies.
 
@@ -153,7 +153,7 @@ Element removal threshold              & 0                & 100              \\ 
 \end{tabular}
 \end{table}
 
-Figure~\ref{fig:nhl_v_e} contains box-and-whisker plots relating the number of hidden layers to the system energies. The number of hidden layers have no discernible relationship with the system energies. Figure~\ref{fig:sihl_v_e} contains scatter plots relating the size of the initial hidden layer to the system energies. There is no strong relationship between the size of the initial hidden layer and the system energies.
+Figure~\ref{fig:nhl_v_e} contains box-and-whisker plots relating the number of hidden layers to the system energies. The number of hidden layers has no discernible relationship with the system energies. Figure~\ref{fig:sihl_v_e} contains scatter plots relating the size of the initial hidden layer to the system energies. There is no strong relationship between the size of the initial hidden layer and the system energies.
 
 \begin{figure}[H]
 	\centering
@@ -222,13 +222,88 @@ The distribution of the constraint and internal energies for the three unit gene
 	\label{fig:ciecomp}
 \end{figure}
 
+The system energy distribution is consistent across all unit generation methods. The L-System and CPPN unit generation methods are capable of adequately exploring the design space.
+
+
+
 \section{Scale Invariance}
 
-Scale invariance in the context of this project refers to the capability of generated units to exhibit similar behaviours when their resolutions, size or layout is changed.
-Unit layouts are defined using simple systems that are subject to changes in resolution and physical dimensions. Unit behaviours may remain similar at varying resolutions and physical dimensions. 
+Scale invariance in the context of this project refers to the capability of generated units to exhibit similar behaviours at differing resolutions and dimensions. Unit layouts are defined with simple, efficient and adaptable encodings.
 
 \subsection{Single Units}
 
+Unit resolution may be decreased or increased while maintaining the same unit generation encoding. A lower bound exists beyond which units will no longer exhibit similar behaviour to the same unit at higher resolutions.
+
 \subsubsection{L-Systems}
 
-L-Systems have the potential to be scale invariant with an increase in unit size and resolution. L-Systems are constructed on the principle of recursiveness. 
+L-Systems have the potential to be scale invariant with an increase in unit size and resolution. L-Systems are constructed on the principle of recursiveness.
+
+As unit resolution increases, L-System iterations may be increased. Longer words will result which will be interpreted as larger patterns. Patterns will have similar but not identical layouts. Figure~\ref{fig:lsinti} illustrates a simple L-System described in Table~\ref{tab:exlspar} interpreted at increasing iteration numbers.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
+\begin{table}[H]
+\centering
+\caption{Example L-System parameters}
+\label{tab:exlspar}
+\begin{tabular}{@{}lcl@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Parameter}} & \multicolumn{2}{c}{\textbf{Value}}                        \\ \midrule
+Axiom                                  & \multicolumn{2}{c}{{[}F{]}++++{[}F{]}}                    \\ \cmidrule(l){2-3} 
+\multirow{3}{*}{Grammar}               & \textbf{Variable}     & \multicolumn{1}{c}{\textbf{Rule}} \\ \cmidrule(l){2-3} 
+                                       & \multicolumn{1}{l}{F} & FF++f                             \\
+                                       & \multicolumn{1}{l}{f} & --FFF                             \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{si_ls_2.png}
+		\caption{2 iterations}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{si_ls_3.png}
+		\caption{3 iterations}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{si_ls_4.png}
+		\caption{4 iterations}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{si_ls_5.png}
+		\caption{5 iterations}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{si_ls_6.png}
+		\caption{6 iterations}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{si_ls_8.png}
+		\caption{8 iterations}
+	\end{subfigure}
+	\caption[Example L-System interpretation for different iteration values]{Example L-System from Table~\ref{tab:exlspar} interpretation for different iteration values. L-System interpretation is centred around $\left (0,0  \right )$ and is unbounded. Included elements are solid black squares and removed elements are empty white squares}
+	\label{fig:lsinti}
+\end{figure}
+
+The example L-System shape only becomes consistent from 5 iterations onwards. At lower iterations, it is not clear what the L-System behaviour may be. L-Systems must be inspected on a case-by-case basis to determine from which number of iterations they become scale-invariant.
+
+\subsubsection{CPPNs}
+
+CPPNs are inherently scale invariant. The CPPN resolution is defined as an initial parameter. Increasing the resolution refines the model produced by the CPPN.
+
+\subsection{Unit Grids}
+
+Units are modelled in a $5\times 5$ unit arrangement. Unit behaviour is analyzed in this context. Results regarding system energies are obtained from these simulations. Unit deformation is impacted by the surrounding identical units. Unit deformation may be assumed to be consistent with sufficient numbers of surrounding units. Internal units display consistent behaviour, with only external units displaying major ballooning effects. Figure~ illustrates an example unit configuration with internal pressure applied.

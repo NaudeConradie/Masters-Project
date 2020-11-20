@@ -5,6 +5,7 @@ import hashlib
 import math
 import numpy
 import os.path
+import pandas
 import pickle
 import re
 import time
@@ -826,3 +827,36 @@ def avg_str_l(l: list) -> float:
     avg = sum(l_len)/len(l_len)
 
     return avg
+
+################################################################################
+
+def coord_to_grid(c: pandas.DataFrame) -> numpy.array:
+
+    #   Normalise the coordinates
+    c.x = normalise_list(c.x, max(c.x))
+    c.y = normalise_list(c.y, max(c.y))
+
+    c = c.reset_index(drop = True)
+    c = c.astype(int)
+
+    grid = numpy.zeros((max(c.x) + 1, max(c.y) + 1))
+
+    for _, r in c.iterrows():
+
+        grid[r.x, r.y] = 1
+
+    grid = array_flip_h(grid)
+
+    grid = grid.T
+
+    return grid
+
+################################################################################
+
+def array_flip_h(a):
+
+    a_temp = a.copy()
+
+    a_temp = numpy.flip(a_temp, axis = 1)
+
+    return a_temp
