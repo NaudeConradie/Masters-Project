@@ -197,6 +197,18 @@ The distribution of the constraint and internal energies for the three unit gene
 	\centering
 	\begin{subfigure}[c]{0.45\textwidth}
 		\centering
+		\includegraphics[width=\textwidth]{ce_r.png}
+		\caption{Constraint energy distribution of random generation}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ie_r.png}
+		\caption{Internal energy distribution of random generation}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[c]{0.45\textwidth}
+		\centering
 		\includegraphics[width=\textwidth]{ce_ls.png}
 		\caption{Constraint energy distribution of L-Systems}
 	\end{subfigure}
@@ -224,7 +236,50 @@ The distribution of the constraint and internal energies for the three unit gene
 
 The system energy distribution is consistent across all unit generation methods. The L-System and CPPN unit generation methods are capable of adequately exploring the design space.
 
+The large spike in constraint energy at \SI{0.7}{mJ} and internal energy at \SI{0.5}{mJ} is attributed to the large number of empty units produced during population generation. Free-floating elements are discarded as they are considered not manufacturable and will have no effect on the deformation. In the case of L-Systems and random generation methods, a large number of the population have many free-floating elements. With regards to the L-Systems, this is attributed to word interpretations either too small to reach the unit boundary, or interpretations so large that they exist entirely outside of the unit boundary. With regards to the random generation, this is because no patterns linking elements exist. This feature is noticeably smaller in the case of CPPNs. This is attributed to the fact that CPPNs generate consistent patterns at the specified resolution of the unit's internal space. They are less likely to produce patterns where many elements are discarded.
 
+The relationship between the number of elements removed and the system energies for the three unit generation methods is compared in Figure~\ref{fig:neecomp}. A best-fit straight line curve is indicated on Figure~\ref{fig:neecomp} for each graph. The unit generation methods occupy a similar design space as the random generation. As the number of elements is removed, the system energies tend to increase.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ne_ce_r.png}
+		\caption{Number of elements removed vs constraint energy of random generation}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ne_ie_r.png}
+		\caption{Number of elements removed vs internal energy of random generation}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ne_ce_ls.png}
+		\caption{Number of elements removed vs constraint energy of L-Systems}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ne_ie_ls.png}
+		\caption{Number of elements removed vs internal energy of L-Systems}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ne_ce_cppn.png}
+		\caption{Number of elements removed vs constraint energy of CPPNs}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{ne_ie_cppn.png}
+		\caption{Number of elements removed vs internal energy of CPPNs}
+	\end{subfigure}
+	\caption[Number of elements removed vs system energy comparison]{The number of elements removed vs the constraint and internal energy comparison between random, L-System and CPPN unit generation}
+	\label{fig:neecomp}
+\end{figure}
 
 \section{Scale Invariance}
 
@@ -257,7 +312,7 @@ Axiom                                  & \multicolumn{2}{c}{{[}F{]}++++{[}F{]}} 
 \end{tabular}
 \end{table}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}[t]{0.3\textwidth}
 		\centering
@@ -294,7 +349,7 @@ Axiom                                  & \multicolumn{2}{c}{{[}F{]}++++{[}F{]}} 
 		\includegraphics[width=\textwidth]{si_ls_8.png}
 		\caption{8 iterations}
 	\end{subfigure}
-	\caption[Example L-System interpretation for different iteration values]{Example L-System from Table~\ref{tab:exlspar} interpretation for different iteration values. L-System interpretation is centred around $\left (0,0  \right )$ and is unbounded. Included elements are solid black squares and removed elements are empty white squares}
+	\caption[Example L-System interpretation for different iteration values]{Example L-System from Table~\ref{tab:exlspar} interpretation for different iteration values. L-System interpretation is centred around $\left (0,0  \right )$ and is unbounded. Included elements are solid black squares and removed elements are empty white squares.}
 	\label{fig:lsinti}
 \end{figure}
 
@@ -302,8 +357,63 @@ The example L-System shape only becomes consistent from 5 iterations onwards. At
 
 \subsubsection{CPPNs}
 
-CPPNs are inherently scale invariant. The CPPN resolution is defined as an initial parameter. Increasing the resolution refines the model produced by the CPPN.
+CPPNs are inherently scale invariant. The CPPN resolution is defined as an initial parameter. Increasing the resolution refines the model produced by the CPPN. Figure~\ref{fig:cppnintres} illustrates an example CPPN at differing resolutions defined according to parameters outlined in Table~\ref{tab:cppnexpar}.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[H]
+\centering
+\caption{Example CPPN parameters}
+\label{tab:cppnexpar}
+\begin{tabular}{@{}lc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Parameter}} & \textbf{Value} \\ \midrule
+Seed                                   & 29             \\
+Number of models                       & 29             \\
+Scale                                  & 2              \\
+Number of hidden layers                & 11             \\
+Size of the initial hidden layer       & 23             \\
+Threshold (\%)                         & 42             \\
+Model ID                               & 29             \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cppn_15x15.png}
+		\caption{$15\times 15$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cppn_20x20.png}
+		\caption{$20\times 20$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cppn_25x25.png}
+		\caption{$25\times 25$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{cppn_30x30.png}
+		\caption{$30\times 30$}
+	\end{subfigure}
+	\caption[Example CPPN interpretation at different resolutions]{Example CPPN from Table~\ref{tab:cppnexpar} interpretation at different resolutions. Included elements are solid black squares and removed elements are empty white squares.}
+	\label{fig:cppnintres}
+\end{figure}
 
 \subsection{Unit Grids}
 
-Units are modelled in a $5\times 5$ unit arrangement. Unit behaviour is analyzed in this context. Results regarding system energies are obtained from these simulations. Unit deformation is impacted by the surrounding identical units. Unit deformation may be assumed to be consistent with sufficient numbers of surrounding units. Internal units display consistent behaviour, with only external units displaying major ballooning effects. Figure~ illustrates an example unit configuration with internal pressure applied.
+Units are modelled in a $5\times 5$ unit arrangement. Unit behaviour is analyzed in this context. Results regarding system energies are obtained from these simulations. Unit deformation is impacted by the surrounding identical units. Unit deformation may be assumed to be consistent with sufficient numbers of surrounding units. Internal units display consistent behaviour, with only external units displaying major ballooning effects. Figure~\ref{fig:griddef} illustrates an example unit configuration with internal pressure applied.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{grid_deform.png}
+	\caption[FEM unit grid configuration deforming under internal pressure]{$5\times 5$ FEM unit grid configuration deforming under internal pressure. The unit ID is grid\_38\_29\_29\_2\_11\_23\_42.}
+	\label{fig:griddef}
+\end{figure}
